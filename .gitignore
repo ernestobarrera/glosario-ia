@@ -1,4 +1,6 @@
 /.quarto/
 /_site/
 /fuente/
+/INFORME-PILOTO.md
+/HOJA-DE-RUTA.md
 **/*.quarto_ipynb
