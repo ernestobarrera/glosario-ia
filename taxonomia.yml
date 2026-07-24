@@ -1,0 +1,23 @@
+version: 2
+
+categories:
+  - "Fundamentos"
+  - "Modelos de lenguaje"
+  - "IA agéntica"
+  - "Recuperación de información"
+  - "Seguridad y riesgos"
+  - "Ética y gobernanza"
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+  - "Procesamiento del lenguaje"
+  - "Aplicaciones sanitarias"
+
+estados:
+  - borrador
+  - revisada
+
+tipos:
+  - concepto
+  - herramienta
+  - tecnica
+  - organizacion

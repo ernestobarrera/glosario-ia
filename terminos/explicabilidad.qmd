@@ -1,0 +1,72 @@
+---
+title: "Explicabilidad"
+aliases:
+  - /terminos/xai.html
+  - /terminos/explainable-ai.html
+sinonimos:
+  - "IA explicable"
+  - "Explainable AI"
+  - "XAI"
+description: "Propiedad y conjunto de métodos orientados a hacer comprensibles las salidas o el comportamiento de un sistema de IA."
+categories:
+  - "Ética y gobernanza"
+  - "Seguridad y riesgos"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **explicabilidad** se refiere a la posibilidad de ofrecer razones
+comprensibles sobre el comportamiento o las salidas de un sistema de IA. Puede
+proceder de un modelo interpretable por diseño o de métodos posteriores que
+aproximan qué variables influyeron en una predicción.
+
+Una explicación útil depende de su destinatario y su finalidad. No necesita lo
+mismo una persona afectada por una decisión, un profesional, un auditor o quien
+depura el modelo. En salud, la explicabilidad debe relacionarse con seguridad,
+responsabilidad y capacidad real de cuestionar una recomendación
+[@amann2020explainability].
+
+## Aplicaciones
+
+### Generales
+
+- Mostrar factores relevantes en una decisión crediticia.
+- Analizar por qué un clasificador comete ciertos errores.
+- Facilitar auditorías y documentación regulatoria.
+- Comparar el comportamiento del modelo entre grupos.
+
+### Sanitarias
+
+- Señalar variables que influyen en una estimación de riesgo.
+- Mostrar regiones de una imagen asociadas a una clasificación.
+- Apoyar la revisión profesional de una recomendación.
+- Comunicar límites de un sistema a pacientes y equipos.
+
+## Limitaciones
+
+- Una explicación posterior puede ser una aproximación infiel al modelo.
+- Una visualización convincente puede producir falsa confianza.
+- Explicar no equivale a demostrar causalidad, seguridad o ausencia de sesgo.
+- Distintas técnicas pueden dar explicaciones diferentes para el mismo caso.
+- Debe evaluarse si la explicación mejora decisiones reales.
+
+## Ejemplos
+
+Un modelo puede indicar que la edad y determinados resultados analíticos
+influyeron en una predicción. Esa lista ayuda a revisar el caso, pero no prueba
+que esas variables causaran el desenlace ni que el modelo sea clínicamente
+válido.
+
+## Relacionados
+
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Alucinación](alucinacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,74 @@
+---
+title: "Modelo de lenguaje grande"
+aliases:
+  - /terminos/modelos-de-lenguaje-grande.html
+  - /terminos/large-language-model.html
+sinonimos:
+  - "LLM"
+  - "Large language model"
+  - "Modelo de lenguaje de gran tamaño"
+description: "Modelo entrenado con grandes corpus para predecir y generar lenguaje y adaptarse a múltiples tareas textuales."
+categories:
+  - "Modelos de lenguaje"
+  - "Arquitecturas"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **modelo de lenguaje grande** o **LLM** es un modelo entrenado con grandes
+cantidades de texto —y, en algunos casos, otras modalidades— para estimar
+secuencias y generar lenguaje. Mediante instrucciones y ejemplos puede abordar
+tareas como responder preguntas, resumir, traducir, clasificar o escribir
+código.
+
+El tamaño no ofrece una frontera universal: «grande» depende de la época, los
+datos, los parámetros y el cómputo. Las evaluaciones médicas muestran que estos
+modelos pueden codificar conocimiento clínico relevante, pero mantienen
+carencias frente a profesionales y necesitan evaluación humana multidimensional
+[@singhal2023clinical].
+
+## Aplicaciones
+
+### Generales
+
+- Asistentes conversacionales y búsqueda.
+- Redacción, resumen, traducción y clasificación.
+- Análisis documental y apoyo a programación.
+- Interfaz en lenguaje natural para otras herramientas.
+
+### Sanitarias
+
+- Resumir literatura o documentación clínica.
+- Preparar borradores para revisión profesional.
+- Extraer y estructurar información textual.
+- Apoyar educación y comunicación, sin presentarse como autoridad clínica.
+
+## Limitaciones
+
+- Genera por probabilidad y puede producir contenido falso.
+- Hereda sesgos y vacíos de los datos.
+- La respuesta varía con el prompt, el contexto y la versión.
+- Puede revelar información si se usa sin controles de privacidad.
+- La utilidad clínica no elimina riesgos ni convierte el resultado en una
+  decisión profesional [@lee2023gpt4].
+
+## Ejemplos
+
+Un LLM puede resumir un conjunto de artículos o convertir una nota en una tabla.
+La calidad debe evaluarse contra las fuentes y el uso previsto, no solo por la
+fluidez del texto.
+
+## Relacionados
+
+- [Transformer](transformer.qmd)
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+- [Alucinación](alucinacion.qmd)
+- [IA generativa](ia-generativa.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

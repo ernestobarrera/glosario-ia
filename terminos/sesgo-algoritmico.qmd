@@ -1,0 +1,72 @@
+---
+title: "Sesgo algorítmico"
+aliases:
+  - /terminos/bias.html
+  - /terminos/sesgo.html
+sinonimos:
+  - "Bias"
+  - "Sesgo en IA"
+  - "Algorithmic bias"
+description: "Patrón sistemático por el que un sistema produce resultados injustos, distorsionados o desiguales para determinados grupos o situaciones."
+categories:
+  - "Ética y gobernanza"
+  - "Seguridad y riesgos"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **sesgo algorítmico** es un patrón sistemático por el que un sistema produce
+resultados distorsionados, injustos o desiguales. Puede originarse en los datos,
+las etiquetas, la variable objetivo, la selección de población, el diseño del
+modelo, la métrica o la forma de desplegarlo.
+
+No todo error es sesgo y una métrica global alta puede ocultar diferencias entre
+grupos. Además, distintas definiciones de equidad pueden entrar en conflicto.
+Por eso el análisis debe conectar resultados estadísticos con consecuencias
+reales y responsabilidades.
+
+## Aplicaciones
+
+### Generales
+
+- Auditar selección de personal, crédito o seguros.
+- Comparar errores y resultados entre grupos.
+- Revisar variables proxy de características sensibles.
+- Diseñar seguimiento y mecanismos de reclamación.
+
+### Sanitarias
+
+- Evaluar modelos diagnósticos en poblaciones diversas.
+- Analizar desigualdades en priorización o asignación de recursos.
+- Revisar si la variable objetivo representa necesidad clínica.
+- Vigilar el impacto después del despliegue.
+
+## Limitaciones
+
+- Los datos históricos pueden reflejar desigualdades estructurales.
+- Eliminar una variable sensible no elimina sus proxies.
+- Corregir una métrica puede empeorar otra o perjudicar la utilidad.
+- Los grupos no son homogéneos y las intersecciones importan.
+- La mitigación exige cambios técnicos, organizativos y de gobernanza.
+
+## Ejemplos
+
+Un estudio mostró que un algoritmo sanitario que usaba coste como sustituto de
+necesidad asignaba menor prioridad a pacientes negros con igual puntuación,
+porque el gasto reflejaba desigualdades de acceso y no solo enfermedad
+[@obermeyer2019bias]. Los marcos de gestión de riesgos recomiendan evaluar estos
+impactos durante todo el ciclo de vida [@nist2023airmf].
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Alucinación](alucinacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

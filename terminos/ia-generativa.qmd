@@ -1,0 +1,70 @@
+---
+title: "IA generativa"
+aliases:
+  - /terminos/generative-ai.html
+sinonimos:
+  - "Inteligencia artificial generativa"
+  - "Generative AI"
+  - "GenAI"
+description: "Familia de sistemas de IA capaces de producir contenido nuevo, como texto, imágenes, audio, vídeo, código o datos sintéticos."
+categories:
+  - "Fundamentos"
+  - "Modelos de lenguaje"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **IA generativa** agrupa modelos capaces de producir contenido nuevo a
+partir de patrones aprendidos en datos. La salida puede ser texto, imagen,
+audio, vídeo, código, estructuras moleculares o datos sintéticos.
+
+Incluye familias técnicas distintas, como modelos autorregresivos, modelos de
+difusión y redes generativas antagónicas, introducidas como un marco de
+entrenamiento entre un generador y un discriminador
+[@goodfellow2014gan]. «Nuevo» no significa necesariamente original, verdadero
+ni libre de semejanzas con el material de entrenamiento.
+
+## Aplicaciones
+
+### Generales
+
+- Redacción, resumen y traducción.
+- Creación y edición de imágenes o audio.
+- Asistencia a programación y diseño.
+- Generación de ejemplos y datos sintéticos.
+
+### Sanitarias
+
+- Preparación de borradores y materiales educativos.
+- Generación de imágenes sintéticas para investigación.
+- Diseño asistido de moléculas o estructuras.
+- Conversación sanitaria, con límites y supervisión explícitos.
+
+## Limitaciones
+
+- Puede inventar hechos, referencias o detalles.
+- Reproduce sesgos y limitaciones de datos y diseño.
+- Plantea cuestiones de privacidad, autoría y propiedad intelectual.
+- Puede facilitar fraude, suplantación o desinformación.
+- En medicina, la fluidez puede ocultar errores con consecuencias relevantes
+  [@lee2023gpt4].
+
+## Ejemplos
+
+Un modelo puede transformar una descripción en una imagen, completar código o
+crear un resumen. Cada salida necesita un nivel de revisión distinto según su
+impacto, su reversibilidad y el contexto en el que se utilizará.
+
+## Relacionados
+
+- [Modelo de lenguaje grande](llm.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Transformer](transformer.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

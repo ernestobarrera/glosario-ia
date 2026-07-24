@@ -1,0 +1,72 @@
+---
+title: "Generación aumentada por recuperación"
+aliases:
+  - /terminos/generacion-aumentada-recuperacion.html
+  - /terminos/retrieval-augmented-generation.html
+sinonimos:
+  - "RAG"
+  - "Retrieval-augmented generation"
+  - "Generación aumentada de recuperación"
+description: "Enfoque que combina recuperación de información externa con generación para producir respuestas fundamentadas en fuentes seleccionadas."
+categories:
+  - "Recuperación de información"
+  - "Modelos de lenguaje"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **generación aumentada por recuperación** o **RAG** combina un sistema que
+busca información relevante con un modelo generativo que utiliza los fragmentos
+recuperados para elaborar una respuesta. El trabajo que consolidó el término
+integró recuperación y generación para tareas intensivas en conocimiento
+[@lewis2020rag].
+
+RAG permite trabajar con colecciones actualizables sin incorporar cada cambio
+al entrenamiento del modelo. También puede mostrar las fuentes empleadas, pero
+la presencia de citas no garantiza que la respuesta las interprete
+correctamente.
+
+## Aplicaciones
+
+### Generales
+
+- Asistentes sobre documentación interna.
+- Preguntas y respuestas sobre manuales o normativa.
+- Investigación con colecciones seleccionadas.
+- Resúmenes respaldados por documentos recuperados.
+
+### Sanitarias
+
+- Consulta de guías y protocolos institucionales.
+- Asistentes sobre información farmacoterapéutica autorizada.
+- Búsqueda semántica en literatura biomédica.
+- Apoyo documental a decisiones, sin sustituir el juicio profesional.
+
+## Limitaciones
+
+- Si la búsqueda falla, la generación parte de evidencia incompleta o errónea.
+- La segmentación, el índice y el criterio de relevancia condicionan el resultado.
+- Puede citar una fuente pertinente pero atribuirle una afirmación que no contiene.
+- Documentos maliciosos pueden introducir instrucciones no deseadas.
+- Requiere control de versiones, permisos y trazabilidad de las fuentes.
+
+## Ejemplos
+
+Ante una pregunta clínica, un sistema RAG puede recuperar párrafos de una guía
+vigente, generar una síntesis y enlazar los fragmentos utilizados. La salida
+debe permitir comprobar fuente, fecha y correspondencia entre afirmación y
+evidencia.
+
+## Relacionados
+
+- [Modelo de lenguaje grande](llm.qmd)
+- [Alucinación](alucinacion.qmd)
+- [MCP](mcp.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,72 @@
+---
+title: "Alucinación"
+aliases:
+  - /terminos/alucinaciones.html
+  - /terminos/hallucination.html
+sinonimos:
+  - "Alucinaciones de IA"
+  - "Hallucination"
+description: "Respuesta plausible generada por un modelo que contiene información falsa, inventada o no respaldada por la fuente."
+categories:
+  - "Modelos de lenguaje"
+  - "Seguridad y riesgos"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Una **alucinación** ocurre cuando un sistema generativo produce una respuesta
+coherente y plausible que contiene información falsa, inventada o no respaldada
+por las fuentes disponibles. Puede afectar a hechos, cifras, nombres,
+referencias bibliográficas, citas o razonamientos.
+
+Los modelos de lenguaje generan texto a partir de patrones estadísticos. La
+fluidez de una respuesta no garantiza su veracidad, y el sistema puede formular
+con gran seguridad una afirmación sin fundamento. Las revisiones del fenómeno
+distinguen distintos tipos, causas, métricas y estrategias de mitigación
+[@ji2023hallucination].
+
+## Aplicaciones
+
+### Generales
+
+Conocer este fenómeno es esencial al usar IA para redactar, resumir, investigar
+o responder preguntas. Las salidas que influyen en una decisión deben
+contrastarse con fuentes fiables.
+
+### Sanitarias
+
+En salud, una alucinación puede inventar una dosis, una contraindicación, una
+recomendación o una referencia científica. Por ello, el contenido generado no
+debe sustituir la revisión profesional ni las fuentes clínicas autorizadas.
+La evaluación médica de modelos avanzados también subraya que utilidad y
+fluidez conviven con límites y riesgos clínicamente relevantes
+[@lee2023gpt4].
+
+## Limitaciones
+
+- La detección automática de alucinaciones sigue siendo imperfecta.
+- Una respuesta puede combinar datos correctos e incorrectos de forma difícil
+  de reconocer.
+- Pedir citas no garantiza que las referencias existan.
+- La recuperación de información y la conexión a fuentes pueden reducir el
+  problema, pero no lo eliminan.
+
+## Ejemplos
+
+- Inventar una biografía verosímil de una persona inexistente.
+- Atribuir un resultado a un artículo que no lo contiene.
+- Recomendar una dosis equivocada con lenguaje clínico convincente.
+- Fabricar una sentencia o una referencia bibliográfica.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Inteligencia artificial general](agi.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

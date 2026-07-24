@@ -1,0 +1,68 @@
+---
+title: "Model Context Protocol"
+aliases:
+  - /terminos/model-context-protocol.html
+sinonimos:
+  - "MCP"
+  - "Protocolo de contexto de modelo"
+description: "Protocolo abierto para conectar aplicaciones de IA con herramientas, recursos y servicios mediante una interfaz común."
+categories:
+  - "IA agéntica"
+  - "Fundamentos"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+**Model Context Protocol** o **MCP** es un protocolo abierto para conectar
+aplicaciones de IA con herramientas, fuentes de datos y servicios externos.
+Define una arquitectura de host, clientes y servidores, con primitivas como
+herramientas, recursos y plantillas de prompts sobre mensajes JSON-RPC
+[@mcp2025spec].
+
+Su objetivo es reducir integraciones específicas entre cada aplicación y cada
+servicio. MCP estandariza el intercambio y la negociación de capacidades, pero
+no decide qué debe hacer el modelo ni convierte una herramienta en segura.
+
+## Aplicaciones
+
+### Generales
+
+- Conectar un asistente con repositorios, calendarios o bases de datos.
+- Reutilizar una misma integración desde clientes compatibles.
+- Exponer búsquedas, cálculos o flujos internos mediante capacidades declaradas.
+- Separar la aplicación anfitriona de los servicios conectados.
+
+### Sanitarias
+
+- Consultar una guía institucional mediante un servidor de solo lectura.
+- Acceder a terminologías o catálogos con permisos delimitados.
+- Conectar un asistente a agendas o sistemas documentales auditables.
+- Exponer servicios clínicos con control de identidad y finalidad.
+
+## Limitaciones
+
+- Cada capacidad conectada amplía la superficie de ataque.
+- El protocolo no sustituye autorización, consentimiento ni auditoría.
+- Las descripciones de herramientas y el contenido remoto pueden ser maliciosos.
+- Un servidor puede cambiar de comportamiento entre versiones.
+- Los límites de acceso deben imponerse en el sistema, no confiarse al modelo.
+
+## Ejemplos
+
+Un servidor MCP puede ofrecer una operación de consulta sobre una guía
+farmacoterapéutica. El host decide qué usuario puede conectarse, el cliente
+negocia la capacidad y el servidor aplica permisos y registra la consulta.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

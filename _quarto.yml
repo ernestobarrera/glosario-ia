@@ -1,0 +1,50 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "terminos/*.qmd"
+  preview:
+    browser: false
+    watch-inputs: true
+
+website:
+  title: "Glosario IA"
+  description: "Glosario de IA para profesionales sanitarios: conceptos explicados con aplicaciones, limitaciones, ejemplos y referencias verificables."
+  site-url: "https://ernestobarrera.github.io/glosario-ia/"
+  repo-url: "https://github.com/ernestobarrera/glosario-ia"
+  repo-actions: [edit, issue]
+  search: true
+  page-navigation: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: indice-az.qmd
+        text: A–Z
+      - href: temas.qmd
+        text: Temas
+  page-footer:
+    left: "Prototipo en evaluación · Elaborado con asistencia de IA y revisión humana · Puede contener errores"
+
+lang: es
+bibliography: references.bib
+csl: vancouver.csl
+filters:
+  - filters/sinonimos.lua
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-title: "En esta ficha"
+    smooth-scroll: true
+    link-external-newwindow: true
+
+editor:
+  markdown:
+    wrap: 80
+    references:
+      location: document
+    canonical: true

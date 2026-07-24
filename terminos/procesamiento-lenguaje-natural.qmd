@@ -1,0 +1,69 @@
+---
+title: "Procesamiento del lenguaje natural"
+aliases:
+  - /terminos/nlp.html
+sinonimos:
+  - "PLN"
+  - "NLP"
+  - "Natural language processing"
+description: "Campo de la IA dedicado al análisis, representación y generación computacional del lenguaje humano."
+categories:
+  - "Procesamiento del lenguaje"
+  - "Fundamentos"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **procesamiento del lenguaje natural** o **PLN** estudia cómo analizar,
+representar y generar lenguaje humano mediante sistemas informáticos. Incluye
+métodos basados en reglas, estadística, aprendizaje automático y redes
+neuronales.
+
+El campo abarca tareas distintas: identificar entidades, clasificar documentos,
+extraer relaciones, traducir, resumir o mantener una conversación. Los modelos
+de lenguaje grandes forman parte de esta historia, pero no son sinónimo de todo
+el PLN.
+
+## Aplicaciones
+
+### Generales
+
+- Traducción automática y corrección lingüística.
+- Búsqueda, clasificación y análisis de sentimiento.
+- Extracción de nombres, fechas y relaciones.
+- Resumen y generación de texto.
+
+### Sanitarias
+
+- Identificación de conceptos en notas clínicas.
+- Codificación y fenotipado computacional.
+- Desidentificación de texto.
+- Análisis de literatura y registros electrónicos.
+
+## Limitaciones
+
+- El significado depende de contexto, ambigüedad y conocimiento tácito.
+- Los sistemas pueden rendir peor en lenguas o poblaciones poco representadas.
+- El texto clínico contiene abreviaturas, negaciones y variabilidad local.
+- La privacidad limita el acceso a corpus anotados.
+- La validación debe realizarse sobre tareas y entornos concretos.
+
+## Ejemplos
+
+Una revisión metodológica identificó clasificación, reconocimiento de entidades
+y extracción de relaciones entre las tareas dominantes del PLN clínico basado
+en aprendizaje profundo [@wu2020clinicalnlp].
+
+## Relacionados
+
+- [Modelo de lenguaje grande](llm.qmd)
+- [Transformer](transformer.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

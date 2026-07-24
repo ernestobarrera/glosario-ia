@@ -1,0 +1,15 @@
+---
+title: "Temas"
+description: "Explora las fichas mediante una taxonomía controlada."
+listing:
+  contents: "terminos/*.qmd"
+  type: grid
+  sort: "title asc"
+  filter-ui: [categories, title, sinonimos, description, estado, tipo]
+  categories: true
+  page-size: 999
+  grid-columns: 3
+---
+
+Las categorías proceden de una taxonomía única para evitar variantes,
+duplicados y etiquetas improvisadas.

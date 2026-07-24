@@ -1,0 +1,45 @@
+name: Proponer un término
+description: Sugiere un concepto para una futura ficha del glosario.
+title: "[Término] "
+labels:
+  - propuesta
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por ayudar a ampliar el glosario. La propuesta se revisará antes de incorporarse.
+  - type: input
+    id: termino
+    attributes:
+      label: Término
+      placeholder: Nombre principal y, si procede, sigla
+    validations:
+      required: true
+  - type: textarea
+    id: utilidad
+    attributes:
+      label: Por qué sería útil
+      description: Explique la necesidad y para quién resultaría relevante.
+    validations:
+      required: true
+  - type: textarea
+    id: definicion
+    attributes:
+      label: Definición o enfoque propuesto
+      description: Puede ser una definición inicial; no necesita redactar la ficha completa.
+    validations:
+      required: false
+  - type: textarea
+    id: fuentes
+    attributes:
+      label: Fuentes recomendadas
+      description: DOI, PMID o enlaces institucionales que ayuden a verificar el término.
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacidad
+    attributes:
+      label: Privacidad y derechos
+      options:
+        - label: No he incluido datos personales, información clínica identificable ni contenido de terceros sin permiso.
+          required: true

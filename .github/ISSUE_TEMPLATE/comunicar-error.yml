@@ -1,0 +1,47 @@
+name: Comunicar un error
+description: Señala un error conceptual, bibliográfico, técnico o de redacción.
+title: "[Error] "
+labels:
+  - corrección
+body:
+  - type: input
+    id: ficha
+    attributes:
+      label: Ficha o página afectada
+      placeholder: URL o nombre del término
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de error
+      options:
+        - Conceptual
+        - Bibliográfico
+        - Enlace o funcionamiento
+        - Redacción o accesibilidad
+        - Contenido desactualizado
+        - Otro
+    validations:
+      required: true
+  - type: textarea
+    id: detalle
+    attributes:
+      label: Qué debería corregirse
+      description: Describa el problema y, si puede, la corrección esperada.
+    validations:
+      required: true
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: Fuente o evidencia
+      description: DOI, PMID, enlace institucional o pasos para reproducir el fallo.
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacidad
+    attributes:
+      label: Privacidad y derechos
+      options:
+        - label: No he incluido datos personales, información clínica identificable ni contenido de terceros sin permiso.
+          required: true

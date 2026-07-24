@@ -1,0 +1,69 @@
+---
+title: "Aprendizaje profundo"
+aliases:
+  - /terminos/deep-learning.html
+sinonimos:
+  - "Deep learning"
+  - "DL"
+description: "Subcampo del aprendizaje automático que utiliza redes neuronales con múltiples capas para aprender representaciones complejas."
+categories:
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **aprendizaje profundo** es un subcampo del aprendizaje automático basado en
+redes neuronales con múltiples capas. Estas capas transforman progresivamente
+los datos y permiten aprender representaciones útiles directamente a partir de
+imágenes, texto, audio u otras señales.
+
+Su expansión se apoyó en mayores conjuntos de datos, capacidad de cómputo y
+mejoras de entrenamiento. Es la base de muchas arquitecturas contemporáneas,
+incluidos los transformadores y los modelos de lenguaje grandes
+[@lecun2015deep].
+
+## Aplicaciones
+
+### Generales
+
+- Reconocimiento y generación de imágenes.
+- Transcripción, síntesis y reconocimiento de voz.
+- Traducción y generación de lenguaje.
+- Detección de objetos y conducción asistida.
+
+### Sanitarias
+
+- Clasificación y segmentación de imágenes médicas.
+- Procesamiento de señales fisiológicas.
+- Extracción de información de texto clínico.
+- Apoyo a la detección de lesiones, siempre con validación clínica.
+
+## Limitaciones
+
+- Suele necesitar muchos datos y recursos computacionales.
+- Puede ser difícil explicar qué rasgos sustentan una predicción.
+- Es vulnerable a cambios entre el conjunto de entrenamiento y la práctica.
+- Un rendimiento experimental alto no implica beneficio clínico.
+- Puede amplificar sesgos o depender de correlaciones espurias.
+
+## Ejemplos
+
+Un estudio entrenó una red convolucional para clasificar lesiones cutáneas y
+comparó su rendimiento con dermatólogos en tareas delimitadas
+[@esteva2017dermatology]. El resultado no convierte al modelo en un sistema
+diagnóstico autónomo ni evita la necesidad de validación prospectiva.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Transformer](transformer.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

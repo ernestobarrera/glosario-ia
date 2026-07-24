@@ -1,0 +1,17 @@
+---
+title: "Índice A–Z"
+description: "Todos los términos del glosario, ordenados alfabéticamente."
+listing:
+  contents: "terminos/*.qmd"
+  type: table
+  fields: [title, description]
+  field-display-names:
+    title: "Término"
+    description: "Definición breve"
+  sort: "title asc"
+  sort-ui: [title]
+  filter-ui: [title, sinonimos, description]
+  page-size: 999
+---
+
+Usa el filtro para localizar un término, una sigla, un sinónimo o un tema.

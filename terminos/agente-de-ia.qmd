@@ -1,0 +1,80 @@
+---
+title: "Agente de IA"
+aliases:
+  - /terminos/ia-agentica.html
+  - /terminos/ai-agent.html
+sinonimos:
+  - "IA agéntica"
+  - "Agentic AI"
+  - "AI agent"
+description: "Sistema capaz de percibir un entorno, razonar sobre un objetivo y ejecutar acciones mediante herramientas o servicios."
+categories:
+  - "IA agéntica"
+  - "Fundamentos"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **agente de IA** es un sistema capaz de percibir su entorno, razonar sobre un
+objetivo y ejecutar acciones para alcanzarlo. Puede observar información,
+elaborar o ajustar un plan, elegir el siguiente paso y utilizar herramientas
+como buscadores, archivos, código, interfaces de programación o servicios
+externos. El patrón ReAct es una referencia temprana de la combinación
+intercalada de razonamiento y acción en modelos de lenguaje
+[@yao2023react].
+
+La expresión **IA agéntica** describe este modo de funcionamiento. No se trata,
+por tanto, de una ficha independiente, sino del paradigma en el que uno o
+varios agentes disponen de cierto grado de autonomía para encadenar decisiones
+y acciones. La integración de modelos de lenguaje amplió las capacidades de
+los agentes para interpretar instrucciones y trabajar con información no
+estructurada. Protocolos como MCP pueden estandarizar parte de la conexión con
+recursos y herramientas, pero no resuelven por sí solos la seguridad o la
+gobernanza [@mcp2025spec].
+
+## Aplicaciones
+
+### Generales
+
+- Atención al cliente y resolución de incidencias.
+- Investigación, síntesis de información y preparación de informes.
+- Automatización de procesos que combinan varias aplicaciones.
+- Coordinación de tareas entre agentes especializados.
+
+### Sanitarias
+
+- Comprobar requisitos antes de programar una prueba.
+- Coordinar citas, recordatorios y notificaciones.
+- Revisar propuestas de codificación clínica antes de la validación humana.
+- Consultar fuentes autorizadas y preparar borradores para profesionales.
+
+## Limitaciones
+
+- Un error puede propagarse por toda una cadena de acciones.
+- La autonomía aumenta la superficie de ataque, incluida la inyección de
+  instrucciones maliciosas.
+- Un agente puede tomar decisiones incorrectas o difíciles de revertir.
+- El comportamiento puede variar entre ejecuciones y dificultar la
+  reproducibilidad.
+- Requiere límites explícitos, trazabilidad y supervisión humana proporcional
+  al riesgo.
+
+## Ejemplos
+
+Un agente hospitalario podría consultar la ocupación, comprobar criterios
+predefinidos y proponer una asignación de cama para validación. Otro agente
+podría revisar alergias conocidas antes de preparar una propuesta farmacéutica,
+sin sustituir la decisión clínica.
+
+## Relacionados
+
+- [Inteligencia artificial general](agi.qmd)
+- [Alucinación](alucinacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

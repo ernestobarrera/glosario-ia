@@ -1,0 +1,70 @@
+---
+title: "Aprendizaje automático"
+aliases:
+  - /terminos/machine-learning.html
+sinonimos:
+  - "Machine learning"
+  - "ML"
+description: "Rama de la IA que desarrolla modelos capaces de aprender patrones a partir de datos para predecir, clasificar o decidir."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **aprendizaje automático** reúne métodos que ajustan un modelo a partir de
+datos para realizar una tarea sin programar de forma explícita todas las reglas.
+Según el problema, el modelo puede predecir un valor, asignar una categoría,
+detectar una estructura o recomendar una acción.
+
+El aprendizaje no equivale a comprensión: consiste en optimizar parámetros
+según datos, objetivos y métricas definidos. Su valor depende tanto del
+algoritmo como de la calidad de los datos, el diseño de la evaluación y el
+contexto de uso. En medicina, su aplicación se extiende desde la interpretación
+de imágenes hasta la organización de flujos asistenciales
+[@topol2019medicine].
+
+## Aplicaciones
+
+### Generales
+
+- Recomendación de contenidos o productos.
+- Detección de fraude y anomalías.
+- Predicción de demanda y mantenimiento.
+- Clasificación de texto, imágenes o señales.
+
+### Sanitarias
+
+- Estimación de riesgos clínicos.
+- Apoyo al análisis de imágenes médicas.
+- Identificación de patrones en historias clínicas.
+- Priorización de casos para revisión profesional.
+
+## Limitaciones
+
+- Puede aprender sesgos, errores o atajos presentes en los datos.
+- Un buen resultado interno no garantiza utilidad en otra población.
+- El sobreajuste reduce la capacidad de generalizar a casos nuevos.
+- La métrica optimizada puede no representar el objetivo humano real.
+- Requiere vigilancia después del despliegue porque los datos cambian.
+
+## Ejemplos
+
+Un hospital puede entrenar un modelo con datos históricos para estimar riesgo
+de reingreso. Antes de usarlo necesita validación externa, análisis por
+subgrupos y un protocolo que determine cómo influirá —o no— en la decisión.
+
+## Relacionados
+
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

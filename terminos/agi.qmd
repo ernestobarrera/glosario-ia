@@ -1,0 +1,69 @@
+---
+title: "Inteligencia artificial general"
+aliases:
+  - /terminos/inteligencia-artificial-general.html
+sinonimos:
+  - "AGI"
+  - "Artificial General Intelligence"
+description: "Concepto hipotético de una IA capaz de aprender y desenvolverse con flexibilidad en múltiples dominios cognitivos."
+categories:
+  - "Fundamentos"
+  - "Ética y gobernanza"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **inteligencia artificial general** o **AGI** es el concepto hipotético de un
+sistema de IA capaz de aprender, adaptarse y desenvolverse con flexibilidad en
+múltiples dominios cognitivos, en vez de limitarse a una tarea estrecha.
+Las propuestas formales de «inteligencia universal» ilustran que incluso medir
+esa generalidad exige explicitar entorno, objetivos y capacidad de adaptación
+[@legg2007universal].
+
+No existe una definición operativa única ni una prueba universalmente aceptada
+que permita afirmar que un sistema ha alcanzado la AGI. El término se emplea
+para discutir objetivos de investigación, capacidades generales y riesgos
+futuros, pero no debe confundirse con el buen rendimiento de un modelo en un
+conjunto amplio de pruebas.
+
+## Aplicaciones
+
+### Generales
+
+Las aplicaciones atribuidas a una AGI son hipotéticas: aprendizaje autónomo
+entre dominios, razonamiento general, adaptación a situaciones nuevas y
+resolución de problemas complejos con menor especialización previa.
+
+### Sanitarias
+
+En salud se imagina un sistema capaz de integrar razonamiento clínico,
+investigación, gestión y comunicación. Esa posibilidad no describe una
+tecnología clínica disponible ni validada en la actualidad.
+
+## Limitaciones
+
+- Falta de consenso sobre la definición y los criterios de evaluación.
+- Riesgo de atribuir comprensión general a sistemas que dominan tareas
+  específicas.
+- Incertidumbre sobre seguridad, control, gobernanza e impacto social.
+- Tendencia del término a mezclar investigación técnica, prospectiva y
+  marketing.
+
+## Ejemplos
+
+Calificar un modelo de lenguaje como «paso hacia la AGI» expresa una
+interpretación sobre su trayectoria, no demuestra que el modelo posea
+inteligencia general.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Alucinación](alucinacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

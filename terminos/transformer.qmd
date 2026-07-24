@@ -1,0 +1,68 @@
+---
+title: "Transformer"
+aliases:
+  - /terminos/transformador.html
+sinonimos:
+  - "Transformador"
+  - "Arquitectura transformer"
+description: "Arquitectura neuronal basada en mecanismos de atención que procesa relaciones entre elementos de una secuencia."
+categories:
+  - "Arquitecturas"
+  - "Modelos de lenguaje"
+date-modified: 2026-07-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **transformer** es una arquitectura neuronal basada principalmente en
+mecanismos de atención. La autoatención permite que cada elemento de una
+secuencia combine información de otros elementos y represente dependencias
+relevantes.
+
+La arquitectura se presentó en 2017 para traducción y prescindió de recurrencia
+y convoluciones en su diseño principal, facilitando el entrenamiento paralelo
+[@vaswani2017attention]. Sus variantes de codificador, decodificador o ambos
+sustentan numerosos modelos de lenguaje y sistemas multimodales.
+
+## Aplicaciones
+
+### Generales
+
+- Traducción, resumen y generación de texto.
+- Clasificación y recuperación semántica.
+- Procesamiento de imágenes, audio y datos multimodales.
+- Modelos de lenguaje de propósito general.
+
+### Sanitarias
+
+- Extracción de información de textos clínicos.
+- Análisis de literatura biomédica.
+- Procesamiento de imágenes y señales mediante variantes especializadas.
+- Modelos de representación para investigación.
+
+## Limitaciones
+
+- El coste de atención aumenta con la longitud de la secuencia en diseños básicos.
+- Requiere datos y cómputo considerables a gran escala.
+- La arquitectura no garantiza factualidad, razonamiento ni comprensión.
+- Puede aprender sesgos y correlaciones espurias.
+- Sus variantes y optimizaciones dificultan tratar «transformer» como un modelo único.
+
+## Ejemplos
+
+En una frase ambigua, la autoatención puede ponderar palabras distantes para
+construir una representación contextual. El patrón aprendido depende de los
+datos y del objetivo de entrenamiento.
+
+## Relacionados
+
+- [Modelo de lenguaje grande](llm.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
