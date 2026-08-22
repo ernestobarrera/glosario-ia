@@ -11,7 +11,7 @@ description: "Modelo entrenado con grandes corpus para predecir y generar lengua
 categories:
   - "Modelos de lenguaje"
   - "Arquitecturas"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -29,6 +29,22 @@ datos, los parámetros y el cómputo. Las evaluaciones médicas muestran que est
 modelos pueden codificar conocimiento clínico relevante, pero mantienen
 carencias frente a profesionales y necesitan evaluación humana multidimensional
 [@singhal2023clinical].
+
+## Contexto histórico
+
+Los modelos de lenguaje evolucionaron desde métodos estadísticos hacia redes
+neuronales capaces de aprender representaciones distribuidas. La arquitectura
+transformer, presentada en 2017, permitió entrenar modelos a gran escala con
+mecanismos de atención y se convirtió en la base de la mayoría de los LLM
+modernos [@vaswani2017attention].
+
+## Importancia actual
+
+A fecha de agosto de 2026, los LLM se usan como interfaz lingüística para
+documentos, código y herramientas. En medicina han mostrado capacidades
+prometedoras, pero el rendimiento en pruebas o casos seleccionados no equivale
+a validación clínica general ni elimina los riesgos de error
+[@singhal2023clinical; @lee2023gpt4].
 
 ## Aplicaciones
 

@@ -9,7 +9,7 @@ description: "Protocolo abierto para conectar aplicaciones de IA con herramienta
 categories:
   - "IA agéntica"
   - "Fundamentos"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -25,6 +25,22 @@ herramientas, recursos y plantillas de prompts sobre mensajes JSON-RPC
 Su objetivo es reducir integraciones específicas entre cada aplicación y cada
 servicio. MCP estandariza el intercambio y la negociación de capacidades, pero
 no decide qué debe hacer el modelo ni convierte una herramienta en segura.
+
+## Contexto histórico
+
+Anthropic presentó MCP el 25 de noviembre de 2024 como un estándar abierto para
+conectar asistentes con datos y herramientas sin mantener una integración
+distinta para cada combinación [@anthropic2024mcp]. Desde entonces, la
+especificación ha evolucionado mediante revisiones públicas y SDK compatibles
+[@mcp2025spec].
+
+## Importancia actual
+
+A fecha de agosto de 2026, MCP es una interfaz relevante del ecosistema
+agéntico, pero la interoperabilidad no implica seguridad. Las orientaciones de
+la AEPD sobre IA agéntica citan MCP como protocolo de conexión y sitúan estas
+integraciones dentro de obligaciones más amplias de protección de datos,
+control de acceso y gestión de riesgos [@aepd2026agentica].
 
 ## Aplicaciones
 

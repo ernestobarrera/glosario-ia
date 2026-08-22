@@ -1,0 +1,181 @@
+# Esquema de entrada — contrato del modelo de datos
+#
+# Este archivo declara QUE ES UNA FICHA. Es la fuente de verdad del modelo:
+# el conversor lo lee para trocear la fuente, el validador lo lee para
+# comprobar el destino, y cualquier cambio de modelo es un commit revisable.
+#
+# Por que existe: un modelo implicito permitio convertir las primeras fichas
+# sin dos de los siete campos del documento de origen ("Contexto historico" e
+# "Importancia en la IA actual"). La lista de secciones vivia codificada dentro
+# de validar.ps1 y dentro del prompt del constructor, por lo que la validacion
+# no podia detectar la omision. Declarada aqui, no puede volver a ocurrir.
+#
+# Reutilizacion: este archivo es lo especifico del libro. El conversor, el
+# validador, los listings y el workflow son motor y no deben conocer ningun
+# nombre de seccion. Un libro nuevo = esquema.yml + taxonomia.yml + contenido.
+
+version: 1
+libro: glosario-ia
+titulo: "Glosario de IA para profesionales sanitarios"
+
+# Procedencia: la identidad del documento del que procede el contenido, sus
+# fechas y la regla de frescura viven en fuente.yml, que NO sale del
+# laboratorio. Este archivo es el contrato del libro y si se publica.
+
+# ---------------------------------------------------------------------------
+# Frontmatter
+# ---------------------------------------------------------------------------
+# Convencion: las claves que interpreta Quarto conservan su nombre; las propias
+# van en espanol sin tildes.
+
+frontmatter:
+  obligatorios:
+    - title           # canonico, en espanol, sin siglas ni parentesis
+    - aliases         # SOLO redirects (.html). No es el campo de sinonimos
+    - sinonimos       # siglas y variantes; se renderizan en el cuerpo
+    - description     # definicion breve; entradilla y metadatos
+    - categories      # 1-3, de taxonomia.yml
+    - date-modified   # fecha real de la ultima revision de contenido
+    - estado          # borrador | revisada
+    - tipo            # concepto | herramienta | tecnica | organizacion
+  reglas:
+    - "slug deriva del nombre de archivo; no se declara"
+    - "date-modified no admite fechas futuras"
+    - "sinonimos debe contener al menos un valor y aparecer en el cuerpo"
+    - "title, aliases y sinonimos no pueden colisionar entre fichas"
+
+# ---------------------------------------------------------------------------
+# Secciones del cuerpo
+# ---------------------------------------------------------------------------
+# El orden de esta lista ES el orden exigido en la ficha.
+# `origen` es la etiqueta del campo en el documento de origen; el conversor
+# trocea por ella. `obligatorio: false` = recomendado, no bloquea validacion.
+
+secciones:
+  - id: definicion
+    titulo: "## Definición ampliada"
+    origen: "Definición"
+    obligatorio: true
+    nota: >-
+      La definicion breve del frontmatter (description) y esta deben ser
+      coherentes. Esta amplia, no repite.
+
+  - id: contexto
+    titulo: "## Contexto histórico"
+    origen: "Contexto histórico"
+    obligatorio: true
+    nota: >-
+      De donde viene el concepto y cuando. Es lo que hace que el glosario
+      ensene en lugar de definir, y lo que envejece bien. Ancla en fechas
+      concretas siempre que la fuente las de.
+
+  - id: importancia
+    titulo: "## Importancia actual"
+    origen: "Importancia en la IA actual"
+    obligatorio: false
+    fechado: true
+    nota: >-
+      Recomendada, no obligatoria: en parte del corpus solapa con contexto
+      historico. Cuando se incluya, debe estar fechada de forma explicita
+      ("a fecha de ...", "en 2026") porque es la seccion que primero caduca.
+
+  - id: aplicaciones
+    titulo: "## Aplicaciones"
+    origen: "Aplicaciones prácticas"
+    obligatorio: true
+    subsecciones:
+      - titulo: "### Generales"
+        origen: "General"
+        obligatorio: true
+      - titulo: "### Sanitarias"
+        origen: "Ámbito sanitario"
+        obligatorio: true
+        nota: >-
+          El angulo sanitario sistematico es el diferencial del proyecto, y
+          esta subseccion es donde vive. Por eso es OBLIGATORIA en todas las
+          fichas: el posicionamiento se sostiene aqui, en las 130 paginas, no
+          en una etiqueta. La categoria "Aplicaciones sanitarias" se retiro en
+          la v3 de taxonomia.yml por ser estructuralmente vacia (un unico
+          candidato en 131 conceptos, y bloqueado).
+
+  - id: limitaciones
+    titulo: "## Limitaciones"
+    origen: "Desafíos o limitaciones"
+    obligatorio: true
+
+  - id: ejemplos
+    titulo: "## Ejemplos"
+    origen: "Ejemplos concretos"
+    obligatorio: true
+
+  - id: relacionados
+    titulo: "## Relacionados"
+    origen: "Conexiones con otros conceptos"
+    obligatorio: true
+    nota: >-
+      Enlaces internos a fichas existentes. Los conceptos citados que aun no
+      tienen ficha NO se enlazan: alimentan la demanda de enlace del
+      inventario, que es el criterio de orden de los lotes.
+
+  - id: referencias
+    titulo: "## Referencias"
+    origen: null
+    obligatorio: true
+    nota: >-
+      No existe en el documento de origen: se anade en la conversion. Citekeys
+      de references.bib. Toda referencia pasa por verificacion antes de
+      entrar.
+
+# ---------------------------------------------------------------------------
+# Presupuesto por ficha
+# ---------------------------------------------------------------------------
+# Una seccion fuente que supere el maximo no entra en un lote: va a la cola
+# de piezas largas y se trata individualmente. Regla creada tras detectar
+# que "Deep Research" mide 70.023 caracteres, 30 veces la mediana del corpus.
+
+presupuesto:
+  fuente_maxima_caracteres: 4000
+  cola_piezas_largas: "piezas que superen el maximo; reescritura individual"
+
+# ---------------------------------------------------------------------------
+# Vigencia por tipo
+# ---------------------------------------------------------------------------
+# date-modified deja de ser una fecha decorativa. Vencer NO da de baja ni
+# reescribe nada: alimenta un informe periodico de revision. Ninguna alta,
+# baja o modificacion automatica.
+
+vigencia:
+  concepto: 24      # meses
+  tecnica: 12
+  herramienta: 6
+  organizacion: 6
+  nota: >-
+    Las fichas tipo herramienta siguen bloqueadas hasta que se decida su
+    politica editorial completa (HOJA-DE-RUTA). Med-PaLM esta en el corpus y
+    ya es un producto retirado: es el caso de prueba.
+
+# ---------------------------------------------------------------------------
+# Bibliografia
+# ---------------------------------------------------------------------------
+
+bibliografia:
+  archivo: references.bib
+  estilo: vancouver.csl
+  # Exigir doi o pmid dejaria fuera fuentes primarias legitimas, como actas de
+  # congreso, preprints institucionales, especificaciones oficiales u
+  # orientaciones de organismos publicos.
+  identificador_admitido:
+    - doi
+    - pmid
+    - url_primaria_oficial
+  # url_primaria_oficial = editor, repositorio institucional de preprints,
+  # actas de congreso, organismo publico o especificacion oficial del propio
+  # proyecto. Exige urldate y comprobacion de acceso. NO admite blogs
+  # personales, blogs de producto, agregadores ni foros: sin ese limite la
+  # excepcion reabre la puerta de las 101 URLs de la pieza de Deep Research.
+  gestor: ninguno
+  # Sin gestor bibliografico. Los citekeys actuales son definitivos e
+  # inmutables. Si algun dia entra un gestor, debe respetarlos y nunca
+  # regenerarlos.
+  citekey_formato: "autor + ano + palabra"
+  citekey_inmutable: true

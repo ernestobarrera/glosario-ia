@@ -9,7 +9,7 @@ description: "Concepto hipotético de una IA capaz de aprender y desenvolverse c
 categories:
   - "Fundamentos"
   - "Ética y gobernanza"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -28,6 +28,22 @@ que permita afirmar que un sistema ha alcanzado la AGI. El término se emplea
 para discutir objetivos de investigación, capacidades generales y riesgos
 futuros, pero no debe confundirse con el buen rendimiento de un modelo en un
 conjunto amplio de pruebas.
+
+## Contexto histórico
+
+La aspiración de construir máquinas con capacidades generales acompaña a la IA
+desde sus orígenes, aunque la expresión **AGI** se consolidó después para
+distinguirla de los sistemas especializados. Los intentos de definir una
+«inteligencia universal», como el de Legg y Hutter en 2007, ilustran la
+dificultad de convertir esa aspiración en una medida operativa
+[@legg2007universal].
+
+## Importancia actual
+
+A fecha de agosto de 2026, la AGI continúa siendo una categoría hipotética y
+discutida, no una certificación técnica. Sirve para debatir generalización,
+autonomía y gobernanza, pero el rendimiento amplio en pruebas o conversaciones
+no demuestra por sí solo que un sistema posea inteligencia general.
 
 ## Aplicaciones
 

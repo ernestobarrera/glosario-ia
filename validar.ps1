@@ -6,6 +6,7 @@ $raiz = Split-Path -Parent $MyInvocation.MyCommand.Path
 $carpetaTerminos = Join-Path $raiz "terminos"
 $carpetaSitio = Join-Path $raiz "_site"
 $errores = [System.Collections.Generic.List[string]]::new()
+$avisos = [System.Collections.Generic.List[string]]::new()
 
 function Quitar-Comillas {
   param([string]$Valor)
@@ -85,6 +86,11 @@ function Registrar-Error {
   $errores.Add($Mensaje)
 }
 
+function Registrar-Aviso {
+  param([string]$Mensaje)
+  $avisos.Add($Mensaje)
+}
+
 $taxonomia = Leer-YamlPlano (
   Get-Content -LiteralPath (Join-Path $raiz "taxonomia.yml") -Encoding UTF8 -Raw
 )
@@ -126,17 +132,47 @@ $camposObligatorios = @(
   "estado",
   "tipo"
 )
-$oAguda = [char]0x00F3
-$seccionesObligatorias = @(
-  "## Definici${oAguda}n ampliada",
-  "## Aplicaciones",
-  "### Generales",
-  "### Sanitarias",
-  "## Limitaciones",
-  "## Ejemplos",
-  "## Relacionados",
-  "## Referencias"
-)
+# El modelo de datos NO se codifica aqui: vive en esquema.yml y llega por
+# esquema.lock.yml. Un modelo anterior escrito a mano permitio que faltaran dos
+# de los siete campos del documento de origen sin que el validador detectara la
+# omision.
+$rutaLock = Join-Path $raiz "esquema.lock.yml"
+$rutaEsquema = Join-Path $raiz "esquema.yml"
+
+if (-not (Test-Path -LiteralPath $rutaLock)) {
+  Registrar-Error "falta esquema.lock.yml: ejecuta 'python herramientas/esquema_lock.py'"
+}
+
+$lock = Leer-YamlPlano (Get-Content -LiteralPath $rutaLock -Encoding UTF8 -Raw)
+$seccionesOrden = @($lock["secciones-orden"])
+$seccionesObligatorias = @($lock["secciones-obligatorias"])
+$seccionesRecomendadas = @($lock["secciones-recomendadas"])
+
+# Guarda de obsolescencia: si esquema.yml cambio y nadie regenero el lock,
+# el validador estaria comprobando un modelo viejo. Falla en vez de mentir.
+# Se normalizan los finales de linea antes de calcular el hash: si no, un
+# editor que cambie CRLF por LF marcaria el lock como obsoleto sin que el
+# modelo de datos haya cambiado.
+$textoEsquema = (Get-Content -LiteralPath $rutaEsquema -Encoding UTF8 -Raw) -replace "`r`n", "`n" -replace "`r", "`n"
+$sha = [Security.Cryptography.SHA256]::Create()
+try {
+  $shaEsquema = [BitConverter]::ToString(
+    $sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($textoEsquema))
+  ).Replace("-", "").ToLower().Substring(0, 16)
+}
+finally {
+  $sha.Dispose()
+}
+if ($lock["esquema-sha"] -ne $shaEsquema) {
+  Registrar-Error (
+    "esquema.lock.yml esta obsoleto (lock: $($lock['esquema-sha']), esquema: $shaEsquema). " +
+    "Ejecuta 'python herramientas/esquema_lock.py'"
+  )
+}
+
+if ($seccionesObligatorias.Count -eq 0) {
+  Registrar-Error "esquema.lock.yml: no se leyeron secciones obligatorias"
+}
 $aliasVistos = @{}
 $slugVistos = @{}
 $fichas = @()
@@ -245,12 +281,18 @@ foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd"
   }
 
   $ultimaPosicion = -1
-  foreach ($seccion in $seccionesObligatorias) {
+  foreach ($seccion in $seccionesOrden) {
     $posicion = $ficha.Cuerpo.IndexOf($seccion, [StringComparison]::Ordinal)
     if ($posicion -lt 0) {
-      Registrar-Error "$nombre`: falta la seccion '$seccion'"
+      if ($seccionesObligatorias -contains $seccion) {
+        Registrar-Error "$nombre`: falta la seccion '$seccion'"
+      }
+      elseif ($seccionesRecomendadas -contains $seccion) {
+        Registrar-Aviso "$nombre`: sin la seccion recomendada '$seccion'"
+      }
+      continue
     }
-    elseif ($posicion -le $ultimaPosicion) {
+    if ($posicion -le $ultimaPosicion) {
       Registrar-Error "$nombre`: la seccion '$seccion' esta fuera de orden"
     }
     else {
@@ -324,8 +366,48 @@ else {
   }
 }
 
-if ($fichas.Count -lt 12 -or $fichas.Count -gt 15) {
-  Registrar-Error "El piloto debe contener entre 12 y 15 fichas; contiene $($fichas.Count)"
+# Colision de identidad entre fichas.
+#
+# Hasta ahora solo se comprobaba la unicidad de slug y de alias. Los sinonimos
+# y los titulos no se cruzaban, asi que dos fichas podian reclamar el mismo
+# termino y la validacion pasaba en limpio. En este corpus eso no es
+# hipotetico: el documento de origen trae 12 pares del tipo
+# "Backpropagation (Retropropagacion)" / "Retropropagacion (Backpropagation)",
+# invisibles a un dedupe por cadena exacta.
+function Normalizar-Identidad {
+  param([string]$Valor)
+
+  $plano = [string]::Join("", (
+    [Globalization.CultureInfo]::InvariantCulture.TextInfo.ToLower($Valor).Normalize(
+      [Text.NormalizationForm]::FormD
+    ).ToCharArray() | Where-Object {
+      [Globalization.CharUnicodeInfo]::GetUnicodeCategory($_) -ne
+        [Globalization.UnicodeCategory]::NonSpacingMark
+    }
+  ))
+  $plano = [regex]::Replace($plano, "\([^)]*\)", " ")
+  $plano = [regex]::Replace($plano, "[^a-z0-9\s]", " ")
+  return [regex]::Replace($plano, "\s+", " ").Trim()
+}
+
+$identidades = @{}
+foreach ($ficha in $fichas) {
+  $nombre = $ficha.Archivo.Name
+  $reclamos = @($ficha.Meta["title"]) + @($ficha.Meta["sinonimos"])
+  foreach ($reclamo in ($reclamos | Where-Object { $_ })) {
+    $clave = Normalizar-Identidad ([string]$reclamo)
+    if ([string]::IsNullOrWhiteSpace($clave)) {
+      continue
+    }
+    if ($identidades.ContainsKey($clave) -and $identidades[$clave] -ne $nombre) {
+      Registrar-Error (
+        "colision de identidad '$reclamo': reclamada por $($identidades[$clave]) y por $nombre"
+      )
+    }
+    else {
+      $identidades[$clave] = $nombre
+    }
+  }
 }
 
 if ($errores.Count -gt 0) {
@@ -341,5 +423,15 @@ Write-Host "  Fichas: $($fichas.Count)"
 Write-Host "  Citekeys: $($clavesBib.Count)"
 Write-Host "  Slugs derivados y unicos: $($slugVistos.Count)"
 Write-Host "  Aliases unicos y generados: $($aliasVistos.Count)"
+Write-Host "  Identidades sin colision (titulo + sinonimos): $($identidades.Count)"
 Write-Host "  Sinonimos renderizados e indexados: OK"
-Write-Host "  Fechas, taxonomia, enlaces y secciones: OK"
+Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
+Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
+
+if ($avisos.Count -gt 0) {
+  Write-Host ""
+  Write-Host "AVISOS ($($avisos.Count))" -ForegroundColor Yellow
+  foreach ($aviso in $avisos) {
+    Write-Host "  - $aviso" -ForegroundColor Yellow
+  }
+}

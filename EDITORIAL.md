@@ -31,8 +31,9 @@ los conceptos.
    afirmación asociada.
 4. No se cambia, reutiliza ni elimina un citekey sin verificar sus apariciones
    y la identidad bibliográfica.
-5. La existencia de un ejemplo sanitario no basta para asignar la categoría
-   `Aplicaciones sanitarias`; el término debe ser específicamente sanitario.
+5. Toda ficha incluye una subsección de aplicaciones sanitarias. El ángulo
+   sanitario no es una categoría que se asigna a unos pocos términos: es una
+   obligación de todas las fichas.
 
 ## Contrato humano-agente
 
@@ -83,7 +84,8 @@ sin una licencia o permiso compatible.
 
 Quedan fuera de la publicación fundacional y requieren una decisión posterior:
 
-- conectar una colección Zotero mediante Better BibTeX;
+- evaluar Zotero y Better BibTeX solo si el flujo puede automatizarse sin
+  regenerar los citekeys existentes;
 - migrar por lotes nuevas fichas ya revisadas;
 - enlazar el recurso desde el sitio principal;
 - formalizar un radar editorial y bibliográfico.

@@ -10,7 +10,7 @@ description: "Campo de la IA dedicado al análisis, representación y generació
 categories:
   - "Procesamiento del lenguaje"
   - "Fundamentos"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -26,6 +26,21 @@ El campo abarca tareas distintas: identificar entidades, clasificar documentos,
 extraer relaciones, traducir, resumir o mantener una conversación. Los modelos
 de lenguaje grandes forman parte de esta historia, pero no son sinónimo de todo
 el PLN.
+
+## Contexto histórico
+
+El PLN comenzó con sistemas simbólicos y reglas lingüísticas, incorporó después
+métodos estadísticos y, más tarde, redes neuronales. Los transformers impulsaron
+un cambio importante al representar el contexto mediante atención y facilitar
+modelos reutilizables para numerosas tareas [@vaswani2017attention].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el PLN incluye tanto tareas especializadas como
+modelos de lenguaje de propósito general. En salud sigue siendo necesario
+validar cada tarea y entorno: el texto clínico tiene abreviaturas, negaciones,
+variación local y exigencias particulares de privacidad
+[@wu2020clinicalnlp].
 
 ## Aplicaciones
 

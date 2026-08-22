@@ -1,0 +1,35 @@
+# GENERADO por herramientas/esquema_lock.py — NO EDITAR A MANO.
+# Deriva de esquema.yml, que es la fuente de verdad del modelo de datos.
+# Si editas esquema.yml, regenera este archivo o el validador fallara.
+
+generado: 2026-08-22
+esquema-sha: 6e0249f2821fc25e
+
+# Orden exigido en el cuerpo de la ficha.
+secciones-orden:
+  - "## Definición ampliada"
+  - "## Contexto histórico"
+  - "## Importancia actual"
+  - "## Aplicaciones"
+  - "### Generales"
+  - "### Sanitarias"
+  - "## Limitaciones"
+  - "## Ejemplos"
+  - "## Relacionados"
+  - "## Referencias"
+
+# Su ausencia es un error de validacion.
+secciones-obligatorias:
+  - "## Definición ampliada"
+  - "## Contexto histórico"
+  - "## Aplicaciones"
+  - "### Generales"
+  - "### Sanitarias"
+  - "## Limitaciones"
+  - "## Ejemplos"
+  - "## Relacionados"
+  - "## Referencias"
+
+# Su ausencia se avisa pero no bloquea.
+secciones-recomendadas:
+  - "## Importancia actual"

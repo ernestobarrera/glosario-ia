@@ -10,7 +10,7 @@ description: "Respuesta plausible generada por un modelo que contiene informaci�
 categories:
   - "Modelos de lenguaje"
   - "Seguridad y riesgos"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -27,6 +27,23 @@ fluidez de una respuesta no garantiza su veracidad, y el sistema puede formular
 con gran seguridad una afirmación sin fundamento. Las revisiones del fenómeno
 distinguen distintos tipos, causas, métricas y estrategias de mitigación
 [@ji2023hallucination].
+
+## Contexto histórico
+
+La generación de contenido no fundamentado se estudiaba ya en sistemas de
+lenguaje anteriores, pero se hizo mucho más visible con el uso masivo de
+modelos generativos capaces de producir textos extensos y verosímiles. La
+revisión de Ji y colaboradores sistematizó en 2023 definiciones, causas,
+métricas y estrategias de mitigación para este fenómeno
+[@ji2023hallucination].
+
+## Importancia actual
+
+A fecha de agosto de 2026, la alucinación sigue siendo una limitación central
+cuando una respuesta debe corresponderse con hechos o fuentes. Recuperación,
+verificación y supervisión pueden reducir el riesgo, pero ninguna de estas
+medidas garantiza por sí sola la corrección, especialmente en usos sanitarios
+o científicos.
 
 ## Aplicaciones
 

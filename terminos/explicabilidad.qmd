@@ -11,7 +11,7 @@ description: "Propiedad y conjunto de métodos orientados a hacer comprensibles 
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -28,6 +28,22 @@ mismo una persona afectada por una decisión, un profesional, un auditor o quien
 depura el modelo. En salud, la explicabilidad debe relacionarse con seguridad,
 responsabilidad y capacidad real de cuestionar una recomendación
 [@amann2020explainability].
+
+## Contexto histórico
+
+La interpretación de modelos forma parte del análisis estadístico desde antes
+de la IA moderna. El problema adquirió nueva relevancia con modelos complejos
+cuyo funcionamiento no puede resumirse mediante unas pocas reglas. En salud,
+la explicabilidad pasó a estudiarse como una cuestión técnica, clínica, ética y
+organizativa, no solo como una propiedad del algoritmo [@amann2020explainability].
+
+## Importancia actual
+
+A fecha de agosto de 2026, explicar un resultado puede ayudar a auditar errores,
+discutir una recomendación o justificar controles, pero una explicación
+plausible no demuestra que el modelo sea correcto. La utilidad debe evaluarse
+para cada destinatario y decisión, dentro de un proceso más amplio de gestión
+de riesgos [@nist2023airmf].
 
 ## Aplicaciones
 

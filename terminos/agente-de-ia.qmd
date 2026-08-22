@@ -11,7 +11,7 @@ description: "Sistema capaz de percibir un entorno, razonar sobre un objetivo y 
 categories:
   - "IA agéntica"
   - "Fundamentos"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -34,6 +34,23 @@ los agentes para interpretar instrucciones y trabajar con información no
 estructurada. Protocolos como MCP pueden estandarizar parte de la conexión con
 recursos y herramientas, pero no resuelven por sí solos la seguridad o la
 gobernanza [@mcp2025spec].
+
+## Contexto histórico
+
+Los agentes de software son anteriores a los modelos de lenguaje, pero la
+combinación de un LLM con planificación, memoria y herramientas externas abrió
+una etapa distinta. ReAct mostró en 2022 cómo intercalar razonamiento y acción,
+y se publicó en ICLR en 2023 [@yao2023react]. En noviembre de 2024, Anthropic
+presentó MCP como protocolo abierto para reducir la fragmentación de las
+integraciones entre asistentes y fuentes de datos [@anthropic2024mcp].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el interés por los agentes se concentra tanto en su
+capacidad para encadenar trabajo como en los riesgos de permitirles actuar sobre
+sistemas reales. La AEPD publicó en febrero de 2026 orientaciones específicas
+sobre IA agéntica, con medidas de protección de datos y un análisis de sus
+vulnerabilidades [@aepd2026agentica].
 
 ## Aplicaciones
 

@@ -1,6 +1,13 @@
 /.quarto/
 /_site/
 /fuente/
+/fuente.yml
+/inventario*.yml
+/inventario*.json
+/inventario-mapa.yml
 /INFORME-PILOTO.md
 /HOJA-DE-RUTA.md
+/RESTAURACION.md
+/patrones-privados.yml
+/borradores/
 **/*.quarto_ipynb

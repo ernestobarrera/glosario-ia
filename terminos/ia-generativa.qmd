@@ -10,7 +10,7 @@ description: "Familia de sistemas de IA capaces de producir contenido nuevo, com
 categories:
   - "Fundamentos"
   - "Modelos de lenguaje"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -26,6 +26,21 @@ difusión y redes generativas antagónicas, introducidas como un marco de
 entrenamiento entre un generador y un discriminador
 [@goodfellow2014gan]. «Nuevo» no significa necesariamente original, verdadero
 ni libre de semejanzas con el material de entrenamiento.
+
+## Contexto histórico
+
+Los modelos generativos preceden a la actual ola de asistentes. Las redes
+generativas antagónicas marcaron un hito en 2014 para la síntesis de datos
+[@goodfellow2014gan]. A partir de 2017, los transformers facilitaron modelos de
+lenguaje de gran escala y extendieron la generación a texto, código y sistemas
+multimodales [@vaswani2017attention].
+
+## Importancia actual
+
+A fecha de agosto de 2026, la IA generativa funciona como una interfaz general
+para crear, transformar y resumir información. Su amplitud de usos convive con
+límites persistentes de factualidad, procedencia, propiedad intelectual,
+privacidad y control de la salida.
 
 ## Aplicaciones
 

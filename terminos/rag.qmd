@@ -11,7 +11,7 @@ description: "Enfoque que combina recuperación de información externa con gene
 categories:
   - "Recuperación de información"
   - "Modelos de lenguaje"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -28,6 +28,20 @@ RAG permite trabajar con colecciones actualizables sin incorporar cada cambio
 al entrenamiento del modelo. También puede mostrar las fuentes empleadas, pero
 la presencia de citas no garantiza que la respuesta las interprete
 correctamente.
+
+## Contexto histórico
+
+El trabajo de Lewis y colaboradores consolidó en 2020 el término RAG al
+combinar un recuperador denso con un modelo generativo para tareas intensivas
+en conocimiento [@lewis2020rag]. La propuesta permitió consultar una memoria
+externa actualizable sin incorporar cada documento a los parámetros del modelo.
+
+## Importancia actual
+
+A fecha de agosto de 2026, RAG continúa siendo un patrón habitual para
+fundamentar asistentes en colecciones controladas. Mejora la actualización y la
+trazabilidad potencial de las respuestas, pero desplaza parte del riesgo hacia
+la selección, vigencia y correcta interpretación de los documentos recuperados.
 
 ## Aplicaciones
 

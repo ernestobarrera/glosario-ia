@@ -9,7 +9,7 @@ description: "Subcampo del aprendizaje automático que utiliza redes neuronales 
 categories:
   - "Aprendizaje automático"
   - "Arquitecturas"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -25,6 +25,22 @@ Su expansión se apoyó en mayores conjuntos de datos, capacidad de cómputo y
 mejoras de entrenamiento. Es la base de muchas arquitecturas contemporáneas,
 incluidos los transformadores y los modelos de lenguaje grandes
 [@lecun2015deep].
+
+## Contexto histórico
+
+Las redes neuronales tienen una historia larga, pero su etapa moderna se apoyó
+en más datos, cómputo especializado y mejoras de entrenamiento. Los resultados
+en visión de comienzos de la década de 2010 consolidaron el término
+**aprendizaje profundo** y aceleraron su adopción en otros dominios
+[@lecun2015deep].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el aprendizaje profundo sigue siendo la base de
+numerosos sistemas de visión, lenguaje, audio y datos multimodales. La
+arquitectura transformer amplió ese alcance, pero no elimina las necesidades de
+validación, trazabilidad ni evaluación por población y contexto
+[@vaswani2017attention].
 
 ## Aplicaciones
 
