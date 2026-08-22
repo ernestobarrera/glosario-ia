@@ -1,4 +1,17 @@
-version: 2
+version: 3
+
+# Retirada en v3 (2026-08-21): "Aplicaciones sanitarias".
+#
+# Medido sobre los 131 conceptos del documento de origen: un unico termino es
+# especificamente sanitario (Med-PaLM), y esta bloqueado por ser
+# tipo: herramienta. Cero de las 13 fichas publicadas la usaban. Con la regla
+# editorial vigente —un ejemplo clinico no basta, el termino debe ser
+# especificamente sanitario— la categoria no podia poblarse nunca.
+#
+# El posicionamiento no se pierde: cada ficha lleva una subseccion
+# "### Sanitarias" OBLIGATORIA, asi que el angulo sanitario esta en las 130
+# paginas. Eso es mas fuerte que una etiqueta con un miembro, que ademas
+# sugeriria falsamente que el resto del glosario no es sanitario.
 
 categories:
   - "Fundamentos"
@@ -10,7 +23,6 @@ categories:
   - "Aprendizaje automático"
   - "Arquitecturas"
   - "Procesamiento del lenguaje"
-  - "Aplicaciones sanitarias"
 
 estados:
   - borrador

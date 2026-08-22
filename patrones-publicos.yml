@@ -1,0 +1,67 @@
+# GENERADO por herramientas/preflight_publico.py --emitir-publicos.
+# NO EDITAR A MANO: deriva de la lista completa, que vive en el
+# laboratorio y contiene ademas una capa de valores literales que no
+# puede publicarse. Aqui solo hay FORMAS, que no revelan ningun dato.
+
+version: 1
+estructurales:
+- id: ruta-windows
+  patron: '[A-Za-z]:\\\\(Users|Usuarios)\\\\[^\s"''<>|]+'
+  motivo: ruta local de un equipo
+- id: ruta-posix-usuario
+  patron: /(c|mnt/c)/Users/[^\s"'<>|]+
+  motivo: ruta local en forma posix
+- id: onedrive
+  patron: (?i)\bOneDrive(\s*-\s*[A-Za-z][\w\s]+)?[\\/]
+  motivo: ruta de almacenamiento personal o corporativo
+- id: google-docs-url
+  patron: (?i)(docs|drive)\.google\.com/[^\s"'<>)]+
+  motivo: enlace a documento de Drive, potencialmente privado
+- id: google-file-id
+  patron: (?<![A-Za-z0-9_-])[01][A-Za-z0-9_-]{27,49}(?![A-Za-z0-9_-])
+  requiere_mayuscula: true
+  motivo: identificador de archivo de Google Drive
+- id: correo-personal
+  patron: '[A-Za-z0-9._%+-]+@(gmail|hotmail|outlook|yahoo|icloud)\.[a-z]{2,}'
+  motivo: correo personal
+- id: token-github
+  patron: \b(ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{20,}
+  motivo: token de GitHub
+- id: token-generico
+  patron: \b(sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{30,}|xox[baprs]-[A-Za-z0-9-]{10,})
+  motivo: clave de API
+- id: clave-privada
+  patron: '-----BEGIN (RSA |OPENSSH |EC |PGP )?PRIVATE KEY'
+  motivo: clave privada
+- id: credencial-en-url
+  patron: (?i)https?://[^/\s:@]+:[^/\s:@]+@
+  motivo: credencial embebida en una URL
+excepciones:
+- patron_id: google-file-id
+  archivo: vancouver.csl
+  motivo: los identificadores de estilo CSL pueden coincidir en forma
+- patron_id: google-file-id
+  archivo: patrones-privados.yml
+  motivo: idem
+- patron_id: correo-personal
+  archivo: patrones-privados.yml
+  motivo: idem, para el patron estructural de correo
+- patron_id: google-file-id
+  archivo: fuente.yml
+  motivo: idem
+ignorar_rutas:
+- .git/
+- _site/
+- .quarto/
+- node_modules/
+rutas_prohibidas:
+- fuente/**
+- fuente.yml
+- inventario*.yml
+- inventario*.json
+- inventario-mapa.yml
+- RESTAURACION.md
+- patrones-privados.yml
+- INFORME-PILOTO.md
+- HOJA-DE-RUTA.md
+- borradores/**
