@@ -9,7 +9,7 @@ description: "Rama de la IA que desarrolla modelos capaces de aprender patrones 
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -27,6 +27,21 @@ algoritmo como de la calidad de los datos, el diseño de la evaluación y el
 contexto de uso. En medicina, su aplicación se extiende desde la interpretación
 de imágenes hasta la organización de flujos asistenciales
 [@topol2019medicine].
+
+## Contexto histórico
+
+El aprendizaje automático desplazó progresivamente parte de la IA desde reglas
+escritas a mano hacia sistemas que ajustan su comportamiento a partir de
+ejemplos. Su evolución combinó métodos estadísticos, redes neuronales, mayor
+disponibilidad de datos y capacidad de cómputo; el aprendizaje profundo es una
+de sus ramas, no un sinónimo del campo completo [@lecun2015deep].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el aprendizaje automático sustenta desde modelos
+predictivos relativamente simples hasta sistemas generativos. Su valor depende
+menos de la etiqueta «IA» que de la calidad de los datos, la validación en el
+entorno de uso y el seguimiento de cambios una vez desplegado.
 
 ## Aplicaciones
 

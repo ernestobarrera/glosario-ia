@@ -9,7 +9,7 @@ description: "Arquitectura neuronal basada en mecanismos de atención que proces
 categories:
   - "Arquitecturas"
   - "Modelos de lenguaje"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -25,6 +25,22 @@ La arquitectura se presentó en 2017 para traducción y prescindió de recurrenc
 y convoluciones en su diseño principal, facilitando el entrenamiento paralelo
 [@vaswani2017attention]. Sus variantes de codificador, decodificador o ambos
 sustentan numerosos modelos de lenguaje y sistemas multimodales.
+
+## Contexto histórico
+
+Vaswani y colaboradores presentaron la arquitectura transformer en 2017 para
+traducción automática. Su diseño sustituyó la recurrencia del modelo principal
+por mecanismos de atención y permitió paralelizar mejor el entrenamiento
+[@vaswani2017attention]. Adaptaciones posteriores la extendieron a texto,
+imágenes, audio y combinaciones multimodales.
+
+## Importancia actual
+
+A fecha de agosto de 2026, los transformers continúan siendo una arquitectura
+fundamental de los modelos de lenguaje y de numerosos sistemas multimodales.
+Su difusión no convierte todos los modelos en equivalentes: cambian los datos,
+el objetivo de entrenamiento, la escala, la ventana de contexto y los controles
+de uso.
 
 ## Aplicaciones
 

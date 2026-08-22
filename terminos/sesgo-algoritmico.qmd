@@ -11,7 +11,7 @@ description: "Patrón sistemático por el que un sistema produce resultados inju
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-07-24
+date-modified: 2026-08-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -27,6 +27,22 @@ No todo error es sesgo y una métrica global alta puede ocultar diferencias entr
 grupos. Además, distintas definiciones de equidad pueden entrar en conflicto.
 Por eso el análisis debe conectar resultados estadísticos con consecuencias
 reales y responsabilidades.
+
+## Contexto histórico
+
+El sesgo no nació con los modelos actuales: cualquier sistema que aprende de
+datos o formaliza una decisión puede reproducir elecciones y desigualdades
+previas. Su impacto se hizo especialmente visible al desplegar algoritmos en
+servicios esenciales. En salud, el estudio de Obermeyer y colaboradores mostró
+cómo usar el coste como proxy de necesidad podía producir una desigualdad
+racial sistemática [@obermeyer2019bias].
+
+## Importancia actual
+
+A fecha de agosto de 2026, evaluar sesgos forma parte de la gestión del riesgo
+durante todo el ciclo de vida, no de una comprobación aislada antes del
+despliegue. Requiere relacionar métricas, población, finalidad y consecuencias,
+además de vigilar cambios en datos y uso [@nist2023airmf].
 
 ## Aplicaciones
 
