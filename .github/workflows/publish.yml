@@ -1,15 +1,13 @@
 name: Publicar sitio Quarto
 
 on:
+  pull_request:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
@@ -21,6 +19,16 @@ jobs:
     steps:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar la dependencia del preflight
+        run: python -m pip install --disable-pip-version-check pyyaml
+
+      - name: Comprobar datos privados
+        run: >-
+          python herramientas/preflight_publico.py .
+          --patrones patrones-publicos.yml --destino-publico --historial
 
       - name: Instalar Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -30,14 +38,32 @@ jobs:
       - name: Renderizar el sitio
         uses: quarto-dev/quarto-actions/render@v2
 
+      - name: Validar el glosario
+        shell: pwsh
+        run: ./validar.ps1
+
+      - name: Guardar la previsualización del pull request
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitio-quarto-pr-${{ github.event.pull_request.number }}
+          path: _site
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Preparar el artefacto de Pages
+        if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v4
         with:
           path: _site
 
   deploy:
     needs: build
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
