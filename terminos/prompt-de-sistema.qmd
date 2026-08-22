@@ -1,0 +1,82 @@
+---
+title: "Prompt de sistema"
+aliases:
+  - /terminos/system-prompt.html
+sinonimos:
+  - "System prompt"
+  - "Instrucción de sistema"
+description: "Conjunto de instrucciones de alta prioridad que orienta el papel, los límites y el comportamiento de un modelo de lenguaje."
+categories:
+  - "Modelos de lenguaje"
+  - "Seguridad y riesgos"
+date-modified: 2026-08-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **prompt de sistema** es un conjunto de instrucciones que una aplicación
+proporciona al modelo para definir su papel, sus objetivos, sus límites y el
+formato esperado de las respuestas. Se sitúa en un nivel distinto del mensaje
+del usuario y pretende tener mayor prioridad. Sin embargo, esa jerarquía no
+debe confundirse con una barrera de seguridad infalible: los modelos pueden
+resolver mal instrucciones contradictorias [@wallace2024instruction].
+
+## Contexto histórico
+
+Los sistemas conversacionales anteriores a los grandes modelos de lenguaje ya
+usaban reglas y contextos predefinidos. Con las interfaces modernas de chat,
+esas reglas pasaron a expresarse como mensajes diferenciados dentro del
+contexto del modelo. La investigación posterior formalizó jerarquías entre
+instrucciones de sistema, desarrollador, usuario y contenido externo
+[@wallace2024instruction].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el prompt de sistema es una pieza habitual de las
+aplicaciones basadas en modelos de lenguaje. Facilita un comportamiento
+coherente y auditable, pero su eficacia depende también del modelo, de las
+herramientas disponibles y de controles externos a la conversación.
+
+## Aplicaciones
+
+### Generales
+
+- Definir el propósito y el tono de un asistente.
+- Exigir un formato de salida estable.
+- Establecer límites sobre acciones y fuentes permitidas.
+- Recordar criterios de calidad durante una conversación.
+
+### Sanitarias
+
+- Indicar que una herramienta no sustituye una decisión clínica.
+- Exigir que la respuesta distinga datos, inferencias e incertidumbre.
+- Restringir las fuentes a documentación autorizada.
+- Pedir revisión humana antes de una acción con consecuencias asistenciales.
+
+## Limitaciones
+
+- Puede ser ignorado o interpretado de manera inesperada por el modelo.
+- No protege por sí solo frente a la inyección de prompts.
+- Puede ocultar reglas relevantes al usuario y dificultar la transparencia.
+- Un cambio pequeño puede alterar respuestas en casos no previstos.
+- No sustituye permisos técnicos, validaciones ni registros de actividad.
+
+## Ejemplos
+
+El prompt de sistema de un asistente puede exigir respuestas breves, citar la
+fuente usada y abstenerse cuando falten datos. En una aplicación sanitaria,
+puede obligar a presentar una propuesta como borrador y reservar la aprobación
+final a un profesional identificado.
+
+## Relacionados
+
+- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Inyección de prompts](inyeccion-de-prompts.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

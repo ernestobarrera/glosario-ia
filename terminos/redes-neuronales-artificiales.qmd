@@ -1,0 +1,85 @@
+---
+title: "Redes neuronales artificiales"
+aliases:
+  - /terminos/ann.html
+  - /terminos/artificial-neural-networks.html
+sinonimos:
+  - "ANN"
+  - "Artificial neural networks"
+  - "Red neuronal artificial"
+description: "Modelos computacionales formados por capas de unidades conectadas que aprenden representaciones a partir de datos."
+categories:
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+date-modified: 2026-08-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Las **redes neuronales artificiales** son modelos computacionales compuestos
+por unidades conectadas y organizadas habitualmente en capas. Cada conexión
+aporta un peso ajustable; durante el entrenamiento, el modelo modifica esos
+pesos para reducir el error entre sus predicciones y los resultados esperados.
+Las capas intermedias permiten aprender representaciones progresivamente más
+abstractas de los datos [@lecun2015deep].
+
+## Contexto histórico
+
+Las primeras formulaciones matemáticas de neuronas artificiales aparecieron en
+la década de 1940. El perceptrón impulsó el campo a finales de los años
+cincuenta, y la difusión del entrenamiento por retropropagación en los años
+ochenta hizo viables redes con varias capas. Desde la década de 2010, la
+combinación de conjuntos de datos amplios, procesadores especializados y nuevas
+arquitecturas consolidó el aprendizaje profundo [@lecun2015deep].
+
+## Importancia actual
+
+A fecha de agosto de 2026, las redes neuronales sustentan gran parte de los
+sistemas de visión, voz y lenguaje. Su importancia no depende de una única
+arquitectura: constituyen la familia general dentro de la que se sitúan, entre
+otros, los transformadores y las redes convolucionales.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificación de imágenes, sonidos y textos.
+- Predicción a partir de datos históricos.
+- Reconocimiento de patrones y detección de anomalías.
+- Generación de texto, imagen, audio y otros contenidos.
+
+### Sanitarias
+
+- Apoyo al análisis de imágenes médicas.
+- Extracción de información de notas clínicas.
+- Estimación de riesgos a partir de datos estructurados.
+- Identificación de patrones en señales fisiológicas.
+
+## Limitaciones
+
+- Pueden requerir muchos datos y recursos de cómputo.
+- Su rendimiento depende de la representatividad y calidad de los datos.
+- Es difícil explicar de forma completa algunas predicciones.
+- Pueden aprender correlaciones espurias y reproducir sesgos.
+- El desempeño observado en entrenamiento no garantiza generalización clínica.
+
+## Ejemplos
+
+Una red puede aprender a clasificar fotografías después de recibir numerosos
+ejemplos etiquetados. En sanidad, otra red puede señalar regiones sospechosas
+en una imagen radiológica para que las revise un profesional, sin convertir
+esa señal en un diagnóstico autónomo.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Transformer](transformer.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

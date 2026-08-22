@@ -1,0 +1,87 @@
+---
+title: "Embeddings"
+aliases:
+  - /terminos/word-embeddings.html
+  - /terminos/representaciones-vectoriales.html
+sinonimos:
+  - "Embedding"
+  - "Representaciones vectoriales"
+  - "Word embeddings"
+  - "Embeddings de palabras"
+description: "Representaciones numéricas densas que sitúan elementos en un espacio vectorial para expresar semejanzas y relaciones aprendidas."
+categories:
+  - "Aprendizaje automático"
+  - "Procesamiento del lenguaje"
+  - "Recuperación de información"
+date-modified: 2026-08-22
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+Los **embeddings** son representaciones numéricas densas de palabras, textos,
+imágenes u otros elementos. Cada elemento se convierte en un vector situado en
+un espacio donde la proximidad puede reflejar semejanzas aprendidas durante el
+entrenamiento. Los **word embeddings** o embeddings de palabras son un caso
+particular: representan unidades léxicas, no toda la familia de objetos que
+puede codificarse como vectores [@mikolov2013distributed].
+
+## Contexto histórico
+
+Las representaciones distribuidas tienen antecedentes en las redes neuronales
+y el procesamiento del lenguaje. En 2013, métodos como word2vec popularizaron
+vectores de palabras que capturaban regularidades semánticas y sintácticas a
+gran escala [@mikolov2013distributed]. Más tarde, los modelos contextuales y
+los transformadores generaron representaciones que dependen de la frase y de
+la posición de cada elemento [@vaswani2017attention].
+
+## Importancia actual
+
+A fecha de agosto de 2026, los embeddings son una infraestructura básica para
+buscar por significado, agrupar contenidos y aportar contexto a sistemas RAG.
+Su utilidad depende del modelo que los genera, de la distancia utilizada y de
+la correspondencia entre los datos de evaluación y el entorno real.
+
+## Aplicaciones
+
+### Generales
+
+- Búsqueda semántica y recomendación de contenidos.
+- Agrupación y deduplicación de documentos.
+- Clasificación con representaciones reutilizables.
+- Recuperación de fragmentos para sistemas RAG.
+
+### Sanitarias
+
+- Localización de documentos clínicos por semejanza semántica.
+- Agrupación de notas o informes con contenido relacionado.
+- Recuperación de guías y protocolos para una consulta delimitada.
+- Representación de conceptos biomédicos para tareas analíticas.
+
+## Limitaciones
+
+- La cercanía vectorial no equivale necesariamente a relevancia o verdad.
+- Pueden reproducir sesgos presentes en los datos de entrenamiento.
+- Dos modelos pueden producir espacios incompatibles.
+- Los embeddings de palabras estáticos representan mal la polisemia.
+- La búsqueda requiere evaluar umbrales, fragmentación y cobertura documental.
+
+## Ejemplos
+
+Un buscador puede recuperar «infarto de miocardio» ante una consulta sobre
+«ataque al corazón» aunque no coincidan las palabras. En un sistema RAG, los
+embeddings ayudan a seleccionar fragmentos parecidos a la pregunta, pero otro
+componente debe valorar su calidad y vigencia.
+
+## Relacionados
+
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Transformer](transformer.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

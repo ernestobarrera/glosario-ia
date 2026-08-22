@@ -1,0 +1,86 @@
+---
+title: "Modelo local"
+aliases:
+  - /terminos/local-model.html
+  - /terminos/on-premise-inference.html
+sinonimos:
+  - "Modelo on-premise"
+  - "Inferencia local"
+  - "Local model"
+description: "Modelo ejecutado en infraestructura controlada por la persona u organización que lo utiliza, en lugar de depender de una API externa."
+categories:
+  - "Seguridad y riesgos"
+  - "Ética y gobernanza"
+date-modified: 2026-08-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **modelo local** se ejecuta en dispositivos o servidores controlados por la
+persona u organización usuaria. La expresión suele contrastarlo con un modelo
+consumido mediante la API de un proveedor externo. «Local» describe el lugar y
+el control operativo del despliegue, no el origen del modelo ni una garantía
+automática de privacidad, seguridad o calidad.
+
+## Contexto histórico
+
+La ejecución local era la forma habitual de desplegar muchos modelos antes de
+la expansión de los servicios de IA en la nube. Los modelos generativos de gran
+tamaño reforzaron inicialmente el uso de infraestructura remota por sus
+requisitos de cómputo. La posterior disponibilidad de modelos más pequeños,
+técnicas de compresión y equipos más capaces volvió viable la inferencia local
+para un número mayor de tareas.
+
+## Importancia actual
+
+A fecha de agosto de 2026, el despliegue local se valora cuando importan el
+control de datos, la latencia, la continuidad sin conexión o la personalización.
+La decisión debe comparar esos beneficios con la responsabilidad de mantener
+el sistema, evaluar sus riesgos y aplicar controles durante todo su ciclo de
+vida [@nist2023airmf].
+
+## Aplicaciones
+
+### Generales
+
+- Procesamiento sin conexión o con conectividad limitada.
+- Inferencia sobre información que no debe enviarse a una API externa.
+- Integración con sistemas internos y requisitos de latencia predecible.
+- Experimentación con modelos y configuraciones bajo control propio.
+
+### Sanitarias
+
+- Procesamiento de texto clínico dentro de una infraestructura autorizada.
+- Apoyo a tareas en centros con conectividad limitada.
+- Prototipos que requieren controlar registros, versiones y accesos.
+- Inferencia en dispositivos próximos al lugar donde se generan los datos.
+
+## Limitaciones
+
+- La organización asume actualización, monitorización y respuesta a incidentes.
+- Puede exigir hardware especializado y personal técnico.
+- Mantener datos localmente no evita accesos indebidos ni usos secundarios.
+- Un modelo más pequeño puede rendir peor en algunas tareas.
+- La procedencia, licencia y seguridad de los archivos del modelo deben
+  verificarse.
+
+## Ejemplos
+
+Un equipo puede ejecutar un modelo en un ordenador sin conexión para resumir
+documentos no sensibles. Un hospital podría alojar otro en servidores propios
+para procesar texto clínico, pero seguiría necesitando control de accesos,
+registros, evaluación del rendimiento y una base jurídica adecuada.
+
+## Relacionados
+
+- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Prompt de sistema](prompt-de-sistema.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

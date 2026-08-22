@@ -1,0 +1,85 @@
+---
+title: "Sistema multiagente"
+aliases:
+  - /terminos/multi-agent-system.html
+  - /terminos/mas.html
+sinonimos:
+  - "MAS"
+  - "Multi-agent system"
+  - "Sistema de múltiples agentes"
+description: "Sistema distribuido en el que varios agentes interactúan, cooperan o compiten para alcanzar objetivos individuales o compartidos."
+categories:
+  - "IA agéntica"
+  - "Arquitecturas"
+date-modified: 2026-08-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **sistema multiagente** reúne varios agentes capaces de percibir, decidir y
+actuar dentro de un entorno compartido. Los agentes pueden repartirse papeles,
+intercambiar mensajes, coordinar planes o competir por recursos. El resultado
+global depende tanto de cada componente como de las reglas de interacción,
+comunicación y resolución de conflictos [@dorri2018multiagent].
+
+## Contexto histórico
+
+Los sistemas multiagente surgieron en la inteligencia artificial distribuida y
+se consolidaron como campo de estudio desde la década de 1980. Se aplicaron a
+robótica, simulación, logística y redes antes de la expansión de los modelos de
+lenguaje. Estos modelos facilitaron después agentes con instrucciones y roles
+expresados en lenguaje natural, pero no eliminaron los problemas clásicos de
+coordinación [@dorri2018multiagent].
+
+## Importancia actual
+
+A fecha de agosto de 2026, los sistemas multiagente se exploran para dividir
+procesos complejos y revisar resultados desde distintos roles. La multiplicidad
+no implica automáticamente mayor calidad: también multiplica mensajes,
+dependencias, costes y puntos de fallo. La gobernanza debe abarcar el sistema
+completo y no solo cada agente por separado [@aepd2026agentica].
+
+## Aplicaciones
+
+### Generales
+
+- Reparto de investigación, planificación y verificación.
+- Simulación de actores con objetivos diferentes.
+- Coordinación de robots o recursos distribuidos.
+- Resolución de tareas mediante agentes especializados.
+
+### Sanitarias
+
+- Preparación separada de antecedentes, evidencia y comprobaciones formales.
+- Coordinación de tareas administrativas bajo reglas de acceso distintas.
+- Simulación de circuitos asistenciales para detectar cuellos de botella.
+- Revisión cruzada de un borrador antes de presentarlo a un profesional.
+
+## Limitaciones
+
+- Los errores pueden propagarse entre agentes y aparentar consenso.
+- Aumentan la complejidad de observación, prueba y reproducción.
+- La coordinación consume tiempo, contexto y recursos de cómputo.
+- Los permisos excesivos de un agente pueden comprometer al conjunto.
+- Asignar roles no garantiza diversidad real ni revisión independiente.
+
+## Ejemplos
+
+Un sistema puede asignar a un agente la búsqueda de fuentes, a otro la síntesis
+y a un tercero la comprobación de citas. En sanidad, una arquitectura similar
+podría preparar una propuesta administrativa, pero una persona conservaría la
+decisión final y el acceso a los datos estaría limitado por función.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Model Context Protocol](mcp.qmd)
+- [Inyección de prompts](inyeccion-de-prompts.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

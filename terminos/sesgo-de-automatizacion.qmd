@@ -1,0 +1,83 @@
+---
+title: "Sesgo de automatización"
+aliases:
+  - /terminos/automation-bias.html
+sinonimos:
+  - "Automation bias"
+  - "Sesgo por automatización"
+description: "Tendencia a aceptar una recomendación automatizada con comprobación insuficiente o a ignorar información que la contradice."
+categories:
+  - "Ética y gobernanza"
+  - "Seguridad y riesgos"
+date-modified: 2026-08-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **sesgo de automatización** es la tendencia a confiar de forma excesiva en
+la salida de un sistema automatizado. Puede producir errores de comisión —se
+sigue una recomendación incorrecta— o de omisión —no se actúa porque el sistema
+no generó una alerta—. La carga de trabajo, la confianza y la dificultad de
+verificar la recomendación influyen en su aparición
+[@goddard2012automation; @lyell2017automation].
+
+## Contexto histórico
+
+El fenómeno se estudió primero en ámbitos con alta automatización, como la
+aviación y el control de procesos. Con la expansión de los sistemas de apoyo a
+la decisión, pasó a investigarse también en sanidad. Las revisiones publicadas
+en 2012 y 2017 mostraron que no basta con presentar más información: importa si
+el usuario puede comprobarla de manera efectiva
+[@goddard2012automation; @lyell2017automation].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el sesgo de automatización es especialmente
+relevante para sistemas generativos y agénticos, cuyas respuestas pueden ser
+fluidas aunque sean incorrectas. La supervisión humana solo es una salvaguarda
+real si la persona dispone de tiempo, competencia, información y autoridad
+para discrepar [@aepd2026agentica].
+
+## Aplicaciones
+
+### Generales
+
+El concepto sirve para diseñar interfaces que permitan verificar recomendaciones,
+calibrar la confianza, mostrar incertidumbre y registrar cuándo una persona
+acepta o rechaza una propuesta automatizada.
+
+### Sanitarias
+
+- Evaluación de alertas y sistemas de apoyo a la decisión clínica.
+- Diseño de revisiones humanas con acceso a los datos originales.
+- Formación para detectar recomendaciones plausibles pero incorrectas.
+- Medición de discrepancias entre profesionales y sistemas automatizados.
+
+## Limitaciones
+
+- Es difícil separarlo de otros efectos, como fatiga o presión de tiempo.
+- Una explicación puede aumentar la confianza sin mejorar la exactitud.
+- Añadir confirmaciones rutinarias puede producir fatiga de alertas.
+- La experiencia del usuario no elimina necesariamente el sesgo.
+- Su frecuencia depende de la tarea, la interfaz y la fiabilidad percibida.
+
+## Ejemplos
+
+Una persona puede aceptar una ruta propuesta sin revisar que termina en una
+calle cerrada. En sanidad, un profesional podría descartar un hallazgo porque
+el sistema no lo señaló, o aceptar una dosis sugerida sin contrastarla con los
+datos clínicos disponibles.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
