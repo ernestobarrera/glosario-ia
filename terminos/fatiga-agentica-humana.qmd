@@ -7,236 +7,100 @@ sinonimos:
   - "Fatiga de supervisión agéntica"
   - "Human agentic fatigue"
   - "Agentic supervisory fatigue"
-description: "Constructo operativo que describe la sobrecarga cognitiva, atencional y ejecutiva asociada a dirigir y verificar sistemas de IA semiautónomos conservando la responsabilidad sobre sus resultados."
+description: "Constructo operativo que describe la sobrecarga cognitiva y atencional asociada a dirigir y verificar sistemas de IA semiautónomos conservando la responsabilidad sobre sus resultados."
 categories:
   - "IA agéntica"
   - "Seguridad y riesgos"
   - "Ética y gobernanza"
-date-modified: 2026-08-22
+date-modified: 2026-08-23
 estado: "borrador"
 tipo: "concepto"
 ---
 
 ## Definición ampliada
 
-La **fatiga agéntica humana** es un constructo operativo de factores humanos:
-describe el estado de sobrecarga cognitiva, atencional y ejecutiva que puede
-aparecer cuando una persona dirige, coordina y verifica uno o varios sistemas
-de IA semiautónomos y, a la vez, conserva la responsabilidad sobre sus
-resultados, permisos, seguridad y consecuencias.
+La **fatiga agéntica humana** describe la sobrecarga cognitiva, atencional y
+ejecutiva que puede aparecer cuando una persona dirige, coordina y verifica
+sistemas de IA semiautónomos conservando la responsabilidad sobre sus
+resultados, permisos y consecuencias.
 
-El adjetivo *humana* evita confundirla con una degradación técnica del agente.
-No designa el cansancio de la máquina ni cualquier molestia causada por usar
-IA. Su rasgo distintivo es la **carga de supervisión**: la ejecución se delega,
-pero comprender el estado, detectar desviaciones, calibrar la confianza,
-resolver excepciones e integrar los resultados siguen dependiendo de la
-persona. El riesgo aumenta cuando la capacidad de ejecución de los agentes
-crece más deprisa que la capacidad humana para supervisarlos.
+El adjetivo *humana* la distingue de una degradación técnica del agente. Su
+rasgo propio es la **carga de supervisión**: la ejecución se delega, pero
+comprender el estado, calibrar la confianza y resolver excepciones siguen
+dependiendo de la persona. El riesgo crece cuando la capacidad de ejecución de
+los agentes aumenta más deprisa que la capacidad humana de supervisarlos.
 
 ::: {.callout-important title="Estado científico del término"}
-En agosto de 2026, *fatiga agéntica humana* no es un diagnóstico clínico, una
-categoría nosológica ni un constructo con una escala validada. Es una síntesis
-conceptual nueva. Sus mecanismos se apoyan en líneas de investigación
-consolidadas, pero la existencia, los límites y la medición del constructo
-completo requieren estudios específicos. Debe comunicarse siempre como
-**propuesta operacional**, no como hecho científico ya establecido.
+No es un diagnóstico clínico, una categoría nosológica ni un constructo con
+escala validada. Es una síntesis conceptual apoyada en líneas de investigación
+consolidadas, pero su existencia, límites y medición como constructo completo
+requieren estudios específicos. Debe comunicarse como propuesta operativa, no
+como hecho establecido.
 :::
-
-### Mecanismo propuesto
-
-La automatización no elimina necesariamente la carga mental: puede desplazarla
-desde la producción directa hacia la dirección, la reconstrucción de contexto
-y la verificación. Varias demandas pueden acumularse:
-
-| Demanda de supervisión | Posible efecto humano |
-|---|---|
-| Varias ejecuciones o proyectos abiertos | Más cambios de contexto y asuntos pendientes |
-| Estado del agente poco visible | Pérdida de conciencia situacional |
-| Resultados abundantes o difíciles de comprobar | Carga de verificación |
-| Automatización fiable durante largos periodos | Menor implicación activa y problema *out of the loop* |
-| Delegación de memoria, planificación o razonamiento | Descarga cognitiva útil, pero menor comprensión si no se reconstruye el modelo mental |
-| Solicitudes, permisos y excepciones frecuentes | Interrupciones y fragmentación de la atención |
-| Responsabilidad humana sin control o tiempo suficientes | Tensión entre rendición de cuentas y capacidad real de supervisión |
-
-El cambio entre tareas incompletas puede dejar **residuo atencional** y reducir
-el rendimiento en la tarea siguiente [@leroy2009attention]. Las tareas de
-trabajo inacabadas también se asocian con más pensamientos laborales fuera del
-horario, sobre todo rumiación, aunque esta asociación no demuestra por sí sola
-fatiga agéntica [@wendsche2026unfinished]. A su vez, externalizar operaciones en
-el entorno puede reducir demanda cognitiva inmediata; sus efectos dependen de
-qué se delega y de cómo se mantiene la comprensión humana
-[@risko2016offloading].
-
-La automatización elevada puede disminuir la conciencia situacional y
-dificultar la recuperación del control tras un fallo, fenómeno conocido como
-problema *out of the loop* [@endsley1995outoftheloop]. En sistemas de IA, la
-persona necesita conciencia de la tarea, del agente y de la colaboración para
-supervisar de forma efectiva [@endsley2023humanai]. Además, una verificación
-costosa favorece que una recomendación automatizada incorrecta se acepte o que
-se omita una actuación necesaria [@goddard2012automation;
-@lyell2017automation].
-
-### Manifestaciones operativas posibles
-
-No forman una lista diagnóstica. Son señales que justifican revisar el sistema
-de trabajo:
-
-- dificultad para recordar qué agente está haciendo qué, con qué objetivo y
-  bajo qué supuestos;
-- necesidad repetida de releer conversaciones o reconstruir decisiones;
-- sensación de mucha actividad y producción, pero poco cierre o control;
-- alternancia frecuente entre resultados, permisos, incidencias y proyectos;
-- verificación cada vez más superficial, duplicada o aplazada;
-- aceptación por inercia de resultados plausibles o, en el extremo contrario,
-  revisión exhaustiva de todo por incapacidad para calibrar la confianza;
-- persistencia mental de ejecuciones pendientes durante los periodos de
-  descanso;
-- cansancio, irritabilidad o evitación vinculados específicamente al trabajo
-  de supervisión.
-
-### Límites con conceptos próximos
-
-- **Fatiga por IA** puede abarcar saturación por herramientas, exposición
-  continua, inquietud moral o desmotivación. Un estudio exploratorio con
-  estudiantes ha propuesto dimensiones cognitivas, emocionales, físicas,
-  motivacionales y atencionales, pero todavía reclama validación y no estudia
-  específicamente la supervisión de agentes [@miranda2026aifatigue].
-- **Tecnoestrés** es más amplio: incluye demandas derivadas de múltiples
-  tecnologías, no solo de delegar y gobernar acciones semiautónomas.
-- **Fatiga de alertas** describe la pérdida de respuesta ante avisos repetidos;
-  puede contribuir a la fatiga agéntica, pero no la agota.
-- **Sesgo de automatización** es un patrón de decisión ante recomendaciones
-  automatizadas. Puede ser consecuencia o amplificador de la sobrecarga, no un
-  sinónimo.
-- **Carga mental**, **fatiga cognitiva** y **agotamiento profesional** son
-  constructos diferentes. La fatiga agéntica no debe utilizarse para
-  diagnosticar ni para atribuir a la persona un problema producido por un mal
-  diseño sociotécnico.
 
 ## Contexto histórico
 
-El término propuesto es reciente, pero el problema que intenta nombrar tiene
-antecedentes claros. La investigación sobre automatización mostró en 1995 que
-pasar de operador activo a supervisor podía reducir la conciencia situacional
-y empeorar la respuesta ante fallos [@endsley1995outoftheloop]. Los estudios
-sobre interrupciones, cambio de tarea, sesgo de automatización y descarga
-cognitiva añadieron después mecanismos complementarios
-[@leroy2009attention; @goddard2012automation; @risko2016offloading].
-
-La expansión de la IA generativa y de los agentes modifica la escala del
-problema: una sola persona puede iniciar varias líneas de trabajo que continúan
-sin su atención inmediata y regresan después como resultados que debe
-interpretar y validar. En 2026, un estudio longitudinal aún no revisado por
-pares sobre asistentes de programación denominó **trabajo de ingeniería
-supervisora** al desplazamiento desde crear hacia dirigir, evaluar y corregir
-salidas de IA [@vella2026coding]. Esta evidencia es cercana al concepto, pero
-se limita a desarrollo de software y no valida la fatiga agéntica como entidad
-independiente.
+En 1995 se describió que pasar de operador activo a supervisor podía reducir la
+conciencia situacional y empeorar la respuesta ante fallos, el problema *out of
+the loop* [@endsley1995outoftheloop]. Después se añadieron el residuo atencional
+al alternar entre tareas inacabadas [@leroy2009attention] y el sesgo de
+automatización cuando verificar resulta costoso [@goddard2012automation]. Los
+agentes cambian la escala: una persona puede abrir varias líneas de trabajo que
+avanzan sin su atención y regresan como resultados que debe validar.
 
 ## Importancia actual
 
-A fecha de agosto de 2026, los agentes permiten aumentar el trabajo en curso y
-la velocidad de producción sin aumentar en la misma proporción el tiempo, la
-atención o la competencia disponibles para supervisarlo. Esto crea una posible
-paradoja: **más productividad local puede coexistir con menor gobernabilidad
-global**.
-
-En el preprint longitudinal sobre asistentes de programación, el 82 % de los
-participantes declaró dedicar menos tiempo a escribir código y el 84 % percibió
-una mejora de productividad en ambos momentos de medida; al mismo tiempo, en
-la cohorte emparejada aumentó del 14 % al 27 % la proporción que comunicaba un
-empeoramiento en al menos una dimensión de su experiencia
-[@vella2026coding]. Son resultados autoinformados, de un contexto concreto y
-sin revisión por pares: apoyan la plausibilidad del fenómeno, no permiten
-estimar su frecuencia general ni establecer causalidad.
+A fecha de agosto de 2026 esto plantea una paradoja: más productividad local
+puede coexistir con menor gobernabilidad global. Un estudio longitudinal sobre
+asistentes de programación, aún sin revisión por pares, encontró que el 84 %
+percibía mejora de productividad mientras la proporción que declaraba
+empeoramiento en alguna dimensión de su experiencia pasaba del 14 % al 27 %
+[@vella2026coding]. Son datos autoinformados de un contexto concreto: apoyan la
+plausibilidad del fenómeno, no su frecuencia ni su causalidad.
 
 ## Aplicaciones
 
 ### Generales
 
-El concepto permite evaluar sistemas agénticos por la carga que transfieren a
-la persona, no solo por el trabajo que automatizan. Como criterios de diseño
-prudentes —derivados de factores humanos, no ensayados todavía como tratamiento
-de este constructo— conviene:
-
-- limitar el número de asuntos que requieren atención humana simultánea;
-- agrupar y deduplicar interrupciones no urgentes;
-- resumir objetivo, estado, cambios, validación, decisión requerida y riesgo
-  residual antes de mostrar el detalle;
-- conservar una gramática visual estable y aplicar divulgación progresiva;
-- hacer automáticas las salvaguardas rutinarias, mostrando también qué cubren
-  y qué no;
-- facilitar la corrección, el rechazo y la recuperación del control;
-- cerrar u ocultar los bucles resueltos, en vez de mantener toda la actividad
-  visible.
-
-Estas medidas buscan maximizar la conciencia situacional por unidad de
-atención. Son coherentes con las guías de interacción humano-IA, que recomiendan
-explicitar capacidades y límites, ofrecer control y permitir correcciones
-eficientes [@amershi2019guidelines].
-
-Para investigarla no bastaría con contar agentes, mensajes o tokens. Haría
-falta combinar carga y fatiga autoinformadas con medidas de proceso y
-rendimiento: concurrencia real, cambios de contexto, tiempo de reconstrucción,
-intervenciones, detección de errores, calidad de la verificación, conciencia
-situacional y número de asuntos pendientes. Aún no existe un umbral validado
-que convierta esas medidas en un diagnóstico.
+- Evaluar un sistema por la carga que transfiere a la persona, no solo por el
+  trabajo que automatiza.
+- Limitar cuántos asuntos piden atención a la vez y agrupar las interrupciones
+  no urgentes.
+- Resumir estado y decisión requerida antes del detalle, y cerrar los bucles
+  resueltos en lugar de dejar toda la actividad visible.
 
 ### Sanitarias
 
-En sanidad, los agentes pueden preparar búsquedas, documentación, codificación
-o tareas administrativas, pero el profesional mantiene obligaciones clínicas,
-legales y éticas. Las interrupciones no son uniformemente perjudiciales: su
-efecto depende, entre otros factores, de la carga de memoria de trabajo, el
-momento, la similitud entre tareas y la estrategia de recuperación
-[@li2012interruptions].
-
-Aplicar este marco implica evitar que múltiples asistentes compitan por la
-atención durante tareas clínicas críticas, preservar acceso a los datos
-originales, distinguir borrador de decisión validada y dimensionar la revisión
-según el riesgo. Un profesional nominalmente “en el circuito” no constituye
-una salvaguarda suficiente si carece de tiempo, información, autoridad o
-capacidad efectiva para verificar.
+- Evitar que varios asistentes compitan por la atención durante tareas clínicas
+  críticas; el efecto de una interrupción depende del momento y de la carga de
+  memoria de trabajo [@li2012interruptions].
+- Preservar el acceso a los datos originales y distinguir borrador de decisión
+  validada.
+- Dimensionar la revisión según el riesgo: estar nominalmente «en el circuito»
+  no es una salvaguarda sin tiempo, información y autoridad para verificar.
 
 ## Limitaciones
 
-- El constructo se ha formulado por integración teórica; todavía no se ha
-  demostrado su validez convergente, discriminante o predictiva.
-- No se conocen prevalencia, umbrales, trayectoria temporal ni factores
-  protectores específicos.
-- Buena parte de la evidencia procede de automatización, tareas de oficina,
-  sanidad y programación; trasladarla a todos los usos agénticos es una
-  inferencia que debe comprobarse.
-- La evidencia directamente relacionada con agentes es reciente y parte de
-  ella son preprints.
-- La experiencia depende del riesgo de la tarea, la fiabilidad y opacidad del
-  sistema, la experiencia de la persona, la organización del trabajo y el
-  apoyo disponible.
-- Externalizar estado puede liberar memoria, pero una interfaz que exhibe todo
-  lo externalizado puede reactivar asuntos pendientes y añadir sobrecarga.
-- Usar la etiqueta sin medir el diseño y la organización podría medicalizar
-  una carga sociotécnica o desplazar injustamente la responsabilidad hacia el
+- Procede de una integración teórica: no se conocen validez predictiva,
+  prevalencia ni umbrales, y parte de las fuentes cercanas son
+  prepublicaciones.
+- La evidencia viene de automatización, sanidad y programación; trasladarla a
+  todo uso agéntico está por comprobar.
+- Usar la etiqueta sin examinar el diseño y la organización del trabajo podría
+  medicalizar una carga sociotécnica y desplazar la responsabilidad hacia el
   usuario.
 
 ## Ejemplos
 
-Una desarrolladora inicia tres agentes: uno modifica código, otro revisa
-seguridad y otro actualiza documentación. Cada uno produce resultados válidos,
-pero en momentos distintos y con solicitudes intermedias. Tras varios cambios
-de contexto, la desarrolladora ya no recuerda qué supuestos aceptó y aprueba
-una modificación plausible con una revisión superficial. El problema no es la
-cantidad de código, sino que la producción superó su ancho de banda de
-supervisión.
+Una desarrolladora lanza tres agentes: uno modifica código, otro revisa
+seguridad y otro actualiza documentación. Cada uno entrega resultados válidos,
+pero en momentos distintos. Tras varios cambios de contexto ya no recuerda qué
+supuestos aceptó y aprueba una modificación plausible con una revisión
+superficial: la producción superó su capacidad de supervisión.
 
-En un equipo sanitario, varios asistentes preparan a la vez un resumen de
-evidencia, una propuesta de codificación y cambios de agenda. Si sus avisos
-interrumpen una tarea clínica y obligan a reconstruir tres contextos, el diseño
-puede aumentar la carga aunque cada asistente ahorre tiempo por separado.
-
-En cambio, delegar una tarea acotada a un único agente, recibir un resumen con
-evidencia de validación y no tener ninguna decisión pendiente no constituye
-por sí mismo fatiga agéntica. El concepto describe una relación sostenida entre
-demandas y capacidad de supervisión, no el mero uso de agentes.
+Delegar en cambio una tarea acotada a un único agente y recibir un resumen con
+evidencia de validación no lo es: el concepto describe una relación sostenida
+entre demandas y capacidad de supervisión, no el uso de agentes.
 
 ## Relacionados
 
