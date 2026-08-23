@@ -1,0 +1,115 @@
+---
+title: "Fatiga agéntica humana"
+aliases:
+  - /terminos/fatiga-agentica.html
+  - /terminos/agentic-fatigue.html
+sinonimos:
+  - "Fatiga de supervisión agéntica"
+  - "Human agentic fatigue"
+  - "Agentic supervisory fatigue"
+description: "Constructo operativo que describe la sobrecarga cognitiva y atencional asociada a dirigir y verificar sistemas de IA semiautónomos conservando la responsabilidad sobre sus resultados."
+categories:
+  - "IA agéntica"
+  - "Seguridad y riesgos"
+  - "Ética y gobernanza"
+date-modified: 2026-08-23
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **fatiga agéntica humana** describe la sobrecarga cognitiva, atencional y
+ejecutiva que puede aparecer cuando una persona dirige, coordina y verifica
+sistemas de IA semiautónomos conservando la responsabilidad sobre sus
+resultados, permisos y consecuencias.
+
+El adjetivo *humana* la distingue de una degradación técnica del agente. Su
+rasgo propio es la **carga de supervisión**: la ejecución se delega, pero
+comprender el estado, calibrar la confianza y resolver excepciones siguen
+dependiendo de la persona. El riesgo crece cuando la capacidad de ejecución de
+los agentes aumenta más deprisa que la capacidad humana de supervisarlos.
+
+::: {.callout-important title="Estado científico del término"}
+No es un diagnóstico clínico, una categoría nosológica ni un constructo con
+escala validada. Es una síntesis conceptual apoyada en líneas de investigación
+consolidadas, pero su existencia, límites y medición como constructo completo
+requieren estudios específicos. Debe comunicarse como propuesta operativa, no
+como hecho establecido.
+:::
+
+## Contexto histórico
+
+En 1995 se describió que pasar de operador activo a supervisor podía reducir la
+conciencia situacional y empeorar la respuesta ante fallos, el problema *out of
+the loop* [@endsley1995outoftheloop]. Después se añadieron el residuo atencional
+al alternar entre tareas inacabadas [@leroy2009attention] y el sesgo de
+automatización cuando verificar resulta costoso [@goddard2012automation]. Los
+agentes cambian la escala: una persona puede abrir varias líneas de trabajo que
+avanzan sin su atención y regresan como resultados que debe validar.
+
+## Importancia actual
+
+A fecha de agosto de 2026 esto plantea una paradoja: más productividad local
+puede coexistir con menor gobernabilidad global. Un estudio longitudinal sobre
+asistentes de programación, aún sin revisión por pares, encontró que el 84 %
+percibía mejora de productividad mientras la proporción que declaraba
+empeoramiento en alguna dimensión de su experiencia pasaba del 14 % al 27 %
+[@vella2026coding]. Son datos autoinformados de un contexto concreto: apoyan la
+plausibilidad del fenómeno, no su frecuencia ni su causalidad.
+
+## Aplicaciones
+
+### Generales
+
+- Evaluar un sistema por la carga que transfiere a la persona, no solo por el
+  trabajo que automatiza.
+- Limitar cuántos asuntos piden atención a la vez y agrupar las interrupciones
+  no urgentes.
+- Resumir estado y decisión requerida antes del detalle, y cerrar los bucles
+  resueltos en lugar de dejar toda la actividad visible.
+
+### Sanitarias
+
+- Evitar que varios asistentes compitan por la atención durante tareas clínicas
+  críticas; el efecto de una interrupción depende del momento y de la carga de
+  memoria de trabajo [@li2012interruptions].
+- Preservar el acceso a los datos originales y distinguir borrador de decisión
+  validada.
+- Dimensionar la revisión según el riesgo: estar nominalmente «en el circuito»
+  no es una salvaguarda sin tiempo, información y autoridad para verificar.
+
+## Limitaciones
+
+- Procede de una integración teórica: no se conocen validez predictiva,
+  prevalencia ni umbrales, y parte de las fuentes cercanas son
+  prepublicaciones.
+- La evidencia viene de automatización, sanidad y programación; trasladarla a
+  todo uso agéntico está por comprobar.
+- Usar la etiqueta sin examinar el diseño y la organización del trabajo podría
+  medicalizar una carga sociotécnica y desplazar la responsabilidad hacia el
+  usuario.
+
+## Ejemplos
+
+Una desarrolladora lanza tres agentes: uno modifica código, otro revisa
+seguridad y otro actualiza documentación. Cada uno entrega resultados válidos,
+pero en momentos distintos. Tras varios cambios de contexto ya no recuerda qué
+supuestos aceptó y aprueba una modificación plausible con una revisión
+superficial: la producción superó su capacidad de supervisión.
+
+Delegar en cambio una tarea acotada a un único agente y recibir un resumen con
+evidencia de validación no lo es: el concepto describe una relación sostenida
+entre demandas y capacidad de supervisión, no el uso de agentes.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Sistema multiagente](sistema-multiagente.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
