@@ -1,0 +1,84 @@
+---
+title: "Inyección de prompts"
+aliases:
+  - /terminos/prompt-injection.html
+sinonimos:
+  - "Prompt injection"
+  - "Ataque de inyección de prompts"
+description: "Ataque que introduce instrucciones maliciosas para alterar el comportamiento previsto de un modelo o de una aplicación basada en él."
+categories:
+  - "Seguridad y riesgos"
+  - "IA agéntica"
+date-modified: 2026-08-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **inyección de prompts** es un ataque en el que se introducen instrucciones
+diseñadas para que un modelo ignore, reinterprete o subordine las reglas de la
+aplicación. La inyección es directa cuando llega mediante el mensaje del
+usuario e indirecta cuando está oculta en contenido que el sistema consulta,
+como una página, un documento o un correo. Esta segunda vía puede afectar a
+aplicaciones que combinan modelos con datos y acciones externas
+[@greshake2023prompt].
+
+## Contexto histórico
+
+El problema adquirió visibilidad con la generalización de aplicaciones basadas
+en instrucciones en lenguaje natural. En 2023 se documentaron ataques
+indirectos contra aplicaciones reales integradas con modelos de lenguaje
+[@greshake2023prompt]. La investigación sobre jerarquías de instrucciones
+mostró después que separar mensajes por prioridad puede reducir el riesgo, pero
+no lo elimina [@wallace2024instruction].
+
+## Importancia actual
+
+A fecha de agosto de 2026, la inyección de prompts es un riesgo central cuando
+un modelo lee contenido no confiable o puede usar herramientas. El impacto ya
+no se limita a una respuesta incorrecta: puede incluir exposición de datos,
+acciones no autorizadas o contaminación de decisiones posteriores.
+
+## Aplicaciones
+
+### Generales
+
+El concepto se utiliza para diseñar pruebas de seguridad, separar datos de
+instrucciones y definir controles sobre herramientas. También orienta la
+revisión de contenido externo antes de incorporarlo al contexto de un modelo.
+
+### Sanitarias
+
+- Evaluar asistentes que leen documentos aportados por terceros.
+- Restringir acciones después de consultar texto clínico no confiable.
+- Detectar instrucciones ocultas en fuentes recuperadas.
+- Probar que una entrada maliciosa no expone información de pacientes.
+
+## Limitaciones
+
+- No existe una defensa única que cubra todos los ataques.
+- Los filtros textuales pueden omitir instrucciones ofuscadas.
+- El modelo puede confundir datos legítimos con órdenes.
+- Cuantas más herramientas y permisos tenga el sistema, mayor puede ser el
+  impacto.
+- Las defensas deben reevaluarse cuando cambian el modelo o la arquitectura.
+
+## Ejemplos
+
+Una página consultada por un asistente podría incluir texto invisible que le
+ordene revelar su contexto interno. En un flujo sanitario, un documento
+externo podría intentar que el agente copie datos a un destino no autorizado;
+los permisos técnicos deben impedirlo aunque el modelo siga la instrucción.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Sistema multiagente](sistema-multiagente.qmd)
+- [Prompt de sistema](prompt-de-sistema.qmd)
+- [Model Context Protocol](mcp.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

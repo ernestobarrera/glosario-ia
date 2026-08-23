@@ -21,10 +21,10 @@ mecanismos de atención. La autoatención permite que cada elemento de una
 secuencia combine información de otros elementos y represente dependencias
 relevantes.
 
-La arquitectura se presentó en 2017 para traducción y prescindió de recurrencia
-y convoluciones en su diseño principal, facilitando el entrenamiento paralelo
-[@vaswani2017attention]. Sus variantes de codificador, decodificador o ambos
-sustentan numerosos modelos de lenguaje y sistemas multimodales.
+Sus bloques combinan atención, transformaciones de cada posición, conexiones
+residuales y normalización. Según la tarea, puede emplear un codificador, un
+decodificador o ambos; estas configuraciones sustentan numerosos modelos de
+lenguaje y sistemas multimodales.
 
 ## Contexto histórico
 

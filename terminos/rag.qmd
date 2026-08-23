@@ -20,9 +20,9 @@ tipo: "concepto"
 
 La **generación aumentada por recuperación** o **RAG** combina un sistema que
 busca información relevante con un modelo generativo que utiliza los fragmentos
-recuperados para elaborar una respuesta. El trabajo que consolidó el término
-integró recuperación y generación para tareas intensivas en conocimiento
-[@lewis2020rag].
+recuperados para elaborar una respuesta. En un flujo típico, la consulta se
+convierte en una búsqueda sobre una colección externa, se seleccionan los
+fragmentos más pertinentes y se incorporan como contexto para la generación.
 
 RAG permite trabajar con colecciones actualizables sin incorporar cada cambio
 al entrenamiento del modelo. También puede mostrar las fuentes empleadas, pero

@@ -1,0 +1,84 @@
+---
+title: "Fine-tuning"
+aliases:
+  - /terminos/ajuste-fino.html
+sinonimos:
+  - "Ajuste fino"
+  - "Fine tuning"
+description: "Técnica que continúa el entrenamiento de un modelo preentrenado para adaptarlo a una tarea, dominio o comportamiento concreto."
+categories:
+  - "Aprendizaje automático"
+  - "Modelos de lenguaje"
+date-modified: 2026-08-22
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **fine-tuning** o **ajuste fino** consiste en continuar el entrenamiento de
+un modelo ya preentrenado con un conjunto de datos más específico. El objetivo
+es adaptar sus parámetros a una tarea, un dominio o un patrón de respuesta sin
+entrenar un modelo completo desde cero. Puede actualizar todos los parámetros o
+solo una parte de ellos, según el método elegido y los recursos disponibles.
+
+## Contexto histórico
+
+La reutilización de modelos entrenados previamente se desarrolló dentro del
+aprendizaje por transferencia. En procesamiento del lenguaje, arquitecturas
+preentrenadas como BERT mostraron en 2019 que un mismo modelo podía ajustarse a
+múltiples tareas con una capa de salida y datos específicos
+[@devlin2019bert]. El crecimiento posterior de los modelos de lenguaje amplió
+el ajuste fino a instrucciones, dominios profesionales y preferencias de
+respuesta.
+
+## Importancia actual
+
+A fecha de agosto de 2026, el fine-tuning es una de varias vías para adaptar un
+modelo. Compite y se combina con el diseño de prompts, la recuperación de
+información y los adaptadores eficientes. Su conveniencia depende del objetivo,
+del volumen y la calidad de los datos, del coste de entrenamiento y de cuánto
+deba cambiar el comportamiento del modelo.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificación de textos en categorías propias de una organización.
+- Adaptación del tono, formato o vocabulario de las respuestas.
+- Especialización en un dominio técnico.
+- Seguimiento más consistente de un conjunto de instrucciones.
+
+### Sanitarias
+
+- Clasificación de notas clínicas para una tarea delimitada.
+- Extracción estructurada de conceptos de informes médicos.
+- Adaptación a terminología local, previa evaluación independiente.
+- Apoyo a modelos de imagen para una modalidad o población concreta.
+
+## Limitaciones
+
+- Puede sobreajustarse a un conjunto pequeño o poco representativo.
+- Puede degradar capacidades generales del modelo.
+- Hereda riesgos y sesgos del modelo de partida.
+- Exige gobernar los datos de entrenamiento y evaluar versiones sucesivas.
+- No garantiza por sí solo exactitud, seguridad ni actualización factual.
+
+## Ejemplos
+
+Una organización puede ajustar un modelo para clasificar solicitudes según su
+propia taxonomía. En un entorno sanitario, podría entrenarse con ejemplos
+validados para identificar menciones de efectos adversos; antes de usarlo,
+habría que medir su rendimiento en datos distintos de los de entrenamiento.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Transformer](transformer.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
