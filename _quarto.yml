@@ -35,6 +35,8 @@ filters:
 
 format:
   html:
+    include-in-header:
+      - text: <meta name="robots" content="noindex, nofollow">
     theme: cosmo
     css: styles.css
     toc: true
