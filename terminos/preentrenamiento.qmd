@@ -1,0 +1,80 @@
+---
+title: "Preentrenamiento"
+aliases:
+  - /terminos/pretraining.html
+sinonimos:
+  - "Pretraining"
+  - "Pre-entrenamiento"
+description: "Fase inicial en la que un modelo aprende patrones generales antes de adaptarse a una tarea o dominio concretos."
+categories:
+  - "Aprendizaje automático"
+  - "Modelos de lenguaje"
+date-modified: 2026-08-30
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **preentrenamiento**, también llamado **pretraining**, es una fase inicial en
+la que un modelo aprende regularidades a partir de un conjunto amplio de datos.
+El resultado no suele ser todavía una solución para una tarea concreta: actúa
+como base para la adaptación posterior, por ejemplo mediante fine-tuning.
+
+Puede ser supervisado, autosupervisado o combinar varios objetivos. En los
+modelos de lenguaje, objetivos como predecir tokens ocultos permiten aprender
+representaciones sin etiquetas manuales para cada ejemplo [@devlin2019bert].
+
+## Contexto histórico
+
+El preentrenamiento se usó en distintas áreas antes de los grandes modelos de
+lenguaje, pero BERT y otros modelos basados en transformer consolidaron a partir
+de 2018 el patrón «preentrenar y adaptar» en procesamiento del lenguaje
+[@devlin2019bert].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el preentrenamiento es una pieza central de los
+modelos fundacionales. Permite distribuir el coste de aprender representaciones
+generales entre muchas aplicaciones, aunque concentra dependencias sobre datos,
+infraestructura y decisiones tomadas en la fase inicial.
+
+## Aplicaciones
+
+### Generales
+
+- Construir modelos de lenguaje reutilizables.
+- Aprender representaciones visuales o multimodales.
+- Reducir la cantidad de datos etiquetados para tareas posteriores.
+
+### Sanitarias
+
+- Preentrenar modelos con literatura biomédica, como BioBERT, antes de tareas de
+  extracción de información [@lee2020biobert].
+- Aprender representaciones de imágenes, señales o texto clínico.
+- Adaptar después el modelo a una institución o problema delimitado.
+
+## Limitaciones
+
+- Puede requerir grandes cantidades de datos, energía y cómputo.
+- Puede incorporar sesgos, datos sensibles o errores difíciles de rastrear.
+- La cobertura general no garantiza competencia en un dominio especializado.
+- La adaptación posterior no elimina necesariamente las limitaciones heredadas.
+
+## Ejemplos
+
+BERT se preentrenó con objetivos autosupervisados y después se adaptó a tareas de
+lenguaje [@devlin2019bert]. BioBERT continuó el preentrenamiento con textos
+biomédicos para mejorar tareas de minería de texto del dominio [@lee2020biobert].
+
+## Relacionados
+
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

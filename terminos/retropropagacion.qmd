@@ -1,0 +1,77 @@
+---
+title: "Retropropagación"
+aliases:
+  - /terminos/backpropagation.html
+sinonimos:
+  - "Backpropagation"
+description: "Algoritmo que calcula gradientes a través de una red neuronal aplicando de forma eficiente la regla de la cadena."
+categories:
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+date-modified: 2026-08-30
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **retropropagación**, o **backpropagation**, calcula cómo contribuye cada
+parámetro de una red neuronal al error final. Recorre las operaciones en sentido
+inverso y aplica repetidamente la regla de la cadena para obtener gradientes
+[@rumelhart1986backprop].
+
+Retropropagar no es lo mismo que actualizar los pesos. El algoritmo calcula las
+derivadas; un optimizador utiliza después esa información para decidir el cambio
+de cada parámetro.
+
+## Contexto histórico
+
+Las ideas matemáticas que sustentan el algoritmo tienen antecedentes, pero el
+trabajo de Rumelhart, Hinton y Williams de 1986 mostró de forma influyente cómo
+aprender representaciones internas mediante retropropagación de errores
+[@rumelhart1986backprop].
+
+## Importancia actual
+
+A fecha de agosto de 2026, la retropropagación continúa siendo el mecanismo
+básico de diferenciación y entrenamiento de redes profundas. Las bibliotecas
+modernas la automatizan mediante grafos de cómputo y diferenciación automática.
+
+## Aplicaciones
+
+### Generales
+
+- Entrenar redes para visión, lenguaje, audio y predicción.
+- Ajustar millones o miles de millones de parámetros.
+- Calcular derivadas en modelos compuestos.
+
+### Sanitarias
+
+- Entrenar redes con imágenes médicas o señales fisiológicas.
+- Adaptar modelos lingüísticos a tareas biomédicas.
+- Optimizar modelos clínicos, manteniendo separada la validación de su mecanismo
+  de entrenamiento.
+
+## Limitaciones
+
+- Necesita operaciones diferenciables o aproximaciones adecuadas.
+- Puede sufrir gradientes que desaparecen o explotan.
+- Requiere memoria para conservar estados intermedios.
+- Minimizar una pérdida no garantiza explicabilidad, equidad ni utilidad clínica.
+
+## Ejemplos
+
+En una red que clasifica una imagen, la pérdida se calcula a partir de la salida.
+La retropropagación distribuye esa señal hacia capas anteriores; el optimizador
+usa los gradientes resultantes para actualizar los pesos.
+
+## Relacionados
+
+- [Gradiente](gradiente.qmd)
+- [Función de activación](funcion-de-activacion.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
