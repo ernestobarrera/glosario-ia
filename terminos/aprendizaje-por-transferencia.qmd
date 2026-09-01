@@ -1,0 +1,76 @@
+---
+title: "Aprendizaje por transferencia"
+aliases:
+  - /terminos/transfer-learning.html
+sinonimos:
+  - "Transfer learning"
+description: "Técnica que reutiliza representaciones o parámetros aprendidos en una tarea para resolver otra tarea relacionada."
+categories:
+  - "Aprendizaje automático"
+date-modified: 2026-08-30
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **aprendizaje por transferencia**, o **transfer learning**, reutiliza en una
+tarea objetivo el conocimiento adquirido por un modelo en una tarea de origen.
+La transferencia puede consistir en conservar representaciones, inicializar
+parámetros o adaptar parte del modelo. Su utilidad depende de que exista una
+relación aprovechable entre los dominios o las tareas [@pan2010transfer].
+
+## Contexto histórico
+
+La idea de transferir conocimiento entre tareas precede al aprendizaje profundo,
+pero ganó importancia práctica con los modelos preentrenados. Primero se extendió
+en visión por computador y después en procesamiento del lenguaje, donde una misma
+base puede adaptarse a múltiples problemas [@pan2010transfer].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el aprendizaje por transferencia sigue siendo una vía
+habitual para especializar modelos con menos datos y cómputo que un entrenamiento
+desde cero. También obliga a examinar si los sesgos y limitaciones del modelo de
+origen se trasladan a la nueva tarea.
+
+## Aplicaciones
+
+### Generales
+
+- Adaptar un clasificador visual a nuevas categorías.
+- Especializar un modelo de lenguaje para una tarea o dominio.
+- Reutilizar representaciones cuando hay pocos datos etiquetados.
+
+### Sanitarias
+
+- Adaptar un modelo de imágenes a una modalidad o enfermedad concreta.
+- Especializar representaciones lingüísticas con literatura biomédica o texto
+  clínico [@lee2020biobert].
+- Explorar tareas con cohortes pequeñas, manteniendo una validación independiente.
+
+## Limitaciones
+
+- Puede producir transferencia negativa si origen y destino difieren demasiado.
+- Hereda sesgos, errores y restricciones de los datos de origen.
+- Un ajuste con pocos casos puede sobreajustar el modelo.
+- El rendimiento debe comprobarse en la población y el contexto de uso finales.
+
+## Ejemplos
+
+Una red entrenada con imágenes generales puede servir como punto de partida para
+clasificar imágenes médicas. La reutilización reduce el coste inicial, pero no
+demuestra por sí sola que la representación sea clínicamente válida.
+
+## Relacionados
+
+- [Preentrenamiento](preentrenamiento.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

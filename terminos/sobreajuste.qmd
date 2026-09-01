@@ -1,0 +1,78 @@
+---
+title: "Sobreajuste"
+aliases:
+  - /terminos/overfitting.html
+sinonimos:
+  - "Overfitting"
+description: "Fallo de generalización en el que un modelo se adapta en exceso a los datos de entrenamiento y rinde peor en casos nuevos."
+categories:
+  - "Aprendizaje automático"
+  - "Seguridad y riesgos"
+date-modified: 2026-08-30
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **sobreajuste**, o **overfitting**, aparece cuando un modelo aprende detalles,
+ruido o peculiaridades de los datos de entrenamiento que no se mantienen en
+casos nuevos. Puede mostrar un rendimiento excelente en entrenamiento y, sin
+embargo, generalizar mal [@hawkins2004overfitting].
+
+No depende solo de que el modelo sea «grande»: también influyen el tamaño y la
+calidad de los datos, la selección de variables, las decisiones repetidas sobre
+el conjunto de prueba y la diferencia entre desarrollo y uso real.
+
+## Contexto histórico
+
+El problema es anterior al aprendizaje profundo y forma parte del estudio de la
+generalización estadística. El aumento de capacidad de los modelos hizo más
+visible la necesidad de separar datos, regularizar y validar fuera de la muestra
+[@hawkins2004overfitting].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el sobreajuste sigue siendo un riesgo central tanto en
+modelos pequeños como fundacionales. En salud puede quedar oculto por muestras
+limitadas, validaciones repetidas o datos procedentes de un solo centro.
+
+## Aplicaciones
+
+### Generales
+
+- Diagnosticar diferencias entre rendimiento de entrenamiento y validación.
+- Elegir regularización, parada temprana o simplificación del modelo.
+- Diseñar evaluaciones con datos realmente independientes.
+
+### Sanitarias
+
+- Evitar que un modelo aprenda marcas de un equipo, centro o protocolo.
+- Separar pacientes, no solo registros, entre entrenamiento y evaluación.
+- Exigir validación temporal y externa antes del uso clínico.
+
+## Limitaciones
+
+- No existe una única prueba que descarte el sobreajuste.
+- Un conjunto de validación reutilizado muchas veces deja de ser independiente.
+- Reducir el sobreajuste no corrige por sí solo sesgo, mala calibración o cambio
+  de distribución.
+- Más datos no ayudan si reproducen el mismo sesgo o fuga de información.
+
+## Ejemplos
+
+Un modelo de imagen puede aprender el identificador del hospital asociado a una
+clase diagnóstica. Su precisión interna será alta, pero caerá al evaluarlo en un
+centro donde esa asociación no existe.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

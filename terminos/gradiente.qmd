@@ -1,0 +1,78 @@
+---
+title: "Gradiente"
+aliases:
+  - /terminos/gradient.html
+sinonimos:
+  - "Gradient"
+description: "Vector de derivadas que indica cómo cambia una función respecto a cada uno de sus parámetros."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-08-30
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **gradiente**, o **gradient**, es el vector que reúne las derivadas parciales
+de una función respecto a sus variables. Indica la dirección de mayor aumento
+local y la sensibilidad de la función a cambios pequeños en cada parámetro.
+
+Durante el entrenamiento, el gradiente de la función de pérdida orienta cómo
+modificar los parámetros. Moverse en la dirección opuesta puede reducir la
+pérdida, aunque el resultado depende del optimizador y de la geometría del
+problema [@lecun2015deep].
+
+## Contexto histórico
+
+El gradiente procede del cálculo multivariable y de la optimización matemática.
+Su uso en redes neuronales se volvió práctico al combinarlo con la
+retropropagación, que calcula eficientemente las derivadas a través de capas
+compuestas [@rumelhart1986backprop].
+
+## Importancia actual
+
+A fecha de agosto de 2026, la mayor parte de los modelos neuronales se entrena
+con métodos basados en gradientes. Comprenderlos ayuda a interpretar problemas
+como la inestabilidad, la desaparición de gradientes y la elección de la tasa de
+aprendizaje.
+
+## Aplicaciones
+
+### Generales
+
+- Optimizar los parámetros de redes neuronales.
+- Analizar la sensibilidad local de una salida.
+- Construir explicaciones basadas en derivadas.
+
+### Sanitarias
+
+- Entrenar modelos con imágenes, señales o texto clínico.
+- Evaluar qué cambios locales en una entrada afectan a una predicción.
+- Optimizar modelos de riesgo, sin convertir el gradiente en evidencia causal.
+
+## Limitaciones
+
+- Es una propiedad local y no describe por sí sola toda la función.
+- Puede ser muy pequeño, muy grande o ruidoso.
+- No garantiza alcanzar el mejor mínimo posible.
+- Su interpretación respecto a las entradas puede ser inestable.
+
+## Ejemplos
+
+Si aumentar ligeramente un peso eleva la pérdida, la componente correspondiente
+del gradiente será positiva. Un optimizador basado en descenso de gradiente
+tenderá a reducir ese peso, con un tamaño de paso determinado por su regla de
+actualización.
+
+## Relacionados
+
+- [Retropropagación](retropropagacion.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Función de activación](funcion-de-activacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

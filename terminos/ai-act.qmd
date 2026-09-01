@@ -1,0 +1,104 @@
+---
+title: "Reglamento de Inteligencia Artificial de la Unión Europea"
+aliases:
+  - /terminos/ai-act-2024.html
+  - /terminos/ley-de-ia.html
+sinonimos:
+  - "AI Act"
+  - "Ley de IA de la UE"
+  - "Reglamento (UE) 2024/1689"
+description: "Marco jurídico de la Unión Europea que regula los sistemas de inteligencia artificial según sus riesgos, usos y actores responsables."
+categories:
+  - "Ética y gobernanza"
+  - "Seguridad y riesgos"
+date-modified: 2026-08-30
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **Reglamento de Inteligencia Artificial de la Unión Europea**, conocido como
+**AI Act**, establece obligaciones para proveedores, responsables del
+despliegue, importadores y distribuidores de sistemas de IA. Combina reglas
+basadas en el riesgo con otras ligadas al uso y al papel de cada actor: prohíbe
+determinadas prácticas, regula los sistemas de alto riesgo y añade obligaciones
+específicas para los modelos de IA de propósito general [@ue2024aiact].
+
+No clasifica como «alto riesgo» cualquier programa que use IA. La calificación
+depende de su finalidad prevista y de los criterios jurídicos aplicables. En los
+productos regulados, como determinados productos sanitarios, deben cumplirse
+conjuntamente las condiciones del artículo 6.1: que el sistema sea un componente
+de seguridad —o el propio producto— y que requiera evaluación de conformidad por
+un tercero [@mdcg2025aiact].
+
+## Contexto histórico
+
+La Comisión Europea propuso el reglamento en 2021. El texto definitivo,
+**Reglamento (UE) 2024/1689**, entró en vigor el 1 de agosto de 2024 y estableció
+una aplicación escalonada. El **Reglamento (UE) 2026/1744**, en vigor desde julio
+de 2026, modificó aspectos del calendario y de la aplicación sin sustituir el
+marco original [@ue2024aiact; @ue2026aiomnibus].
+
+## Importancia actual
+
+A fecha de agosto de 2026, el AI Act ya es aplicable en buena parte de su
+contenido. Las prohibiciones y las obligaciones de alfabetización en IA se
+aplican desde febrero de 2025; la gobernanza y las reglas para modelos de
+propósito general, desde agosto de 2025; y la aplicación general comenzó el 2 de
+agosto de 2026. Tras la reforma de 2026, las reglas de alto riesgo del anexo III
+se aplicarán el 2 de diciembre de 2027 y las relativas a productos del anexo I,
+el 2 de agosto de 2028 [@comision2026aiact].
+
+## Aplicaciones
+
+### Generales
+
+- Determinar si una práctica de IA está prohibida o sujeta a obligaciones.
+- Documentar riesgos, supervisión humana, calidad de datos y trazabilidad.
+- Informar a las personas cuando interactúan con ciertos sistemas de IA.
+- Distribuir responsabilidades entre quien desarrolla, comercializa y utiliza
+  el sistema.
+
+### Sanitarias
+
+- Coordinar el cumplimiento del AI Act con los reglamentos de productos
+  sanitarios y de diagnóstico in vitro.
+- Delimitar si un sistema clínico es de alto riesgo según su finalidad prevista
+  y su procedimiento de evaluación de conformidad.
+- Integrar gestión de riesgos, vigilancia poscomercialización y registro de
+  incidentes sin confundirlos con la validación clínica.
+- Precisar cuándo una organización sanitaria actúa como responsable del
+  despliegue y qué obligaciones asume [@mdcg2025aiact].
+
+## Limitaciones
+
+- Es un marco jurídico dinámico: los plazos y actos de desarrollo deben
+  comprobarse en fuentes oficiales antes de tomar una decisión.
+- Su clasificación no equivale a una evaluación de eficacia, utilidad clínica o
+  seguridad en una población concreta.
+- Puede solaparse con normas sectoriales, protección de datos, ciberseguridad y
+  responsabilidad profesional.
+- La categoría «alto riesgo» no debe inferirse solo porque una aplicación sea
+  sanitaria.
+- Esta ficha es divulgativa y no sustituye asesoramiento jurídico.
+
+## Ejemplos
+
+Un programa que prioriza pacientes para recibir atención urgente puede quedar
+sujeto a obligaciones distintas de un asistente administrativo. Del mismo modo,
+un modelo incorporado a un producto sanitario no entra automáticamente en el
+artículo 6.1: hay que comprobar su función y si la evaluación de conformidad
+exige la intervención de un organismo notificado [@mdcg2025aiact].
+
+## Relacionados
+
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

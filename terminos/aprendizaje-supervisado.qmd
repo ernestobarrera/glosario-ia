@@ -1,0 +1,77 @@
+---
+title: "Aprendizaje supervisado"
+aliases:
+  - /terminos/supervised-learning.html
+sinonimos:
+  - "Supervised learning"
+description: "Enfoque de aprendizaje automático que ajusta un modelo a partir de ejemplos con una salida conocida."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-08-30
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **aprendizaje supervisado**, o **supervised learning**, ajusta un modelo con
+pares formados por una entrada y una salida objetivo. El modelo aprende una
+relación que después utiliza para clasificar casos o estimar valores en datos no
+vistos.
+
+Las etiquetas no «supervisan» al modelo como lo haría una persona durante cada
+predicción: aportan la señal de aprendizaje. Su calidad, definición y
+representatividad condicionan el resultado.
+
+## Contexto histórico
+
+Muchos métodos estadísticos de clasificación y regresión anteceden al término
+actual. Con el desarrollo del aprendizaje automático, el aprendizaje supervisado
+se convirtió en una de sus familias principales y, más tarde, en la base de gran
+parte del entrenamiento de redes neuronales [@lecun2015deep].
+
+## Importancia actual
+
+A fecha de agosto de 2026, sigue siendo esencial en predicción, reconocimiento de
+patrones y evaluación comparativa. También es el marco en el que resulta más
+visible el coste de crear etiquetas fiables y evitar fugas de información.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificación de imágenes, mensajes o transacciones.
+- Predicción de cantidades mediante regresión.
+- Detección de eventos a partir de ejemplos previamente etiquetados.
+
+### Sanitarias
+
+- Estimar riesgo clínico a partir de resultados conocidos.
+- Clasificar imágenes con etiquetas diagnósticas [@esteva2017dermatology].
+- Extraer información de documentos anotados por profesionales.
+
+## Limitaciones
+
+- Requiere etiquetas cuyo significado puede ser ambiguo o variable.
+- Puede aprender atajos y sesgos presentes en los datos.
+- La separación incorrecta entre entrenamiento y prueba infla el rendimiento.
+- Una buena discriminación retrospectiva no demuestra utilidad clínica.
+
+## Ejemplos
+
+Un modelo puede aprender a distinguir categorías de lesiones a partir de
+imágenes con diagnósticos de referencia. Antes de usarlo en otro entorno hay que
+comprobar calibración, representatividad y rendimiento por subgrupos.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

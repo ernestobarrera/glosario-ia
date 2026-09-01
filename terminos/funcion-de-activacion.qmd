@@ -1,0 +1,79 @@
+---
+title: "Función de activación"
+aliases:
+  - /terminos/activation-function.html
+sinonimos:
+  - "Activation function"
+description: "Función aplicada a la señal de una neurona artificial para introducir no linealidad y controlar su salida."
+categories:
+  - "Arquitecturas"
+  - "Fundamentos"
+date-modified: 2026-08-30
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Una **función de activación**, o **activation function**, transforma la entrada
+agregada de una neurona artificial antes de pasarla a la siguiente capa. Las
+activaciones no lineales permiten que una red represente relaciones que no
+podrían obtenerse apilando solo transformaciones lineales [@lecun2015deep].
+
+La elección depende de la arquitectura y de la función de la capa. ReLU y sus
+variantes son frecuentes en capas internas; sigmoide o softmax pueden utilizarse
+para convertir salidas en valores interpretables como probabilidades bajo
+supuestos concretos.
+
+## Contexto histórico
+
+Las primeras redes utilizaron funciones umbral y, más tarde, sigmoides
+diferenciables. La función ReLU simplificó el entrenamiento de redes profundas y
+ganó difusión tras mostrar ventajas prácticas frente a activaciones saturantes
+[@nair2010relu].
+
+## Importancia actual
+
+A fecha de agosto de 2026, las funciones de activación siguen influyendo en la
+expresividad, estabilidad y eficiencia del entrenamiento. Arquitecturas modernas
+usan además variantes como GELU o activaciones específicas de compuertas.
+
+## Aplicaciones
+
+### Generales
+
+- Introducir no linealidad en redes neuronales.
+- Controlar el rango de una salida.
+- Facilitar o estabilizar el flujo de gradientes.
+
+### Sanitarias
+
+- Construir redes para imagen médica, señales y texto clínico.
+- Modelar salidas binarias o multiclase.
+- Diseñar modelos de riesgo, recordando que una activación no garantiza una
+  probabilidad bien calibrada.
+
+## Limitaciones
+
+- Algunas activaciones saturan y reducen el gradiente.
+- ReLU puede dejar unidades permanentemente inactivas.
+- La elección incorrecta en la salida puede ser incompatible con la pérdida.
+- Una salida acotada entre 0 y 1 no está necesariamente calibrada.
+
+## Ejemplos
+
+En una capa interna, ReLU devuelve cero para entradas negativas y conserva las
+positivas. En una clasificación binaria, una sigmoide transforma un valor real
+en un número entre cero y uno, pero su interpretación probabilística debe
+comprobarse con datos independientes.
+
+## Relacionados
+
+- [Retropropagación](retropropagacion.qmd)
+- [Gradiente](gradiente.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
