@@ -78,6 +78,7 @@ esa señal en un diagnóstico autónomo.
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Transformer](transformer.qmd)
 - [Fine-tuning](fine-tuning.qmd)
+- [Retropropagación](retropropagacion.qmd)
 
 ## Referencias
 

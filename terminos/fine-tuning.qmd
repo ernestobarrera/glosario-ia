@@ -77,6 +77,7 @@ habría que medir su rendimiento en datos distintos de los de entrenamiento.
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Modelo de lenguaje de gran tamaño](llm.qmd)
 - [Transformer](transformer.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
 
 ## Referencias
 

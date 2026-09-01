@@ -90,6 +90,7 @@ sin sustituir la decisión clínica.
 
 - [Inteligencia artificial general](agi.qmd)
 - [Alucinación](alucinacion.qmd)
+- [Model Context Protocol](mcp.qmd)
 
 ## Referencias
 

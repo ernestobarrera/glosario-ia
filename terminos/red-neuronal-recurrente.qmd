@@ -1,0 +1,87 @@
+---
+title: "Red neuronal recurrente"
+aliases:
+  - /terminos/rnn.html
+  - /terminos/recurrent-neural-network.html
+sinonimos:
+  - "RNN"
+  - "Recurrent neural network"
+  - "Redes neuronales recurrentes"
+description: "Red neuronal cuyas conexiones cíclicas mantienen un estado interno, lo que le permite procesar secuencias y dependencias temporales."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-01
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Una **red neuronal recurrente**, o **RNN**, procesa los datos como una secuencia
+y conserva un estado interno que se actualiza en cada paso. A diferencia de una
+red que trata cada entrada por separado, la salida depende también de lo visto
+antes, lo que permite modelar orden y dependencias temporales.
+
+Ese estado es una memoria acotada, no un registro completo de la secuencia. Su
+capacidad de arrastrar información a lo largo del tiempo es limitada, y ahí está
+tanto su utilidad como su debilidad principal [@hochreiter1997lstm].
+
+## Contexto histórico
+
+Las RNN se formularon en los años ochenta para tratar datos secuenciales. Pronto
+se comprobó que aprender dependencias largas con descenso de gradiente es
+intrínsecamente difícil [@bengio1994longterm], lo que motivó arquitecturas con
+compuertas como **LSTM** y **GRU**, capaces de conservar información durante más
+pasos [@hochreiter1997lstm].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, los transformer han desplazado a las RNN en la
+mayoría de tareas de lenguaje, porque procesan la secuencia en paralelo y
+capturan mejor las relaciones a distancia. Las RNN y sus variantes siguen siendo
+razonables en series temporales, señales continuas y contextos con pocos datos o
+poco cómputo, donde una arquitectura más pequeña basta.
+
+## Aplicaciones
+
+### Generales
+
+- Modelar series temporales y previsión.
+- Procesar señales continuas y audio.
+- Etiquetar secuencias cuando el orden importa.
+
+### Sanitarias
+
+- Modelar la evolución de constantes vitales durante un ingreso.
+- Analizar señales fisiológicas como el electrocardiograma.
+- Aprovechar la secuencia temporal de la historia clínica electrónica, en lugar
+  de tratar cada registro como un caso aislado.
+
+## Limitaciones
+
+- El gradiente se desvanece o se desborda en secuencias largas.
+- El procesamiento es secuencial, lo que dificulta paralelizar el entrenamiento.
+- Los datos clínicos longitudinales llegan con huecos e intervalos irregulares
+  que la arquitectura no resuelve por sí sola.
+- Una predicción temporal acertada no identifica la causa del deterioro.
+
+## Ejemplos
+
+Un modelo recurrente puede recibir la secuencia de constantes de las últimas
+horas y estimar el riesgo de deterioro. La cuestión decisiva no es que capte el
+patrón en su cohorte de desarrollo, sino si lo mantiene en otro centro, con otra
+frecuencia de registro y otra prevalencia.
+
+## Relacionados
+
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Gradiente desvanecido](gradiente-desvanecido.qmd)
+- [Transformer](transformer.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Red neuronal convolucional](red-neuronal-convolucional.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,84 @@
+---
+title: "Few-shot learning"
+aliases:
+  - /terminos/aprendizaje-con-pocos-ejemplos.html
+sinonimos:
+  - "Aprendizaje con pocos ejemplos"
+  - "Few shot learning"
+description: "Capacidad de resolver una tarea nueva a partir de muy pocos ejemplos, ya sea reentrenando poco o mostrándolos en el propio prompt."
+categories:
+  - "Aprendizaje automático"
+  - "Modelos de lenguaje"
+date-modified: 2026-09-01
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **few-shot learning** es la capacidad de abordar una tarea nueva con muy pocos
+ejemplos, habitualmente entre uno y unos pocos por clase. Nació como problema de
+reconocimiento visual: aprender una categoría a partir de una o dos imágenes,
+apoyándose en lo aprendido sobre otras categorías [@feifei2006oneshot].
+
+Conviene separar dos cosas que hoy comparten nombre. Una es entrenar con pocos
+ejemplos, que modifica el modelo. La otra es el **aprendizaje en contexto**:
+incluir los ejemplos dentro del prompt de un modelo grande, que resuelve la
+tarea sin que ninguno de sus parámetros cambie [@brown2020fewshot].
+
+## Contexto histórico
+
+El planteamiento se formalizó en visión por computador a mediados de los años
+dos mil [@feifei2006oneshot]. El giro llegó en 2020, al comprobarse que los
+modelos de lenguaje de gran tamaño resuelven tareas nuevas con unos pocos
+ejemplos en el propio prompt, sin ajuste posterior [@brown2020fewshot].
+
+## Importancia actual
+
+A fecha de septiembre de 2026 es la vía más barata de adaptar un modelo a una
+tarea concreta: no requiere infraestructura de entrenamiento ni exportar datos
+para reentrenar. En sanidad esa segunda propiedad importa, porque muchas veces
+los datos no pueden salir de la organización.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificar textos con unos pocos ejemplos en el prompt.
+- Fijar el formato exacto de una salida mostrando dos o tres casos.
+- Prototipar una tarea antes de decidir si compensa un ajuste fino.
+
+### Sanitarias
+
+- Extraer campos de informes clínicos mostrando ejemplos ya anotados.
+- Explorar el reconocimiento de entidades poco frecuentes, donde reunir casos es
+  difícil por definición.
+- Normalizar texto libre a una terminología, con ejemplos que fijen el criterio.
+
+## Limitaciones
+
+- El rendimiento es sensible a qué ejemplos se eligen y en qué orden aparecen.
+- Los ejemplos ocupan contexto y encarecen cada consulta.
+- Unos pocos ejemplos no permiten estimar el rendimiento: hacen falta datos de
+  evaluación aparte, y suelen ser más que los ejemplos usados.
+- Incluir casos reales en un prompt es tratamiento de datos personales y exige
+  las mismas garantías que cualquier otro uso.
+
+## Ejemplos
+
+Para extraer el estadio tumoral de informes de anatomía patológica, se muestran
+tres informes con su estadio ya anotado y se pide el mismo formato para uno
+nuevo. Funciona a menudo; medir cuántas veces falla exige un conjunto de
+evaluación independiente y suficientemente grande.
+
+## Relacionados
+
+- [Prompt de sistema](prompt-de-sistema.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

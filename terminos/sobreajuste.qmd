@@ -71,6 +71,7 @@ centro donde esa asociación no existe.
 - [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
 - [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Regularización](regularizacion.qmd)
 
 ## Referencias
 

@@ -1,0 +1,88 @@
+---
+title: "Espacio latente"
+aliases:
+  - /terminos/latent-space.html
+sinonimos:
+  - "Latent space"
+  - "Espacio de representación"
+description: "Espacio vectorial en el que un modelo sitúa sus representaciones internas, de modo que la proximidad geométrica refleja similitud aprendida."
+categories:
+  - "Fundamentos"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-01
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **espacio latente** es el espacio vectorial de muchas dimensiones donde un
+modelo coloca sus representaciones internas. Palabras, frases, imágenes o
+pacientes quedan convertidos en vectores, y la distancia entre ellos expresa la
+similitud que el modelo ha aprendido de sus datos.
+
+«Latente» significa que esas dimensiones no se corresponden con propiedades
+declaradas de antemano. Emergen del entrenamiento y, en general, no admiten una
+lectura directa: rara vez existe un eje que signifique «gravedad» o «edad»
+[@mikolov2013distributed].
+
+## Contexto histórico
+
+La idea procede del análisis factorial y de técnicas de reducción de
+dimensionalidad, y llegó al lenguaje con los métodos de semántica latente. El
+salto práctico vino con las representaciones distribuidas aprendidas por redes
+neuronales [@mikolov2013distributed] y, después, con las representaciones
+contextuales, en las que un mismo término ocupa posiciones distintas según su
+contexto [@devlin2019bert].
+
+## Importancia actual
+
+A fecha de septiembre de 2026 es el terreno común de casi todo el trabajo con
+modelos actuales: la búsqueda semántica, la recuperación que alimenta a un
+sistema RAG y la comparación de documentos operan sobre distancias en este
+espacio. Entender que la similitud es geométrica, y aprendida, explica buena
+parte de sus aciertos y de sus fallos.
+
+## Aplicaciones
+
+### Generales
+
+- Búsqueda semántica y recuperación de documentos.
+- Agrupamiento y visualización de colecciones de texto.
+- Comparación de similitud entre elementos heterogéneos.
+
+### Sanitarias
+
+- Recuperar literatura clínica por significado y no por coincidencia literal.
+- Comparar informes o notas clínicas que describen lo mismo con palabras
+  distintas.
+- Explorar agrupaciones de pacientes a partir de representaciones derivadas de
+  sus datos.
+
+## Limitaciones
+
+- Sus dimensiones no son interpretables: la proximidad no explica el porqué.
+- Refleja los sesgos y las lagunas del corpus de entrenamiento.
+- Depende por completo del modelo que lo genera; dos modelos producen espacios
+  no comparables entre sí.
+- Cercanía semántica no es equivalencia clínica: dos términos próximos pueden
+  designar entidades con manejo distinto.
+
+## Ejemplos
+
+En una búsqueda semántica, «infarto agudo de miocardio» y «síndrome coronario
+agudo» quedan cerca y una consulta recupera documentos que no comparten ninguna
+palabra con ella. Esa misma proximidad es un riesgo si se toma como sinonimia:
+son conceptos relacionados, no intercambiables.
+
+## Relacionados
+
+- [Embeddings](embeddings.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

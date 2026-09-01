@@ -1,0 +1,87 @@
+---
+title: "Red neuronal convolucional"
+aliases:
+  - /terminos/cnn.html
+  - /terminos/convolutional-neural-network.html
+sinonimos:
+  - "CNN"
+  - "Convolutional neural network"
+  - "Redes neuronales convolucionales"
+description: "Red neuronal que aplica filtros locales sobre datos con estructura de cuadrícula, como imágenes, para extraer características de forma jerárquica."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-01
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Una **red neuronal convolucional**, o **CNN**, aplica filtros que recorren la
+entrada y detectan patrones locales, combinándolos capa a capa en
+representaciones cada vez más abstractas. Está pensada para datos con estructura
+de cuadrícula, sobre todo imágenes [@lecun1998gradient].
+
+Dos propiedades explican su eficacia: el mismo filtro se reutiliza en toda la
+imagen, lo que reduce muchísimo el número de parámetros, y la jerarquía de capas
+pasa de bordes y texturas a formas y objetos.
+
+## Contexto histórico
+
+Las convoluciones en redes neuronales se formalizaron en los años noventa para
+reconocer caracteres manuscritos [@lecun1998gradient]. Su adopción masiva llegó
+en 2012, cuando una red convolucional profunda ganó la competición ImageNet con
+un margen amplio y desplazó a los descriptores diseñados a mano
+[@krizhevsky2017imagenet].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, las CNN siguen siendo una opción sólida en imagen
+médica, y conviven con arquitecturas de tipo transformer aplicadas a visión. En
+entornos con conjuntos de datos moderados y necesidad de eficiencia, una red
+convolucional bien entrenada continúa siendo competitiva.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificar y detectar objetos en imágenes.
+- Segmentar regiones dentro de una imagen.
+- Extraer representaciones visuales reutilizables en otras tareas.
+
+### Sanitarias
+
+- Clasificar lesiones cutáneas a partir de imágenes clínicas y dermatoscópicas
+  [@esteva2017dermatology].
+- Segmentar estructuras u órganos en tomografía y resonancia.
+- Detectar hallazgos en radiografía, fondo de ojo o anatomía patológica digital.
+
+## Limitaciones
+
+- Puede aprender el equipo, el centro o el protocolo en lugar de la enfermedad.
+- Es sensible a perturbaciones pequeñas que una persona no percibiría.
+- El rendimiento cae al cambiar de fabricante, de población o de preparación de
+  la muestra.
+- Una buena exactitud sobre imágenes seleccionadas no anticipa el rendimiento en
+  el flujo real, donde llegan estudios de peor calidad y casos atípicos.
+
+## Ejemplos
+
+Una CNN entrenada con radiografías de tórax puede señalar hallazgos compatibles
+con neumonía. Si en el conjunto de entrenamiento casi todas las radiografías
+portátiles pertenecían a pacientes graves, el modelo puede estar aprendiendo el
+tipo de equipo y no el proceso patológico.
+
+## Relacionados
+
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Red neuronal recurrente](red-neuronal-recurrente.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

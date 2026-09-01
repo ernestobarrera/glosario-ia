@@ -1,0 +1,89 @@
+---
+title: "Gradiente desvanecido"
+aliases:
+  - /terminos/vanishing-gradient.html
+sinonimos:
+  - "Vanishing gradient"
+  - "Desvanecimiento del gradiente"
+description: "Problema de entrenamiento en el que el gradiente se reduce al propagarse hacia las capas iniciales y estas dejan de aprender."
+categories:
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+date-modified: 2026-09-01
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **gradiente desvanecido** aparece cuando, al retropropagar el error, la señal
+se multiplica repetidamente por factores menores que uno y llega casi anulada a
+las capas iniciales. Esas capas apenas modifican sus parámetros y el
+entrenamiento se estanca en la parte del modelo que construye las
+representaciones básicas.
+
+El fenómeno inverso también existe: si los factores son mayores que uno, el
+gradiente se desborda. Ambos son manifestaciones del mismo problema de fondo,
+que es intrínseco al aprendizaje de dependencias largas por descenso de gradiente
+[@bengio1994longterm].
+
+## Contexto histórico
+
+Se identificó a principios de los años noventa como el obstáculo que impedía
+entrenar redes profundas y recurrentes, y se demostró que no era un defecto de
+implementación sino una dificultad estructural [@bengio1994longterm]. De ahí
+surgieron las arquitecturas con compuertas [@hochreiter1997lstm] y, más tarde,
+las activaciones no saturantes [@nair2010relu].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el problema está mitigado, no resuelto. Las
+conexiones residuales, la normalización y las activaciones tipo ReLU permiten
+entrenar redes muy profundas, pero el diagnóstico sigue siendo necesario cuando
+un modelo no aprende: distinguir un gradiente que se apaga de un problema de
+datos, de tasa de aprendizaje o de arquitectura cambia por completo qué hay que
+tocar.
+
+## Aplicaciones
+
+### Generales
+
+- Explicar por qué una red profunda no mejora durante el entrenamiento.
+- Justificar la elección de activaciones y de normalización.
+- Motivar el uso de conexiones residuales o de compuertas.
+
+### Sanitarias
+
+- Diagnosticar el estancamiento de modelos entrenados con imagen médica o
+  señales fisiológicas.
+- Entender por qué una red recurrente no capta dependencias largas en una
+  historia clínica longitudinal.
+- Interpretar con cautela un modelo clínico que no mejora: puede ser un problema
+  de optimización y no una ausencia real de señal en los datos.
+
+## Limitaciones
+
+- Sus síntomas se confunden con los de una tasa de aprendizaje mal elegida o
+  unos datos poco informativos.
+- Las soluciones habituales añaden coste computacional o hiperparámetros nuevos.
+- Mitigarlo mejora el entrenamiento, no la validez clínica del modelo resultante.
+
+## Ejemplos
+
+Una red recurrente que analiza semanas de constantes puede aprender bien las
+últimas horas y nada de los primeros días: el gradiente no llega hasta allí.
+Sustituirla por una arquitectura con compuertas suele recuperar esa parte de la
+señal.
+
+## Relacionados
+
+- [Gradiente](gradiente.qmd)
+- [Retropropagación](retropropagacion.qmd)
+- [Función de activación](funcion-de-activacion.qmd)
+- [Red neuronal recurrente](red-neuronal-recurrente.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
