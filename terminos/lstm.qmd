@@ -1,10 +1,10 @@
 ---
-title: "LSTM"
+title: "Long short-term memory"
 aliases:
   - /terminos/long-short-term-memory.html
   - /terminos/memoria-a-corto-y-largo-plazo.html
 sinonimos:
-  - "Long short-term memory"
+  - "LSTM"
   - "Memoria a corto y largo plazo"
 description: "Arquitectura recurrente con estado y compuertas que facilita el aprendizaje de dependencias largas en datos secuenciales."
 categories:
@@ -17,9 +17,10 @@ tipo: "concepto"
 
 ## Definición ampliada
 
-Una **LSTM** es una variante de red neuronal recurrente que mantiene un estado
-de celda y usa compuertas para decidir qué información incorpora, conserva y
-expone. Ese mecanismo crea caminos más estables para el gradiente y facilita
+**Long short-term memory**, o **LSTM**, es una variante de red neuronal
+recurrente que mantiene un estado de celda y usa compuertas para decidir qué
+información incorpora, conserva y expone.
+Ese mecanismo crea caminos más estables para el gradiente y facilita
 aprender dependencias separadas por muchos pasos [@hochreiter1997lstm].
 
 No almacena la secuencia completa ni elimina por completo los problemas de

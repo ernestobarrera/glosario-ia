@@ -77,6 +77,7 @@ una indicación de tratamiento diferenciado mientras no se contraste.
 - [Aprendizaje automático](aprendizaje-automatico.qmd)
 - [Espacio latente](espacio-latente.qmd)
 - [Embeddings](embeddings.qmd)
+- [Reducción de dimensionalidad](reduccion-de-dimensionalidad.qmd)
 
 ## Referencias
 

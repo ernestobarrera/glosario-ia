@@ -28,8 +28,8 @@ del esperado. El mínimo posible depende de las particiones y no siempre es -1.
 
 ## Contexto histórico
 
-William Rand propuso en 1971 un índice basado en pares. Lawrence Hubert y Phipps
-Arabie publicaron en 1985 la corrección por azar que dio lugar al ARI
+William Rand propuso en 1971 un índice basado en pares [@rand1971criteria].
+Lawrence Hubert y Phipps Arabie publicaron en 1985 la corrección por azar que dio lugar al ARI
 [@hubert1985ari]. Desde entonces se utiliza para evaluar agrupamientos cuando
 existe una partición de referencia o para comparar la estabilidad entre dos
 resultados.

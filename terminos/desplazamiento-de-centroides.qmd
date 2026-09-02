@@ -28,8 +28,8 @@ distancia numérica similar ya no tiene por qué significar lo mismo.
 
 El centroide es una noción geométrica que pasó a métodos de agrupamiento como
 k-means. Con las representaciones distribuidas del lenguaje, el promedio de
-vectores comenzó a utilizarse como resumen aproximado de colecciones de palabras
-o documentos [@mikolov2013distributed].
+vectores comenzó a utilizarse como resumen aproximado de palabras y sintagmas
+[@mikolov2013distributed].
 
 ## Importancia actual
 
@@ -73,6 +73,7 @@ una frase obligatoria añadida a todos los textos, no un cambio en los pacientes
 - [Espacio latente](espacio-latente.qmd)
 - [Embeddings](embeddings.qmd)
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Índice de Rand ajustado](indice-rand-ajustado.qmd)
 
 ## Referencias
 
