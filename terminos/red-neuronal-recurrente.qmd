@@ -80,6 +80,7 @@ frecuencia de registro y otra prevalencia.
 - [Transformer](transformer.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Red neuronal convolucional](red-neuronal-convolucional.qmd)
+- [LSTM](lstm.qmd)
 
 ## Referencias
 

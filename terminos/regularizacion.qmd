@@ -80,6 +80,7 @@ esa selección concreta sea inestable si se repite el muestreo.
 - [Aprendizaje automático](aprendizaje-automatico.qmd)
 - [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
 
 ## Referencias
 

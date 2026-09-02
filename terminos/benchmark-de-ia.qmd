@@ -1,0 +1,89 @@
+---
+title: "Benchmark de IA"
+aliases:
+  - /terminos/benchmarks-en-ia.html
+  - /terminos/prueba-de-referencia-en-ia.html
+sinonimos:
+  - "Benchmarks en IA"
+  - "Prueba de referencia"
+  - "AI benchmark"
+description: "Conjunto definido de tareas, datos, métricas y reglas usado para comparar sistemas de IA en condiciones reproducibles."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **benchmark de IA** combina una tarea, un conjunto de datos, una o varias
+métricas y un protocolo de evaluación. Su función es hacer comparables dos
+sistemas bajo condiciones declaradas: qué ejemplos ven, qué respuesta se
+considera correcta y cómo se resume el resultado.
+
+Una puntuación no mide la inteligencia «en general». Solo describe el
+rendimiento en ese protocolo, y pierde sentido si cambian los datos, la métrica
+o las condiciones de uso.
+
+## Contexto histórico
+
+Los conjuntos de prueba acompañan al aprendizaje automático desde sus primeras
+etapas. ImageNet amplió la escala de la evaluación en visión al organizar
+millones de imágenes dentro de una jerarquía de conceptos
+[@deng2009imagenet]. En lenguaje, GLUE reunió nueve tareas bajo una evaluación
+común para comprobar transferencia entre problemas distintos
+[@wang2018glue].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, los benchmarks siguen ordenando buena parte de
+la investigación, pero también muestran sus límites: las pruebas se saturan,
+los datos pueden contaminar el entrenamiento y pequeñas diferencias de
+protocolo producen clasificaciones distintas. Por eso, junto a la puntuación
+deben publicarse versión, datos, código y condiciones de ejecución.
+
+## Aplicaciones
+
+### Generales
+
+- Comparar modelos que resuelven la misma tarea.
+- Detectar regresiones entre versiones de un sistema.
+- Medir por separado exactitud, robustez, coste o latencia.
+
+### Sanitarias
+
+- Evaluar modelos retrospectivos sobre una cohorte clínica bien descrita.
+- Comparar métodos de extracción de información sobre el mismo corpus anotado.
+- Reproducir experimentos con bases como MIMIC-III, que aporta datos de cuidados
+  críticos desidentificados [@johnson2016mimic].
+
+## Limitaciones
+
+- Buen rendimiento en el benchmark no demuestra utilidad clínica ni seguridad.
+- La reutilización repetida del conjunto de prueba favorece el sobreajuste.
+- Una métrica agregada puede ocultar fallos en subgrupos o casos infrecuentes.
+- Si el conjunto de entrenamiento contiene ejemplos de la prueba, la puntuación
+  deja de medir generalización.
+- Los resultados de una base unicéntrica no se trasladan automáticamente a otro
+  centro, población o flujo de trabajo.
+
+## Ejemplos
+
+Dos modelos obtienen AUROC similares al predecir deterioro sobre MIMIC-III. El
+benchmark permite comparar ese experimento, pero no decidir cuál debe usarse en
+otro hospital: aún faltan validación externa, calibración y evaluación de su
+efecto sobre la atención.
+
+## Relacionados
+
+- [Sobreajuste](sobreajuste.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

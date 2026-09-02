@@ -1,0 +1,87 @@
+---
+title: "Clúster semántico"
+aliases:
+  - /terminos/semantic-cluster.html
+  - /terminos/agrupamiento-semantico.html
+sinonimos:
+  - "Semantic cluster"
+  - "Agrupamiento semántico"
+description: "Grupo de representaciones vectoriales próximas entre sí que se interpreta como una agrupación de elementos con significado relacionado."
+categories:
+  - "Procesamiento del lenguaje"
+  - "Aprendizaje automático"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **clúster semántico** es un grupo de textos, imágenes u otros objetos cuyas
+representaciones vectoriales quedan próximas según una métrica y un algoritmo
+de agrupamiento. La interpretación «semántica» aparece después: se examinan sus
+miembros y se valora si comparten un tema o significado reconocible.
+
+No es una pieza que el modelo conserve necesariamente en su interior. A menudo
+es el resultado de aplicar un método externo a embeddings o respuestas
+observadas.
+
+## Contexto histórico
+
+El agrupamiento procede de la estadística y del reconocimiento de patrones. Su
+uso sobre lenguaje creció cuando las representaciones distribuidas permitieron
+comparar palabras mediante geometría [@mikolov2013distributed]. Los embeddings
+contextuales ampliaron el análisis a frases y usos dependientes del contexto
+[@devlin2019bert].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, los clústeres semánticos se usan para explorar
+corpus, organizar resultados y detectar familias de respuestas. Son útiles como
+mapa de trabajo, pero no convierten por sí solos la distancia vectorial en una
+categoría humana válida ni explican cómo razonó el modelo.
+
+## Aplicaciones
+
+### Generales
+
+- Agrupar documentos o comentarios por tema.
+- Explorar la diversidad de respuestas a un mismo prompt.
+- Organizar candidatos para revisión, etiquetado o recuperación.
+
+### Sanitarias
+
+- Ordenar literatura por semejanza temática antes de una revisión humana.
+- Explorar patrones en notas clínicas desidentificadas.
+- Proponer fenotipos de pacientes como hipótesis que después requieren
+  validación clínica y externa.
+
+## Limitaciones
+
+- El resultado depende del embedding, la métrica, el algoritmo y sus parámetros.
+- Forzar un número de grupos puede fabricar fronteras que no existen.
+- Un clúster compacto puede reflejar estilo o vocabulario, no significado
+  clínicamente relevante.
+- Las visualizaciones en dos dimensiones distorsionan parte de la geometría.
+- Agrupar texto clínico no resuelve sus requisitos de privacidad ni gobernanza.
+
+## Ejemplos
+
+Al agrupar resúmenes de artículos, aparecen conjuntos sobre diagnóstico,
+tratamiento y pronóstico. Esa separación ayuda a cribar, pero solo la lectura de
+los artículos permite decidir si los grupos responden realmente a la pregunta
+de investigación.
+
+## Relacionados
+
+- [Espacio latente](espacio-latente.qmd)
+- [Embeddings](embeddings.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+- [Desplazamiento de centroides](desplazamiento-de-centroides.qmd)
+- [Índice de Rand ajustado](indice-rand-ajustado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

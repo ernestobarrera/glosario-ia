@@ -1,0 +1,81 @@
+---
+title: "Desplazamiento de centroides"
+aliases:
+  - /terminos/centroid-shift.html
+sinonimos:
+  - "Centroid shift"
+  - "Distancia entre centroides"
+description: "Cambio de posición entre los vectores medios de dos grupos, medido dentro de un mismo espacio de representación."
+categories:
+  - "Aprendizaje automático"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **desplazamiento de centroides** compara los vectores medios de dos grupos.
+Cada centroide resume la posición de sus elementos y el cambio puede medirse
+con distancia euclídea, distancia coseno u otra medida declarada.
+
+La comparación solo es interpretable si ambos grupos están representados por el
+mismo modelo y en el mismo sistema de coordenadas. Si cambia el embedding, una
+distancia numérica similar ya no tiene por qué significar lo mismo.
+
+## Contexto histórico
+
+El centroide es una noción geométrica que pasó a métodos de agrupamiento como
+k-means. Con las representaciones distribuidas del lenguaje, el promedio de
+vectores comenzó a utilizarse como resumen aproximado de palabras y sintagmas
+[@mikolov2013distributed].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, esta medida sirve como estadístico descriptivo
+para vigilar cambios entre corpus, periodos o condiciones experimentales. No es
+un benchmark semántico estandarizado: necesita una hipótesis previa, una forma
+de emparejar los grupos y comprobaciones que expliquen qué produjo el cambio.
+
+## Aplicaciones
+
+### Generales
+
+- Comparar el centro de dos colecciones de documentos.
+- Detectar deriva en las representaciones de datos a lo largo del tiempo.
+- Explorar si dos instrucciones desplazan de forma consistente las respuestas.
+
+### Sanitarias
+
+- Señalar cambios en el vocabulario medio de informes entre periodos.
+- Explorar deriva entre cohortes antes de reutilizar un modelo.
+- Comparar grupos de literatura, sin confundir proximidad vectorial con
+  equivalencia clínica.
+
+## Limitaciones
+
+- El promedio oculta subgrupos, dispersión y formas no esféricas.
+- La magnitud depende de la escala y de la métrica elegida.
+- Un desplazamiento pequeño puede acompañar un cambio importante en pocos casos.
+- Si los grupos no están bien emparejados, la comparación carece de referente.
+- La medida describe un cambio; no demuestra su causa ni su importancia clínica.
+
+## Ejemplos
+
+Un hospital compara embeddings de informes antes y después de cambiar una
+plantilla. El centroide se desplaza, pero la inspección revela que la causa es
+una frase obligatoria añadida a todos los textos, no un cambio en los pacientes.
+
+## Relacionados
+
+- [Clúster semántico](cluster-semantico.qmd)
+- [Espacio latente](espacio-latente.qmd)
+- [Embeddings](embeddings.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Índice de Rand ajustado](indice-rand-ajustado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,85 @@
+---
+title: "Long short-term memory"
+aliases:
+  - /terminos/long-short-term-memory.html
+  - /terminos/memoria-a-corto-y-largo-plazo.html
+sinonimos:
+  - "LSTM"
+  - "Memoria a corto y largo plazo"
+description: "Arquitectura recurrente con estado y compuertas que facilita el aprendizaje de dependencias largas en datos secuenciales."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+**Long short-term memory**, o **LSTM**, es una variante de red neuronal
+recurrente que mantiene un estado de celda y usa compuertas para decidir qué
+información incorpora, conserva y expone.
+Ese mecanismo crea caminos más estables para el gradiente y facilita
+aprender dependencias separadas por muchos pasos [@hochreiter1997lstm].
+
+No almacena la secuencia completa ni elimina por completo los problemas de
+entrenamiento. Aprende qué conservar a partir de los datos y de la tarea.
+
+## Contexto histórico
+
+Hochreiter y Schmidhuber introdujeron la arquitectura en 1997 como respuesta a
+la dificultad de entrenar redes recurrentes sobre dependencias largas
+[@hochreiter1997lstm]. Esa dificultad había sido caracterizada pocos años antes
+al estudiar el aprendizaje mediante descenso de gradiente
+[@bengio1994longterm].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, los transformer dominan la mayor parte del
+lenguaje porque procesan secuencias en paralelo y modelan relaciones distantes
+con atención. Las LSTM siguen siendo una opción útil para series temporales,
+señales en flujo y sistemas pequeños donde la recurrencia encaja con el problema
+y el presupuesto de cómputo.
+
+## Aplicaciones
+
+### Generales
+
+- Predecir series temporales.
+- Clasificar o etiquetar secuencias.
+- Procesar audio y señales continuas.
+
+### Sanitarias
+
+- Modelar la evolución temporal de constantes vitales.
+- Analizar electrocardiogramas u otras señales fisiológicas.
+- Estudiar trayectorias longitudinales en historias clínicas electrónicas.
+
+## Limitaciones
+
+- El cálculo sigue siendo secuencial y se paraleliza peor que la atención.
+- Las dependencias muy largas continúan siendo difíciles.
+- Los datos clínicos irregulares, incompletos o muestreados con distinta
+  frecuencia requieren tratamiento específico.
+- El estado aprendido no equivale a una memoria interpretable.
+- Una predicción temporal no establece causalidad ni justifica una intervención.
+
+## Ejemplos
+
+Una LSTM recibe una secuencia horaria de constantes y estima riesgo de
+deterioro. Puede aprender patrones temporales, pero debe validarse en otros
+centros y frecuencias de registro antes de atribuir valor asistencial a la
+predicción.
+
+## Relacionados
+
+- [Red neuronal recurrente](red-neuronal-recurrente.qmd)
+- [Gradiente desvanecido](gradiente-desvanecido.qmd)
+- [Transformer](transformer.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

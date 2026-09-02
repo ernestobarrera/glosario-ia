@@ -1,0 +1,87 @@
+---
+title: "Función de pérdida"
+aliases:
+  - /terminos/loss-function.html
+  - /terminos/funcion-objetivo.html
+sinonimos:
+  - "Loss function"
+  - "Función de coste"
+description: "Función que asigna una penalización numérica a las predicciones de un modelo y guía el ajuste de sus parámetros durante el entrenamiento."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Una **función de pérdida** cuantifica el desacuerdo entre la salida de un modelo
+y el objetivo definido para cada ejemplo. El entrenamiento busca reducir una
+combinación de esas pérdidas, normalmente mediante gradientes que ajustan los
+parámetros [@rumelhart1986backprop].
+
+No es necesariamente la misma medida con la que se juzgará el sistema. Puede
+optimizarse entropía cruzada y después informar calibración, sensibilidad,
+especificidad o utilidad clínica.
+
+## Contexto histórico
+
+Las pérdidas proceden de la estadística, la teoría de decisión y la
+optimización. El error cuadrático se asoció a regresión y la pérdida
+logarítmica, a modelos probabilísticos. Con las redes neuronales, la función
+elegida se convirtió en el punto desde el que la retropropagación calcula cada
+actualización.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, diseñar la pérdida es una forma de declarar qué
+errores importan durante el aprendizaje. Pérdidas como *focal loss* reducen el
+peso de ejemplos fáciles para concentrar el entrenamiento en casos difíciles
+cuando existe gran desequilibrio [@lin2020focal]. Esa decisión técnica no
+sustituye la elección clínica de umbrales y consecuencias.
+
+## Aplicaciones
+
+### Generales
+
+- Entrenar modelos de regresión, clasificación o generación.
+- Penalizar de forma distinta clases o errores.
+- Combinar varios objetivos dentro de un mismo entrenamiento.
+
+### Sanitarias
+
+- Dar más peso durante el entrenamiento a eventos infrecuentes.
+- Optimizar segmentación de lesiones o estructuras anatómicas.
+- Incorporar costes asimétricos como hipótesis, separándolos de la decisión
+  clínica final.
+
+## Limitaciones
+
+- Minimizar la pérdida no garantiza buen rendimiento fuera de la muestra.
+- Una pérdida mal alineada puede mejorar la métrica interna y empeorar el uso
+  real.
+- Ponderar clases cambia el aprendizaje, pero no corrige etiquetas erróneas ni
+  falta de representatividad.
+- La pérdida de entrenamiento no informa por sí sola de calibración o beneficio
+  clínico.
+
+## Ejemplos
+
+En un modelo que detecta una complicación infrecuente, ponderar más los casos
+positivos puede aumentar la sensibilidad. El umbral de alerta debe decidirse
+después con datos externos y con el coste de falsos positivos; no viene fijado
+por la pérdida.
+
+## Relacionados
+
+- [Gradiente](gradiente.qmd)
+- [Retropropagación](retropropagacion.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
