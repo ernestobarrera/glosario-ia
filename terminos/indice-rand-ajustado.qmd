@@ -1,0 +1,85 @@
+---
+title: "Índice de Rand ajustado"
+aliases:
+  - /terminos/ari.html
+  - /terminos/adjusted-rand-index.html
+sinonimos:
+  - "ARI"
+  - "Adjusted Rand Index"
+description: "Índice corregido por azar que compara dos particiones de los mismos elementos a partir de los pares que agrupan igual o de forma distinta."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **índice de Rand ajustado**, o **ARI**, mide el acuerdo entre dos formas de
+agrupar los mismos elementos. Cuenta qué pares quedan juntos o separados en
+ambas particiones y descuenta el acuerdo esperado por azar bajo un modelo nulo
+con tamaños de grupo fijados [@hubert1985ari].
+
+Su máximo es 1 para particiones idénticas. Un valor cercano a 0 representa el
+acuerdo esperado por azar en ese modelo, y uno negativo indica menos acuerdo
+del esperado. El mínimo posible depende de las particiones y no siempre es -1.
+
+## Contexto histórico
+
+William Rand propuso en 1971 un índice basado en pares. Lawrence Hubert y Phipps
+Arabie publicaron en 1985 la corrección por azar que dio lugar al ARI
+[@hubert1985ari]. Desde entonces se utiliza para evaluar agrupamientos cuando
+existe una partición de referencia o para comparar la estabilidad entre dos
+resultados.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el ARI sigue siendo útil porque no necesita que
+los grupos lleven el mismo nombre: compara la pertenencia por pares. Esto lo
+hace adecuado para comprobar estabilidad, pero no para juzgar si los grupos
+tienen significado o utilidad.
+
+## Aplicaciones
+
+### Generales
+
+- Comparar un agrupamiento con etiquetas de referencia.
+- Medir estabilidad entre ejecuciones o remuestras.
+- Contrastar dos algoritmos sobre el mismo conjunto de objetos.
+
+### Sanitarias
+
+- Comprobar si unos fenotipos exploratorios se reproducen al remuestrear la
+  misma cohorte.
+- Comparar agrupamientos con categorías anotadas por especialistas.
+- Vigilar estabilidad antes de interpretar grupos de pacientes.
+
+## Limitaciones
+
+- Solo compara particiones de los mismos elementos.
+- No indica qué grupos discrepan ni por qué.
+- Un ARI alto no demuestra validez clínica de las categorías.
+- Depende de la estructura y los tamaños de los grupos.
+- No mide distancias semánticas entre centroides ni calidad interna del
+  agrupamiento.
+
+## Ejemplos
+
+Dos algoritmos agrupan los mismos cien documentos. Un ARI alto indica que
+mantienen juntos y separados casi los mismos pares, aunque llamen de otra forma
+a los grupos. Todavía hay que leer muestras para saber qué significa cada
+agrupación.
+
+## Relacionados
+
+- [Clúster semántico](cluster-semantico.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Desplazamiento de centroides](desplazamiento-de-centroides.qmd)
+- [Espacio latente](espacio-latente.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

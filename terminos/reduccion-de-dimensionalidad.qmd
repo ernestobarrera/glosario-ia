@@ -1,0 +1,81 @@
+---
+title: "Reducción de dimensionalidad"
+aliases:
+  - /terminos/dimensionality-reduction.html
+sinonimos:
+  - "Dimensionality reduction"
+  - "Reducción de dimensiones"
+description: "Transformación o selección que representa datos con menos variables procurando conservar las propiedades relevantes para el análisis."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **reducción de dimensionalidad** representa datos mediante menos variables.
+Puede seleccionar una parte de las características originales o construir otras
+nuevas que resuman su variación. La información conservada depende del método y
+del objetivo: no existe una proyección que preserve a la vez todas las
+distancias, relaciones y señales.
+
+## Contexto histórico
+
+El análisis de componentes principales, desarrollado a partir de comienzos del
+siglo XX, estableció la reducción lineal basada en la varianza. Más tarde
+aparecieron métodos no lineales destinados a visualizar vecindarios y
+variedades. UMAP es uno de ellos y combina una construcción topológica con una
+representación de baja dimensión [@mcinnes2018umap].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, se usa tanto para comprimir entradas como para
+explorar embeddings y datos ómicos. Su mayor riesgo es convertir una
+visualización útil en una explicación: que dos puntos aparezcan juntos en un
+plano no prueba que sean equivalentes en el espacio original.
+
+## Aplicaciones
+
+### Generales
+
+- Visualizar datos de muchas dimensiones.
+- Reducir coste computacional y redundancia.
+- Preparar variables para agrupamiento o clasificación.
+
+### Sanitarias
+
+- Explorar patrones en datos genómicos o de expresión celular.
+- Resumir variables correlacionadas antes de un análisis.
+- Visualizar representaciones de textos o imágenes para control de calidad.
+
+## Limitaciones
+
+- Toda reducción pierde o deforma alguna información.
+- Los componentes pueden ser difíciles de interpretar.
+- Ajustar la transformación antes de separar entrenamiento y prueba produce
+  fuga de información.
+- La apariencia de los grupos cambia con parámetros y semillas en métodos no
+  lineales.
+- Una separación visual no valida un biomarcador ni una categoría clínica.
+
+## Ejemplos
+
+UMAP muestra dos agrupaciones en datos transcriptómicos. La figura sirve para
+formular una hipótesis, pero no demuestra que existan dos enfermedades: hay que
+comprobar estabilidad, variables de confusión y asociación con datos clínicos
+independientes.
+
+## Relacionados
+
+- [Espacio latente](espacio-latente.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+- [Embeddings](embeddings.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

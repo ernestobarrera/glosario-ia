@@ -1,0 +1,87 @@
+---
+title: "One-shot learning"
+aliases:
+  - /terminos/aprendizaje-con-un-ejemplo.html
+  - /terminos/aprendizaje-one-shot.html
+sinonimos:
+  - "Aprendizaje con un ejemplo"
+  - "Aprendizaje one-shot"
+description: "Caso de aprendizaje con pocos ejemplos en el que el sistema debe reconocer o resolver una tarea nueva a partir de un único ejemplo por clase."
+categories:
+  - "Aprendizaje automático"
+  - "Modelos de lenguaje"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **one-shot learning** es el caso límite del aprendizaje con pocos ejemplos:
+el sistema recibe un solo ejemplo de una clase o tarea nueva. Para generalizar,
+no aprende desde cero con ese dato, sino que aprovecha representaciones,
+comparaciones o conocimiento adquiridos previamente [@feifei2006oneshot].
+
+En modelos de lenguaje, la expresión también puede referirse a incluir una sola
+demostración en el prompt. Eso es aprendizaje en contexto: cambia la entrada,
+no los parámetros del modelo [@brown2020fewshot].
+
+## Contexto histórico
+
+El problema se estudió primero en reconocimiento de patrones y visión. Los
+enfoques comparaban el ejemplo nuevo con representaciones aprendidas sobre otras
+categorías. El trabajo de Fei-Fei y colaboradores mostró una formulación
+temprana para reconocer categorías visuales a partir de muy pocos ejemplos
+[@feifei2006oneshot].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el término conecta dos líneas distintas: modelos
+entrenados para adaptarse con un ejemplo y modelos generativos guiados por una
+demostración en el contexto. En ambos casos, «one-shot» describe la cantidad de
+ejemplos nuevos, no la cantidad total de datos o conocimiento que sostiene al
+sistema.
+
+## Aplicaciones
+
+### Generales
+
+- Reconocer una categoría nueva mediante comparación con un prototipo.
+- Personalizar una tarea cuando solo existe una demostración.
+- Guiar el formato de un modelo de lenguaje con un ejemplo en el prompt.
+
+### Sanitarias
+
+- Investigar adaptación a clases raras apoyándose en representaciones
+  previamente entrenadas.
+- Comparar una imagen nueva con prototipos curados como ayuda exploratoria.
+- Enseñar a un modelo el formato de extracción mediante un caso ficticio y
+  verificar después su rendimiento sobre un conjunto independiente.
+
+## Limitaciones
+
+- Un único ejemplo puede ser atípico, ambiguo o erróneo.
+- El rendimiento depende de todo el preentrenamiento y no nace de ese ejemplo.
+- La elección de la demostración puede cambiar mucho la salida.
+- Aprender de un caso no equivale a validar sobre un caso.
+- En sanidad, una enfermedad rara no puede diagnosticarse de forma fiable por
+  haber mostrado al modelo un solo paciente.
+
+## Ejemplos
+
+Un modelo de lenguaje recibe una historia clínica ficticia con el formato de
+variables que debe extraer y después procesa otros textos. La demostración única
+puede aclarar la tarea, pero la exactitud debe medirse en casos independientes y
+representativos.
+
+## Relacionados
+
+- [Few-shot learning](few-shot-learning.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Embeddings](embeddings.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
