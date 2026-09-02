@@ -1,0 +1,103 @@
+---
+title: "Descarga cognitiva"
+aliases:
+  - /terminos/cognitive-offloading.html
+  - /terminos/externalizacion-cognitiva.html
+sinonimos:
+  - "Cognitive offloading"
+  - "Externalización cognitiva"
+  - "Delegación cognitiva"
+description: "Uso de un recurso externo para reducir el esfuerzo mental de una tarea, trasladando fuera de la cabeza parte del trabajo de recordar, calcular o razonar."
+categories:
+  - "Fundamentos"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-02
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **descarga cognitiva**, o **cognitive offloading**, es el uso de una acción
+física o de un recurso externo para reducir la demanda mental de una tarea:
+apuntar en lugar de memorizar, girar la cabeza en lugar de rotar la imagen
+mentalmente, consultar en lugar de recordar [@risko2016offloading].
+
+No es un defecto ni un atajo ilegítimo. Es una estrategia normal y en general
+eficaz, y la cuestión relevante nunca es si se descarga, sino **qué se descarga,
+en qué apoyo y con qué capacidad de verificarlo**. Un modelo de lenguaje se
+distingue de una libreta en dos cosas: responde a lenguaje natural con muy poca
+fricción, y puede devolver algo plausible y equivocado.
+
+## Contexto histórico
+
+El marco conceptual procede de la hipótesis de la mente extendida, que sostiene
+que un recurso externo acoplado de forma fiable puede formar parte del sistema
+cognitivo y no ser solo una ayuda [@clark1998extendedmind]. La evidencia
+empírica llegó con los buscadores: cuando se espera poder consultar un dato
+después, se recuerda peor el dato y mejor dónde encontrarlo
+[@sparrow2011google]. La revisión que fija el término y su medición es posterior
+[@risko2016offloading].
+
+## Importancia actual
+
+A fecha de septiembre de 2026 el debate se ha desplazado. Con los modelos
+generativos no se descarga solo el recuerdo o el cálculo, sino tramos de
+razonamiento y de redacción, y la interacción es conversacional e iterativa. Hay
+lecturas que ya no la describen como delegación sino como un ciclo acoplado
+entre persona y sistema, con fases de externalización, generación, evaluación y
+actualización del propio estado mental [@zhaohan2026acoplamiento]. Cuál de las
+dos descripciones capta mejor el fenómeno es una cuestión abierta.
+
+## Aplicaciones
+
+### Generales
+
+- Decidir qué conviene externalizar y qué conviene seguir sabiendo.
+- Diseñar apoyos que dejen rastro verificable de lo que hicieron.
+- Distinguir la ayuda que ahorra esfuerzo de la que sustituye el criterio.
+
+### Sanitarias
+
+- Delegar en sistemas la parte reglada —cálculos de dosis, interacciones,
+  recordatorios— conservando el juicio sobre el caso.
+- Vigilar la pérdida de destreza por uso sostenido de una ayuda: tras la
+  introducción de detección asistida en colonoscopia se observó una caída de la
+  tasa de detección de adenomas en los procedimientos sin asistencia
+  [@budzyn2025deskilling].
+- Reconocer que estar «en el circuito» no basta: si verificar cuesta más que
+  aceptar, la descarga se convierte en sesgo de automatización
+  [@goddard2012automation].
+
+## Limitaciones
+
+- El término describe una estrategia, no un resultado: descargar puede mejorar o
+  empeorar el desempeño según la tarea, el apoyo y la persona.
+- La evidencia clásica procede de memoria y tareas espaciales; su traslado al
+  razonamiento delegado en modelos generativos está por establecer.
+- Casi toda la investigación mide lo que se pierde y muy poco lo que se gana en
+  comprensión o en exploración del problema, así que el balance real es difícil
+  de estimar.
+- Leer toda interacción con IA como descarga puede ser reduccionista: hay marcos
+  que la describen como acoplamiento constitutivo y no como delegación
+  [@zhaohan2026acoplamiento].
+
+## Ejemplos
+
+Un profesional que consulta al modelo la pauta de un anticoagulante y la aplica
+sin contrastarla ha descargado el recuerdo y también la verificación. Si en
+cambio la usa para recuperar el criterio, comprueba la fuente y decide, ha
+descargado el esfuerzo de búsqueda y ha conservado el juicio. La acción externa
+es la misma; lo que cambia es qué se quedó dentro.
+
+## Relacionados
+
+- [Fatiga agéntica humana](fatiga-agentica-humana.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Alucinación](alucinacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
