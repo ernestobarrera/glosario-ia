@@ -75,8 +75,9 @@ En decisión clínica sigue siendo mayoritariamente investigación.
 
 Un agente entrenado sobre registros de cuidados intensivos puede proponer pautas
 de fluidos y vasopresores que, según la evaluación retrospectiva, se asocian a
-mejor supervivencia [@komorowski2018sepsis]. Es un resultado de investigación
-sujeto a debate metodológico, no una pauta aplicable a pie de cama.
+mejor supervivencia [@komorowski2018sepsis]. No hay validación prospectiva ni
+beneficio causal demostrado: es un resultado de investigación sujeto a debate
+metodológico, no una pauta aplicable a pie de cama.
 
 ## Relacionados
 
