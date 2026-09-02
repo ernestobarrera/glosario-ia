@@ -1,0 +1,92 @@
+---
+title: "Aprendizaje por refuerzo"
+aliases:
+  - /terminos/reinforcement-learning.html
+  - /terminos/aprendizaje-por-reforzamiento.html
+sinonimos:
+  - "Reinforcement learning"
+  - "RL"
+  - "Aprendizaje por reforzamiento"
+description: "Enfoque en el que un agente aprende a decidir mediante la interacción con un entorno, guiado por recompensas asociadas a sus acciones."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-01
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+En el **aprendizaje por refuerzo**, o **reinforcement learning**, un agente
+observa un estado, elige una acción y recibe una recompensa. Repitiendo el ciclo
+aprende una política que maximiza la recompensa acumulada, no el acierto en cada
+paso aislado.
+
+Se distingue de los enfoques supervisados en que nadie le dice cuál era la
+acción correcta: solo recibe una señal de consecuencia, a menudo demorada. De
+ahí su dificultad central, el equilibrio entre explorar acciones nuevas y
+explotar las que ya funcionan [@watkins1992qlearning].
+
+## Contexto histórico
+
+Sus raíces están en la psicología del aprendizaje y su formalización algorítmica
+llegó con métodos como Q-learning, que aprende el valor de cada par estado-acción
+sin necesitar un modelo del entorno [@watkins1992qlearning]. La combinación con
+redes profundas produjo los resultados que lo hicieron conocido, entre ellos
+sistemas capaces de ganar al go a jugadores humanos de máximo nivel
+[@silver2016alphago].
+
+## Importancia actual
+
+A fecha de septiembre de 2026 tiene dos vidas distintas. En control, robótica y
+juegos es una herramienta madura. En el ajuste de modelos de lenguaje, el
+aprendizaje a partir de preferencias humanas es una pieza habitual del proceso.
+En decisión clínica sigue siendo mayoritariamente investigación.
+
+## Aplicaciones
+
+### Generales
+
+- Control y robótica.
+- Estrategias en juegos y simuladores.
+- Alinear modelos de lenguaje con preferencias humanas.
+
+### Sanitarias
+
+- Investigar políticas de tratamiento secuencial, como el manejo de fluidos y
+  vasopresores en sepsis [@komorowski2018sepsis].
+- Explorar la dosificación adaptativa en enfermedades crónicas.
+- Optimizar decisiones logísticas asistenciales, donde el error es reversible y
+  no afecta directamente al paciente.
+
+## Limitaciones
+
+- Requiere muchísima interacción, y en clínica no se puede experimentar con
+  pacientes para que el agente aprenda.
+- Aprender de registros retrospectivos arrastra las decisiones y los sesgos de
+  quienes trataron a esos pacientes.
+- La política aprendida no se puede evaluar contrafactualmente sin supuestos
+  fuertes: no se observa qué habría pasado con la alternativa.
+- Una recompensa mal especificada produce un comportamiento óptimo respecto a la
+  métrica y equivocado respecto al objetivo real.
+
+## Ejemplos
+
+Un agente entrenado sobre registros de cuidados intensivos puede proponer pautas
+de fluidos y vasopresores que, según la evaluación retrospectiva, se asocian a
+mejor supervivencia [@komorowski2018sepsis]. No hay validación prospectiva ni
+beneficio causal demostrado: es un resultado de investigación sujeto a debate
+metodológico, no una pauta aplicable a pie de cama.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

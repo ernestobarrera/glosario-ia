@@ -1,0 +1,84 @@
+---
+title: "Aprendizaje no supervisado"
+aliases:
+  - /terminos/unsupervised-learning.html
+sinonimos:
+  - "Unsupervised learning"
+description: "Enfoque de aprendizaje automático que busca estructura en datos sin etiquetas, sin una salida objetivo conocida."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-01
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **aprendizaje no supervisado**, o **unsupervised learning**, trabaja con datos
+sin salida objetivo. En lugar de aprender una relación entre entrada y etiqueta,
+busca estructura: grupos de casos parecidos, ejes de variación dominantes o
+representaciones más compactas que los datos originales.
+
+Que no haya etiquetas no significa que no haya supuestos. La medida de
+distancia, el preprocesado y el número de grupos que se pide encontrar
+determinan en buena parte el resultado.
+
+## Contexto histórico
+
+El agrupamiento y la reducción de dimensionalidad son anteriores al aprendizaje
+automático moderno y proceden de la estadística multivariante. Su relevancia
+creció con la abundancia de datos no etiquetados y con el aprendizaje
+autosupervisado, que aprovecha señal interna de los propios datos sin anotación
+manual [@lecun2015deep].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es la vía habitual cuando etiquetar es caro,
+lento o requiere criterio experto, algo especialmente cierto en clínica. En
+investigación sanitaria se usa además para generar hipótesis: proponer subgrupos
+que después hay que confirmar con otros datos.
+
+## Aplicaciones
+
+### Generales
+
+- Agrupar casos similares sin categorías predefinidas.
+- Reducir la dimensionalidad para visualizar o comprimir.
+- Detectar anomalías como desviaciones del patrón mayoritario.
+
+### Sanitarias
+
+- Proponer fenotipos clínicos dentro de un síndrome heterogéneo, como se hizo en
+  sepsis [@seymour2019phenotypes].
+- Agrupar perfiles de expresión génica para explorar subtipos de enfermedad.
+- Detectar registros atípicos en control de calidad de datos asistenciales.
+
+## Limitaciones
+
+- No hay una respuesta correcta con la que comparar: la evaluación es indirecta.
+- Cambiar el preprocesado o la métrica puede producir grupos distintos con los
+  mismos pacientes.
+- Un grupo estadístico no es una entidad clínica: puede no tener implicación
+  pronóstica ni terapéutica.
+- Sin validación en cohortes independientes, los subgrupos descritos tienden a
+  no replicarse.
+
+## Ejemplos
+
+Aplicado a datos de pacientes con sepsis, un algoritmo de agrupamiento puede
+describir varios fenotipos con perfiles clínicos y de laboratorio distintos
+[@seymour2019phenotypes]. El hallazgo es una hipótesis sobre heterogeneidad, no
+una indicación de tratamiento diferenciado mientras no se contraste.
+
+## Relacionados
+
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Espacio latente](espacio-latente.qmd)
+- [Embeddings](embeddings.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

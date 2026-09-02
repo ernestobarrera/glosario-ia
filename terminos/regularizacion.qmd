@@ -1,0 +1,87 @@
+---
+title: "Regularización"
+aliases:
+  - /terminos/regularization.html
+sinonimos:
+  - "Regularization"
+description: "Conjunto de técnicas que penalizan o restringen la complejidad de un modelo para mejorar su generalización a datos nuevos."
+categories:
+  - "Aprendizaje automático"
+date-modified: 2026-09-01
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **regularización** agrupa las técnicas que restringen a un modelo para que no
+se ajuste al ruido de sus datos de entrenamiento. La forma más común añade a la
+función de pérdida una penalización por coeficientes grandes: **L2**, o *ridge*,
+los encoge; **L1**, o *lasso*, además lleva algunos exactamente a cero y con ello
+selecciona variables [@tibshirani1996lasso].
+
+No toda regularización es una penalización explícita. El **dropout** desactiva
+unidades al azar durante el entrenamiento [@srivastava2014dropout], y la parada
+temprana, el aumento de datos o limitar el tamaño del modelo cumplen la misma
+función: reducir la capacidad efectiva de memorizar.
+
+## Contexto histórico
+
+La idea nace en la estadística, con la regresión ridge y después el lasso como
+respuesta al sobreajuste en modelos lineales con muchas variables
+[@tibshirani1996lasso]. Al crecer las redes neuronales, se incorporaron
+mecanismos propios del aprendizaje profundo, entre ellos el dropout
+[@srivastava2014dropout].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la regularización es una decisión de diseño
+inseparable del entrenamiento. En salud tiene además una consecuencia práctica:
+en cohortes pequeñas con muchas variables candidatas, es a menudo lo único que
+separa un modelo utilizable de uno que solo describe a sus propios pacientes.
+
+## Aplicaciones
+
+### Generales
+
+- Controlar el sobreajuste en modelos con muchos parámetros.
+- Seleccionar variables cuando hay más predictores que casos.
+- Estabilizar el entrenamiento de redes profundas.
+
+### Sanitarias
+
+- Ajustar modelos de riesgo con pocos eventos y muchas variables clínicas.
+- Seleccionar marcadores en datos ómicos, donde las variables superan con creces
+  a los pacientes.
+- Reducir la dependencia de detalles de un único centro antes de una validación
+  externa.
+
+## Limitaciones
+
+- Regularizar de más lleva al problema opuesto y el modelo deja de captar la
+  señal.
+- La intensidad se elige con validación: hacerlo sobre el conjunto de prueba
+  vuelve optimista la estimación del rendimiento.
+- El lasso reparte mal la importancia entre variables correlacionadas, algo
+  frecuente entre determinaciones clínicas.
+- Un coeficiente encogido o anulado no es una afirmación sobre causalidad ni
+  sobre irrelevancia biológica.
+
+## Ejemplos
+
+En un modelo de riesgo con doscientas variables y ochenta eventos, sin
+penalización el ajuste será casi perfecto en desarrollo y malo fuera. Con lasso,
+el modelo retiene unas pocas variables y suele generalizar mejor, a costa de que
+esa selección concreta sea inestable si se repite el muestreo.
+
+## Relacionados
+
+- [Sobreajuste](sobreajuste.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
