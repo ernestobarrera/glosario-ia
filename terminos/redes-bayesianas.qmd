@@ -1,0 +1,93 @@
+---
+title: "Redes bayesianas"
+aliases:
+  - /terminos/bayesian-networks.html
+  - /terminos/redes-de-creencia.html
+sinonimos:
+  - "Bayesian networks"
+  - "Redes de creencia"
+description: "Modelos gráficos que representan variables y sus dependencias condicionales para razonar con probabilidades ante información incompleta."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-03
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Las **redes bayesianas**, o **bayesian networks**, representan un conjunto de
+variables como nodos de un grafo dirigido sin ciclos, donde cada arco expresa una
+dependencia condicional y cada nodo lleva asociada una distribución de
+probabilidad dada la de sus padres. Al observar el valor de algunas variables, la
+red actualiza la probabilidad de las demás.
+
+También se las llama **redes de creencia** porque el grafo hace explícito qué se
+supone que depende de qué. Esa estructura es una hipótesis del modelizador o un
+resultado del aprendizaje sobre datos, y puede ser incorrecta.
+
+## Contexto histórico
+
+Formalizadas en los años ochenta a partir del trabajo sobre propagación de
+evidencia en redes de creencia [@pearl1986fusion], recogieron una tradición
+previa de razonamiento probabilístico en sistemas de ayuda al diagnóstico. Su
+adopción en biomedicina se documenta ya a comienzos de los 2000, con revisiones
+específicas del área [@lucas2004bayesian].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, conviven con los modelos neuronales y ocupan un
+espacio distinto: permiten integrar conocimiento experto con datos, manejan bien
+la información ausente y dejan a la vista los supuestos del modelo. Son útiles
+cuando importa más razonar con incertidumbre explícita que maximizar el
+rendimiento sobre grandes volúmenes de datos.
+
+## Aplicaciones
+
+### Generales
+
+- Estimar la probabilidad de sucesos a partir de observaciones parciales.
+- Combinar conocimiento de dominio con datos observados.
+- Analizar escenarios cambiando el valor de una variable y observando el efecto
+  sobre el resto.
+
+### Sanitarias
+
+- Apoyar el diagnóstico estimando la probabilidad de una afección dados síntomas
+  y factores de riesgo [@lucas2004bayesian].
+- Modelizar cadenas de causas y consecuencias en epidemiología, con supuestos
+  declarados.
+- Representar la incertidumbre de una decisión clínica en vez de reducirla a una
+  salida única.
+
+## Limitaciones
+
+- La inferencia exacta es computacionalmente costosa cuando crecen las variables
+  y sus conexiones.
+- Definir la estructura y las probabilidades condicionales exige datos o
+  conocimiento experto, y ambos pueden ser incompletos.
+- **Un arco no es una relación causal.** Interpretar el grafo en términos
+  causales requiere supuestos adicionales que deben declararse y justificarse.
+- Una probabilidad bien formulada no está necesariamente bien calibrada en la
+  población donde se usará.
+
+## Ejemplos
+
+Una red construida para valorar sospecha de tuberculosis puede combinar tos
+prolongada, fiebre y antecedente de exposición para estimar una probabilidad.
+Ese número depende de la prevalencia asumida y de las distribuciones
+introducidas: cambiando el contexto epidemiológico, la misma red devuelve otra
+cifra.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Clasificación](clasificacion.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

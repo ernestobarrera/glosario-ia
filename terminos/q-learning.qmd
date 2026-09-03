@@ -1,0 +1,91 @@
+---
+title: "Q-learning"
+aliases:
+  - /terminos/aprendizaje-q.html
+sinonimos:
+  - "Aprendizaje Q"
+description: "Algoritmo de aprendizaje por refuerzo que estima el valor esperado de cada acción en cada estado sin necesitar un modelo del entorno."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-03
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+**Q-learning**, o **aprendizaje Q**, estima una función que asigna a cada par de
+estado y acción el valor esperado de las recompensas futuras acumuladas. Con esa
+función, la política consiste en elegir en cada estado la acción de mayor valor.
+
+Dos rasgos lo definen. No necesita un modelo del entorno: aprende probando y
+observando el resultado. Y aprende fuera de política, es decir, puede mejorar su
+estimación del mejor comportamiento posible mientras se comporta de otra manera,
+por ejemplo explorando [@watkins1992qlearning].
+
+## Contexto histórico
+
+Chris Watkins lo introdujo en 1989 y su prueba de convergencia se publicó en 1992
+[@watkins1992qlearning]. Durante dos décadas se aplicó sobre tablas de estados y
+acciones, lo que lo limitaba a problemas pequeños. En 2015, sustituir esa tabla
+por una red neuronal profunda permitió aprender a jugar a videojuegos de Atari
+directamente desde los píxeles [@mnih2015dqn].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, Q-learning y sus variantes profundas siguen siendo
+una de las familias de referencia del aprendizaje por refuerzo en control,
+robótica y juegos. En sanidad su uso es de investigación: los trabajos publicados
+proponen políticas a partir de registros retrospectivos, no de la interacción con
+pacientes.
+
+## Aplicaciones
+
+### Generales
+
+- Aprender políticas de control en entornos simulados.
+- Optimizar decisiones secuenciales con recompensa diferida.
+- Entrenar agentes en videojuegos y bancos de pruebas [@mnih2015dqn].
+
+### Sanitarias
+
+- Investigar pautas de tratamiento secuencial sobre bases de datos de cuidados
+  intensivos [@komorowski2018sepsis].
+- Explorar estrategias de dosificación adaptativa como hipótesis de trabajo.
+- Optimizar decisiones logísticas y de programación, donde el error es reversible
+  y no afecta directamente al paciente.
+
+## Limitaciones
+
+- Necesita muchas interacciones para converger, algo asumible en simulación e
+  inviable con pacientes.
+- El equilibrio entre exploración y explotación es un problema abierto, y explorar
+  con personas no es aceptable.
+- **La recompensa es una elección del diseñador.** Un indicador intermedio fácil
+  de medir puede optimizarse a costa del desenlace que de verdad importa.
+- Evaluar fuera de política sobre datos retrospectivos es estadísticamente
+  frágil: las guías metodológicas del área advierten de conclusiones excesivas a
+  partir de este diseño [@gottesman2019rlhealth].
+- Los registros clínicos no contienen las acciones que nadie tomó, de modo que el
+  agente aprende dentro de lo que ya se hizo.
+
+## Ejemplos
+
+Un sistema entrenado sobre historiales de cuidados intensivos puede proponer
+pautas de fluidos y vasopresores asociadas retrospectivamente a mejor
+supervivencia [@komorowski2018sepsis]. No hay validación prospectiva ni beneficio
+causal demostrado, y la propia comunidad ha publicado criterios para interpretar
+con cautela este tipo de resultados [@gottesman2019rlhealth].
+
+## Relacionados
+
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

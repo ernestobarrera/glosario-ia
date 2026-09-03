@@ -1,0 +1,94 @@
+---
+title: "Agrupamiento"
+aliases:
+  - /terminos/clustering.html
+  - /terminos/analisis-de-conglomerados.html
+sinonimos:
+  - "Clustering"
+  - "Análisis de conglomerados"
+description: "Familia de técnicas no supervisadas que reparten los casos en grupos según su similitud, sin etiquetas previas."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-03
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **agrupamiento**, o **clustering**, reparte un conjunto de casos en grupos de
+manera que los miembros de un mismo grupo se parezcan más entre sí que a los de
+otros grupos. No usa etiquetas: la estructura, si aparece, procede de los datos y
+de las decisiones del analista.
+
+Ese resultado depende de cuatro elecciones que hay que declarar: cómo se
+representan los casos, qué métrica de distancia se usa, qué algoritmo y con qué
+parámetros. Al **análisis de conglomerados** clásico de la estadística se le suma
+hoy su aplicación sobre representaciones vectoriales, que es el terreno del
+clúster semántico.
+
+## Contexto histórico
+
+Los métodos se consolidaron en las décadas de 1960 y 1970 como herramienta
+exploratoria. El algoritmo k-medias, el más difundido, procede de un trabajo de
+Bell Labs de 1957 que no se publicó hasta 1982 [@lloyd1982kmeans]. Después
+llegaron las familias jerárquicas, las basadas en densidad y las probabilísticas.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el agrupamiento es una de las vías habituales para
+proponer subtipos dentro de poblaciones heterogéneas y para explorar corpus de
+texto. Su papel es generar hipótesis: la validación de esos grupos es un problema
+distinto y más difícil que su obtención.
+
+## Aplicaciones
+
+### Generales
+
+- Explorar la estructura de un conjunto de datos sin etiquetas.
+- Segmentar poblaciones o carteras de clientes.
+- Organizar documentos o resultados por semejanza.
+
+### Sanitarias
+
+- Proponer fenotipos dentro de un síndrome heterogéneo, como se hizo en sepsis
+  [@seymour2019phenotypes].
+- Explorar subtipos moleculares a partir de perfiles de expresión génica.
+- Identificar grupos de pacientes con patrones de utilización de recursos
+  parecidos.
+
+## Limitaciones
+
+- **Un algoritmo de agrupamiento siempre devuelve grupos**, haya o no estructura
+  real en los datos.
+- Métodos como k-medias exigen fijar de antemano el número de grupos, y ese
+  número cambia el resultado.
+- Los índices internos y de concordancia, como el índice de Rand ajustado,
+  miden estabilidad o acuerdo entre particiones, no relevancia clínica.
+- Los grupos pueden reflejar el centro, el protocolo de registro o la
+  disponibilidad del dato en lugar de la biología.
+- Una partición replicada en otra cohorte sigue siendo descriptiva: no implica
+  que a cada grupo le convenga un tratamiento distinto.
+
+## Ejemplos
+
+Sobre datos de pacientes con sepsis, un agrupamiento puede describir varios
+fenotipos con perfiles clínicos y analíticos diferenciados
+[@seymour2019phenotypes]. Repetir el análisis pidiendo tres grupos en lugar de
+cuatro produce otra partición, igualmente coherente en apariencia: por eso la
+elección del número de grupos y su validación externa forman parte del resultado,
+no del preprocesado.
+
+## Relacionados
+
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Clúster semántico](cluster-semantico.qmd)
+- [Índice de Rand ajustado](indice-rand-ajustado.qmd)
+- [Reducción de dimensionalidad](reduccion-de-dimensionalidad.qmd)
+- [Desplazamiento de centroides](desplazamiento-de-centroides.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

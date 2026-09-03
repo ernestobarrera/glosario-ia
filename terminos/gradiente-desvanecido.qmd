@@ -82,6 +82,7 @@ señal.
 - [Función de activación](funcion-de-activacion.qmd)
 - [Red neuronal recurrente](red-neuronal-recurrente.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Unidad lineal rectificada](relu.qmd)
 
 ## Referencias
 

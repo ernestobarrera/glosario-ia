@@ -85,6 +85,7 @@ metodológico, no una pauta aplicable a pie de cama.
 - [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
 - [Agente de IA](agente-de-ia.qmd)
+- [Q-learning](q-learning.qmd)
 
 ## Referencias
 
