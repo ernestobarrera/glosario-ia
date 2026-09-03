@@ -83,6 +83,7 @@ señal.
 - [Red neuronal recurrente](red-neuronal-recurrente.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Unidad lineal rectificada](relu.qmd)
+- [Descenso de gradiente](descenso-de-gradiente.qmd)
 
 ## Referencias
 

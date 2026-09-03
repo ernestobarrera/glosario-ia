@@ -80,6 +80,7 @@ de investigación.
 - [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
 - [Desplazamiento de centroides](desplazamiento-de-centroides.qmd)
 - [Índice de Rand ajustado](indice-rand-ajustado.qmd)
+- [Agrupamiento](agrupamiento.qmd)
 
 ## Referencias
 

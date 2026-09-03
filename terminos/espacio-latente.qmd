@@ -81,6 +81,7 @@ son conceptos relacionados, no intercambiables.
 - [Generación aumentada por recuperación](rag.qmd)
 - [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Agrupamiento](agrupamiento.qmd)
 
 ## Referencias
 

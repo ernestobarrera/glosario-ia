@@ -30,8 +30,8 @@ comparar con un ejemplo de referencia.
 Se describieron en 1993 para verificar firmas manuscritas: dos redes gemelas
 comparaban una firma con la registrada y decidían si procedían de la misma
 persona [@bromley1993siamese]. En 2005 se formalizó el aprendizaje
-discriminativo de esa métrica de similitud, aplicado a verificación facial
-[@chopra2005similarity].
+discriminativo de esa métrica de similitud, con una función de pérdida
+contrastiva aplicada a verificación facial [@chopra2005similarity].
 
 ## Importancia actual
 

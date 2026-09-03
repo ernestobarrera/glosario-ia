@@ -78,6 +78,7 @@ agrupación.
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
 - [Desplazamiento de centroides](desplazamiento-de-centroides.qmd)
 - [Espacio latente](espacio-latente.qmd)
+- [Agrupamiento](agrupamiento.qmd)
 
 ## Referencias
 

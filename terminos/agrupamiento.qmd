@@ -33,8 +33,9 @@ clúster semántico.
 Los métodos se consolidaron en las décadas de 1960 y 1970 como herramienta
 exploratoria. El procedimiento iterativo en el que se apoya k-medias, el
 algoritmo más difundido, se describió en Bell Labs en 1957 y no se publicó hasta
-1982 [@lloyd1982kmeans]. Después llegaron las familias jerárquicas, las basadas
-en densidad y las probabilísticas.
+1982 [@lloyd1982kmeans]. Junto a él conviven otras familias —jerárquicas,
+basadas en densidad y probabilísticas— que responden a criterios de similitud
+distintos y no forman una única secuencia cronológica.
 
 ## Importancia actual
 
@@ -61,8 +62,11 @@ distinto y más difícil que su obtención.
 
 ## Limitaciones
 
-- **Un algoritmo de agrupamiento siempre devuelve grupos**, haya o no estructura
-  real en los datos.
+- **Los métodos que fuerzan una partición, como k-medias, devuelven grupos
+  aunque no exista una estructura relevante**: el número de grupos es una entrada
+  del método, no un hallazgo. Otras familias no reparten todo el conjunto; los
+  métodos basados en densidad distinguen grupos de ruido y pueden dejar casos sin
+  asignar [@ester1996dbscan].
 - Métodos como k-medias exigen fijar de antemano el número de grupos, y ese
   número cambia el resultado.
 - Los índices internos y de concordancia, como el índice de Rand ajustado,

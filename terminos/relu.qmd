@@ -21,19 +21,21 @@ La **unidad lineal rectificada**, o **ReLU** por sus siglas en inglés
 (**rectified linear unit**), es la función de activación que devuelve el valor de
 entrada si es positivo y cero si es negativo.
 
-Su interés no está en la fórmula sino en dos consecuencias prácticas: para
-entradas positivas la derivada es constante, lo que evita que el gradiente se
-apague al atravesar muchas capas, y su cálculo es trivial, lo que abarata
-entrenar redes grandes [@nair2010relu].
+Su interés no está en la fórmula sino en dos consecuencias prácticas. Para
+entradas positivas su derivada es uno, lo que evita la atenuación debida a la
+saturación de la activación y ayuda a mitigar el gradiente desvanecido, aunque no
+lo elimina: la regla de la cadena sigue multiplicando los pesos capa a capa. Y su
+cálculo es trivial, lo que abarata entrenar redes grandes [@nair2010relu].
 
 ## Contexto histórico
 
 Las redes anteriores usaban activaciones saturantes, como la sigmoide o la
 tangente hiperbólica, cuya derivada se aproxima a cero en los extremos y
-dificultaba entrenar redes profundas. Los rectificadores se propusieron como
-alternativa a partir de 2010 y 2011 [@nair2010relu; @glorot2011rectifier], y su
-adopción se extendió tras el resultado de las redes convolucionales profundas en
-ImageNet en 2012 [@krizhevsky2017imagenet].
+dificultaba entrenar redes profundas. La rectificación tiene antecedentes
+anteriores, pero su uso en aprendizaje profundo recibió un impulso en 2010 y 2011
+[@nair2010relu; @glorot2011rectifier], y su adopción se extendió tras el
+resultado de las redes convolucionales profundas en ImageNet en 2012
+[@krizhevsky2017imagenet].
 
 ## Importancia actual
 

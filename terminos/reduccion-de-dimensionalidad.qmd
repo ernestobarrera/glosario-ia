@@ -74,6 +74,7 @@ independientes.
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
 - [Sobreajuste](sobreajuste.qmd)
 - [Embeddings](embeddings.qmd)
+- [Agrupamiento](agrupamiento.qmd)
 
 ## Referencias
 

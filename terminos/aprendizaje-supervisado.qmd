@@ -70,6 +70,7 @@ comprobar calibración, representatividad y rendimiento por subgrupos.
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Sobreajuste](sobreajuste.qmd)
 - [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Clasificación](clasificacion.qmd)
 
 ## Referencias
 
