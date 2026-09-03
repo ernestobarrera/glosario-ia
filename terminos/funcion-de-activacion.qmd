@@ -72,6 +72,7 @@ comprobarse con datos independientes.
 - [Retropropagación](retropropagacion.qmd)
 - [Gradiente](gradiente.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Unidad lineal rectificada](relu.qmd)
 
 ## Referencias
 

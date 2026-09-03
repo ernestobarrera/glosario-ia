@@ -81,6 +81,7 @@ frecuencia de registro y otra prevalencia.
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Red neuronal convolucional](red-neuronal-convolucional.qmd)
 - [LSTM](lstm.qmd)
+- [Descenso de gradiente](descenso-de-gradiente.qmd)
 
 ## Referencias
 

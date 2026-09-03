@@ -78,6 +78,8 @@ predicción.
 - [Gradiente desvanecido](gradiente-desvanecido.qmd)
 - [Transformer](transformer.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Descenso de gradiente](descenso-de-gradiente.qmd)
+- [Mecanismo de atención](mecanismo-de-atencion.qmd)
 
 ## Referencias
 

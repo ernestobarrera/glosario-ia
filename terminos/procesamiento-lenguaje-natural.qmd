@@ -78,6 +78,7 @@ en aprendizaje profundo [@wu2020clinicalnlp].
 - [Transformer](transformer.qmd)
 - [Aprendizaje automático](aprendizaje-automatico.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Mecanismo de atención](mecanismo-de-atencion.qmd)
 
 ## Referencias
 

@@ -1,0 +1,91 @@
+---
+title: "Redes siamesas"
+aliases:
+  - /terminos/siamese-networks.html
+sinonimos:
+  - "Siamese networks"
+description: "Arquitectura formada por dos o más ramas idénticas que comparten pesos y se entrenan para comparar entradas en lugar de clasificarlas."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-03
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Una **red siamesa**, o **siamese network**, procesa dos entradas con dos ramas
+idénticas que comparten exactamente los mismos pesos y produce una
+representación de cada una. El entrenamiento no busca la etiqueta de cada
+ejemplo, sino que las representaciones de pares semejantes queden próximas y las
+de pares distintos, separadas.
+
+El resultado no es un clasificador sino una medida de similitud aprendida. Por
+eso permite decidir sobre categorías que no aparecían en el entrenamiento: basta
+comparar con un ejemplo de referencia.
+
+## Contexto histórico
+
+Se describieron en 1993 para verificar firmas manuscritas: dos redes gemelas
+comparaban una firma con la registrada y decidían si procedían de la misma
+persona [@bromley1993siamese]. En 2005 se formalizó el aprendizaje
+discriminativo de esa métrica de similitud, con una función de pérdida
+contrastiva aplicada a verificación facial [@chopra2005similarity].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la idea de aprender una métrica en lugar de una
+clase está en la base de la verificación biométrica, de la búsqueda por
+similitud y de buena parte del aprendizaje con pocos ejemplos. Es también el
+mecanismo que hace útiles muchas representaciones vectoriales para recuperar
+casos parecidos.
+
+## Aplicaciones
+
+### Generales
+
+- Verificar si dos muestras corresponden a la misma identidad.
+- Buscar elementos parecidos dentro de una colección grande.
+- Abordar tareas con muy pocos ejemplos por categoría.
+
+### Sanitarias
+
+- Comparar dos estudios de imagen del mismo paciente para valorar cambio en el
+  tiempo.
+- Recuperar casos históricos parecidos a uno actual como apoyo a la revisión.
+- Trabajar con enfermedades raras, donde el número de ejemplos por categoría es
+  muy pequeño.
+
+## Limitaciones
+
+- El resultado depende de cómo se construyan los pares de entrenamiento: pares
+  demasiado fáciles no enseñan nada.
+- Entrenar sobre pares multiplica el coste computacional frente a clasificar
+  ejemplos sueltos.
+- **Similar no es equivalente**: dos imágenes próximas en la métrica aprendida
+  pueden serlo por el equipo, la posición o el protocolo de adquisición.
+- Comparar estudios seriados exige control de la técnica; un cambio en la
+  adquisición puede parecer un cambio en el paciente.
+- Un umbral de similitud es, como en cualquier prueba diagnóstica, una decisión
+  con consecuencias que debe calibrarse en la población de uso.
+
+## Ejemplos
+
+Una red siamesa puede comparar dos resonancias del mismo paciente separadas por
+meses y puntuar cuánto han cambiado. Si entre ambas cambió el equipo o la
+secuencia de adquisición, parte de esa diferencia es técnica, y solo la lectura
+radiológica permite separarla de la evolución real.
+
+## Relacionados
+
+- [One-shot learning](one-shot-learning.qmd)
+- [Few-shot learning](few-shot-learning.qmd)
+- [Embeddings](embeddings.qmd)
+- [Red neuronal convolucional](red-neuronal-convolucional.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

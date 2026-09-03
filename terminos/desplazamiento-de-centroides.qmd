@@ -74,6 +74,7 @@ una frase obligatoria añadida a todos los textos, no un cambio en los pacientes
 - [Embeddings](embeddings.qmd)
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
 - [Índice de Rand ajustado](indice-rand-ajustado.qmd)
+- [Agrupamiento](agrupamiento.qmd)
 
 ## Referencias
 

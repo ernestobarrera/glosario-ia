@@ -1,0 +1,96 @@
+---
+title: "Unidad lineal rectificada"
+aliases:
+  - /terminos/rectified-linear-unit.html
+  - /terminos/unidad-lineal-rectificada.html
+sinonimos:
+  - "ReLU"
+  - "Rectified linear unit"
+description: "Función de activación que deja pasar los valores positivos sin cambios y devuelve cero para los negativos."
+categories:
+  - "Arquitecturas"
+  - "Fundamentos"
+date-modified: 2026-09-03
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **unidad lineal rectificada**, o **ReLU** por sus siglas en inglés
+(**rectified linear unit**), es la función de activación que devuelve el valor de
+entrada si es positivo y cero si es negativo.
+
+Su interés no está en la fórmula sino en dos consecuencias prácticas. Para
+entradas positivas su derivada es uno, lo que evita la atenuación debida a la
+saturación de la activación y ayuda a mitigar el gradiente desvanecido, aunque no
+lo elimina: la regla de la cadena sigue multiplicando los pesos capa a capa. Y su
+cálculo es trivial, lo que abarata entrenar redes grandes [@nair2010relu].
+
+## Contexto histórico
+
+Las redes anteriores usaban activaciones saturantes, como la sigmoide o la
+tangente hiperbólica, cuya derivada se aproxima a cero en los extremos y
+dificultaba entrenar redes profundas. La rectificación tiene antecedentes
+anteriores, pero su uso en aprendizaje profundo recibió un impulso en 2010 y 2011
+[@nair2010relu; @glorot2011rectifier], y su adopción se extendió tras el
+resultado de las redes convolucionales profundas en ImageNet en 2012
+[@krizhevsky2017imagenet].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, ReLU y sus variantes siguen siendo la activación
+predeterminada de las capas internas en visión y en muchas arquitecturas
+convolucionales. Los transformer han popularizado variantes suaves como GELU,
+pero el principio de rectificación permanece.
+
+## Aplicaciones
+
+### Generales
+
+- Introducir no linealidad en las capas internas de una red profunda.
+- Entrenar redes de muchas capas sin que el gradiente se desvanezca por
+  saturación.
+- Reducir el coste de cómputo frente a activaciones más complejas.
+
+### Sanitarias
+
+- Construir redes convolucionales para imagen médica.
+- Entrenar modelos sobre señales fisiológicas y texto clínico.
+- Reducir el coste de entrenamiento en entornos con recursos limitados, como un
+  servicio que ajusta un modelo con su propio equipamiento.
+
+## Limitaciones
+
+- **Neuronas muertas**: una unidad que queda siempre en la zona negativa deja de
+  actualizarse y no vuelve a contribuir. El fenómeno depende de la
+  inicialización y de la tasa de aprendizaje, y se ha caracterizado de forma
+  analítica [@lu2020dyingrelu].
+- No está acotada por arriba, lo que puede producir activaciones muy grandes.
+- No es diferenciable en cero, detalle que se resuelve por convención en la
+  implementación.
+- Variantes como leaky ReLU mitigan las unidades muertas, pero añaden parámetros
+  que hay que elegir.
+- Cambiar la activación no corrige un problema de datos, de etiquetas ni de
+  diseño del estudio.
+
+## Ejemplos
+
+En una red convolucional que analiza radiografías, cada capa aplica sus filtros y
+pasa el resultado por ReLU, de modo que solo las respuestas positivas continúan
+hacia la capa siguiente. Si la tasa de aprendizaje es demasiado alta, parte de
+esas unidades puede quedar inactiva de forma permanente y la red pierde capacidad
+sin que el error de entrenamiento lo delate con claridad.
+
+## Relacionados
+
+- [Función de activación](funcion-de-activacion.qmd)
+- [Gradiente desvanecido](gradiente-desvanecido.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Red neuronal convolucional](red-neuronal-convolucional.qmd)
+- [Gradiente](gradiente.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,91 @@
+---
+title: "Clasificación"
+aliases:
+  - /terminos/classification.html
+sinonimos:
+  - "Classification"
+description: "Tarea en la que un modelo asigna a cada caso una categoría de un conjunto definido de antemano."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-03
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **clasificación**, o **classification**, es la tarea de asignar a cada entrada
+una etiqueta tomada de un conjunto cerrado: dos categorías en el caso binario,
+varias en el multiclase, o varias simultáneas en el multietiqueta.
+
+Casi ningún clasificador devuelve directamente una categoría. Devuelve una
+puntuación o una probabilidad estimada, y esta se convierte en categoría al
+aplicar un umbral. **Ese umbral no es un detalle técnico**: fija el reparto entre
+falsos positivos y falsos negativos, y es una decisión con consecuencias.
+
+## Contexto histórico
+
+La clasificación es una de las tareas más antiguas del reconocimiento de patrones
+y precede a la IA moderna: análisis discriminante y regresión logística en
+estadística, y desde los años sesenta algoritmos específicos como los árboles de
+decisión o las máquinas de vectores soporte. Las redes profundas la desplazaron
+en percepción a partir de 2012, cuando una red convolucional ganó la competición
+ImageNet con un margen amplio [@krizhevsky2017imagenet].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la mayoría de los sistemas de IA que llegan a un
+servicio sanitario son clasificadores: cribado de imágenes, estratificación de
+riesgo o categorización de texto clínico. Lo que decide su utilidad no suele ser
+el algoritmo, sino la calidad de las etiquetas, la calibración y el umbral
+elegido.
+
+## Aplicaciones
+
+### Generales
+
+- Separar correo legítimo de correo no deseado.
+- Reconocer objetos o escenas en imágenes.
+- Ordenar documentos o incidencias por categoría.
+
+### Sanitarias
+
+- Clasificar imágenes con etiquetas diagnósticas [@esteva2017dermatology].
+- Estratificar pacientes por riesgo estimado de un evento.
+- Codificar texto clínico en categorías administrativas o de investigación.
+
+## Limitaciones
+
+- Con clases muy desequilibradas, la exactitud global puede ser alta y el modelo
+  inútil para la clase infrecuente, que suele ser la que importa.
+- **Discriminar bien no es estar calibrado.** Un modelo puede ordenar
+  correctamente el riesgo y aun así devolver probabilidades sistemáticamente
+  desplazadas, lo que invalida su uso para decidir [@vancalster2019calibration].
+- El umbral depende del coste clínico de cada tipo de error y de la prevalencia
+  local; el que venía del estudio original rara vez es el adecuado.
+- El techo del modelo es la calidad de las etiquetas: si la etiqueta de
+  referencia es imperfecta, el rendimiento medido también lo es.
+- El rendimiento cae al cambiar de población, de equipo o de circuito
+  asistencial.
+
+## Ejemplos
+
+Un clasificador entrenado con imágenes dermatológicas seleccionadas puede
+alcanzar cifras altas de sensibilidad y especificidad [@esteva2017dermatology].
+Trasladado a una consulta con prevalencia mucho menor, el mismo umbral produce
+una proporción mucho mayor de falsos positivos, aunque el modelo no haya
+cambiado.
+
+## Relacionados
+
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

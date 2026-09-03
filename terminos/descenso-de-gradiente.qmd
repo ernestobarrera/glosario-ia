@@ -1,0 +1,88 @@
+---
+title: "Descenso de gradiente"
+aliases:
+  - /terminos/gradient-descent.html
+sinonimos:
+  - "Gradient descent"
+description: "Algoritmo de optimización que ajusta los parámetros de un modelo moviéndose en la dirección opuesta al gradiente de la función de pérdida."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-03
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **descenso de gradiente**, o **gradient descent**, actualiza los parámetros de
+un modelo dando pasos en la dirección opuesta al gradiente de la función de
+pérdida. El tamaño de cada paso lo fija la tasa de aprendizaje.
+
+En la práctica casi nunca se calcula el gradiente sobre todos los datos: se
+estima sobre pequeños subconjuntos, lo que da lugar a la versión estocástica y
+por lotes que se usa hoy para entrenar redes neuronales
+[@bottou2018optimization].
+
+## Contexto histórico
+
+El método procede de la optimización matemática del siglo XIX. Su versión
+estocástica, que sustituye el gradiente exacto por una estimación ruidosa, se
+formalizó en 1951 en el marco de la aproximación estocástica
+[@robbins1951stochastic]. Su uso masivo en redes neuronales llegó al combinarlo
+con la retropropagación, que hace viable el cálculo de las derivadas capa a capa
+[@rumelhart1986backprop].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, prácticamente todos los modelos neuronales se
+entrenan con variantes de descenso de gradiente, y los optimizadores adaptativos
+que ajustan el paso por parámetro son el estándar de facto. Es el motor que hace
+posible ajustar modelos con miles de millones de parámetros.
+
+## Aplicaciones
+
+### Generales
+
+- Entrenar redes neuronales y otros modelos diferenciables.
+- Ajustar modelos estadísticos por minimización de una función objetivo.
+- Adaptar un modelo ya entrenado a datos nuevos.
+
+### Sanitarias
+
+- Entrenar modelos de imagen médica, señal o texto clínico.
+- Reajustar un modelo preexistente sobre los datos de un centro concreto.
+- Optimizar modelos de riesgo, recordando que la pérdida minimizada no es el
+  desenlace clínico.
+
+## Limitaciones
+
+- El resultado depende de la tasa de aprendizaje: demasiado grande no converge,
+  demasiado pequeña alarga el entrenamiento sin ganancia.
+- En problemas no convexos no hay garantía de alcanzar el mejor mínimo posible.
+- El gradiente estimado sobre lotes pequeños es ruidoso.
+- **Minimizar bien la pérdida no es aprender lo correcto**: si la función objetivo
+  o las etiquetas están mal planteadas, la optimización llega antes al lugar
+  equivocado.
+- El proceso es sensible a la escala de las variables y a la inicialización.
+
+## Ejemplos
+
+Al entrenar un modelo que estima riesgo de reingreso, cada paso de descenso de
+gradiente reduce ligeramente la pérdida sobre los datos de entrenamiento. Una
+curva de pérdida que baja de forma limpia no dice nada sobre la calibración del
+modelo ni sobre su comportamiento en otro hospital: eso se mide aparte y con
+datos externos.
+
+## Relacionados
+
+- [Gradiente](gradiente.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
+- [Retropropagación](retropropagacion.qmd)
+- [Gradiente desvanecido](gradiente-desvanecido.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

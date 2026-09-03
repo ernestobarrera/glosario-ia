@@ -71,6 +71,7 @@ actualización.
 - [Retropropagación](retropropagacion.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Función de activación](funcion-de-activacion.qmd)
+- [Descenso de gradiente](descenso-de-gradiente.qmd)
 
 ## Referencias
 

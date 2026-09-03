@@ -83,6 +83,7 @@ fluidez del texto.
 - [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
 - [Alucinación](alucinacion.qmd)
 - [IA generativa](ia-generativa.qmd)
+- [Mecanismo de atención](mecanismo-de-atencion.qmd)
 
 ## Referencias
 

@@ -78,6 +78,7 @@ una indicación de tratamiento diferenciado mientras no se contraste.
 - [Espacio latente](espacio-latente.qmd)
 - [Embeddings](embeddings.qmd)
 - [Reducción de dimensionalidad](reduccion-de-dimensionalidad.qmd)
+- [Agrupamiento](agrupamiento.qmd)
 
 ## Referencias
 

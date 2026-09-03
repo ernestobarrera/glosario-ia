@@ -77,6 +77,7 @@ datos y del objetivo de entrenamiento.
 - [Modelo de lenguaje grande](llm.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+- [Mecanismo de atención](mecanismo-de-atencion.qmd)
 
 ## Referencias
 

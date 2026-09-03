@@ -1,0 +1,97 @@
+---
+title: "Mecanismo de atención"
+aliases:
+  - /terminos/atencion.html
+  - /terminos/attention-mechanism.html
+sinonimos:
+  - "Atención"
+  - "Attention mechanism"
+description: "Operación que pondera las distintas partes de una entrada para decidir cuáles influyen más en cada paso del cálculo de un modelo."
+categories:
+  - "Arquitecturas"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-03
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **mecanismo de atención**, o **attention mechanism**, permite que un modelo
+asigne pesos distintos a los elementos de la entrada y construya cada salida
+como una combinación de aquellos que considera pertinentes en ese momento. La
+**atención** no añade información nueva: redistribuye la que ya está presente en
+la secuencia.
+
+En su forma habitual, cada posición emite una consulta que se compara con las
+representaciones de todas las demás y produce esos pesos. Cuando la comparación
+ocurre dentro de la misma secuencia se habla de autoatención, y es la operación
+sobre la que se construyen los transformer [@vaswani2017attention].
+
+## Contexto histórico
+
+La atención apareció en traducción automática neuronal en un trabajo difundido
+en 2014 y presentado en ICLR 2015: los codificadores-decodificadores previos
+comprimían la frase de origen en un único vector de longitud fija, y esa
+compresión limitaba las frases largas. La propuesta fue dejar que el modelo
+buscara por sí mismo las partes relevantes del texto original en cada palabra
+generada [@bahdanau2015attention]. En 2017, la
+arquitectura transformer prescindió por completo de la recurrencia y dejó la
+atención como mecanismo principal [@vaswani2017attention].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la atención es el componente central de los
+modelos de lenguaje y se ha extendido a imagen, señales y datos multimodales. Su
+coste crece de forma cuadrática con la longitud de la secuencia, por lo que
+buena parte del trabajo reciente busca variantes más eficientes para contextos
+largos.
+
+## Aplicaciones
+
+### Generales
+
+- Traducir, resumir o generar texto atendiendo a las partes pertinentes.
+- Relacionar elementos distantes dentro de una misma secuencia.
+- Combinar información procedente de varias modalidades.
+
+### Sanitarias
+
+- Procesar notas clínicas extensas conservando referencias a datos alejados en
+  el texto.
+- Analizar señales fisiológicas donde importan eventos separados en el tiempo.
+- Resaltar regiones de una imagen que más influyen en la salida del modelo, como
+  material de revisión y no como justificación diagnóstica.
+
+## Limitaciones
+
+- El coste de cómputo y de memoria crece con el cuadrado de la longitud de la
+  secuencia.
+- **Los pesos de atención no son una explicación**: distribuciones de atención
+  muy distintas pueden producir la misma predicción, y su correspondencia con
+  otras medidas de importancia es débil [@jain2019attention]. Es un punto en
+  discusión metodológica, no un detalle de implementación.
+- Un mapa de atención sobre una imagen señala dónde mira el modelo, no por qué
+  ni si el hallazgo es clínicamente correcto.
+- Atender a un fragmento del historial no garantiza que el modelo lo interprete
+  bien.
+
+## Ejemplos
+
+Un modelo que clasifica informes de radiología puede mostrar qué palabras
+recibieron más peso al emitir su salida. Esa visualización orienta la revisión
+humana, pero no demuestra que el razonamiento del modelo sea correcto ni sustituye
+la comprobación del informe original.
+
+## Relacionados
+
+- [Transformer](transformer.qmd)
+- [Red neuronal recurrente](red-neuronal-recurrente.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Embeddings](embeddings.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
