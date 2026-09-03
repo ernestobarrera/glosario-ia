@@ -31,9 +31,10 @@ clúster semántico.
 ## Contexto histórico
 
 Los métodos se consolidaron en las décadas de 1960 y 1970 como herramienta
-exploratoria. El algoritmo k-medias, el más difundido, procede de un trabajo de
-Bell Labs de 1957 que no se publicó hasta 1982 [@lloyd1982kmeans]. Después
-llegaron las familias jerárquicas, las basadas en densidad y las probabilísticas.
+exploratoria. El procedimiento iterativo en el que se apoya k-medias, el
+algoritmo más difundido, se describió en Bell Labs en 1957 y no se publicó hasta
+1982 [@lloyd1982kmeans]. Después llegaron las familias jerárquicas, las basadas
+en densidad y las probabilísticas.
 
 ## Importancia actual
 

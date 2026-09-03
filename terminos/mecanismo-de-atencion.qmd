@@ -30,11 +30,12 @@ sobre la que se construyen los transformer [@vaswani2017attention].
 
 ## Contexto histórico
 
-La atención se introdujo en 2015 para la traducción automática neuronal: los
-codificadores-decodificadores previos comprimían la frase de origen en un único
-vector de longitud fija, y esa compresión limitaba las frases largas. La
-propuesta fue dejar que el modelo buscara por sí mismo las partes relevantes del
-texto original en cada palabra generada [@bahdanau2015attention]. En 2017, la
+La atención apareció en traducción automática neuronal en un trabajo difundido
+en 2014 y presentado en ICLR 2015: los codificadores-decodificadores previos
+comprimían la frase de origen en un único vector de longitud fija, y esa
+compresión limitaba las frases largas. La propuesta fue dejar que el modelo
+buscara por sí mismo las partes relevantes del texto original en cada palabra
+generada [@bahdanau2015attention]. En 2017, la
 arquitectura transformer prescindió por completo de la recurrencia y dejó la
 atención como mecanismo principal [@vaswani2017attention].
 

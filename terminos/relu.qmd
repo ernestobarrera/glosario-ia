@@ -31,8 +31,8 @@ entrenar redes grandes [@nair2010relu].
 Las redes anteriores usaban activaciones saturantes, como la sigmoide o la
 tangente hiperbólica, cuya derivada se aproxima a cero en los extremos y
 dificultaba entrenar redes profundas. Los rectificadores se propusieron como
-alternativa en 2010 y 2011 [@nair2010relu; @glorot2011rectifier], y su adopción
-se generalizó tras el resultado de las redes convolucionales profundas en
+alternativa a partir de 2010 y 2011 [@nair2010relu; @glorot2011rectifier], y su
+adopción se extendió tras el resultado de las redes convolucionales profundas en
 ImageNet en 2012 [@krizhevsky2017imagenet].
 
 ## Importancia actual
