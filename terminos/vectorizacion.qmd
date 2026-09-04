@@ -1,0 +1,87 @@
+---
+title: "Vectorización"
+aliases:
+  - /terminos/vectorization.html
+sinonimos:
+  - "Vectorization"
+description: "Proceso de convertir datos en vectores numéricos que un modelo puede utilizar como entrada."
+categories:
+  - "Aprendizaje automático"
+  - "Procesamiento del lenguaje"
+  - "Recuperación de información"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **vectorización**, o **vectorization**, convierte texto, imágenes u otros
+datos en vectores: listas ordenadas de valores numéricos. Aquí se usa en el
+sentido de representación de datos para aprendizaje automático; no en el de
+acelerar cálculos mediante operaciones vectoriales del procesador.
+
+En texto, una **bolsa de palabras** cuenta términos y **TF-IDF** pondera su
+frecuencia según lo comunes que sean en la colección
+[@sklearn2026features]. Vectorización es el proceso; los **embeddings** son
+representaciones densas aprendidas que pueden resultar de él
+[@mikolov2013distributed]. Los vectores de conteos o TF-IDF también son
+vectorización y no equivalen a esos embeddings.
+
+## Contexto histórico
+
+El modelo de espacio vectorial de Salton, Wong y Yang, publicado en 1975,
+es un antecedente de la representación y comparación de documentos mediante
+vectores [@salton1975vector]. En 2013, word2vec contribuyó a popularizar
+representaciones aprendidas de palabras [@mikolov2013distributed]. Son
+formas distintas de representar datos, no el nacimiento de un mismo método.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, elegir cómo vectorizar sigue siendo una
+decisión sobre qué información conserva el modelo. Una representación simple
+puede ser suficiente; una más compleja debe justificar su coste con evaluación.
+
+## Aplicaciones
+
+### Generales
+
+- Convertir documentos en entradas para aprendizaje supervisado.
+- Comparar textos o construir buscadores.
+- Representar características extraídas de imágenes.
+
+### Sanitarias
+
+En el procesamiento del lenguaje natural clínico, permite preparar notas para
+tareas delimitadas, como asignar etiquetas o recuperar documentos. La
+representación debe conservar la información relevante: negaciones,
+temporalidad y abreviaturas pueden cambiar el significado de una nota.
+
+## Limitaciones
+
+- Una bolsa de palabras simple pierde el orden y parte del contexto
+  [@sklearn2026features].
+- El vocabulario y las ponderaciones aprendidas deben ajustarse solo con los
+  datos de entrenamiento para evitar filtraciones hacia la evaluación.
+- Las representaciones densas pueden reproducir sesgos y no garantizan que la
+  proximidad entre vectores corresponda al significado clínico buscado.
+- Convertir datos en números no los anonimiza.
+
+## Ejemplos
+
+**Ejemplo construido:** «dolor sin fiebre» y «fiebre sin dolor» tienen los
+mismos conteos en una bolsa de palabras simple. Producen el mismo vector
+aunque las negaciones afectan a síntomas distintos. La pérdida depende de la
+representación elegida, no de que el texto carezca de esa información.
+
+## Relacionados
+
+- [Embeddings](embeddings.qmd)
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

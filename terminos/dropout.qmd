@@ -1,0 +1,83 @@
+---
+title: "Dropout"
+aliases:
+  - /terminos/desactivacion-aleatoria.html
+sinonimos:
+  - "Desactivación aleatoria"
+description: "Técnica de regularización que anula al azar algunas activaciones durante el entrenamiento para reducir el sobreajuste."
+categories:
+  - "Aprendizaje automático"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **dropout**, o **desactivación aleatoria**, pone a cero una selección de
+activaciones de una red neuronal durante el entrenamiento. Las unidades siguen
+existiendo: en cada paso cambia cuáles participan. Así se reduce la dependencia
+excesiva entre unidades y se busca mejorar la generalización
+[@srivastava2014dropout].
+
+La tasa de dropout indica la proporción que se desactiva. En la inferencia
+convencional se utilizan todas las unidades y se compensa la escala de sus
+activaciones; algunas implementaciones hacen esa compensación durante el
+entrenamiento. No se trata de borrar neuronas permanentemente.
+
+## Contexto histórico
+
+Hinton y colaboradores presentaron la idea en 2012
+[@hinton2012coadaptation]. Srivastava y colaboradores publicaron su desarrollo
+y evaluación en 2014, con experimentos en visión, voz y otras tareas
+[@srivastava2014dropout].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, su interés como técnica de regularización está
+en controlar el sobreajuste sin añadir una penalización explícita a los pesos.
+La conveniencia y la tasa se deciden mediante validación, no por una regla
+universal aplicable a toda red.
+
+## Aplicaciones
+
+### Generales
+
+- Regularizar redes de aprendizaje profundo con muchos parámetros.
+- Reducir la dependencia de combinaciones concretas de activaciones.
+- Comparar distintas intensidades de regularización con validación cruzada.
+
+### Sanitarias
+
+En un desarrollo experimental sobre imágenes médicas o variables clínicas,
+puede probarse si reduce la diferencia entre el rendimiento en entrenamiento
+y en datos reservados. Es una decisión del entrenamiento: su uso no demuestra
+por sí mismo beneficio asistencial ni validez en otro hospital.
+
+## Limitaciones
+
+- Una tasa excesiva puede impedir que el modelo aprenda suficiente señal.
+- Puede aumentar el tiempo necesario para converger.
+- No corrige etiquetas erróneas, sesgos de selección ni fugas de información.
+- No garantiza la generalización: su efecto depende de la arquitectura y los
+  datos, y debe medirse.
+
+## Ejemplos
+
+**Ejemplo hipotético:** se entrenan dos redes para una tarea de imagen médica,
+con y sin dropout, usando las mismas particiones por paciente. Si mejora el
+rendimiento reservado, hay evidencia a favor de esa configuración en ese
+experimento; todavía falta comprobarla en datos externos.
+
+## Relacionados
+
+- [Regularización](regularizacion.qmd)
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

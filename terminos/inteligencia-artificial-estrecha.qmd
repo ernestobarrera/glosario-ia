@@ -1,0 +1,88 @@
+---
+title: "Inteligencia artificial estrecha"
+aliases:
+  - /terminos/narrow-ai.html
+  - /terminos/ia-estrecha.html
+sinonimos:
+  - "IA estrecha"
+  - "Narrow AI"
+  - "Inteligencia artificial especializada"
+description: "IA orientada a una tarea o conjunto delimitado de tareas, cuyo buen rendimiento no demuestra una capacidad general entre dominios."
+categories:
+  - "Fundamentos"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **inteligencia artificial estrecha**, **IA estrecha** o **narrow AI**, es
+inteligencia artificial especializada en una tarea o dominio delimitado. Puede
+superar a una persona en una prueba concreta sin poseer la flexibilidad entre
+entornos que se atribuye a una inteligencia artificial general
+[@legg2007universal].
+
+«Estrecha» describe el alcance, no la sencillez del sistema. Tampoco significa
+que sea imposible reutilizar lo aprendido: el aprendizaje por transferencia
+permite adaptar modelos a otras tareas bajo condiciones específicas
+[@pan2010transfer]. Esa adaptación no demuestra generalidad ilimitada.
+
+## Contexto histórico
+
+El desarrollo de sistemas especializados convive con la aspiración de una IA
+general. Un debate relacionado, pero distinto, es el de **IA débil** y **fuerte**
+formulado por Searle en 1980: allí se contraponen el ordenador como herramienta
+para estudiar la mente y la tesis de que un programa puede tener estados
+mentales [@searle1980minds]. Esa distinción filosófica no equivale exactamente a
+la diferencia de alcance entre IA estrecha y general.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el término ayuda a preguntar qué tareas se han
+evaluado y bajo qué condiciones. La amplitud de una interfaz o la fluidez de
+una conversación no sustituyen una delimitación de capacidades y límites.
+
+## Aplicaciones
+
+### Generales
+
+- Filtrar correo no deseado.
+- Recomendar contenidos para un objetivo definido.
+- Detectar objetos o reconocer patrones en una modalidad de datos.
+
+### Sanitarias
+
+Un ejemplo de alcance delimitado es la clasificación de lesiones cutáneas a
+partir de imágenes estudiada por Esteva y colaboradores en 2017
+[@esteva2017dermatology]. Resolver esa tarea no equivale a realizar una
+evaluación clínica integral ni a decidir cualquier tratamiento.
+
+## Limitaciones
+
+- El rendimiento puede cambiar con la población, el equipo o la forma de
+  recoger los datos.
+- Ampliar la tarea exige nueva evaluación; puede requerir adaptación o
+  reentrenamiento.
+- La etiqueta no informa por sí sola sobre seguridad, autonomía o calidad.
+- No hay que confundir especialización técnica con una conclusión sobre
+  conciencia o comprensión.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un sistema evaluado para una lesión en radiografías de
+tórax recibe una imagen abdominal. Aunque produzca una salida, esta queda
+fuera de la tarea validada. El problema es atribuirle una competencia no
+demostrada, no que el sistema deje necesariamente de responder.
+
+## Relacionados
+
+- [Inteligencia artificial general](agi.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

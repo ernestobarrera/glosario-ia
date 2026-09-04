@@ -1,0 +1,90 @@
+---
+title: "Gated recurrent unit"
+aliases:
+  - /terminos/gated-recurrent-unit.html
+sinonimos:
+  - "GRU"
+  - "Unidad recurrente con compuertas"
+description: "Unidad de red recurrente con dos compuertas que regulan cuánto estado previo conserva y cómo incorpora información nueva."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **gated recurrent unit**, o **GRU**, es una **unidad recurrente con
+compuertas** que procesa secuencias manteniendo un estado interno. Su compuerta
+de **actualización** regula la mezcla entre el estado previo y la información
+candidata; la de **reinicio** controla cuánto del estado previo interviene al
+calcular esa candidata [@cho2014encoder].
+
+A diferencia de una LSTM convencional, no separa un estado de celda del estado
+oculto. En la formulación habitual, las compuertas usan sigmoide y la candidata
+usa tangente hiperbólica [@che2018missing]. Esto facilita conservar información,
+pero no resuelve de forma absoluta el gradiente desvanecido.
+
+## Contexto histórico
+
+Cho y colaboradores introdujeron la unidad en 2014 dentro de un modelo
+codificador-decodificador para traducción automática. La presentaron como una
+alternativa inspirada en LSTM, más sencilla de calcular e implementar
+[@cho2014encoder].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la GRU ofrece una arquitectura de aprendizaje
+profundo para problemas secuenciales. Con dimensiones comparables suele
+necesitar menos parámetros que una LSTM convencional; la rapidez y la calidad
+finales deben compararse en la tarea concreta.
+
+## Aplicaciones
+
+### Generales
+
+- Modelar series temporales y señales.
+- Codificar secuencias de texto.
+- Mantener un estado actualizado al recibir nuevas observaciones.
+
+### Sanitarias
+
+Se ha estudiado su adaptación a series clínicas con datos ausentes. En 2018,
+GRU-D incorporó información sobre ausencias e intervalos de observación y fue
+evaluada retrospectivamente en conjuntos clínicos [@che2018missing]. Es una
+extensión específica: esas capacidades no vienen resueltas por una GRU básica.
+
+## Limitaciones
+
+- El procesamiento recurrente limita la paralelización entre pasos temporales.
+- El estado es acotado y puede perder dependencias lejanas.
+- Menos compuertas no implica mayor precisión ni superioridad universal sobre
+  LSTM.
+- La irregularidad de las mediciones y las ausencias necesitan un tratamiento
+  explícito.
+- Una evaluación retrospectiva no demuestra el efecto de usar alertas en la
+  práctica clínica.
+
+## Ejemplos
+
+**Ejemplo hipotético:** una red recibe constantes registradas durante un
+ingreso. Sus compuertas aprenden qué parte del estado previo conservar al
+incorporar cada registro. Para evaluar una alerta de deterioro hay que definir
+el horizonte, evitar información posterior al evento y comprobar el rendimiento
+fuera de la cohorte de desarrollo.
+
+## Relacionados
+
+- [Long short-term memory](lstm.qmd)
+- [Red neuronal recurrente](red-neuronal-recurrente.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Gradiente desvanecido](gradiente-desvanecido.qmd)
+- [Sigmoide](sigmoide.qmd)
+- [Tangente hiperbólica](tangente-hiperbolica.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

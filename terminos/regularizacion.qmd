@@ -7,7 +7,7 @@ sinonimos:
 description: "Conjunto de técnicas que penalizan o restringen la complejidad de un modelo para mejorar su generalización a datos nuevos."
 categories:
   - "Aprendizaje automático"
-date-modified: 2026-09-01
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -81,6 +81,7 @@ esa selección concreta sea inestable si se repite el muestreo.
 - [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Función de pérdida](funcion-de-perdida.qmd)
+- [Dropout](dropout.qmd)
 
 ## Referencias
 

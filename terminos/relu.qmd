@@ -10,7 +10,7 @@ description: "Función de activación que deja pasar los valores positivos sin c
 categories:
   - "Arquitecturas"
   - "Fundamentos"
-date-modified: 2026-09-03
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -89,6 +89,8 @@ sin que el error de entrenamiento lo delate con claridad.
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Red neuronal convolucional](red-neuronal-convolucional.qmd)
 - [Gradiente](gradiente.qmd)
+- [Sigmoide](sigmoide.qmd)
+- [Tangente hiperbólica](tangente-hiperbolica.qmd)
 
 ## Referencias
 

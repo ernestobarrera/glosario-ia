@@ -1,0 +1,89 @@
+---
+title: "Validación cruzada"
+aliases:
+  - /terminos/cross-validation.html
+sinonimos:
+  - "Cross-validation"
+description: "Método de evaluación que alterna subconjuntos de entrenamiento y validación para estimar el rendimiento en datos no usados al ajustar el modelo."
+categories:
+  - "Aprendizaje automático"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **validación cruzada**, o **cross-validation**, divide los datos en
+subconjuntos y repite el ajuste y la evaluación. En la variante de **k
+particiones** (*k-fold*), se entrena un modelo nuevo con k−1 partes y se evalúa
+en la restante; cada parte se reserva una vez. Se agregan las evaluaciones para
+estimar el rendimiento fuera de los datos usados en cada ajuste
+[@stone1974crossvalidation].
+
+Si esas evaluaciones también sirven para escoger hiperparámetros, informar del
+mejor resultado como rendimiento final introduce optimismo. La **validación
+cruzada anidada** separa la selección en un bucle interno y la evaluación en
+otro externo [@varma2006bias].
+
+## Contexto histórico
+
+La separación entre datos de construcción y evaluación tiene antecedentes
+estadísticos anteriores al aprendizaje automático. Stone formalizó en 1974
+procedimientos de elección y evaluación predictiva mediante validación cruzada
+[@stone1974crossvalidation]. En 2006, Varma y Simon mostraron con simulaciones
+el sesgo de usar la misma validación para seleccionar y evaluar
+[@varma2006bias].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, su utilidad está en aprovechar los datos de
+desarrollo sin evaluar cada ajuste sobre sus propios ejemplos. Ayuda a comparar
+modelos y regularización; no evita automáticamente el sobreajuste ni sustituye
+la validación externa.
+
+## Aplicaciones
+
+### Generales
+
+- Comparar configuraciones con particiones y métricas comunes.
+- Seleccionar hiperparámetros dentro de una evaluación correctamente separada.
+- Examinar cuánto depende el resultado de la partición usada.
+
+### Sanitarias
+
+Permite evaluar modelos de riesgo en una cohorte de desarrollo. La partición
+debe responder al uso previsto: separar pacientes, centros o periodos plantea
+preguntas diferentes. Repartir aleatoriamente registros de un mismo hospital
+no demuestra que el modelo funcione en otros hospitales.
+
+## Limitaciones
+
+- Hay que repetir dentro de cada entrenamiento la imputación, selección de
+  variables y demás pasos aprendidos de los datos [@varma2006bias].
+- Registros del mismo paciente en entrenamiento y evaluación pueden filtrar
+  información y exagerar el rendimiento.
+- En predicción temporal, una partición aleatoria puede permitir aprender del
+  futuro que se pretende predecir.
+- Reentrenar muchas veces aumenta el coste; las estimaciones de las distintas
+  particiones tampoco son independientes.
+
+## Ejemplos
+
+**Ejemplo hipotético:** con 500 pacientes se forman cinco grupos de 100. En
+cada ronda, se ajusta todo el procedimiento con 400 y se evalúa con los otros
+100. Las visitas de cada paciente permanecen juntas. Si se comparan muchas
+configuraciones, se añade una selección interna o se reserva una evaluación
+final independiente.
+
+## Relacionados
+
+- [Sobreajuste](sobreajuste.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Regularización](regularizacion.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

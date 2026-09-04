@@ -11,7 +11,7 @@ description: "Red neuronal cuyas conexiones cíclicas mantienen un estado intern
 categories:
   - "Arquitecturas"
   - "Aprendizaje automático"
-date-modified: 2026-09-01
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -82,6 +82,7 @@ frecuencia de registro y otra prevalencia.
 - [Red neuronal convolucional](red-neuronal-convolucional.qmd)
 - [LSTM](lstm.qmd)
 - [Descenso de gradiente](descenso-de-gradiente.qmd)
+- [Gated recurrent unit](gru.qmd)
 
 ## Referencias
 
