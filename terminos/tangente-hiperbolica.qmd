@@ -1,0 +1,86 @@
+---
+title: "Tangente hiperbólica"
+aliases:
+  - /terminos/tanh.html
+  - /terminos/hyperbolic-tangent.html
+sinonimos:
+  - "Tanh"
+  - "Hyperbolic tangent"
+description: "Función de activación con forma de S y salida entre menos uno y uno, simétrica respecto del origen."
+categories:
+  - "Arquitecturas"
+  - "Fundamentos"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **tangente hiperbólica**, o **tanh** (**hyperbolic tangent**), transforma una
+entrada real mediante $\tanh(x)=(e^x-e^{-x})/(e^x+e^{-x})$. Para valores
+finitos devuelve un número estrictamente entre −1 y 1; en cero devuelve cero.
+Su curva es simétrica respecto del origen. Esto no garantiza que la media de
+las activaciones de una red sea cero: también depende de sus entradas.
+
+Se relaciona con la sigmoide logística por $\tanh(x)=2\sigma(2x)-1$.
+En una GRU puede transformar la información candidata a incorporarse al estado,
+mientras las compuertas usan sigmoides [@che2018missing].
+
+## Contexto histórico
+
+Es una función matemática anterior a las redes neuronales. Su papel como
+activación se estudió junto al de otras funciones sigmoidales; por ejemplo,
+Glorot y Bengio compararon en 2010 la tangente hiperbólica y la logística al
+analizar la saturación y la inicialización [@glorot2010training].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, sigue siendo útil para entender el estado
+acotado de redes recurrentes. Su salida admite ambos signos, pero eso no
+convierte cada activación en una magnitud clínica interpretable.
+
+## Aplicaciones
+
+### Generales
+
+- Introducir no linealidad en redes neuronales recurrentes.
+- Construir estados candidatos con valores positivos y negativos.
+- Acotar una salida cuando el objetivo se ha transformado a ese intervalo.
+
+### Sanitarias
+
+Puede intervenir en los estados internos de redes que analizan series de
+constantes vitales. GRU-D es un ejemplo investigado con datos clínicos que
+combina esta activación con mecanismos específicos para los valores ausentes
+[@che2018missing]. La aplicación pertenece al modelo completo, no a tanh por
+separado.
+
+## Limitaciones
+
+- Se satura en ambos extremos; su derivada $1-\tanh^2(x)$ se aproxima a cero.
+- No elimina el gradiente desvanecido en secuencias o redes profundas.
+- Acota la salida: usarla para una magnitud sin límite exige justificar la
+  transformación de escala.
+- El signo de un estado interno no significa necesariamente mejoría o
+  empeoramiento del paciente.
+
+## Ejemplos
+
+**Ejemplo numérico:** tanh transforma −1 y 1 en aproximadamente −0,76 y 0,76.
+En una red que analiza constantes, esos números pueden codificar rasgos
+aprendidos. No son, por sí mismos, descensos y ascensos de la presión arterial.
+
+## Relacionados
+
+- [Unidad lineal rectificada](relu.qmd)
+- [Sigmoide](sigmoide.qmd)
+- [Gradiente desvanecido](gradiente-desvanecido.qmd)
+- [Función de activación](funcion-de-activacion.qmd)
+- [Red neuronal recurrente](red-neuronal-recurrente.qmd)
+- [Gated recurrent unit](gru.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

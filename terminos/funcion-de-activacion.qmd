@@ -8,7 +8,7 @@ description: "Función aplicada a la señal de una neurona artificial para intro
 categories:
   - "Arquitecturas"
   - "Fundamentos"
-date-modified: 2026-08-30
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -73,6 +73,7 @@ comprobarse con datos independientes.
 - [Gradiente](gradiente.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Unidad lineal rectificada](relu.qmd)
+- [Sigmoide](sigmoide.qmd)
 
 ## Referencias
 

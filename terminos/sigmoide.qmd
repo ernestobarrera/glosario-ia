@@ -1,0 +1,90 @@
+---
+title: "Sigmoide"
+aliases:
+  - /terminos/sigmoid.html
+  - /terminos/funcion-logistica.html
+sinonimos:
+  - "Sigmoid"
+  - "Función logística"
+description: "Función logística con forma de S que transforma un valor real en un número entre cero y uno."
+categories:
+  - "Arquitecturas"
+  - "Fundamentos"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+En redes neuronales, **sigmoide** suele designar la **función logística**,
+llamada **sigmoid** en inglés: $\sigma(x)=1/(1+e^{-x})$. Su salida está
+estrictamente entre cero y uno para entradas reales finitas, y vale 0,5 cuando
+la entrada es cero. «Sigmoidal» también puede describir otras curvas en S;
+esta ficha se centra en la logística.
+
+Puede actuar como función de activación de una salida binaria o como compuerta
+que regula el paso de información en una GRU [@cho2014encoder]. Que un número
+esté entre cero y uno no basta para que represente una probabilidad bien
+calibrada [@vancalster2019calibration].
+
+## Contexto histórico
+
+Las activaciones sigmoidales diferenciables aparecen en trabajos clásicos de
+retropropagación de los años ochenta [@rumelhart1986backprop]. Glorot y Bengio
+analizaron en 2010 cómo la sigmoide logística y la inicialización podían
+favorecer la saturación y dificultar el entrenamiento de redes profundas
+[@glorot2010training].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, conviene distinguir su papel en las capas
+internas de su función en salidas y compuertas. La preferencia por ReLU en
+algunas capas internas no elimina esos otros usos.
+
+## Aplicaciones
+
+### Generales
+
+- Transformar la puntuación de una regresión logística en una salida binaria
+  probabilística bajo el modelo.
+- Producir una salida por etiqueta en problemas con varias etiquetas posibles.
+- Regular mediante compuertas qué información conserva una red recurrente.
+
+### Sanitarias
+
+Puede formar parte de un modelo de riesgo para un evento definido, como un
+reingreso a treinta días. La calibración, el horizonte temporal y la población
+de evaluación determinan qué significa clínicamente esa estimación
+[@vancalster2019calibration].
+
+## Limitaciones
+
+- En los extremos se satura: su derivada, $\sigma(x)(1-\sigma(x))$, se aproxima
+  a cero, contribuyendo al gradiente desvanecido.
+- La salida no está centrada en cero.
+- Aplicarla por separado a varias clases no obliga a que sumen uno.
+- No fija un umbral de decisión ni garantiza calibración o utilidad clínica.
+
+## Ejemplos
+
+**Ejemplo numérico:** una puntuación de cero produce 0,5; una de dos produce
+aproximadamente 0,88. En un modelo de riesgo, interpretar ese 0,88 como un 88 %
+requiere comprobar que las predicciones concuerdan con las frecuencias
+observadas. La transformación matemática por sí sola no lo demuestra.
+
+## Relacionados
+
+- [Unidad lineal rectificada](relu.qmd)
+- [Tangente hiperbólica](tangente-hiperbolica.qmd)
+- [Función de activación](funcion-de-activacion.qmd)
+- [Gradiente desvanecido](gradiente-desvanecido.qmd)
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Clasificación](clasificacion.qmd)
+- [Gated recurrent unit](gru.qmd)
+- [Retropropagación](retropropagacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

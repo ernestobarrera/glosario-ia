@@ -1,0 +1,96 @@
+---
+title: "No determinismo en IA"
+aliases:
+  - /terminos/no-determinismo-en-ia.html
+  - /terminos/nondeterminism.html
+sinonimos:
+  - "Nondeterminism"
+  - "No determinismo"
+description: "Variabilidad entre ejecuciones aparentemente iguales, que puede proceder del azar, del muestreo o de operaciones de cómputo no deterministas."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **no determinismo en IA**, o **nondeterminism**, describe aquí diferencias
+entre ejecuciones con una misma entrada visible. Conviene separar tres fuentes:
+
+- **Entrenamiento:** inicializaciones, orden de los datos o dropout diferentes
+  pueden producir modelos distintos.
+- **Generación:** un modelo ya entrenado puede muestrear distintas
+  continuaciones del mismo texto [@holtzman2020degeneration].
+- **Cómputo:** ciertas operaciones paralelas no garantizan el mismo resultado
+  en cada ejecución [@pytorch2026reproducibility].
+
+Un generador pseudoaleatorio puede reproducir su secuencia si se restablecen su
+semilla y condiciones. No toda variación demuestra azar irreducible. Si cambian
+el modelo, el contexto o los datos, tampoco se está repitiendo exactamente el
+mismo experimento.
+
+## Contexto histórico
+
+La cuestión antecede a los modelos de lenguaje. En teoría de la computación,
+«no determinista» designa un modelo formal con posibles transiciones múltiples;
+no es simplemente un sinónimo de algoritmo aleatorio. En la práctica del
+aprendizaje automático, se usa también para hablar de reproducibilidad.
+El estudio de métodos de generación, como el muestreo analizado por Holtzman y
+colaboradores en 2020, hizo explícita la importancia de la estrategia de
+decodificación [@holtzman2020degeneration].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, reproducir una evaluación exige identificar
+modelo, datos, configuración y entorno. Repetir la pregunta no basta. La
+explicabilidad y la estabilidad responden a preguntas distintas: explicar una
+salida no prueba que vaya a repetirse.
+
+## Aplicaciones
+
+### Generales
+
+- Generar alternativas mediante muestreo.
+- Comparar entrenamientos con distintas semillas.
+- Comprobar la estabilidad de resultados entre ejecuciones.
+
+### Sanitarias
+
+En una evaluación de resúmenes clínicos, repetir las consultas permite estudiar
+si cambian hechos u omisiones relevantes. Deben registrarse las condiciones y
+evaluarse las salidas; su semejanza verbal no demuestra corrección clínica.
+
+## Limitaciones
+
+- Fijar una semilla no garantiza reproducibilidad entre versiones, dispositivos
+  o plataformas; algunas operaciones requieren configuración adicional
+  [@pytorch2026reproducibility].
+- Usar operaciones deterministas puede reducir el rendimiento de cómputo.
+- Elegir siempre la continuación más probable elimina ese muestreo, pero no
+  garantiza por sí solo reproducibilidad de todo el sistema.
+- La variabilidad no es una medida automática de incertidumbre clínica; un
+  error puede repetirse de forma perfectamente estable.
+
+## Ejemplos
+
+**Ejemplo hipotético:** el mismo modelo resume dos veces una nota mediante
+muestreo y produce redacciones distintas. Eso no demuestra por sí solo un
+fallo. Si una versión omite una alergia, el problema material es la omisión.
+Si además se actualizó el modelo, la comparación mezcla dos causas de cambio.
+
+## Relacionados
+
+- [Explicabilidad](explicabilidad.qmd)
+- [Reglamento de inteligencia artificial](ai-act.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Dropout](dropout.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

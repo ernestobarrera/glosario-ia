@@ -9,7 +9,7 @@ description: "Concepto hipotético de una IA capaz de aprender y desenvolverse c
 categories:
   - "Fundamentos"
   - "Ética y gobernanza"
-date-modified: 2026-08-22
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -78,6 +78,7 @@ inteligencia general.
 
 - [Agente de IA](agente-de-ia.qmd)
 - [Alucinación](alucinacion.qmd)
+- [Inteligencia artificial estrecha](inteligencia-artificial-estrecha.qmd)
 
 ## Referencias
 
