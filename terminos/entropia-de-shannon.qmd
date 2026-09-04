@@ -1,0 +1,100 @@
+---
+title: "Entropía de Shannon"
+aliases:
+  - /terminos/shannon-entropy.html
+sinonimos:
+  - "Shannon entropy"
+  - "Entropía de la información"
+description: "Medida de la incertidumbre de una distribución de probabilidad: cuánta información aporta en promedio conocer el resultado."
+categories:
+  - "Fundamentos"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **entropía de Shannon**, o **entropía de la información**, cuantifica la
+incertidumbre de una distribución de probabilidad. Es máxima cuando todas las
+alternativas son igual de probables y vale cero cuando una de ellas es segura.
+Se expresa en bits si el logaritmo se toma en base dos.
+
+Aplicada a la salida de un modelo de lenguaje, describe cuán repartida está la
+probabilidad entre los tokens candidatos en un paso concreto: entropía baja
+significa que un token domina; entropía alta, que hay muchos plausibles. La
+temperatura de muestreo actúa justamente sobre esa concentración.
+
+Es una propiedad de la distribución, no del mundo. Dice cuánto duda el modelo,
+no cuánta incertidumbre real hay en el caso.
+
+## Contexto histórico
+
+Claude Shannon la introdujo en 1948 en *A Mathematical Theory of
+Communication*, donde definió la información de una fuente y estableció el
+límite teórico de su compresión sin pérdida
+[@shannon1948communication]. El trabajo nació en telecomunicaciones y se
+extendió después a la estadística, la biología y el aprendizaje automático. De
+él derivan tanto la entropía cruzada usada como pérdida como las medidas de
+divergencia entre distribuciones [@lin1991divergence].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, aparece en dos sitios distintos del mismo
+sistema: en el entrenamiento, como base de la pérdida; y en la generación, como
+descripción de lo concentrada que está la distribución sobre la que se muestrea.
+Reunir los dos usos bajo una misma medida ayuda a ver que los controles de
+generación no cambian lo que el modelo aprendió, sino la forma en que se
+recorre.
+
+## Aplicaciones
+
+### Generales
+
+- Describir la incertidumbre de una distribución con un solo número.
+- Comparar cuánto se concentra la salida de un modelo con distintos ajustes de
+  generación.
+- Fundamentar medidas derivadas, como la entropía cruzada o la divergencia de
+  Jensen–Shannon.
+
+### Sanitarias
+
+En la evaluación de una herramienta clínica puede registrarse la entropía de la
+distribución de salida como señal de que el modelo está repartiendo la
+probabilidad entre varias alternativas. Es una señal técnica, no un grado de
+incertidumbre clínica: una entropía baja indica un modelo decidido, que puede
+estar decididamente equivocado, y una alta no identifica al paciente
+complejo. Para que un valor de probabilidad signifique algo sobre pacientes hay
+que estudiar su calibración en la población de uso
+[@guo2017calibration; @vancalster2019calibration].
+
+## Limitaciones
+
+- Mide dispersión de la distribución, no corrección: un modelo puede estar
+  seguro y equivocado.
+- En vocabularios de decenas de miles de tokens, el valor absoluto es difícil
+  de interpretar y solo resulta útil comparado consigo mismo.
+- Depende de cómo se definan las unidades: por tokens, por palabras o por
+  n-gramas da resultados distintos que no son comparables entre sí.
+- La entropía de la distribución de salida no es la única fuente de
+  variabilidad de un sistema.
+
+## Ejemplos
+
+**Ejemplo hipotético:** al continuar «el paciente refiere dolor», un modelo
+reparte la probabilidad entre muchas continuaciones plausibles: entropía alta.
+Al continuar «la tensión arterial se mide en», casi toda la probabilidad recae
+en una: entropía baja. En el segundo caso el modelo duda menos; eso no
+garantiza que la continuación sea correcta.
+
+## Relacionados
+
+- [Divergencia de Jensen-Shannon](divergencia-de-jensen-shannon.qmd)
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
+- [Temperatura de muestreo](temperatura-de-muestreo.qmd)
+- [Entropía cruzada](entropia-cruzada.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

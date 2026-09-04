@@ -1,0 +1,98 @@
+---
+title: "Muestreo top-p"
+aliases:
+  - /terminos/top-p.html
+  - /terminos/nucleus-sampling.html
+sinonimos:
+  - "Top-p"
+  - "Nucleus sampling"
+  - "Muestreo por núcleo"
+description: "Estrategia de generación que restringe la elección al conjunto más pequeño de tokens cuya probabilidad acumulada alcanza un umbral p."
+categories:
+  - "Modelos de lenguaje"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **muestreo top-p**, conocido en inglés como **nucleus sampling** y a veces
+traducido como **muestreo por núcleo**, ordena los tokens candidatos por
+probabilidad y se queda con los que hacen falta para acumular una masa **p**.
+Ese conjunto —el núcleo— se renormaliza y se muestrea dentro de él.
+
+A diferencia del [muestreo top-k](muestreo-top-k.qmd), **el tamaño del corte
+varía en cada paso**: cuando la distribución está concentrada bastan dos o tres
+tokens para alcanzar p; cuando está repartida, entran muchos más. Esa
+adaptación es su motivo de existir.
+
+Con p igual a uno no se recorta nada; con valores muy bajos se aproxima a la
+búsqueda voraz.
+
+## Contexto histórico
+
+Holtzman, Buys, Du, Forbes y Choi lo propusieron en el trabajo que documentó la
+degeneración del texto neuronal: maximizar la probabilidad produce salidas
+repetitivas, y muestrear de toda la distribución introduce continuaciones
+incoherentes procedentes de la cola larga [@holtzman2020degeneration]. El corte
+por masa de probabilidad se planteó como respuesta a los límites de un corte de
+tamaño fijo como el de top-k [@fan2018hierarchical]. La primera versión del
+preprint es de 2019; la citada aquí es la de 2020.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es el recorte por defecto en buena parte de las
+API de generación, habitualmente con valores en torno a 0,9 y combinado con la
+temperatura. Es el parámetro que mejor ilustra que la generación tiene dos
+etapas separables: el modelo calcula una distribución y una política decide qué
+parte de ella se considera.
+
+## Aplicaciones
+
+### Generales
+
+- Descartar la cola de tokens improbables sin fijar de antemano cuántos.
+- Mantener diversidad en pasos abiertos y precisión en pasos concentrados.
+- Comparar el efecto de distintos umbrales sobre un mismo prompt.
+
+### Sanitarias
+
+Es configuración que debe **declararse y fijarse** al evaluar o desplegar una
+herramienta sobre texto clínico, por la misma razón que la temperatura: cambia
+las salidas y, con ellas, cualquier medida que se tome sobre ellas. No aporta
+ningún filtro de corrección clínica: descarta tokens poco probables para el
+modelo, de modo que una afirmación errónea a la que el modelo asigne alta
+probabilidad entra en el núcleo con cualquier valor de p. La revisión de las
+salidas sigue siendo necesaria.
+
+## Limitaciones
+
+- El tamaño efectivo del corte no es observable desde el parámetro: el mismo p
+  admite dos tokens en un paso y doscientos en otro.
+- No mejora la veracidad; recorta por probabilidad
+  [@holtzman2020degeneration].
+- Combinado con temperatura y top-k, sus efectos se confunden entre sí.
+- Introduce variabilidad entre ejecuciones, que debe declararse al informar de
+  resultados [@song2025greedy].
+
+## Ejemplos
+
+**Ejemplo hipotético:** con p igual a 0,9, en un paso donde el token más
+probable acumula 0,95, el núcleo es un solo token y la salida es
+efectivamente determinista. En otro paso, donde la probabilidad se reparte
+entre muchas continuaciones plausibles, el núcleo puede incluir decenas. El
+mismo parámetro produce comportamientos muy distintos según el paso.
+
+## Relacionados
+
+- [Modelo de lenguaje grande](llm.qmd)
+- [Muestreo top-k](muestreo-top-k.qmd)
+- [Temperatura de muestreo](temperatura-de-muestreo.qmd)
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

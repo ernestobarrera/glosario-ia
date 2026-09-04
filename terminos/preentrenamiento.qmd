@@ -9,7 +9,7 @@ description: "Fase inicial en la que un modelo aprende patrones generales antes 
 categories:
   - "Aprendizaje automático"
   - "Modelos de lenguaje"
-date-modified: 2026-08-30
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -73,6 +73,7 @@ biomédicos para mejorar tareas de minería de texto del dominio [@lee2020biober
 - [Fine-tuning](fine-tuning.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Modelo de lenguaje grande](llm.qmd)
+- [Tokenización](tokenizacion.qmd)
 
 ## Referencias
 

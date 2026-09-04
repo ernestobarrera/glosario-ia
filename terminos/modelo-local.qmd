@@ -11,7 +11,7 @@ description: "Modelo ejecutado en infraestructura controlada por la persona u or
 categories:
   - "Seguridad y riesgos"
   - "Ética y gobernanza"
-date-modified: 2026-08-22
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -75,7 +75,7 @@ registros, evaluación del rendimiento y una base jurídica adecuada.
 
 ## Relacionados
 
-- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
 - [Generación aumentada por recuperación](rag.qmd)
 - [Fine-tuning](fine-tuning.qmd)
 - [Prompt de sistema](prompt-de-sistema.qmd)

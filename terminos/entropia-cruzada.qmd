@@ -1,0 +1,98 @@
+---
+title: "Entropía cruzada"
+aliases:
+  - /terminos/cross-entropy.html
+sinonimos:
+  - "Cross-entropy"
+  - "Pérdida de entropía cruzada"
+description: "Medida de la discrepancia entre la distribución predicha por un modelo y la observada, usada como función de pérdida en clasificación."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **entropía cruzada**, o **cross-entropy**, mide cuánta información se
+necesita en promedio para describir observaciones de una distribución cuando se
+usa otra para codificarlas. En aprendizaje automático, la primera es la
+distribución real de las etiquetas y la segunda es la que predice el modelo.
+
+Como **pérdida de entropía cruzada** se calcula, en cada ejemplo, el logaritmo
+negativo de la probabilidad que el modelo asignó a la clase correcta.
+Minimizarla equivale a maximizar la verosimilitud de los datos observados. La
+penalización crece sin límite a medida que esa probabilidad se acerca a cero:
+equivocarse con seguridad cuesta mucho más que dudar.
+
+## Contexto histórico
+
+El concepto procede de la teoría de la información de Shannon, que en 1948
+definió la entropía como el promedio de información de una fuente
+[@shannon1948communication]. Su uso como función de pérdida en clasificación es
+posterior y se apoya en la estimación por máxima verosimilitud, no en un
+artículo fundacional propio. Con el aprendizaje profundo se convirtió en la
+opción por defecto para clasificación multiclase, emparejada con una salida
+softmax [@lecun2015deep].
+
+En 2017, Lin y colaboradores propusieron reponderarla para que los ejemplos
+fáciles y abundantes dejaran de dominar el gradiente, un problema recurrente
+cuando las clases están muy desbalanceadas [@lin2020focal].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es la pérdida habitual tanto en clasificación
+como en el entrenamiento de modelos de lenguaje, donde la «clase correcta» es
+el token que realmente siguió. Que la pérdida baje indica que el modelo asigna
+más probabilidad a lo observado; no indica por sí mismo que sus probabilidades
+estén bien calibradas [@guo2017calibration].
+
+## Aplicaciones
+
+### Generales
+
+- Entrenar clasificadores de dos o más clases.
+- Entrenar modelos de lenguaje a predecir el siguiente token.
+- Comparar configuraciones por la pérdida obtenida en validación.
+
+### Sanitarias
+
+En un modelo que clasifica imágenes en benigno o maligno, la entropía cruzada
+penaliza especialmente los casos en los que el modelo estuvo seguro y falló.
+Es la propiedad que interesa cuando el coste del error es asimétrico, pero no
+la resuelve sola: la pérdida trata igual un falso negativo y un falso positivo
+de la misma probabilidad. Si el desenlace grave es raro, conviene revisar el
+desbalance y, sobre todo, evaluar después la calibración y las medidas
+clínicas relevantes, que la pérdida no informa [@vancalster2019calibration].
+
+## Limitaciones
+
+- Es sensible al desbalance de clases: la clase mayoritaria puede dominar el
+  ajuste [@lin2020focal].
+- No incorpora costes clínicos distintos para cada tipo de error.
+- Una pérdida baja no acredita calibración ni utilidad clínica
+  [@guo2017calibration; @vancalster2019calibration].
+- Compararla entre modelos con vocabularios o números de clases distintos no
+  es directo, porque cambia la escala de la medida.
+
+## Ejemplos
+
+**Ejemplo hipotético:** ante un caso maligno, el modelo A le asigna 0,45 de
+probabilidad y el modelo B, 0,05. Los dos fallan si se decide por la clase más
+probable, pero la entropía cruzada penaliza mucho más a B, que erró con
+seguridad. Esa diferencia no aparece si solo se mira la exactitud.
+
+## Relacionados
+
+- [Función de pérdida](funcion-de-perdida.qmd)
+- [Descenso de gradiente](descenso-de-gradiente.qmd)
+- [Clasificación](clasificacion.qmd)
+- [Softmax](softmax.qmd)
+- [Entropía de Shannon](entropia-de-shannon.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

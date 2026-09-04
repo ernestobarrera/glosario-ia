@@ -1,0 +1,104 @@
+---
+title: "Tokenización"
+aliases:
+  - /terminos/tokenization.html
+sinonimos:
+  - "Tokenization"
+  - "Segmentación en tokens"
+description: "Proceso que divide un texto en las unidades discretas —tokens— con las que un modelo de lenguaje representa, procesa y genera."
+categories:
+  - "Procesamiento del lenguaje"
+  - "Modelos de lenguaje"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **tokenización**, o **segmentación en tokens**, convierte un texto en una
+secuencia de unidades discretas que el modelo puede indexar. Esas unidades
+—los tokens— pueden ser caracteres, palabras o, en los modelos actuales,
+fragmentos de palabra.
+
+El vocabulario se aprende de un corpus antes de entrenar el modelo, y fija qué
+fragmentos existen. Los sistemas de subpalabras, como la codificación por pares
+de bytes, parten de caracteres y fusionan iterativamente los pares más
+frecuentes hasta alcanzar un tamaño de vocabulario dado; así representan
+palabras nunca vistas sin necesitar un token para cada una
+[@sennrich2016subword]. BERT emplea una variante equivalente en propósito
+[@devlin2019bert].
+
+Es una decisión de diseño previa al modelo, no un detalle de implementación: el
+token es la unidad sobre la que se define la distribución de salida, se cuenta
+la ventana de contexto y se factura el uso.
+
+## Contexto histórico
+
+Segmentar texto es una tarea antigua del procesamiento del lenguaje natural,
+resuelta durante décadas por palabras y reglas. El cambio relevante llegó con
+la traducción automática neuronal: en 2016, Sennrich, Haddow y Birch adaptaron
+la codificación por pares de bytes a las unidades de subpalabra para tratar
+palabras raras sin recurrir a un símbolo de «desconocido»
+[@sennrich2016subword]. Los modelos basados en transformer adoptaron ese
+enfoque, y con él la idea de que el vocabulario es un artefacto entrenado
+[@vaswani2017attention].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la tokenización determina cuántos tokens ocupa
+un texto y, con ello, el coste, el límite de contexto y parte del rendimiento.
+El reparto no es uniforme entre idiomas ni entre dominios: un mismo contenido
+puede necesitar bastantes más tokens en una lengua distinta del inglés o en
+texto técnico con abreviaturas y cifras.
+
+## Aplicaciones
+
+### Generales
+
+- Preparar texto para entrenar o consultar un modelo de lenguaje.
+- Fijar el vocabulario y, con él, el tamaño de la capa de salida.
+- Medir la longitud real de un documento en unidades del modelo.
+
+### Sanitarias
+
+En el texto clínico, la segmentación decide qué se conserva como unidad.
+Dosis, unidades y códigos —«0,5 mg/kg», «HbA1c», un código CIE— pueden
+partirse en varios fragmentos, y de esa partición depende que un extractor
+recupere el dato completo o solo un trozo. Los modelos preentrenados en
+literatura biomédica se construyen con vocabularios ajustados a ese lenguaje
+por este motivo [@lee2020biobert]. Al evaluar una herramienta sobre historias
+clínicas conviene comprobar cómo tokeniza los términos que importan, antes de
+atribuir a la comprensión del modelo lo que es un problema de segmentación
+[@wu2020clinicalnlp].
+
+## Limitaciones
+
+- El vocabulario se fija antes de entrenar: cambiarlo obliga a reentrenar.
+- Lenguas sin separación por espacios, o con morfología rica, se segmentan
+  peor con vocabularios pensados para el inglés.
+- Cifras, unidades y símbolos se fragmentan de formas poco intuitivas, lo que
+  afecta a tareas aritméticas y a la extracción de datos numéricos.
+- El recuento de tokens no equivale al de palabras, así que estimar coste o
+  contexto por palabras induce a error.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un extractor debe recuperar «amoxicilina 500 mg/8 h» de
+una nota de alta. Si el tokenizador separa la cifra, la unidad y el intervalo
+en fragmentos distintos, la regla que busca una pauta completa puede fallar
+aunque el modelo «lea» bien el texto. Comprobar la segmentación es más barato
+que reentrenar.
+
+## Relacionados
+
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [Transformer](transformer.qmd)
+- [Embeddings](embeddings.qmd)
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

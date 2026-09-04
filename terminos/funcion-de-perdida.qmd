@@ -10,7 +10,7 @@ description: "Función que asigna una penalización numérica a las predicciones
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-09-02
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -80,6 +80,7 @@ por la pérdida.
 - [Retropropagación](retropropagacion.qmd)
 - [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
 - [Sobreajuste](sobreajuste.qmd)
+- [Entropía cruzada](entropia-cruzada.qmd)
 
 ## Referencias
 

@@ -1,0 +1,105 @@
+---
+title: "Divergencia de Jensen-Shannon"
+aliases:
+  - /terminos/jsd.html
+sinonimos:
+  - "JSD"
+  - "Jensen-Shannon divergence"
+description: "Medida simétrica y acotada de la diferencia entre dos distribuciones de probabilidad, derivada de la entropía de Shannon."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **divergencia de Jensen-Shannon**, o **JSD**, compara dos distribuciones de
+probabilidad promediándolas y midiendo cuánto se aparta cada una de esa mezcla.
+A diferencia de la divergencia de Kullback-Leibler, de la que deriva, es
+**simétrica** —comparar A con B da lo mismo que B con A— y está acotada: entre
+0 y 1 si se calcula en bits, con logaritmo en base dos
+[@lin1991divergence].
+
+Vale cero solo si las dos distribuciones coinciden, y alcanza el máximo cuando
+no comparten ningún resultado posible. Esas dos propiedades la hacen más
+manejable que la divergencia de Kullback-Leibler, que es asimétrica y puede
+hacerse infinita cuando una distribución asigna probabilidad cero a algo que la
+otra considera posible.
+
+Es una medida **estadística**: compara cómo se reparte la probabilidad, no lo
+que las cosas significan.
+
+## Contexto histórico
+
+Jianhua Lin la introdujo en 1991, en un trabajo sobre medidas de divergencia
+derivadas de la entropía de Shannon, presentándola como una alternativa
+simétrica y acotada a la de Kullback-Leibler [@lin1991divergence]. Se usó
+después en bioinformática y lingüística computacional. En aprendizaje
+automático aparece de forma destacada en el análisis teórico de las redes
+generativas antagónicas: con un discriminador óptimo, el criterio minimax
+original se reduce a una expresión que contiene la divergencia de
+Jensen-Shannon [@goodfellow2014gan]. Conviene no leer eso como que entrenar una
+de esas redes minimice la divergencia en la práctica: el mismo trabajo emplea
+una variante no saturante del objetivo.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, su interés práctico está en comparar dos
+distribuciones con un número acotado y fácil de comunicar. En modelos de
+lenguaje puede usarse para cuantificar cuánto cambia la distribución de salida
+al cambiar la configuración de generación o el prompt; es un uso instrumental
+descrito en el material de partida de este glosario, no un procedimiento
+normalizado.
+
+## Aplicaciones
+
+### Generales
+
+- Comparar dos distribuciones empíricas con una medida simétrica y acotada.
+- Cuantificar cuánto cambia la salida de un modelo entre dos configuraciones.
+- Servir de alternativa a la divergencia de Kullback-Leibler cuando la
+  asimetría o los valores infinitos estorban.
+
+### Sanitarias
+
+Permite poner número a un cambio de distribución. Si una herramienta clínica
+reparte sus salidas de una manera durante la validación y de otra distinta seis
+meses después, la divergencia entre ambas cuantifica ese desplazamiento y puede
+alimentar una vigilancia rutinaria. Lo que no dice es si el cambio es clínico:
+mide vocabulario o clases, no significado ni acierto, así que un valor alto
+obliga a mirar, no a concluir. La comparación solo tiene sentido si las
+unidades y la definición de las categorías son las mismas en ambos momentos.
+
+## Limitaciones
+
+- Mide diferencias estadísticas, no semánticas: dos textos con el mismo sentido
+  y distinto vocabulario pueden divergir mucho.
+- Depende de la unidad elegida —tokens, n-gramas, clases— y los valores no son
+  comparables entre unidades distintas.
+- Es sensible al tamaño de la muestra: con pocos datos, la estimación es
+  inestable.
+- Su cota superior depende de la base logarítmica utilizada, así que hay que
+  declararla para que el número sea interpretable.
+
+## Ejemplos
+
+**Ejemplo hipotético:** se generan mil respuestas a un mismo prompt con dos
+ajustes de temperatura y se comparan las distribuciones de tokens resultantes.
+Una divergencia próxima a cero indica que el ajuste apenas cambió el reparto;
+un valor alto indica que sí. Ninguno de los dos casos dice cuál de las dos
+configuraciones produce respuestas más correctas.
+
+## Relacionados
+
+- [Entropía de Shannon](entropia-de-shannon.qmd)
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
+- [Clúster semántico](cluster-semantico.qmd)
+- [Índice de Rand ajustado](indice-rand-ajustado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

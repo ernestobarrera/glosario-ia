@@ -9,7 +9,7 @@ description: "Técnica que continúa el entrenamiento de un modelo preentrenado 
 categories:
   - "Aprendizaje automático"
   - "Modelos de lenguaje"
-date-modified: 2026-08-22
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -75,7 +75,7 @@ habría que medir su rendimiento en datos distintos de los de entrenamiento.
 
 - [Aprendizaje automático](aprendizaje-automatico.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
-- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
 - [Transformer](transformer.qmd)
 - [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
 

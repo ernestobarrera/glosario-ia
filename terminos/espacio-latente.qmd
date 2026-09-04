@@ -9,7 +9,7 @@ description: "Espacio vectorial en el que un modelo sitúa sus representaciones 
 categories:
   - "Fundamentos"
   - "Procesamiento del lenguaje"
-date-modified: 2026-09-01
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -82,6 +82,7 @@ son conceptos relacionados, no intercambiables.
 - [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
 - [Agrupamiento](agrupamiento.qmd)
+- [Divergencia de Jensen-Shannon](divergencia-de-jensen-shannon.qmd)
 
 ## Referencias
 

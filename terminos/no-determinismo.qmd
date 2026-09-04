@@ -87,8 +87,10 @@ Si además se actualizó el modelo, la comparación mezcla dos causas de cambio.
 - [Explicabilidad](explicabilidad.qmd)
 - [Reglamento de inteligencia artificial](ai-act.qmd)
 - [Aprendizaje automático](aprendizaje-automatico.qmd)
-- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
 - [Dropout](dropout.qmd)
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
+- [Temperatura de muestreo](temperatura-de-muestreo.qmd)
 
 ## Referencias
 
