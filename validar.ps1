@@ -106,6 +106,23 @@ if (
   Registrar-Error "taxonomia.yml: faltan categories, estados o tipos"
 }
 
+# Cada categoria de la taxonomia debe tener matiz asignado en la plantilla de la
+# portada. Si se anade una categoria y nadie le da color, la tarjeta se pintaria
+# con el matiz por defecto sin que nada avisara.
+$rutaPlantilla = Join-Path (Join-Path $raiz "templates") "listado-portada.ejs.md"
+if (-not (Test-Path -LiteralPath $rutaPlantilla)) {
+  Registrar-Error "falta templates/listado-portada.ejs.md"
+}
+else {
+  $plantillaPortada = Get-Content -LiteralPath $rutaPlantilla -Encoding UTF8 -Raw
+  foreach ($categoria in $categoriasPermitidas) {
+    $claveMatiz = '"' + $categoria + '":'
+    if ($plantillaPortada.IndexOf($claveMatiz, [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error "listado-portada.ejs.md: la categoria '$categoria' no tiene matiz asignado"
+    }
+  }
+}
+
 $bib = Get-Content -LiteralPath (Join-Path $raiz "references.bib") -Encoding UTF8 -Raw
 $clavesBib = @{}
 foreach ($coincidencia in [regex]::Matches($bib, "(?m)^@\w+\s*\{\s*([^,\s]+)\s*,")) {
@@ -318,6 +335,20 @@ foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd"
   $htmlCanonico = Join-Path $carpetaSitio "terminos\$slug.html"
   if (Test-Path -LiteralPath $htmlCanonico) {
     $html = Get-Content -LiteralPath $htmlCanonico -Encoding UTF8 -Raw
+    # El estado tiene que llegar al HTML. Es campo obligatorio del esquema, pero
+    # Quarto no lo emite: lo pone filters/estado.lua. Sin esta comprobacion, si
+    # el filtro deja de aplicarse, las fichas dejan de decir que son borradores
+    # y nada falla.
+    if ($html.IndexOf('<div class="estado-ficha">', [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error "$nombre`: no se renderizo la linea de estado"
+    }
+    else {
+      $marcaEstado = 'distintivo-' + [string]$meta["estado"]
+      if ($html.IndexOf($marcaEstado, [StringComparison]::Ordinal) -lt 0) {
+        Registrar-Error "$nombre`: el estado '$($meta["estado"])' no aparece en el HTML"
+      }
+    }
+
     $bloqueSinonimos = [regex]::Match(
       $html,
       '<div class="sinonimos"[^>]*>(?<contenido>[\s\S]*?)</div>'
@@ -362,6 +393,59 @@ else {
       if ($search.IndexOf([string]$sinonimo, [StringComparison]::OrdinalIgnoreCase) -lt 0) {
         Registrar-Error "$($ficha.Archivo.Name): el sinonimo '$sinonimo' no aparece en search.json"
       }
+    }
+  }
+}
+
+# Columnas de busqueda declaradas frente al HTML realmente emitido.
+#
+# filter-ui hace que Quarto genere searchColumns con la forma 'listing-<campo>',
+# pero quien emite esas clases es la plantilla del listado. Un campo que la
+# plantilla no pinta deja la columna muerta: el filtro no encuentra nada y nada
+# falla. Ocurrio con 'sinonimos' en las tres paginas de listado, con los sinonimos
+# correctamente indexados en search.json -lo que la comprobacion anterior ya
+# verificaba- y el filtro de la pagina sin encontrarlos. Indexado y filtrable no
+# son lo mismo, y hasta ahora solo se comprobaba lo primero.
+$columnasComprobadas = 0
+foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
+  $rutaListado = Join-Path $carpetaSitio $pagina
+  if (-not (Test-Path -LiteralPath $rutaListado)) {
+    Registrar-Error "$pagina`: no existe la salida del listado"
+    continue
+  }
+
+  $htmlListado = Get-Content -LiteralPath $rutaListado -Encoding UTF8 -Raw
+
+  # Solo tiene sentido comprobarlo donde hay caja de filtro. Sin filter-ui,
+  # Quarto emite igualmente unas searchColumns por defecto que incluyen campos
+  # no renderizados (listing-author, listing-image): columnas muertas que no
+  # enganan a nadie porque no hay filtro que las use. Visto en el ensayo de
+  # temas agrupados del 2026-09-05.
+  if ($htmlListado.IndexOf('class="search form-control"', [StringComparison]::Ordinal) -lt 0) {
+    continue
+  }
+
+  $declaradas = [regex]::Match($htmlListado, 'searchColumns:\s*\[(?<columnas>[^\]]*)\]')
+  if (-not $declaradas.Success) {
+    Registrar-Aviso "$pagina`: el listado no declara columnas de busqueda"
+    continue
+  }
+
+  foreach ($columna in ($declaradas.Groups["columnas"].Value -split ",")) {
+    $clase = $columna.Trim().Trim('"')
+    if ([string]::IsNullOrWhiteSpace($clase)) {
+      continue
+    }
+
+    $patronClase = 'class="[^"]*\b' + [regex]::Escape($clase) + '\b'
+    if ($htmlListado -notmatch $patronClase) {
+      Registrar-Error (
+        "$pagina`: la columna de busqueda '$clase' no aparece en el HTML; " +
+        "el filtro de la pagina no puede encontrarla"
+      )
+    }
+    else {
+      $columnasComprobadas++
     }
   }
 }
@@ -425,6 +509,8 @@ Write-Host "  Slugs derivados y unicos: $($slugVistos.Count)"
 Write-Host "  Aliases unicos y generados: $($aliasVistos.Count)"
 Write-Host "  Identidades sin colision (titulo + sinonimos): $($identidades.Count)"
 Write-Host "  Sinonimos renderizados e indexados: OK"
+Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
+Write-Host "  Estado renderizado y matices de tema asignados: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
 

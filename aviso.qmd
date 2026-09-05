@@ -1,0 +1,57 @@
+---
+title: "Qué es esto y cómo se cita"
+description: "Procedencia, límites, licencia y forma de citar el glosario."
+toc: false
+---
+
+{{< include _aviso-canonico.qmd >}}
+
+## Estado de cada ficha
+
+El glosario avanza ficha a ficha, no en bloque. Cada una lleva dos marcas visibles:
+
+- un **estado**: `borrador` significa estructura completa y fuentes iniciales,
+  pendiente de revisión; `revisada` significa que una persona ha examinado el
+  contenido y la bibliografía;
+- una **fecha de última revisión**, que es la fecha real en que se revisó el
+  contenido, no la del último cambio de formato.
+
+La etiqueta `revisada` no garantiza vigencia indefinida. Las herramientas, técnicas
+y organizaciones necesitan ciclos de revisión más breves que los conceptos.
+
+## Procedencia del contenido
+
+El contenido se elabora con asistencia de agentes de IA y revisión humana, bajo los
+criterios de la [política editorial](https://github.com/ernestobarrera/glosario-ia/blob/main/EDITORIAL.md)
+del repositorio: las afirmaciones técnicas o sanitarias relevantes enlazan una fuente
+primaria, una revisión solvente o una institución reconocida; las referencias se
+verifican por DOI, PubMed o la fuente original antes de consolidarlas; y no se usa una
+cita que no respalde la afirmación asociada.
+
+Ninguna ficha se publica automáticamente. Una persona decide qué entra.
+
+## Licencia, atribución y derechos de terceros
+
+Los textos originales se ofrecen bajo
+[Creative Commons Atribución 4.0 Internacional](https://creativecommons.org/licenses/by/4.0/deed.es):
+pueden reutilizarse, incluso con fines comerciales, conservando la atribución,
+enlazando la licencia e indicando si se han hecho cambios.
+
+Esa licencia cubre **solo los textos originales de este glosario**. Las obras citadas,
+las marcas y cualquier material de terceros conservan sus propios derechos: la
+bibliografía es atribución, no permiso de reproducción. Si necesita reutilizar un
+material ajeno mencionado aquí, acuda a su fuente y a sus condiciones.
+
+## Cómo citarlo
+
+> Barrera E. *Glosario de IA para profesionales sanitarios*. 2026. Disponible en:
+> <https://ernestobarrera.github.io/glosario-ia/> (consulta: fecha de acceso).
+
+Para citar una ficha concreta, añada su título y la fecha de última revisión que
+figura en ella.
+
+## Errores y sugerencias
+
+Las correcciones son bienvenidas y son la vía más útil de colaborar. Puede
+[comunicar un error o proponer un término](https://github.com/ernestobarrera/glosario-ia/issues/new/choose)
+en el repositorio.

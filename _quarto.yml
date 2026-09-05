@@ -4,6 +4,10 @@ project:
   render:
     - "*.qmd"
     - "terminos/*.qmd"
+    # Los patrones de Quarto casan a cualquier profundidad, como los de git:
+    # sin esta exclusion, "terminos/*.qmd" arrastra borradores/**/terminos/*.qmd
+    # y el render local pasa de 75 a 370 paginas.
+    - "!borradores/"
   preview:
     browser: false
     watch-inputs: true
@@ -25,19 +29,32 @@ website:
       - href: temas.qmd
         text: Temas
   page-footer:
-    left: "Prototipo en evaluación · Elaborado con asistencia de IA y revisión humana · Puede contener errores"
+    left: |
+      Barrera E. · Textos originales bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es) ·
+      Elaborado con asistencia de agentes de IA y supervisión humana · Fichas en borrador: pueden
+      contener errores · Las obras citadas conservan sus derechos
+    right:
+      - href: aviso.qmd
+        text: "Qué es esto y cómo se cita"
 
 lang: es
 bibliography: references.bib
 csl: vancouver.csl
 filters:
   - filters/sinonimos.lua
+  - filters/estado.lua
 
 format:
   html:
     include-in-header:
-      - text: <meta name="robots" content="noindex, nofollow">
-    theme: cosmo
+      - text: |
+          <meta name="robots" content="noindex, nofollow">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+    theme:
+      light: [cosmo, glosario.scss]
+      dark: [cosmo, glosario-oscuro.scss]
     css: styles.css
     toc: true
     toc-title: "En esta ficha"

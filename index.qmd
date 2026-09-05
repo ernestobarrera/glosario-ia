@@ -3,19 +3,20 @@ pagetitle: "Glosario de IA para profesionales sanitarios"
 description: "Conceptos de inteligencia artificial explicados para profesionales sanitarios con aplicaciones, limitaciones, ejemplos y referencias verificables."
 page-layout: full
 listing:
-  contents: "terminos/*.qmd"
+  id: fichas
+  contents: ["terminos/*.qmd", "!borradores/**"]
   template: "templates/listado-portada.ejs.md"
   sort: "title asc"
-  filter-ui: [title, sinonimos, description, categories, estado, tipo]
+  filter-ui: [title, sinonimos, description, categories]
   page-size: 9
 ---
 
 ::: {.hero-glosario}
-# Glosario de IA para profesionales sanitarios
+# Entender la IA, término a término
 
-Entender la IA, término a término: definiciones breves y ampliadas,
-aplicaciones generales y sanitarias, limitaciones, ejemplos, conexiones y
-referencias.
+Glosario para profesionales sanitarios: definiciones breves y ampliadas, aplicaciones
+generales y sanitarias, limitaciones, ejemplos, conexiones y referencias
+verificables.
 
 [Explorar de la A a la Z](indice-az.qmd){.btn .btn-primary}
 [Explorar por temas](temas.qmd){.btn .btn-outline-secondary}
@@ -23,6 +24,14 @@ referencias.
 
 ## Fichas disponibles
 
-Este glosario es un prototipo técnico en evaluación, elaborado con asistencia
-de agentes de IA y revisión humana. Puede contener errores, omisiones o
-contenido no actualizado; las correcciones y sugerencias son bienvenidas.
+Busca por término, por sigla o por sinónimo: «overfitting» lleva a *Sobreajuste* y
+«XAI» a *Explicabilidad*.
+
+::: {#fichas}
+:::
+
+## Qué es esto y cómo se cita
+
+{{< include _aviso-canonico.qmd >}}
+
+Más detalle en [el aviso completo](aviso.qmd).

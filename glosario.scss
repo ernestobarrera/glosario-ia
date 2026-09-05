@@ -1,0 +1,57 @@
+/*-- scss:defaults --*/
+
+// Capa de integracion con Bootstrap, tema claro.
+//
+// Aqui solo va lo que Bootstrap necesita saber ANTES de compilar: tipografias,
+// color de marca, fondo, bordes. Todo lo demas -composicion, monogramas,
+// distintivos, listados- vive en styles.css sobre las variables --g-*, que este
+// archivo declara al final y que glosario-oscuro.scss redefine con otros valores.
+// De ese modo la presentacion se escribe una sola vez y sirve para los dos temas.
+
+$font-family-sans-serif: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+$font-family-monospace: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+$headings-font-family: "Newsreader", Georgia, "Times New Roman", serif;
+$headings-font-weight: 600;
+$font-size-root: 17px;
+$line-height-base: 1.6;
+
+$body-bg: #f2f4f1;
+$body-color: #15323a;
+$primary: #05616c;
+$link-color: #05616c;
+$link-hover-color: #03454d;
+$border-color: #d8e0dd;
+$border-radius: 0.5rem;
+
+$navbar-bg: #ffffff;
+$navbar-fg: #15323a;
+$navbar-hl: #05616c;
+
+$table-border-color: #d8e0dd;
+$code-color: #15323a;
+$code-bg: #eaeeeb;
+
+/*-- scss:rules --*/
+
+:root {
+  --g-paper: #f2f4f1;
+  --g-superficie: #ffffff;
+  --g-hundido: #eaeeeb;
+  --g-tinta: #15323a;
+  --g-tinta-2: #41585f;
+  --g-tinta-3: #5d7076;
+  --g-linea: #d8e0dd;
+  --g-linea-2: #e8ecea;
+  --g-marca: #05616c;
+  --g-marca-tenue: #e2eeed;
+  --g-acento: #8a4a63;
+  --g-sombra: 0 1px 2px rgb(21 50 58 / 5%);
+
+  // Los nueve matices de tema comparten saturacion y luminosidad: solo gira el
+  // tono. Asi el color significa la categoria en lugar de decorar, y el
+  // contraste se comprueba una vez para toda la familia.
+  --g-cat-s: 34%;
+  --g-cat-l: 33%;
+  --g-cat-tinte: 93%;
+  --g-cat-borde: 82%;
+}
