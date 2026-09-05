@@ -32,10 +32,9 @@ equivocarse con seguridad cuesta mucho más que dudar.
 El concepto procede de la teoría de la información de Shannon, que en 1948
 definió la entropía como el promedio de información de una fuente
 [@shannon1948communication]. Su uso como función de pérdida en clasificación es
-posterior y se apoya en la estimación por máxima verosimilitud, no en un
-artículo fundacional propio. Con el aprendizaje profundo se convirtió en la
-opción por defecto para clasificación multiclase, emparejada con una salida
-softmax [@lecun2015deep].
+posterior y se apoya en la estimación por máxima verosimilitud. Con el
+aprendizaje profundo se convirtió en la opción por defecto para clasificación
+multiclase, emparejada con una salida softmax [@lecun2015deep].
 
 En 2017, Lin y colaboradores propusieron reponderarla para que los ejemplos
 fáciles y abundantes dejaran de dominar el gradiente, un problema recurrente

@@ -63,16 +63,17 @@ Es configuración que debe **declararse y fijarse** al evaluar o desplegar una
 herramienta sobre texto clínico, por la misma razón que la temperatura: cambia
 las salidas y, con ellas, cualquier medida que se tome sobre ellas. No aporta
 ningún filtro de corrección clínica: descarta tokens poco probables para el
-modelo, de modo que una afirmación errónea a la que el modelo asigne alta
-probabilidad entra en el núcleo con cualquier valor de p. La revisión de las
-salidas sigue siendo necesaria.
+modelo, sean acertados o no. Un umbral bajo puede dejar fuera un error situado
+en la cola, y ninguno deja fuera un error al que el modelo asigne alta
+probabilidad. Puede modificar la frecuencia de los errores; no garantiza
+veracidad, y la revisión de las salidas sigue siendo necesaria.
 
 ## Limitaciones
 
 - El tamaño efectivo del corte no es observable desde el parámetro: el mismo p
   admite dos tokens en un paso y doscientos en otro.
-- No mejora la veracidad; recorta por probabilidad
-  [@holtzman2020degeneration].
+- Recorta por probabilidad, no por corrección: puede alterar qué errores
+  aparecen, sin garantizar veracidad [@holtzman2020degeneration].
 - Combinado con temperatura y top-k, sus efectos se confunden entre sí.
 - Introduce variabilidad entre ejecuciones, que debe declararse al informar de
   resultados [@song2025greedy].

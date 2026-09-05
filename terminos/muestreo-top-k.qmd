@@ -58,10 +58,11 @@ estadístico y opera sobre la distribución que el modelo produce.
 Como el resto de los controles de generación, es **configuración que debe
 declararse** en cualquier evaluación de una herramienta sobre texto clínico,
 porque cambia las salidas y por tanto los resultados. Lo que no hace es
-seleccionar por corrección: el recorte deja fuera los tokens poco probables, y
-un contenido erróneo que el modelo considere probable sobrevive intacto a
-cualquier valor de k. No es, por tanto, una salvaguarda clínica ni sustituye a
-la revisión de las salidas.
+seleccionar por corrección: el recorte deja fuera los tokens poco probables,
+sean acertados o no. Un valor de k pequeño puede excluir un error situado en la
+cola, y ninguno excluye un error que el modelo considere de los más probables.
+Puede, por tanto, modificar la frecuencia de los errores, pero no garantiza
+veracidad ni sustituye a la revisión de las salidas.
 
 ## Limitaciones
 
@@ -69,7 +70,8 @@ la revisión de las salidas.
   mismo k es demasiado permisivo en un paso muy concentrado y demasiado
   restrictivo en uno abierto [@holtzman2020degeneration].
 - Un k pequeño produce texto repetitivo; uno grande apenas filtra.
-- No mejora la veracidad: filtra por probabilidad, no por corrección.
+- Filtra por probabilidad, no por corrección: puede alterar qué errores
+  aparecen y con qué frecuencia, sin garantizar veracidad.
 - Su efecto se solapa con el de la temperatura y el de top-p, de modo que
   ajustar varios a la vez dificulta atribuir el cambio observado.
 

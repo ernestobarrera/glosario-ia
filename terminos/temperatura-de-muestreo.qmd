@@ -80,9 +80,10 @@ sus salidas.
 - Temperatura cero elimina el muestreo, pero **no garantiza** reproducibilidad:
   subsisten otras fuentes de variación, desde el cómputo en paralelo hasta un
   cambio de versión del modelo [@pytorch2026reproducibility].
-- Su efecto no es uniforme sobre todos los errores: concentra la probabilidad
-  en el token **modal**, de modo que un error frecuente pero no modal se vuelve
-  menos probable, y el modal, más.
+- Su efecto no es uniforme sobre todos los errores. Lo que siempre aumenta al
+  enfriar es la **ventaja relativa** del token dominante frente a cada
+  alternativa; el efecto sobre la probabilidad absoluta de un token no dominante
+  depende del resto de la distribución y puede ser de aumento.
 - Valores altos degradan la coherencia; el efecto se solapa con el del recorte
   por top-k y top-p, así que ajustarlos a la vez confunde las causas
   [@holtzman2020degeneration].
@@ -94,6 +95,11 @@ probabilidades 0,60, 0,30 y 0,10. Al bajar la temperatura de 1 a 0,5, pasan
 aproximadamente a 0,78, 0,20 y 0,02. La opción dominante se refuerza y las
 otras se debilitan. Si la de 0,60 era la equivocada, bajar la temperatura hace
 el error más probable, no menos.
+
+No es una regla general. Con 0,45, 0,44 y 0,11, la misma bajada lleva a 0,50,
+0,47 y 0,03: la segunda opción **gana** probabilidad pese a no ser la
+dominante. Lo que siempre crece es la ventaja de la dominante sobre cada
+alternativa, no la probabilidad de cada una por separado.
 
 ## Relacionados
 

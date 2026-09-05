@@ -84,9 +84,9 @@ textual, no la de una enfermedad ni la de que la frase sea cierta.
 - Con clases muy desbalanceadas, el entrenamiento tiende a favorecer la clase
   mayoritaria; existen variantes de la pérdida que reponderan los casos
   fáciles [@lin2020focal].
-- Las diferencias entre puntuaciones se amplifican al exponenciarlas, de modo
-  que un margen pequeño en los logits puede producir una probabilidad aparente
-  muy alta.
+- El valor de un logit por separado no dice nada: la probabilidad del más alto
+  está acotada por su **margen** sobre el segundo. Con una diferencia de 0,1 no
+  puede superar 0,53, por grandes que sean los valores absolutos.
 
 ## Ejemplos
 

@@ -64,13 +64,15 @@ texto técnico con abreviaturas y cifras.
 
 En el texto clínico, la segmentación decide qué se conserva como unidad.
 Dosis, unidades y códigos —«0,5 mg/kg», «HbA1c», un código CIE— pueden
-partirse en varios fragmentos, y de esa partición depende que un extractor
-recupere el dato completo o solo un trozo. Los modelos preentrenados en
-literatura biomédica se construyen con vocabularios ajustados a ese lenguaje
-por este motivo [@lee2020biobert]. Al evaluar una herramienta sobre historias
-clínicas conviene comprobar cómo tokeniza los términos que importan, antes de
-atribuir a la comprensión del modelo lo que es un problema de segmentación
-[@wu2020clinicalnlp].
+partirse en varios fragmentos, y esa partición puede afectar a que un extractor
+recupere el dato completo o solo un trozo. Conviene no dar por hecho que un
+modelo biomédico traiga un vocabulario propio: BioBERT se preentrenó con corpus
+del dominio pero **conservó el vocabulario original de BERT**, de modo que
+muchos términos biomédicos siguen fragmentándose en subpalabras
+[@lee2020biobert]. Al evaluar una herramienta sobre historias clínicas conviene
+comprobar cómo tokeniza los términos que importan: la segmentación no determina
+por sí sola el resultado, pero es una causa de fallo que se confunde con
+facilidad con falta de comprensión del modelo [@wu2020clinicalnlp].
 
 ## Limitaciones
 

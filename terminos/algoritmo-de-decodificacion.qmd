@@ -74,8 +74,9 @@ sobre tareas clínicas, junto al modelo, la versión y el prompt. Sin ese dato,
 una evaluación no se puede repetir ni comparar con otra
 [@song2025greedy]. También conviene separar dos preguntas que la estrategia
 mezcla: si el sistema produce siempre la misma salida y si esa salida es
-correcta. La decodificación solo interviene en la primera, y un error puede
-repetirse de forma perfectamente estable.
+correcta. La estrategia puede modificar la frecuencia de los errores sin
+cambiar los pesos del modelo, pero no garantiza veracidad ni sustituye a la
+validación: un error puede repetirse de forma perfectamente estable.
 
 ## Limitaciones
 
@@ -83,8 +84,11 @@ repetirse de forma perfectamente estable.
   haces tienden a texto repetitivo y genérico [@holtzman2020degeneration].
 - El muestreo introduce variabilidad entre ejecuciones, que hay que declarar al
   informar de resultados.
-- Ninguna estrategia añade conocimiento ni corrige errores del modelo: no
-  reduce por sí sola las alucinaciones [@ji2023hallucination].
+- Ninguna estrategia modifica los pesos del modelo ni añade conocimiento, pero
+  sí puede alterar la frecuencia de los errores: la revisión de Ji y
+  colaboradores recoge la decodificación entre las causas de alucinación y
+  asocia el aumento de diversidad con más contenido alucinado
+  [@ji2023hallucination].
 - La estrategia óptima depende de la tarea y del protocolo de evaluación
   [@song2025greedy].
 
