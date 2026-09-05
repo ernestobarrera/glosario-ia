@@ -63,10 +63,11 @@ Es configuración que debe **declararse y fijarse** al evaluar o desplegar una
 herramienta sobre texto clínico, por la misma razón que la temperatura: cambia
 las salidas y, con ellas, cualquier medida que se tome sobre ellas. No aporta
 ningún filtro de corrección clínica: descarta tokens poco probables para el
-modelo, sean acertados o no. Un umbral bajo puede dejar fuera un error situado
-en la cola, y ninguno deja fuera un error al que el modelo asigne alta
-probabilidad. Puede modificar la frecuencia de los errores; no garantiza
-veracidad, y la revisión de las salidas sigue siendo necesaria.
+modelo, sean acertados o no. Un recorte puede excluir tokens erróneos, incluso
+de probabilidad alta; pero si el token de probabilidad máxima es único y
+erróneo, estos filtros lo conservan entre los candidatos. Puede modificar la
+frecuencia de los errores; no garantiza veracidad, y la revisión de las salidas
+sigue siendo necesaria.
 
 ## Limitaciones
 
