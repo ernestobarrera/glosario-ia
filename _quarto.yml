@@ -16,6 +16,7 @@ website:
   title: "Glosario IA"
   description: "Glosario de IA para profesionales sanitarios: conceptos explicados con aplicaciones, limitaciones, ejemplos y referencias verificables."
   site-url: "https://ernestobarrera.github.io/glosario-ia/"
+  favicon: favicon.svg
   repo-url: "https://github.com/ernestobarrera/glosario-ia"
   repo-actions: [edit, issue]
   search:

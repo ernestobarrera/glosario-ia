@@ -590,7 +590,39 @@ nav[role="doc-toc"] ul > li > a.active {
   }
 }
 
+/* ---------- transicion entre paginas ---------- */
+
+/* Esto no es de Bootstrap: Bootstrap anima componentes -colapsables, modales-,
+ * no la navegacion entre documentos. Lo que da continuidad aqui es la View
+ * Transitions API del propio navegador: una regla, cero JavaScript, y donde no
+ * esta soportada sencillamente no ocurre nada. La barra conserva su identidad
+ * entre paginas, asi que no parpadea al saltar de ficha en ficha. */
+@view-transition {
+  navigation: auto;
+}
+
+.navbar {
+  view-transition-name: barra-glosario;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 170ms;
+  animation-timing-function: ease;
+}
+
+/* Con la barra fija, un salto a un ancla dejaba el epigrafe debajo de ella. */
+main.content h2,
+main.content h3,
+main.content section {
+  scroll-margin-top: 5rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+
   * {
     transition: none !important;
   }
