@@ -28,6 +28,15 @@ a {
   letter-spacing: -0.012em;
 }
 
+main.content {
+  max-width: 78ch;
+}
+
+main.content:has(.quarto-listing),
+main.content:has(.glosario-card-grid) {
+  max-width: none;
+}
+
 /* ---------- portada ---------- */
 
 /* Sin recuadro: en pantalla ancha el rectangulo teñido dejaba media caja vacia
@@ -405,7 +414,7 @@ a {
 /* El bloque de metadatos de Quarto gastaba dos filetes y una fila entera para
  * una sola fecha, que ahora viaja como distintivo junto al estado. Hace falta
  * el id para ganar a la regla del tema, que es mas especifica. */
-#title-block-header .quarto-title-meta {
+#title-block-header.quarto-title-block.default .quarto-title-meta {
   display: none;
 }
 

@@ -65,9 +65,9 @@ format:
     # vacias. Aqui el cuerpo ES la medida de lectura, asi que los filetes de los
     # epigrafes acaban donde acaba el texto.
     grid:
-      sidebar-width: 200px
-      body-width: 660px
-      margin-width: 240px
+      sidebar-width: 160px
+      body-width: 800px
+      margin-width: 220px
       gutter-width: 1.2rem
     toc: true
     toc-title: "En esta ficha"
