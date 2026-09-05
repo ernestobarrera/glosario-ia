@@ -122,6 +122,29 @@ body {
   color: var(--glosario-muted);
 }
 
+.glosario-card-sinonimos {
+  margin: 0.55rem 0 0;
+  color: var(--glosario-muted);
+  font-size: 0.86rem;
+}
+
+.glosario-card-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.75rem;
+}
+
+.glosario-card-categorias .listing-category {
+  padding: 0.05rem 0.5rem;
+  border: 1px solid var(--glosario-border);
+  border-radius: 999px;
+  color: var(--glosario-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
 .quarto-title-meta {
   padding-block: 0.75rem;
   border-block: 1px solid var(--glosario-border);
@@ -143,7 +166,14 @@ body {
 
 .quarto-listing-table th:first-child,
 .quarto-listing-table td:first-child {
-  width: 30%;
+  width: 26%;
+}
+
+.quarto-listing-table th:nth-child(2),
+.quarto-listing-table td:nth-child(2) {
+  width: 22%;
+  color: var(--glosario-muted);
+  font-size: 0.93rem;
 }
 
 main.content > section {

@@ -4,6 +4,10 @@ project:
   render:
     - "*.qmd"
     - "terminos/*.qmd"
+    # Los patrones de Quarto casan a cualquier profundidad, como los de git:
+    # sin esta exclusion, "terminos/*.qmd" arrastra borradores/**/terminos/*.qmd
+    # y el render local pasa de 75 a 370 paginas.
+    - "!borradores/"
   preview:
     browser: false
     watch-inputs: true

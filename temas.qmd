@@ -2,10 +2,13 @@
 title: "Temas"
 description: "Explora las fichas mediante una taxonomía controlada."
 listing:
-  contents: "terminos/*.qmd"
+  contents: ["terminos/*.qmd", "!borradores/**"]
   type: grid
   sort: "title asc"
-  filter-ui: [categories, title, sinonimos, description, estado, tipo]
+  # El grid nativo solo emite con clase "listing-<campo>" los campos que conoce.
+  # Un campo propio como sinonimos sale como class="sinonimos" y la columna de
+  # busqueda "listing-sinonimos" queda muerta. Aqui solo se declara lo que existe.
+  filter-ui: [categories, title, description]
   categories: true
   page-size: 999
   grid-columns: 3

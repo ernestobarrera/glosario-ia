@@ -366,6 +366,49 @@ else {
   }
 }
 
+# Columnas de busqueda declaradas frente al HTML realmente emitido.
+#
+# filter-ui hace que Quarto genere searchColumns con la forma 'listing-<campo>',
+# pero quien emite esas clases es la plantilla del listado. Un campo que la
+# plantilla no pinta deja la columna muerta: el filtro no encuentra nada y nada
+# falla. Ocurrio con 'sinonimos' en las tres paginas de listado, con los sinonimos
+# correctamente indexados en search.json -lo que la comprobacion anterior ya
+# verificaba- y el filtro de la pagina sin encontrarlos. Indexado y filtrable no
+# son lo mismo, y hasta ahora solo se comprobaba lo primero.
+$columnasComprobadas = 0
+foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
+  $rutaListado = Join-Path $carpetaSitio $pagina
+  if (-not (Test-Path -LiteralPath $rutaListado)) {
+    Registrar-Error "$pagina`: no existe la salida del listado"
+    continue
+  }
+
+  $htmlListado = Get-Content -LiteralPath $rutaListado -Encoding UTF8 -Raw
+  $declaradas = [regex]::Match($htmlListado, 'searchColumns:\s*\[(?<columnas>[^\]]*)\]')
+  if (-not $declaradas.Success) {
+    Registrar-Aviso "$pagina`: el listado no declara columnas de busqueda"
+    continue
+  }
+
+  foreach ($columna in ($declaradas.Groups["columnas"].Value -split ",")) {
+    $clase = $columna.Trim().Trim('"')
+    if ([string]::IsNullOrWhiteSpace($clase)) {
+      continue
+    }
+
+    $patronClase = 'class="[^"]*\b' + [regex]::Escape($clase) + '\b'
+    if ($htmlListado -notmatch $patronClase) {
+      Registrar-Error (
+        "$pagina`: la columna de busqueda '$clase' no aparece en el HTML; " +
+        "el filtro de la pagina no puede encontrarla"
+      )
+    }
+    else {
+      $columnasComprobadas++
+    }
+  }
+}
+
 # Colision de identidad entre fichas.
 #
 # Hasta ahora solo se comprobaba la unicidad de slug y de alias. Los sinonimos
@@ -425,6 +468,7 @@ Write-Host "  Slugs derivados y unicos: $($slugVistos.Count)"
 Write-Host "  Aliases unicos y generados: $($aliasVistos.Count)"
 Write-Host "  Identidades sin colision (titulo + sinonimos): $($identidades.Count)"
 Write-Host "  Sinonimos renderizados e indexados: OK"
+Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
 

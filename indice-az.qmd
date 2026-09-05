@@ -2,11 +2,12 @@
 title: "Índice A–Z"
 description: "Todos los términos del glosario, ordenados alfabéticamente."
 listing:
-  contents: "terminos/*.qmd"
+  contents: ["terminos/*.qmd", "!borradores/**"]
   type: table
-  fields: [title, description]
+  fields: [title, sinonimos, description]
   field-display-names:
     title: "Término"
+    sinonimos: "Siglas y variantes"
     description: "Definición breve"
   sort: "title asc"
   sort-ui: [title]
