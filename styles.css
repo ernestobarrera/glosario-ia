@@ -1,86 +1,100 @@
-:root {
-  --glosario-ink: #18343d;
-  --glosario-muted: #40585f;
-  --glosario-primary: #05616c;
-  --glosario-soft: #eef7f7;
-  --glosario-border: #d9e5e7;
-}
+/* Capa de presentacion.
+ *
+ * Todo lo de aqui se escribe una sola vez para los dos temas: los colores
+ * salen de las variables --g-*, que declaran glosario.scss (claro) y
+ * glosario-oscuro.scss (oscuro). Ningun color literal en este archivo.
+ *
+ * Los nueve matices de tema se calculan desde un unico tono --h que la
+ * plantilla del listado pone en cada tarjeta. */
+
+/* ---------- base ---------- */
 
 body {
-  color: var(--glosario-ink);
+  color: var(--g-tinta);
+}
+
+a {
+  text-underline-offset: 0.15em;
 }
 
 .navbar {
-  border-bottom: 1px solid var(--glosario-border);
-  box-shadow: 0 2px 14px rgb(24 52 61 / 6%);
+  border-bottom: 1px solid var(--g-linea);
+  box-shadow: var(--g-sombra);
 }
 
+.navbar-brand {
+  font-family: var(--bs-font-serif, "Newsreader", Georgia, serif);
+  font-size: 1.3rem;
+  letter-spacing: -0.012em;
+}
+
+/* La medida de lectura vale para las fichas, no para los listados: una
+ * cuadricula de tarjetas encerrada en 72ch deja media pantalla vacia. */
+main.content > section {
+  max-width: 72ch;
+}
+
+main.content > section:has(.quarto-listing),
+main.content > section:has(.glosario-card-grid) {
+  max-width: none;
+}
+
+/* ---------- portada ---------- */
+
 .hero-glosario {
-  margin: 1.25rem 0 3rem;
-  padding: clamp(2rem, 6vw, 5rem);
-  border: 1px solid var(--glosario-border);
-  border-radius: 1.25rem;
-  background: var(--glosario-soft);
+  margin: 0.75rem 0 2.25rem;
+  padding: clamp(1.5rem, 3.5vw, 2.75rem) clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--g-linea);
+  border-radius: 0.9rem;
+  background: var(--g-marca-tenue);
 }
 
 .hero-glosario h1 {
-  max-width: 14ch;
-  margin-bottom: 1rem;
-  font-size: clamp(2.25rem, 6vw, 4.7rem);
-  letter-spacing: -0.045em;
-  line-height: 0.98;
-  color: var(--glosario-ink);
+  max-width: 20ch;
+  margin-bottom: 0.75rem;
+  color: var(--g-tinta);
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.022em;
+  line-height: 1.07;
+  text-wrap: balance;
 }
 
 .hero-glosario p {
-  max-width: 62ch;
-  color: var(--glosario-muted);
-  font-size: 1.15rem;
+  max-width: 58ch;
+  margin-bottom: 1.1rem;
+  color: var(--g-tinta-2);
+  font-size: 1.03rem;
 }
 
 .hero-glosario .btn {
-  margin: 0.4rem 0.35rem 0.4rem 0;
+  margin: 0.35rem 0.35rem 0.35rem 0;
 }
 
 .btn-primary {
-  border-color: var(--glosario-primary);
-  background-color: var(--glosario-primary);
+  border-color: var(--g-marca);
+  background-color: var(--g-marca);
+  color: var(--g-paper);
 }
 
 .btn-outline-secondary {
-  border-color: var(--glosario-primary);
-  color: var(--glosario-primary);
+  border-color: var(--g-marca);
+  color: var(--g-marca);
 }
 
 .btn-outline-secondary:hover,
 .btn-outline-secondary:focus-visible {
-  border-color: var(--glosario-primary);
-  background-color: var(--glosario-primary);
-  color: #ffffff;
+  border-color: var(--g-marca);
+  background-color: var(--g-marca);
+  color: var(--g-paper);
 }
 
-.page-link {
-  color: var(--glosario-primary);
-}
-
-.page-item.active .page-link {
-  border-color: var(--glosario-primary);
-  background-color: var(--glosario-primary);
-  color: #ffffff;
-}
-
-#listing-listing-sort {
-  color: var(--glosario-ink);
-}
-
-.quarto-listing-table {
-  border-color: var(--glosario-border);
-}
+/* ---------- tarjetas de la portada ---------- */
 
 .glosario-card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .glosario-card-item {
@@ -88,80 +102,243 @@ body {
 }
 
 .glosario-card-link {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding: 1.25rem;
-  border: 1px solid var(--glosario-border);
-  border-radius: 0.8rem;
-  box-shadow: 0 8px 25px rgb(24 52 61 / 6%);
+  padding: 1rem 1.05rem 0.95rem;
+  border: 1px solid var(--g-linea);
+  border-radius: 0.55rem;
+  background: var(--g-superficie);
+  box-shadow: var(--g-sombra);
   color: inherit;
   text-decoration: none;
   transition:
     border-color 120ms ease,
-    box-shadow 120ms ease,
     transform 120ms ease;
 }
 
 .glosario-card-link:hover,
 .glosario-card-link:focus-visible {
-  border-color: var(--glosario-primary);
-  box-shadow: 0 10px 30px rgb(24 52 61 / 12%);
+  border-color: var(--g-marca);
   color: inherit;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+}
+
+.glosario-card-cabecera {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+
+/* El monograma sustituye a la imagen que una ficha de glosario nunca va a
+ * tener: dice de que tema es y no exige buscar ni mantener ningun recurso. */
+.glosario-monograma {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid hsl(var(--h) var(--g-cat-s) var(--g-cat-borde));
+  border-radius: 0.4rem;
+  background: hsl(var(--h) var(--g-cat-s) var(--g-cat-tinte));
+  color: hsl(var(--h) var(--g-cat-s) var(--g-cat-l));
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1;
 }
 
 .glosario-card-title {
-  margin: 0 0 0.7rem;
-  color: var(--glosario-ink);
-  font-size: 1.2rem;
-  line-height: 1.25;
+  margin: 0.15rem 0 0;
+  color: var(--g-tinta);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+  line-height: 1.22;
 }
 
 .glosario-card-description {
   margin: 0;
-  color: var(--glosario-muted);
+  color: var(--g-tinta-2);
+  font-size: 0.94rem;
 }
 
 .glosario-card-sinonimos {
-  margin: 0.55rem 0 0;
-  color: var(--glosario-muted);
-  font-size: 0.86rem;
+  margin: 0.5rem 0 0;
+  color: var(--g-tinta-3);
+  font-size: 0.85rem;
 }
 
 .glosario-card-categorias {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
-  margin-top: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
 }
 
 .glosario-card-categorias .listing-category {
   padding: 0.05rem 0.5rem;
-  border: 1px solid var(--glosario-border);
+  border: 1px solid hsl(var(--h) var(--g-cat-s) var(--g-cat-borde));
   border-radius: 999px;
-  color: var(--glosario-muted);
-  font-size: 0.72rem;
+  background: hsl(var(--h) var(--g-cat-s) var(--g-cat-tinte));
+  color: hsl(var(--h) var(--g-cat-s) var(--g-cat-l));
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.68rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
-.quarto-title-meta {
-  padding-block: 0.75rem;
-  border-block: 1px solid var(--glosario-border);
+/* ---------- aviso canonico ---------- */
+
+.aviso-glosario {
+  display: grid;
+  gap: 1.1rem 2.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1rem 0 0.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--g-tinta);
 }
 
-.sinonimos {
-  margin: -0.15rem 0 1.5rem;
-  color: var(--glosario-muted);
-  font-size: 0.96rem;
+.aviso-glosario h3 {
+  margin: 0 0 0.3rem;
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.sinonimos p {
+.aviso-glosario p {
   margin: 0;
+  color: var(--g-tinta-2);
+  font-size: 0.93rem;
+}
+
+.aviso-glosario .cita-sugerida {
+  color: var(--g-tinta);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+
+/* ---------- listado de temas (cuadricula nativa de Quarto) ---------- */
+
+.quarto-grid-item.card {
+  border: 1px solid var(--g-linea);
+  border-radius: 0.55rem;
+  background: var(--g-superficie);
+  box-shadow: var(--g-sombra);
+  transition:
+    border-color 120ms ease,
+    transform 120ms ease;
+}
+
+.quarto-grid-link:hover .quarto-grid-item.card {
+  border-color: var(--g-marca);
+  transform: translateY(-1px);
+}
+
+.quarto-grid-item .card-title {
+  margin-bottom: 0.55rem;
+  color: var(--g-tinta);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.22;
+}
+
+.quarto-grid-item .card-text {
+  color: var(--g-tinta-2);
+  font-size: 0.94rem;
+}
+
+.quarto-grid-item .listing-categories {
+  gap: 0.3rem;
+  margin-top: 0.7rem;
+}
+
+.quarto-grid-item .listing-category {
+  padding: 0.05rem 0.5rem;
+  border: 1px solid var(--g-linea);
+  border-radius: 999px;
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
+.quarto-grid-item .listing-category:hover {
+  border-color: var(--g-marca);
+  color: var(--g-marca);
+}
+
+/* Barra lateral de categorias: una lista con el recuento alineado, no un
+ * parrafo que salta de linea con un numero suelto entre parentesis. */
+.quarto-listing-category-title {
+  margin-bottom: 0.5rem;
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quarto-listing-category .category {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.35rem 0.1rem;
+  border-top: 1px solid var(--g-linea-2);
+  color: var(--g-tinta-2);
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+.quarto-listing-category .category:hover {
+  color: var(--g-marca);
+}
+
+.quarto-listing-category .category.active {
+  color: var(--g-tinta);
+  font-weight: 600;
+}
+
+.quarto-listing-category .quarto-category-count {
+  margin-left: auto;
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- indice A-Z ---------- */
+
+.quarto-listing-table {
+  border-color: var(--g-linea);
+}
+
+.quarto-listing-table th {
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .quarto-listing-table td {
   vertical-align: top;
+}
+
+.quarto-listing-table td:first-child a {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 500;
 }
 
 .quarto-listing-table th:first-child,
@@ -172,26 +349,206 @@ body {
 .quarto-listing-table th:nth-child(2),
 .quarto-listing-table td:nth-child(2) {
   width: 22%;
-  color: var(--glosario-muted);
+  color: var(--g-tinta-3);
+  font-size: 0.9rem;
+}
+
+.quarto-listing-table td:last-child {
+  color: var(--g-tinta-2);
+  font-size: 0.94rem;
+}
+
+/* ---------- filtro y paginacion ---------- */
+
+.listing-actions-group {
+  margin-bottom: 0.5rem;
+}
+
+.page-link {
+  color: var(--g-marca);
+}
+
+.page-item.active .page-link {
+  border-color: var(--g-marca);
+  background-color: var(--g-marca);
+  color: var(--g-paper);
+}
+
+/* ---------- ficha ---------- */
+
+#title-block-header .quarto-title h1.title {
+  font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.quarto-title .quarto-categories {
+  gap: 0.35rem;
+  padding-bottom: 0.6rem;
+}
+
+.quarto-title .quarto-category {
+  padding: 0.05rem 0.55rem;
+  border: 1px solid var(--g-linea);
+  border-radius: 999px;
+  background: var(--g-superficie);
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
+/* La definicion breve del frontmatter, que es la entradilla de la ficha. */
+#title-block-header .description {
+  max-width: 60ch;
+  margin: 0.4rem 0 0.9rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--g-marca);
+  color: var(--g-tinta);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+
+.quarto-title-meta {
+  padding-block: 0.6rem;
+  border-block: 1px solid var(--g-linea);
+}
+
+.quarto-title-meta-heading {
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.64rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.quarto-title-meta-contents {
+  color: var(--g-tinta-2);
+  font-size: 0.9rem;
+}
+
+/* Distintivos de estado y tipo, que emite filters/estado.lua. */
+.estado-ficha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.1rem 0 0.6rem;
+}
+
+.estado-ficha .distintivo {
+  padding: 0.05rem 0.55rem;
+  border: 1px solid var(--g-linea);
+  border-radius: 999px;
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+}
+
+.estado-ficha .distintivo-borrador {
+  border-color: var(--g-acento);
+  color: var(--g-acento);
+}
+
+.sinonimos {
+  margin: 0 0 1.6rem;
+  color: var(--g-tinta-3);
   font-size: 0.93rem;
 }
 
-main.content > section {
-  max-width: 72ch;
+.sinonimos p {
+  margin: 0;
+}
+
+.sinonimos strong {
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+main.content h2 {
+  margin-top: 2rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--g-linea-2);
+  font-size: 1.32rem;
+}
+
+main.content h3 {
+  margin-top: 1.3rem;
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-sans-serif, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* ---------- sumario lateral ---------- */
+
+#quarto-margin-sidebar .quarto-secondary-nav-title,
+#TOC .toc-actions,
+nav[role="doc-toc"] > h2 {
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+nav[role="doc-toc"] ul > li > a {
+  border-left: 2px solid var(--g-linea-2);
+  color: var(--g-tinta-2);
+}
+
+nav[role="doc-toc"] ul > li > a.active {
+  border-left-color: var(--g-marca);
+  color: var(--g-marca);
+  font-weight: 400;
+}
+
+/* ---------- pie ---------- */
+
+.nav-footer {
+  border-top: 1px solid var(--g-linea);
+  color: var(--g-tinta-3);
+  font-size: 0.82rem;
+}
+
+.nav-footer a {
+  color: var(--g-tinta-2);
+}
+
+/* ---------- adaptacion ---------- */
+
+@media (max-width: 991px) {
+  .glosario-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 767px) {
   .hero-glosario {
-    margin-top: 0.5rem;
-    padding: 1.6rem;
-    border-radius: 0.9rem;
+    margin-top: 0.4rem;
+    padding: 1.4rem;
+    border-radius: 0.7rem;
   }
 
   .hero-glosario h1 {
-    font-size: 2.45rem;
+    font-size: 2.2rem;
   }
 
   .glosario-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aviso-glosario {
     grid-template-columns: 1fr;
   }
 
@@ -209,12 +566,17 @@ main.content > section {
 
   .quarto-listing-table th:first-child,
   .quarto-listing-table td:first-child {
-    width: 34%;
+    width: 30%;
+  }
+
+  .quarto-listing-table th:nth-child(2),
+  .quarto-listing-table td:nth-child(2) {
+    width: 24%;
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .glosario-card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
   }
 }

@@ -4,6 +4,9 @@ description: "Explora las fichas mediante una taxonomía controlada."
 listing:
   contents: ["terminos/*.qmd", "!borradores/**"]
   type: grid
+  # Sin "image": el grid nativo solo pinta el hueco gris de 150 px cuando
+  # el campo esta declarado y la ficha no tiene imagen. Ninguna la tendra.
+  fields: [title, description, categories]
   sort: "title asc"
   # El grid nativo solo emite con clase "listing-<campo>" los campos que conoce.
   # Un campo propio como sinonimos sale como class="sinonimos" y la columna de

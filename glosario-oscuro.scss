@@ -1,0 +1,51 @@
+/*-- scss:defaults --*/
+
+// Variante oscura. Misma estructura que glosario.scss: solo cambian los valores.
+// No es una inversion mecanica del claro; el verde azulado de marca se aclara
+// para seguir legible sobre fondo oscuro, y los matices de tema suben de
+// luminosidad y bajan de saturacion por el mismo motivo.
+
+$font-family-sans-serif: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+$font-family-monospace: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+$headings-font-family: "Newsreader", Georgia, "Times New Roman", serif;
+$headings-font-weight: 600;
+$font-size-root: 17px;
+$line-height-base: 1.6;
+
+$body-bg: #101a1d;
+$body-color: #e9efec;
+$primary: #79c3c2;
+$link-color: #79c3c2;
+$link-hover-color: #a3d8d6;
+$border-color: #28393e;
+$border-radius: 0.5rem;
+
+$navbar-bg: #162327;
+$navbar-fg: #e9efec;
+$navbar-hl: #79c3c2;
+
+$table-border-color: #28393e;
+$code-color: #e9efec;
+$code-bg: #1b2a2f;
+
+/*-- scss:rules --*/
+
+:root {
+  --g-paper: #101a1d;
+  --g-superficie: #162327;
+  --g-hundido: #1b2a2f;
+  --g-tinta: #e9efec;
+  --g-tinta-2: #b3c4c5;
+  --g-tinta-3: #8b9c9f;
+  --g-linea: #28393e;
+  --g-linea-2: #213136;
+  --g-marca: #79c3c2;
+  --g-marca-tenue: #17302f;
+  --g-acento: #d69eb1;
+  --g-sombra: none;
+
+  --g-cat-s: 30%;
+  --g-cat-l: 70%;
+  --g-cat-tinte: 19%;
+  --g-cat-borde: 30%;
+}

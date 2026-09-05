@@ -106,6 +106,23 @@ if (
   Registrar-Error "taxonomia.yml: faltan categories, estados o tipos"
 }
 
+# Cada categoria de la taxonomia debe tener matiz asignado en la plantilla de la
+# portada. Si se anade una categoria y nadie le da color, la tarjeta se pintaria
+# con el matiz por defecto sin que nada avisara.
+$rutaPlantilla = Join-Path (Join-Path $raiz "templates") "listado-portada.ejs.md"
+if (-not (Test-Path -LiteralPath $rutaPlantilla)) {
+  Registrar-Error "falta templates/listado-portada.ejs.md"
+}
+else {
+  $plantillaPortada = Get-Content -LiteralPath $rutaPlantilla -Encoding UTF8 -Raw
+  foreach ($categoria in $categoriasPermitidas) {
+    $claveMatiz = '"' + $categoria + '":'
+    if ($plantillaPortada.IndexOf($claveMatiz, [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error "listado-portada.ejs.md: la categoria '$categoria' no tiene matiz asignado"
+    }
+  }
+}
+
 $bib = Get-Content -LiteralPath (Join-Path $raiz "references.bib") -Encoding UTF8 -Raw
 $clavesBib = @{}
 foreach ($coincidencia in [regex]::Matches($bib, "(?m)^@\w+\s*\{\s*([^,\s]+)\s*,")) {
@@ -318,6 +335,20 @@ foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd"
   $htmlCanonico = Join-Path $carpetaSitio "terminos\$slug.html"
   if (Test-Path -LiteralPath $htmlCanonico) {
     $html = Get-Content -LiteralPath $htmlCanonico -Encoding UTF8 -Raw
+    # El estado tiene que llegar al HTML. Es campo obligatorio del esquema, pero
+    # Quarto no lo emite: lo pone filters/estado.lua. Sin esta comprobacion, si
+    # el filtro deja de aplicarse, las fichas dejan de decir que son borradores
+    # y nada falla.
+    if ($html.IndexOf('<div class="estado-ficha">', [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error "$nombre`: no se renderizo la linea de estado"
+    }
+    else {
+      $marcaEstado = 'distintivo-' + [string]$meta["estado"]
+      if ($html.IndexOf($marcaEstado, [StringComparison]::Ordinal) -lt 0) {
+        Registrar-Error "$nombre`: el estado '$($meta["estado"])' no aparece en el HTML"
+      }
+    }
+
     $bloqueSinonimos = [regex]::Match(
       $html,
       '<div class="sinonimos"[^>]*>(?<contenido>[\s\S]*?)</div>'
@@ -469,6 +500,7 @@ Write-Host "  Aliases unicos y generados: $($aliasVistos.Count)"
 Write-Host "  Identidades sin colision (titulo + sinonimos): $($identidades.Count)"
 Write-Host "  Sinonimos renderizados e indexados: OK"
 Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
+Write-Host "  Estado renderizado y matices de tema asignados: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
 

@@ -15,4 +15,5 @@ listing:
   page-size: 999
 ---
 
-Usa el filtro para localizar un término, una sigla, un sinónimo o un tema.
+Usa el filtro para localizar un término, una sigla o un sinónimo: escribe
+«overfitting» y aparecerá *Sobreajuste*.

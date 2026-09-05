@@ -1,0 +1,28 @@
+```{=html}
+<div class="aviso-glosario">
+  <div>
+    <h3>Cómo se ha hecho</h3>
+    <p>Las fichas se redactan con asistencia de agentes de IA y pasan por supervisión humana
+    antes de entrar. La supervisión no equivale a una revisión completa: cada ficha lleva su
+    propio estado y su fecha de última revisión.</p>
+  </div>
+  <div>
+    <h3>Qué garantía no da</h3>
+    <p>Todas las fichas están hoy en estado <strong>borrador</strong>: estructura y fuentes
+    iniciales, pendientes de revisión. Puede haber errores, omisiones o contenido
+    desactualizado. No es una recomendación clínica ni sustituye al juicio profesional.</p>
+  </div>
+  <div>
+    <h3>Cómo se cita</h3>
+    <p class="cita-sugerida">Barrera E. <em>Glosario de IA para profesionales sanitarios</em>.
+    2026. https://ernestobarrera.github.io/glosario-ia/ (consulta: fecha de acceso).</p>
+  </div>
+  <div>
+    <h3>Licencia y derechos</h3>
+    <p>Los textos originales, bajo
+    <a href="https://creativecommons.org/licenses/by/4.0/deed.es">CC BY 4.0</a>. Las obras
+    citadas, marcas y materiales de terceros conservan sus derechos y se usan con atribución:
+    una bibliografía no concede permiso de reproducción.</p>
+  </div>
+</div>
+```
