@@ -28,29 +28,18 @@ a {
   letter-spacing: -0.012em;
 }
 
-/* La medida de lectura vale para las fichas, no para los listados: una
- * cuadricula de tarjetas encerrada en 72ch deja media pantalla vacia. */
-main.content > section {
-  max-width: 72ch;
-}
-
-main.content > section:has(.quarto-listing),
-main.content > section:has(.glosario-card-grid) {
-  max-width: none;
-}
-
 /* ---------- portada ---------- */
 
+/* Sin recuadro: en pantalla ancha el rectangulo teñido dejaba media caja vacia
+ * a la derecha del texto. El titular sostiene la portada por si solo. */
 .hero-glosario {
-  margin: 0.75rem 0 2.25rem;
-  padding: clamp(1.5rem, 3.5vw, 2.75rem) clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid var(--g-linea);
-  border-radius: 0.9rem;
-  background: var(--g-marca-tenue);
+  margin: 0 0 2rem;
+  padding: 1.25rem 0 1.75rem;
+  border-bottom: 1px solid var(--g-linea);
 }
 
 .hero-glosario h1 {
-  max-width: 20ch;
+  max-width: 18ch;
   margin-bottom: 0.75rem;
   color: var(--g-tinta);
   font-size: clamp(2rem, 4.2vw, 3rem);
@@ -413,22 +402,11 @@ main.content > section:has(.glosario-card-grid) {
   line-height: 1.45;
 }
 
-.quarto-title-meta {
-  padding-block: 0.6rem;
-  border-block: 1px solid var(--g-linea);
-}
-
-.quarto-title-meta-heading {
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.64rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
-
-.quarto-title-meta-contents {
-  color: var(--g-tinta-2);
-  font-size: 0.9rem;
+/* El bloque de metadatos de Quarto gastaba dos filetes y una fila entera para
+ * una sola fecha, que ahora viaja como distintivo junto al estado. Hace falta
+ * el id para ganar a la regla del tema, que es mas especifica. */
+#title-block-header .quarto-title-meta {
+  display: none;
 }
 
 /* Distintivos de estado y tipo, que emite filters/estado.lua. */
@@ -436,7 +414,7 @@ main.content > section:has(.glosario-card-grid) {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin: 1.1rem 0 0.6rem;
+  margin: 0 0 0.5rem;
 }
 
 .estado-ficha .distintivo {
@@ -480,7 +458,7 @@ main.content h2 {
   font-size: 1.32rem;
 }
 
-main.content h3 {
+main.content h3:not(.glosario-card-title):not(.card-title) {
   margin-top: 1.3rem;
   color: var(--g-tinta-3);
   font-family: var(--bs-font-sans-serif, sans-serif);
@@ -493,7 +471,6 @@ main.content h3 {
 /* ---------- sumario lateral ---------- */
 
 #quarto-margin-sidebar .quarto-secondary-nav-title,
-#TOC .toc-actions,
 nav[role="doc-toc"] > h2 {
   color: var(--g-tinta-3);
   font-family: var(--bs-font-monospace, monospace);
@@ -513,12 +490,41 @@ nav[role="doc-toc"] ul > li > a.active {
   font-weight: 400;
 }
 
+.toc-actions {
+  font-size: 0.8rem;
+}
+
+/* En las paginas sin sumario, Quarto manda estas acciones al centro del pie.
+ * Que vayan en linea, no apiladas: el pie no debe crecer por dos enlaces. */
+.nav-footer-center .toc-actions ul {
+  display: flex;
+  gap: 1.4rem;
+  margin: 0;
+}
+
+.toc-actions a.toc-action {
+  color: var(--g-tinta-3);
+}
+
+.toc-actions a.toc-action:hover {
+  color: var(--g-marca);
+}
+
 /* ---------- pie ---------- */
 
 .nav-footer {
+  padding-block: 0.35rem;
   border-top: 1px solid var(--g-linea);
   color: var(--g-tinta-3);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
+}
+
+.nav-footer p {
+  margin: 0;
+}
+
+.nav-footer .nav-link {
+  padding-block: 0;
 }
 
 .nav-footer a {

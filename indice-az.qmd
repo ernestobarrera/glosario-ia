@@ -1,6 +1,11 @@
 ---
 title: "Índice A–Z"
 description: "Todos los términos del glosario, ordenados alfabéticamente."
+toc: false
+grid:
+  body-width: 1180px
+  margin-width: 120px
+  sidebar-width: 160px
 listing:
   contents: ["terminos/*.qmd", "!borradores/**"]
   type: table
@@ -10,7 +15,6 @@ listing:
     sinonimos: "Siglas y variantes"
     description: "Definición breve"
   sort: "title asc"
-  sort-ui: [title]
   filter-ui: [title, sinonimos, description]
   page-size: 999
 ---

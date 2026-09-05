@@ -1,6 +1,12 @@
 ---
 title: "Temas"
 description: "Explora las fichas mediante una taxonomía controlada."
+toc: false
+grid:
+  # El margen sigue albergando la lista de categorias, asi que conserva anchura.
+  body-width: 1080px
+  margin-width: 260px
+  sidebar-width: 160px
 listing:
   contents: ["terminos/*.qmd", "!borradores/**"]
   type: grid

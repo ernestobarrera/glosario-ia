@@ -10,10 +10,48 @@
 
 local estado = nil
 local tipo = nil
+local fecha = nil
+
+local MESES = {
+  "ene", "feb", "mar", "abr", "may", "jun",
+  "jul", "ago", "sep", "oct", "nov", "dic"
+}
+
+-- Quarto entrega la fecha ya escrita en castellano ("22 de agosto de 2026"),
+-- no en ISO, asi que se abrevia el mes para que quepa en un distintivo. Si el
+-- valor no tiene la forma esperada se deja tal cual: mas vale una fecha fea
+-- que una fecha inventada.
+local ABREVIA = {
+  enero = "ene", febrero = "feb", marzo = "mar", abril = "abr",
+  mayo = "may", junio = "jun", julio = "jul", agosto = "ago",
+  septiembre = "sep", setiembre = "sep", octubre = "oct",
+  noviembre = "nov", diciembre = "dic"
+}
+
+local function fechaLegible(valor)
+  local anio, mes, dia = valor:match("^(%d%d%d%d)-(%d%d)-(%d%d)$")
+
+  if anio then
+    return string.format("revisada %d %s %s", tonumber(dia), MESES[tonumber(mes)], anio)
+  end
+
+  local diaTexto, mesTexto, anioTexto = valor:match("^(%d+) de (%a+) de (%d%d%d%d)$")
+
+  if diaTexto and ABREVIA[mesTexto:lower()] then
+    return string.format("revisada %s %s %s", diaTexto, ABREVIA[mesTexto:lower()], anioTexto)
+  end
+
+  return "revisada " .. valor
+end
 
 function Meta(meta)
   estado = nil
   tipo = nil
+  fecha = nil
+
+  if meta["date-modified"] then
+    fecha = fechaLegible(pandoc.utils.stringify(meta["date-modified"]))
+  end
 
   if meta.estado then
     estado = pandoc.utils.stringify(meta.estado)
@@ -53,6 +91,16 @@ function Pandoc(doc)
     end
 
     table.insert(contenido, distintivo(tipo))
+  end
+
+  -- La fecha viaja aqui porque el bloque de metadatos de Quarto gastaba dos
+  -- filetes y una fila entera para una sola linea; el dato importa, el marco no.
+  if fecha then
+    if #contenido > 0 then
+      table.insert(contenido, pandoc.Space())
+    end
+
+    table.insert(contenido, distintivo(fecha))
   end
 
   local linea = pandoc.Div(

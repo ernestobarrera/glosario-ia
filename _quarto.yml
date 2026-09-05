@@ -18,9 +18,16 @@ website:
   site-url: "https://ernestobarrera.github.io/glosario-ia/"
   repo-url: "https://github.com/ernestobarrera/glosario-ia"
   repo-actions: [edit, issue]
-  search: true
+  search:
+    location: navbar
+    type: textbox
   page-navigation: true
+  back-to-top-navigation: true
+  open-graph: true
   navbar:
+    # Fija: en una herramienta de consulta se salta de ficha en ficha y la
+    # navegacion tiene que estar siempre a mano.
+    pinned: true
     left:
       - href: index.qmd
         text: Inicio
@@ -29,13 +36,10 @@ website:
       - href: temas.qmd
         text: Temas
   page-footer:
-    left: |
-      Barrera E. · Textos originales bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es) ·
-      Elaborado con asistencia de agentes de IA y supervisión humana · Fichas en borrador: pueden
-      contener errores · Las obras citadas conservan sus derechos
+    left: "Barrera E. · Textos originales bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)"
     right:
       - href: aviso.qmd
-        text: "Qué es esto y cómo se cita"
+        text: "Aviso, límites y licencia"
 
 lang: es
 bibliography: references.bib
@@ -56,6 +60,15 @@ format:
       light: [cosmo, glosario.scss]
       dark: [cosmo, glosario-oscuro.scss]
     css: styles.css
+    # La rejilla por defecto de Quarto reserva 800 px de cuerpo y 250 de margen:
+    # en una pantalla de 14 pulgadas eso deja el texto flotando entre dos bandas
+    # vacias. Aqui el cuerpo ES la medida de lectura, asi que los filetes de los
+    # epigrafes acaban donde acaba el texto.
+    grid:
+      sidebar-width: 200px
+      body-width: 660px
+      margin-width: 240px
+      gutter-width: 1.2rem
     toc: true
     toc-title: "En esta ficha"
     smooth-scroll: true
