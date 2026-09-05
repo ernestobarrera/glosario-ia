@@ -415,6 +415,16 @@ foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
   }
 
   $htmlListado = Get-Content -LiteralPath $rutaListado -Encoding UTF8 -Raw
+
+  # Solo tiene sentido comprobarlo donde hay caja de filtro. Sin filter-ui,
+  # Quarto emite igualmente unas searchColumns por defecto que incluyen campos
+  # no renderizados (listing-author, listing-image): columnas muertas que no
+  # enganan a nadie porque no hay filtro que las use. Visto en el ensayo de
+  # temas agrupados del 2026-09-05.
+  if ($htmlListado.IndexOf('class="search form-control"', [StringComparison]::Ordinal) -lt 0) {
+    continue
+  }
+
   $declaradas = [regex]::Match($htmlListado, 'searchColumns:\s*\[(?<columnas>[^\]]*)\]')
   if (-not $declaradas.Success) {
     Registrar-Aviso "$pagina`: el listado no declara columnas de busqueda"
