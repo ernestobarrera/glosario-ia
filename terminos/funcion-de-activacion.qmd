@@ -74,6 +74,7 @@ comprobarse con datos independientes.
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Unidad lineal rectificada](relu.qmd)
 - [Sigmoide](sigmoide.qmd)
+- [Softmax](softmax.qmd)
 
 ## Referencias
 

@@ -1,0 +1,116 @@
+---
+title: "Temperatura de muestreo"
+aliases:
+  - /terminos/temperature.html
+  - /terminos/temperatura.html
+sinonimos:
+  - "Temperature"
+  - "Temperatura"
+description: "Parámetro que reescala las puntuaciones antes del softmax y controla cuánto se concentra la distribución de la que se muestrea el siguiente token."
+categories:
+  - "Modelos de lenguaje"
+  - "Fundamentos"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **temperatura de muestreo**, llamada casi siempre **temperature** o
+simplemente **temperatura**, divide las puntuaciones de la última capa antes de
+aplicar softmax. Con valores por debajo de uno la distribución se concentra en
+los tokens más probables; por encima de uno se aplana y los tokens poco
+probables ganan peso.
+
+En el límite inferior, con temperatura cero, no queda azar: se toma siempre el
+token más probable, que es la búsqueda voraz.
+
+Es un ajuste del **procedimiento de generación**, no del modelo: no modifica
+sus pesos ni lo que aprendió. Sí puede cambiar el rendimiento observado, porque
+cambia qué salidas se producen.
+
+## Contexto histórico
+
+La idea y el nombre proceden de la física estadística: la distribución de
+Boltzmann tiene un parámetro de temperatura con este mismo efecto sobre la
+concentración de probabilidad. Su uso como control de generación se popularizó
+con los modelos de lenguaje autorregresivos, y aparece descrito en los
+protocolos experimentales de los grandes modelos de la época
+[@brown2020fewshot].
+
+Conviene no confundirla con el *temperature scaling* de la calibración: allí se
+ajusta un único parámetro sobre los logits, después de entrenar, para que las
+probabilidades estimadas se parezcan a las frecuencias observadas
+[@guo2017calibration]. La operación matemática es la misma; el propósito no.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es el control de generación más expuesto en las
+interfaces y en las API, y por eso el más susceptible de leerse mal. Song y
+colaboradores documentaron que la decodificación voraz —el caso de temperatura
+cero— supera al muestreo en la mayoría de las tareas que evaluaron, lo que
+convierte a este parámetro en una variable de la evaluación y no en un
+preferencia de estilo [@song2025greedy].
+
+## Aplicaciones
+
+### Generales
+
+- Reducir la variabilidad entre ejecuciones para tareas con una respuesta
+  esperada.
+- Aumentar la diversidad cuando interesa obtener alternativas distintas.
+- Fijar una configuración declarada y reproducible al evaluar un sistema.
+
+### Sanitarias
+
+Es un parámetro que hay que **registrar** al documentar cualquier evaluación de
+una herramienta sobre tareas clínicas: sin él, el resultado no se puede
+reproducir ni comparar. Bajarla concentra la distribución en los tokens más
+probables y puede mejorar la exactitud en tareas con una única respuesta
+correcta [@song2025greedy], pero no garantiza veracidad: si la continuación más
+probable es errónea, favorecerla refuerza ese error. Ninguna configuración de
+este parámetro sustituye a la validación de la herramienta ni a la revisión de
+sus salidas.
+
+## Limitaciones
+
+- No mejora el conocimiento del modelo: solo cambia cómo se recorre su
+  distribución.
+- Temperatura cero elimina el muestreo, pero **no garantiza** reproducibilidad:
+  subsisten otras fuentes de variación, desde el cómputo en paralelo hasta un
+  cambio de versión del modelo [@pytorch2026reproducibility].
+- Su efecto no es uniforme sobre todos los errores. Lo que siempre aumenta al
+  enfriar es la **ventaja relativa** del token dominante frente a cada
+  alternativa; el efecto sobre la probabilidad absoluta de un token no dominante
+  depende del resto de la distribución y puede ser de aumento.
+- Valores altos degradan la coherencia; el efecto se solapa con el del recorte
+  por top-k y top-p, así que ajustarlos a la vez confunde las causas
+  [@holtzman2020degeneration].
+
+## Ejemplos
+
+**Ejemplo hipotético:** en un paso de generación, tres continuaciones tienen
+probabilidades 0,60, 0,30 y 0,10. Al bajar la temperatura de 1 a 0,5, pasan
+aproximadamente a 0,78, 0,20 y 0,02. La opción dominante se refuerza y las
+otras se debilitan. Si la de 0,60 era la equivocada, bajar la temperatura hace
+el error más probable, no menos.
+
+No es una regla general. Con 0,45, 0,44 y 0,11, la misma bajada lleva a 0,50,
+0,47 y 0,03: la segunda opción **gana** probabilidad pese a no ser la
+dominante. Lo que siempre crece es la ventaja de la dominante sobre cada
+alternativa, no la probabilidad de cada una por separado.
+
+## Relacionados
+
+- [Modelo de lenguaje grande](llm.qmd)
+- [Muestreo top-p](muestreo-top-p.qmd)
+- [Muestreo top-k](muestreo-top-k.qmd)
+- [Softmax](softmax.qmd)
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
+- [No determinismo en IA](no-determinismo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

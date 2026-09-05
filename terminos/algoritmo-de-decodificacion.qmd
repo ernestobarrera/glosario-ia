@@ -1,0 +1,115 @@
+---
+title: "Algoritmo de decodificación"
+aliases:
+  - /terminos/decoding-algorithm.html
+  - /terminos/estrategia-de-decodificacion.html
+sinonimos:
+  - "Decoding algorithm"
+  - "Estrategia de decodificación"
+description: "Procedimiento que elige, paso a paso, qué token emite un modelo de lenguaje a partir de la distribución de probabilidad que calcula."
+categories:
+  - "Modelos de lenguaje"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **algoritmo de decodificación**, o **estrategia de decodificación**, es el
+procedimiento que convierte la distribución de probabilidad calculada en cada
+paso en un token concreto. El modelo produce la distribución; la estrategia
+decide qué se hace con ella.
+
+Las familias principales son:
+
+- **Búsqueda voraz** (*greedy*): en cada paso se toma el token más probable. Es
+  determinista y rápida, y tiende a repetirse.
+- **Búsqueda por haces** (*beam search*): mantiene varias secuencias candidatas
+  en paralelo y se queda con la más probable en conjunto. Cuesta más cómputo y
+  favorece salidas convencionales.
+- **Muestreo**: se extrae un token al azar según la distribución, normalmente
+  recortada antes con [muestreo top-k](muestreo-top-k.qmd) o
+  [muestreo top-p](muestreo-top-p.qmd) y reescalada con la
+  [temperatura](temperatura-de-muestreo.qmd).
+
+**No debe confundirse con el decodificador de la arquitectura transformer.**
+Ese decodificador es un bloque de la red, hecho de capas de atención; el
+algoritmo de decodificación es un procedimiento externo al modelo, que se
+configura sin tocar sus pesos [@vaswani2017attention].
+
+## Contexto histórico
+
+La búsqueda voraz y la búsqueda por haces vienen de la traducción automática
+estadística y pasaron a la neuronal, donde fueron durante años la opción por
+defecto. El giro llegó con la generación de texto abierto: en 2020, Holtzman y
+colaboradores mostraron que maximizar la probabilidad produce texto repetitivo
+y poco natural, y propusieron el muestreo por núcleo como alternativa
+[@holtzman2020degeneration]. En 2018, Fan, Lewis y Dauphin ya habían empleado
+el recorte a los k tokens más probables con este mismo fin
+[@fan2018hierarchical].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es una de las palancas de configuración con más
+efecto sobre lo que un usuario ve, y una de las menos declaradas. Song y
+colaboradores documentaron en 2025 que la decodificación voraz supera al
+muestreo en la mayoría de las tareas que evaluaron, y que ignorar la estrategia
+al comparar modelos introduce variabilidad no controlada [@song2025greedy]. Dos
+evaluaciones del «mismo modelo» con estrategias distintas no son comparables.
+
+## Aplicaciones
+
+### Generales
+
+- Ajustar el equilibrio entre salidas repetitivas y salidas variadas.
+- Fijar una configuración reproducible para evaluar un sistema.
+- Generar varias alternativas de un mismo texto para compararlas.
+
+### Sanitarias
+
+Es parte de la configuración que debe registrarse al evaluar una herramienta
+sobre tareas clínicas, junto al modelo, la versión y el prompt. Sin ese dato,
+una evaluación no se puede repetir ni comparar con otra
+[@song2025greedy]. También conviene separar dos preguntas que la estrategia
+mezcla: si el sistema produce siempre la misma salida y si esa salida es
+correcta. La estrategia puede modificar la frecuencia de los errores sin
+cambiar los pesos del modelo, pero no garantiza veracidad ni sustituye a la
+validación: un error puede repetirse de forma perfectamente estable.
+
+## Limitaciones
+
+- Maximizar la probabilidad no maximiza la calidad: la búsqueda voraz y la de
+  haces tienden a texto repetitivo y genérico [@holtzman2020degeneration].
+- El muestreo introduce variabilidad entre ejecuciones, que hay que declarar al
+  informar de resultados.
+- Ninguna estrategia modifica los pesos del modelo ni añade conocimiento, pero
+  sí puede alterar la frecuencia de los errores: la revisión de Ji y
+  colaboradores recoge la decodificación entre las causas de alucinación y
+  asocia el aumento de diversidad con más contenido alucinado
+  [@ji2023hallucination].
+- La estrategia óptima depende de la tarea y del protocolo de evaluación
+  [@song2025greedy].
+
+## Ejemplos
+
+**Ejemplo hipotético:** un servicio evalúa un modelo en resumen de informes de
+alta y obtiene mejores cifras que en una prueba anterior. Antes de atribuirlo
+al modelo, hay que comprobar si cambió la estrategia de decodificación: pasar
+de muestreo a búsqueda voraz puede explicar la diferencia sin que el modelo
+haya cambiado.
+
+## Relacionados
+
+- [Temperatura de muestreo](temperatura-de-muestreo.qmd)
+- [Muestreo top-k](muestreo-top-k.qmd)
+- [Muestreo top-p](muestreo-top-p.qmd)
+- [Entropía de Shannon](entropia-de-shannon.qmd)
+- [Divergencia de Jensen-Shannon](divergencia-de-jensen-shannon.qmd)
+- [No determinismo en IA](no-determinismo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -13,7 +13,7 @@ categories:
   - "Aprendizaje automático"
   - "Procesamiento del lenguaje"
   - "Recuperación de información"
-date-modified: 2026-08-22
+date-modified: 2026-09-04
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -78,7 +78,7 @@ componente debe valorar su calidad y vigencia.
 
 - [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
 - [Generación aumentada por recuperación](rag.qmd)
-- [Modelo de lenguaje de gran tamaño](llm.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
 - [Transformer](transformer.qmd)
 
 ## Referencias

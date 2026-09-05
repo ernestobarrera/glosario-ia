@@ -1,0 +1,97 @@
+---
+title: "Muestreo top-k"
+aliases:
+  - /terminos/top-k.html
+sinonimos:
+  - "Top-k"
+  - "Top-k sampling"
+description: "Estrategia de generación que restringe la elección del siguiente token a los k más probables y muestrea solo entre ellos."
+categories:
+  - "Modelos de lenguaje"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **muestreo top-k**, o **top-k sampling**, ordena los tokens candidatos por
+probabilidad, se queda con los **k** primeros, renormaliza esa cola para que
+sume uno y muestrea dentro de ella. Todo lo demás queda excluido, por muy
+larga que sea la cola descartada.
+
+El corte es **de tamaño fijo**: siempre k candidatos, tenga la distribución la
+forma que tenga. Ahí está su principal diferencia con el
+[muestreo top-p](muestreo-top-p.qmd), cuyo corte se adapta a la distribución de
+cada paso.
+
+Con k igual a uno, el procedimiento degenera en la búsqueda voraz.
+
+## Contexto histórico
+
+Fan, Lewis y Dauphin lo emplearon en 2018 para generar relatos, recortando la
+distribución a los k tokens más probables antes de muestrear
+[@fan2018hierarchical]. Ese trabajo lo describe y lo usa, pero no acredita una
+prioridad histórica exclusiva sobre la idea. En 2020, Holtzman y colaboradores
+lo tomaron como término de comparación al proponer el corte por masa de
+probabilidad, y señalaron que un k fijo se ajusta mal a distribuciones de forma
+muy distinta entre pasos [@holtzman2020degeneration].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, sigue disponible en la mayoría de las API de
+generación, con frecuencia junto a top-p y a la temperatura. Su papel práctico
+es acotar la cola de tokens improbables, no seleccionar contenido: el filtro es
+estadístico y opera sobre la distribución que el modelo produce.
+
+## Aplicaciones
+
+### Generales
+
+- Evitar que tokens muy improbables aparezcan en el texto generado.
+- Acotar la diversidad con un parámetro fácil de comunicar.
+- Comparar salidas con distintos grados de recorte sobre el mismo prompt.
+
+### Sanitarias
+
+Como el resto de los controles de generación, es **configuración que debe
+declararse** en cualquier evaluación de una herramienta sobre texto clínico,
+porque cambia las salidas y por tanto los resultados. Lo que no hace es
+seleccionar por corrección: el recorte deja fuera los tokens poco probables,
+sean acertados o no. Un recorte puede excluir tokens erróneos, incluso de
+probabilidad alta; pero si el token de probabilidad máxima es único y erróneo,
+estos filtros lo conservan entre los candidatos. Puede, por tanto, modificar la
+frecuencia de los errores, pero no garantiza veracidad ni sustituye a la
+revisión de las salidas.
+
+## Limitaciones
+
+- El corte es de tamaño fijo y no se adapta a la forma de la distribución: el
+  mismo k es demasiado permisivo en un paso muy concentrado y demasiado
+  restrictivo en uno abierto [@holtzman2020degeneration].
+- Un k pequeño produce texto repetitivo; uno grande apenas filtra.
+- Filtra por probabilidad, no por corrección: puede alterar qué errores
+  aparecen y con qué frecuencia, sin garantizar veracidad.
+- Su efecto se solapa con el de la temperatura y el de top-p, de modo que
+  ajustar varios a la vez dificulta atribuir el cambio observado.
+
+## Ejemplos
+
+**Ejemplo hipotético:** con k igual a 5, el modelo elige entre las cinco
+continuaciones más probables. Si en ese paso hay treinta continuaciones
+razonables, se descartan veinticinco; si solo hay dos plausibles, se admiten
+tres improbables. El mismo valor de k produce recortes muy distintos según el
+paso.
+
+## Relacionados
+
+- [Modelo de lenguaje grande](llm.qmd)
+- [Muestreo top-p](muestreo-top-p.qmd)
+- [Temperatura de muestreo](temperatura-de-muestreo.qmd)
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,112 @@
+---
+title: "Softmax"
+aliases:
+  - /terminos/funcion-softmax.html
+sinonimos:
+  - "Función softmax"
+  - "Exponencial normalizada"
+description: "Función que convierte un vector de puntuaciones en una distribución de probabilidad sobre un conjunto de alternativas, con valores positivos que suman uno."
+categories:
+  - "Fundamentos"
+  - "Arquitecturas"
+date-modified: 2026-09-04
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **función softmax**, o **exponencial normalizada**, toma un vector de
+puntuaciones sin restricciones —los *logits* de la última capa— y devuelve
+valores positivos que suman uno. Cada componente se exponencia y se divide por
+la suma de todas, de modo que la ordenación se conserva y las diferencias
+grandes se acentúan.
+
+El resultado tiene la forma de una distribución de probabilidad sobre las
+alternativas representadas. Que tenga esa forma no garantiza que esos números
+sean probabilidades bien estimadas: eso es una propiedad empírica del modelo,
+llamada calibración, que se mide aparte [@guo2017calibration].
+
+Es la generalización a varias clases de la función logística, y por eso aparece
+tanto en la salida de un clasificador multiclase como en la de un modelo de
+lenguaje, donde las alternativas son los tokens del vocabulario.
+
+## Contexto histórico
+
+La forma matemática es anterior a las redes neuronales: coincide con la
+distribución de Boltzmann de la física estadística y con la regresión logística
+multinomial de la estadística. Su papel como capa de salida se consolidó con la
+clasificación multiclase en aprendizaje profundo; el sistema que ganó ImageNet
+en 2012 producía una distribución sobre mil categorías con una capa de este
+tipo [@krizhevsky2017imagenet].
+
+En 2017, Guo y colaboradores midieron sobre arquitecturas de clasificación de
+imágenes y de documentos que las redes de aquel momento estaban peor calibradas
+que las de una década antes [@guo2017calibration]. Ese resultado separó dos
+cosas que se venían confundiendo: acertar la clase y estimar bien su
+probabilidad.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es la capa de salida habitual de los
+clasificadores y de los modelos de lenguaje [@lecun2015deep]. En estos últimos
+es además el punto donde actúan los controles de generación: la temperatura, el
+muestreo top-k y el muestreo top-p operan sobre la distribución que produce
+softmax, no sobre el conocimiento del modelo.
+
+## Aplicaciones
+
+### Generales
+
+- Convertir puntuaciones en una distribución sobre clases mutuamente
+  excluyentes.
+- Producir, en cada paso de generación, la distribución sobre los tokens
+  candidatos.
+- Servir de base a la entropía cruzada durante el entrenamiento.
+
+### Sanitarias
+
+En un clasificador de imagen que distingue lesión benigna de maligna, softmax
+reparte la probabilidad entre las categorías que el modelo representa. Ese
+valor puede usarse como probabilidad estimada, pero su calibración debe
+evaluarse en la población de uso antes de apoyar decisiones en él
+[@vancalster2019calibration]. Si el modelo es un modelo de lenguaje, la
+distribución es sobre tokens: un 0,92 es la probabilidad de una continuación
+textual, no la de una enfermedad ni la de que la frase sea cierta.
+
+## Limitaciones
+
+- La salida suma uno por construcción, así que reparte toda la probabilidad
+  entre las clases previstas aunque el caso no pertenezca a ninguna.
+- Un valor alto no acredita calibración: las redes evaluadas por Guo y
+  colaboradores tendían a la sobreconfianza, con excepciones
+  [@guo2017calibration].
+- Con clases muy desbalanceadas, el entrenamiento tiende a favorecer la clase
+  mayoritaria; existen variantes de la pérdida que reponderan los casos
+  fáciles [@lin2020focal].
+- El valor de un logit por separado no dice nada: la probabilidad del más alto
+  está acotada por su **margen** sobre el segundo. Con una diferencia de 0,1 no
+  puede superar 0,53, por grandes que sean los valores absolutos.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un clasificador de radiografías devuelve logits 3,1 /
+1,0 / 0,4 para tres hallazgos. Softmax los convierte en aproximadamente 0,84 /
+0,10 / 0,06. El primero es el más probable según el modelo. Para saber si ese
+0,84 significa que acierta 84 de cada 100 veces en pacientes como los del
+servicio, hay que medir la calibración en esa población, no leer el número
+[@vancalster2019calibration].
+
+## Relacionados
+
+- [Función de activación](funcion-de-activacion.qmd)
+- [Gradiente](gradiente.qmd)
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Clasificación](clasificacion.qmd)
+- [Entropía cruzada](entropia-cruzada.qmd)
+- [Temperatura de muestreo](temperatura-de-muestreo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
