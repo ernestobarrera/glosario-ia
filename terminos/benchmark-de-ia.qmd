@@ -82,6 +82,7 @@ efecto sobre la atención.
 - [Aprendizaje automático](aprendizaje-automatico.qmd)
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
 - [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
 
 ## Referencias
 

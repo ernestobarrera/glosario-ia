@@ -82,6 +82,7 @@ fluidez conviven con límites y riesgos clínicamente relevantes
 
 - [Agente de IA](agente-de-ia.qmd)
 - [Inteligencia artificial general](agi.qmd)
+- [Fundamentación](fundamento.qmd)
 
 ## Referencias
 
