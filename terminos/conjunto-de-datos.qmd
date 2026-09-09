@@ -1,0 +1,91 @@
+---
+title: "Conjunto de datos"
+aliases:
+  - /terminos/dataset.html
+sinonimos:
+  - "Dataset"
+description: "Colección delimitada de observaciones y variables, acompañada de reglas de procedencia y uso, que puede emplearse para entrenar o evaluar sistemas de IA."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-09-09
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **conjunto de datos**, o **dataset**, es una colección delimitada de
+observaciones: imágenes, textos, señales, mediciones o registros, junto con las
+variables y etiquetas que los describen. En IA puede servir para entrenamiento,
+validación, prueba o análisis, funciones que conviene mantener separadas.
+
+Los datos no son solo archivos. Su significado depende de cómo se obtuvieron,
+qué población representan, qué transformaciones recibieron y para qué usos se
+consideran apropiados.
+
+## Contexto histórico
+
+Las colecciones de ejemplos han acompañado al reconocimiento estadístico de
+patrones desde sus orígenes. La expansión del aprendizaje profundo se apoyó en
+recursos de mayor escala y tareas comparables; ImageNet, presentado en 2009,
+organizó millones de imágenes en una jerarquía compartida
+[@deng2009imagenet].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la procedencia y la documentación del conjunto
+son parte del resultado técnico. Las fichas de datos propuestas por Gebru y
+colaboradores registran motivación, composición, recogida, usos previstos y
+limitaciones para que los consumidores puedan juzgar su idoneidad
+[@gebru2021datasheets].
+
+## Aplicaciones
+
+### Generales
+
+- Entrenar un clasificador con ejemplos etiquetados.
+- Comparar modelos sobre un conjunto de prueba mantenido aparte.
+- Explorar grupos o tendencias sin una variable objetivo.
+
+### Sanitarias
+
+- Estudiar datos clínicos desidentificados con una procedencia definida, como la
+  base de cuidados críticos MIMIC-III [@johnson2016mimic].
+- Evaluar un sistema de imagen médica sobre centros y equipos distintos de los
+  usados para entrenarlo.
+- Documentar consentimiento, criterios de inclusión, codificación y ausencias
+  antes de reutilizar registros asistenciales.
+
+## Limitaciones
+
+- Una muestra grande puede seguir siendo poco representativa de la población de
+  uso.
+- Las etiquetas incorporan errores, desacuerdos y decisiones de quien las creó.
+- Mezclar personas o episodios entre entrenamiento y prueba produce fuga de
+  información y una evaluación demasiado optimista.
+- Los cambios de centro, tiempo, dispositivo o práctica clínica pueden alterar
+  la distribución.
+- La desidentificación reduce riesgos, pero no convierte cualquier reutilización
+  en legítima ni elimina toda posibilidad de reidentificación.
+
+## Ejemplos
+
+Un conjunto de radiografías puede incluir la imagen, la fecha, el equipo y una
+etiqueta derivada del informe. Si imágenes de la misma persona aparecen en
+entrenamiento y prueba, el rendimiento medido puede reflejar esa dependencia en
+lugar de generalización a pacientes nuevos.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,86 @@
+---
+title: "Puntuación de silueta"
+aliases:
+  - /terminos/silhouette-score.html
+sinonimos:
+  - "Silhouette score"
+  - "Coeficiente de silueta"
+description: "Índice interno que compara la cohesión de cada caso con su separación respecto al grupo alternativo más próximo."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-09
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **puntuación de silueta**, llamada también **silhouette score** o
+**coeficiente de silueta**, evalúa una partición comparando dos distancias para
+cada caso: la distancia media a su propio grupo, $a(i)$, y la menor distancia
+media a otro grupo, $b(i)$. Se calcula como
+$s(i)=[b(i)-a(i)]/\max\{a(i),b(i)\}$.
+
+El valor queda entre -1 y 1. Un valor alto indica que el caso está más próximo a
+su grupo que al grupo alternativo; un valor cercano a cero señala solapamiento y
+uno negativo sugiere una asignación discutible. El promedio resume el conjunto,
+pero puede ocultar grupos con comportamientos distintos.
+
+## Contexto histórico
+
+Peter Rousseeuw introdujo la silueta en 1987 como representación gráfica y medida
+de validación de agrupamientos. El trabajo definió tanto el valor por caso como
+la anchura media para comparar particiones [@rousseeuw1987silhouettes].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es una medida interna común porque no requiere
+etiquetas verdaderas. Puede ayudar a comparar elecciones de número de grupos,
+representación o distancia, pero solo respecto a la geometría medida en esos
+datos.
+
+## Aplicaciones
+
+### Generales
+
+- Comparar varias particiones del mismo conjunto de datos.
+- Detectar casos situados entre dos grupos.
+- Examinar por separado la cohesión de cada clúster.
+
+### Sanitarias
+
+- Describir la separación interna de fenotipos obtenidos de datos clínicos.
+- Comparar agrupamientos de perfiles moleculares o patrones de utilización.
+- Usarla como diagnóstico exploratorio, no como prueba de que los grupos sean
+  enfermedades distintas ni respondan a tratamientos diferentes.
+
+## Limitaciones
+
+- Depende por completo de la representación y de la distancia elegidas.
+- Favorece grupos compactos y bien separados; puede valorar mal formas no
+  convexas o densidades desiguales.
+- Un promedio alto no demuestra estabilidad en otra muestra.
+- No mide significado semántico, utilidad clínica ni justicia del agrupamiento.
+- Comparar muchos parámetros con el mismo índice puede sobreajustar también la
+  elección del agrupamiento.
+
+## Ejemplos
+
+Si un caso está a una distancia media de 2 de su propio grupo y de 5 del grupo
+alternativo más cercano, su silueta es $(5-2)/5=0,6$. El número describe esa
+separación bajo la métrica elegida; no explica por qué existe ni si el grupo
+representa una categoría real.
+
+## Relacionados
+
+- [Agrupamiento](agrupamiento.qmd)
+- [Índice de Rand ajustado](indice-rand-ajustado.qmd)
+- [Clúster semántico](cluster-semantico.qmd)
+- [Desplazamiento de centroides](desplazamiento-de-centroides.qmd)
+- [Espacio latente](espacio-latente.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

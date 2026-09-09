@@ -1,0 +1,91 @@
+---
+title: "Inferencia bayesiana"
+aliases:
+  - /terminos/bayesian-inference.html
+sinonimos:
+  - "Bayesian inference"
+description: "Marco probabilístico que combina información previa y datos observados para actualizar la incertidumbre sobre cantidades o hipótesis."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-09-09
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **inferencia bayesiana**, o **Bayesian inference**, combina una distribución
+previa con un modelo de los datos para obtener una distribución posterior. La
+regla de Bayes expresa esa actualización, pero el resultado depende de tres
+elementos: la información previa, la verosimilitud elegida y los datos
+observados.
+
+La salida no tiene por qué ser una única probabilidad. Puede ser una distribución
+completa sobre parámetros, predicciones o hipótesis, lo que permite representar
+incertidumbre y actualizarla cuando llega nueva información.
+
+## Contexto histórico
+
+El resultado atribuido a Thomas Bayes se publicó de forma póstuma en el siglo
+XVIII. Su incorporación a la IA creció con los modelos probabilísticos y las
+redes de creencias. En 1986, Judea Pearl describió procedimientos para
+estructurar y propagar evidencia en redes bayesianas
+[@pearl1986fusion].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la inferencia bayesiana sigue siendo un marco
+central para aprendizaje probabilístico, comparación de modelos y decisiones
+bajo incertidumbre. También ayuda a distinguir incertidumbre de variabilidad:
+una probabilidad posterior es condicional a los supuestos y datos del modelo, no
+una frecuencia universal descubierta por el algoritmo.
+
+## Aplicaciones
+
+### Generales
+
+- Actualizar parámetros de un modelo al observar nuevos datos.
+- Combinar distintas fuentes de evidencia en una red bayesiana.
+- Estimar intervalos creíbles y distribuciones predictivas.
+
+### Sanitarias
+
+- Actualizar una probabilidad diagnóstica a partir de una probabilidad previa y
+  el resultado de una prueba, siempre que sus características sean aplicables a
+  la población concreta.
+- Construir redes bayesianas para representar relaciones inciertas en problemas
+  biomédicos [@lucas2004bayesian].
+- Comunicar incertidumbre sin convertir la salida del modelo en una decisión de
+  tratamiento.
+
+## Limitaciones
+
+- Una distribución previa no es neutral: puede dominar el resultado cuando hay
+  pocos datos.
+- Una verosimilitud mal especificada produce posteriores precisas en apariencia
+  pero equivocadas.
+- La inferencia exacta puede ser inabordable en modelos grandes y requiere
+  aproximaciones.
+- Una probabilidad bien calculada dentro del modelo puede estar mal calibrada en
+  la población de uso [@vancalster2019calibration].
+- Actualizar una cifra no sustituye la validación externa ni la decisión clínica.
+
+## Ejemplos
+
+Si una enfermedad es infrecuente, un resultado positivo no determina por sí
+solo una probabilidad alta. La actualización combina la probabilidad previa con
+la sensibilidad y especificidad aplicables; cambiar cualquiera de esas entradas
+cambia la posterior.
+
+## Relacionados
+
+- [Redes bayesianas](redes-bayesianas.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Clasificación](clasificacion.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

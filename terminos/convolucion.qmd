@@ -1,0 +1,89 @@
+---
+title: "Convolución"
+aliases:
+  - /terminos/convolution.html
+sinonimos:
+  - "Convolution"
+description: "Operación que combina una entrada con un núcleo local y que las redes convolucionales usan para compartir parámetros y detectar patrones espaciales."
+categories:
+  - "Fundamentos"
+  - "Arquitecturas"
+date-modified: 2026-09-09
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **convolución**, o **convolution**, combina una señal con un núcleo que se
+desplaza sobre ella. En una red neuronal convolucional, los coeficientes de ese
+núcleo se aprenden: la misma operación local se aplica en muchas posiciones y
+produce mapas de características.
+
+En bibliotecas de aprendizaje profundo suele implementarse, por eficiencia, una
+correlación cruzada sin invertir el núcleo. La arquitectura se sigue llamando
+convolucional porque conserva las propiedades prácticas de localidad y parámetros
+compartidos.
+
+## Contexto histórico
+
+La operación procede del análisis de señales. Las redes que compartían pesos
+sobre una entrada espacial se consolidaron con sistemas de reconocimiento de
+documentos como LeNet [@lecun1998gradient]. En 2012, una red convolucional
+profunda redujo de forma decisiva el error de la competición ImageNet; el trabajo
+se reeditó después con metadatos estables [@krizhevsky2017imagenet].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la convolución continúa siendo una operación
+básica en imagen, audio y señales, aunque comparte terreno con transformadores y
+arquitecturas híbridas. Su sesgo inductivo local resulta eficiente cuando las
+relaciones cercanas y la repetición espacial importan.
+
+## Aplicaciones
+
+### Generales
+
+- Detectar bordes, texturas y formas en imágenes.
+- Procesar audio y series temporales con núcleos unidimensionales.
+- Segmentar, restaurar o clasificar señales espaciales.
+
+### Sanitarias
+
+- Analizar imágenes de dermatología, radiología o anatomía patológica dentro de
+  estudios de validación definidos.
+- Segmentar estructuras antes de una medición asistida.
+- El estudio de Esteva y colaboradores evaluó una red profunda sobre imágenes de
+  lesiones cutáneas; ese resultado experimental no convierte cualquier red
+  convolucional en equivalente a un dermatólogo [@esteva2017dermatology].
+
+## Limitaciones
+
+- La localidad ayuda a detectar patrones próximos, pero las relaciones globales
+  pueden requerir muchas capas u otros mecanismos.
+- Cambios de escala, rotación, equipo o protocolo pueden degradar un modelo si no
+  estuvieron representados en los datos.
+- El coste crece con la resolución, el número de canales y el tamaño del modelo.
+- Un mapa de activación no es por sí solo una explicación causal de la decisión.
+- La operación extrae regularidades; no determina si son clínicamente relevantes
+  ni si se generalizan a otro centro.
+
+## Ejemplos
+
+Un núcleo de detección de bordes produce una respuesta alta donde cambia
+bruscamente la intensidad. En una red, los núcleos no se eligen a mano: el
+entrenamiento ajusta sus valores para reducir la función de pérdida, y capas
+posteriores combinan patrones locales en representaciones más complejas.
+
+## Relacionados
+
+- [Red neuronal convolucional](red-neuronal-convolucional.qmd)
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

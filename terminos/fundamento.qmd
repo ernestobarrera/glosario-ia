@@ -1,0 +1,88 @@
+---
+title: "Fundamentación"
+aliases:
+  - /terminos/grounding.html
+sinonimos:
+  - "Grounding"
+  - "Anclaje en fuentes"
+description: "Vinculación de una respuesta de IA con datos, documentos o herramientas externos que permiten rastrear y comprobar su apoyo."
+categories:
+  - "Recuperación de información"
+  - "Modelos de lenguaje"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-09
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **fundamentación**, conocida también como **grounding** o **anclaje en
+fuentes**, vincula una respuesta de IA con información externa identificable:
+documentos recuperados, una base de datos, el resultado de una herramienta o un
+contexto proporcionado por el usuario.
+
+Una respuesta fundamentada permite preguntar «¿qué parte de la fuente apoya
+esto?». No garantiza que la respuesta sea verdadera: la fuente puede ser
+incorrecta, estar desactualizada o no sostener la formulación concreta.
+
+## Contexto histórico
+
+Los sistemas expertos ya separaban reglas y bases de conocimiento del mecanismo
+de inferencia. El término adquirió un uso más específico con los modelos
+generativos: su fluidez hizo visible la necesidad de conectar cada respuesta con
+evidencia recuperable. La generación aumentada por recuperación formalizó una
+de las arquitecturas más extendidas para hacerlo [@lewis2020rag].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la fundamentación se usa para reducir respuestas
+sin apoyo, incorporar información privada o reciente y facilitar la auditoría.
+Puede implementarse mediante recuperación de documentos, consultas a bases de
+datos, herramientas o citas. Es una propiedad del proceso y de la respuesta, no
+una etiqueta permanente del modelo.
+
+## Aplicaciones
+
+### Generales
+
+- Responder preguntas sobre un manual mostrando el pasaje utilizado.
+- Consultar un inventario o una API antes de informar de un valor actual.
+- Generar un resumen cuyos enunciados puedan remontarse a documentos concretos.
+
+### Sanitarias
+
+- Recuperar protocolos institucionales antes de resumirlos para un profesional.
+- Mostrar la ficha técnica, la guía o el artículo que respalda una afirmación,
+  conservando fecha, población y jurisdicción.
+- Separar la extracción documental de cualquier recomendación clínica: que un
+  modelo cite literatura no acredita que la haya interpretado bien.
+
+## Limitaciones
+
+- Recuperar un documento pertinente no asegura que la respuesta sea fiel a él.
+- Una cita puede existir y aun así no respaldar la afirmación asociada.
+- El sistema puede omitir una fuente decisiva o recuperar una versión caducada.
+- Aumentar el contexto no elimina las alucinaciones y puede introducir
+  contradicciones [@ji2023hallucination].
+- La trazabilidad exige conservar identificadores, fragmentos y fecha de acceso;
+  un enlace sin correspondencia entre afirmación y fuente es insuficiente.
+
+## Ejemplos
+
+Ante una pregunta sobre una política interna, un sistema recupera la versión
+vigente del documento, responde solo con ese contenido y enlaza los apartados
+utilizados. La respuesta queda fundamentada en ese documento, aunque todavía
+hay que comprobar que no mezcló versiones ni amplió el alcance del texto.
+
+## Relacionados
+
+- [Generación aumentada por recuperación](rag.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [Prompt de sistema](prompt-de-sistema.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

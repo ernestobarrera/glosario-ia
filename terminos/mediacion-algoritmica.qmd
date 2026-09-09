@@ -1,0 +1,101 @@
+---
+title: "Mediación algorítmica"
+aliases:
+  - /terminos/algorithmic-mediation.html
+sinonimos:
+  - "Algorithmic mediation"
+description: "Selección, ordenación o transformación automatizada que interviene entre una persona y la información, las opciones o las decisiones que recibe."
+categories:
+  - "Ética y gobernanza"
+  - "Seguridad y riesgos"
+  - "Fundamentos"
+date-modified: 2026-09-09
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **mediación algorítmica**, o **algorithmic mediation**, ocurre cuando un
+sistema automatizado selecciona, ordena, recomienda, resume o transforma lo que
+una persona puede ver y hacer. El algoritmo no se limita a transportar una
+realidad ya dada: introduce criterios de relevancia y deja otras posibilidades
+fuera de la vista.
+
+El concepto describe una relación, no un efecto único. Que un contenido aparezca
+primero puede influir en la atención o en una decisión, pero no permite deducir
+por sí solo qué creerá o hará una persona. Para estudiar el efecto hay que conocer
+el mecanismo, la interfaz, la población, la exposición y la alternativa con la
+que se compara.
+
+## Contexto histórico
+
+La selección automática precede a las plataformas actuales, pero ganó peso
+social con los buscadores, los sistemas de recomendación y las redes sociales.
+Los estudios de plataformas mostraron que los algoritmos determinan qué resulta
+visible y relevante mediante elecciones técnicas e institucionales, no mediante
+una regla neutral y universal [@gillespie2014algorithms].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, feeds, buscadores, asistentes generativos y
+sistemas de apoyo a decisiones median grandes volúmenes de información. Evaluar
+esa mediación exige examinar tanto el modelo como los datos, los objetivos de
+optimización, la interfaz y la posibilidad real de corregir o impugnar el
+resultado.
+
+## Aplicaciones
+
+### Generales
+
+- Ordenar resultados de búsqueda y noticias.
+- Recomendar vídeos, productos o documentos.
+- Priorizar solicitudes, alertas o casos para revisión humana.
+- Resumir varias fuentes antes de mostrarlas a una persona.
+
+### Sanitarias
+
+- Ordenar información de salud en un buscador, un portal o un asistente. La
+  posición altera lo que queda disponible para la atención, pero no demuestra un
+  efecto clínico determinado.
+- Priorizar personas para programas de gestión sanitaria. En un sistema real,
+  usar el gasto como sustituto de la necesidad produjo una asignación desigual
+  que solo apareció al auditar la variable objetivo [@obermeyer2019bias].
+- Diseñar revisiones en las que se registre qué opciones fueron mostradas,
+  ocultadas o resumidas, además del resultado final.
+
+## Limitaciones
+
+- **La mediación no equivale a manipulación ni a sesgo**, aunque puede
+  contenerlos. Son hipótesis que requieren evidencia adicional.
+- No basta con inspeccionar el código: datos, objetivo, reglas de negocio e
+  interfaz también determinan la selección.
+- Una explicación plausible del orden no prueba que sea la explicación real.
+- La personalización dificulta reproducir qué vio cada persona y con qué
+  alternativa se habría encontrado.
+- El efecto observado en una plataforma o población no se traslada
+  automáticamente a otra.
+
+## Ejemplos
+
+Dos buscadores pueden recuperar los mismos diez documentos y mediar la consulta
+de forma distinta si los ordenan con criterios diferentes. Para auditar esa
+diferencia hacen falta las listas mostradas y el criterio de evaluación; la mera
+existencia de personalización no permite afirmar que haya creado una burbuja.
+
+En sanidad, un algoritmo puede decidir qué casos llegan antes a un equipo de
+gestión. Si la prioridad usa coste previo como aproximación de necesidad, la
+mediación incorpora esa elección y puede excluir a personas con necesidad alta y
+menor gasto registrado [@obermeyer2019bias].
+
+## Relacionados
+
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Teoría de los actos de habla](teoria-de-los-actos-de-habla.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

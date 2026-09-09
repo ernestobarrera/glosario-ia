@@ -1,0 +1,92 @@
+---
+title: "Teoría de los actos de habla"
+aliases:
+  - /terminos/speech-act-theory.html
+  - /terminos/teoria-del-acto-de-habla.html
+sinonimos:
+  - "Teoría del acto de habla"
+  - "Speech act theory"
+description: "Marco pragmático que estudia cómo un enunciado puede realizar acciones además de transmitir contenido."
+categories:
+  - "Procesamiento del lenguaje"
+  - "Fundamentos"
+  - "Ética y gobernanza"
+date-modified: 2026-09-09
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **teoría de los actos de habla**, también denominada **teoría del acto de
+habla** o **speech act theory**, estudia cómo hablar puede ser una forma de
+actuar. Distingue el contenido dicho, la fuerza con la que se dice —afirmar,
+pedir, prometer o declarar— y los efectos que el enunciado produce en otras
+personas.
+
+Esta distinción permite analizar una instrucción y una pregunta que contienen
+palabras parecidas pero cumplen funciones diferentes. La fuerza depende del
+contexto, las convenciones y los roles; no reside únicamente en la frase.
+
+## Contexto histórico
+
+J. L. Austin desarrolló el marco en sus conferencias publicadas en 1962. John
+Searle lo amplió y propuso una clasificación de actos ilocutivos —asertivos,
+directivos, compromisivos, expresivos y declarativos— basada en criterios
+explícitos [@searle1976illocutionary].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el marco es útil para estudiar interfaces
+conversacionales porque separa texto, función y efecto. Aplicarlo a un modelo no
+demuestra que el sistema tenga intención o comprensión: describe cómo se usa e
+interpreta el intercambio.
+
+## Aplicaciones
+
+### Generales
+
+- Distinguir una petición de información de una orden o una promesa.
+- Analizar por qué el mismo texto cambia de sentido según quién lo emite.
+- Diseñar interfaces que hagan visible si una salida informa, propone o ejecuta.
+
+### Sanitarias
+
+- Separar en un asistente una descripción, una advertencia y una recomendación,
+  porque generan expectativas distintas.
+- Impedir que un texto generado adopte la apariencia de una orden clínica cuando
+  solo resume información.
+- Revisar el efecto de una respuesta sobre el usuario sin atribuir al modelo una
+  intención mental que no se ha demostrado.
+
+## Limitaciones
+
+- La taxonomía no convierte automáticamente una intención humana en una clase
+  detectable por software.
+- Un modelo puede producir la forma lingüística de una promesa sin poder asumir
+  el compromiso social correspondiente.
+- El efecto perlocutivo depende del receptor y del contexto; no se deduce del
+  texto aislado.
+- Las categorías se solapan y varían entre tradiciones lingüísticas y situaciones
+  reales.
+- Clasificar el acto no resuelve quién tiene autoridad ni responsabilidad para
+  realizarlo.
+
+## Ejemplos
+
+«Resume este protocolo» funciona como petición del usuario. La respuesta puede
+tener forma asertiva, pero no adquiere por ello la autoridad del protocolo. Si el
+sistema además envía el resumen a otra persona, aparece una acción distinta que
+la interfaz debe mostrar y autorizar.
+
+## Relacionados
+
+- [Prompt de sistema](prompt-de-sistema.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [Mediación algorítmica](mediacion-algoritmica.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
