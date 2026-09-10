@@ -48,6 +48,7 @@ csl: vancouver.csl
 filters:
   - filters/sinonimos.lua
   - filters/estado.lua
+  - filters/matices.lua
 
 format:
   html:

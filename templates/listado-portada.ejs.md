@@ -1,35 +1,36 @@
 ```{=html}
 <div class="glosario-card-grid list">
 <%
-// Matiz por tema. Una sola saturacion y una sola luminosidad para los nueve:
-// solo gira el tono, de modo que el color signifique la categoria en lugar de
-// decorar. El valor viaja como --h y styles.css calcula texto, fondo y borde.
+// Matiz por tema. El tono ya no se declara aqui: la tabla unica vive en
+// styles.css como --h-<categoria en slug>, y esta plantilla solo nombra la
+// variable que le corresponde a la primera categoria de la ficha. Antes habia
+// una tabla de nueve numeros en este archivo y el color solo existia en la
+// portada; ahora los tres sitios que pintan una categoria leen la misma tabla.
 //
-// Esta tabla debe cubrir TODAS las categorias de taxonomia.yml. validar.ps1
-// comprueba que no falte ninguna: si se anade una categoria y no se le asigna
-// matiz, la validacion falla en vez de pintarla en silencio del color por defecto.
-const matices = {
-  "Fundamentos": 192,
-  "Aprendizaje automático": 252,
-  "Arquitecturas": 322,
-  "Modelos de lenguaje": 34,
-  "Procesamiento del lenguaje": 162,
-  "Recuperación de información": 212,
-  "Seguridad y riesgos": 6,
-  "Ética y gobernanza": 288,
-  "IA agéntica": 104
-};
+// Si una categoria nueva no tuviera tono, var() caeria en el 192 de reserva en
+// lugar de romper el color. validar.ps1 comprueba que eso no llegue a pasar.
+const slug = (categoria) => categoria
+  .normalize("NFD")
+  .replace(/[̀-ͯ]/g, "")
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/^-|-$/g, "");
 
-const matiz = (item) => {
+const matiz = (categoria) => `var(--h-${slug(categoria)}, 192)`;
+
+// El monograma toma el tema principal de la ficha, que es la identidad de la
+// tarjeta; cada etiqueta toma el suyo, porque una ficha de dos temas llevaba
+// las dos etiquetas del color de la primera y eso decia algo que no es cierto.
+const matizPrincipal = (item) => {
   const primera = item.categories ? item.categories[0] : undefined;
-  return matices[primera] !== undefined ? matices[primera] : 192;
+  return primera ? matiz(primera) : "192";
 };
 
 const inicial = (titulo) => titulo.trim().charAt(0).normalize("NFD").charAt(0).toUpperCase();
 %>
 <% for (const item of items) { %>
   <article class="glosario-card-item" <%= metadataAttrs(item) %>>
-    <a href="<%- item.path %>" class="glosario-card-link" style="--h: <%= matiz(item) %>">
+    <a href="<%- item.path %>" class="glosario-card-link" style="--h: <%= matizPrincipal(item) %>">
       <div class="glosario-card-cabecera">
         <span class="glosario-monograma" aria-hidden="true"><%= inicial(item.title) %></span>
         <h3 class="no-anchor glosario-card-title listing-title"><%= item.title %></h3>
@@ -41,7 +42,7 @@ const inicial = (titulo) => titulo.trim().charAt(0).normalize("NFD").charAt(0).t
       <% if (item.categories) { %>
       <div class="glosario-card-categorias listing-categories">
         <% for (const categoria of item.categories) { %>
-        <span class="listing-category"><%= categoria %></span>
+        <span class="listing-category" style="--h: <%= matiz(categoria) %>"><%= categoria %></span>
         <% } %>
       </div>
       <% } %>

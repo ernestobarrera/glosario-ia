@@ -106,21 +106,77 @@ if (
   Registrar-Error "taxonomia.yml: faltan categories, estados o tipos"
 }
 
-# Cada categoria de la taxonomia debe tener matiz asignado en la plantilla de la
-# portada. Si se anade una categoria y nadie le da color, la tarjeta se pintaria
-# con el matiz por defecto sin que nada avisara.
+# Sistema de color de tema.
+#
+# El tono de cada categoria se declara una sola vez, en styles.css, y lo leen
+# tres consumidores: la plantilla de la portada, la regla de los listados y
+# filters/matices.lua para la ficha. Aqui se comprueba que la tabla cubre la
+# taxonomia y que los tres siguen enganchados. Hasta la fase 2 el color existia
+# solo en la portada, asi que esta comprobacion tambien es la que impide que
+# vuelva a encogerse sin que nada avise.
+function Slug-Categoria {
+  param([string]$Valor)
+
+  $plano = [string]::Join("", (
+    $Valor.Normalize([Text.NormalizationForm]::FormD).ToCharArray() | Where-Object {
+      [Globalization.CharUnicodeInfo]::GetUnicodeCategory($_) -ne
+        [Globalization.UnicodeCategory]::NonSpacingMark
+    }
+  ))
+  $plano = [Globalization.CultureInfo]::InvariantCulture.TextInfo.ToLower($plano)
+  return ([regex]::Replace($plano, "[^a-z0-9]+", "-")).Trim("-")
+}
+
+# El token que Quarto pone en el manejador de cada etiqueta de categoria de un
+# listado: base64(encodeURIComponent(categoria)). Se recalcula aqui en vez de
+# copiarlo, de modo que si Quarto cambiara el mecanismo la validacion lo dice.
+function Token-Categoria {
+  param([string]$Valor)
+
+  return [Convert]::ToBase64String(
+    [Text.Encoding]::UTF8.GetBytes([Uri]::EscapeDataString($Valor))
+  )
+}
+
+$rutaEstilos = Join-Path $raiz "styles.css"
+$estilos = Get-Content -LiteralPath $rutaEstilos -Encoding UTF8 -Raw
+$tokensTaxonomia = @{}
+
+foreach ($categoria in $categoriasPermitidas) {
+  $slugCategoria = Slug-Categoria $categoria
+  $token = Token-Categoria $categoria
+  $tokensTaxonomia[$token] = $categoria
+
+  if ($estilos.IndexOf("--h-$slugCategoria" + ":", [StringComparison]::Ordinal) -lt 0) {
+    Registrar-Error "styles.css: la categoria '$categoria' no tiene tono '--h-$slugCategoria'"
+  }
+
+  $selector = '[onclick*="(' + "'" + $token + "'" + ')"]'
+  if ($estilos.IndexOf($selector, [StringComparison]::Ordinal) -lt 0) {
+    Registrar-Error (
+      "styles.css: la categoria '$categoria' no tiene regla de matiz para los listados; " +
+      "falta el selector del token '$token'"
+    )
+  }
+}
+
 $rutaPlantilla = Join-Path (Join-Path $raiz "templates") "listado-portada.ejs.md"
 if (-not (Test-Path -LiteralPath $rutaPlantilla)) {
   Registrar-Error "falta templates/listado-portada.ejs.md"
 }
 else {
   $plantillaPortada = Get-Content -LiteralPath $rutaPlantilla -Encoding UTF8 -Raw
-  foreach ($categoria in $categoriasPermitidas) {
-    $claveMatiz = '"' + $categoria + '":'
-    if ($plantillaPortada.IndexOf($claveMatiz, [StringComparison]::Ordinal) -lt 0) {
-      Registrar-Error "listado-portada.ejs.md: la categoria '$categoria' no tiene matiz asignado"
-    }
+  if ($plantillaPortada.IndexOf("var(--h-", [StringComparison]::Ordinal) -lt 0) {
+    Registrar-Error (
+      "listado-portada.ejs.md: ya no lee la tabla de tonos de styles.css; " +
+      "la portada volveria a llevar su propia tabla de matices"
+    )
   }
+}
+
+$rutaFiltroMatices = Join-Path (Join-Path $raiz "filters") "matices.lua"
+if (-not (Test-Path -LiteralPath $rutaFiltroMatices)) {
+  Registrar-Error "falta filters/matices.lua: la ficha se quedaria sin color de tema"
 }
 
 $bib = Get-Content -LiteralPath (Join-Path $raiz "references.bib") -Encoding UTF8 -Raw
@@ -372,6 +428,22 @@ foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd"
         Registrar-Error "$nombre`: sinonimos renderizados distintos del frontmatter"
       }
     }
+
+    # Matiz de tema en la cabecera de la ficha. Lo emite filters/matices.lua,
+    # porque el title block de Quarto no da ningun asidero a CSS: sin el filtro
+    # las etiquetas volverian al gris de antes de la fase 2 y nada fallaria.
+    # Se comprueba posicion a posicion, que es como el filtro las escribe.
+    $posicionCategoria = 1
+    foreach ($categoria in $categorias) {
+      $reglaEsperada = (
+        "#title-block-header .quarto-category:nth-child($posicionCategoria)" +
+        "{--h:var(--h-" + (Slug-Categoria $categoria) + ",192)}"
+      )
+      if ($html.IndexOf($reglaEsperada, [StringComparison]::Ordinal) -lt 0) {
+        Registrar-Error "$nombre`: la categoria '$categoria' no recibe matiz en la cabecera"
+      }
+      $posicionCategoria++
+    }
   }
 }
 
@@ -450,6 +522,35 @@ foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
   }
 }
 
+# El mecanismo del que depende el matiz de los listados, comprobado contra el
+# HTML realmente emitido y no contra lo que se supone que emite Quarto.
+#
+# Las etiquetas de categoria de un listado no llevan ningun atributo que diga de
+# que categoria son: styles.css las tiñe casando el token del manejador que
+# dispara el filtro nativo. Si una version de Quarto cambiara ese manejador, las
+# nueve reglas dejarian de casar y la pagina volveria al gris sin un solo error.
+$tokensEmitidos = [regex]::Matches(
+  (Get-Content -LiteralPath (Join-Path $carpetaSitio "temas.html") -Encoding UTF8 -Raw),
+  "quartoListingCategory\('(?<token>[^']+)'\)"
+)
+
+if ($tokensEmitidos.Count -eq 0) {
+  Registrar-Error (
+    "temas.html: ninguna etiqueta de categoria emite el manejador del filtro nativo; " +
+    "las reglas de matiz de styles.css ya no pueden casar"
+  )
+}
+else {
+  foreach ($emitido in ($tokensEmitidos | ForEach-Object { $_.Groups["token"].Value } | Sort-Object -Unique)) {
+    if (-not $tokensTaxonomia.ContainsKey($emitido)) {
+      Registrar-Error (
+        "temas.html: el token de categoria '$emitido' no corresponde a ninguna categoria " +
+        "de la taxonomia; el matiz de esa etiqueta no se aplicaria"
+      )
+    }
+  }
+}
+
 # Colision de identidad entre fichas.
 #
 # Hasta ahora solo se comprobaba la unicidad de slug y de alias. Los sinonimos
@@ -510,7 +611,8 @@ Write-Host "  Aliases unicos y generados: $($aliasVistos.Count)"
 Write-Host "  Identidades sin colision (titulo + sinonimos): $($identidades.Count)"
 Write-Host "  Sinonimos renderizados e indexados: OK"
 Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
-Write-Host "  Estado renderizado y matices de tema asignados: OK"
+Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
+Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
 

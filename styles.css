@@ -7,6 +7,70 @@
  * Los nueve matices de tema se calculan desde un unico tono --h que la
  * plantilla del listado pone en cada tarjeta. */
 
+/* ---------- los nueve matices de tema ---------- */
+
+/* Tabla unica de tonos del sistema de color. Antes vivia dentro de la plantilla
+ * de la portada, asi que el color solo existia alli: en Temas y en la ficha las
+ * etiquetas de categoria salian grises y el sistema no se percibia como sistema.
+ * Aqui la declara un unico sitio y la consumen los tres: la plantilla de la
+ * portada, la regla de los listados de abajo y filters/matices.lua para la ficha.
+ *
+ * Solo gira el tono. Saturacion y luminosidad son comunes (--g-cat-*), asi que el
+ * contraste medido para la familia vale para los nueve y para los dos temas.
+ *
+ * validar.ps1 comprueba que cada categoria de taxonomia.yml tiene aqui su tono.
+ */
+:root {
+  --h-fundamentos: 192;
+  --h-aprendizaje-automatico: 252;
+  --h-arquitecturas: 322;
+  --h-modelos-de-lenguaje: 34;
+  --h-procesamiento-del-lenguaje: 162;
+  --h-recuperacion-de-informacion: 212;
+  --h-seguridad-y-riesgos: 6;
+  --h-etica-y-gobernanza: 288;
+  --h-ia-agentica: 104;
+}
+
+/* Excepcion documentada al "nada de markup propio": el grid y el listado nativos
+ * de Quarto no emiten ningun atributo que diga de que categoria es cada etiqueta
+ * -no hay data-category-, solo el manejador que dispara el filtro nativo. Ese
+ * manejador lleva un token estable: base64(encodeURIComponent(categoria)). Se
+ * casa contra el token completo, con sus parentesis y comillas, para que ningun
+ * token pueda ser subcadena de otro.
+ *
+ * La alternativa era reimplementar el listado con plantilla propia, que es mas
+ * caro y renuncia al filtrado nativo. validar.ps1 recalcula los nueve tokens y
+ * falla si Quarto cambia el mecanismo, de modo que esto no puede pudrirse en
+ * silencio: si el token deja de coincidir, la validacion lo dice.
+ */
+.listing-category[onclick*="('RnVuZGFtZW50b3M=')"] { --h: var(--h-fundamentos); }
+.listing-category[onclick*="('QXByZW5kaXphamUlMjBhdXRvbSVDMyVBMXRpY28=')"] { --h: var(--h-aprendizaje-automatico); }
+.listing-category[onclick*="('QXJxdWl0ZWN0dXJhcw==')"] { --h: var(--h-arquitecturas); }
+.listing-category[onclick*="('TW9kZWxvcyUyMGRlJTIwbGVuZ3VhamU=')"] { --h: var(--h-modelos-de-lenguaje); }
+.listing-category[onclick*="('UHJvY2VzYW1pZW50byUyMGRlbCUyMGxlbmd1YWpl')"] { --h: var(--h-procesamiento-del-lenguaje); }
+.listing-category[onclick*="('UmVjdXBlcmFjaSVDMyVCM24lMjBkZSUyMGluZm9ybWFjaSVDMyVCM24=')"] { --h: var(--h-recuperacion-de-informacion); }
+.listing-category[onclick*="('U2VndXJpZGFkJTIweSUyMHJpZXNnb3M=')"] { --h: var(--h-seguridad-y-riesgos); }
+.listing-category[onclick*="('JUMzJTg5dGljYSUyMHklMjBnb2Jlcm5hbnph')"] { --h: var(--h-etica-y-gobernanza); }
+.listing-category[onclick*="('SUElMjBhZyVDMyVBOW50aWNh')"] { --h: var(--h-ia-agentica); }
+
+/* La pastilla teñida, escrita una sola vez para los tres sitios donde aparece
+ * una categoria: la tarjeta de la portada, el listado de Temas y la ficha. */
+.glosario-card-categorias .listing-category,
+.quarto-grid-item .listing-category,
+.quarto-title .quarto-category {
+  padding: 0.05rem 0.5rem;
+  border: 1px solid hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-borde));
+  border-radius: 999px;
+  background: hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-tinte));
+  color: hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-l));
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
 /* ---------- base ---------- */
 
 body {
@@ -175,18 +239,6 @@ main.content:has(.glosario-card-grid) {
   padding-top: 0.75rem;
 }
 
-.glosario-card-categorias .listing-category {
-  padding: 0.05rem 0.5rem;
-  border: 1px solid hsl(var(--h) var(--g-cat-s) var(--g-cat-borde));
-  border-radius: 999px;
-  background: hsl(var(--h) var(--g-cat-s) var(--g-cat-tinte));
-  color: hsl(var(--h) var(--g-cat-s) var(--g-cat-l));
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.68rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
 /* ---------- aviso canonico ---------- */
 
 .aviso-glosario {
@@ -257,21 +309,10 @@ main.content:has(.glosario-card-grid) {
   margin-top: 0.7rem;
 }
 
-.quarto-grid-item .listing-category {
-  padding: 0.05rem 0.5rem;
-  border: 1px solid var(--g-linea);
-  border-radius: 999px;
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.68rem;
-  letter-spacing: 0.02em;
-  opacity: 1;
-  text-transform: uppercase;
-}
-
+/* Al pasar el raton, el matiz se satura en lugar de virar a color de marca: el
+ * color sigue diciendo de que tema es la etiqueta tambien mientras se apunta. */
 .quarto-grid-item .listing-category:hover {
-  border-color: var(--g-marca);
-  color: var(--g-marca);
+  border-color: hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-l));
 }
 
 /* Barra lateral de categorias: una lista con el recuento alineado, no un
@@ -386,18 +427,6 @@ main.content:has(.glosario-card-grid) {
   padding-bottom: 0.6rem;
 }
 
-.quarto-title .quarto-category {
-  padding: 0.05rem 0.55rem;
-  border: 1px solid var(--g-linea);
-  border-radius: 999px;
-  background: var(--g-superficie);
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.68rem;
-  letter-spacing: 0.02em;
-  opacity: 1;
-  text-transform: uppercase;
-}
 
 /* La definicion breve del frontmatter, que es la entradilla de la ficha. */
 #title-block-header .description {
