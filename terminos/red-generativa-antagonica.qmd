@@ -1,0 +1,91 @@
+---
+title: "Red generativa antagónica"
+aliases:
+  - /terminos/gan.html
+  - /terminos/gans.html
+  - /terminos/redes-generativas-antagonicas.html
+sinonimos:
+  - "GAN"
+  - "Generative adversarial network"
+description: "Modelo generativo que entrena un generador frente a un discriminador mediante objetivos enfrentados."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-09
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+Una **red generativa antagónica**, o **generative adversarial network (GAN)**,
+combina dos modelos con objetivos enfrentados. El generador produce muestras y
+el discriminador intenta distinguirlas de los datos reales. Al entrenarlos de
+forma alterna, la señal del discriminador guía al generador hacia distribuciones
+que se parecen más a los datos de entrenamiento.
+
+«Antagónica» describe el objetivo de entrenamiento, no una confrontación entre
+agentes. Tras el entrenamiento puede conservarse solo el generador.
+
+## Contexto histórico
+
+Ian Goodfellow y colaboradores presentaron este marco en 2014 como un juego
+minimax entre dos redes [@goodfellow2014gan]. Después aparecieron variantes para
+estabilizar el aprendizaje, condicionar la salida y trabajar con imágenes de
+mayor resolución.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, las GAN conviven con modelos de difusión y otras
+familias generativas. Siguen siendo útiles cuando interesa aprender una
+distribución de datos o transformar imágenes, aunque no son sinónimo de toda la
+IA generativa.
+
+## Aplicaciones
+
+### Generales
+
+- Generar imágenes condicionadas por una clase o representación.
+- Traducir entre dominios visuales y restaurar imágenes.
+- Producir datos sintéticos para experimentación controlada.
+
+### Sanitarias
+
+- Investigar aumento de datos y reconstrucción de imagen médica.
+- Simular ejemplos para evaluar un flujo técnico sin afirmar que sustituyen a
+  pacientes reales.
+- Estudiar anonimización o síntesis con pruebas explícitas de utilidad,
+  privacidad y representación; generar datos no garantiza ninguna de las tres.
+
+## Limitaciones
+
+- El entrenamiento puede ser inestable porque la mejora de un modelo cambia la
+  tarea del otro.
+- En el colapso de modos, el generador produce poca variedad aunque las muestras
+  individuales parezcan plausibles.
+- Una imagen realista puede contener una estructura imposible o borrar señales
+  infrecuentes.
+- Los datos sintéticos pueden reproducir sesgos y memorizar rasgos del conjunto
+  de entrenamiento.
+- La calidad visual no demuestra utilidad clínica ni protección frente a
+  reidentificación.
+
+## Ejemplos
+
+Un generador aprende a producir imágenes de una clase y un discriminador aprende
+a separar imágenes reales y generadas. Si el generador repite unas pocas formas
+que engañan bien al discriminador, la apariencia puede ser convincente mientras
+la diversidad del conjunto disminuye: es un caso de colapso de modos.
+
+## Relacionados
+
+- [IA generativa](ia-generativa.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+- [Convolución](convolucion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

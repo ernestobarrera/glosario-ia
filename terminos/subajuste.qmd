@@ -1,0 +1,88 @@
+---
+title: "Subajuste"
+aliases:
+  - /terminos/underfitting.html
+sinonimos:
+  - "Underfitting"
+description: "Fallo de aprendizaje en el que un modelo no representa suficientemente la estructura útil de la tarea y rinde mal incluso sobre los datos de entrenamiento."
+categories:
+  - "Aprendizaje automático"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-10
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **subajuste**, o **underfitting**, aparece cuando un modelo no aprende la
+estructura útil de la tarea y mantiene un error alto incluso en los datos de
+entrenamiento. Puede deberse a una representación demasiado rígida, variables
+insuficientes, regularización excesiva, poco entrenamiento o un procedimiento de
+optimización inadecuado.
+
+No es simplemente «un modelo pequeño». Un modelo con capacidad suficiente puede
+subajustar si no se entrena bien, y un modelo complejo puede memorizar ruido sin
+aprender la relación que interesa.
+
+## Contexto histórico
+
+El problema forma parte del estudio del compromiso entre sesgo, varianza y
+complejidad en estadística y aprendizaje automático. Se entiende junto al
+sobreajuste: uno no captura señal suficiente; el otro se adapta a particularidades
+que no se mantienen fuera de la muestra [@hawkins2004overfitting].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, diagnosticar subajuste sigue exigiendo comparar
+errores de entrenamiento y validación y revisar la curva de aprendizaje. Una
+métrica baja en prueba, por sí sola, no distingue subajuste de cambio de
+distribución, etiquetas defectuosas o fuga en la evaluación.
+
+## Aplicaciones
+
+### Generales
+
+- Detectar que una relación curva se ha modelado con una recta demasiado rígida.
+- Revisar si la regularización impide aprender patrones reproducibles.
+- Comparar curvas de entrenamiento y validación antes de aumentar la capacidad.
+
+### Sanitarias
+
+- Comprobar si un modelo de riesgo falla ya en la población de desarrollo antes
+  de interpretar su rendimiento externo.
+- Revisar si la representación omite temporalidad, interacciones o datos
+  relevantes del proceso clínico.
+- Evitar la conclusión automática de que «más complejo es mejor»: la corrección
+  debe validarse en datos independientes.
+
+## Limitaciones
+
+- Un error de entrenamiento alto también puede proceder de ruido irreducible,
+  etiquetas incoherentes o una función de pérdida mal elegida.
+- Las métricas agregadas pueden ocultar subajuste en un subgrupo.
+- Añadir variables o parámetros puede desplazar el problema hacia el sobreajuste.
+- Una buena puntuación interna no garantiza transportabilidad a otro centro o
+  periodo.
+- El diagnóstico depende de la tarea y de la métrica; no hay un umbral universal.
+
+## Ejemplos
+
+Una recta ajustada a datos con una relación claramente curvada deja errores
+sistemáticos tanto en entrenamiento como en validación. Aumentar el grado del
+modelo puede reducirlos; elegir el grado mirando repetidamente el mismo conjunto
+de prueba introduciría, en cambio, sobreajuste en la evaluación.
+
+## Relacionados
+
+- [Sobreajuste](sobreajuste.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+- [Regularización](regularizacion.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
