@@ -472,44 +472,98 @@ main.content .tema > h2::before {
 
 /* ---------- indice A-Z ---------- */
 
-.quarto-listing-table {
-  border-color: var(--g-linea);
+/* Deja de ser una tabla de tres columnas y pasa a ser un indice: con las
+ * remisiones de los sinonimos son 222 entradas para 72 fichas, y arrastrar la
+ * definicion breve en cada fila daba una pagina inmanejable. El reparto queda
+ * asi: la portada para descubrir, Temas para explorar con contexto, el A-Z para
+ * localizar. La definicion sigue a un clic. */
+
+.az-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  margin: 0 0 1.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--g-linea);
 }
 
-.quarto-listing-table th {
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.66rem;
-  font-weight: 400;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
-
-.quarto-listing-table td {
-  vertical-align: top;
-}
-
-.quarto-listing-table td:first-child a {
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 1.02rem;
-  font-weight: 500;
-}
-
-.quarto-listing-table th:first-child,
-.quarto-listing-table td:first-child {
-  width: 26%;
-}
-
-.quarto-listing-table th:nth-child(2),
-.quarto-listing-table td:nth-child(2) {
-  width: 22%;
-  color: var(--g-tinta-3);
-  font-size: 0.9rem;
-}
-
-.quarto-listing-table td:last-child {
+.az-rail a {
+  min-width: 1.7rem;
+  padding: 0.15rem 0;
+  border-radius: 0.25rem;
   color: var(--g-tinta-2);
-  font-size: 0.94rem;
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.82rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.az-rail a:hover,
+.az-rail a:focus-visible {
+  background: var(--g-marca-tenue);
+  color: var(--g-marca);
+}
+
+.az-lista {
+  columns: 3;
+  column-gap: 2.2rem;
+}
+
+.az-entrada {
+  break-inside: avoid;
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Sin salto de columna forzado en cada letra: probado, dejaba media pagina en
+ * blanco -la B, con cinco entradas, se comia una columna entera-. */
+.az-abre-letra {
+  margin-top: 1.1rem;
+}
+
+.az-lista > .az-entrada:first-child {
+  margin-top: 0;
+}
+
+.az-letra {
+  display: block;
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid var(--g-linea);
+  color: var(--g-marca);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  scroll-margin-top: 5rem;
+}
+
+.az-entrada .listing-title a {
+  color: var(--g-tinta);
+  text-decoration: none;
+}
+
+.az-entrada .listing-title a:hover,
+.az-entrada .listing-title a:focus-visible {
+  color: var(--g-marca);
+  text-decoration: underline;
+}
+
+/* Presentes en el HTML porque son las columnas que declara filter-ui, pero no se
+ * pintan: un indice de 222 entradas con la definicion en cada fila no es un
+ * indice. El filtro si las lee. */
+.az-entrada .listing-description,
+.az-entrada > .listing-sinonimos:not(.az-remision) {
+  display: none;
+}
+
+.az-entrada .az-remision {
+  color: var(--g-tinta-3);
+}
+
+.az-flecha {
+  color: var(--g-tinta-3);
+  font-size: 0.85rem;
 }
 
 /* ---------- filtro y paginacion ---------- */
@@ -696,6 +750,10 @@ nav[role="doc-toc"] ul > li > a.active {
   .lista-de-tema .list {
     columns: 1;
   }
+
+  .az-lista {
+    columns: 2;
+  }
 }
 
 @media (max-width: 767px) {
@@ -713,30 +771,12 @@ nav[role="doc-toc"] ul > li > a.active {
     grid-template-columns: 1fr;
   }
 
+  .az-lista {
+    columns: 1;
+  }
+
   .aviso-glosario {
     grid-template-columns: 1fr;
-  }
-
-  .quarto-listing-table {
-    font-size: 0.9rem;
-    table-layout: fixed;
-    width: 100%;
-  }
-
-  .quarto-listing-table th,
-  .quarto-listing-table td {
-    overflow-wrap: anywhere;
-    white-space: normal;
-  }
-
-  .quarto-listing-table th:first-child,
-  .quarto-listing-table td:first-child {
-    width: 30%;
-  }
-
-  .quarto-listing-table th:nth-child(2),
-  .quarto-listing-table td:nth-child(2) {
-    width: 24%;
   }
 }
 

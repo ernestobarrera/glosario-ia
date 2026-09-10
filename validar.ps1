@@ -577,6 +577,49 @@ else {
   }
 }
 
+# El indice A-Z: una entrada por ficha y una remision por cada sinonimo.
+#
+# Que el sinonimo este en search.json -lo comprueba el bloque de arriba- solo
+# dice que el buscador lo encuentra. Aqui se comprueba lo otro: que ademas se VE,
+# en su letra, remitiendo a su ficha. Las remisiones no son fichas y no las
+# produce ningun listado: las arma templates/indice-az.ejs.md, asi que si esa
+# plantilla se rompe el indice seguiria valiendo como lista de terminos y nadie
+# lo notaria.
+$rutaIndice = Join-Path $carpetaSitio "indice-az.html"
+if (-not (Test-Path -LiteralPath $rutaIndice)) {
+  Registrar-Error "indice-az.html: no existe la salida del indice"
+}
+else {
+  $htmlIndice = Get-Content -LiteralPath $rutaIndice -Encoding UTF8 -Raw
+  $remisionesEsperadas = 0
+
+  foreach ($ficha in $fichas) {
+    foreach ($sinonimo in @($ficha.Meta["sinonimos"])) {
+      $remisionesEsperadas++
+      $marca = 'az-remision">' + [string]$sinonimo + '<'
+      if ($htmlIndice.IndexOf($marca, [StringComparison]::Ordinal) -lt 0) {
+        Registrar-Error (
+          "$($ficha.Archivo.Name): el sinonimo '$sinonimo' no tiene remision en el indice A-Z"
+        )
+      }
+    }
+  }
+
+  $entradasIndice = ([regex]::Matches($htmlIndice, 'class="az-entrada')).Count
+  $entradasEsperadas = $fichas.Count + $remisionesEsperadas
+
+  if ($entradasIndice -ne $entradasEsperadas) {
+    Registrar-Error (
+      "indice-az.html: el indice tiene $entradasIndice entradas y se esperaban " +
+      "$entradasEsperadas ($($fichas.Count) fichas y $remisionesEsperadas remisiones)"
+    )
+  }
+
+  if (($htmlIndice.IndexOf('class="az-rail"', [StringComparison]::Ordinal)) -lt 0) {
+    Registrar-Error "indice-az.html: falta el rail alfabetico"
+  }
+}
+
 # La pagina de Temas, seccion a seccion.
 #
 # Son nueve listados independientes, uno por categoria. Dos cosas pueden
@@ -704,6 +747,7 @@ Write-Host "  Sinonimos renderizados e indexados: OK"
 Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
 Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase y $fichasEnSecciones pertenencias"
+Write-Host "  Indice A-Z: $entradasIndice entradas, con remision para cada sinonimo"
 Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
