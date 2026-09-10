@@ -24,6 +24,26 @@ categories:
   - "Arquitecturas"
   - "Procesamiento del lenguaje"
 
+# Frase de cada tema, que encabeza su seccion en la pagina de Temas.
+#
+# Es contenido editorial y por eso vive aqui, junto a la categoria que describe,
+# y no dentro de temas.qmd: la pagina la muestra, no la posee. La lleva al HTML
+# filters/temas.lua, de modo que el texto exista una sola vez.
+#
+# No son definiciones: dicen que se va a encontrar quien entre en esa seccion.
+# validar.ps1 comprueba que ninguna categoria se quede sin frase y que la frase
+# llega tal cual a la pagina.
+frases:
+  "Fundamentos": "Las nociones que sostienen a todas las demás: datos, modelos, aprendizaje, evaluación."
+  "Modelos de lenguaje": "Sistemas entrenados sobre texto: qué generan, cómo eligen cada palabra y qué los limita."
+  "IA agéntica": "Sistemas que actúan: herramientas, protocolos, coordinación y supervisión humana."
+  "Recuperación de información": "Buscar antes de responder: cómo se localizan, se seleccionan y se citan las fuentes."
+  "Seguridad y riesgos": "Lo que puede fallar y a quién afecta: errores, ataques, dependencia y pérdida de control."
+  "Ética y gobernanza": "Reglas, responsabilidad y equidad: quién responde de lo que decide un sistema."
+  "Aprendizaje automático": "Cómo aprende un modelo a partir de datos: enfoques, entrenamiento, ajuste y validación."
+  "Arquitecturas": "La forma interna de los modelos: capas, atención, recurrencia, convolución."
+  "Procesamiento del lenguaje": "Del texto al número: tokenización, representación y análisis del lenguaje."
+
 estados:
   - borrador
   - revisada

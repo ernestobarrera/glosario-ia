@@ -1,27 +1,183 @@
 ---
 title: "Temas"
 description: "Explora las fichas mediante una taxonomía controlada."
-toc: false
+toc: true
+toc-title: "Los nueve temas"
+# Lo lee filters/temas.lua: pone bajo cada epigrafe la frase que taxonomia.yml
+# guarda para esa categoria, para que el texto no exista dos veces.
+frases-de-tema: true
 grid:
-  # El margen sigue albergando la lista de categorias, asi que conserva anchura.
   body-width: 1080px
   margin-width: 260px
   sidebar-width: 160px
+# Nueve listados independientes, uno por categoria, en lugar de una cuadricula
+# de setenta y dos tarjetas iguales.
+#
+# Es un solo listado por seccion, no un listado troceado: cada uno registra su
+# propia instancia del mecanismo nativo sobre su propio contenedor, asi que las
+# fichas siguen siendo los hijos directos de una lista y el filtrado no se toca.
+# Agrupar dentro de un unico listado si lo habria roto. Medido en el ensayo del
+# 2026-09-05: 142 pertenencias, identicas a las que declara la taxonomia.
+#
+# 'include: categories' casa contra la pertenencia, no contra el valor completo,
+# de modo que una ficha de tres temas aparece en sus tres secciones. Eso es lo
+# que se quiere: la pagina muestra el solape entre temas en vez de esconderlo.
 listing:
-  contents: ["terminos/*.qmd", "!borradores/**"]
-  type: grid
-  # Sin "image": el grid nativo solo pinta el hueco gris de 150 px cuando
-  # el campo esta declarado y la ficha no tiene imagen. Ninguna la tendra.
-  fields: [title, description, categories]
-  sort: "title asc"
-  # El grid nativo solo emite con clase "listing-<campo>" los campos que conoce.
-  # Un campo propio como sinonimos sale como class="sinonimos" y la columna de
-  # busqueda "listing-sinonimos" queda muerta. Aqui solo se declara lo que existe.
-  filter-ui: [categories, title, description]
-  categories: true
-  page-size: 999
-  grid-columns: 3
+  - id: t-fundamentos
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "Fundamentos"
+  - id: t-aprendizaje-automatico
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "Aprendizaje automático"
+  - id: t-arquitecturas
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "Arquitecturas"
+  - id: t-modelos-de-lenguaje
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "Modelos de lenguaje"
+  - id: t-procesamiento-del-lenguaje
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "Procesamiento del lenguaje"
+  - id: t-recuperacion-de-informacion
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "Recuperación de información"
+  - id: t-seguridad-y-riesgos
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "Seguridad y riesgos"
+  - id: t-etica-y-gobernanza
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "Ética y gobernanza"
+  - id: t-ia-agentica
+    contents: ["terminos/*.qmd", "!borradores/**"]
+    type: default
+    fields: [title, description]
+    sort: "title asc"
+    # Sin caja de filtro: nueve cajas, cada una filtrando solo su seccion,
+    # prometerian una busqueda que no es. Para buscar estan el A-Z y la lupa.
+    filter-ui: false
+    categories: false
+    page-size: 999
+    include:
+      categories: "IA agéntica"
 ---
 
-Las categorías proceden de una taxonomía única para evitar variantes,
-duplicados y etiquetas improvisadas.
+Cada ficha aparece en todos los temas a los que pertenece, así que un término
+puede estar en más de una sección. Las categorías proceden de una taxonomía
+única para evitar variantes, duplicados y etiquetas improvisadas.
+
+## Fundamentos {#fundamentos .tema}
+
+::: {#t-fundamentos .lista-de-tema}
+:::
+
+## Aprendizaje automático {#aprendizaje-automatico .tema}
+
+::: {#t-aprendizaje-automatico .lista-de-tema}
+:::
+
+## Arquitecturas {#arquitecturas .tema}
+
+::: {#t-arquitecturas .lista-de-tema}
+:::
+
+## Modelos de lenguaje {#modelos-de-lenguaje .tema}
+
+::: {#t-modelos-de-lenguaje .lista-de-tema}
+:::
+
+## Procesamiento del lenguaje {#procesamiento-del-lenguaje .tema}
+
+::: {#t-procesamiento-del-lenguaje .lista-de-tema}
+:::
+
+## Recuperación de información {#recuperacion-de-informacion .tema}
+
+::: {#t-recuperacion-de-informacion .lista-de-tema}
+:::
+
+## Seguridad y riesgos {#seguridad-y-riesgos .tema}
+
+::: {#t-seguridad-y-riesgos .lista-de-tema}
+:::
+
+## Ética y gobernanza {#etica-y-gobernanza .tema}
+
+::: {#t-etica-y-gobernanza .lista-de-tema}
+:::
+
+## IA agéntica {#ia-agentica .tema}
+
+::: {#t-ia-agentica .lista-de-tema}
+:::

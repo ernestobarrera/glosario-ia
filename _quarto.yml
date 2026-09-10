@@ -49,6 +49,7 @@ filters:
   - filters/sinonimos.lua
   - filters/estado.lua
   - filters/matices.lua
+  - filters/temas.lua
 
 format:
   html:

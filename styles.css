@@ -239,6 +239,121 @@ main.content:has(.glosario-card-grid) {
   padding-top: 0.75rem;
 }
 
+/* ---------- Temas: nueve secciones, una por tema ---------- */
+
+/* Cada seccion lleva el matiz de su tema. No es decoracion: al agrupar, las
+ * fichas ya no muestran su etiqueta de categoria dentro de la seccion -seria
+ * repetir nueve veces lo que dice el epigrafe-, asi que sin esto la pagina de
+ * Temas se quedaria sin el color que la fase 2 acaba de darle. Aqui el color
+ * identifica la seccion entera. */
+#fundamentos { --h: var(--h-fundamentos); }
+#aprendizaje-automatico { --h: var(--h-aprendizaje-automatico); }
+#arquitecturas { --h: var(--h-arquitecturas); }
+#modelos-de-lenguaje { --h: var(--h-modelos-de-lenguaje); }
+#procesamiento-del-lenguaje { --h: var(--h-procesamiento-del-lenguaje); }
+#recuperacion-de-informacion { --h: var(--h-recuperacion-de-informacion); }
+#seguridad-y-riesgos { --h: var(--h-seguridad-y-riesgos); }
+#etica-y-gobernanza { --h: var(--h-etica-y-gobernanza); }
+#ia-agentica { --h: var(--h-ia-agentica); }
+
+/* La marca de color de la seccion. Un filete teñido de lado a lado quedaba
+ * invisible con la luminosidad del sistema, y subirsela habria convertido la
+ * pagina en nueve rayas de colores; asi que el matiz va concentrado en un tramo
+ * corto y a plena intensidad, sobre el filete gris que ya separa los epigrafes.
+ * La clase la pone el propio epigrafe en temas.qmd y Quarto la traslada a la
+ * seccion, de modo que basta una regla para las nueve. */
+main.content .tema > h2 {
+  position: relative;
+}
+
+main.content .tema > h2::before {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 2.6rem;
+  height: 3px;
+  background: hsl(var(--h) var(--g-cat-s) var(--g-cat-l));
+  content: "";
+}
+
+/* La frase que taxonomia.yml guarda para el tema, insertada por
+ * filters/temas.lua. Dice que se va a encontrar quien entre en la seccion. */
+.frase-de-tema {
+  max-width: 62ch;
+  margin: 0 0 1.1rem;
+}
+
+.frase-de-tema p {
+  margin: 0;
+  color: var(--g-tinta-2);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+/* Dos columnas. El listado nativo por defecto reparte cada entrada en tres
+ * bandas -imagen, cuerpo, metadatos- y aqui no hay ni imagen ni fecha que
+ * mostrar, asi que dejaba media anchura en blanco. Se apila y se compacta: lo
+ * que importa de cada entrada es el termino y de que va. */
+.lista-de-tema .list {
+  columns: 2;
+  column-gap: 2.4rem;
+}
+
+.lista-de-tema .quarto-post {
+  display: block;
+  /* Que un termino no se parta por la mitad al saltar de columna. */
+  break-inside: avoid;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: 0;
+}
+
+.lista-de-tema .quarto-post .body {
+  padding: 0;
+}
+
+/* Va vacia: sin imagen, sin autor y sin fecha, solo reservaba sitio. */
+.lista-de-tema .quarto-post .metadata {
+  display: none;
+}
+
+.lista-de-tema .listing-title {
+  margin: 0;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.lista-de-tema .listing-title a {
+  color: var(--g-tinta);
+  text-decoration: none;
+}
+
+.lista-de-tema .listing-title a:hover,
+.lista-de-tema .listing-title a:focus-visible {
+  color: var(--g-marca);
+  text-decoration: underline;
+}
+
+.lista-de-tema .listing-description {
+  color: var(--g-tinta-2);
+  font-size: 0.88rem;
+}
+
+.lista-de-tema .listing-description a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lista-de-tema .listing-description p {
+  margin: 0.1rem 0 0;
+  line-height: 1.4;
+}
+
 /* ---------- aviso canonico ---------- */
 
 .aviso-glosario {
@@ -496,7 +611,7 @@ main.content h2 {
   font-size: 1.32rem;
 }
 
-main.content h3:not(.glosario-card-title):not(.card-title) {
+main.content h3:not(.glosario-card-title):not(.card-title):not(.listing-title) {
   margin-top: 1.3rem;
   color: var(--g-tinta-3);
   font-family: var(--bs-font-sans-serif, sans-serif);
@@ -574,6 +689,12 @@ nav[role="doc-toc"] ul > li > a.active {
 @media (max-width: 991px) {
   .glosario-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 991px) {
+  .lista-de-tema .list {
+    columns: 1;
   }
 }
 

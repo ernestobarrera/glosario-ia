@@ -95,6 +95,20 @@ $taxonomia = Leer-YamlPlano (
   Get-Content -LiteralPath (Join-Path $raiz "taxonomia.yml") -Encoding UTF8 -Raw
 )
 $categoriasPermitidas = @($taxonomia["categories"])
+
+# Las frases de tema son un mapa y el lector plano de arriba solo entiende listas,
+# asi que se leen aparte. Son contenido editorial: viven en taxonomia.yml junto a
+# la categoria que describen y filters/temas.lua las lleva a la pagina de Temas.
+$frasesTema = @{}
+$textoTaxonomia = Get-Content -LiteralPath (Join-Path $raiz "taxonomia.yml") -Encoding UTF8 -Raw
+# Comillas simples: entre dobles, PowerShell tomaria el $(...) del regex por
+# una subexpresion suya.
+$bloqueFrases = [regex]::Match($textoTaxonomia, '(?ms)^frases:\s*?$(?<cuerpo>.*?)(?=^\S|\z)')
+if ($bloqueFrases.Success) {
+  foreach ($linea in [regex]::Matches($bloqueFrases.Groups["cuerpo"].Value, '(?m)^\s+"(?<categoria>[^"]+)":\s*"(?<frase>[^"]*)"\s*$')) {
+    $frasesTema[$linea.Groups["categoria"].Value] = $linea.Groups["frase"].Value
+  }
+}
 $estadosPermitidos = @($taxonomia["estados"])
 $tiposPermitidos = @($taxonomia["tipos"])
 
@@ -522,32 +536,109 @@ foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
   }
 }
 
-# El mecanismo del que depende el matiz de los listados, comprobado contra el
-# HTML realmente emitido y no contra lo que se supone que emite Quarto.
+# El mecanismo del que depende el matiz de las etiquetas de un listado nativo,
+# comprobado contra el HTML realmente emitido y no contra lo que se supone.
 #
-# Las etiquetas de categoria de un listado no llevan ningun atributo que diga de
-# que categoria son: styles.css las tiñe casando el token del manejador que
-# dispara el filtro nativo. Si una version de Quarto cambiara ese manejador, las
-# nueve reglas dejarian de casar y la pagina volveria al gris sin un solo error.
-$tokensEmitidos = [regex]::Matches(
-  (Get-Content -LiteralPath (Join-Path $carpetaSitio "temas.html") -Encoding UTF8 -Raw),
-  "quartoListingCategory\('(?<token>[^']+)'\)"
-)
+# Esas etiquetas no llevan ningun atributo que diga de que categoria son:
+# styles.css las tiñe casando el token del manejador que dispara el filtro
+# nativo. Desde que Temas agrupa por secciones ya no las pinta ninguna pagina,
+# asi que las nueve reglas quedan en reserva: siguen escritas porque la vista en
+# cuadricula es todavia una decision abierta. Mientras no las use nadie esto
+# avisa, no falla; y si vuelven a usarse, comprueba que el token sigue siendo el
+# que Quarto emite.
+$tokensEmitidos = @()
+
+foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
+  $rutaPagina = Join-Path $carpetaSitio $pagina
+  if (-not (Test-Path -LiteralPath $rutaPagina)) {
+    continue
+  }
+
+  $tokensEmitidos += [regex]::Matches(
+    (Get-Content -LiteralPath $rutaPagina -Encoding UTF8 -Raw),
+    "quartoListingCategory\('(?<token>[^']+)'\)"
+  ) | ForEach-Object { $_.Groups["token"].Value }
+}
 
 if ($tokensEmitidos.Count -eq 0) {
-  Registrar-Error (
-    "temas.html: ninguna etiqueta de categoria emite el manejador del filtro nativo; " +
-    "las reglas de matiz de styles.css ya no pueden casar"
+  Registrar-Aviso (
+    "ninguna pagina pinta etiquetas de categoria de un listado nativo: las nueve " +
+    "reglas de matiz por token de styles.css estan en reserva, sin uso"
   )
 }
 else {
-  foreach ($emitido in ($tokensEmitidos | ForEach-Object { $_.Groups["token"].Value } | Sort-Object -Unique)) {
+  foreach ($emitido in ($tokensEmitidos | Sort-Object -Unique)) {
     if (-not $tokensTaxonomia.ContainsKey($emitido)) {
       Registrar-Error (
-        "temas.html: el token de categoria '$emitido' no corresponde a ninguna categoria " +
-        "de la taxonomia; el matiz de esa etiqueta no se aplicaria"
+        "el token de categoria '$emitido' no corresponde a ninguna categoria de la " +
+        "taxonomia; el matiz de esa etiqueta no se aplicaria"
       )
     }
+  }
+}
+
+# La pagina de Temas, seccion a seccion.
+#
+# Son nueve listados independientes, uno por categoria. Dos cosas pueden
+# estropearse en silencio: que una categoria se quede sin su frase -y la seccion
+# salga muda- y que el 'include: categories' de una seccion deje de casar y esa
+# seccion aparezca vacia o incompleta sin que el render se queje. Lo segundo se
+# comprueba contra el recuento real de pertenencias de las fichas.
+$htmlTemas = Get-Content -LiteralPath (Join-Path $carpetaSitio "temas.html") -Encoding UTF8 -Raw
+$pertenencias = @{}
+
+foreach ($ficha in $fichas) {
+  foreach ($categoria in @($ficha.Meta["categories"])) {
+    if ($pertenencias.ContainsKey($categoria)) {
+      $pertenencias[$categoria]++
+    }
+    else {
+      $pertenencias[$categoria] = 1
+    }
+  }
+}
+
+$fichasEnSecciones = 0
+
+foreach ($categoria in $categoriasPermitidas) {
+  if (-not $frasesTema.ContainsKey($categoria)) {
+    Registrar-Error "taxonomia.yml: la categoria '$categoria' no tiene frase en el bloque 'frases'"
+  }
+  elseif ([string]::IsNullOrWhiteSpace($frasesTema[$categoria])) {
+    Registrar-Error "taxonomia.yml: la frase de la categoria '$categoria' esta vacia"
+  }
+  elseif ($htmlTemas.IndexOf($frasesTema[$categoria], [StringComparison]::Ordinal) -lt 0) {
+    Registrar-Error (
+      "temas.html: la frase de '$categoria' no llego a la pagina; " +
+      "revisa filters/temas.lua y que el epigrafe se llame igual que la categoria"
+    )
+  }
+
+  $slugCategoria = Slug-Categoria $categoria
+  $inicio = $htmlTemas.IndexOf("id=""listing-t-$slugCategoria""", [StringComparison]::Ordinal)
+
+  if ($inicio -lt 0) {
+    Registrar-Error "temas.html: la categoria '$categoria' no tiene su seccion 'listing-t-$slugCategoria'"
+    continue
+  }
+
+  $fin = $htmlTemas.IndexOf("</section>", $inicio, [StringComparison]::Ordinal)
+  if ($fin -lt 0) {
+    $fin = $htmlTemas.Length
+  }
+
+  $seccion = $htmlTemas.Substring($inicio, $fin - $inicio)
+  $enSeccion = ([regex]::Matches($seccion, 'class="quarto-post')).Count
+  $fichasEnSecciones += $enSeccion
+  $esperadas = 0
+  if ($pertenencias.ContainsKey($categoria)) {
+    $esperadas = $pertenencias[$categoria]
+  }
+
+  if ($enSeccion -ne $esperadas) {
+    Registrar-Error (
+      "temas.html: la seccion '$categoria' muestra $enSeccion fichas y las fichas declaran $esperadas"
+    )
   }
 }
 
@@ -612,6 +703,7 @@ Write-Host "  Identidades sin colision (titulo + sinonimos): $($identidades.Coun
 Write-Host "  Sinonimos renderizados e indexados: OK"
 Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
+Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase y $fichasEnSecciones pertenencias"
 Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
