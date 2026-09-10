@@ -648,6 +648,39 @@ foreach ($categoria in $categoriasPermitidas) {
     )
   }
 
+  # El recuento del epigrafe. Lo cuenta filters/temas.lua leyendo el frontmatter
+  # de las fichas, por un camino distinto del que usa el listado para filtrar la
+  # seccion; aqui se comprueba que los dos dan lo mismo. Un numero que se queda
+  # atras es peor que no tener numero: se sigue leyendo y ya no es verdad.
+  $esperadasCategoria = 0
+  if ($pertenencias.ContainsKey($categoria)) {
+    $esperadasCategoria = $pertenencias[$categoria]
+  }
+
+  $epigrafe = [regex]::Match(
+    $htmlTemas,
+    'data-anchor-id="' + [regex]::Escape((Slug-Categoria $categoria)) + '"[^>]*>(?<contenido>[\s\S]*?)</h2>'
+  )
+
+  if (-not $epigrafe.Success) {
+    Registrar-Error "temas.html: la categoria '$categoria' no tiene epigrafe de seccion"
+  }
+  else {
+    $recuento = [regex]::Match($epigrafe.Groups["contenido"].Value, 'recuento-tema">(?<n>\d+)<')
+
+    if (-not $recuento.Success) {
+      Registrar-Error (
+        "temas.html: el epigrafe de '$categoria' no muestra su recuento de fichas"
+      )
+    }
+    elseif ([int]$recuento.Groups["n"].Value -ne $esperadasCategoria) {
+      Registrar-Error (
+        "temas.html: el epigrafe de '$categoria' dice $($recuento.Groups["n"].Value) fichas " +
+        "y las fichas declaran $esperadasCategoria"
+      )
+    }
+  }
+
   $slugCategoria = Slug-Categoria $categoria
   $inicio = $htmlTemas.IndexOf("id=""listing-t-$slugCategoria""", [StringComparison]::Ordinal)
 
@@ -664,14 +697,9 @@ foreach ($categoria in $categoriasPermitidas) {
   $seccion = $htmlTemas.Substring($inicio, $fin - $inicio)
   $enSeccion = ([regex]::Matches($seccion, 'class="quarto-post')).Count
   $fichasEnSecciones += $enSeccion
-  $esperadas = 0
-  if ($pertenencias.ContainsKey($categoria)) {
-    $esperadas = $pertenencias[$categoria]
-  }
-
-  if ($enSeccion -ne $esperadas) {
+  if ($enSeccion -ne $esperadasCategoria) {
     Registrar-Error (
-      "temas.html: la seccion '$categoria' muestra $enSeccion fichas y las fichas declaran $esperadas"
+      "temas.html: la seccion '$categoria' muestra $enSeccion fichas y las fichas declaran $esperadasCategoria"
     )
   }
 }
@@ -737,7 +765,7 @@ Write-Host "  Identidades sin colision (titulo + sinonimos): $($identidades.Coun
 Write-Host "  Sinonimos renderizados e indexados: OK"
 Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
-Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase y $fichasEnSecciones pertenencias"
+Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase, recuento y $fichasEnSecciones pertenencias"
 Write-Host "  Indice A-Z: $entradasIndice entradas, con remision para cada sinonimo"
 Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"

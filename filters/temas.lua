@@ -1,4 +1,4 @@
--- La frase de cada tema, desde la taxonomia hasta la pagina de Temas.
+-- La frase y el recuento de cada tema, en la pagina de Temas.
 --
 -- Por que existe: las nueve frases son contenido editorial y su sitio es
 -- taxonomia.yml, junto a la categoria que describen. Si ademas se escribieran en
@@ -14,9 +14,17 @@
 -- categoria, que es lo mismo que exige el 'include: categories' del listado de
 -- esa seccion. Si no coincide, la seccion se queda sin frase y validar.ps1 lo
 -- dice, en vez de publicar una seccion muda.
+--
+-- El recuento vuelve porque al agrupar desaparecio la barra lateral que lo
+-- llevaba —«Aprendizaje automatico (39)»—, y saber cuantas fichas tiene un tema
+-- antes de entrar en el es parte de lo que la pagina sirve. Se cuenta leyendo el
+-- frontmatter de las fichas, no se escribe a mano, y viaja DENTRO del epigrafe
+-- para que el sumario lateral lo herede sin ningun trabajo extra. validar.ps1
+-- comprueba que cada numero coincide con las fichas que declaran esa categoria.
 
 local activo = false
 local frases = {}
+local recuentos = {}
 
 local function leerTaxonomia()
   local raiz = "."
@@ -57,11 +65,57 @@ end
 -- recorre los bloques ANTES que los metadatos, asi que un unico filtro leeria la
 -- marca del frontmatter despues de haber pasado ya por todos los epigrafes y no
 -- insertaria ninguna frase. Costo un render entenderlo.
+-- Cuenta las fichas de cada categoria leyendo su frontmatter. Es el mismo dato
+-- que el listado de la seccion filtra por su cuenta, contado aparte: si los dos
+-- caminos discreparan, el validador lo dice.
+local function contarFichas()
+  local raiz = "."
+
+  if quarto and quarto.project and quarto.project.directory then
+    raiz = quarto.project.directory
+  end
+
+  local carpeta = raiz .. "/terminos"
+  local ok, archivos = pcall(pandoc.system.list_directory, carpeta)
+
+  if not ok or not archivos then
+    return
+  end
+
+  for _, nombre in ipairs(archivos) do
+    if nombre:match("%.qmd$") then
+      local ficha = io.open(carpeta .. "/" .. nombre, "r")
+
+      if ficha then
+        local enCategorias = false
+
+        for linea in ficha:lines() do
+          if linea:match("^categories:%s*$") then
+            enCategorias = true
+          elseif enCategorias then
+            local categoria = linea:match('^%s+%-%s+"(.-)"%s*$') or linea:match("^%s+%-%s+(.-)%s*$")
+
+            if categoria then
+              recuentos[categoria] = (recuentos[categoria] or 0) + 1
+            else
+              -- Cualquier linea que no sea un elemento de la lista cierra el bloque.
+              enCategorias = false
+            end
+          end
+        end
+
+        ficha:close()
+      end
+    end
+  end
+end
+
 local function leerMarca(meta)
   activo = meta["frases-de-tema"] == true
 
   if activo then
     leerTaxonomia()
+    contarFichas()
   end
 
   return meta
@@ -76,6 +130,17 @@ local function ponerFrase(elemento)
 
   if not frase then
     return nil
+  end
+
+  local nombre = pandoc.utils.stringify(elemento.content)
+  local cuantas = recuentos[nombre]
+
+  if cuantas then
+    elemento.content:insert(pandoc.Space())
+    elemento.content:insert(pandoc.Span(
+      { pandoc.Str(tostring(cuantas)) },
+      pandoc.Attr("", { "recuento-tema" })
+    ))
   end
 
   -- Se lee como markdown y no como texto plano para que la frase pueda llevar

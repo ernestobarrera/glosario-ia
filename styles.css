@@ -253,6 +253,36 @@ main.content .tema > h2::before {
   content: "";
 }
 
+/* Cuantas fichas tiene el tema. Vuelve el dato que llevaba la barra lateral de
+ * categorias antes de agrupar; ahora viaja dentro del epigrafe, asi que el
+ * sumario lateral lo muestra tambien sin trabajo extra. */
+.recuento-tema {
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+
+/* En el epigrafe se va al extremo, alineado con el final de la medida, para que
+ * los nueve numeros formen columna y se puedan comparar de un vistazo. El ancla
+ * que Quarto añade al pasar el raton queda despues, sin descolocar nada. */
+main.content .tema > h2 {
+  display: flex;
+  align-items: baseline;
+}
+
+main.content .tema > h2 .recuento-tema {
+  margin-left: auto;
+  padding-left: 1rem;
+}
+
+/* En el sumario, pegado a su tema. */
+nav[role="doc-toc"] .recuento-tema {
+  margin-left: 0.35rem;
+  font-size: 0.68rem;
+}
+
 /* La frase que taxonomia.yml guarda para el tema, insertada por
  * filters/temas.lua. Dice que se va a encontrar quien entre en la seccion. */
 .frase-de-tema {
