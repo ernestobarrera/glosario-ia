@@ -8,16 +8,20 @@ grid:
   sidebar-width: 160px
 listing:
   contents: ["terminos/*.qmd", "!borradores/**"]
-  type: table
-  fields: [title, sinonimos, description]
-  field-display-names:
-    title: "Término"
-    sinonimos: "Siglas y variantes"
-    description: "Definición breve"
+  # Plantilla propia, y no el listado de tabla nativo, por una razon medida en el
+  # ensayo del 2026-09-10: las remisiones desde los sinonimos no son fichas y
+  # ningun listado las produce. La plantilla las arma y las emite en la misma
+  # lista plana, de modo que el filtrado nativo las alcanza igual que a las
+  # fichas. No se reimplementa el filtro: se le da lo que espera.
+  template: "templates/indice-az.ejs.md"
   sort: "title asc"
+  # El boton de ordenar reordenaria las filas y dejaria cada letra de cabecera
+  # lejos de sus entradas: en un indice alfabetico no hay otro orden que valga.
+  sort-ui: false
   filter-ui: [title, sinonimos, description]
   page-size: 999
 ---
 
-Usa el filtro para localizar un término, una sigla o un sinónimo: escribe
-«overfitting» y aparecerá *Sobreajuste*.
+Cada término aparece por su nombre y por cada una de sus variantes: «overfitting»
+está en la O y remite a *Sobreajuste*. El filtro busca en las tres cosas —término,
+variantes y definición—, así que sirve tanto para localizar como para tantear.

@@ -23,10 +23,9 @@ verificables.
 [Explorar por temas](temas.qmd){.btn .btn-outline-secondary}
 :::
 
-## Fichas disponibles
-
-Busca por término, por sigla o por sinónimo: «overfitting» lleva a *Sobreajuste* y
-«XAI» a *Explicabilidad*.
+::: {.pista-busqueda}
+«overfitting» lleva a *Sobreajuste* y «XAI» a *Explicabilidad*.
+:::
 
 ::: {#fichas}
 :::

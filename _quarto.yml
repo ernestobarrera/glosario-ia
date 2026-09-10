@@ -43,11 +43,18 @@ website:
         text: "Aviso, límites y licencia"
 
 lang: es
+# El texto del campo de filtro. Por defecto Quarto pone «Filtro», que no dice
+# nada de lo que se puede escribir dentro; diciendolo aqui, la portada se ahorra
+# la linea que lo anunciaba y el buscador se explica solo tambien en el A-Z.
+language:
+  listing-page-filter: "Busca un término, una sigla o un sinónimo…"
 bibliography: references.bib
 csl: vancouver.csl
 filters:
   - filters/sinonimos.lua
   - filters/estado.lua
+  - filters/matices.lua
+  - filters/temas.lua
 
 format:
   html:

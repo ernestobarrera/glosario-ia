@@ -7,6 +7,47 @@
  * Los nueve matices de tema se calculan desde un unico tono --h que la
  * plantilla del listado pone en cada tarjeta. */
 
+/* ---------- los nueve matices de tema ---------- */
+
+/* Tabla unica de tonos del sistema de color. Antes vivia dentro de la plantilla
+ * de la portada, asi que el color solo existia alli: en Temas y en la ficha las
+ * etiquetas de categoria salian grises y el sistema no se percibia como sistema.
+ * Aqui la declara un unico sitio y la consumen los tres: la plantilla de la
+ * portada, la regla de los listados de abajo y filters/matices.lua para la ficha.
+ *
+ * Solo gira el tono. Saturacion y luminosidad son comunes (--g-cat-*), asi que el
+ * contraste medido para la familia vale para los nueve y para los dos temas.
+ *
+ * validar.ps1 comprueba que cada categoria de taxonomia.yml tiene aqui su tono.
+ */
+:root {
+  --h-fundamentos: 192;
+  --h-aprendizaje-automatico: 252;
+  --h-arquitecturas: 322;
+  --h-modelos-de-lenguaje: 34;
+  --h-procesamiento-del-lenguaje: 162;
+  --h-recuperacion-de-informacion: 212;
+  --h-seguridad-y-riesgos: 6;
+  --h-etica-y-gobernanza: 288;
+  --h-ia-agentica: 104;
+}
+
+/* La pastilla teñida, escrita una sola vez para los tres sitios donde aparece
+ * una categoria: la tarjeta de la portada, el listado de Temas y la ficha. */
+.glosario-card-categorias .listing-category,
+.quarto-title .quarto-category {
+  padding: 0.05rem 0.5rem;
+  border: 1px solid hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-borde));
+  border-radius: 999px;
+  background: hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-tinte));
+  color: hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-l));
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
 /* ---------- base ---------- */
 
 body {
@@ -37,30 +78,42 @@ main.content:has(.glosario-card-grid) {
   max-width: none;
 }
 
+/* La portada empezaba a 111 px del borde y la primera ficha no aparecia hasta
+ * los 704: en una herramienta de consulta eso es medio scroll antes de ver nada
+ * que consultar. Medido de donde salia el aire: el margen superior del propio
+ * titular se colapsaba hacia fuera del bloque y se sumaba al de la columna. */
+main.content:has(.hero-glosario) {
+  padding-top: 0.4rem;
+  margin-top: 0;
+}
+
 /* ---------- portada ---------- */
 
 /* Sin recuadro: en pantalla ancha el rectangulo teñido dejaba media caja vacia
  * a la derecha del texto. El titular sostiene la portada por si solo. */
 .hero-glosario {
-  margin: 0 0 2rem;
-  padding: 1.25rem 0 1.75rem;
+  margin: 0 0 1.3rem;
+  padding: 0 0 1.3rem;
   border-bottom: 1px solid var(--g-linea);
 }
 
 .hero-glosario h1 {
   max-width: 18ch;
+  margin-top: 0;
   margin-bottom: 0.75rem;
   color: var(--g-tinta);
-  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
   font-weight: 500;
   letter-spacing: -0.022em;
-  line-height: 1.07;
+  line-height: 1.1;
   text-wrap: balance;
 }
 
+/* 58ch partia la entradilla en tres lineas y cada linea de mas aqui empuja las
+ * fichas fuera de la pantalla. */
 .hero-glosario p {
-  max-width: 58ch;
-  margin-bottom: 1.1rem;
+  max-width: 70ch;
+  margin-bottom: 0.9rem;
   color: var(--g-tinta-2);
   font-size: 1.03rem;
 }
@@ -175,16 +228,149 @@ main.content:has(.glosario-card-grid) {
   padding-top: 0.75rem;
 }
 
-.glosario-card-categorias .listing-category {
-  padding: 0.05rem 0.5rem;
-  border: 1px solid hsl(var(--h) var(--g-cat-s) var(--g-cat-borde));
-  border-radius: 999px;
-  background: hsl(var(--h) var(--g-cat-s) var(--g-cat-tinte));
-  color: hsl(var(--h) var(--g-cat-s) var(--g-cat-l));
+/* ---------- Temas: nueve secciones, una por tema ---------- */
+
+/* Cada seccion lleva el matiz de su tema. No es decoracion: al agrupar, las
+ * fichas ya no muestran su etiqueta de categoria dentro de la seccion -seria
+ * repetir nueve veces lo que dice el epigrafe-, asi que sin esto la pagina de
+ * Temas se quedaria sin el color que la fase 2 acaba de darle. Aqui el color
+ * identifica la seccion entera. */
+#fundamentos { --h: var(--h-fundamentos); }
+#aprendizaje-automatico { --h: var(--h-aprendizaje-automatico); }
+#arquitecturas { --h: var(--h-arquitecturas); }
+#modelos-de-lenguaje { --h: var(--h-modelos-de-lenguaje); }
+#procesamiento-del-lenguaje { --h: var(--h-procesamiento-del-lenguaje); }
+#recuperacion-de-informacion { --h: var(--h-recuperacion-de-informacion); }
+#seguridad-y-riesgos { --h: var(--h-seguridad-y-riesgos); }
+#etica-y-gobernanza { --h: var(--h-etica-y-gobernanza); }
+#ia-agentica { --h: var(--h-ia-agentica); }
+
+/* La marca de color de la seccion. Un filete teñido de lado a lado quedaba
+ * invisible con la luminosidad del sistema, y subirsela habria convertido la
+ * pagina en nueve rayas de colores; asi que el matiz va concentrado en un tramo
+ * corto y a plena intensidad, sobre el filete gris que ya separa los epigrafes.
+ * La clase la pone el propio epigrafe en temas.qmd y Quarto la traslada a la
+ * seccion, de modo que basta una regla para las nueve. */
+main.content .tema > h2 {
+  position: relative;
+}
+
+main.content .tema > h2::before {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 2.6rem;
+  height: 3px;
+  background: hsl(var(--h) var(--g-cat-s) var(--g-cat-l));
+  content: "";
+}
+
+/* Cuantas fichas tiene el tema. Vuelve el dato que llevaba la barra lateral de
+ * categorias antes de agrupar; ahora viaja dentro del epigrafe, asi que el
+ * sumario lateral lo muestra tambien sin trabajo extra. */
+.recuento-tema {
+  color: var(--g-tinta-3);
   font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+
+/* En el epigrafe se va al extremo, alineado con el final de la medida, para que
+ * los nueve numeros formen columna y se puedan comparar de un vistazo. El ancla
+ * que Quarto añade al pasar el raton queda despues, sin descolocar nada. */
+main.content .tema > h2 {
+  display: flex;
+  align-items: baseline;
+}
+
+main.content .tema > h2 .recuento-tema {
+  margin-left: auto;
+  padding-left: 1rem;
+}
+
+/* En el sumario, pegado a su tema. */
+nav[role="doc-toc"] .recuento-tema {
+  margin-left: 0.35rem;
   font-size: 0.68rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+}
+
+/* La frase que taxonomia.yml guarda para el tema, insertada por
+ * filters/temas.lua. Dice que se va a encontrar quien entre en la seccion. */
+.frase-de-tema {
+  max-width: 62ch;
+  margin: 0 0 1.1rem;
+}
+
+.frase-de-tema p {
+  margin: 0;
+  color: var(--g-tinta-2);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+/* Dos columnas. El listado nativo por defecto reparte cada entrada en tres
+ * bandas -imagen, cuerpo, metadatos- y aqui no hay ni imagen ni fecha que
+ * mostrar, asi que dejaba media anchura en blanco. Se apila y se compacta: lo
+ * que importa de cada entrada es el termino y de que va. */
+.lista-de-tema .list {
+  columns: 2;
+  column-gap: 2.4rem;
+}
+
+.lista-de-tema .quarto-post {
+  display: block;
+  /* Que un termino no se parta por la mitad al saltar de columna. */
+  break-inside: avoid;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: 0;
+}
+
+.lista-de-tema .quarto-post .body {
+  padding: 0;
+}
+
+/* Va vacia: sin imagen, sin autor y sin fecha, solo reservaba sitio. */
+.lista-de-tema .quarto-post .metadata {
+  display: none;
+}
+
+.lista-de-tema .listing-title {
+  margin: 0;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.lista-de-tema .listing-title a {
+  color: var(--g-tinta);
+  text-decoration: none;
+}
+
+.lista-de-tema .listing-title a:hover,
+.lista-de-tema .listing-title a:focus-visible {
+  color: var(--g-marca);
+  text-decoration: underline;
+}
+
+.lista-de-tema .listing-description {
+  color: var(--g-tinta-2);
+  font-size: 0.88rem;
+}
+
+.lista-de-tema .listing-description a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lista-de-tema .listing-description p {
+  margin: 0.1rem 0 0;
+  line-height: 1.4;
 }
 
 /* ---------- aviso canonico ---------- */
@@ -221,145 +407,156 @@ main.content:has(.glosario-card-grid) {
   line-height: 1.7;
 }
 
-/* ---------- listado de temas (cuadricula nativa de Quarto) ---------- */
-
-.quarto-grid-item.card {
-  border: 1px solid var(--g-linea);
-  border-radius: 0.55rem;
-  background: var(--g-superficie);
-  box-shadow: var(--g-sombra);
-  transition:
-    border-color 120ms ease,
-    transform 120ms ease;
-}
-
-.quarto-grid-link:hover .quarto-grid-item.card {
-  border-color: var(--g-marca);
-  transform: translateY(-1px);
-}
-
-.quarto-grid-item .card-title {
-  margin-bottom: 0.55rem;
-  color: var(--g-tinta);
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  line-height: 1.22;
-}
-
-.quarto-grid-item .card-text {
-  color: var(--g-tinta-2);
-  font-size: 0.94rem;
-}
-
-.quarto-grid-item .listing-categories {
-  gap: 0.3rem;
-  margin-top: 0.7rem;
-}
-
-.quarto-grid-item .listing-category {
-  padding: 0.05rem 0.5rem;
-  border: 1px solid var(--g-linea);
-  border-radius: 999px;
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.68rem;
-  letter-spacing: 0.02em;
-  opacity: 1;
-  text-transform: uppercase;
-}
-
-.quarto-grid-item .listing-category:hover {
-  border-color: var(--g-marca);
-  color: var(--g-marca);
-}
-
-/* Barra lateral de categorias: una lista con el recuento alineado, no un
- * parrafo que salta de linea con un numero suelto entre parentesis. */
-.quarto-listing-category-title {
-  margin-bottom: 0.5rem;
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.66rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.quarto-listing-category .category {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  padding: 0.35rem 0.1rem;
-  border-top: 1px solid var(--g-linea-2);
-  color: var(--g-tinta-2);
-  font-size: 0.92rem;
-  line-height: 1.3;
-}
-
-.quarto-listing-category .category:hover {
-  color: var(--g-marca);
-}
-
-.quarto-listing-category .category.active {
-  color: var(--g-tinta);
-  font-weight: 600;
-}
-
-.quarto-listing-category .quarto-category-count {
-  margin-left: auto;
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.72rem;
-  font-variant-numeric: tabular-nums;
-}
-
 /* ---------- indice A-Z ---------- */
 
-.quarto-listing-table {
-  border-color: var(--g-linea);
+/* Deja de ser una tabla de tres columnas y pasa a ser un indice: con las
+ * remisiones de los sinonimos son 222 entradas para 72 fichas, y arrastrar la
+ * definicion breve en cada fila daba una pagina inmanejable. El reparto queda
+ * asi: la portada para descubrir, Temas para explorar con contexto, el A-Z para
+ * localizar. La definicion sigue a un clic. */
+
+.az-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  margin: 0 0 1.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--g-linea);
 }
 
-.quarto-listing-table th {
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.66rem;
-  font-weight: 400;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
-
-.quarto-listing-table td {
-  vertical-align: top;
-}
-
-.quarto-listing-table td:first-child a {
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 1.02rem;
-  font-weight: 500;
-}
-
-.quarto-listing-table th:first-child,
-.quarto-listing-table td:first-child {
-  width: 26%;
-}
-
-.quarto-listing-table th:nth-child(2),
-.quarto-listing-table td:nth-child(2) {
-  width: 22%;
-  color: var(--g-tinta-3);
-  font-size: 0.9rem;
-}
-
-.quarto-listing-table td:last-child {
+.az-rail a {
+  min-width: 1.7rem;
+  padding: 0.15rem 0;
+  border-radius: 0.25rem;
   color: var(--g-tinta-2);
-  font-size: 0.94rem;
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.82rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.az-rail a:hover,
+.az-rail a:focus-visible {
+  background: var(--g-marca-tenue);
+  color: var(--g-marca);
+}
+
+.az-lista {
+  columns: 3;
+  column-gap: 2.2rem;
+}
+
+.az-entrada {
+  break-inside: avoid;
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Sin salto de columna forzado en cada letra: probado, dejaba media pagina en
+ * blanco -la B, con cinco entradas, se comia una columna entera-. */
+.az-abre-letra {
+  margin-top: 1.1rem;
+}
+
+.az-lista > .az-entrada:first-child {
+  margin-top: 0;
+}
+
+.az-letra {
+  display: block;
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid var(--g-linea);
+  color: var(--g-marca);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  scroll-margin-top: 5rem;
+}
+
+.az-entrada .listing-title a {
+  color: var(--g-tinta);
+  text-decoration: none;
+}
+
+.az-entrada .listing-title a:hover,
+.az-entrada .listing-title a:focus-visible {
+  color: var(--g-marca);
+  text-decoration: underline;
+}
+
+/* Presentes en el HTML porque son las columnas que declara filter-ui, pero no se
+ * pintan: un indice de 222 entradas con la definicion en cada fila no es un
+ * indice. El filtro si las lee. */
+.az-entrada .listing-description,
+.az-entrada > .listing-sinonimos:not(.az-remision) {
+  display: none;
+}
+
+.az-entrada .az-remision {
+  color: var(--g-tinta-3);
+}
+
+.az-flecha {
+  color: var(--g-tinta-3);
+  font-size: 0.85rem;
 }
 
 /* ---------- filtro y paginacion ---------- */
 
+/* Si la pagina anuncia que se puede buscar, el sitio donde se busca no puede
+ * ser un control de 168 px arrinconado a la derecha. Ocupa la medida de lectura,
+ * se pone donde cae la vista y su texto dice que admite. */
 .listing-actions-group {
-  margin-bottom: 0.5rem;
+  margin: 0 0 1.5rem;
+}
+
+/* Sin esto no crece: es un elemento flexible dentro de la barra de acciones del
+ * listado, y ahi nada se estira por su cuenta. */
+.quarto-listing-filter {
+  flex: 1 1 auto;
+  /* Quarto lo empuja a la derecha con un margen automatico; alineado a la
+   * izquierda queda debajo de la linea que lo explica, y no en la esquina
+   * opuesta a ella. */
+  margin-left: 0;
+  width: 100%;
+  max-width: 34rem;
+}
+
+.quarto-listing-filter .input-group-text {
+  border-color: var(--g-linea);
+  background: var(--g-superficie);
+  color: var(--g-tinta-3);
+}
+
+.quarto-listing-filter .form-control {
+  padding: 0.55rem 0.75rem;
+  border-color: var(--g-linea);
+  background: var(--g-superficie);
+  color: var(--g-tinta);
+  font-size: 1rem;
+}
+
+.quarto-listing-filter .form-control::placeholder {
+  color: var(--g-tinta-3);
+  opacity: 1;
+}
+
+.quarto-listing-filter .form-control:focus {
+  border-color: var(--g-marca);
+  box-shadow: 0 0 0 3px var(--g-marca-tenue);
+}
+
+/* El ejemplo que antes iba en un parrafo suelto: ahora acompaña al buscador. */
+.pista-busqueda {
+  margin: 0 0 0.4rem;
+  color: var(--g-tinta-3);
+  font-size: 0.88rem;
+}
+
+.pista-busqueda p {
+  margin: 0;
 }
 
 .page-link {
@@ -386,18 +583,6 @@ main.content:has(.glosario-card-grid) {
   padding-bottom: 0.6rem;
 }
 
-.quarto-title .quarto-category {
-  padding: 0.05rem 0.55rem;
-  border: 1px solid var(--g-linea);
-  border-radius: 999px;
-  background: var(--g-superficie);
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.68rem;
-  letter-spacing: 0.02em;
-  opacity: 1;
-  text-transform: uppercase;
-}
 
 /* La definicion breve del frontmatter, que es la entradilla de la ficha. */
 #title-block-header .description {
@@ -467,7 +652,7 @@ main.content h2 {
   font-size: 1.32rem;
 }
 
-main.content h3:not(.glosario-card-title):not(.card-title) {
+main.content h3:not(.glosario-card-title):not(.card-title):not(.listing-title) {
   margin-top: 1.3rem;
   color: var(--g-tinta-3);
   font-family: var(--bs-font-sans-serif, sans-serif);
@@ -548,6 +733,16 @@ nav[role="doc-toc"] ul > li > a.active {
   }
 }
 
+@media (max-width: 991px) {
+  .lista-de-tema .list {
+    columns: 1;
+  }
+
+  .az-lista {
+    columns: 2;
+  }
+}
+
 @media (max-width: 767px) {
   .hero-glosario {
     margin-top: 0.4rem;
@@ -563,30 +758,12 @@ nav[role="doc-toc"] ul > li > a.active {
     grid-template-columns: 1fr;
   }
 
+  .az-lista {
+    columns: 1;
+  }
+
   .aviso-glosario {
     grid-template-columns: 1fr;
-  }
-
-  .quarto-listing-table {
-    font-size: 0.9rem;
-    table-layout: fixed;
-    width: 100%;
-  }
-
-  .quarto-listing-table th,
-  .quarto-listing-table td {
-    overflow-wrap: anywhere;
-    white-space: normal;
-  }
-
-  .quarto-listing-table th:first-child,
-  .quarto-listing-table td:first-child {
-    width: 30%;
-  }
-
-  .quarto-listing-table th:nth-child(2),
-  .quarto-listing-table td:nth-child(2) {
-    width: 24%;
   }
 }
 
