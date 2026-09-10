@@ -32,32 +32,9 @@
   --h-ia-agentica: 104;
 }
 
-/* Excepcion documentada al "nada de markup propio": el grid y el listado nativos
- * de Quarto no emiten ningun atributo que diga de que categoria es cada etiqueta
- * -no hay data-category-, solo el manejador que dispara el filtro nativo. Ese
- * manejador lleva un token estable: base64(encodeURIComponent(categoria)). Se
- * casa contra el token completo, con sus parentesis y comillas, para que ningun
- * token pueda ser subcadena de otro.
- *
- * La alternativa era reimplementar el listado con plantilla propia, que es mas
- * caro y renuncia al filtrado nativo. validar.ps1 recalcula los nueve tokens y
- * falla si Quarto cambia el mecanismo, de modo que esto no puede pudrirse en
- * silencio: si el token deja de coincidir, la validacion lo dice.
- */
-.listing-category[onclick*="('RnVuZGFtZW50b3M=')"] { --h: var(--h-fundamentos); }
-.listing-category[onclick*="('QXByZW5kaXphamUlMjBhdXRvbSVDMyVBMXRpY28=')"] { --h: var(--h-aprendizaje-automatico); }
-.listing-category[onclick*="('QXJxdWl0ZWN0dXJhcw==')"] { --h: var(--h-arquitecturas); }
-.listing-category[onclick*="('TW9kZWxvcyUyMGRlJTIwbGVuZ3VhamU=')"] { --h: var(--h-modelos-de-lenguaje); }
-.listing-category[onclick*="('UHJvY2VzYW1pZW50byUyMGRlbCUyMGxlbmd1YWpl')"] { --h: var(--h-procesamiento-del-lenguaje); }
-.listing-category[onclick*="('UmVjdXBlcmFjaSVDMyVCM24lMjBkZSUyMGluZm9ybWFjaSVDMyVCM24=')"] { --h: var(--h-recuperacion-de-informacion); }
-.listing-category[onclick*="('U2VndXJpZGFkJTIweSUyMHJpZXNnb3M=')"] { --h: var(--h-seguridad-y-riesgos); }
-.listing-category[onclick*="('JUMzJTg5dGljYSUyMHklMjBnb2Jlcm5hbnph')"] { --h: var(--h-etica-y-gobernanza); }
-.listing-category[onclick*="('SUElMjBhZyVDMyVBOW50aWNh')"] { --h: var(--h-ia-agentica); }
-
 /* La pastilla teñida, escrita una sola vez para los tres sitios donde aparece
  * una categoria: la tarjeta de la portada, el listado de Temas y la ficha. */
 .glosario-card-categorias .listing-category,
-.quarto-grid-item .listing-category,
 .quarto-title .quarto-category {
   padding: 0.05rem 0.5rem;
   border: 1px solid hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-borde));
@@ -386,88 +363,6 @@ main.content .tema > h2::before {
   font-family: var(--bs-font-monospace, monospace);
   font-size: 0.76rem;
   line-height: 1.7;
-}
-
-/* ---------- listado de temas (cuadricula nativa de Quarto) ---------- */
-
-.quarto-grid-item.card {
-  border: 1px solid var(--g-linea);
-  border-radius: 0.55rem;
-  background: var(--g-superficie);
-  box-shadow: var(--g-sombra);
-  transition:
-    border-color 120ms ease,
-    transform 120ms ease;
-}
-
-.quarto-grid-link:hover .quarto-grid-item.card {
-  border-color: var(--g-marca);
-  transform: translateY(-1px);
-}
-
-.quarto-grid-item .card-title {
-  margin-bottom: 0.55rem;
-  color: var(--g-tinta);
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  line-height: 1.22;
-}
-
-.quarto-grid-item .card-text {
-  color: var(--g-tinta-2);
-  font-size: 0.94rem;
-}
-
-.quarto-grid-item .listing-categories {
-  gap: 0.3rem;
-  margin-top: 0.7rem;
-}
-
-/* Al pasar el raton, el matiz se satura en lugar de virar a color de marca: el
- * color sigue diciendo de que tema es la etiqueta tambien mientras se apunta. */
-.quarto-grid-item .listing-category:hover {
-  border-color: hsl(var(--h, 192) var(--g-cat-s) var(--g-cat-l));
-}
-
-/* Barra lateral de categorias: una lista con el recuento alineado, no un
- * parrafo que salta de linea con un numero suelto entre parentesis. */
-.quarto-listing-category-title {
-  margin-bottom: 0.5rem;
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.66rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.quarto-listing-category .category {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  padding: 0.35rem 0.1rem;
-  border-top: 1px solid var(--g-linea-2);
-  color: var(--g-tinta-2);
-  font-size: 0.92rem;
-  line-height: 1.3;
-}
-
-.quarto-listing-category .category:hover {
-  color: var(--g-marca);
-}
-
-.quarto-listing-category .category.active {
-  color: var(--g-tinta);
-  font-weight: 600;
-}
-
-.quarto-listing-category .quarto-category-count {
-  margin-left: auto;
-  color: var(--g-tinta-3);
-  font-family: var(--bs-font-monospace, monospace);
-  font-size: 0.72rem;
-  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- indice A-Z ---------- */

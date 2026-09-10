@@ -164,14 +164,6 @@ foreach ($categoria in $categoriasPermitidas) {
   if ($estilos.IndexOf("--h-$slugCategoria" + ":", [StringComparison]::Ordinal) -lt 0) {
     Registrar-Error "styles.css: la categoria '$categoria' no tiene tono '--h-$slugCategoria'"
   }
-
-  $selector = '[onclick*="(' + "'" + $token + "'" + ')"]'
-  if ($estilos.IndexOf($selector, [StringComparison]::Ordinal) -lt 0) {
-    Registrar-Error (
-      "styles.css: la categoria '$categoria' no tiene regla de matiz para los listados; " +
-      "falta el selector del token '$token'"
-    )
-  }
 }
 
 $rutaPlantilla = Join-Path (Join-Path $raiz "templates") "listado-portada.ejs.md"
@@ -536,42 +528,41 @@ foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
   }
 }
 
-# El mecanismo del que depende el matiz de las etiquetas de un listado nativo,
-# comprobado contra el HTML realmente emitido y no contra lo que se supone.
+# Guardian dormido: las etiquetas de categoria de un listado nativo.
 #
-# Esas etiquetas no llevan ningun atributo que diga de que categoria son:
-# styles.css las tiñe casando el token del manejador que dispara el filtro
-# nativo. Desde que Temas agrupa por secciones ya no las pinta ninguna pagina,
-# asi que las nueve reglas quedan en reserva: siguen escritas porque la vista en
-# cuadricula es todavia una decision abierta. Mientras no las use nadie esto
-# avisa, no falla; y si vuelven a usarse, comprueba que el token sigue siendo el
-# que Quarto emite.
-$tokensEmitidos = @()
-
+# Hoy no las pinta ninguna pagina —la portada usa plantilla propia, Temas agrupa
+# por secciones y el A-Z es un indice—, asi que esto no dice nada y no gasta
+# atencion. Si alguna vista vuelve a emitirlas, despierta: esas etiquetas no
+# llevan ningun atributo que diga de que categoria son, y la unica forma de
+# teñirlas sin tocar el markup es casar el token del manejador que dispara el
+# filtro nativo, base64(encodeURIComponent(categoria)). El token se recalcula
+# aqui, no se copia, de modo que tambien detecta que Quarto haya cambiado el
+# mecanismo. Sin esto, una cuadricula reintroducida saldria gris y nadie lo
+# sabria hasta mirarla.
 foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
   $rutaPagina = Join-Path $carpetaSitio $pagina
   if (-not (Test-Path -LiteralPath $rutaPagina)) {
     continue
   }
 
-  $tokensEmitidos += [regex]::Matches(
-    (Get-Content -LiteralPath $rutaPagina -Encoding UTF8 -Raw),
-    "quartoListingCategory\('(?<token>[^']+)'\)"
-  ) | ForEach-Object { $_.Groups["token"].Value }
-}
+  $htmlPagina = Get-Content -LiteralPath $rutaPagina -Encoding UTF8 -Raw
 
-if ($tokensEmitidos.Count -eq 0) {
-  Registrar-Aviso (
-    "ninguna pagina pinta etiquetas de categoria de un listado nativo: las nueve " +
-    "reglas de matiz por token de styles.css estan en reserva, sin uso"
-  )
-}
-else {
-  foreach ($emitido in ($tokensEmitidos | Sort-Object -Unique)) {
+  foreach ($emitido in ([regex]::Matches($htmlPagina, "quartoListingCategory\('(?<token>[^']+)'\)") |
+      ForEach-Object { $_.Groups["token"].Value } | Sort-Object -Unique)) {
     if (-not $tokensTaxonomia.ContainsKey($emitido)) {
       Registrar-Error (
-        "el token de categoria '$emitido' no corresponde a ninguna categoria de la " +
-        "taxonomia; el matiz de esa etiqueta no se aplicaria"
+        "$pagina`: el token de categoria '$emitido' no corresponde a ninguna categoria " +
+        "de la taxonomia; esa etiqueta no podria recibir su matiz"
+      )
+      continue
+    }
+
+    $selector = '[onclick*="(' + "'" + $emitido + "'" + ')"]'
+    if ($estilos.IndexOf($selector, [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error (
+        "$pagina`: vuelve a haber etiquetas de categoria de un listado nativo " +
+        "('$($tokensTaxonomia[$emitido])') y styles.css no tiene regla de matiz para su token; " +
+        "saldrian grises"
       )
     }
   }
