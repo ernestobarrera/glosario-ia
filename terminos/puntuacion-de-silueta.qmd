@@ -9,7 +9,7 @@ description: "Índice interno que compara la cohesión de cada caso con su separ
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-09-09
+date-modified: 2026-09-10
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -79,6 +79,7 @@ representa una categoría real.
 - [Clúster semántico](cluster-semantico.qmd)
 - [Desplazamiento de centroides](desplazamiento-de-centroides.qmd)
 - [Espacio latente](espacio-latente.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
 
 ## Referencias
 

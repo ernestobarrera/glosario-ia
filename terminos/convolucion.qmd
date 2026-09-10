@@ -8,7 +8,7 @@ description: "Operación que combina una entrada con un núcleo local y que las 
 categories:
   - "Fundamentos"
   - "Arquitecturas"
-date-modified: 2026-09-09
+date-modified: 2026-09-10
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -82,6 +82,7 @@ posteriores combinan patrones locales en representaciones más complejas.
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Conjunto de datos](conjunto-de-datos.qmd)
 - [Función de pérdida](funcion-de-perdida.qmd)
+- [Transformer](transformer.qmd)
 
 ## Referencias
 

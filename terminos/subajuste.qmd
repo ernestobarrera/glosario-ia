@@ -8,7 +8,7 @@ description: "Fallo de aprendizaje en el que un modelo no representa suficientem
 categories:
   - "Aprendizaje automático"
   - "Seguridad y riesgos"
-date-modified: 2026-09-09
+date-modified: 2026-09-10
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -80,6 +80,7 @@ de prueba introduciría, en cambio, sobreajuste en la evaluación.
 - [Validación cruzada](validacion-cruzada.qmd)
 - [Conjunto de datos](conjunto-de-datos.qmd)
 - [Regularización](regularizacion.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
 
 ## Referencias
 

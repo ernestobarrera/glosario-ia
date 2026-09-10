@@ -2,6 +2,7 @@
 title: "Fundamentación"
 aliases:
   - /terminos/grounding.html
+  - /terminos/fundamentacion.html
 sinonimos:
   - "Grounding"
   - "Anclaje en fuentes"
@@ -10,7 +11,7 @@ categories:
   - "Recuperación de información"
   - "Modelos de lenguaje"
   - "Seguridad y riesgos"
-date-modified: 2026-09-09
+date-modified: 2026-09-10
 estado: "borrador"
 tipo: "tecnica"
 ---

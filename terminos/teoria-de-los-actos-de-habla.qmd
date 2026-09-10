@@ -11,7 +11,7 @@ categories:
   - "Procesamiento del lenguaje"
   - "Fundamentos"
   - "Ética y gobernanza"
-date-modified: 2026-09-09
+date-modified: 2026-09-10
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -30,7 +30,7 @@ contexto, las convenciones y los roles; no reside únicamente en la frase.
 
 ## Contexto histórico
 
-J. L. Austin desarrolló el marco en sus conferencias publicadas en 1962. John
+J. L. Austin desarrolló el marco en sus conferencias. John
 Searle lo amplió y propuso una clasificación de actos ilocutivos —asertivos,
 directivos, compromisivos, expresivos y declarativos— basada en criterios
 explícitos [@searle1976illocutionary].
