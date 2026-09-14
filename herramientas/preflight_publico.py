@@ -13,9 +13,10 @@ Dos capas (ver patrones-privados.yml):
     asi que solo se evaluan cuando el archivo de patrones los trae, es decir
     desde el laboratorio.
 
-Inspecciona el arbol de trabajo y, con --historial, tambien todos los blobs
-que existieron en el repositorio: el contenido retirado de un arbol sigue
-descargable con un clone.
+Inspecciona el arbol de trabajo —lo rastreado y tambien lo que aun no ha
+entrado al indice, para poder detener un archivo ANTES de `git add`— y, con
+--historial, todos los blobs que existieron en el repositorio: el contenido
+retirado de un arbol sigue descargable con un clone.
 
 Dos usos reales, y ninguno es "escanear el laboratorio": ahi los datos
 privados son legitimos y el informe seria puro ruido.
@@ -29,6 +30,10 @@ privados son legitimos y el informe seria puro ruido.
 
   Y para regenerar la capa publica tras tocar los patrones:
      python herramientas/preflight_publico.py . --emitir-publicos patrones-publicos.yml
+
+Esta es la copia que corre en CI. Su banco de pruebas vive junto al original,
+en el laboratorio: cualquier cambio de comportamiento se prueba alli primero y
+se porta aqui, igual que el resto de esta herramienta.
 
 Salida: 0 sin hallazgos, 1 con hallazgos o rutas prohibidas rastreadas.
 """
@@ -171,7 +176,26 @@ def main():
     hallazgos = []
 
     # --- arbol de trabajo ---------------------------------------------------
-    archivos = [l for l in git(repo, "ls-files").splitlines() if l.strip()]
+    # Dos listas, porque no responden a la misma pregunta.
+    #
+    # RASTREADOS decide las rutas prohibidas: "prohibida y rastreada" significa
+    # versionada aqui, y un archivo que todavia no esta en el indice no lo esta.
+    #
+    # El ESCANEO DE CONTENIDO va sobre rastreados MAS no rastreados, que es la
+    # unica forma de proteger un archivo ANTES de que entre al indice. Con solo
+    # `ls-files`, un preflight corrido antes de `git add` informa "sin
+    # hallazgos" sin haber mirado ni uno de los archivos nuevos.
+    #
+    # Los IGNORADOS se quedan fuera a proposito, y no es un descuido: el
+    # .gitignore de este repositorio ya excluye de todo commit las rutas que no
+    # deben publicarse, asi que ahi es la barrera. Si alguien las fuerza con
+    # `git add -f`, pasan a rastreadas y las ve la comprobacion de rutas
+    # prohibidas. Incluirlas aqui, en cambio, convertiria en hallazgo
+    # permanente el material de trabajo local que esta donde debe estar.
+    rastreados = [l for l in git(repo, "ls-files").splitlines() if l.strip()]
+    sin_rastrear = [l for l in git(repo, "ls-files", "--others",
+                                   "--exclude-standard").splitlines() if l.strip()]
+    archivos = rastreados + sin_rastrear
     if not archivos:
         archivos = [str(p.relative_to(repo)) for p in repo.rglob("*") if p.is_file()]
 
@@ -182,14 +206,16 @@ def main():
     # su contenido no incluye ningun dato privado, asi que un escaneo de
     # contenido no lo detendria nunca; lo que hay que prohibir es su presencia.
     prohibidos = []
-    for rel in (archivos if args.destino_publico else []):
+    for rel in (rastreados if args.destino_publico else []):
         norm = rel.replace("\\", "/")
         for patron in prohibidas:
             if fnmatch(norm, patron) or fnmatch(Path(norm).name, patron):
                 prohibidos.append((rel, patron))
                 break
 
+    pendientes_de_indice = set(sin_rastrear)
     revisados = 0
+    revisados_sin_rastrear = 0
     for rel in archivos:
         if any(rel.replace("\\", "/").startswith(i.rstrip("/")) or
                f"/{i.rstrip('/')}/" in f"/{rel}".replace("\\", "/")
@@ -203,6 +229,8 @@ def main():
         except OSError:
             continue
         revisados += 1
+        if rel in pendientes_de_indice:
+            revisados_sin_rastrear += 1
         hallazgos += revisar(texto, rel, reglas, excepciones)
 
     # --- historial -----------------------------------------------------------
@@ -229,9 +257,11 @@ def main():
     print(f"  patrones: {len(reglas)} ({', '.join(capas)})"
           + (f" | rutas prohibidas: {len(prohibidas)}"
              if args.destino_publico else " | rutas: no comprobadas"))
-    print(f"  archivos revisados: {revisados}" +
-          (f" | blobs de historial: {blobs}" if args.historial else
-           " | historial NO revisado (usa --historial)"))
+    print(f"  archivos revisados: {revisados}"
+          + (f" ({revisados_sin_rastrear} aun sin rastrear)"
+             if revisados_sin_rastrear else "")
+          + (f" | blobs de historial: {blobs}" if args.historial else
+             " | historial NO revisado (usa --historial)"))
 
     if prohibidos:
         print(f"\nRUTAS PROHIBIDAS RASTREADAS ({len(prohibidos)}):")
