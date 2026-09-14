@@ -1,0 +1,109 @@
+---
+title: "Zero-shot learning"
+aliases:
+  - /terminos/aprendizaje-sin-ejemplos.html
+  - /terminos/zero-shot.html
+sinonimos:
+  - "Aprendizaje sin ejemplos"
+  - "Zero shot learning"
+  - "Aprendizaje de disparo cero"
+description: "Capacidad de un modelo para abordar clases o tareas que no aparecieron en su entrenamiento, sin recibir ningún ejemplo etiquetado de ellas."
+categories:
+  - "Aprendizaje automático"
+  - "Modelos de lenguaje"
+date-modified: 2026-09-14
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **zero-shot learning** —o **aprendizaje sin ejemplos**— es la capacidad de
+un modelo de abordar clases o tareas que no vio durante el entrenamiento, sin
+recibir ni un solo ejemplo etiquetado de ellas. El modelo se apoya en lo
+aprendido de otras clases y en alguna forma de descripción que conecte lo
+conocido con lo nuevo.
+
+Completa una escala con el [one-shot learning](one-shot-learning.qmd) —un
+ejemplo— y el [few-shot learning](few-shot-learning.qmd) —unos pocos—. En los
+modelos de lenguaje actuales, este **aprendizaje de disparo cero** suele
+consistir en describir la tarea en el propio [prompt](prompting.qmd), sin
+adjuntar ejemplos resueltos.
+
+## Contexto histórico
+
+Nació en visión por computador como problema de clasificación: reconocer una
+categoría no vista usando atributos o descripciones semánticas compartidas con
+las categorías conocidas. La evaluación sistemática de Xian y colaboradores en
+2019 puso orden en un campo donde los resultados no eran comparables entre sí,
+y mostró que buena parte de las mejoras publicadas se debían a
+**contaminación** de los conjuntos de prueba y a protocolos de evaluación
+inconsistentes [@xian2019zeroshot].
+
+Con GPT-3 en 2020 el término se amplió: dejó de referirse solo a clases no
+vistas y pasó a designar también la capacidad de un modelo de lenguaje de
+abordar tareas nuevas descritas en la instrucción, sin reentrenamiento
+[@brown2020fewshot].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es lo que explica que un mismo modelo general
+sirva para tareas para las que nadie lo entrenó específicamente. Su valor es
+mayor donde etiquetar datos es caro, lento o simplemente imposible por falta de
+casos.
+
+## Aplicaciones
+
+### Generales
+
+Clasificar textos en categorías definidas sobre la marcha, identificar objetos
+de clases nuevas, o encargar a un modelo una tarea descrita solo con palabras.
+
+### Sanitarias
+
+El uso asentado es el de las tareas de texto: clasificar documentos, detectar
+temas o extraer campos sin corpus etiquetado previo.
+
+Hay además una expectativa que se repite mucho y que conviene situar: que el
+zero-shot permita **orientar enfermedades raras** a partir del conocimiento de
+enfermedades frecuentes. Es una extrapolación razonable del mecanismo, **no un
+resultado acreditado**, y la prudencia aquí no es retórica: las enfermedades
+raras son justamente el escenario donde menos datos hay para validar el
+rendimiento del modelo, de modo que la capacidad más difícil de comprobar
+coincide con el terreno donde el error tiene más coste. Un resultado zero-shot
+en este ámbito es una hipótesis que orienta, nunca una conclusión.
+
+## Limitaciones
+
+- El rendimiento **cae cuanto más se aleja** la clase nueva de lo visto en el
+  entrenamiento, que es precisamente el caso de interés.
+- Suele haber un sesgo hacia las clases conocidas: el modelo tiende a asignar
+  lo nuevo a categorías que ya domina.
+- Las cifras publicadas han sido históricamente poco comparables por problemas
+  de protocolo y contaminación de los conjuntos de prueba
+  [@xian2019zeroshot].
+- «Sin ejemplos» describe la tarea, no el entrenamiento: el modelo sí vio
+  enormes cantidades de datos, y de su composición depende todo lo demás.
+
+## Ejemplos
+
+- Clasificar informes en categorías definidas en el momento, sin corpus
+  etiquetado.
+- Pedir a un modelo de lenguaje una tarea que no estaba prevista, describiendo
+  solo lo que debe hacer.
+- Reconocer una especie animal no vista a partir de una descripción de sus
+  atributos.
+
+## Relacionados
+
+- [Few-shot learning](few-shot-learning.qmd)
+- [One-shot learning](one-shot-learning.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Prompting](prompting.qmd)
+- [Factualidad](factualidad.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

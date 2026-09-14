@@ -1,0 +1,126 @@
+---
+title: "Memoria persistente"
+aliases:
+  - /terminos/personalizacion-persistente.html
+  - /terminos/persistent-memory.html
+sinonimos:
+  - "Personalización persistente"
+  - "Persistent memory"
+  - "Memoria en IA"
+description: "Capacidad de un sistema de IA para retener y reutilizar información del usuario más allá de una conversación, construyendo un perfil que persiste entre sesiones."
+categories:
+  - "IA agéntica"
+  - "Modelos de lenguaje"
+  - "Ética y gobernanza"
+date-modified: 2026-09-14
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **memoria persistente** —o **personalización persistente**, en inglés
+**persistent memory**— es la capacidad de un sistema de IA para retener,
+organizar y reutilizar información sobre el usuario más allá de una sola
+conversación.
+
+Conviene distinguir tres niveles, porque plantean problemas muy distintos:
+
+1. **La ventana de contexto**: memoria efímera, limitada a la sesión en curso.
+   Al cerrarla no queda nada.
+2. **Los hechos guardados explícitamente**: el usuario pide que algo se
+   recuerde, y ese dato queda en una lista consultable.
+3. **La memoria sintetizada**: el sistema construye y actualiza en segundo
+   plano un perfil del usuario **inferido** del historial, sin que nadie se lo
+   pida.
+
+El tercer nivel es el que da nombre al concepto y el que cambia la naturaleza
+del sistema: convierte al asistente de un respondedor sin estado en algo que
+mantiene una representación evolutiva de quién es el usuario. Es también el
+único de los tres en el que el contenido de la memoria **no lo decide la
+persona**.
+
+## Contexto histórico
+
+Los primeros asistentes eran sin estado: cada conversación empezaba en blanco.
+La memoria explícita —listas de hechos guardados a petición— se generalizó
+hacia 2024. El salto a la síntesis automática llegó después, con sistemas que
+recorren el historial en segundo plano y redactan por su cuenta un perfil del
+usuario, manteniéndolo al día en lugar de acumular hechos sueltos. OpenAI
+denominó *dreaming* a este proceso en ChatGPT, introducido en una primera
+versión en 2025 y ampliado en 2026 [@openai2026dreaming].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es la base de los asistentes que «conocen» al
+usuario y de los agentes que mantienen estado entre tareas. La ganancia de
+utilidad es evidente: no hay que repetir el contexto en cada sesión.
+
+Lo que introduce a cambio es un problema de gobernanza. Un perfil inferido y
+mantenido de forma automática es una actividad de **elaboración de perfiles**,
+con las obligaciones que eso conlleva en materia de transparencia, base
+jurídica y derecho de supresión. Y el derecho de supresión se complica cuando
+la información no está en un campo concreto, sino repartida entre
+conversaciones, resúmenes y perfiles derivados.
+
+## Aplicaciones
+
+### Generales
+
+Asistentes que recuerdan preferencias de estilo, proyectos en curso o
+correcciones previas; agentes que conservan estado entre tareas encadenadas.
+
+### Sanitarias
+
+El uso defendible es el que se refiere **al profesional**: un asistente que
+conserva su especialidad, las guías que maneja o el formato de informe que
+prefiere, y deja de pedirlo cada vez.
+
+El uso que exige mucha más cautela es el que se refiere **al paciente**. Un
+perfil persistente construido sobre datos de salud es un dato de categoría
+especial, y si además se ha sintetizado automáticamente, hereda dos problemas
+graves: consolida errores —una inferencia equivocada se convierte en el punto
+de partida de todas las sesiones siguientes— y es difícil de auditar, porque
+nadie escribió ese perfil y no hay traza de por qué dice lo que dice.
+
+Hay además un efecto menos evidente: cuanto mejor se adapta el sistema al
+perfil que ha inferido, más probable es que refuerce lo que cree que el usuario
+espera oír, que es el mecanismo de la [adulación](adulacion.qmd).
+
+## Limitaciones
+
+- **Opacidad del perfil inferido**: qué sabe el sistema, de dónde lo sacó y
+  cuándo lo está aplicando.
+- El derecho de supresión exige borrar la información en todas sus fuentes
+  derivadas, no solo en la lista visible.
+- Riesgo de perpetuar errores e inferencias sensibles difíciles de rectificar.
+- Tensión permanente entre personalización y privacidad.
+- Las cifras de mejora que publican los proveedores proceden de evaluaciones
+  internas no publicadas y no reproducidas de forma independiente.
+
+## Ejemplos
+
+- Un sistema que sintetiza en segundo plano un perfil del usuario revisable
+  desde los ajustes [@openai2026dreaming].
+- Un asistente clínico que, sesión tras sesión, se ajusta al estilo de informe
+  de un facultativo.
+- Recuperar por similitud el contexto relevante de sesiones anteriores
+  mediante [embeddings](embeddings.qmd), en lugar de conservar el texto
+  completo.
+- Una inferencia equivocada sobre el usuario que reaparece en todas las
+  conversaciones posteriores sin que él sepa de dónde sale.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Prompt de sistema](prompt-de-sistema.qmd)
+- [Embeddings](embeddings.qmd)
+- [Espacio latente](espacio-latente.qmd)
+- [Vectorización](vectorizacion.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Adulación](adulacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

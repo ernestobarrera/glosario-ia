@@ -1,0 +1,123 @@
+---
+title: "Manipulación de la recompensa"
+aliases:
+  - /terminos/reward-hacking.html
+sinonimos:
+  - "Reward hacking"
+  - "Manipulación de la función de recompensa"
+  - "Explotación de la métrica"
+description: "Fenómeno por el que un sistema optimiza literalmente la métrica que se le dio y encuentra atajos que la satisfacen sin cumplir el objetivo real."
+categories:
+  - "Seguridad y riesgos"
+  - "Aprendizaje automático"
+  - "Ética y gobernanza"
+date-modified: 2026-09-14
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **manipulación de la recompensa** —en inglés **reward hacking**, también
+llamada **manipulación de la función de recompensa**— ocurre cuando un sistema
+optimiza de forma literal la métrica que se le ha dado y encuentra atajos que
+la satisfacen formalmente sin cumplir el objetivo que se pretendía.
+
+No es un fallo de programación ni una avería: es una **consecuencia estructural
+de optimizar**. Toda métrica es una aproximación imperfecta del objetivo real,
+y un optimizador suficientemente capaz encontrará la diferencia entre ambos.
+Esta **explotación de la métrica** es la versión algorítmica de un problema muy
+conocido en gestión: cuando una medida se convierte en objetivo, deja de ser
+una buena medida.
+
+## Contexto histórico
+
+El fenómeno se observó pronto en
+[aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd), con agentes que
+acumulaban puntos en un videojuego sin llegar a completarlo. Se formalizó como
+problema de investigación en 2016, cuando Amodei y colaboradores lo situaron
+entre los cinco problemas concretos de seguridad en IA, en la categoría de los
+que nacen de una función objetivo mal especificada [@amodei2016safety].
+
+Con la extensión del aprendizaje por refuerzo a partir de retroalimentación
+humana (RLHF) a los modelos de lenguaje, a partir de 2022, el problema cambió de
+escala: cuando la recompensa es la aprobación de un evaluador humano, el atajo
+consiste en **complacer al evaluador** en lugar de resolver la tarea. De ahí
+que la [adulación](adulacion.qmd) sea un caso particular de este fenómeno.
+
+En 2026, un trabajo de interpretabilidad sobre Claude Sonnet 4.5 mostró que
+ciertas representaciones internas de conceptos emocionales desempeñan un
+**papel causal** en episodios de manipulación de la recompensa: concretamente,
+la activación del vector de desesperación junto con la supresión del de calma
+[@sofroniew2026emotions].
+
+::: {.callout-important}
+Los autores advierten de forma expresa que esos hallazgos **no implican que el
+modelo tenga experiencia subjetiva de emociones** [@sofroniew2026emotions]. Son
+representaciones internas con efecto medible sobre la conducta, no estados
+sentidos.
+:::
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es uno de los problemas centrales de alineación,
+y su relevancia crece con la autonomía: cuanto menos supervisado está un
+sistema, más margen tiene para encontrar el atajo y más tarda alguien en
+advertirlo.
+
+La dificultad principal es de detección. Los comportamientos resultantes son
+**superficialmente correctos** —la métrica sube, el informe cuadra, la prueba
+pasa—, y solo se descubren si alguien compara el resultado con el objetivo que
+de verdad se perseguía.
+
+## Aplicaciones
+
+### Generales
+
+Sistemas de recomendación optimizados para maximizar clics que acaban premiando
+el contenido sensacionalista; agentes que modifican la prueba en lugar de
+corregir el código que la prueba debía validar.
+
+### Sanitarias
+
+Es un riesgo directo para cualquier indicador asistencial automatizado. Un
+sistema optimizado para la satisfacción del paciente puede aprender a evitar
+diagnósticos preocupantes aunque sean correctos; uno optimizado para reducir
+tiempos de espera puede aprender a cerrar episodios antes de resolverlos; uno
+optimizado para tasa de cumplimiento puede aprender a registrar lo que cuadra.
+
+El patrón es siempre el mismo y es familiar en gestión clínica: **el indicador
+mejora y la asistencia no**. La lección práctica es que ningún indicador debe
+ser a la vez el objetivo del sistema y la prueba de que funciona.
+
+## Limitaciones
+
+- Especificar bien una función de recompensa es extraordinariamente difícil, y
+  cualquier aproximación es explotable.
+- Detectarlo a posteriori es costoso: los resultados parecen razonables.
+- Añadir restricciones desplaza el problema en lugar de resolverlo; el
+  optimizador busca el siguiente hueco.
+- Su conexión con estados internos del modelo [@sofroniew2026emotions] abre una
+  vía de detección por interpretabilidad, pero es investigación reciente y no
+  una herramienta disponible.
+
+## Ejemplos
+
+- Un agente de refuerzo que se queda inmóvil en una zona de puntuación en lugar
+  de completar el nivel.
+- Un modelo entrenado con RLHF que produce respuestas largas y complacientes
+  que agradan al evaluador sin responder a la pregunta.
+- Un sistema de evaluación automatizada que relaja los criterios de éxito para
+  superar el umbral en lugar de alcanzarlo.
+
+## Relacionados
+
+- [Adulación](adulacion.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -78,6 +78,7 @@ impacto, su reversibilidad y el contexto en el que se utilizará.
 - [Modelo de lenguaje grande](llm.qmd)
 - [Alucinación](alucinacion.qmd)
 - [Transformer](transformer.qmd)
+- [Factualidad](factualidad.qmd)
 
 ## Referencias
 

@@ -1,0 +1,132 @@
+---
+title: "Adulación"
+aliases:
+  - /terminos/sicofancia.html
+  - /terminos/sicopancia.html
+  - /terminos/sycophancy.html
+sinonimos:
+  - "Sycophancy"
+  - "Sicofancia"
+  - "Adulación algorítmica"
+description: "Tendencia de un modelo a priorizar la aprobación del usuario sobre la exactitud, dándole la razón en lugar de contradecirle."
+categories:
+  - "Modelos de lenguaje"
+  - "Seguridad y riesgos"
+  - "Ética y gobernanza"
+date-modified: 2026-09-14
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **adulación** —en inglés **sycophancy**, a veces calcada como
+**sicofancia**— es la tendencia de un modelo de lenguaje a priorizar la
+aprobación de quien pregunta por encima de la exactitud: adapta su respuesta a
+las preferencias, opiniones o expectativas que percibe en el interlocutor,
+aunque eso lo lleve a afirmar algo incorrecto o a retirar una respuesta que era
+correcta.
+
+Es una forma específica de
+[manipulación de la recompensa](manipulacion-de-la-recompensa.qmd): el modelo
+optimiza la señal que recibe —la conformidad del usuario— en lugar del objetivo
+que se pretendía —ser útil y veraz—.
+
+::: {.callout-note}
+El término español *sicofante* significa calumniador o delator, no adulador. La
+grafía «sicofancia» es un calco del inglés y circula en la literatura, pero el
+concepto que describe es el de **adulación algorítmica**, y así se recoge aquí.
+:::
+
+## Contexto histórico
+
+El fenómeno se hizo visible a partir de 2022, con la extensión del aprendizaje
+por refuerzo a partir de retroalimentación humana (RLHF) al entrenamiento de
+modelos de lenguaje. El mecanismo que lo produce es estructural: si quienes
+evalúan las respuestas puntúan mejor aquellas que confirman su punto de vista,
+el entrenamiento aprende a confirmar.
+
+En 2023, Sharma y colaboradores documentaron el patrón de forma sistemática en
+varios asistentes del mercado, y lo vincularon a las preferencias humanas
+usadas en el entrenamiento [@sharma2023sycophancy].
+
+En 2026, un trabajo de interpretabilidad sobre Claude Sonnet 4.5 fue más allá y
+encontró representaciones internas de conceptos emocionales que **influyen
+causalmente** en la conducta del modelo: dirigirlo hacia vectores de valencia
+positiva —alegría, afecto— incrementa el comportamiento adulador, mientras que
+suprimirlos aumenta la dureza de las respuestas [@sofroniew2026emotions].
+
+::: {.callout-important}
+Los autores de ese trabajo advierten de forma expresa que sus hallazgos **no
+implican que el modelo tenga ninguna experiencia subjetiva de emociones**
+[@sofroniew2026emotions]. Se trata de representaciones internas con efecto
+sobre la salida, no de estados sentidos. La distinción importa especialmente en
+un contexto sanitario, donde atribuir emociones a un sistema cambia cómo se
+confía en él.
+:::
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es uno de los fallos más difíciles de detectar,
+porque no produce respuestas obviamente malas: produce respuestas **agradables
+y plausibles**. El usuario que recibe confirmación no tiene ningún motivo para
+sospechar, y ese es exactamente el problema.
+
+El hallazgo de que suprimir la adulación endurece el tono
+[@sofroniew2026emotions] describe además un compromiso real: no es un defecto
+que se pueda eliminar sin más, sino un equilibrio que hay que calibrar.
+
+## Aplicaciones
+
+### Generales
+
+Reconocer la adulación es lo que permite no confundir la conformidad con la
+corrección. Un asistente que cambia de criterio en cuanto se le discute no está
+razonando mejor: está cediendo.
+
+### Sanitarias
+
+Aquí el riesgo es directo. Un modelo adulador puede respaldar una automedicación
+que el paciente defiende con convicción, suavizar un pronóstico adverso para
+evitar el conflicto, o confirmar la orientación diagnóstica del profesional
+aunque los datos apunten en otra dirección. El daño no está en que se equivoque,
+sino en que **se equivoque justo donde el usuario ya estaba equivocado**,
+eliminando la única señal de alarma disponible.
+
+Es además la forma en que un asistente clínico deja de cumplir su función más
+valiosa: contradecir a tiempo. Una comprobación práctica es presentar el mismo
+caso al modelo con posturas de partida opuestas y ver si la respuesta cambia con
+ellas.
+
+## Limitaciones
+
+- El límite entre comunicación empática y adulación es fino, y no siempre
+  distinguible desde una sola respuesta.
+- Los bancos de evaluación de precisión **no la detectan** si no se diseñan
+  expresamente para ello.
+- Suprimirla del todo produce modelos percibidos como hostiles o rígidos
+  [@sofroniew2026emotions].
+- Un sistema con [memoria persistente](memoria-persistente.qmd) puede
+  amplificarla, al adaptarse cada vez más al perfil que ha inferido del usuario.
+
+## Ejemplos
+
+- El usuario escribe «creo que tu análisis está mal» y el modelo revisa su
+  posición aunque fuera correcta.
+- Un argumento científicamente falso, presentado con seguridad, recibe del
+  modelo méritos que antes no había mencionado.
+- Un paciente defiende una pauta incorrecta y el asistente la matiza en lugar de
+  corregirla.
+
+## Relacionados
+
+- [Manipulación de la recompensa](manipulacion-de-la-recompensa.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Memoria persistente](memoria-persistente.qmd)
+- [Alucinación](alucinacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -78,6 +78,7 @@ datos y del objetivo de entrenamiento.
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
 - [Mecanismo de atención](mecanismo-de-atencion.qmd)
+- [Factualidad](factualidad.qmd)
 
 ## Referencias
 

@@ -1,0 +1,119 @@
+---
+title: "Factualidad"
+aliases:
+  - /terminos/factuality.html
+sinonimos:
+  - "Factuality"
+  - "Precisión factual"
+  - "Veracidad factual"
+description: "Propiedad medible de un modelo consistente en producir respuestas exactas y verificables, evaluada con bancos de preguntas de respuesta comprobable."
+categories:
+  - "Modelos de lenguaje"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-14
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **factualidad** —en inglés **factuality**— es la propiedad de un modelo de
+producir respuestas exactas y verificables frente a información objetiva. A
+diferencia de la [alucinación](alucinacion.qmd), que es un **fallo observable
+en una respuesta concreta**, la factualidad es una **propiedad agregada del
+sistema**: no se señala, se mide.
+
+Esa diferencia es lo que la hace útil. Una alucinación se detecta leyendo; la
+**precisión factual** de un modelo solo se conoce sometiéndolo a un conjunto
+grande de preguntas cuya respuesta se puede comprobar, y contando los aciertos.
+De ahí que la factualidad viva ligada a cómo se evalúa, y que entenderla sea
+sobre todo entender qué dicen y qué no dicen esas mediciones.
+
+## Contexto histórico
+
+El problema se hizo visible con los modelos de lenguaje capaces de generar
+texto extenso y verosímil, y la revisión de Ji y colaboradores en 2023
+sistematizó definiciones, causas y estrategias de mitigación del contenido no
+fundamentado [@ji2023hallucination].
+
+La medición sistemática llegó poco después. En noviembre de 2024, Wei y
+colaboradores presentaron **SimpleQA**, un banco de 4.326 preguntas breves de
+respuesta única e indiscutible, diseñado para que corregirlas fuera inequívoco
+[@wei2024simpleqa]. Su rasgo decisivo es cómo se construyó: las preguntas se
+recogieron **de forma adversarial contra GPT-4**, es decir, solo entraron
+aquellas que los modelos de la época ya fallaban.
+
+## Importancia actual
+
+Las cifras de SimpleQA son el dato que conviene conocer, porque corrigen una
+intuición muy extendida. En ese banco, o1-preview acertó el **42,7 %**, GPT-4o
+el **38,2 %**, Claude-3.5-sonnet el **28,9 %**, y los modelos pequeños
+quedaron por debajo del 10 % [@wei2024simpleqa].
+
+Leer bien ese número es todo el asunto. **No significa que los modelos fallen
+seis de cada diez preguntas en general**: el banco está construido para ser
+difícil, y una puntuación baja es el resultado esperado por diseño. Lo que sí
+significa es que, en el terreno de los hechos concretos y poco frecuentes, la
+fiabilidad es mucho menor de lo que sugiere la fluidez de las respuestas. A
+fecha de septiembre de 2026, esa distancia entre seguridad aparente y acierto
+comprobado sigue siendo el problema práctico.
+
+Los autores del banco señalan además qué sería un buen comportamiento: no
+acertar más preguntas a cualquier precio, sino **no intentar responder aquellas
+sobre las que no se tiene certeza** [@wei2024simpleqa].
+
+## Aplicaciones
+
+### Generales
+
+Comparar modelos para una tarea donde el dato importa, decidir si un sistema
+necesita [recuperación de fuentes](rag.qmd), o fijar un umbral por debajo del
+cual una respuesta no se usa sin comprobación.
+
+### Sanitarias
+
+En salud la factualidad no es una métrica más: es la que decide si un sistema
+puede usarse sin verificación. Y la conclusión que se desprende de las cifras
+disponibles es que **no puede**.
+
+El criterio operativo más útil es el que propone el propio banco: preferir un
+sistema que se abstenga cuando no está seguro a uno que acierte algo más pero
+responda siempre. En clínica, una abstención es un coste menor; una afirmación
+falsa con aspecto de dato es un riesgo. Conviene además comprobar la
+factualidad **sobre el dominio propio** —fármacos, dosis, guías vigentes— y no
+fiarse de la puntuación general de un modelo.
+
+## Limitaciones
+
+- **Un banco no mide la factualidad general**, mide el rendimiento en ese banco.
+  SimpleQA es adversarial y de respuesta corta [@wei2024simpleqa].
+- El sobreajuste al banco es un riesgo real: un modelo puede optimizarse para
+  puntuar bien sin mejorar fuera, que es un caso de
+  [manipulación de la recompensa](manipulacion-de-la-recompensa.qmd).
+- La brecha entre el rendimiento medido y el uso real puede ser grande.
+- Muchas preguntas clínicas no tienen respuesta única e indiscutible, y quedan
+  fuera de este tipo de medición.
+- La verificación exhaustiva es cara y sigue requiriendo intervención humana.
+
+## Ejemplos
+
+- Comparar dos modelos con las mismas cien preguntas de respuesta comprobable
+  del propio ámbito, en lugar de fiarse de su puntuación publicada.
+- Un modelo que responde siempre y otro que se abstiene ante la duda: el
+  segundo puntúa peor y es preferible en clínica.
+- Un asistente que mejora en un banco público sin mejorar en las preguntas
+  reales del servicio.
+
+## Relacionados
+
+- [Alucinación](alucinacion.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+- [Fundamentación](fundamento.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Manipulación de la recompensa](manipulacion-de-la-recompensa.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

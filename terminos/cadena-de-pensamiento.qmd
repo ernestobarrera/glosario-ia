@@ -1,0 +1,115 @@
+---
+title: "Cadena de pensamiento"
+aliases:
+  - /terminos/chain-of-thought.html
+  - /terminos/cot.html
+sinonimos:
+  - "Chain of Thought"
+  - "CoT"
+  - "Razonamiento paso a paso"
+description: "Técnica de prompting que pide al modelo exponer pasos intermedios antes de la respuesta final, lo que mejora su rendimiento en tareas de razonamiento."
+categories:
+  - "Modelos de lenguaje"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-14
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **cadena de pensamiento** —en inglés **Chain of Thought**, abreviado
+**CoT**— es una técnica de [prompting](prompting.qmd) que pide al modelo
+desglosar el problema en pasos antes de dar la respuesta final, en lugar de
+responder directamente. Este **razonamiento paso a paso** mejora de forma
+medible el rendimiento en tareas aritméticas, lógicas y de razonamiento
+simbólico [@wei2022cot].
+
+Hay una distinción que conviene fijar desde el principio, porque de ella
+depende todo el uso responsable de la técnica: la cadena de pensamiento cambia
+**lo que el modelo produce**, no da acceso a **cómo lo produjo**. El texto de
+los pasos es una salida más del sistema, generada igual que el resto.
+
+## Contexto histórico
+
+La técnica se formalizó en 2022, cuando Wei y colaboradores mostraron que
+incluir en el prompt ejemplos con su razonamiento desarrollado mejoraba de
+forma sustancial los resultados en modelos suficientemente grandes, sin
+modificar sus parámetros [@wei2022cot]. El efecto no aparecía en modelos
+pequeños, lo que la convirtió en uno de los ejemplos más citados de capacidad
+que surge con la escala.
+
+Poco después llegó el matiz que la técnica necesitaba. En 2023, Turpin y
+colaboradores demostraron que introducir sesgos en la entrada —por ejemplo,
+sugerir de antemano una respuesta— cambiaba la respuesta del modelo **sin que
+la cadena de pensamiento mencionara esa influencia**: el razonamiento expuesto
+justificaba la conclusión sin reflejar lo que realmente la había causado
+[@turpin2023unfaithful].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el razonamiento paso a paso está incorporado al
+funcionamiento habitual de los modelos orientados a tareas complejas. Su
+utilidad práctica no está en discusión.
+
+Lo que sí conviene tener presente es el alcance de lo que muestra. Una cadena
+de pensamiento **no es una explicación auditable** del cómputo del modelo, y
+tratarla como tal es un error con consecuencias: un razonamiento expuesto puede
+ser una racionalización construida después, coherente y convincente, que no
+corresponde al proceso que produjo la respuesta [@turpin2023unfaithful].
+
+## Aplicaciones
+
+### Generales
+
+Problemas con varios pasos —cálculos, comparaciones encadenadas, decisiones con
+condiciones múltiples—, donde el desglose deja ver dónde falla el resultado.
+
+### Sanitarias
+
+Pedir a un modelo que explicite cómo relaciona síntomas, antecedentes y pruebas
+antes de sugerir una orientación permite al profesional **localizar el punto
+concreto donde discrepa**, en lugar de recibir una conclusión cerrada. Ese es
+el valor real de la técnica en clínica.
+
+Pero el desglose **no acredita** que el modelo haya razonado así, y por tanto
+no vale como justificación de una decisión clínica. La lectura correcta es
+tratar cada paso como una afirmación que hay que comprobar por separado, no
+como la traza de un razonamiento verificado. Un razonamiento plausible en la
+pantalla y una conclusión equivocada pueden convivir sin contradicción
+aparente.
+
+## Limitaciones
+
+- **El razonamiento expuesto puede no corresponder al cómputo real**: puede ser
+  una justificación posterior de una respuesta ya determinada
+  [@turpin2023unfaithful].
+- Un error en un paso intermedio se arrastra hasta el final, con la apariencia
+  de un desarrollo ordenado.
+- Alarga las respuestas y encarece el uso sin mejorar tareas que no requieren
+  razonamiento encadenado.
+- La plausibilidad del desglose aumenta la confianza del lector más de lo que
+  aumenta la fiabilidad del resultado.
+
+## Ejemplos
+
+- Un problema de dosificación por peso en el que el modelo expone el cálculo y
+  permite revisar cada operación.
+- Un caso en el que el modelo llega a la conclusión correcta con un paso
+  intermedio equivocado, y el desglose lo deja a la vista.
+- Un caso en el que el usuario sugiere una respuesta en la pregunta y el modelo
+  construye un razonamiento que la respalda sin mencionar la sugerencia
+  [@turpin2023unfaithful].
+
+## Relacionados
+
+- [Prompting](prompting.qmd)
+- [Few-shot learning](few-shot-learning.qmd)
+- [Zero-shot learning](zero-shot-learning.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Alucinación](alucinacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
