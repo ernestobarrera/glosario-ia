@@ -18,32 +18,44 @@ tipo: "tecnica"
 
 ## Definición ampliada
 
-El **zero-shot learning** —o **aprendizaje sin ejemplos**— es la capacidad de
-un modelo de abordar clases o tareas que no vio durante el entrenamiento, sin
-recibir ni un solo ejemplo etiquetado de ellas. El modelo se apoya en lo
-aprendido de otras clases y en alguna forma de descripción que conecte lo
-conocido con lo nuevo.
+El **zero-shot learning** —o **aprendizaje sin ejemplos**— designa hoy dos
+cosas distintas, y conviene separarlas porque lo que garantizan no es lo mismo.
 
-Completa una escala con el [one-shot learning](one-shot-learning.qmd) —un
-ejemplo— y el [few-shot learning](few-shot-learning.qmd) —unos pocos—. En los
-modelos de lenguaje actuales, este **aprendizaje de disparo cero** suele
-consistir en describir la tarea en el propio [prompt](prompting.qmd), sin
-adjuntar ejemplos resueltos.
+**La acepción clásica**, nacida en visión por computador, es la capacidad de
+clasificar en **categorías ausentes del entrenamiento**: el modelo no vio
+ninguna imagen de esa clase y la reconoce apoyándose en atributos o
+descripciones semánticas que comparte con las clases que sí vio. Aquí la
+ausencia es comprobable, porque las clases de entrenamiento y de prueba están
+declaradas.
+
+**La acepción de los modelos de lenguaje**, generalizada a partir de GPT-3, es
+más débil: significa que **en el prompt no se incluye ninguna demostración
+resuelta** y que no se actualizan los pesos [@brown2020fewshot]. No significa
+que la tarea sea nueva para el modelo: dado el tamaño y la opacidad de los
+corpus de preentrenamiento, normalmente **no hay forma de saber** si algo
+equivalente apareció allí. Es a esta acepción a la que suele referirse el
+término **aprendizaje de disparo cero** cuando se habla de
+[prompting](prompting.qmd).
+
+En ambos casos completa una escala con el
+[one-shot learning](one-shot-learning.qmd) —una demostración— y el
+[few-shot learning](few-shot-learning.qmd) —unas pocas—.
 
 ## Contexto histórico
 
 Nació en visión por computador como problema de clasificación: reconocer una
 categoría no vista usando atributos o descripciones semánticas compartidas con
 las categorías conocidas. La evaluación sistemática de Xian y colaboradores en
-2019 puso orden en un campo donde los resultados no eran comparables entre sí,
-y mostró que buena parte de las mejoras publicadas se debían a
-**contaminación** de los conjuntos de prueba y a protocolos de evaluación
-inconsistentes [@xian2019zeroshot].
+2019 puso orden en un campo sin un banco de pruebas acordado, donde —en
+palabras de los propios autores— los resultados publicados **a menudo no eran
+comparables y a veces estaban viciados**, por ejemplo por haber preentrenado
+sobre las clases reservadas para la prueba [@xian2019zeroshot].
 
-Con GPT-3 en 2020 el término se amplió: dejó de referirse solo a clases no
-vistas y pasó a designar también la capacidad de un modelo de lenguaje de
-abordar tareas nuevas descritas en la instrucción, sin reentrenamiento
-[@brown2020fewshot].
+Con GPT-3 en 2020 llegó la segunda acepción: el término pasó a designar también
+que un modelo de lenguaje aborde una tarea descrita solo en la instrucción, sin
+demostraciones y sin reentrenamiento [@brown2020fewshot]. El desplazamiento no
+es menor, porque la garantía se debilita: en la acepción clásica se sabe qué no
+vio el modelo; en la segunda, no.
 
 ## Importancia actual
 
@@ -79,11 +91,14 @@ en este ámbito es una hipótesis que orienta, nunca una conclusión.
   entrenamiento, que es precisamente el caso de interés.
 - Suele haber un sesgo hacia las clases conocidas: el modelo tiende a asignar
   lo nuevo a categorías que ya domina.
-- Las cifras publicadas han sido históricamente poco comparables por problemas
-  de protocolo y contaminación de los conjuntos de prueba
-  [@xian2019zeroshot].
-- «Sin ejemplos» describe la tarea, no el entrenamiento: el modelo sí vio
-  enormes cantidades de datos, y de su composición depende todo lo demás.
+- Las cifras publicadas han sido históricamente poco comparables por falta de
+  un protocolo común, y en algunos casos estaban viciadas por preentrenamiento
+  sobre las clases de prueba [@xian2019zeroshot].
+- En la acepción de los modelos de lenguaje, «sin ejemplos» describe **solo el
+  prompt**: el modelo sí vio enormes cantidades de datos, y no suele poder
+  descartarse que la tarea estuviera representada en ellos. Un buen resultado
+  puede reflejar generalización o simple familiaridad, y desde fuera no se
+  distinguen.
 
 ## Ejemplos
 

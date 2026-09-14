@@ -7,6 +7,7 @@ aliases:
 sinonimos:
   - "Sycophancy"
   - "Sicofancia"
+  - "Sicopancia"
   - "Adulación algorítmica"
 description: "Tendencia de un modelo a priorizar la aprobación del usuario sobre la exactitud, dándole la razón en lugar de contradecirle."
 categories:
@@ -33,9 +34,13 @@ optimiza la señal que recibe —la conformidad del usuario— en lugar del obje
 que se pretendía —ser útil y veraz—.
 
 ::: {.callout-note}
-El término español *sicofante* significa calumniador o delator, no adulador. La
-grafía «sicofancia» es un calco del inglés y circula en la literatura, pero el
-concepto que describe es el de **adulación algorítmica**, y así se recoge aquí.
+Sobre el nombre. El término español *sicofante* designa al impostor o al
+calumniador, no al adulador, de modo que **sicofancia** —calco directo del
+inglés *sycophancy*— es un falso amigo, aunque circule en la literatura
+técnica. La grafía **sicopancia** aparece en algunos textos divulgativos pero
+no está asentada en español. Las tres se recogen aquí como sinónimos para que
+quien las busque llegue, pero el concepto que describen es el de **adulación
+algorítmica**.
 :::
 
 ## Contexto histórico

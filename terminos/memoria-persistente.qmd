@@ -34,21 +34,33 @@ Conviene distinguir tres niveles, porque plantean problemas muy distintos:
    plano un perfil del usuario **inferido** del historial, sin que nadie se lo
    pida.
 
-El tercer nivel es el que da nombre al concepto y el que cambia la naturaleza
-del sistema: convierte al asistente de un respondedor sin estado en algo que
-mantiene una representación evolutiva de quién es el usuario. Es también el
-único de los tres en el que el contenido de la memoria **no lo decide la
-persona**.
+Los niveles 2 y 3 persisten los dos entre conversaciones; lo que separa al
+tercero es **quién decide qué se recuerda**. En los hechos guardados es la
+persona quien lo pide y puede leer la lista; en la memoria sintetizada el
+contenido lo elige el sistema, a partir de inferencias sobre el historial. Por
+eso el tercer nivel es el que concentra la novedad y los mayores riesgos: es el
+que convierte al asistente de un respondedor sin estado en algo que mantiene
+una representación evolutiva de quién es el usuario.
+
+Los dos conviven. En ChatGPT, la síntesis automática nació como complemento de
+los hechos guardados y no como sustituto —OpenAI señala que por sí sola nunca
+fue suficiente como sistema de memoria— hasta la arquitectura de 2026, ya
+construida sobre ella [@openai2026dreaming].
 
 ## Contexto histórico
 
 Los primeros asistentes eran sin estado: cada conversación empezaba en blanco.
-La memoria explícita —listas de hechos guardados a petición— se generalizó
-hacia 2024. El salto a la síntesis automática llegó después, con sistemas que
-recorren el historial en segundo plano y redactan por su cuenta un perfil del
-usuario, manteniéndolo al día en lugar de acumular hechos sueltos. OpenAI
-denominó *dreaming* a este proceso en ChatGPT, introducido en una primera
-versión en 2025 y ampliado en 2026 [@openai2026dreaming].
+La memoria explícita llegó en abril de 2024, cuando ChatGPT permitió pedir que
+algo se recordara; el propio OpenAI describe su límite con una imagen útil, la
+de alguien que tomó algunas notas pero olvidó todo lo que no escribió, y añade
+que esas notas envejecen y acaban siendo incorrectas.
+
+El salto a la síntesis automática llegó en abril de 2025 con la primera versión
+de lo que OpenAI llamó *dreaming*: un proceso en segundo plano que recorre el
+historial y mantiene al día un estado de memoria, en lugar de acumular hechos
+sueltos. El 4 de junio de 2026 publicó una arquitectura más capaz construida
+sobre ese proceso, con un resumen de memoria consultable y editable por el
+usuario [@openai2026dreaming].
 
 ## Importancia actual
 

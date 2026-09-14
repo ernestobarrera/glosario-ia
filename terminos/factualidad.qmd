@@ -18,16 +18,22 @@ tipo: "concepto"
 ## Definición ampliada
 
 La **factualidad** —en inglés **factuality**— es la propiedad de un modelo de
-producir respuestas exactas y verificables frente a información objetiva. A
-diferencia de la [alucinación](alucinacion.qmd), que es un **fallo observable
-en una respuesta concreta**, la factualidad es una **propiedad agregada del
-sistema**: no se señala, se mide.
+producir respuestas exactas y verificables frente a información objetiva.
 
-Esa diferencia es lo que la hace útil. Una alucinación se detecta leyendo; la
-**precisión factual** de un modelo solo se conoce sometiéndolo a un conjunto
-grande de preguntas cuya respuesta se puede comprobar, y contando los aciertos.
-De ahí que la factualidad viva ligada a cómo se evalúa, y que entenderla sea
-sobre todo entender qué dicen y qué no dicen esas mediciones.
+Su relación con la [alucinación](alucinacion.qmd) es la que hay entre una
+**propiedad deseable** y un **modo de fallo**: la factualidad es lo que se
+persigue, la alucinación es una de las formas de no conseguirlo. No se
+distinguen por el nivel de observación —ambas pueden examinarse en una
+respuesta concreta o en el comportamiento agregado de un sistema—, sino por lo
+que nombran.
+
+La diferencia práctica está en el uso. De la factualidad se habla sobre todo
+para **evaluarla**: someter al modelo a preguntas de respuesta comprobable y
+contar aciertos. De la alucinación se habla para **describir y explicar el
+fallo**: qué lo produce y cómo reducirlo. Por eso entender la factualidad es,
+en buena medida, entender qué dicen y qué no dicen esas mediciones —incluido el
+hecho de que verificar una sola afirmación puede ser difícil y caro, y que esa
+dificultad es justamente lo que limita cualquier medida.
 
 ## Contexto histórico
 
