@@ -1,0 +1,105 @@
+---
+title: "Prompting"
+aliases:
+  - /terminos/ingenieria-de-prompts.html
+  - /terminos/prompt-engineering.html
+sinonimos:
+  - "Ingeniería de prompts"
+  - "Prompt engineering"
+  - "Diseño de instrucciones"
+description: "Técnica de guiar el comportamiento de un modelo de lenguaje mediante las instrucciones, preguntas o ejemplos que se le presentan."
+categories:
+  - "Modelos de lenguaje"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-14
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **prompting** es la técnica de dirigir lo que hace un modelo de lenguaje a
+través del texto que se le presenta: instrucciones, preguntas, ejemplos,
+formato de salida o contexto de la tarea. Cuando esa práctica se sistematiza
+—se prueban variantes, se comparan resultados y se fijan plantillas— suele
+llamarse **ingeniería de prompts** o **prompt engineering**.
+
+Lo relevante es que no modifica el modelo. A diferencia del
+[ajuste fino](fine-tuning.qmd), que cambia los pesos, el prompting actúa sobre
+la entrada: el mismo modelo, con el mismo entrenamiento, produce respuestas muy
+distintas según cómo se le pida la tarea. Es la forma de **diseño de
+instrucciones** más accesible, porque no requiere infraestructura ni datos de
+entrenamiento.
+
+## Contexto histórico
+
+La práctica se volvió central con los modelos de lenguaje capaces de abordar
+tareas nuevas sin reentrenamiento. El artículo que presentó GPT-3 en 2020
+mostró que un modelo suficientemente grande podía resolver tareas a partir de
+unos pocos ejemplos incluidos en el propio texto de entrada, sin actualizar sus
+parámetros [@brown2020fewshot]. A partir de ahí, la redacción del prompt dejó
+de ser un detalle de uso y pasó a ser la palanca principal sobre el
+comportamiento del sistema.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el prompting sigue siendo la vía de adaptación
+más usada, porque es inmediata y reversible. Técnicas como el
+[few-shot learning](few-shot-learning.qmd), el
+[zero-shot learning](zero-shot-learning.qmd) y la
+[cadena de pensamiento](cadena-de-pensamiento.qmd) son, en la práctica,
+estrategias de prompting.
+
+Conviene no confundirlo con el [prompt de sistema](prompt-de-sistema.qmd), que
+es el conjunto de instrucciones que fija la aplicación y que el usuario
+normalmente no ve ni edita.
+
+## Aplicaciones
+
+### Generales
+
+Estructurar la tarea, fijar el formato de la respuesta, delimitar el papel del
+modelo, acotar la extensión o exigir que cite las fuentes que usa.
+
+### Sanitarias
+
+Extraer datos concretos de un texto clínico, resumir una evolución, reformular
+información para un paciente o preparar el guion de una sesión. El prompt puede
+además fijar cautelas explícitas —pedir que el modelo señale lo que no puede
+confirmar, o que distinga lo que viene del documento de lo que añade—, lo que
+reduce el margen de interpretación pero **no sustituye la comprobación
+posterior**.
+
+## Limitaciones
+
+- El resultado depende de la formulación: cambios menores en el prompt pueden
+  cambiar la respuesta, y eso dificulta la reproducibilidad.
+- Un prompt bien redactado **no garantiza** que la respuesta sea correcta. No
+  corrige la [alucinación](alucinacion.qmd) ni suple el conocimiento que el
+  modelo no tiene.
+- Lo que funciona en un modelo puede no funcionar en otro, ni en otra versión
+  del mismo modelo.
+- Pedir un formato o un tono influye sobre el contenido, no solo sobre la
+  forma.
+
+## Ejemplos
+
+- Pedir una tabla con columnas fijas en lugar de un texto libre, para poder
+  contrastar el resultado.
+- Incluir dos o tres ejemplos resueltos antes de la pregunta real.
+- Indicar al modelo que responda «no consta» cuando el dato no aparezca en el
+  texto aportado, en lugar de deducirlo.
+- Fijar una plantilla estable para resumir documentos del mismo tipo.
+
+## Relacionados
+
+- [Few-shot learning](few-shot-learning.qmd)
+- [Zero-shot learning](zero-shot-learning.qmd)
+- [Cadena de pensamiento](cadena-de-pensamiento.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [Prompt de sistema](prompt-de-sistema.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

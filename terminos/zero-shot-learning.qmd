@@ -1,0 +1,124 @@
+---
+title: "Zero-shot learning"
+aliases:
+  - /terminos/aprendizaje-sin-ejemplos.html
+  - /terminos/zero-shot.html
+sinonimos:
+  - "Aprendizaje sin ejemplos"
+  - "Zero shot learning"
+  - "Aprendizaje de disparo cero"
+description: "Capacidad de un modelo para abordar clases o tareas que no aparecieron en su entrenamiento, sin recibir ningún ejemplo etiquetado de ellas."
+categories:
+  - "Aprendizaje automático"
+  - "Modelos de lenguaje"
+date-modified: 2026-09-14
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **zero-shot learning** —o **aprendizaje sin ejemplos**— designa hoy dos
+cosas distintas, y conviene separarlas porque lo que garantizan no es lo mismo.
+
+**La acepción clásica**, nacida en visión por computador, es la capacidad de
+clasificar en **categorías ausentes del entrenamiento**: el modelo no vio
+ninguna imagen de esa clase y la reconoce apoyándose en atributos o
+descripciones semánticas que comparte con las clases que sí vio. Aquí la
+ausencia es comprobable, porque las clases de entrenamiento y de prueba están
+declaradas.
+
+**La acepción de los modelos de lenguaje**, generalizada a partir de GPT-3, es
+más débil: significa que **en el prompt no se incluye ninguna demostración
+resuelta** y que no se actualizan los pesos [@brown2020fewshot]. No significa
+que la tarea sea nueva para el modelo: dado el tamaño y la opacidad de los
+corpus de preentrenamiento, normalmente **no hay forma de saber** si algo
+equivalente apareció allí. Es a esta acepción a la que suele referirse el
+término **aprendizaje de disparo cero** cuando se habla de
+[prompting](prompting.qmd).
+
+En ambos casos completa una escala con el
+[one-shot learning](one-shot-learning.qmd) —una demostración— y el
+[few-shot learning](few-shot-learning.qmd) —unas pocas—.
+
+## Contexto histórico
+
+Nació en visión por computador como problema de clasificación: reconocer una
+categoría no vista usando atributos o descripciones semánticas compartidas con
+las categorías conocidas. La evaluación sistemática de Xian y colaboradores en
+2019 puso orden en un campo sin un banco de pruebas acordado, donde —en
+palabras de los propios autores— los resultados publicados **a menudo no eran
+comparables y a veces estaban viciados**, por ejemplo por haber preentrenado
+sobre las clases reservadas para la prueba [@xian2019zeroshot].
+
+Con GPT-3 en 2020 llegó la segunda acepción: el término pasó a designar también
+que un modelo de lenguaje aborde una tarea descrita solo en la instrucción, sin
+demostraciones y sin reentrenamiento [@brown2020fewshot]. El desplazamiento no
+es menor, porque la garantía se debilita: en la acepción clásica se sabe qué no
+vio el modelo; en la segunda, no.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es lo que explica que un mismo modelo general
+sirva para tareas para las que nadie lo entrenó específicamente. Su valor es
+mayor donde etiquetar datos es caro, lento o simplemente imposible por falta de
+casos.
+
+## Aplicaciones
+
+### Generales
+
+Clasificar textos en categorías definidas sobre la marcha, identificar objetos
+de clases nuevas, o encargar a un modelo una tarea descrita solo con palabras.
+
+### Sanitarias
+
+El uso asentado es el de las tareas de texto: clasificar documentos, detectar
+temas o extraer campos sin corpus etiquetado previo.
+
+Hay además una expectativa que se repite mucho y que conviene situar: que el
+zero-shot permita **orientar enfermedades raras** a partir del conocimiento de
+enfermedades frecuentes. Es una extrapolación razonable del mecanismo, **no un
+resultado acreditado**, y la prudencia aquí no es retórica: las enfermedades
+raras son justamente el escenario donde menos datos hay para validar el
+rendimiento del modelo, de modo que la capacidad más difícil de comprobar
+coincide con el terreno donde el error tiene más coste. Un resultado zero-shot
+en este ámbito es una hipótesis que orienta, nunca una conclusión.
+
+## Limitaciones
+
+- El rendimiento **cae cuanto más se aleja** la clase nueva de lo visto en el
+  entrenamiento, que es precisamente el caso de interés.
+- Suele haber un sesgo hacia las clases conocidas: el modelo tiende a asignar
+  lo nuevo a categorías que ya domina.
+- Las cifras publicadas han sido históricamente poco comparables por falta de
+  un protocolo común, y en algunos casos estaban viciadas por preentrenamiento
+  sobre las clases de prueba [@xian2019zeroshot].
+- En la acepción de los modelos de lenguaje, «sin ejemplos» describe **solo el
+  prompt**: el modelo sí vio enormes cantidades de datos, y no suele poder
+  descartarse que la tarea estuviera representada en ellos. Un buen resultado
+  puede reflejar generalización o simple familiaridad, y desde fuera no se
+  distinguen.
+
+## Ejemplos
+
+- Clasificar informes en categorías definidas en el momento, sin corpus
+  etiquetado.
+- Pedir a un modelo de lenguaje una tarea que no estaba prevista, describiendo
+  solo lo que debe hacer.
+- Reconocer una especie animal no vista a partir de una descripción de sus
+  atributos.
+
+## Relacionados
+
+- [Few-shot learning](few-shot-learning.qmd)
+- [One-shot learning](one-shot-learning.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Prompting](prompting.qmd)
+- [Factualidad](factualidad.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
