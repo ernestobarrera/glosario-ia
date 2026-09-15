@@ -1,0 +1,81 @@
+---
+title: "Modelado de lenguaje enmascarado"
+aliases:
+  - /terminos/mlm.html
+sinonimos:
+  - "MLM"
+  - "Masked Language Modeling"
+description: "Objetivo de preentrenamiento que oculta algunos tokens y entrena al modelo para reconstruirlos a partir del contexto disponible a ambos lados."
+categories:
+  - "Modelos de lenguaje"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-15
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **modelado de lenguaje enmascarado**, o **Masked Language Modeling (MLM)**,
+es un objetivo de [preentrenamiento](preentrenamiento.qmd): se oculta una parte
+de los tokens de una secuencia y el modelo aprende a reconstruirlos usando el
+contexto de ambos lados.
+
+En [BERT](bert.qmd) se selecciona el 15 % de las posiciones. La mayoría se
+sustituye por un marcador especial, pero algunas se cambian por otro token o se
+dejan intactas para reducir la diferencia entre preentrenamiento y uso posterior
+[@devlin2019bert].
+
+## Contexto histórico
+
+Las tareas de completar huecos son anteriores a [BERT](bert.qmd). El trabajo de
+2018 las convirtió en una receta escalable para aprender representaciones
+contextuales bidireccionales y popularizó el nombre MLM [@devlin2019bert].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, MLM continúa siendo un objetivo útil para
+entrenar y adaptar modelos codificadores. Permite aprovechar grandes corpus sin
+etiquetas de tarea, aunque los tokens originales siguen actuando como señal de
+entrenamiento.
+
+## Aplicaciones
+
+### Generales
+
+- Aprender [embeddings](embeddings.qmd) sensibles al contexto.
+- Preparar un codificador antes de clasificar texto o extraer entidades.
+- Continuar el preentrenamiento con documentos de un dominio específico.
+
+### Sanitarias
+
+BioBERT aplicó esa última estrategia a literatura biomédica antes de ajustarse a
+tareas de minería de texto [@lee2020biobert]. El objetivo aprende regularidades
+del corpus; no comprueba la corrección clínica de lo aprendido.
+
+## Limitaciones
+
+- Necesita grandes volúmenes de texto y bastante cómputo.
+- El marcador de máscara no aparece normalmente durante el uso del modelo.
+- Puede memorizar errores, sesgos y asociaciones espurias del corpus.
+- Reconstruir bien una palabra no acredita comprensión ni factualidad.
+
+## Ejemplos
+
+En «la biopsia confirmó un [MASK]», el modelo intenta recuperar el término
+oculto a partir de la frase completa. Durante el preentrenamiento biomédico, el
+mismo ejercicio se repite sobre millones de fragmentos de literatura antes de
+ajustar el modelo a una tarea delimitada.
+
+## Relacionados
+
+- [Bidirectional Encoder Representations from Transformers](bert.qmd)
+- [Preentrenamiento](preentrenamiento.qmd)
+- [Predicción de la frase siguiente](next-sentence-prediction.qmd)
+- [Embeddings](embeddings.qmd)
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

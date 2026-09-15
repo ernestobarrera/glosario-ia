@@ -9,7 +9,7 @@ description: "Fase inicial en la que un modelo aprende patrones generales antes 
 categories:
   - "Aprendizaje automático"
   - "Modelos de lenguaje"
-date-modified: 2026-09-04
+date-modified: 2026-09-15
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -28,9 +28,9 @@ representaciones sin etiquetas manuales para cada ejemplo [@devlin2019bert].
 ## Contexto histórico
 
 El preentrenamiento se usó en distintas áreas antes de los grandes modelos de
-lenguaje, pero BERT y otros modelos basados en transformer consolidaron a partir
-de 2018 el patrón «preentrenar y adaptar» en procesamiento del lenguaje
-[@devlin2019bert].
+lenguaje, pero [BERT](bert.qmd) y otros modelos basados en transformer
+consolidaron a partir de 2018 el patrón «preentrenar y adaptar» en procesamiento
+del lenguaje [@devlin2019bert].
 
 ## Importancia actual
 
@@ -63,9 +63,10 @@ infraestructura y decisiones tomadas en la fase inicial.
 
 ## Ejemplos
 
-BERT se preentrenó con objetivos autosupervisados y después se adaptó a tareas de
-lenguaje [@devlin2019bert]. BioBERT continuó el preentrenamiento con textos
-biomédicos para mejorar tareas de minería de texto del dominio [@lee2020biobert].
+[BERT](bert.qmd) se preentrenó con objetivos autosupervisados y después se
+adaptó a tareas de lenguaje [@devlin2019bert]. BioBERT continuó el
+preentrenamiento con textos biomédicos para mejorar tareas de minería de texto
+del dominio [@lee2020biobert].
 
 ## Relacionados
 

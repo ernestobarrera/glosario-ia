@@ -1,0 +1,83 @@
+---
+title: "Aprendizaje semisupervisado"
+aliases:
+  - /terminos/aprendizaje-semi-supervisado.html
+sinonimos:
+  - "Aprendizaje semi-supervisado"
+  - "Semi-supervised learning"
+description: "Enfoque que combina una pequeña cantidad de ejemplos etiquetados con datos sin etiquetar para aprender una tarea predictiva."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-15
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **aprendizaje semisupervisado** —también escrito **aprendizaje
+semi-supervisado**, en inglés **semi-supervised learning**— combina ejemplos
+etiquetados con otros que no tienen etiqueta. Busca mejorar una tarea predictiva
+aprovechando la estructura de los datos no etiquetados, que suelen ser más
+abundantes [@vanengelen2020semi].
+
+No consiste simplemente en mezclar datos. Cada método introduce supuestos sobre
+la relación entre la distribución de las observaciones y las etiquetas: si esos
+supuestos no se cumplen, añadir datos sin etiquetar puede empeorar el modelo.
+
+## Contexto histórico
+
+El campo se desarrolló entre el [aprendizaje supervisado](aprendizaje-supervisado.qmd)
+y el [no supervisado](aprendizaje-no-supervisado.qmd). Desde comienzos de los
+años 2000 reunió métodos basados en grafos, pseudoetiquetado y regularización; el
+auge del aprendizaje profundo renovó el interés mediante pérdidas que combinan
+señales supervisadas y no supervisadas [@vanengelen2020semi].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, es relevante cuando obtener datos es fácil pero
+etiquetarlos exige tiempo o conocimiento experto. Su valor debe demostrarse
+contra una línea base supervisada bien ajustada, no darse por supuesto.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificar imágenes con pocas etiquetas y un archivo grande sin anotar.
+- Aprovechar audio sin transcripción junto a una muestra transcrita.
+- Propagar o generar etiquetas provisionales que después se revisan.
+
+### Sanitarias
+
+Se investiga para combinar imágenes anotadas por especialistas con colecciones
+sin anotar, por ejemplo en radiología. La mejora en un conjunto retrospectivo no
+demuestra mejor diagnóstico ni autoriza el uso clínico [@vanengelen2020semi].
+
+## Limitaciones
+
+- Los datos sin etiquetar ayudan solo si contienen información pertinente para
+  predecir la etiqueta.
+- Las pseudoetiquetas erróneas pueden reforzarse durante el entrenamiento.
+- Un cambio de población entre ambos conjuntos introduce sesgo.
+- La evaluación exige separar pacientes y evitar fugas entre entrenamiento y
+  prueba.
+
+## Ejemplos
+
+Un modelo de imagen puede entrenarse con cien resonancias etiquetadas y miles sin
+etiqueta, siempre comparándolo con la alternativa que usa solo las cien. En voz,
+unas pocas grabaciones transcritas pueden combinarse con audio sin transcribir.
+
+## Relacionados
+
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

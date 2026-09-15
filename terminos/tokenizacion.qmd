@@ -9,7 +9,7 @@ description: "Proceso que divide un texto en las unidades discretas —tokens—
 categories:
   - "Procesamiento del lenguaje"
   - "Modelos de lenguaje"
-date-modified: 2026-09-04
+date-modified: 2026-09-15
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -26,7 +26,7 @@ fragmentos existen. Los sistemas de subpalabras, como la codificación por pares
 de bytes, parten de caracteres y fusionan iterativamente los pares más
 frecuentes hasta alcanzar un tamaño de vocabulario dado; así representan
 palabras nunca vistas sin necesitar un token para cada una
-[@sennrich2016subword]. BERT emplea una variante equivalente en propósito
+[@sennrich2016subword]. [BERT](bert.qmd) emplea una variante equivalente en propósito
 [@devlin2019bert].
 
 Es una decisión de diseño previa al modelo, no un detalle de implementación: el
@@ -67,7 +67,7 @@ Dosis, unidades y códigos —«0,5 mg/kg», «HbA1c», un código CIE— pueden
 partirse en varios fragmentos, y esa partición puede afectar a que un extractor
 recupere el dato completo o solo un trozo. Conviene no dar por hecho que un
 modelo biomédico traiga un vocabulario propio: BioBERT se preentrenó con corpus
-del dominio pero **conservó el vocabulario original de BERT**, de modo que
+del dominio pero **conservó el vocabulario original de [BERT](bert.qmd)**, de modo que
 muchos términos biomédicos siguen fragmentándose en subpalabras
 [@lee2020biobert]. Al evaluar una herramienta sobre historias clínicas conviene
 comprobar cómo tokeniza los términos que importan: la segmentación no determina

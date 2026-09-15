@@ -1,0 +1,80 @@
+---
+title: "Predicción de la frase siguiente"
+aliases:
+  - /terminos/nsp.html
+sinonimos:
+  - "NSP"
+  - "Next Sentence Prediction"
+description: "Objetivo usado en BERT para decidir si un segundo fragmento seguía realmente al primero en el corpus de preentrenamiento."
+categories:
+  - "Modelos de lenguaje"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-15
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **predicción de la frase siguiente**, o **Next Sentence Prediction (NSP)**,
+es una tarea binaria del [preentrenamiento](preentrenamiento.qmd) original de
+[BERT](bert.qmd). Dados dos fragmentos, el modelo decide si el segundo continúa
+realmente al primero en el corpus o si fue elegido al azar. [BERT](bert.qmd)
+construyó la mitad de los ejemplos de cada forma [@devlin2019bert].
+
+## Contexto histórico
+
+NSP se presentó con [BERT](bert.qmd) en 2018 para favorecer tareas que relacionan
+dos fragmentos, como la inferencia textual y la respuesta a preguntas
+[@devlin2019bert]. En 2019, RoBERTa retiró este objetivo dentro de una receta que
+también cambió los datos, el enmascaramiento y el tiempo de entrenamiento, y
+obtuvo mejores resultados [@liu2019roberta].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, NSP importa sobre todo para entender la receta
+original de [BERT](bert.qmd) y por qué evolucionó. Muchos modelos posteriores
+conservan el [modelado de lenguaje enmascarado](masked-language-modeling.qmd) y
+prescinden de NSP o usan objetivos distintos para representar relaciones entre
+fragmentos.
+
+## Aplicaciones
+
+### Generales
+
+El objetivo pretendía preparar al modelo para comparar pares de texto y captar
+relaciones entre oraciones. No equivale a un detector general de coherencia: su
+etiqueta solo indica cómo se emparejaron los fragmentos durante el entrenamiento.
+
+### Sanitarias
+
+Como experimento, puede entrenarse un clasificador separado para distinguir
+fragmentos consecutivos de una nota clínica de fragmentos ajenos. Una puntuación
+alta no demuestra continuidad asistencial, consistencia factual ni ausencia de
+omisiones.
+
+## Limitaciones
+
+- Los negativos aleatorios pueden distinguirse por cambios de tema y resultar
+  demasiado fáciles.
+- RoBERTa cambió varias decisiones a la vez; su mejora no demuestra que NSP sea
+  perjudicial en cualquier arquitectura o corpus [@liu2019roberta].
+- Una relación estadística entre frases no valida el contenido de ninguna.
+
+## Ejemplos
+
+«Se solicitó una radiografía» seguida de «la imagen no mostró infiltrados» sería
+un par positivo si ambas frases son consecutivas en el documento. Emparejar la
+primera con una frase aleatoria de otro texto produciría un ejemplo negativo.
+
+## Relacionados
+
+- [Bidirectional Encoder Representations from Transformers](bert.qmd)
+- [Modelado de lenguaje enmascarado](masked-language-modeling.qmd)
+- [Preentrenamiento](preentrenamiento.qmd)
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

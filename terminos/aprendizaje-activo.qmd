@@ -1,0 +1,80 @@
+---
+title: "Aprendizaje activo"
+aliases:
+  - /terminos/active-learning.html
+sinonimos:
+  - "Active learning"
+description: "Técnica en la que el sistema selecciona qué ejemplos conviene etiquetar para aprovechar mejor un presupuesto limitado de anotación."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-15
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **aprendizaje activo**, o **active learning**, es una técnica de
+[aprendizaje automático](aprendizaje-automatico.qmd) en la que el sistema elige
+qué ejemplos sin etiqueta deben ser anotados por un oráculo —habitualmente una
+persona—. El objetivo es obtener un modelo útil con menos etiquetas que si los
+ejemplos se eligieran al azar [@settles2009active].
+
+El ciclo suele alternar entrenamiento, selección de los casos considerados más
+informativos, etiquetado y nuevo entrenamiento. La incertidumbre es una
+estrategia frecuente, pero no la única.
+
+## Contexto histórico
+
+La investigación sobre consultas selectivas se desarrolló durante las décadas
+de 1990 y 2000. La revisión de Settles de 2009 organizó los principales
+escenarios y estrategias y fijó una referencia común para el campo
+[@settles2009active].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, sigue siendo pertinente allí donde abundan los
+datos pero el etiquetado experto es caro. Su beneficio depende de todo el
+sistema: selección, interfaz, calidad de las etiquetas y reevaluación del
+modelo.
+
+## Aplicaciones
+
+### Generales
+
+- Elegir los mensajes más ambiguos para mejorar un filtro de correo.
+- Priorizar imágenes o documentos que aporten información nueva.
+- Reducir el volumen de anotación manual durante el desarrollo de un modelo.
+
+### Sanitarias
+
+Un sistema de investigación puede proponer a un radiólogo las imágenes más
+informativas para etiquetarlas. Eso prioriza trabajo de anotación; no reduce por
+sí mismo la lectura asistencial ni acredita que el modelo final sea seguro.
+
+## Limitaciones
+
+- Una estrategia mal calibrada puede elegir casos redundantes o atípicos.
+- El especialista sigue soportando el coste y los desacuerdos del etiquetado.
+- Concentrarse en casos inciertos puede distorsionar la muestra anotada.
+- El ahorro de etiquetas no sustituye una [validación](validacion-cruzada.qmd)
+  independiente y representativa.
+
+## Ejemplos
+
+En radiología, el modelo puede pedir primero la etiqueta de las imágenes sobre
+las que más discrepan varios clasificadores. En correo, puede remitir al usuario
+los mensajes próximos a la frontera entre correo legítimo y spam.
+
+## Relacionados
+
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

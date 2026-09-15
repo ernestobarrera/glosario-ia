@@ -1,0 +1,90 @@
+---
+title: "Bidirectional Encoder Representations from Transformers"
+aliases:
+  - /terminos/bidirectional-encoder-representations-from-transformers.html
+sinonimos:
+  - "BERT"
+description: "Modelo de representación del lenguaje basado en transformer que aprende contexto bidireccional mediante preentrenamiento y después se adapta a tareas concretas."
+categories:
+  - "Modelos de lenguaje"
+  - "Arquitecturas"
+date-modified: 2026-09-15
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+**Bidirectional Encoder Representations from Transformers**, conocido como
+**BERT**, es un modelo de representación del lenguaje basado en la parte
+codificadora de la arquitectura [transformer](transformer.qmd). Se preentrena
+sobre texto sin etiquetar y después se adapta a tareas concretas mediante
+[fine-tuning](fine-tuning.qmd).
+
+Su rasgo distintivo es el contexto bidireccional: al reconstruir tokens ocultos,
+el modelo puede usar simultáneamente lo que aparece a izquierda y derecha. BERT
+combinó este [modelado de lenguaje enmascarado](masked-language-modeling.qmd)
+con la [predicción de la frase siguiente](next-sentence-prediction.qmd)
+[@devlin2019bert].
+
+## Contexto histórico
+
+Google presentó BERT en 2018 y publicó el trabajo en NAACL en 2019. Su receta
+unificó un [preentrenamiento](preentrenamiento.qmd) general con ajustes breves
+para clasificación, respuesta a preguntas y extracción de entidades, y mejoró
+entonces once tareas de procesamiento del lenguaje [@devlin2019bert]. Se apoyó
+en la arquitectura transformer presentada un año antes [@vaswani2017attention].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, BERT sigue siendo una referencia para modelos
+codificadores que clasifican o representan texto. No es un modelo conversacional
+ni está diseñado para generar documentos largos: su influencia reside sobre todo
+en comprender secuencias y producir representaciones reutilizables.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificar textos, detectar entidades y estimar relaciones entre fragmentos.
+- Representar consultas y documentos para búsqueda semántica.
+- Adaptar un mismo modelo preentrenado a tareas con datos etiquetados propios.
+
+### Sanitarias
+
+BioBERT continuó el preentrenamiento de BERT con literatura biomédica y mejoró
+tareas de minería de texto como reconocimiento de entidades y extracción de
+relaciones [@lee2020biobert]. Ese resultado no convierte una salida en evidencia
+clínica ni valida por sí solo su uso sobre historias de pacientes.
+
+## Limitaciones
+
+- El modelo original admite secuencias de hasta 512 tokens y puede perder
+  contexto en documentos largos [@devlin2019bert].
+- Su entrenamiento y adaptación requieren cómputo y datos representativos.
+- Puede reproducir sesgos o asociaciones presentes en el corpus de
+  preentrenamiento.
+- La comprensión contextual no garantiza factualidad, razonamiento causal ni
+  validez clínica.
+
+## Ejemplos
+
+Un equipo puede ajustar BERT para clasificar cláusulas de contratos. En
+biomedicina, puede adaptar BioBERT para localizar nombres de enfermedades en
+resúmenes científicos; el resultado debe evaluarse en el corpus y la tarea de
+destino [@lee2020biobert].
+
+## Relacionados
+
+- [Transformer](transformer.qmd)
+- [Mecanismo de atención](mecanismo-de-atencion.qmd)
+- [Preentrenamiento](preentrenamiento.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Modelado de lenguaje enmascarado](masked-language-modeling.qmd)
+- [Predicción de la frase siguiente](next-sentence-prediction.qmd)
+- [Procesamiento del lenguaje natural](procesamiento-lenguaje-natural.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
