@@ -71,6 +71,17 @@ def cargar(ruta):
     return reglas, excepciones, ignorar, prohibidas
 
 
+def ignorado(rel, ignorar):
+    """Se salta el archivo si alguna CARPETA de su ruta es una ignorada.
+
+    Se compara por SEGMENTO de ruta, no por prefijo de cadena. Con prefijo,
+    '.git/' se tragaba '.gitignore' y la carpeta '.github/' entera, workflows
+    incluidos: el escaner nunca los habia mirado. El nombre de archivo queda
+    fuera de la comparacion, que solo mira carpetas."""
+    carpetas = rel.replace("\\", "/").split("/")[:-1]
+    return any(i.rstrip("/") in carpetas for i in ignorar)
+
+
 def exento(pid, nombre, excepciones):
     for p, a, solo_hist in excepciones:
         if p != pid:
@@ -217,9 +228,7 @@ def main():
     revisados = 0
     revisados_sin_rastrear = 0
     for rel in archivos:
-        if any(rel.replace("\\", "/").startswith(i.rstrip("/")) or
-               f"/{i.rstrip('/')}/" in f"/{rel}".replace("\\", "/")
-               for i in ignorar):
+        if ignorado(rel, ignorar):
             continue
         ruta = repo / rel
         if ruta.suffix.lower() in BINARIAS or not ruta.exists():

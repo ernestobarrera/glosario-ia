@@ -6,7 +6,7 @@
 version: 1
 estructurales:
 - id: ruta-windows
-  patron: '[A-Za-z]:\\\\(Users|Usuarios)\\\\[^\s"''<>|]+'
+  patron: '[A-Za-z]:\\{1,2}(Users|Usuarios)\\{1,2}[^\s"''<>|]+'
   motivo: ruta local de un equipo
 - id: ruta-posix-usuario
   patron: /(c|mnt/c)/Users/[^\s"'<>|]+
