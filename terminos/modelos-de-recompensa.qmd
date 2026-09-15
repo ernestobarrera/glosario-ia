@@ -1,0 +1,99 @@
+---
+title: "Modelos de recompensa"
+aliases:
+  - /terminos/reward-models.html
+sinonimos:
+  - "Reward models"
+  - "Modelo de recompensa"
+description: "Modelos que aprenden una señal numérica aproximada de calidad o preferencia para ordenar salidas y guiar el entrenamiento de otro sistema."
+categories:
+  - "Aprendizaje automático"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-15
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Los **modelos de recompensa**, o **reward models**, estiman una puntuación para
+una acción, trayectoria o salida. Un **modelo de recompensa** aprendido a partir
+de comparaciones humanas intenta predecir cuál de varias opciones preferiría la
+persona evaluadora; esa puntuación guía después a otro modelo para producir
+salidas con mayor recompensa.
+
+Es una aproximación al objetivo, no el objetivo mismo. Que una respuesta reciba
+una puntuación alta significa que parece preferible según los datos y criterios
+empleados, no que sea verdadera, ética o clínicamente correcta.
+
+## Contexto histórico
+
+El [aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd) usa señales de
+recompensa desde sus orígenes. En 2017, Christiano y colaboradores aprendieron
+una función de recompensa a partir de comparaciones humanas para tareas de Atari
+y locomoción robótica simulada, no para modelos de lenguaje
+[@christiano2017preferences].
+
+La aplicación amplia a modelos de lenguaje llegó en 2022: InstructGPT entrenó
+un modelo de recompensa con rankings de respuestas y lo usó en una fase de
+aprendizaje por refuerzo con retroalimentación humana (RLHF)
+[@ouyang2022instructgpt].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, estos modelos siguen siendo una pieza habitual
+del ajuste de asistentes. Permiten convertir juicios humanos comparativos en una
+señal escalable, pero también amplifican los sesgos, desacuerdos y atajos de esa
+señal.
+
+## Aplicaciones
+
+### Generales
+
+- Ordenar respuestas de un asistente y guiar su ajuste mediante RLHF.
+- Puntuar soluciones de código según pruebas y preferencias de revisión.
+
+### Sanitarias
+
+En investigación, profesionales podrían ordenar resúmenes alternativos para
+entrenar una señal de preferencia. Esa señal optimiza que la salida **parezca
+preferible a quienes evalúan**: no valida diagnósticos, planes terapéuticos ni
+resultados clínicos. Una respuesta agradable puede ser menos correcta, justo el
+riesgo descrito por la [adulación](adulacion.qmd).
+
+## Limitaciones
+
+- Especificar y recoger preferencias coherentes es costoso y los evaluadores
+  discrepan.
+- El sistema puede explotar atajos de la señal, fenómeno llamado
+  [manipulación de la recompensa](manipulacion-de-la-recompensa.qmd).
+- Las preferencias del conjunto de entrenamiento pueden no generalizar a otra
+  población, cultura o contexto.
+- Una puntuación escalar pierde matices y puede ocultar conflictos entre
+  utilidad, seguridad y exactitud.
+
+## Ejemplos
+
+InstructGPT aprendió a ordenar respuestas con rankings humanos y utilizó esa
+señal durante el ajuste [@ouyang2022instructgpt]. En programación, un modelo
+puede puntuar soluciones según si pasan pruebas y si resultan claras para quien
+las revisa; ninguna de las dos señales garantiza por sí sola corrección general.
+
+## Relacionados
+
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Manipulación de la recompensa](manipulacion-de-la-recompensa.qmd)
+- [Adulación](adulacion.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

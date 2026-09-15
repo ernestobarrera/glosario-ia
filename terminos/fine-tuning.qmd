@@ -9,7 +9,7 @@ description: "Técnica que continúa el entrenamiento de un modelo preentrenado 
 categories:
   - "Aprendizaje automático"
   - "Modelos de lenguaje"
-date-modified: 2026-09-04
+date-modified: 2026-09-15
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -26,8 +26,8 @@ solo una parte de ellos, según el método elegido y los recursos disponibles.
 
 La reutilización de modelos entrenados previamente se desarrolló dentro del
 aprendizaje por transferencia. En procesamiento del lenguaje, arquitecturas
-preentrenadas como BERT mostraron en 2019 que un mismo modelo podía ajustarse a
-múltiples tareas con una capa de salida y datos específicos
+preentrenadas como [BERT](bert.qmd) mostraron en 2019 que un mismo modelo podía
+ajustarse a múltiples tareas con una capa de salida y datos específicos
 [@devlin2019bert]. El crecimiento posterior de los modelos de lenguaje amplió
 el ajuste fino a instrucciones, dominios profesionales y preferencias de
 respuesta.

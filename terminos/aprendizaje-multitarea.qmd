@@ -1,0 +1,78 @@
+---
+title: "Aprendizaje multitarea"
+aliases:
+  - /terminos/multitask-learning.html
+sinonimos:
+  - "Multitask learning"
+description: "Enfoque que entrena conjuntamente varias tareas relacionadas para que compartan representaciones y se aporten información durante el aprendizaje."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-15
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **aprendizaje multitarea**, o **multitask learning**, entrena un modelo para
+varias tareas relacionadas de forma conjunta. Parte de la representación puede
+compartirse y cada tarea puede conservar componentes o salidas propios. La
+información aprendida para una tarea actúa así como sesgo inductivo para las
+demás [@caruana1997multitask].
+
+No equivale a ejecutar varias tareas con el mismo programa: la relación aparece
+durante el entrenamiento y modifica lo que aprende el modelo.
+
+## Contexto histórico
+
+Caruana sistematizó el enfoque en 1997 y mostró que el entrenamiento paralelo
+podía mejorar la generalización al explotar señales de tareas relacionadas
+[@caruana1997multitask]. El [aprendizaje profundo](aprendizaje-profundo.qmd)
+facilitó después arquitecturas con capas compartidas y cabezas específicas.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el patrón se usa para reutilizar datos y
+representaciones entre objetivos. También obliga a medir cada tarea por
+separado: una mejora media puede ocultar el deterioro de una salida importante.
+
+## Aplicaciones
+
+### Generales
+
+- Combinar etiquetado gramatical, entidades y análisis de sentimiento.
+- Entrenar visión para detectar objetos, segmentar y estimar profundidad.
+- Compartir una base y mantener salidas especializadas por tarea.
+
+### Sanitarias
+
+En investigación, una red puede estimar varios resultados a partir de una misma
+historia clínica. Compartir representación puede ser eficiente, pero ninguna
+salida queda validada por el buen rendimiento de las otras.
+
+## Limitaciones
+
+- Tareas poco relacionadas pueden interferir y producir transferencia negativa.
+- Las pérdidas compiten: su escala o ponderación puede hacer que una tarea
+  domine el entrenamiento.
+- Las etiquetas y poblaciones disponibles pueden diferir entre resultados.
+- Una arquitectura compartida complica atribuir la causa de un fallo.
+
+## Ejemplos
+
+Un modelo visual puede compartir capas para detección, segmentación y estimación
+de profundidad. Otro puede predecir reingreso y mortalidad con salidas distintas,
+evaluadas por separado y sin convertir su asociación retrospectiva en causalidad.
+
+## Relacionados
+
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
