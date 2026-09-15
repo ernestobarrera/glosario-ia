@@ -129,13 +129,37 @@ secciones:
 # ---------------------------------------------------------------------------
 # Presupuesto por ficha
 # ---------------------------------------------------------------------------
-# Una seccion fuente que supere el maximo no entra en un lote: va a la cola
-# de piezas largas y se trata individualmente. Regla creada tras detectar
-# que "Deep Research" mide 70.023 caracteres, 30 veces la mediana del corpus.
+# Regla creada tras detectar que "Deep Research" mide 70.023 caracteres, 30
+# veces la mediana del corpus (2.364). Escrita como un unico umbral en 4.000,
+# hacia que CUALQUIER exceso mandara la pieza a la cola de reescritura
+# individual.
+#
+# Corregida al medir la poblacion real: las piezas que exceden no forman un
+# grupo, sino dos. Ocho miden entre 4.013 y 6.248 caracteres (x1,00 a x1,56) y
+# una mide 70.023 (x17,51). La primera se pasaba por TRECE caracteres y
+# recibia el mismo trato que una pieza diecisiete veces mas larga. Un umbral
+# asi no es un presupuesto, es un acantilado.
+#
+# Ahora hay tres tramos y no dos:
+#   - hasta fuente_maxima_caracteres: migra sin mas;
+#   - entre el maximo y compresion_maxima_caracteres: migra DENTRO de un lote,
+#     pero la especificacion del lote tiene que declarar la compresion
+#     editorial y la revision comprobar que no se perdio ningun campo al
+#     comprimir. Esa es la diferencia con una amputacion silenciosa: comprimir
+#     es una decision escrita, no un efecto colateral;
+#   - por encima de compresion_maxima_caracteres: cola de piezas largas y
+#     reescritura individual, nunca dentro de un lote.
 
 presupuesto:
   fuente_maxima_caracteres: 4000
-  cola_piezas_largas: "piezas que superen el maximo; reescritura individual"
+  compresion_maxima_caracteres: 8000
+  cola_piezas_largas: >-
+    piezas que superen compresion_maxima_caracteres; reescritura individual,
+    nunca dentro de un lote
+  nota_compresion: >-
+    En la banda de compresion la especificacion declara el recorte y la
+    revision lo verifica campo a campo contra el origen. Sin esa declaracion
+    escrita, la pieza no entra.
 
 # ---------------------------------------------------------------------------
 # Vigencia por tipo

@@ -2,8 +2,8 @@
 # Deriva de esquema.yml, que es la fuente de verdad del modelo de datos.
 # Si editas esquema.yml, regenera este archivo o el validador fallara.
 
-generado: 2026-08-22
-esquema-sha: 6e0249f2821fc25e
+generado: 2026-09-15
+esquema-sha: a0c09a0eb85a7b7a
 
 # Orden exigido en el cuerpo de la ficha.
 secciones-orden:
