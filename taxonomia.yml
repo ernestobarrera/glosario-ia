@@ -2,7 +2,7 @@ version: 3
 
 # Retirada en v3 (2026-08-21): "Aplicaciones sanitarias".
 #
-# Medido sobre los 131 conceptos del documento de origen: un unico termino es
+# Medido sobre los 133 conceptos del documento de origen: un unico termino es
 # especificamente sanitario (Med-PaLM), y esta bloqueado por ser
 # tipo: herramienta. Cero de las 13 fichas publicadas la usaban. Con la regla
 # editorial vigente —un ejemplo clinico no basta, el termino debe ser
