@@ -11,7 +11,7 @@ description: "Sistema capaz de percibir un entorno, razonar sobre un objetivo y 
 categories:
   - "IA agéntica"
   - "Fundamentos"
-date-modified: 2026-08-22
+date-modified: 2026-09-16
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -46,11 +46,16 @@ integraciones entre asistentes y fuentes de datos [@anthropic2024mcp].
 
 ## Importancia actual
 
-A fecha de agosto de 2026, el interés por los agentes se concentra tanto en su
-capacidad para encadenar trabajo como en los riesgos de permitirles actuar sobre
-sistemas reales. La AEPD publicó en febrero de 2026 orientaciones específicas
-sobre IA agéntica, con medidas de protección de datos y un análisis de sus
-vulnerabilidades [@aepd2026agentica].
+A fecha de septiembre de 2026, el interés por los agentes se concentra tanto en
+su capacidad para encadenar trabajo como en los riesgos de permitirles actuar
+sobre sistemas reales. La AEPD publicó en febrero de 2026 orientaciones
+específicas sobre IA agéntica, con medidas de protección de datos y un análisis
+de sus vulnerabilidades [@aepd2026agentica]. En septiembre comunicó haber
+recibido la primera notificación de una brecha de datos personales en la que el
+incidente habría sido ejecutado mediante un agente de IA. La Agencia presentó
+el caso como una señal de materialización del riesgo, pero advirtió que todavía
+no permitía extraer conclusiones definitivas ni afirmar una tendencia estadística
+[@perezbes2026brechaagente].
 
 ## Aplicaciones
 

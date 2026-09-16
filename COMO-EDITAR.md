@@ -83,6 +83,14 @@ Las referencias provisionales deben declararse como tales en sus notas. La
 integración futura con Zotero y Better BibTeX se evaluará por separado; no es
 un requisito para una corrección sencilla.
 
+Cuando se aporte una referencia nueva, se comprueba primero la fuente original
+y su relevancia editorial. Si añade evidencia o un ejemplo importante, se
+incorpora a `references.bib` con un citekey estable y se cita desde el término
+existente que mejor la contextualice; puede enlazarse desde más de una ficha
+solo si respalda afirmaciones materiales diferentes. Una referencia aislada no
+obliga a crear un término nuevo ni a modificar una ficha si no aporta contenido
+sustantivo. Toda ficha modificada actualiza su `date-modified`.
+
 ## Validación
 
 En PowerShell:
