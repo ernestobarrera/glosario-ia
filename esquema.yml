@@ -96,7 +96,7 @@ secciones:
           fichas: el posicionamiento se sostiene aqui, en las 130 paginas, no
           en una etiqueta. La categoria "Aplicaciones sanitarias" se retiro en
           la v3 de taxonomia.yml por ser estructuralmente vacia (un unico
-          candidato en 131 conceptos, y bloqueado).
+          candidato en 133 conceptos, y bloqueado).
 
   - id: limitaciones
     titulo: "## Limitaciones"

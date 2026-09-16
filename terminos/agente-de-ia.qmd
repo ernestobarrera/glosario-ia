@@ -54,8 +54,10 @@ de sus vulnerabilidades [@aepd2026agentica]. En septiembre comunicó haber
 recibido la primera notificación de una brecha de datos personales en la que el
 incidente habría sido ejecutado mediante un agente de IA. La Agencia presentó
 el caso como una señal de materialización del riesgo, pero advirtió que todavía
-no permitía extraer conclusiones definitivas ni afirmar una tendencia estadística
-[@perezbes2026brechaagente].
+no permitía extraer conclusiones definitivas ni afirmar una tendencia estadística,
+y que usar un modelo concreto tampoco implica que ese modelo o la infraestructura
+de su proveedor hayan sido comprometidos: el agente fue el instrumento del
+atacante, no la pieza que falló [@perezbes2026brechaagente].
 
 ## Aplicaciones
 
