@@ -1,0 +1,105 @@
+---
+title: "Razonar y actuar"
+aliases:
+  - /terminos/reasoning-and-acting.html
+sinonimos:
+  - "ReAct"
+  - "Reasoning + Acting"
+description: "Patrón agéntico que intercala razonamiento textual, acciones sobre el entorno y observaciones obtenidas tras ejecutarlas."
+categories:
+  - "IA agéntica"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+**Razonar y actuar**, conocido como **ReAct** o **Reasoning + Acting**, es un
+patrón de interacción agéntica en el que un modelo de lenguaje alterna
+explícitamente pasos de razonamiento textual, acciones sobre el entorno y las
+observaciones obtenidas al ejecutarlas. El ciclo se repite hasta resolver una
+tarea o alcanzar una condición de parada. A diferencia de los enfoques que
+separan «primero planifico, luego ejecuto», ReAct entrelaza ambos procesos:
+cada acción se elige a la luz del razonamiento más reciente y cada observación
+puede reorientar el paso siguiente [@yao2023react].
+
+## Contexto histórico
+
+Yao y colaboradores publicaron ReAct en ICLR 2023, tras difundir el preprint en
+2022. El trabajo combinó trazas de razonamiento con acciones específicas de la
+tarea y evaluó el patrón en preguntas y entornos interactivos
+[@yao2023react]. Desde entonces, esa alternancia se ha convertido en una
+referencia conceptual para muchos sistemas de [agentes de IA](agente-de-ia.qmd),
+aunque sus implementaciones no tienen por qué reproducir literalmente el
+formato del artículo.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, ReAct describe un ciclo visible de decisión,
+acción y actualización a partir de resultados externos. La secuencia
+—razonamiento expresado, acción y observación— facilita revisar una sesión,
+pero no demuestra qué cálculo interno causó cada decisión. En la sanidad, la
+trazabilidad exige además registros efectivos de las herramientas, argumentos,
+respuestas y cambios; la traza textual no sustituye esos registros ni acredita
+seguridad clínica.
+
+## Aplicaciones
+
+### Generales
+
+En programación, un agente razona sobre un error, ejecuta una prueba, observa
+el resultado y reorienta la hipótesis. En soporte, consulta documentación,
+formula una hipótesis y la verifica mediante una API antes de responder.
+
+### Sanitarias
+
+Un agente de codificación puede detectar un diagnóstico, consultar una
+terminología, observar los códigos candidatos y proponer uno para revisión. Un
+agente de triaje puede identificar qué síntomas faltan y solicitarlos antes de
+clasificar sobre información parcial. El patrón ordena las consultas, pero no
+convierte sus pasos en razonamiento clínico validado ni elimina la supervisión
+profesional. En investigación bibliográfica también permite reformular una
+búsqueda después de observar que la primera consulta tuvo poca cobertura.
+
+## Limitaciones
+
+El razonamiento textual visible lo genera el propio modelo y puede no reflejar
+su procesamiento interno real: ReAct mejora la trazabilidad aparente, pero no
+garantiza que la explicación sea causal o verdadera. El bucle puede repetir
+acciones, detenerse demasiado pronto o agotar la ventana de contexto.
+
+Cada paso añade tokens, latencia y un punto de fallo. Una observación maliciosa
+puede reorientar el ciclo mediante [inyección de
+prompts](inyeccion-de-prompts.qmd). Para auditarlo hay que diferenciar la traza
+ReAct —lo que el modelo afirmó— de los registros de herramientas —lo que
+ejecutó—; si no coinciden, prevalecen estos últimos. En tareas largas, la
+verbosidad de los pasos puede desplazar información útil fuera de la ventana de
+contexto, y un registro incompleto puede ocultar precisamente la acción que se
+necesita revisar.
+
+## Ejemplos
+
+Un agente farmacéutico recibe una pregunta sobre un antibiótico. Indica que
+necesita conocer alergias y función renal, invoca las consultas, observa los
+resultados y prepara una alerta para validación. El ejemplo muestra el ciclo;
+no acredita una explicación causal ni autoriza al agente a prescribir.
+
+Un agente de revisión bibliográfica propone un término MeSH, ejecuta la
+búsqueda en PubMed, observa que la cobertura es baja, reformula el término y
+solo entonces prepara una síntesis. Los resultados, no su narración, permiten
+comprobar la secuencia.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Esquema de herramientas](esquema-de-herramientas.qmd)
+- [Sistema multiagente](sistema-multiagente.qmd)
+- [Cadena de pensamiento](cadena-de-pensamiento.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Inyección de prompts](inyeccion-de-prompts.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

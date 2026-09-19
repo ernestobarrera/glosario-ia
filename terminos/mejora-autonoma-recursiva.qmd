@@ -1,0 +1,102 @@
+---
+title: "Mejora autónoma recursiva"
+aliases:
+  - /terminos/rsi.html
+  - /terminos/recursive-self-improvement.html
+sinonimos:
+  - "RSI"
+  - "Recursive self-improvement"
+description: "Proceso hipotético en el que un sistema mejora los componentes que determinan su propia capacidad y cada mejora facilita la siguiente."
+categories:
+  - "Fundamentos"
+  - "IA agéntica"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **mejora autónoma recursiva**, **RSI** o **recursive self-improvement**, es
+un proceso hipotético en el que un sistema de IA mejora los componentes que
+determinan su propia capacidad —por ejemplo, arquitectura, código, datos o
+procedimientos de entrenamiento— y cada mejora facilita la siguiente con una
+intervención humana decreciente.
+
+Nombra un proceso, no su posible resultado. Una «explosión de inteligencia»
+sería una aceleración extrema de ese proceso; la
+[superinteligencia](superinteligencia.qmd) sería un estado de capacidad que
+podría resultar de esa u otra vía. Tampoco equivale al aprendizaje ordinario
+dentro de límites fijados por personas.
+
+## Contexto histórico
+
+I. J. Good formuló en 1965 la posibilidad de una «máquina
+ultrainteligente» capaz de diseñar máquinas mejores y desencadenar una
+explosión de inteligencia [@good1965ultraintelligent]. Décadas después,
+Bostrom examinó la mejora recursiva como una posible vía hacia la
+superinteligencia [@bostrom2014superintelligence]. Ambos textos plantean un
+escenario teórico; no documentan un sistema que haya completado ese bucle.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, algunos modelos ayudan a escribir código,
+proponer experimentos o preparar datos que intervienen en el desarrollo de
+sistemas posteriores. Eso es automatización parcial de I+D, no evidencia de
+mejora autónoma recursiva: siguen existiendo decisiones humanas, infraestructura
+externa, evaluación y límites que el modelo no se da a sí mismo. El concepto
+sirve para preguntar qué ocurriría si una parte creciente de ese ciclo se
+cerrara y acelerara, no para afirmar que ya ha sucedido.
+
+## Aplicaciones
+
+### Generales
+
+- Analizar escenarios de seguridad en los que un sistema modifica su propio
+  proceso de desarrollo.
+- Diseñar controles para ciclos automatizados de generación, prueba y
+  selección de cambios.
+- Distinguir la asistencia al desarrollo de un bucle autónomo que se sostiene
+  y mejora por sí mismo.
+
+### Sanitarias
+
+No existe una aplicación clínica desplegada que constituya RSI demostrada. La
+relevancia sanitaria es indirecta: si aumenta la automatización con la que se
+producen sucesivas versiones de un modelo clínico, cada versión sigue
+necesitando trazabilidad, validación y control de cambios. Una mejora técnica
+no permite inferir seguridad ni beneficio clínico.
+
+## Limitaciones
+
+- La forma plena del proceso es hipotética y no se ha observado.
+- No está demostrado que las mejoras sucesivas eviten rendimientos
+  decrecientes o cuellos de botella externos.
+- Un objetivo mal especificado podría heredarse o amplificarse entre ciclos.
+- La velocidad y la opacidad dificultarían la supervisión y la atribución de
+  responsabilidades.
+- Presentar cualquier uso de IA en I+D como RSI confunde automatización parcial
+  con autonomía recursiva.
+
+## Ejemplos
+
+La máquina ultrainteligente de Good es el ejemplo fundacional del escenario.
+Un modelo que propone una modificación de código y una persona decide si la
+prueba, la acepta y entrena el sucesor es, en cambio, asistencia al desarrollo:
+puede ser una pieza de un ciclo más automatizado, pero por sí sola no demuestra
+RSI.
+
+## Relacionados
+
+- [Superinteligencia](superinteligencia.qmd)
+- [Inteligencia artificial general](agi.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Manipulación de la recompensa](manipulacion-de-la-recompensa.qmd)
+- [Adulación](adulacion.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

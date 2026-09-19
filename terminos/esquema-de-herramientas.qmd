@@ -1,0 +1,108 @@
+---
+title: "Esquema de herramientas"
+aliases:
+  - /terminos/tool-schema.html
+sinonimos:
+  - "Tool schema"
+description: "Contrato estructurado que declara qué herramientas puede invocar un agente, qué parámetros aceptan y qué resultado devuelven."
+categories:
+  - "IA agéntica"
+  - "Fundamentos"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **esquema de herramientas** o **tool schema** es la declaración estructurada
+del catálogo que un agente tiene a su disposición. Para cada herramienta
+especifica un nombre, una descripción y los parámetros aceptados, con sus
+tipos, obligatoriedad y restricciones. También puede describir el valor
+devuelto, los efectos secundarios y los permisos requeridos. El modelo usa ese
+contrato para elegir una operación y construir argumentos con la forma
+esperada; la aplicación valida y decide si ejecuta la solicitud. El contrato
+no concede por sí solo autorización.
+
+## Contexto histórico
+
+OpenAI incorporó en junio de 2023 la llamada a funciones en sus modelos GPT-4 y
+GPT-3.5 Turbo y permitió describir funciones mediante JSON Schema
+[@openai2023functioncalling]. Anthropic adoptó después un patrón equivalente de
+uso de herramientas. En noviembre de 2024 presentó [Model Context
+Protocol](mcp.qmd) (**MCP**) como protocolo abierto para conectar aplicaciones
+de IA con herramientas y datos [@anthropic2024mcp].
+
+No son el mismo concepto: un esquema de herramientas es el contrato de una
+operación; MCP es un protocolo concreto que permite descubrir y usar, entre
+otras capacidades, herramientas descritas mediante esquemas
+[@mcp2025spec]. Un agente puede consumir esquemas sin MCP, y un servidor MCP
+puede exponer recursos o plantillas además de herramientas.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el esquema es una palanca concreta de gobierno
+de un agente. Determina qué acciones se muestran al modelo, qué argumentos
+puede proponer y qué información recibe cuando decide. Cambiar una descripción
+puede modificar la conducta sin reentrenar el modelo. Auditar un agente clínico
+exige revisar su esquema completo: exponer una operación crítica sin
+restricciones crea un riesgo estructural. Esa revisión no sustituye la
+autorización efectiva, que debe imponerse en el servicio que ejecuta la acción.
+
+## Aplicaciones
+
+### Generales
+
+- Declarar operaciones de lectura, escritura o ejecución con argumentos
+  tipados.
+- Restringir valores mediante enumeraciones y separar herramientas de consulta
+  de las que producen cambios.
+- Indicar al modelo cuándo procede usar una capacidad y qué resultado esperar.
+
+### Sanitarias
+
+- Exponer una consulta de alergias como lectura sujeta a identidad y finalidad.
+- Hacer que una propuesta de codificación se escriba en un borrador, no en la
+  historia definitiva.
+- Exigir confirmación humana antes de solicitar una prueba o modificar una
+  pauta.
+
+## Limitaciones
+
+La calidad del esquema condiciona el comportamiento del agente: descripciones
+ambiguas producen invocaciones erróneas. Los parámetros libres o sin
+enumeraciones amplían la superficie de error y de [inyección de
+prompts](inyeccion-de-prompts.qmd). Si el contrato no diferencia lectura de
+escritura, impide graduar la confirmación humana de las acciones críticas.
+
+La declaración visible para el modelo puede no coincidir con el catálogo
+efectivo; herramientas obsoletas o duplicadas añaden confusión. Expresar una
+restricción en el esquema tampoco basta: el servicio debe validar los
+argumentos y aplicar autorización fuera del modelo. Añadir, cambiar o retirar
+una herramienta obliga a revisar pruebas, permisos y cualquier validación
+clínica previa.
+
+## Ejemplos
+
+Un hospital declara `consultar_historial_psiquiatrico` solo cuando el rol del
+usuario y el episodio lo justifican. En las demás sesiones, esa herramienta no
+forma parte del esquema que ve el agente ni puede ser seleccionada.
+
+En farmacia, `proponer_pauta_antibiotica` restringe `antibiotico` a una
+enumeración de la guía institucional. El modelo no puede construir una llamada
+válida con otro fármaco, pero el sistema aún debe comprobar alergias, dosis,
+indicación y autorización antes de aceptar la propuesta.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Razonar y actuar](react.qmd)
+- [Sistema multiagente](sistema-multiagente.qmd)
+- [Model Context Protocol](mcp.qmd)
+- [Inyección de prompts](inyeccion-de-prompts.qmd)
+- [Prompt de sistema](prompt-de-sistema.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
