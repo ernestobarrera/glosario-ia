@@ -1,0 +1,117 @@
+---
+title: "Alineación"
+aliases:
+  - /terminos/ai-alignment.html
+  - /terminos/alignment.html
+sinonimos:
+  - "AI alignment"
+  - "Alignment"
+  - "Alineación de IA"
+description: "Problema de conseguir que el comportamiento de un sistema de IA se corresponda con los objetivos, instrucciones y valores que sus diseñadores y usuarios pretenden, y no solo con lo que la métrica de entrenamiento premia de forma literal."
+categories:
+  - "Seguridad y riesgos"
+  - "Ética y gobernanza"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **alineación** (**AI alignment**) es el problema de conseguir que el
+comportamiento de un sistema de IA se corresponda con lo que sus diseñadores y
+usuarios pretenden, y no solo con lo que la métrica de entrenamiento premia de
+forma literal. No es una propiedad binaria: es un objetivo de grado, porque
+casi ninguna especificación captura por completo la intención humana que hay
+detrás. Cuanto más autónomo y capaz es un sistema, más caro resulta cada hueco
+entre lo especificado y lo pretendido.
+
+El problema suele distinguirse en dos caras: la alineación **exterior**
+—elegir un objetivo o un proceso de entrenamiento que capture de verdad lo que
+se quiere— y la alineación **interior** —que el sistema entrenado persiga de
+hecho ese objetivo, y no un sustituto que coincidía con él solo durante el
+entrenamiento—. La [manipulación de la recompensa](manipulacion-de-la-recompensa.qmd)
+y la [adulación](adulacion.qmd) son manifestaciones ya documentadas de ese
+hueco.
+
+## Contexto histórico
+
+Amodei y colaboradores formalizaron el problema en 2016 dentro de los
+«Concrete Problems in AI Safety», situando la especificación deficiente de
+objetivos entre los riesgos técnicos concretos del aprendizaje automático,
+antes de que existieran los modelos de lenguaje a gran escala
+[@amodei2016safety]. El aprendizaje a partir de preferencias humanas se
+estableció como técnica práctica de alineación con Christiano y colaboradores
+en 2017, aplicado entonces a control y locomoción robótica simulada, no a
+lenguaje [@christiano2017preferences]. Su extensión a modelos de lenguaje llegó
+con Ouyang y colaboradores en 2022, que entrenaron InstructGPT combinando
+ajuste supervisado y aprendizaje por refuerzo a partir de retroalimentación
+humana (RLHF) para que las respuestas siguieran mejor las instrucciones del
+usuario [@ouyang2022instructgpt].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la alineación se practica sobre todo mediante
+RLHF y variantes, *red-teaming* y políticas de uso, pero ninguna de estas
+técnicas garantiza el resultado: son mitigaciones verificadas empíricamente
+caso por caso, no una demostración formal de que el sistema hará lo pretendido
+en situaciones no vistas. El propio glosario documenta dos síntomas del
+problema en sistemas ya desplegados —la manipulación de la recompensa y la
+adulación—. Cuanta más autonomía se delega en un agente, menos ocasiones hay de
+corregir el rumbo antes de que una decisión tenga consecuencias.
+
+## Aplicaciones
+
+### Generales
+
+- Ajustar modelos de lenguaje mediante RLHF para que sigan instrucciones y
+  eviten contenido dañino.
+- Diseñar funciones de recompensa que penalicen atajos conocidos en lugar de
+  premiar solo el resultado agregado.
+- Someter un sistema a *red-teaming* adversarial antes de desplegarlo.
+
+### Sanitarias
+
+- Verificar que un asistente clínico prioriza la seguridad del paciente sobre
+  la fluidez o la brevedad de la respuesta.
+- Auditar que un sistema de apoyo a la decisión no aprende a satisfacer al
+  profesional que lo evalúa en lugar de acertar en el diagnóstico.
+- Exigir trazabilidad de qué objetivo se optimizó y con qué retroalimentación
+  humana, antes de integrar un sistema en un flujo asistencial.
+
+## Limitaciones
+
+- No existe una prueba formal de que un sistema esté alineado: solo evidencia
+  empírica de que se comporta como se espera en los casos probados.
+- Las técnicas actuales optimizan aproximaciones de la intención humana
+  —aprobación de evaluadores, puntuación de un banco de pruebas—, que son
+  ellas mismas susceptibles de manipulación de la recompensa.
+- Que un sistema esté alineado con quienes lo entrenan no garantiza que lo
+  esté con quienes lo usan ni con el interés general.
+- El problema se agrava con la autonomía: un agente que encadena acciones sin
+  supervisión tiene más ocasiones de encontrar el atajo que satisface la
+  métrica sin cumplir el objetivo.
+
+## Ejemplos
+
+Un modelo ajustado con RLHF puede aprender a dar respuestas largas y con
+apariencia de exhaustividad porque los evaluadores humanos las puntuaron
+mejor, sin que eso corresponda a mayor utilidad real para quien pregunta. Un
+sistema de recomendación clínica puede alinearse formalmente con la métrica de
+satisfacción del paciente y desalinearse del objetivo real —una mejor salud—
+si ambas cosas divergen en algún subgrupo, el mismo patrón descrito en
+Manipulación de la recompensa.
+
+## Relacionados
+
+- [Manipulación de la recompensa](manipulacion-de-la-recompensa.qmd)
+- [Adulación](adulacion.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Superinteligencia](superinteligencia.qmd)
+- [Equidad algorítmica](equidad-algoritmica.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

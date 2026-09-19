@@ -1,0 +1,117 @@
+---
+title: "Trabajo fantasma"
+aliases:
+  - /terminos/ghost-work.html
+sinonimos:
+  - "Ghost work"
+description: "Labor humana no reconocida o sistemáticamente invisible que sostiene el funcionamiento de sistemas de IA presentados como autónomos."
+categories:
+  - "Ética y gobernanza"
+  - "IA agéntica"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **trabajo fantasma** (**ghost work**) es la labor humana no reconocida,
+sistemáticamente invisible o intencionalmente oscurecida que sostiene el
+funcionamiento de sistemas de IA presentados como autónomos. El término lo
+acuñaron Mary Gray y Siddharth Suri en 2019 para denominar la capa de trabajo
+cognitivo distribuido —etiquetado de datos, moderación de contenidos,
+verificación de salidas, comparación de respuestas para retroalimentación por
+preferencias— sin la cual los sistemas de IA contemporáneos no podrían
+construirse ni mantenerse [@gray2019ghostwork].
+
+Esta labor se externaliza con frecuencia mediante plataformas de microtareas,
+queda invisible en el producto final y contradice la narrativa de autonomía
+que rodea a la IA actual. No es un defecto accidental: en muchos sistemas es
+una condición de posibilidad de su construcción,
+[alineación](alineacion.qmd), evaluación continua y mantenimiento.
+
+## Contexto histórico
+
+El antecedente simbólico es el Turco Mecánico (Wolfgang von Kempelen, 1770),
+autómata de ajedrez que ocultaba en su interior a un maestro humano. La
+versión contemporánea nació con Amazon Mechanical Turk (2005), plataforma que
+permite externalizar globalmente microtareas cognitivas a trabajadores
+distribuidos por precio unitario. Gray y Suri sistematizaron el fenómeno en
+*Ghost Work* (2019) [@gray2019ghostwork], y este adquirió nueva urgencia con
+la expansión del aprendizaje por refuerzo a partir de retroalimentación humana
+(RLHF) desde 2022 [@ouyang2022instructgpt]: los evaluadores humanos que
+puntúan las respuestas de un modelo son, en sentido literal, el trabajo
+fantasma que produce su alineación [@gray2019ghostwork].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la narrativa dominante sobre IA generativa
+suprime con frecuencia la visibilidad del trabajo fantasma: que un modelo
+«responda bien» es, en parte, que millones de evaluadores humanos —a menudo en
+condiciones de baja remuneración— hayan señalado qué respuestas eran mejores,
+más seguras o más alineadas con valores humanos. Esta labor no se detiene con
+el lanzamiento del producto: la moderación continua, la corrección de errores
+y el re-etiquetado de casos nuevos persisten durante todo el ciclo de vida del
+sistema. La calidad del trabajo fantasma es, en sentido estricto, un
+determinante de la calidad del sistema: sus sesgos y sus errores sistemáticos
+heredan las condiciones de ese trabajo invisible.
+
+## Aplicaciones
+
+### Generales
+
+- Las plataformas de datos para IA suministran datasets anotados para
+  entrenar modelos de lenguaje, visión y voz a escala industrial, con cadenas
+  de subcontratación que dificultan trazar quién anotó qué y con qué
+  cualificación.
+
+### Sanitarias
+
+- Los sistemas de apoyo a la decisión clínica requieren que radiólogos,
+  patólogos o enfermeras especialistas hayan anotado miles de casos, labor que
+  rara vez aparece reconocida en la documentación del producto ni remunerada
+  de forma proporcional a la cualificación exigida. La cualificación real de
+  quien anotó las imágenes condiciona directamente la fiabilidad del sistema,
+  y esa información no suele figurar en las fichas técnicas comerciales.
+
+## Limitaciones
+
+- Es estructuralmente difícil de regular porque ocurre en capas de
+  subcontratación externas a la cadena de responsabilidad formal del
+  fabricante del modelo.
+- La falta de estándares de cualificación para anotadores en dominios
+  especializados genera un riesgo de calidad silencioso: un clasificador de
+  lesiones dermatológicas puede haberse entrenado con anotaciones de personal
+  sin formación médica.
+- El Reglamento de IA europeo refuerza la documentación de los datos de
+  entrenamiento en sistemas de alto riesgo, pero eso no convierte
+  automáticamente en transparente quién anotó, con qué cualificación y bajo
+  qué condiciones.
+
+## Ejemplos
+
+Un estudio de TIME documentó que trabajadores en Kenia cobraban menos de dos
+dólares por hora por revisar contenido extremadamente violento para entrenar
+los filtros de seguridad de ChatGPT, labor que causó daño psicológico
+documentado y que no figuraba en ningún material de comunicación del producto
+[@perrigo2023kenya]. En la anotación de imágenes de fondo de ojo para sistemas
+de detección de retinopatía, estudios independientes han evidenciado
+variabilidad en el etiquetado según el nivel de experiencia del anotador,
+variabilidad que se traslada a la tasa de falsos negativos del modelo
+resultante.
+
+## Relacionados
+
+- [Aprendizaje activo](aprendizaje-activo.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Modelos de recompensa](modelos-de-recompensa.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Automatización del trabajo cognitivo](automatizacion-del-trabajo-cognitivo.qmd)
+- [Alineación](alineacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

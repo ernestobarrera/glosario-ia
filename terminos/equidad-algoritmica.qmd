@@ -1,0 +1,112 @@
+---
+title: "Equidad algorítmica"
+aliases:
+  - /terminos/fairness-algoritmica.html
+  - /terminos/algorithmic-fairness.html
+  - /terminos/fairness.html
+sinonimos:
+  - "Fairness algorítmica"
+  - "Algorithmic fairness"
+  - "Fairness"
+description: "Conjunto de principios, métricas y métodos para evaluar si un sistema de IA produce decisiones injustamente desfavorables para determinados grupos."
+categories:
+  - "Ética y gobernanza"
+  - "Aprendizaje automático"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **equidad algorítmica** (**fairness algorítmica**) reúne los principios,
+métricas y métodos para evaluar si un sistema de IA produce decisiones
+injustamente desfavorables para determinados grupos. No se limita a comprobar
+la precisión global de un modelo: analiza cómo se distribuyen sus errores
+entre grupos definidos por sexo, edad, origen étnico, nivel socioeconómico,
+territorio u otras variables socialmente relevantes.
+
+Tres nociones estructuran el campo. La **paridad demográfica** exige que la
+proporción de decisiones positivas sea similar entre grupos. La **igualdad de
+oportunidad** exige que, entre quienes realmente deberían recibir una decisión
+positiva, el sistema los identifique con una sensibilidad —tasa de verdaderos
+positivos— comparable en todos los grupos [@hardt2016equality]. Las
+**variables proxy** son variables aparentemente neutras que actúan como
+sustitutos indirectos de características sensibles: el código postal puede
+capturar segregación territorial, y el gasto sanitario previo puede reflejar
+acceso diferencial en lugar de necesidad real.
+
+## Contexto histórico
+
+La preocupación por la discriminación estadística en decisiones automatizadas
+es anterior a la IA, pero se formalizó técnicamente con la expansión del
+aprendizaje automático en decisiones de alto impacto. En 2016, Hardt, Price y
+Srebro propusieron formalmente la igualdad de oportunidad y la paridad de
+tasas de error (*equalized odds*) como alternativa a medir solo la proporción
+de seleccionados por grupo [@hardt2016equality]. La literatura posterior
+mostró que eliminar variables sensibles directas no basta si el modelo retiene
+variables correlacionadas que las reconstruyen indirectamente.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, un modelo puede tener alta precisión global y
+fallar sistemáticamente en un subgrupo. En sanidad esto es especialmente
+crítico: un algoritmo de cribado puede detectar mejor la enfermedad en un sexo
+que en otro, o un sistema de priorización puede infraestimar la necesidad de
+pacientes con menor utilización histórica de recursos. La elección de la
+métrica no es neutra: cada una responde a una pregunta distinta y puede entrar
+en conflicto con las demás cuando los grupos difieren en prevalencia o en
+condiciones de acceso.
+
+## Aplicaciones
+
+### Generales
+
+- Auditar sistemas de selección de personal comprobando si, entre los
+  candidatos cualificados, todos los grupos tienen la misma probabilidad de
+  ser seleccionados.
+- Exigir que la evaluación de un modelo reporte métricas de error desagregadas
+  por grupo, no solo un valor agregado.
+
+### Sanitarias
+
+- En un modelo de riesgo cardiovascular, estratificar sensibilidad,
+  especificidad y calibración por sexo, edad y nivel socioeconómico en lugar
+  de reportar solo el AUC global.
+- En programas de gestión de crónicos, revisar si el gasto sanitario histórico
+  como predictor infraestima la necesidad de pacientes que han usado menos
+  recursos por barreras de acceso, perpetuando la inequidad bajo apariencia de
+  objetividad.
+
+## Limitaciones
+
+- No existe una definición universal de equidad: las métricas son
+  matemáticamente incompatibles entre sí cuando la prevalencia difiere entre
+  grupos, de modo que satisfacer una puede impedir satisfacer otra.
+- La igualdad de oportunidad requiere una etiqueta verdadera fiable, que en
+  salud puede estar sesgada por infradiagnóstico o acceso desigual a pruebas.
+- Eliminar variables proxy no siempre es correcto: en algunos contextos,
+  variables territoriales son necesarias para corregir inequidades, no para
+  perpetuarlas.
+
+## Ejemplos
+
+Un algoritmo de triaje deriva al 10 % de pacientes de una zona acomodada y al
+4 % de una zona vulnerable: la paridad demográfica señala la diferencia, pero
+la igualdad de oportunidad exige además saber si, entre quienes tenían
+patología relevante, ambos grupos fueron detectados con la misma sensibilidad.
+Un modelo clínico que mejora su rendimiento al incluir el número de historia
+clínica como variable es una señal probable de memorización o fuga de datos,
+no de razonamiento clínico válido, y debe auditarse antes de desplegarse.
+
+## Relacionados
+
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Alineación](alineacion.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Reglamento de inteligencia artificial](ai-act.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

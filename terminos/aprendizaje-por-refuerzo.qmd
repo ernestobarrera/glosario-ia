@@ -11,7 +11,7 @@ description: "Enfoque en el que un agente aprende a decidir mediante la interacc
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-09-01
+date-modified: 2026-09-19
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -86,6 +86,7 @@ metodológico, no una pauta aplicable a pie de cama.
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
 - [Agente de IA](agente-de-ia.qmd)
 - [Q-learning](q-learning.qmd)
+- [Alineación](alineacion.qmd)
 
 ## Referencias
 

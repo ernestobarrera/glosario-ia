@@ -1,0 +1,118 @@
+---
+title: "Automatización del trabajo cognitivo"
+aliases:
+  - /terminos/cognitive-work-automation.html
+sinonimos:
+  - "Cognitive work automation"
+description: "Proceso mediante el cual sistemas de IA descomponen, capturan métricas sobre, sustituyen parcialmente y reorganizan tareas que antes requerían juicio experto humano."
+categories:
+  - "IA agéntica"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **automatización del trabajo cognitivo** es el proceso mediante el cual
+sistemas de IA descomponen, capturan métricas sobre, sustituyen parcialmente y
+reorganizan tareas que antes requerían juicio experto humano. A diferencia de
+la automatización industrial clásica —orientada al trabajo físico repetitivo—,
+esta afecta a procesos de razonamiento, interpretación, síntesis y decisión:
+leer informes, priorizar casos, redactar documentos, interpretar imágenes o
+evaluar riesgo clínico.
+
+El resultado no suele ser la eliminación del profesional, sino la
+transformación de su rol: de ejecutor de la tarea cognitiva completa a
+supervisor, validador y excepcionador de salidas automatizadas. Esta
+transformación se despliega de forma incremental y con frecuencia no se hace
+explícita en la evaluación organizativa, formativa o contractual de la
+tecnología adquirida.
+
+## Contexto histórico
+
+La genealogía conceptual se remonta a la división del trabajo de Adam Smith
+(1776) y a la mecanización del cálculo de Charles Babbage (1832), y se
+consolidó con la gestión científica de Taylor y la cadena de montaje de Ford.
+Lo que en el siglo XIX se aplicó al movimiento físico se trasladó al trabajo de
+oficina con la informática y, desde 2000, al trabajo cognitivo especializado.
+Autor y Dorn documentaron empíricamente en 2013 la «polarización laboral»: la
+tecnología automatiza las tareas rutinarias —físicas y cognitivas— y vacía la
+franja media del mercado laboral [@autor2013polarization]. La IA generativa
+desde 2022 extiende este proceso a tareas no rutinarias antes consideradas
+irreemplazables, afectando por primera vez a profesiones de alta cualificación
+como la medicina, el derecho o la ingeniería de software.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el debate sobre IA y empleo suele centrarse en
+la sustitución cuantitativa de puestos. La automatización del trabajo
+cognitivo señala algo más inmediato: la transformación cualitativa del
+contenido del trabajo experto. Un radiólogo que revisa cincuenta propuestas
+diagnósticas de IA por hora hace un trabajo estructuralmente distinto —no solo
+más rápido— que uno que interpreta cincuenta imágenes de forma autónoma:
+cambian sus competencias activas, su carga cognitiva real y su exposición al
+[sesgo de automatización](sesgo-de-automatizacion.qmd). La proliferación de
+[IA agéntica](agente-de-ia.qmd) agudiza el problema: el profesional ya no
+valida una recomendación puntual, sino cadenas de acciones ejecutadas de forma
+autónoma cuya lógica puede ser opaca.
+
+## Aplicaciones
+
+### Generales
+
+- Herramientas de IA generativa para redacción de informes, síntesis
+  documental y generación de código redefinen el rol de periodistas, abogados
+  y programadores como revisores de salidas automatizadas.
+
+### Sanitarias
+
+- La codificación clínica automatizada convierte al codificador en validador
+  de propuestas del sistema.
+- Los sistemas de apoyo a la decisión convierten al médico en excepcionador
+  del flujo por defecto.
+- La IA de triaje convierte a la enfermera en supervisora de derivaciones
+  algorítmicas.
+
+## Limitaciones
+
+- El *deskilling* progresivo es un riesgo concreto: si el profesional deja de
+  ejecutar la tarea cognitiva completa con regularidad, puede perder la
+  capacidad de hacerlo cuando el sistema falla o el caso es atípico.
+- El deskilling es especialmente grave en medicina porque las excepciones
+  —los casos que el sistema no gestiona bien— son precisamente los más
+  complejos, y exigen la competencia más aguda.
+- La velocidad de validación de salidas puede crear supervisión nominal que no
+  detecta errores sistemáticos.
+- La responsabilidad legal permanece en el profesional humano en la mayoría de
+  los marcos regulatorios europeos, pero su capacidad real de control puede
+  haberse reducido estructuralmente.
+
+## Ejemplos
+
+Un sistema de IA para detección de retinopatía diabética reduce el tiempo de
+lectura por imagen; los oftalmólogos que lo usan de forma continuada durante
+años pueden acumular menor práctica en la detección visual directa de
+lesiones tempranas, con impacto potencial en su capacidad autónoma cuando el
+sistema no está disponible. Un agente de codificación clínica que propone
+códigos ICD-11 para la mayoría de los episodios de un hospital concentra la
+actividad del codificador en los casos residuales —los más atípicos y
+complejos—, que es donde pierde dominio progresivo sobre los criterios que el
+sistema ya gestiona en volumen.
+
+## Relacionados
+
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Sistema multiagente](sistema-multiagente.qmd)
+- [Mediación algorítmica](mediacion-algoritmica.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Modelos de recompensa](modelos-de-recompensa.qmd)
+- [Trabajo fantasma](trabajo-fantasma.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
