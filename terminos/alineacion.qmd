@@ -26,13 +26,12 @@ casi ninguna especificación captura por completo la intención humana que hay
 detrás. Cuanto más autónomo y capaz es un sistema, más caro resulta cada hueco
 entre lo especificado y lo pretendido.
 
-El problema suele distinguirse en dos caras: la alineación **exterior**
-—elegir un objetivo o un proceso de entrenamiento que capture de verdad lo que
-se quiere— y la alineación **interior** —que el sistema entrenado persiga de
-hecho ese objetivo, y no un sustituto que coincidía con él solo durante el
-entrenamiento—. La [manipulación de la recompensa](manipulacion-de-la-recompensa.qmd)
-y la [adulación](adulacion.qmd) son manifestaciones ya documentadas de ese
-hueco.
+El problema puede aparecer al definir el objetivo —cuando la métrica o el
+proceso de entrenamiento no capturan de verdad lo que se quiere— o al
+optimizarlo, si el sistema encuentra un sustituto que satisface la métrica sin
+cumplir la intención [@amodei2016safety]. La
+[manipulación de la recompensa](manipulacion-de-la-recompensa.qmd) y la
+[adulación](adulacion.qmd) son manifestaciones ya documentadas de ese hueco.
 
 ## Contexto histórico
 
@@ -51,14 +50,16 @@ usuario [@ouyang2022instructgpt].
 
 ## Importancia actual
 
-A fecha de septiembre de 2026, la alineación se practica sobre todo mediante
-RLHF y variantes, *red-teaming* y políticas de uso, pero ninguna de estas
-técnicas garantiza el resultado: son mitigaciones verificadas empíricamente
-caso por caso, no una demostración formal de que el sistema hará lo pretendido
-en situaciones no vistas. El propio glosario documenta dos síntomas del
-problema en sistemas ya desplegados —la manipulación de la recompensa y la
-adulación—. Cuanta más autonomía se delega en un agente, menos ocasiones hay de
-corregir el rumbo antes de que una decisión tenga consecuencias.
+A fecha de septiembre de 2026, en modelos de lenguaje se usa RLHF y variantes
+para mejorar el seguimiento de instrucciones en las distribuciones evaluadas
+[@ouyang2022instructgpt]. El *red-teaming* y las políticas de uso complementan
+esa mitigación, pero ninguna de estas medidas garantiza el resultado: aportan
+evidencia empírica caso por caso, no una demostración formal de que el sistema
+hará lo pretendido en situaciones no vistas. El propio glosario documenta dos
+síntomas del problema en sistemas ya desplegados —la manipulación de la
+recompensa y la adulación—. Cuanta más autonomía se delega en un agente, menos
+ocasiones hay de corregir el rumbo antes de que una decisión tenga
+consecuencias.
 
 ## Aplicaciones
 

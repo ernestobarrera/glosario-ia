@@ -79,15 +79,17 @@ autónoma cuya lógica puede ser opaca.
 
 - El *deskilling* progresivo es un riesgo concreto: si el profesional deja de
   ejecutar la tarea cognitiva completa con regularidad, puede perder la
-  capacidad de hacerlo cuando el sistema falla o el caso es atípico.
+  capacidad de hacerlo cuando el sistema falla o el caso es atípico
+  [@budzyn2025deskilling].
 - El deskilling es especialmente grave en medicina porque las excepciones
   —los casos que el sistema no gestiona bien— son precisamente los más
   complejos, y exigen la competencia más aguda.
 - La velocidad de validación de salidas puede crear supervisión nominal que no
   detecta errores sistemáticos.
-- La responsabilidad legal permanece en el profesional humano en la mayoría de
-  los marcos regulatorios europeos, pero su capacidad real de control puede
-  haberse reducido estructuralmente.
+- El marco europeo reparte obligaciones entre proveedores y desplegadores y
+  exige supervisión humana efectiva; asignar supervisión a un profesional no
+  concentra por sí solo toda la responsabilidad en esa persona
+  [@ue2024aiact].
 
 ## Ejemplos
 

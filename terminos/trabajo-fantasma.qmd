@@ -90,6 +90,10 @@ heredan las condiciones de ese trabajo invisible.
 
 ## Ejemplos
 
+reCAPTCHA mostró otra forma de trabajo humano oculto: las palabras que los
+sistemas de reconocimiento óptico no podían leer se presentaban a usuarios y
+sus respuestas ayudaban a digitalizar impresos [@vonahn2008recaptcha].
+
 Un estudio de TIME documentó que trabajadores en Kenia cobraban menos de dos
 dólares por hora por revisar contenido extremadamente violento para entrenar
 los filtros de seguridad de ChatGPT, labor que causó daño psicológico

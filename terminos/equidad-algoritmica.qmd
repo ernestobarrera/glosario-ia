@@ -34,7 +34,7 @@ positivos— comparable en todos los grupos [@hardt2016equality]. Las
 **variables proxy** son variables aparentemente neutras que actúan como
 sustitutos indirectos de características sensibles: el código postal puede
 capturar segregación territorial, y el gasto sanitario previo puede reflejar
-acceso diferencial en lugar de necesidad real.
+acceso diferencial en lugar de necesidad real [@obermeyer2019bias].
 
 ## Contexto histórico
 

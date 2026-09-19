@@ -34,13 +34,13 @@ conceptos hipotéticos.
 ## Contexto histórico
 
 La especulación sobre una inteligencia que supere a la humana es anterior a la
-informática moderna, pero el término se formalizó dentro de la investigación
-en seguridad de IA con Nick Bostrom y su libro *Superintelligence: Paths,
-Dangers, Strategies* (Oxford University Press, 2014), que analiza posibles
-vías hacia su desarrollo y los riesgos de perder el control sobre un sistema
-mucho más capaz que sus creadores [@bostrom2014superintelligence]. Desde
-entonces el término ha sido central en los debates sobre riesgo existencial
-derivado de la IA.
+informática moderna, pero el concepto ganó especial visibilidad en los debates
+sobre seguridad de la IA con Nick Bostrom y su libro *Superintelligence:
+Paths, Dangers, Strategies* (Oxford University Press, 2014), que analiza
+posibles vías hacia su desarrollo y los riesgos de perder el control sobre un
+sistema mucho más capaz que sus creadores [@bostrom2014superintelligence].
+Desde entonces el término ha sido central en los debates sobre riesgo
+existencial derivado de la IA.
 
 ## Importancia actual
 
@@ -65,11 +65,10 @@ esta dirección, y no como un ajuste posterior.
 
 ### Sanitarias
 
-- Ninguna aplicación sanitaria es real ni inminente: el ángulo relevante hoy es
-  prospectivo. Se cita en discusiones sobre el horizonte de la IA en
-  medicina —diagnóstico, descubrimiento de fármacos— como escenario
-  especulativo de largo plazo, no como capacidad disponible ni previsible a
-  corto plazo.
+- No hay aplicaciones sanitarias actuales atribuibles a una superinteligencia,
+  porque ningún sistema cumple la definición. El ángulo relevante es
+  prospectivo: diagnóstico y descubrimiento de fármacos aparecen como
+  escenarios especulativos de largo plazo, no como capacidades disponibles.
 
 ## Limitaciones
 
