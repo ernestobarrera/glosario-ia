@@ -11,7 +11,7 @@ categories:
   - "Seguridad y riesgos"
   - "Aprendizaje automático"
   - "Ética y gobernanza"
-date-modified: 2026-09-14
+date-modified: 2026-09-19
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -116,6 +116,7 @@ ser a la vez el objetivo del sistema y la prueba de que funciona.
 - [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
 - [Agente de IA](agente-de-ia.qmd)
 - [Benchmark de IA](benchmark-de-ia.qmd)
+- [Alineación](alineacion.qmd)
 
 ## Referencias
 

@@ -1,0 +1,103 @@
+---
+title: "Superinteligencia"
+aliases:
+  - /terminos/asi.html
+  - /terminos/superintelligence.html
+sinonimos:
+  - "ASI"
+  - "Artificial Superintelligence"
+  - "Superintelligence"
+description: "Inteligencia artificial hipotética que superaría de forma amplia y sostenida las capacidades cognitivas humanas en prácticamente todos los dominios relevantes."
+categories:
+  - "Fundamentos"
+  - "Ética y gobernanza"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **superinteligencia** o **ASI (Artificial Superintelligence)** designa una
+inteligencia artificial hipotética que superaría de forma amplia y sostenida
+las capacidades cognitivas humanas en prácticamente todos los dominios
+relevantes —incluidos el razonamiento científico, la planificación estratégica
+y las habilidades sociales—, y no solo en tareas concretas y acotadas, como
+hace hoy la IA especializada [@bostrom2014superintelligence].
+
+Se distingue de la [inteligencia artificial general](agi.qmd) por el umbral:
+la AGI iguala la versatilidad cognitiva humana entre dominios, mientras que la
+superinteligencia la excedería de forma sustancial. Ningún sistema existente en
+septiembre de 2026 alcanza ninguno de los dos umbrales; ambos siguen siendo
+conceptos hipotéticos.
+
+## Contexto histórico
+
+La especulación sobre una inteligencia que supere a la humana es anterior a la
+informática moderna, pero el concepto ganó especial visibilidad en los debates
+sobre seguridad de la IA con Nick Bostrom y su libro *Superintelligence:
+Paths, Dangers, Strategies* (Oxford University Press, 2014), que analiza
+posibles vías hacia su desarrollo y los riesgos de perder el control sobre un
+sistema mucho más capaz que sus creadores [@bostrom2014superintelligence].
+Desde entonces el término ha sido central en los debates sobre riesgo
+existencial derivado de la IA.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la superinteligencia sigue siendo un concepto
+hipotético sin sistema candidato conocido, pero organiza buena parte de la
+investigación en seguridad y gobernanza de IA a largo plazo: el argumento
+central de Bostrom es que un sistema mucho más capaz que sus supervisores
+humanos podría perseguir un objetivo mal especificado con una eficacia que
+haga irreversible el error antes de poder corregirlo
+[@bostrom2014superintelligence]. Por eso la literatura sitúa la
+[alineación](alineacion.qmd) como condición previa a cualquier desarrollo en
+esta dirección, y no como un ajuste posterior.
+
+## Aplicaciones
+
+### Generales
+
+- Marco de referencia en investigación de gobernanza y seguridad de IA a largo
+  plazo.
+- Argumento habitual en la justificación de líneas de investigación en
+  alineación e interpretabilidad.
+
+### Sanitarias
+
+- No hay aplicaciones sanitarias actuales atribuibles a una superinteligencia,
+  porque ningún sistema cumple la definición. El ángulo relevante es
+  prospectivo: diagnóstico y descubrimiento de fármacos aparecen como
+  escenarios especulativos de largo plazo, no como capacidades disponibles.
+
+## Limitaciones
+
+- Es un concepto especulativo: no existe superinteligencia real, ni consenso
+  sobre si es alcanzable, ni sobre su horizonte temporal.
+- Las estimaciones de plazo varían enormemente entre expertos y no se
+  sostienen en evidencia empírica comparable a la de otras áreas de la IA.
+- Se usa a veces de forma retórica para minimizar riesgos actuales y
+  verificables —sesgo, opacidad, uso indebido— desplazando el foco hacia un
+  riesgo hipotético y lejano.
+- La analogía entre progreso en IA especializada y proximidad a la
+  superinteligencia no está establecida: mejorar en tareas concretas no
+  implica converger hacia inteligencia general o superior.
+
+## Ejemplos
+
+No existen ejemplos actuales de superinteligencia. Los sistemas de IA más
+avanzados de 2026, incluidos los modelos de lenguaje de mayor escala, siguen
+limitados a dominios y modalidades concretas y no muestran la generalidad
+amplia y sostenida que el concepto exige.
+
+## Relacionados
+
+- [Inteligencia artificial general](agi.qmd)
+- [Inteligencia artificial estrecha](inteligencia-artificial-estrecha.qmd)
+- [Alineación](alineacion.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
