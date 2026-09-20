@@ -1,0 +1,107 @@
+---
+title: "IA corporeizada"
+aliases:
+  - /terminos/embodied-ai.html
+  - /terminos/physical-ai.html
+sinonimos:
+  - "IA física"
+  - "Embodied AI"
+  - "Physical AI"
+description: "Rama de la IA que integra percepción, decisión y acción mediante un cuerpo situado en el mundo físico."
+categories:
+  - "Fundamentos"
+  - "IA agéntica"
+  - "Aprendizaje automático"
+date-modified: 2026-09-19
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **IA corporeizada**, también llamada **IA física**, **embodied AI** o
+**physical AI**, estudia sistemas que perciben y actúan en el mundo físico
+mediante un cuerpo con sensores y actuadores, como un robot, un vehículo o un
+exoesqueleto. Integra percepción, decisión y control motor en un lazo con el
+entorno, en vez de operar solo sobre texto o datos digitales.
+
+«IA corporeizada» es el término académico más amplio. «IA física» se usa con
+frecuencia en la industria para modelos y plataformas dirigidos a robots y
+vehículos. La presencia de un cuerpo no demuestra comprensión ni autonomía
+general: describe dónde se cierra el ciclo de percepción y acción.
+
+## Contexto histórico
+
+La tradición moderna está vinculada a la robótica basada en comportamiento.
+Rodney Brooks defendió en 1991 que un sistema podía organizarse mediante
+actividades conectadas directamente con el mundo por percepción y acción, sin
+depender de una representación central completa [@brooks1991representation].
+
+En 2025, NVIDIA presentó Cosmos como plataforma de modelos fundacionales del
+mundo para desarrollar robots y vehículos autónomos mediante datos sintéticos
+y simulación [@nvidia2025cosmos], y GR00T N1 como modelo para habilidades de
+robots humanoides que combina entradas visuales y lingüísticas con generación
+de acciones [@nvidia2025groot]. Son ejemplos industriales, no una prueba de que
+la IA corporeizada haya resuelto la interacción física general.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, uno de los cuellos de botella es obtener datos
+variados de interacción física sin exponer personas o equipos a riesgos. La
+simulación y los datos sintéticos permiten entrenar y probar antes del contacto
+con el mundo real, pero permanece la brecha entre simulación y realidad. La
+corporeización también vuelve visible el [problema del anclaje de
+símbolos](anclaje-de-simbolos.qmd): relacionar palabras y representaciones con
+percepciones y acciones no equivale por sí solo a dotarlas de significado.
+
+## Aplicaciones
+
+### Generales
+
+- Robots de almacén, manufactura y logística.
+- Vehículos y máquinas que perciben su entorno y ajustan el control.
+- Políticas robóticas entrenadas en simulación y adaptadas a un cuerpo
+  concreto.
+
+### Sanitarias
+
+- Robótica quirúrgica asistida y simuladores para entrenar tareas motoras.
+- Robots de logística hospitalaria que transportan suministros.
+- Rehabilitación y exoesqueletos que adaptan el movimiento a señales del
+  paciente.
+
+Estas aplicaciones requieren validación para cada uso; que una técnica funcione
+en simulación no acredita seguridad, autonomía ni beneficio clínico en
+pacientes.
+
+## Limitaciones
+
+- Un error puede causar daño físico, no solo una respuesta incorrecta.
+- La transferencia de simulación a realidad falla ante fricción, iluminación,
+  anatomía o conductas no modeladas.
+- Los datos físicos son costosos y los escenarios raros son difíciles de
+  cubrir.
+- Sensores, actuadores y comunicaciones añaden fallos que no aparecen en una
+  evaluación puramente digital.
+- La validación, la responsabilidad y la supervisión son especialmente
+  exigentes cuando hay pacientes o profesionales cerca.
+
+## Ejemplos
+
+Cosmos genera y transforma escenarios para entrenar o evaluar sistemas físicos
+en simulación [@nvidia2025cosmos]. GR00T N1 recibe imágenes y lenguaje y produce
+acciones de manipulación para robots humanoides [@nvidia2025groot]. Un tercer
+ejemplo es un exoesqueleto de rehabilitación que ajusta la asistencia a partir
+de sensores de movimiento, siempre bajo límites y supervisión clínica.
+
+## Relacionados
+
+- [Problema del anclaje de símbolos](anclaje-de-simbolos.qmd)
+- [Inteligencia artificial general](agi.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
