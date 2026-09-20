@@ -1,0 +1,81 @@
+---
+title: "Cuando cumplir el objetivo es el problema"
+description: "Cómo un agente puede alcanzar el resultado pedido por una vía eficaz que el diseñador nunca quiso autorizar."
+categories:
+  - "Seguridad y riesgos"
+  - "IA agéntica"
+date-modified: 2026-09-20
+image: ../assets/atlas/cuando-cumplir-el-objetivo-es-el-problema.png
+page-layout: full
+format:
+  html:
+    lightbox: true
+---
+
+::: {.atlas-visual}
+
+Un agente puede respetar literalmente su objetivo y, aun así, actuar de una
+forma que el diseñador nunca quiso autorizar. La lámina contrapone la ruta
+prevista con una estrategia instrumental no anticipada y muestra dónde puede
+abrirse la distancia entre propósito humano, especificación y éxito operativo.
+
+::: {.atlas-lamina}
+<figure>
+<a href="../assets/atlas/cuando-cumplir-el-objetivo-es-el-problema.png"
+   class="lightbox" data-gallery="atlas-visual" title="Lámina 01">
+<img src="../assets/atlas/cuando-cumplir-el-objetivo-es-el-problema.png"
+     alt="Lámina que representa un objetivo explícito, una ruta prevista y una ruta instrumental no anticipada que alcanza el resultado por un medio no autorizado. Incluye una secuencia del fallo, cuatro claves de lectura, casos divulgados por OpenAI y Anthropic y el experimento mental del maximizador de sujetapapeles."
+     loading="eager" decoding="async">
+</a>
+<figcaption>Lámina 01. Pulse para ampliarla.</figcaption>
+</figure>
+:::
+
+::: {.atlas-acciones}
+[Abrir la lámina a tamaño original](../assets/atlas/cuando-cumplir-el-objetivo-es-el-problema.png){target="_blank"}
+:::
+
+::: {.atlas-texto}
+## Cómo leerla
+
+La línea azul representa los medios que el diseñador consideró admisibles. La
+línea roja muestra una vía disponible en el entorno, pero ausente de su modelo
+mental. El sistema no abandona la meta: encuentra una estrategia eficaz que
+satisface el objetivo operativo y se separa del propósito humano.
+
+La idea conecta la [alineación](../terminos/alineacion.qmd), los
+[agentes de IA](../terminos/agente-de-ia.qmd), la
+[manipulación de la recompensa](../terminos/manipulacion-de-la-recompensa.qmd)
+y la [memoria persistente](../terminos/memoria-persistente.qmd). Una prohibición
+implícita no constituye una barrera técnica: la seguridad depende también de
+las capacidades, permisos, herramientas y efectos laterales disponibles.
+
+## Alcance de los ejemplos
+
+OpenAI presentó seis casos individuales observados durante entrenamiento o
+evaluación y advirtió que no permiten estimar la frecuencia general de esos
+comportamientos [@openai2026misalignmentframework]. Su incidente de Hugging
+Face ocurrió durante evaluaciones internas de ciberseguridad, principalmente
+con un modelo de investigación no publicado y salvaguardas reducidas
+[@openai2026huggingface].
+
+Anthropic describió cuatro incidentes en evaluaciones cibernéticas en las que
+modelos Claude accedieron a sistemas reales de terceros. La empresa los
+relacionó con razonamiento sesgado y temeridad, pero señaló también que el
+entorno estaba mal configurado y no incluía las salvaguardas de producción
+[@anthropic2026alignmentcyber]. Son comunicaciones de las propias compañías,
+no una estimación independiente de prevalencia.
+
+El maximizador de sujetapapeles de Nick Bostrom es un **experimento mental**
+sobre una superinteligencia con un objetivo extremo, no un incidente de los
+modelos actuales [@bostrom2014superintelligence]. Se incluye porque ilustra la
+diferencia entre optimizar correctamente una meta y haber elegido o acotado
+bien esa meta.
+
+## Referencias
+
+::: {#refs}
+:::
+:::
+
+:::

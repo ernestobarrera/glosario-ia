@@ -4,6 +4,7 @@ param()
 $ErrorActionPreference = "Stop"
 $raiz = Split-Path -Parent $MyInvocation.MyCommand.Path
 $carpetaTerminos = Join-Path $raiz "terminos"
+$carpetaAtlas = Join-Path $raiz "atlas"
 $carpetaSitio = Join-Path $raiz "_site"
 $errores = [System.Collections.Generic.List[string]]::new()
 $avisos = [System.Collections.Generic.List[string]]::new()
@@ -453,6 +454,86 @@ foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd"
   }
 }
 
+# Las laminas son documentos autonomos, pero comparten la taxonomia de las
+# fichas. Se validan aparte porque no deben heredar aliases, sinonimos, estado,
+# tipo ni la estructura editorial obligatoria de un termino.
+$laminas = @()
+$camposObligatoriosLamina = @("title", "description", "categories", "date-modified", "image")
+
+if (-not (Test-Path -LiteralPath $carpetaAtlas)) {
+  Registrar-Error "falta la carpeta atlas"
+}
+else {
+  foreach ($archivo in Get-ChildItem -LiteralPath $carpetaAtlas -Filter "*.qmd" -File | Sort-Object Name) {
+    $lamina = Leer-Ficha $archivo
+    if ($null -eq $lamina) {
+      continue
+    }
+
+    $laminas += $lamina
+    $meta = $lamina.Meta
+    $nombre = "atlas/$($archivo.Name)"
+    $slug = $archivo.BaseName
+
+    foreach ($campo in $camposObligatoriosLamina) {
+      if (-not $meta.ContainsKey($campo)) {
+        Registrar-Error "$nombre`: falta el campo '$campo'"
+      }
+    }
+
+    $categorias = @($meta["categories"])
+    if ($categorias.Count -lt 1 -or $categorias.Count -gt 3) {
+      Registrar-Error "$nombre`: debe tener entre 1 y 3 categorias"
+    }
+    foreach ($categoria in $categorias) {
+      if ($categoria -notin $categoriasPermitidas) {
+        Registrar-Error "$nombre`: categoria no controlada '$categoria'"
+      }
+    }
+
+    if ($meta.ContainsKey("image")) {
+      $rutaImagen = [IO.Path]::GetFullPath((Join-Path $archivo.DirectoryName $meta["image"]))
+      if (-not (Test-Path -LiteralPath $rutaImagen)) {
+        Registrar-Error "$nombre`: no existe la imagen '$($meta['image'])'"
+      }
+    }
+
+    foreach ($cita in [regex]::Matches($lamina.Cuerpo, "(?<![\w.])@([A-Za-z0-9_:.+-]+)")) {
+      $claveCitada = $cita.Groups[1].Value
+      if (-not $clavesBib.ContainsKey($claveCitada)) {
+        Registrar-Error "$nombre`: citekey inexistente '$claveCitada'"
+      }
+    }
+
+    foreach ($enlace in [regex]::Matches($lamina.Cuerpo, "\]\(([^)#]+\.qmd)(?:#[^)]+)?\)")) {
+      $destinoRelativo = $enlace.Groups[1].Value
+      $destino = [IO.Path]::GetFullPath((Join-Path $archivo.DirectoryName $destinoRelativo))
+      if (-not (Test-Path -LiteralPath $destino)) {
+        Registrar-Error "$nombre`: enlace interno roto '$destinoRelativo'"
+      }
+    }
+
+    $htmlCanonico = Join-Path $carpetaSitio "atlas\$slug.html"
+    if (-not (Test-Path -LiteralPath $htmlCanonico)) {
+      Registrar-Error "$nombre`: no existe la salida canonica atlas/$slug.html"
+      continue
+    }
+
+    $html = Get-Content -LiteralPath $htmlCanonico -Encoding UTF8 -Raw
+    $posicionCategoria = 1
+    foreach ($categoria in $categorias) {
+      $reglaEsperada = (
+        "#title-block-header .quarto-category:nth-child($posicionCategoria)" +
+        "{--h:var(--h-" + (Slug-Categoria $categoria) + ",192)}"
+      )
+      if ($html.IndexOf($reglaEsperada, [StringComparison]::Ordinal) -lt 0) {
+        Registrar-Error "$nombre`: la categoria '$categoria' no recibe matiz en la cabecera"
+      }
+      $posicionCategoria++
+    }
+  }
+}
+
 foreach ($alias in $aliasVistos.Keys) {
   $slugAlias = [IO.Path]::GetFileNameWithoutExtension($alias)
   if ($slugVistos.ContainsKey($slugAlias)) {
@@ -485,7 +566,7 @@ else {
 # verificaba- y el filtro de la pagina sin encontrarlos. Indexado y filtrable no
 # son lo mismo, y hasta ahora solo se comprobaba lo primero.
 $columnasComprobadas = 0
-foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
+foreach ($pagina in @("index.html", "indice-az.html", "temas.html", "atlas.html")) {
   $rutaListado = Join-Path $carpetaSitio $pagina
   if (-not (Test-Path -LiteralPath $rutaListado)) {
     Registrar-Error "$pagina`: no existe la salida del listado"
@@ -539,7 +620,7 @@ foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
 # aqui, no se copia, de modo que tambien detecta que Quarto haya cambiado el
 # mecanismo. Sin esto, una cuadricula reintroducida saldria gris y nadie lo
 # sabria hasta mirarla.
-foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
+foreach ($pagina in @("index.html", "indice-az.html", "temas.html", "atlas.html")) {
   $rutaPagina = Join-Path $carpetaSitio $pagina
   if (-not (Test-Path -LiteralPath $rutaPagina)) {
     continue
@@ -564,6 +645,30 @@ foreach ($pagina in @("index.html", "indice-az.html", "temas.html")) {
         "('$($tokensTaxonomia[$emitido])') y styles.css no tiene regla de matiz para su token; " +
         "saldrian grises"
       )
+    }
+  }
+}
+
+# El indice del Atlas debe contener una entrada por cada lamina. La presencia de
+# los .qmd no basta: un patron de contents roto publicaria un indice vacio sin
+# que Quarto lo tratase como error.
+$rutaAtlas = Join-Path $carpetaSitio "atlas.html"
+if (-not (Test-Path -LiteralPath $rutaAtlas)) {
+  Registrar-Error "atlas.html: no existe la salida del indice"
+}
+else {
+  $htmlAtlas = Get-Content -LiteralPath $rutaAtlas -Encoding UTF8 -Raw
+  $laminasEnIndice = ([regex]::Matches($htmlAtlas, 'class="quarto-post')).Count
+  if ($laminasEnIndice -ne $laminas.Count) {
+    Registrar-Error (
+      "atlas.html: el indice muestra $laminasEnIndice laminas y existen $($laminas.Count) fuentes"
+    )
+  }
+
+  foreach ($lamina in $laminas) {
+    $rutaEsperada = "atlas/$($lamina.Archivo.BaseName).html"
+    if ($htmlAtlas.IndexOf($rutaEsperada, [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error "atlas.html: falta el enlace a '$rutaEsperada'"
     }
   }
 }
@@ -758,6 +863,7 @@ if ($errores.Count -gt 0) {
 
 Write-Host "VALIDACION CORRECTA" -ForegroundColor Green
 Write-Host "  Fichas: $($fichas.Count)"
+Write-Host "  Laminas del Atlas: $($laminas.Count), con categorias controladas y entrada en el indice"
 Write-Host "  Citekeys: $($clavesBib.Count)"
 Write-Host "  Slugs derivados y unicos: $($slugVistos.Count)"
 Write-Host "  Aliases unicos y generados: $($aliasVistos.Count)"

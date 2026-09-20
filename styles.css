@@ -32,8 +32,8 @@
   --h-ia-agentica: 104;
 }
 
-/* La pastilla teñida, escrita una sola vez para los tres sitios donde aparece
- * una categoria: la tarjeta de la portada, el listado de Temas y la ficha. */
+/* La pastilla teñida, escrita una sola vez para los documentos y listados que
+ * muestran categorias: fichas, laminas y tarjetas de la portada. */
 .glosario-card-categorias .listing-category,
 .quarto-title .quarto-category {
   padding: 0.05rem 0.5rem;
@@ -718,25 +718,9 @@ main.content:has(.atlas-visual) {
   margin-inline: auto;
 }
 
-.atlas-entradilla,
-.atlas-visual > h2,
 .atlas-visual > p,
 .atlas-texto {
   max-width: 78ch;
-}
-
-.atlas-entradilla {
-  margin-bottom: 1.6rem;
-  color: var(--g-tinta-2);
-  font-size: 1.03rem;
-}
-
-.atlas-entradilla code {
-  padding: 0;
-  background: transparent;
-  color: var(--g-marca);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
 }
 
 .atlas-lamina {
