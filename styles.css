@@ -704,6 +704,94 @@ nav[role="doc-toc"] ul > li > a.active {
   color: var(--g-marca);
 }
 
+/* ---------- atlas visual ---------- */
+
+/* Las laminas necesitan mucha mas anchura que una ficha. El texto explicativo
+ * conserva, en cambio, la medida de lectura normal del glosario. */
+main.content:has(.atlas-visual) {
+  max-width: none;
+  padding-inline: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.atlas-visual {
+  width: min(100%, 1500px);
+  margin-inline: auto;
+}
+
+.atlas-entradilla,
+.atlas-visual > h2,
+.atlas-visual > p,
+.atlas-texto {
+  max-width: 78ch;
+}
+
+.atlas-entradilla {
+  margin-bottom: 1.6rem;
+  color: var(--g-tinta-2);
+  font-size: 1.03rem;
+}
+
+.atlas-entradilla code {
+  padding: 0;
+  background: transparent;
+  color: var(--g-marca);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.atlas-lamina {
+  margin: 1.5rem 0 0.65rem;
+}
+
+.atlas-lamina .quarto-figure {
+  margin: 0;
+}
+
+.atlas-lamina img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--g-linea);
+  border-radius: 0.45rem;
+  background: #fff;
+  box-shadow: 0 8px 28px rgb(21 50 58 / 10%);
+}
+
+.atlas-lamina a:focus-visible img {
+  outline: 3px solid var(--g-marca);
+  outline-offset: 4px;
+}
+
+.atlas-acciones {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.76rem;
+}
+
+.atlas-texto {
+  margin-right: auto;
+}
+
+.atlas-texto #refs a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+  main.content:has(.atlas-visual) {
+    padding-inline: 0.75rem;
+  }
+
+  .atlas-lamina {
+    margin-inline: -0.35rem;
+  }
+
+  .atlas-acciones {
+    justify-content: flex-start;
+  }
+}
+
 /* ---------- pie ---------- */
 
 .nav-footer {

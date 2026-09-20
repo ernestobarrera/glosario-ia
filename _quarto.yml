@@ -36,6 +36,8 @@ website:
         text: A–Z
       - href: temas.qmd
         text: Temas
+      - href: atlas.qmd
+        text: Atlas visual
   page-footer:
     left: "Barrera E. · Textos originales bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)"
     right:
