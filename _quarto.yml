@@ -58,6 +58,7 @@ filters:
   - filters/estado.lua
   - filters/matices.lua
   - filters/temas.lua
+  - filters/atlas.lua
 
 format:
   html:

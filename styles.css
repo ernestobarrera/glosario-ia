@@ -645,6 +645,30 @@ nav[role="doc-toc"] .recuento-tema {
   text-transform: uppercase;
 }
 
+/* Lo inserta filters/atlas.lua al final de la ficha, solo cuando alguna
+ * lamina la enlaza. El filete superior la separa del cuerpo, no del sumario:
+ * es la unica marca de "esto sigue en otro documento" que tiene una ficha. */
+.atlas-relacionado {
+  margin: 1.8rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--g-linea-2);
+  color: var(--g-tinta-3);
+  font-size: 0.88rem;
+}
+
+.atlas-relacionado strong {
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.atlas-relacionado a {
+  color: var(--g-marca);
+}
+
 main.content h2 {
   margin-top: 2rem;
   padding-top: 0.85rem;
