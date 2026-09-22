@@ -1,0 +1,91 @@
+---
+title: "Capability overhang"
+aliases:
+  - /terminos/overhang-de-capacidades.html
+sinonimos:
+  - "Overhang de capacidades"
+description: "Brecha entre una capacidad disponible y lo que una evaluación demuestra o una organización aprovecha; el sentido depende del contexto."
+categories:
+  - "Fundamentos"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+**Capability overhang** tiene al menos dos acepciones vivas. En **evaluación y
+seguridad**, es la posible distancia entre las capacidades mostradas en una
+prueba y las que podrían obtenerse con mejor
+[elicitación](elicitacion-de-capacidades.qmd). Un resultado bajo con una
+configuración limitada constituye un límite inferior de lo observado, nunca
+un límite superior de lo posible [@metr2024elicitation].
+
+En **adopción y valor**, es la distancia entre lo que los sistemas ya permiten
+hacer y lo que personas u organizaciones aprovechan de verdad. OpenAI usó
+esta acepción en enero de 2026 al hablar de diferencias de uso entre personas
+y países [@openai2026overhang]. La primera acepción invita a ampliar la
+evaluación; la segunda, a mejorar acceso, formación y uso. No conviene
+fundirlas ni traducir el término como «capacidad industrial ociosa».
+
+## Contexto histórico
+
+Las pautas de METR de 2024 se ocupan de lo que una evaluación puede dejar
+sin descubrir cuando faltan ajustes plausibles [@metr2024elicitation]. En
+2026, OpenAI empleó la misma expresión para una brecha de aprovechamiento
+social y organizativo [@openai2026overhang]. La coincidencia léxica no hace
+equivalentes los dos problemas.
+
+## Importancia actual
+
+Antes de interpretar una afirmación sobre *overhang* hay que identificar
+cuál es la comparación: **demostrado frente a accesible** o **accesible frente
+a utilizado**. Sin ese denominador, una ficha técnica o un discurso de
+producto puede mezclar incertidumbre de seguridad con una oportunidad de
+adopción.
+
+## Aplicaciones
+
+### Generales
+
+- En evaluación, buscar configuraciones que puedan revelar capacidades no
+  observadas [@metr2024elicitation].
+- En adopción, analizar barreras de acceso o competencias para aprovechar
+  herramientas ya disponibles [@openai2026overhang].
+
+### Sanitarias
+
+Al leer un estudio de un agente clínico, un resultado modesto tras poca
+elicitación no prueba incapacidad. Al evaluar una demostración comercial, un
+producto técnicamente capaz tampoco garantiza que los equipos puedan
+integrarlo con seguridad en su trabajo. Las dos preguntas requieren datos
+distintos; ninguna sustituye la validación de la tarea clínica concreta.
+
+## Limitaciones
+
+- La capacidad aún no elicitada no se mide directamente: es una posibilidad,
+  no una cifra conocida.
+- La brecha de adopción depende también de organización, acceso y formación;
+  no permite inferir la seguridad del sistema [@openai2026overhang].
+- El término sin su acepción explícita puede conducir a decisiones opuestas.
+
+## Ejemplos
+
+Un [benchmark](benchmark-de-ia.qmd) informa una puntuación baja con un
+prompt único. Preguntar qué rendimiento aparecería con herramientas y
+andamiaje mejores trata el *overhang* de evaluación. Preguntar por qué una
+herramienta que ya funciona no se usa en un servicio trata el de adopción.
+
+## Relacionados
+
+- [Elicitación de capacidades](elicitacion-de-capacidades.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+- [Andamiaje de agente](andamiaje-de-agente.qmd)
+- [Cómputo en inferencia](computo-en-inferencia.qmd)
+- [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

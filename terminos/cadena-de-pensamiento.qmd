@@ -11,7 +11,7 @@ description: "Técnica de prompting que pide al modelo exponer pasos intermedios
 categories:
   - "Modelos de lenguaje"
   - "Procesamiento del lenguaje"
-date-modified: 2026-09-14
+date-modified: 2026-09-22
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -29,6 +29,10 @@ Hay una distinción que conviene fijar desde el principio, porque de ella
 depende todo el uso responsable de la técnica: la cadena de pensamiento cambia
 **lo que el modelo produce**, no da acceso a **cómo lo produjo**. El texto de
 los pasos es una salida más del sistema, generada igual que el resto.
+
+Puede ser una forma de gastar [cómputo en inferencia](computo-en-inferencia.qmd),
+pero ese presupuesto también puede emplearse en varios intentos o selección
+de respuestas [@snell2024testtime].
 
 ## Contexto histórico
 
@@ -108,6 +112,7 @@ aparente.
 - [Zero-shot learning](zero-shot-learning.qmd)
 - [Explicabilidad](explicabilidad.qmd)
 - [Alucinación](alucinacion.qmd)
+- [Cómputo en inferencia](computo-en-inferencia.qmd)
 
 ## Referencias
 

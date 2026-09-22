@@ -11,7 +11,7 @@ description: "Sistema capaz de percibir un entorno, razonar sobre un objetivo y 
 categories:
   - "IA agéntica"
   - "Fundamentos"
-date-modified: 2026-09-19
+date-modified: 2026-09-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -34,6 +34,10 @@ los agentes para interpretar instrucciones y trabajar con información no
 estructurada. Protocolos como MCP pueden estandarizar parte de la conexión con
 recursos y herramientas, pero no resuelven por sí solos la seguridad o la
 gobernanza [@mcp2025spec].
+
+El [andamiaje de agente](andamiaje-de-agente.qmd) reúne las instrucciones,
+descripciones de herramientas y reglas de contexto que configuran ese
+comportamiento alrededor del modelo [@huggingface2026agentglossary].
 
 ## Contexto histórico
 
@@ -100,6 +104,7 @@ sin sustituir la decisión clínica.
 - [Alucinación](alucinacion.qmd)
 - [Model Context Protocol](mcp.qmd)
 - [Razonar y actuar](react.qmd)
+- [Andamiaje de agente](andamiaje-de-agente.qmd)
 
 ## Referencias
 

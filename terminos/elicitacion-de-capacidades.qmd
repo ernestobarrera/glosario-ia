@@ -1,0 +1,99 @@
+---
+title: "Elicitación de capacidades"
+aliases:
+  - /terminos/capability-elicitation.html
+  - /terminos/elicitacion.html
+sinonimos:
+  - "Capability elicitation"
+  - "Elicitación"
+description: "Esfuerzo sistemático para obtener el mejor rendimiento accesible de un sistema antes de medir sus capacidades."
+categories:
+  - "Fundamentos"
+  - "Seguridad y riesgos"
+  - "IA agéntica"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **elicitación de capacidades** es el trabajo previo a una evaluación para
+encontrar una configuración que permita al sistema mostrar lo que puede hacer.
+Puede incluir [prompting](prompting.qmd), ejemplos, [fine-tuning](fine-tuning.qmd),
+herramientas, [andamiaje de agente](andamiaje-de-agente.qmd) y más
+[cómputo en inferencia](computo-en-inferencia.qmd). METR pide medir las
+capacidades accesibles mediante mejoras plausibles, además del comportamiento
+del modelo tal como se entrega [@metr2024elicitation].
+
+Un [benchmark](benchmark-de-ia.qmd) define tareas, datos, métricas y protocolo.
+La elicitación añade una pregunta distinta: **¿cuánto esfuerzo se dedicó a
+conseguir que el sistema rindiera dentro de ese protocolo?** Por eso la
+puntuación describe una configuración evaluada, no una capacidad fija de los
+pesos.
+
+## Contexto histórico
+
+La comparación de modelos mediante pruebas comunes precede a los agentes. Con
+los modelos de lenguaje, el [prompting](prompting.qmd) y el ajuste posterior al
+entrenamiento ampliaron las maneras de modificar el resultado sin sustituir
+necesariamente el modelo base. En 2024, METR publicó pautas específicas para
+elicitar capacidades durante evaluaciones de sistemas autónomos
+[@metr2024elicitation].
+
+## Importancia actual
+
+Una puntuación baja tras una elicitación limitada es un **límite inferior** de
+lo observado: no demuestra que la capacidad esté ausente ni establece un
+límite superior. La distancia posible entre lo demostrado y lo aún accesible
+es una acepción de [capability overhang](capability-overhang.qmd). Conviene
+documentar los intentos y el presupuesto de elicitación junto al resultado
+[@metr2024elicitation].
+
+## Aplicaciones
+
+### Generales
+
+- Comparar configuraciones de un mismo modelo con idénticas tareas y métricas.
+- Buscar fallos del prompt, de las herramientas o del andamiaje antes de
+  atribuir un resultado bajo al modelo.
+- Evaluar capacidades relevantes para seguridad bajo condiciones explícitas.
+
+### Sanitarias
+
+Al leer un estudio de extracción clínica o una demostración comercial, el
+profesional puede preguntar qué instrucciones, ejemplos, herramientas y
+tiempo de inferencia se usaron, y si esos recursos estarán disponibles en el
+entorno asistencial. Un resultado logrado con una configuración intensiva no
+describe automáticamente la versión ofrecida para uso diario.
+
+## Limitaciones
+
+- Ningún esfuerzo finito acredita que se haya encontrado la mejor
+  configuración posible [@metr2024elicitation].
+- Optimizar repetidamente sobre las tareas de prueba puede producir
+  [sobreajuste](sobreajuste.qmd); conviene separar desarrollo y evaluación.
+- Un buen resultado bajo una configuración tampoco demuestra validez clínica
+  fuera de las tareas y datos medidos.
+
+## Ejemplos
+
+Un modelo falla al resumir un informe con un prompt genérico. Con instrucciones
+específicas y acceso a una plantilla estructurada mejora. El cambio informa
+sobre la elicitación y la configuración; no prueba que el modelo anterior
+careciera de la capacidad ni que el nuevo resultado se generalice a otros
+informes.
+
+## Relacionados
+
+- [Benchmark de IA](benchmark-de-ia.qmd)
+- [Capability overhang](capability-overhang.qmd)
+- [Andamiaje de agente](andamiaje-de-agente.qmd)
+- [Cómputo en inferencia](computo-en-inferencia.qmd)
+- [Prompting](prompting.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

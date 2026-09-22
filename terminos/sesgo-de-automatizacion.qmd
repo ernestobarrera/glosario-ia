@@ -9,7 +9,7 @@ description: "Tendencia a aceptar una recomendación automatizada con comprobaci
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-08-22
+date-modified: 2026-09-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -31,6 +31,11 @@ la decisión, pasó a investigarse también en sanidad. Las revisiones publicada
 en 2012 y 2017 mostraron que no basta con presentar más información: importa si
 el usuario puede comprobarla de manera efectiva
 [@goddard2012automation; @lyell2017automation].
+
+La [frontera tecnológica dentada](frontera-tecnologica-dentada.qmd) plantea
+un caso difícil para esa comprobación: tareas que parecen similares pueden
+quedar a lados distintos de la competencia útil del sistema
+[@dellacqua2026jagged].
 
 ## Importancia actual
 
@@ -76,6 +81,7 @@ datos clínicos disponibles.
 - [Explicabilidad](explicabilidad.qmd)
 - [Alucinación](alucinacion.qmd)
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
 
 ## Referencias
 

@@ -8,7 +8,7 @@ description: "Contrato estructurado que declara qué herramientas puede invocar 
 categories:
   - "IA agéntica"
   - "Fundamentos"
-date-modified: 2026-09-19
+date-modified: 2026-09-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -23,6 +23,11 @@ devuelto, los efectos secundarios y los permisos requeridos. El modelo usa ese
 contrato para elegir una operación y construir argumentos con la forma
 esperada; la aplicación valida y decide si ejecuta la solicitud. El contrato
 no concede por sí solo autorización.
+
+Dentro del [andamiaje de agente](andamiaje-de-agente.qmd), el esquema es
+solo la parte que declara herramientas: las instrucciones, el parseo y la
+gestión del contexto también configuran al agente
+[@huggingface2026agentglossary].
 
 ## Contexto histórico
 
@@ -101,6 +106,7 @@ indicación y autorización antes de aceptar la propuesta.
 - [Model Context Protocol](mcp.qmd)
 - [Inyección de prompts](inyeccion-de-prompts.qmd)
 - [Prompt de sistema](prompt-de-sistema.qmd)
+- [Andamiaje de agente](andamiaje-de-agente.qmd)
 
 ## Referencias
 
