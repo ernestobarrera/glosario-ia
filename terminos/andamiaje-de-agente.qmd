@@ -1,0 +1,96 @@
+---
+title: "Andamiaje de agente"
+aliases:
+  - /terminos/agent-scaffolding.html
+  - /terminos/scaffolding.html
+sinonimos:
+  - "Agent scaffolding"
+  - "Scaffolding"
+description: "Capa de instrucciones, herramientas y gestión del contexto que configura el comportamiento de un agente alrededor del modelo."
+categories:
+  - "IA agéntica"
+  - "Arquitecturas"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **andamiaje de agente** configura lo que un modelo ve y cómo puede actuar
+en un [agente de IA](agente-de-ia.qmd): el
+[prompt de sistema](prompt-de-sistema.qmd), las descripciones o
+[esquemas de herramientas](esquema-de-herramientas.qmd), el formato y parseo
+de respuestas, la memoria entre pasos y la construcción del contexto. El
+esquema de herramientas es **una parte** del andamiaje, no su equivalente
+[@huggingface2026agentglossary].
+
+Hugging Face distingue ese andamiaje del *harness*, la capa de ejecución que
+llama al modelo, despacha herramientas y decide cuándo terminar. Advierte a
+la vez que los términos no tienen definiciones universalmente aceptadas y
+que otros marcos usan *harness* para un conjunto más amplio. Aquí se explica
+la distinción, sin fijarla como una equivalencia obligatoria
+[@huggingface2026agentglossary].
+
+## Contexto histórico
+
+Los sistemas basados en modelos de lenguaje pasaron de una pregunta y una
+respuesta a secuencias con herramientas y contexto persistente. Patrones como
+[ReAct](react.qmd) combinaron razonamiento y acción [@yao2023react]. En mayo
+de 2026, el glosario de Hugging Face separó explícitamente andamiaje y
+*harness* para aclarar qué se configura y qué se ejecuta
+[@huggingface2026agentglossary].
+
+## Importancia actual
+
+Dos agentes que usan el mismo modelo pueden comportarse de forma diferente si
+cambian sus instrucciones, herramientas, memoria o bucle de ejecución
+[@huggingface2026agentglossary]. Una evaluación de agente debe identificar
+esa configuración antes de atribuir todo el resultado al modelo. Modificar el
+andamiaje puede ser una forma de [elicitar capacidades](elicitacion-de-capacidades.qmd).
+
+## Aplicaciones
+
+### Generales
+
+- Definir instrucciones y resultados esperados para cada paso de un agente.
+- Limitar herramientas visibles y organizar el contexto entre llamadas.
+- Comparar configuraciones al evaluar la misma tarea.
+
+### Sanitarias
+
+Al examinar una demostración de un agente clínico, hay que pedir las
+instrucciones, las fuentes a las que accede, el esquema de las acciones y
+qué conserva entre pasos. Una ficha técnica que solo indica el nombre del
+modelo no describe este comportamiento ni permite reproducir la prueba.
+
+## Limitaciones
+
+- El vocabulario *scaffold*/*harness* varía entre marcos
+  [@huggingface2026agentglossary].
+- Describir una herramienta no concede autorización: el servicio ejecutor
+  debe validar permisos y argumentos.
+- Cambios en instrucciones, memoria o contexto pueden alterar resultados y
+  exigir nueva evaluación.
+
+## Ejemplos
+
+Un agente que prepara una propuesta de cita ve un prompt de sistema, una
+herramienta de lectura de agenda y otra de creación de borradores. Esos
+elementos y las reglas de contexto forman su andamiaje. El software que
+ejecuta la secuencia y envía cada llamada a la herramienta correspondiente
+cumple la función que esta distinción llama *harness*.
+
+## Relacionados
+
+- [Agente de IA](agente-de-ia.qmd)
+- [Esquema de herramientas](esquema-de-herramientas.qmd)
+- [Prompt de sistema](prompt-de-sistema.qmd)
+- [Model Context Protocol](mcp.qmd)
+- [Elicitación de capacidades](elicitacion-de-capacidades.qmd)
+- [Razonar y actuar](react.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

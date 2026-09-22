@@ -1,0 +1,93 @@
+---
+title: "Cómputo en inferencia"
+aliases:
+  - /terminos/test-time-compute.html
+  - /terminos/inference-time-compute.html
+sinonimos:
+  - "Test-time compute"
+  - "Inference-time compute"
+description: "Presupuesto de operaciones usado mientras un modelo resuelve una solicitud, distinto del entrenamiento y del tamaño del modelo."
+categories:
+  - "Fundamentos"
+  - "Modelos de lenguaje"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **cómputo en inferencia** —*test-time compute* o *inference-time compute*—
+es el presupuesto de operaciones que un sistema gasta **al responder** una
+solicitud. Puede emplearse en generar más pasos, explorar varias respuestas,
+verificarlas o seleccionar entre ellas. No es el cómputo usado para entrenar
+ni equivale al número de [parámetros del modelo](parametros-de-un-modelo.qmd)
+[@snell2024testtime].
+
+La [cadena de pensamiento](cadena-de-pensamiento.qmd) es una manera de
+emplear ese presupuesto, no el concepto completo. La
+[temperatura](temperatura-de-muestreo.qmd) y el
+[muestreo top-p](muestreo-top-p.qmd) gobiernan la selección de tokens;
+por sí solos no especifican cuánto cómputo se concede.
+
+## Contexto histórico
+
+La inferencia tradicional se describía a menudo como una única pasada o
+generación. Los sistemas de lenguaje empezaron a dedicar más trabajo a cada
+problema. Snell y colaboradores estudiaron en 2024 cómo asignar ese cómputo
+según la dificultad y el tipo de problema, y mostraron regímenes en los que
+una asignación adecuada compite con aumentar el tamaño del modelo
+[@snell2024testtime].
+
+## Importancia actual
+
+Comparar dos resultados exige conocer también el presupuesto de inferencia.
+Más cómputo puede mejorar ciertas tareas, pero **no garantiza acierto**: el
+beneficio depende del problema y de la estrategia de asignación
+[@snell2024testtime]. Repetir una respuesta o prolongar su generación tampoco
+elimina el [no determinismo](no-determinismo.qmd).
+
+## Aplicaciones
+
+### Generales
+
+- Reservar más intentos o verificaciones para problemas difíciles.
+- Comparar calidad frente a latencia y coste con presupuestos declarados.
+- Evaluar si una mejora procede del modelo o de gastar más recursos por caso.
+
+### Sanitarias
+
+Una demostración que usa varias respuestas y selección posterior no se puede
+comparar sin más con un producto que entrega una sola respuesta en segundos.
+Al leer un estudio, el profesional debe buscar el presupuesto, el tiempo por
+caso y si la misma configuración cabe en el flujo asistencial previsto.
+
+## Limitaciones
+
+- Más operaciones pueden aumentar latencia y coste por consulta.
+- Una respuesta extensa o una cadena de razonamiento convincente no certifica
+  corrección ni explica fielmente el proceso [@turpin2023unfaithful].
+- El rendimiento puede dejar de mejorar o empeorar según tarea y método
+  [@snell2024testtime].
+- La variación entre ejecuciones sigue necesitando evaluación propia.
+
+## Ejemplos
+
+Un sistema intenta una sola solución de un problema y otro genera varias,
+verifica restricciones y escoge una. Si el segundo mejora en una prueba, el
+resultado corresponde a **modelo más estrategia y presupuesto de inferencia**;
+no demuestra por sí solo que sus parámetros sean superiores.
+
+## Relacionados
+
+- [Cadena de pensamiento](cadena-de-pensamiento.qmd)
+- [Parámetros de un modelo](parametros-de-un-modelo.qmd)
+- [Temperatura de muestreo](temperatura-de-muestreo.qmd)
+- [Muestreo top-p](muestreo-top-p.qmd)
+- [No determinismo](no-determinismo.qmd)
+- [Elicitación de capacidades](elicitacion-de-capacidades.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

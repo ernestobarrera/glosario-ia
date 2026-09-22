@@ -11,7 +11,7 @@ description: "Conjunto definido de tareas, datos, métricas y reglas usado para 
 categories:
   - "Fundamentos"
   - "Aprendizaje automático"
-date-modified: 2026-09-02
+date-modified: 2026-09-22
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -26,6 +26,10 @@ considera correcta y cómo se resume el resultado.
 Una puntuación no mide la inteligencia «en general». Solo describe el
 rendimiento en ese protocolo, y pierde sentido si cambian los datos, la métrica
 o las condiciones de uso.
+
+La [elicitación de capacidades](elicitacion-de-capacidades.qmd) añade otra
+dimensión: cuánto esfuerzo se dedicó a obtener el mejor rendimiento accesible
+mediante instrucciones, herramientas o ajustes [@metr2024elicitation].
 
 ## Contexto histórico
 
@@ -68,6 +72,9 @@ deben publicarse versión, datos, código y condiciones de ejecución.
   deja de medir generalización.
 - Los resultados de una base unicéntrica no se trasladan automáticamente a otro
   centro, población o flujo de trabajo.
+- La puntuación depende de la configuración medida y del esfuerzo de
+  elicitación; una prueba limitada no fija el máximo rendimiento del sistema
+  [@metr2024elicitation].
 
 ## Ejemplos
 
@@ -83,6 +90,7 @@ efecto sobre la atención.
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
 - [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
 - [Conjunto de datos](conjunto-de-datos.qmd)
+- [Elicitación de capacidades](elicitacion-de-capacidades.qmd)
 
 ## Referencias
 

@@ -1,0 +1,92 @@
+---
+title: "Frontera tecnológica dentada"
+aliases:
+  - /terminos/jagged-technological-frontier.html
+  - /terminos/frontera-dentada.html
+sinonimos:
+  - "Jagged technological frontier"
+  - "Frontera dentada"
+description: "Distribución irregular de tareas en las que una IA ayuda o perjudica, difícil de anticipar por su apariencia."
+categories:
+  - "Fundamentos"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **frontera tecnológica dentada** describe la irregularidad del rendimiento
+de un sistema de IA entre tareas: puede ayudar mucho en una y perjudicar en
+otra que a una persona le parece de dificultad parecida. La posición de cada
+tarea respecto a la frontera no se deduce de su aspecto externo. Dell'Acqua y
+colaboradores estudiaron este patrón en un experimento de campo con
+consultores de gestión [@dellacqua2026jagged].
+
+No es sinónimo de [alucinación](alucinacion.qmd),
+[sesgo algorítmico](sesgo-algoritmico.qmd) ni
+[no determinismo](no-determinismo.qmd): esos términos describen clases de
+error o variación; la frontera se refiere a **qué tareas** quedan dentro o
+fuera de la competencia útil del sistema.
+
+## Contexto histórico
+
+La noción se formuló para explicar por qué la colaboración entre personas e
+IA no produce una mejora uniforme. El estudio publicado en *Organization
+Science* en 2026 evaluó tareas realistas de consultoría: la ayuda resultó
+beneficiosa en unas tareas y perjudicial en otra situada fuera de la frontera
+[@dellacqua2026jagged].
+
+## Importancia actual
+
+Una puntuación media de [benchmark](benchmark-de-ia.qmd) puede ocultar una
+frontera muy irregular. Para decidir si usar un sistema importa identificar
+las tareas concretas en las que funciona y aquellas en las que el usuario
+puede confiar de más. Esa combinación se relaciona con el
+[sesgo de automatización](sesgo-de-automatizacion.qmd).
+
+## Aplicaciones
+
+### Generales
+
+- Separar resultados por tipo de tarea en vez de comunicar solo un promedio.
+- Probar flujos de trabajo reales, incluidos casos que parecen similares.
+- Definir dónde la ayuda requiere revisión independiente.
+
+### Sanitarias
+
+Al leer un estudio o una ficha técnica, conviene identificar la tarea exacta:
+resumir una nota, codificar un episodio y proponer una decisión clínica no
+ocupan necesariamente el mismo lado de la frontera. La implicación es medir
+el borde **tarea por tarea** en la población y el flujo asistencial de interés.
+El experimento de consultoría no aportó resultados clínicos y sus cifras no
+deben trasladarse a la sanidad.
+
+## Limitaciones
+
+- La frontera depende del sistema, la configuración y la tarea evaluada.
+- Una tarea nueva puede parecerse a otra exitosa y, aun así, exigir una
+  capacidad distinta.
+- El estudio de consultoría no estima tasas de error ni beneficios clínicos
+  [@dellacqua2026jagged].
+
+## Ejemplos
+
+Una demostración muestra que la IA redacta con soltura un resumen de alta.
+Eso no acredita que detecte una contradicción entre fármacos de una historia
+compleja. Ambas tareas usan texto clínico, pero requieren pruebas separadas;
+una salida convincente puede favorecer la aceptación automática de la segunda.
+
+## Relacionados
+
+- [Benchmark de IA](benchmark-de-ia.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Elicitación de capacidades](elicitacion-de-capacidades.qmd)
+- [Alucinación](alucinacion.qmd)
+- [No determinismo](no-determinismo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
