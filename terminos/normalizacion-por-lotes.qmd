@@ -1,0 +1,97 @@
+---
+title: "Normalización por lotes"
+aliases:
+  - /terminos/batch-normalization.html
+  - /terminos/batch-norm.html
+sinonimos:
+  - "Batch normalization"
+  - "BatchNorm"
+description: "Técnica que normaliza activaciones con estadísticas del minilote y aprende después una escala y un desplazamiento."
+categories:
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **normalización por lotes**, o **batch normalization** —abreviada
+**BatchNorm**—, normaliza activaciones de una red mediante la media y la
+varianza de un minilote. Después aplica una escala y un desplazamiento
+aprendibles, de modo que la red no queda obligada a conservar media cero y
+varianza uno.
+
+Durante el entrenamiento usa estadísticas de cada minilote; durante la
+inferencia suele emplear estimaciones acumuladas. Es, por tanto, parte del
+modelo y no solo una transformación previa de los datos.
+
+## Contexto histórico
+
+Ioffe y Szegedy presentaron BatchNorm en 2015 como una forma de acelerar y
+estabilizar el entrenamiento, motivada por la reducción del llamado
+*internal covariate shift* [@ioffe2015batchnorm]. Esa explicación histórica no
+es un mecanismo causal cerrado: trabajos posteriores observaron beneficios aun
+sin reducir ese desplazamiento y los relacionaron con una optimización más
+suave [@santurkar2018batchnorm].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la técnica sigue siendo habitual en redes
+convolucionales y otros modelos entrenados con minilotes adecuados. No es una
+regla universal: arquitecturas secuenciales y transformers suelen preferir
+normalizaciones que no dependen de otros ejemplos del lote.
+
+## Aplicaciones
+
+### Generales
+
+- Estabilizar el entrenamiento de redes profundas.
+- Admitir en algunos modelos tasas de aprendizaje mayores.
+- Reducir sensibilidad a la inicialización.
+- Normalizar activaciones intermedias en redes convolucionales.
+
+### Sanitarias
+
+- Entrenar modelos de imagen médica cuando los lotes son suficientes y
+  representativos.
+- Estabilizar modelos de señales o clasificación antes de su validación.
+
+La mejora de la optimización no demuestra mayor exactitud clínica ni elimina
+la necesidad de calibración y validación externa.
+
+## Limitaciones
+
+- Los lotes muy pequeños producen estadísticas ruidosas.
+- Mezclar dominios o poblaciones dentro del lote puede alterar las activaciones.
+- Un cambio entre estadísticas de entrenamiento e inferencia degrada el modelo.
+- Su estado acumulado debe guardarse y versionarse junto con los pesos.
+- Puede ser inadecuada para secuencias, inferencia en flujo o entrenamiento
+  distribuido si no se controla cómo se forman y sincronizan los lotes.
+
+## Ejemplos
+
+En una red convolucional, BatchNorm puede normalizar cada canal usando las
+imágenes del minilote y aprender después su escala. Si la inferencia usa
+estadísticas acumuladas de otra población, el modelo puede cambiar aunque los
+pesos principales sean idénticos.
+
+En un conjunto médico pequeño, reducir el lote para acomodar imágenes grandes
+puede volver inestables esas estimaciones; la técnica debe comprobarse en la
+configuración realmente desplegada.
+
+## Relacionados
+
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Perceptrón multicapa](perceptron-multicapa.qmd)
+- [Función de activación](funcion-de-activacion.qmd)
+- [Gradiente](gradiente.qmd)
+- [Gradiente desvanecido](gradiente-desvanecido.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

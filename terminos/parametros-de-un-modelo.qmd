@@ -1,0 +1,99 @@
+---
+title: "Parámetros de un modelo"
+aliases:
+  - /terminos/parametros-en-ia.html
+  - /terminos/model-parameters.html
+sinonimos:
+  - "Parámetros en IA"
+  - "Model parameters"
+description: "Valores numéricos aprendidos durante el entrenamiento que determinan cómo un modelo transforma sus entradas."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Los **parámetros de un modelo**, también llamados **parámetros en IA** o
+**model parameters**, son valores numéricos que el entrenamiento ajusta a
+partir de los datos. En una red neuronal incluyen pesos, sesgos y, según la
+arquitectura, representaciones aprendidas como las matrices de embeddings.
+
+No deben confundirse con los **hiperparámetros**, elegidos antes o durante el
+entrenamiento —por ejemplo, la tasa de aprendizaje—, ni con el prompt, la
+ventana de contexto o las activaciones temporales de una inferencia.
+
+## Contexto histórico
+
+Los modelos estadísticos ya estimaban parámetros mucho antes del aprendizaje
+profundo. Las redes neuronales ampliaron su número y los distribuyeron entre
+capas, mientras la [retropropagación](retropropagacion.qmd) y los optimizadores
+hicieron viable ajustarlos conjuntamente [@rumelhart1986backprop].
+
+La escala se volvió parte del relato público de los modelos de lenguaje:
+GPT-3 documentó 175.000 millones de parámetros [@brown2020fewshot]. Esa cifra
+no debe extrapolarse a modelos cuyos desarrolladores no la han publicado. El
+informe de GPT-4, por ejemplo, omite expresamente el tamaño
+[@openai2023gpt4report].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el número y la organización de los parámetros
+condicionan memoria, cómputo y capacidad de representación. **El recuento por
+sí solo no mide la calidad de un modelo**: también importan la arquitectura,
+los datos, el objetivo de entrenamiento, la precisión numérica, qué parámetros
+se activan y cómo se evalúa el resultado.
+
+## Aplicaciones
+
+### Generales
+
+- Aprender transformaciones a partir de ejemplos.
+- Adaptar todos o parte de los pesos mediante fine-tuning.
+- Comparar necesidades aproximadas de memoria entre variantes equivalentes.
+- Comprimir o [cuantizar](cuantizacion.qmd) un modelo para desplegarlo.
+
+### Sanitarias
+
+- Ajustar modelos de imagen, señal o texto con datos autorizados.
+- Congelar parte de un modelo preentrenado y adaptar solo algunas capas.
+- Estimar recursos de despliegue sin confundir tamaño con validez clínica.
+
+## Limitaciones
+
+- Dos modelos con el mismo número de parámetros pueden rendir de forma distinta.
+- En arquitecturas dispersas no todos los parámetros se activan en cada entrada.
+- Un peso aislado rara vez admite una interpretación humana estable.
+- Más parámetros elevan a menudo memoria y coste, pero no garantizan precisión,
+  factualidad, equidad ni seguridad.
+- Conocer los pesos no basta para reproducir el modelo sin datos, código y
+  procedimiento de entrenamiento.
+
+## Ejemplos
+
+Una capa densa con cien entradas y veinte salidas tiene 2.000 pesos y veinte
+sesgos: 2.020 parámetros aprendibles. Durante el entrenamiento, el optimizador
+modifica esos valores; durante una inferencia ordinaria permanecen fijos.
+
+En un modelo clínico, adaptar parámetros con datos de un único hospital puede
+mejorar el ajuste local y empeorar la generalización. El recuento no revela ese
+desplazamiento: hace falta validación externa.
+
+## Relacionados
+
+- [Perceptrón multicapa](perceptron-multicapa.qmd)
+- [Diferenciación automática](diferenciacion-automatica.qmd)
+- [Descenso de gradiente](descenso-de-gradiente.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Cuantización](cuantizacion.qmd)
+- [Transformer](transformer.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

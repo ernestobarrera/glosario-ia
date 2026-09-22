@@ -1,0 +1,103 @@
+---
+title: "Generative Pre-trained Transformer"
+aliases:
+  - /terminos/generative-pre-trained-transformer.html
+sinonimos:
+  - "GPT"
+  - "Transformador generativo preentrenado"
+description: "Familia de modelos autorregresivos de OpenAI basada en transformer y entrenada previamente para continuar secuencias de tokens."
+categories:
+  - "Modelos de lenguaje"
+  - "Arquitecturas"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+**Generative Pre-trained Transformer**, abreviado **GPT** y traducido a veces
+como **transformador generativo preentrenado**, designa una familia de modelos
+de OpenAI. Se preentrena para predecir el siguiente token y genera texto de
+forma autorregresiva: cada salida pasa a formar parte del contexto con el que
+se calcula la siguiente.
+
+«Generative» alude a esa producción de secuencias; «pre-trained», al aprendizaje
+previo sobre grandes corpus; y «Transformer», a su arquitectura. GPT no es
+sinónimo de [modelo de lenguaje grande](llm.qmd): hay LLM de otras familias y
+no todo transformer generativo pertenece a GPT.
+
+## Contexto histórico
+
+El primer trabajo de la serie apareció en 2018. Combinó preentrenamiento
+generativo sobre texto sin etiquetar y adaptación supervisada a tareas
+concretas [@radford2018gpt]. GPT-3 mostró en 2020 que un modelo mucho mayor
+podía abordar numerosas tareas mediante instrucciones y ejemplos en el
+contexto, sin actualizar sus parámetros para cada una [@brown2020fewshot].
+
+Las generaciones posteriores conservaron el nombre de familia, pero no una
+receta técnica completamente pública. Por ejemplo, el informe de GPT-4 lo
+describe como un modelo de estilo transformer y no revela su tamaño, datos ni
+cómputo de entrenamiento [@openai2023gpt4report].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, GPT es una de las familias que popularizaron
+los modelos de propósito general, el aprendizaje en contexto y las interfaces
+conversacionales. Su notoriedad hace útil conservar la frontera terminológica:
+**GPT es la familia de modelos; ChatGPT es un producto que puede integrar
+modelos, herramientas y reglas adicionales**.
+
+## Aplicaciones
+
+### Generales
+
+- Redactar, resumir, traducir y clasificar texto.
+- Responder preguntas a partir del contexto proporcionado.
+- Generar código o datos estructurados para revisión posterior.
+- Servir como componente lingüístico dentro de un agente o una aplicación.
+
+### Sanitarias
+
+- Preparar borradores de resúmenes o materiales educativos.
+- Estructurar información textual antes de una revisión profesional.
+- Formular consultas o explicaciones adaptadas al público destinatario.
+
+Estas aplicaciones no convierten una respuesta en evidencia ni en decisión
+clínica. El rendimiento observado en exámenes o casos seleccionados no valida
+el uso general sobre pacientes [@lee2023gpt4].
+
+## Limitaciones
+
+- Puede producir información falsa con apariencia convincente.
+- Hereda sesgos, vacíos y errores de los datos y del proceso de ajuste.
+- Su conducta depende de la versión, el prompt, el contexto y las herramientas.
+- Los modelos cerrados no siempre publican arquitectura, datos o cómputo.
+- Predecir el siguiente token no demuestra comprensión, causalidad ni
+  competencia clínica.
+- Enviar información a un servicio externo exige controles de privacidad,
+  finalidad y acceso.
+
+## Ejemplos
+
+Ante tres ejemplos de clasificación, un GPT puede continuar el patrón y
+devolver una etiqueta sin [fine-tuning](fine-tuning.qmd). En una revisión
+bibliográfica puede proponer un resumen, pero cada afirmación y cada referencia
+deben contrastarse con las fuentes originales.
+
+## Relacionados
+
+- [Transformer](transformer.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [Preentrenamiento](preentrenamiento.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Prompting](prompting.qmd)
+- [Tokenización](tokenizacion.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Parámetros de un modelo](parametros-de-un-modelo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
