@@ -11,7 +11,7 @@ description: "Técnica de guiar el comportamiento de un modelo de lenguaje media
 categories:
   - "Modelos de lenguaje"
   - "Procesamiento del lenguaje"
-date-modified: 2026-09-14
+date-modified: 2026-09-22
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -34,7 +34,7 @@ entrenamiento.
 ## Contexto histórico
 
 La práctica se volvió central con los modelos de lenguaje capaces de abordar
-tareas nuevas sin reentrenamiento. El artículo que presentó GPT-3 en 2020
+tareas nuevas sin reentrenamiento. El artículo que presentó [GPT-3](gpt.qmd) en 2020
 mostró que un modelo suficientemente grande podía resolver tareas a partir de
 unos pocos ejemplos incluidos en el propio texto de entrada, sin actualizar sus
 parámetros [@brown2020fewshot]. A partir de ahí, la redacción del prompt dejó
@@ -97,6 +97,7 @@ posterior**.
 - [Zero-shot learning](zero-shot-learning.qmd)
 - [Cadena de pensamiento](cadena-de-pensamiento.qmd)
 - [Modelo de lenguaje grande](llm.qmd)
+- [GPT](gpt.qmd)
 - [Prompt de sistema](prompt-de-sistema.qmd)
 
 ## Referencias

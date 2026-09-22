@@ -1,0 +1,90 @@
+---
+title: "Perceptrón multicapa"
+aliases:
+  - /terminos/mlp.html
+  - /terminos/multilayer-perceptron.html
+sinonimos:
+  - "MLP"
+  - "Multilayer perceptron"
+description: "Red neuronal de propagación hacia delante formada por capas densamente conectadas y funciones de activación no lineales."
+categories:
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **perceptrón multicapa**, o **MLP** por *multilayer perceptron*, es una red
+neuronal de propagación hacia delante. Organiza unidades en una capa de entrada,
+una o más capas ocultas y una salida. Cada capa densa combina las entradas con
+pesos y sesgos y suele aplicar después una función de activación no lineal.
+
+«Multicapa» no significa necesariamente «aprendizaje profundo»: un MLP puede
+tener una sola capa oculta. Lo distintivo es la composición de transformaciones
+densas, sin recurrencia ni una estructura espacial incorporada.
+
+## Contexto histórico
+
+El perceptrón original era un clasificador lineal. La difusión de la
+retropropagación en los años ochenta permitió entrenar capas intermedias y
+aprender representaciones no lineales [@rumelhart1986backprop]. Los MLP se
+convirtieron así en una arquitectura básica de las redes neuronales.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el MLP no ha sido reemplazado. Sigue utilizándose
+con datos tabulares, como cabeza de clasificación y dentro de arquitecturas más
+complejas. Cada bloque transformer, por ejemplo, incluye una red *feed-forward*
+aplicada a cada posición [@vaswani2017attention].
+
+## Aplicaciones
+
+### Generales
+
+- Clasificación y regresión con vectores de características.
+- Combinar representaciones aprendidas por otras redes.
+- Aproximar relaciones no lineales sin asumir estructura espacial o temporal.
+- Servir como bloque interno o cabeza de salida de un modelo mayor.
+
+### Sanitarias
+
+- Modelar resultados a partir de variables clínicas estructuradas.
+- Combinar características extraídas de imágenes, señales y texto.
+- Construir una línea base antes de adoptar una arquitectura más compleja.
+
+## Limitaciones
+
+- Una capa totalmente conectada ignora por sí sola la estructura de imágenes,
+  secuencias o grafos.
+- El número de parámetros crece rápidamente con entradas anchas.
+- Puede sobreajustar conjuntos pequeños y necesita validación y regularización.
+- La salida no es interpretable ni causal por el hecho de usar pocas capas.
+- Para datos clínicos, rendimiento interno no equivale a transportabilidad.
+
+## Ejemplos
+
+Un MLP puede recibir edad, presión arterial y resultados analíticos normalizados
+y producir una probabilidad. Esa salida depende del conjunto de entrenamiento,
+la pérdida y el umbral; no constituye por sí sola un diagnóstico.
+
+En un transformer, otro MLP transforma por separado la representación de cada
+posición después de que la atención haya combinado información del contexto.
+
+## Relacionados
+
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Retropropagación](retropropagacion.qmd)
+- [Gradiente](gradiente.qmd)
+- [Función de activación](funcion-de-activacion.qmd)
+- [Normalización por lotes](normalizacion-por-lotes.qmd)
+- [Regularización](regularizacion.qmd)
+- [Parámetros de un modelo](parametros-de-un-modelo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

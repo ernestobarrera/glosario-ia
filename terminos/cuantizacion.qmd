@@ -1,0 +1,100 @@
+---
+title: "Cuantización"
+aliases:
+  - /terminos/quantization.html
+  - /terminos/model-quantization.html
+sinonimos:
+  - "Quantization"
+  - "Cuantización de modelos"
+description: "Técnica que representa pesos o activaciones con menor precisión numérica para reducir memoria y, si el hardware lo permite, acelerar la inferencia."
+categories:
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **cuantización**, también denominada **quantization** o **cuantización de
+modelos**, representa pesos, activaciones o ambos con menos bits o con un
+conjunto más limitado de valores. Reduce el espacio ocupado y el movimiento de
+datos; puede acelerar la inferencia cuando el hardware y las bibliotecas
+ejecutan eficientemente esa representación.
+
+Puede aplicarse después de entrenar —cuantización postentrenamiento— o simularse
+durante el entrenamiento para que el modelo se adapte al error introducido. Hay
+esquemas por tensor, canal o grupo, y no todos cuantizan las mismas partes.
+
+## Contexto histórico
+
+El uso de precisión reducida precede al aprendizaje profundo. En 2018, Jacob y
+colaboradores mostraron inferencia entera con pesos y activaciones de 8 bits en
+redes de visión, con una reducción cercana a cuatro veces frente a 32 bits en
+su configuración [@jacob2018quantization].
+
+La escala de los modelos generativos reactivó el campo. GPTQ llevó en 2023 la
+cuantización postentrenamiento de pesos a transformers de gran tamaño y evaluó
+representaciones de tres y cuatro bits [@frantar2023gptq]. Es un método
+concreto, no sinónimo de toda cuantización.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, cuantizar puede hacer viable un modelo en una
+GPU, un servidor modesto o un dispositivo próximo al lugar de uso. El beneficio
+real depende de memoria, ancho de banda, núcleos disponibles, formato, *kernel*
+y tarea; **menos bits no garantizan por sí solos menor latencia ni menor energía**.
+
+## Aplicaciones
+
+### Generales
+
+- Reducir memoria y almacenamiento de modelos.
+- Acelerar inferencia en hardware con soporte para enteros o baja precisión.
+- Ejecutar modelos en dispositivos móviles o infraestructura local.
+- Aumentar el número de solicitudes que comparte un acelerador.
+
+### Sanitarias
+
+- Desplegar modelos de imagen o señal cerca del equipo que genera los datos.
+- Evaluar inferencia local cuando no conviene enviar información a una nube.
+- Reducir requisitos de hardware en prototipos sometidos a control de versión.
+
+La ejecución local no garantiza privacidad: siguen siendo necesarios controles
+de acceso, registros, licencias y una base jurídica adecuada.
+
+## Limitaciones
+
+- La degradación varía entre capas, modelos, tareas y conjuntos de evaluación.
+- Pesos, activaciones y cachés pueden usar precisiones distintas.
+- Un formato compacto no implica que exista un *kernel* rápido para el equipo.
+- La calibración postentrenamiento puede no representar los datos de destino.
+- Comparar etiquetas como «4 bits» oculta diferencias de escalas, grupos y
+  metadatos.
+- La variante cuantizada desplegada debe revalidarse: no hereda automáticamente
+  el rendimiento ni las garantías de la versión de mayor precisión.
+
+## Ejemplos
+
+Un modelo con pesos en coma flotante puede convertirse a enteros de 8 bits y
+ejecutarse en una CPU compatible. Antes de sustituirlo, se comparan exactitud,
+calibración, latencia y memoria con la versión original sobre la tarea real.
+
+En patología digital, una versión cuantizada podría acercar la inferencia al
+escáner. El cambio de precisión es una modificación del artefacto clínico y
+requiere evaluación propia, no solo comprobar que el archivo ocupa menos.
+
+## Relacionados
+
+- [Parámetros de un modelo](parametros-de-un-modelo.qmd)
+- [Modelo local](modelo-local.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Retropropagación](retropropagacion.qmd)
+- [Transformer](transformer.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

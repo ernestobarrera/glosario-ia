@@ -1,0 +1,93 @@
+---
+title: "Autocodificador"
+aliases:
+  - /terminos/autoencoder.html
+  - /terminos/autoencoders.html
+sinonimos:
+  - "Autoencoder"
+  - "Autoencoders"
+description: "Red neuronal que aprende una representación de los datos al codificarlos y reconstruir después la entrada."
+categories:
+  - "Aprendizaje automático"
+  - "Arquitecturas"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **autocodificador**, conocido también como **autoencoder** o en plural
+**autoencoders**, es una red neuronal entrenada para reconstruir su propia
+entrada. Un codificador transforma los datos en una representación latente y
+un decodificador intenta recuperar la entrada a partir de ella.
+
+El cuello de botella puede ser dimensional, ruidoso o estar regularizado de
+otra forma. Sin alguna restricción, una red con capacidad suficiente podría
+aprender una copia trivial y no una representación útil.
+
+## Contexto histórico
+
+La idea tiene antecedentes en las primeras redes neuronales y en el aprendizaje
+de representaciones. En 2006, Hinton y Salakhutdinov mostraron un procedimiento
+para entrenar autocodificadores profundos destinados a reducción no lineal de
+dimensionalidad [@hinton2006autoencoder]. Después aparecieron variantes
+dispersas, de eliminación de ruido y probabilísticas.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, los autocodificadores siguen siendo útiles para
+aprender representaciones, reconstruir señales y estudiar anomalías. Algunas
+variantes forman parte de sistemas generativos, pero un autocodificador
+determinista ordinario no es por ello un generador probabilístico.
+
+## Aplicaciones
+
+### Generales
+
+- Reducción no lineal de dimensionalidad.
+- Eliminación de ruido y reconstrucción de entradas incompletas.
+- Aprendizaje de representaciones sin etiquetas de clase.
+- Detección de observaciones alejadas del patrón de entrenamiento.
+
+### Sanitarias
+
+- Representar imágenes o señales fisiológicas con menos dimensiones.
+- Reconstruir entradas degradadas para investigación metodológica.
+- Señalar registros con error de reconstrucción alto para revisión.
+
+Un error alto puede indicar novedad, ruido, cambio de dispositivo o mala
+calidad; no demuestra enfermedad ni sustituye una evaluación clínica.
+
+## Limitaciones
+
+- Puede aprender una identidad casi trivial si el cuello de botella no restringe.
+- La reconstrucción favorece lo frecuente y puede borrar detalles importantes.
+- Un patrón anómalo puede reconstruirse bien, y uno normal, mal.
+- La representación latente no es necesariamente interpretable ni causal.
+- El comportamiento cambia con población, preprocesamiento y función de pérdida.
+
+## Ejemplos
+
+Un autocodificador entrenado con electrocardiogramas puede asignar errores de
+reconstrucción altos a algunas señales. Antes de interpretarlos, hay que separar
+arritmias, artefactos, electrodos mal colocados y cambios de población.
+
+En imágenes, el codificador puede producir un vector compacto para visualizar
+o agrupar casos, sin afirmar que sus dimensiones correspondan a entidades
+clínicas reconocibles.
+
+## Relacionados
+
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Reducción de dimensionalidad](reduccion-de-dimensionalidad.qmd)
+- [Espacio latente](espacio-latente.qmd)
+- [Perceptrón multicapa](perceptron-multicapa.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
+- [IA generativa](ia-generativa.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

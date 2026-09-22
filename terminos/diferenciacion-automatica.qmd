@@ -1,0 +1,94 @@
+---
+title: "Diferenciación automática"
+aliases:
+  - /terminos/automatic-differentiation.html
+  - /terminos/autodiff.html
+sinonimos:
+  - "Automatic differentiation"
+  - "Autodiff"
+description: "Familia de técnicas que aplica la regla de la cadena a las operaciones de un programa para calcular derivadas eficientemente."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-09-22
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **diferenciación automática**, también llamada **automatic differentiation**
+o **autodiff**, descompone un programa numérico en operaciones elementales y
+aplica sistemáticamente la regla de la cadena para obtener derivadas.
+
+No manipula una fórmula como la diferenciación simbólica ni aproxima la
+derivada perturbando entradas como las diferencias finitas. Evalúa derivadas
+de las operaciones ejecutadas, con la precisión limitada por la aritmética
+numérica [@baydin2018autodiff].
+
+## Contexto histórico
+
+La diferenciación automática se desarrolló desde la década de 1960 en cálculo
+científico. El aprendizaje profundo la acercó al uso cotidiano mediante grafos
+de cómputo y bibliotecas capaces de registrar operaciones. La
+[retropropagación](retropropagacion.qmd) es una aplicación especializada del
+modo inverso a redes neuronales, no un sinónimo de toda la disciplina
+[@baydin2018autodiff].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, autodiff permite entrenar modelos expresados
+como programas sin derivar manualmente cada composición. El modo directo es
+ventajoso cuando hay pocas entradas; el inverso, cuando una salida escalar —la
+pérdida— depende de muchos parámetros.
+
+## Aplicaciones
+
+### Generales
+
+- Calcular gradientes para optimización y aprendizaje profundo.
+- Diferenciar simulaciones y modelos científicos compatibles.
+- Construir operaciones personalizadas dentro de un grafo de cómputo.
+- Obtener productos con jacobianos sin materializar matrices completas.
+
+### Sanitarias
+
+- Entrenar modelos sobre imágenes, señales o texto biomédico.
+- Ajustar modelos diferenciables de investigación fisiológica.
+- Optimizar una pérdida clínica definida previamente, sin confundirla con el
+  desenlace real que pretende representar.
+
+## Limitaciones
+
+- El modo inverso conserva valores intermedios y puede consumir mucha memoria.
+- Operaciones discretas, ramas y puntos no diferenciables requieren decisiones
+  o aproximaciones explícitas.
+- Una derivada puede desbordarse, anularse o acumular error numérico.
+- Obtener el gradiente correcto de una función mal planteada solo optimiza el
+  objetivo equivocado con mayor eficiencia.
+- El código con efectos externos o control complejo puede dificultar el grafo.
+
+## Ejemplos
+
+En una red que produce una pérdida escalar, autodiff registra las operaciones
+de la pasada hacia delante. El modo inverso recorre después ese grafo para
+calcular cómo cambiaría la pérdida respecto a cada parámetro; el optimizador
+decide finalmente cómo actualizarlo.
+
+En un modelo de dosis-respuesta diferenciable, la técnica calcula sensibilidad
+matemática respecto a parámetros. Esa sensibilidad no identifica por sí sola
+un efecto causal ni una dosis clínicamente adecuada.
+
+## Relacionados
+
+- [Retropropagación](retropropagacion.qmd)
+- [Gradiente](gradiente.qmd)
+- [Descenso de gradiente](descenso-de-gradiente.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Parámetros de un modelo](parametros-de-un-modelo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

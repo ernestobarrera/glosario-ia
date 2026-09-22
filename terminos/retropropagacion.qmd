@@ -8,7 +8,7 @@ description: "Algoritmo que calcula gradientes a través de una red neuronal apl
 categories:
   - "Aprendizaje automático"
   - "Arquitecturas"
-date-modified: 2026-08-30
+date-modified: 2026-09-22
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -35,7 +35,8 @@ aprender representaciones internas mediante retropropagación de errores
 
 A fecha de agosto de 2026, la retropropagación continúa siendo el mecanismo
 básico de diferenciación y entrenamiento de redes profundas. Las bibliotecas
-modernas la automatizan mediante grafos de cómputo y diferenciación automática.
+modernas la automatizan mediante grafos de cómputo y
+[diferenciación automática](diferenciacion-automatica.qmd).
 
 ## Aplicaciones
 
@@ -70,6 +71,7 @@ usa los gradientes resultantes para actualizar los pesos.
 - [Gradiente](gradiente.qmd)
 - [Función de activación](funcion-de-activacion.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Diferenciación automática](diferenciacion-automatica.qmd)
 
 ## Referencias
 

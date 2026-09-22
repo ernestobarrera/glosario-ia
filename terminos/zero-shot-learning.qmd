@@ -11,7 +11,7 @@ description: "Capacidad de un modelo para abordar clases o tareas que no apareci
 categories:
   - "Aprendizaje automático"
   - "Modelos de lenguaje"
-date-modified: 2026-09-14
+date-modified: 2026-09-22
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -28,7 +28,7 @@ descripciones semánticas que comparte con las clases que sí vio. Aquí la
 ausencia es comprobable, porque las clases de entrenamiento y de prueba están
 declaradas.
 
-**La acepción de los modelos de lenguaje**, generalizada a partir de GPT-3, es
+**La acepción de los modelos de lenguaje**, generalizada a partir de [GPT-3](gpt.qmd), es
 más débil: significa que **en el prompt no se incluye ninguna demostración
 resuelta** y que no se actualizan los pesos [@brown2020fewshot]. No significa
 que la tarea sea nueva para el modelo: dado el tamaño y la opacidad de los
@@ -116,6 +116,7 @@ en este ámbito es una hipótesis que orienta, nunca una conclusión.
 - [Aprendizaje automático](aprendizaje-automatico.qmd)
 - [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
 - [Prompting](prompting.qmd)
+- [GPT](gpt.qmd)
 - [Factualidad](factualidad.qmd)
 
 ## Referencias
