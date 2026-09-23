@@ -63,7 +63,7 @@ cargo del equipo. Automatizar la búsqueda no acredita utilidad asistencial.
   [sobreajuste](sobreajuste.qmd) a la validación utilizada para elegirlas.
 - Si la imputación o la selección de variables se hacen antes de dividir los
   datos, se filtra información; cada paso aprendido debe quedar dentro de la
-  evaluación [@feurer2015automl].
+  evaluación.
 - El espacio de búsqueda y el presupuesto pueden excluir una opción mejor.
 - Una interfaz sencilla puede ocultar supuestos sobre datos faltantes,
   subgrupos y transporte entre centros.
