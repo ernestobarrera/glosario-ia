@@ -10,7 +10,7 @@ description: "Familia de técnicas no supervisadas que reparten los casos en gru
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-09-03
+date-modified: 2026-09-23
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -88,6 +88,7 @@ no del preprocesado.
 ## Relacionados
 
 - [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [K-medias](k-medias.qmd)
 - [Clúster semántico](cluster-semantico.qmd)
 - [Índice de Rand ajustado](indice-rand-ajustado.qmd)
 - [Reducción de dimensionalidad](reduccion-de-dimensionalidad.qmd)

@@ -1,0 +1,90 @@
+---
+title: "K vecinos más cercanos"
+aliases:
+  - /terminos/k-nn.html
+  - /terminos/k-nearest-neighbors.html
+sinonimos:
+  - "K-NN"
+  - "K-Nearest Neighbors"
+description: "Método supervisado que predice a partir de las observaciones etiquetadas más próximas según una distancia elegida."
+categories:
+  - "Aprendizaje automático"
+date-modified: 2026-09-23
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+**K vecinos más cercanos**, **K-NN** o **K-Nearest Neighbors**, predice para una
+observación nueva a partir de las **k** observaciones etiquetadas más próximas
+en un espacio de características. En [clasificación](clasificacion.qmd) puede
+usar el voto mayoritario; en regresión, una media de los valores de los vecinos.
+La regla depende de la representación, la distancia y el valor de **k**
+[@cover1967nearest].
+
+A diferencia de [K-medias](k-medias.qmd), aquí los ejemplos de referencia ya
+tienen una etiqueta o valor conocido. La semejanza geométrica se usa para
+predecir, no para descubrir grupos.
+
+## Contexto histórico
+
+Cover y Hart analizaron en 1967 la regla del vecino más cercano y sus
+propiedades de clasificación [@cover1967nearest]. Las extensiones a varios
+vecinos consolidaron una familia de métodos de referencia sencillos, sin un
+modelo paramétrico global que deba ajustarse de antemano.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, K-NN sigue siendo una referencia transparente
+para comparar métodos más complejos cuando existe una distancia defendible
+entre casos. Su sencillez no equivale a interpretabilidad clínica: saber qué
+casos quedan cerca no explica necesariamente por qué comparten un resultado.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificar observaciones tabulares con ejemplos etiquetados.
+- Estimar un valor continuo como promedio local.
+- Comparar un método complejo con una referencia basada en proximidad.
+
+### Sanitarias
+
+Puede servir como referencia en un estudio de predicción con datos clínicos
+estructurados. La evaluación debe mantener separados los pacientes de
+entrenamiento y prueba, fijar el preprocesado solo con los datos de
+entrenamiento y comprobar si la distancia conserva sentido entre centros.
+
+## Limitaciones
+
+- Escalas y variables irrelevantes pueden dominar la distancia; el resultado
+  cambia con la normalización y la selección de características.
+- Elegir **k** con el mismo conjunto usado para evaluar el rendimiento sesga
+  la estimación; se necesita [validación cruzada](validacion-cruzada.qmd) bien
+  separada.
+- Buscar vecinos entre muchos ejemplos puede ser costoso, y en alta dimensión
+  las distancias pueden discriminar menos.
+- Si ciertas clases o centros están sobrerrepresentados, el voto puede reflejar
+  esa composición en vez de una relación clínica transportable.
+
+## Ejemplos
+
+**Ejemplo hipotético:** para predecir una categoría de seguimiento, un equipo
+compara cada caso con sus cinco pacientes más cercanos en variables declaradas.
+La predicción cambia al incluir la edad en años sin estandarizar junto a
+medidas en otra escala. El equipo revisa esa elección y valida el procedimiento
+en otro periodo antes de usarlo.
+
+## Relacionados
+
+- [Clasificación](clasificacion.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [K-medias](k-medias.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

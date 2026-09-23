@@ -1,0 +1,88 @@
+---
+title: "Búsqueda de arquitecturas neuronales"
+aliases:
+  - /terminos/neural-architecture-search.html
+  - /terminos/nas.html
+sinonimos:
+  - "Neural Architecture Search"
+  - "NAS"
+description: "Método que explora automáticamente estructuras de redes neuronales y compara su rendimiento bajo un espacio y presupuesto definidos."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-23
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **búsqueda de arquitecturas neuronales**, **Neural Architecture Search** o
+**NAS**, automatiza la elección de la estructura de una red: capas, conexiones
+u operaciones permitidas. Requiere definir un espacio de arquitecturas, una
+estrategia de búsqueda y una forma de estimar el rendimiento de cada candidata
+[@zoph2017nas].
+
+Es una parte posible de [AutoML](automl.qmd). No elige por sí sola la pregunta,
+los datos, el desenlace ni la validez de la evaluación. Tampoco equivale a
+[aprendizaje profundo](aprendizaje-profundo.qmd), que es la familia de modelos
+en la que suele aplicarse.
+
+## Contexto histórico
+
+En ICLR 2017, Zoph y Le presentaron una búsqueda que empleaba una red
+controladora entrenada con aprendizaje por refuerzo para proponer
+arquitecturas y evaluarlas [@zoph2017nas]. Su estudio mostró una vía de
+automatizar decisiones que hasta entonces se tomaban de forma manual.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, NAS permite explorar configuraciones bajo
+criterios explícitos de rendimiento y coste. El resultado depende del espacio
+que se permitió buscar y del presupuesto disponible: «óptima» solo puede
+significar mejor entre las candidatas y condiciones ensayadas.
+
+## Aplicaciones
+
+### Generales
+
+- Comparar estructuras de redes para clasificación de imágenes.
+- Buscar un compromiso entre rendimiento, tamaño y latencia.
+- Estudiar cómo influyen restricciones de hardware en el diseño.
+
+### Sanitarias
+
+En investigación con imágenes médicas, puede proponer arquitecturas para una
+tarea definida. Una mejora en validación interna no demuestra que funcione en
+otro escáner, centro o población; hay que evaluar esas condiciones aparte.
+
+## Limitaciones
+
+- Entrenar o estimar numerosas candidatas consume tiempo y recursos.
+- Reutilizar el mismo conjunto de validación para muchas decisiones puede
+  sobreajustar la arquitectura a ese conjunto.
+- Una búsqueda eficiente dentro de un espacio estrecho puede ignorar
+  estructuras útiles fuera de él.
+- La arquitectura elegida no resuelve sesgos de datos, fugas de información ni
+  problemas de transporte clínico.
+
+## Ejemplos
+
+**Ejemplo hipotético:** se define un espacio de redes para clasificar imágenes
+de retina y se reserva un presupuesto de cómputo. NAS selecciona la candidata
+con mejor puntuación interna. Al probarla en imágenes de otro dispositivo, el
+rendimiento cae: la selección resolvió la búsqueda local, no la adaptación al
+nuevo entorno.
+
+## Relacionados
+
+- [AutoML](automl.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Redes neuronales artificiales](redes-neuronales-artificiales.qmd)
+- [Red neuronal convolucional](red-neuronal-convolucional.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
