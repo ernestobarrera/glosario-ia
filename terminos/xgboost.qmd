@@ -1,0 +1,87 @@
+---
+title: "XGBoost"
+aliases:
+  - /terminos/extreme-gradient-boosting.html
+sinonimos:
+  - "Extreme Gradient Boosting"
+description: "Sistema de boosting de árboles que construye modelos de forma secuencial y combina sus predicciones para tareas con datos estructurados."
+categories:
+  - "Aprendizaje automático"
+date-modified: 2026-09-23
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+**XGBoost**, de **Extreme Gradient Boosting**, es una implementación de
+*boosting* de árboles de decisión. Construye árboles sucesivos para reducir
+una [función de pérdida](funcion-de-perdida.qmd) y combina sus predicciones.
+Incluye regularización y mecanismos para tratar datos dispersos y escalar el
+entrenamiento [@chen2016xgboost].
+
+La ficha describe el método presentado en la publicación original, no una
+versión concreta del paquete. Un árbol aislado, un ensamble por agregación
+paralela y XGBoost responden a procedimientos distintos.
+
+## Contexto histórico
+
+Tianqi Chen y Carlos Guestrin describieron XGBoost como un sistema escalable
+de *tree boosting* en KDD 2016 [@chen2016xgboost]. El trabajo documentó
+decisiones algorítmicas y de ingeniería para entrenar con conjuntos grandes y
+dispersos; no fue la invención del boosting en sí.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, sigue siendo una referencia útil para datos
+tabulares y para comparar modelos más complejos. Su buen resultado en un
+conjunto no demuestra que sea la mejor elección para otro, ni que sus
+predicciones sean explicaciones causales.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificación y regresión con variables estructuradas.
+- Construcción de una línea de base en comparaciones de modelos tabulares.
+- Análisis de qué variables usa el modelo, con la cautela de que importancia
+  predictiva no equivale a causalidad.
+
+### Sanitarias
+
+Puede evaluarse para predicción de riesgo con registros clínicos tabulares.
+Antes de uso asistencial se necesitan una definición del momento de predicción,
+variables disponibles en ese momento y evaluación en pacientes, centros y
+periodos que representen el destino previsto. Una puntuación retrospectiva
+alta no basta.
+
+## Limitaciones
+
+- La profundidad, el número de árboles y otros hiperparámetros pueden
+  favorecer el [sobreajuste](sobreajuste.qmd) si se ajustan contra la prueba.
+- Una variable registrada después del desenlace puede provocar fuga de
+  información y una evaluación engañosa.
+- La importancia de variables cambia con la codificación y con variables
+  correlacionadas; no identifica mecanismos clínicos.
+- Requiere comparar el beneficio con coste, calibración y comportamiento por
+  subgrupos en el contexto de uso.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un modelo predice reingreso al alta y obtiene una
+discriminación elevada. Al revisar las variables, el equipo detecta un código
+administrativo asignado semanas después del alta. Retirarlo reduce la
+puntuación, pero permite medir la tarea real que se quería resolver.
+
+## Relacionados
+
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Clasificación](clasificacion.qmd)
+- [Función de pérdida](funcion-de-perdida.qmd)
+- [Regularización](regularizacion.qmd)
+- [AutoML](automl.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

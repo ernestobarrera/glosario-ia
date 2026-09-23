@@ -1,0 +1,85 @@
+---
+title: "K-medias"
+aliases:
+  - /terminos/k-means.html
+sinonimos:
+  - "K-means"
+description: "Algoritmo de agrupamiento que asigna observaciones a k grupos y actualiza sus centroides para reducir la variación interna."
+categories:
+  - "Aprendizaje automático"
+date-modified: 2026-09-23
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+**K-medias**, o **K-means**, es un algoritmo de
+[agrupamiento](agrupamiento.qmd) que divide observaciones en un número **k** de
+grupos fijado de antemano. Alterna dos pasos: asigna cada observación al
+centroide más cercano y recalcula cada centroide como media de los miembros
+asignados. Busca reducir la suma de distancias cuadráticas dentro de los grupos
+[@lloyd1982kmeans].
+
+No utiliza etiquetas de resultado. Por ello puede proponer una partición,
+pero no descubrir por sí solo diagnósticos, causas ni tratamientos.
+
+## Contexto histórico
+
+El procedimiento de mínimos cuadrados de Lloyd se formuló en Bell Labs en
+1957 y se publicó en 1982 [@lloyd1982kmeans]. Se convirtió en una referencia
+clásica de los métodos no supervisados por su sencillez computacional.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, sirve como punto de partida para explorar datos
+vectoriales y como referencia frente a métodos de agrupamiento más complejos.
+Su resultado ayuda a formular preguntas; la utilidad de los grupos exige
+contrastarlos fuera de los datos usados para generarlos.
+
+## Aplicaciones
+
+### Generales
+
+- Resumir colecciones de observaciones mediante centroides.
+- Comparar una partición simple con otros métodos de agrupamiento.
+- Segmentar documentos representados en un mismo espacio vectorial.
+
+### Sanitarias
+
+Puede explorar perfiles de pacientes a partir de variables clínicas o
+biomarcadores. Antes de interpretar cada grupo, hay que examinar qué variables
+lo separan, si el resultado se repite en otra cohorte y si refleja diferencias
+de centro o de registro. Un clúster no justifica por sí mismo un tratamiento.
+
+## Limitaciones
+
+- Exige escoger **k** antes del análisis y devuelve grupos incluso si los datos
+  no contienen una estructura útil.
+- Es sensible a la escala de las variables, la distancia usada y los
+  centroides iniciales; distintas inicializaciones pueden dar particiones
+  distintas.
+- Los centroides representan peor los grupos alargados, de densidad desigual o
+  con valores extremos.
+- Reducir la variación interna no demuestra relevancia clínica ni estabilidad
+  externa.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un equipo agrupa pacientes con varias medidas
+metabólicas y obtiene cuatro perfiles. Al repetir el análisis con otra escala
+de glucosa, cambian las asignaciones. El resultado obliga a documentar el
+preprocesado antes de atribuir significado a los perfiles.
+
+## Relacionados
+
+- [Agrupamiento](agrupamiento.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Desplazamiento de centroides](desplazamiento-de-centroides.qmd)
+- [Índice de Rand ajustado](indice-rand-ajustado.qmd)
+- [Reducción de dimensionalidad](reduccion-de-dimensionalidad.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

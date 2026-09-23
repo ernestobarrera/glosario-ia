@@ -1,0 +1,89 @@
+---
+title: "Prompting analógico"
+aliases:
+  - /terminos/analogical-prompting.html
+sinonimos:
+  - "Analogical prompting"
+description: "Técnica de prompting que pide al modelo generar ejemplos análogos antes de resolver la tarea planteada."
+categories:
+  - "Modelos de lenguaje"
+  - "Procesamiento del lenguaje"
+date-modified: 2026-09-23
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **prompting analógico**, o **analogical prompting**, pide a un modelo de
+lenguaje que produzca por sí mismo ejemplos o conocimientos pertinentes para
+un problema y luego los use al razonar sobre él. La propuesta de Yasunaga y
+colaboradores genera esos ejemplos en el contexto, sin recuperar ejemplos de
+una base externa ni exigir que una persona los redacte
+[@yasunaga2024analogical].
+
+Se distingue del [few-shot learning](few-shot-learning.qmd) con ejemplos
+aportados de antemano, de [RAG](rag.qmd), que recupera material externo, y de
+la [cadena de pensamiento](cadena-de-pensamiento.qmd), que explicita pasos de
+razonamiento pero no requiere fabricar problemas análogos. Las técnicas pueden
+combinarse; ninguna convierte automáticamente el ejemplo generado en evidencia.
+
+## Contexto histórico
+
+La investigación sobre prompts con ejemplos y cadena de pensamiento precedió
+a esta técnica. En ICLR 2024, Yasunaga et al. la presentaron y evaluaron en
+tareas de matemáticas, programación y otros problemas de razonamiento
+[@yasunaga2024analogical]. Esos resultados delimitan la evidencia inicial;
+no son una evaluación sanitaria.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, ofrece una forma de adaptar los ejemplos a cada
+pregunta sin mantener una colección manual. Conviene registrar el prompt y los
+ejemplos generados si se compara con otras estrategias: distintas ejecuciones
+pueden producir analogías de calidad desigual.
+
+## Aplicaciones
+
+### Generales
+
+- Proponer problemas resueltos similares antes de abordar uno nuevo.
+- Explorar variantes de una tarea cuando no hay ejemplos preparados.
+- Comparar el resultado con zero-shot y few-shot en una evaluación controlada.
+
+### Sanitarias
+
+En formación, un docente puede pedir ejemplos **sintéticos** análogos a una
+pregunta clínica para estimular la discusión. Debe verificar cada premisa y
+solución antes de usarla. El artículo original no demuestra mejora en
+diagnóstico, seguridad del paciente ni toma de decisiones clínicas.
+
+## Limitaciones
+
+- Los ejemplos pueden ser erróneos o superficialmente parecidos; reutilizarlos
+  puede amplificar una [alucinación](alucinacion.qmd).
+- Generar ejemplos consume contexto, tiempo y coste de inferencia.
+- Las mejoras comunicadas por el artículo corresponden a sus modelos y tareas;
+  no se extrapolan sin medir la tarea de destino.
+- Si el prompt contiene datos clínicos reales, generar analogías no elimina los
+  deberes de protección de esos datos.
+
+## Ejemplos
+
+**Ejemplo hipotético:** antes de responder una pregunta de estadística, se pide
+al modelo que invente dos problemas comparables, los resuelva y después aborde
+la pregunta original. Uno usa una fórmula inapropiada: el evaluador lo detecta
+y descarta también la respuesta que se apoyó en él.
+
+## Relacionados
+
+- [Prompting](prompting.qmd)
+- [Few-shot learning](few-shot-learning.qmd)
+- [RAG](rag.qmd)
+- [Cadena de pensamiento](cadena-de-pensamiento.qmd)
+- [Alucinación](alucinacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

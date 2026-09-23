@@ -1,0 +1,90 @@
+---
+title: "AutoML"
+aliases:
+  - /terminos/automated-machine-learning.html
+sinonimos:
+  - "Aprendizaje automático automatizado"
+description: "Automatización de partes del desarrollo de modelos, como la elección del algoritmo, el preprocesado y el ajuste de hiperparámetros."
+categories:
+  - "Aprendizaje automático"
+date-modified: 2026-09-23
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+**AutoML**, o **aprendizaje automático automatizado**, reúne métodos que
+exploran automáticamente opciones del desarrollo de un modelo: algoritmos,
+preprocesado, **hiperparámetros** y, en algunos sistemas,
+ensambles. El espacio de opciones, la métrica, los datos y el presupuesto de
+búsqueda siguen siendo decisiones humanas. Auto-sklearn mostró una
+implementación que combina selección de algoritmos, preparación de variables y
+ajuste [@feurer2015automl].
+
+La [búsqueda de arquitecturas neuronales](busqueda-de-arquitecturas-neuronales.qmd)
+automatiza una decisión más estrecha: la estructura de una red. AutoML puede
+incluirla, pero no se reduce a ella.
+
+## Contexto histórico
+
+La automatización de la selección y del ajuste precede a las plataformas
+comerciales actuales. En 2015, Feurer y colaboradores describieron
+auto-sklearn, que evaluaba distintas combinaciones de algoritmos y
+preprocesamiento mediante optimización y construía un ensamble
+[@feurer2015automl].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, AutoML facilita explorar alternativas dentro
+de un tiempo fijado. Es útil para establecer líneas de base reproducibles,
+siempre que se conserve el registro de qué se buscó, cómo se seleccionó y con
+qué datos se evaluó. El nombre no garantiza que el sistema automatice todo el
+ciclo ni que el resultado sea el mejor posible.
+
+## Aplicaciones
+
+### Generales
+
+- Comparar varios algoritmos y configuraciones bajo un presupuesto común.
+- Buscar combinaciones de preprocesado y modelo.
+- Obtener una referencia inicial antes de dedicar trabajo a un modelo concreto.
+
+### Sanitarias
+
+En un estudio de predicción clínica, AutoML puede comparar modelos sobre una
+cohorte de desarrollo. La definición del desenlace, las variables admisibles,
+la separación entre pacientes y periodos, y la validación externa siguen a
+cargo del equipo. Automatizar la búsqueda no acredita utilidad asistencial.
+
+## Limitaciones
+
+- Repetir muchas configuraciones sobre los mismos datos favorece el
+  [sobreajuste](sobreajuste.qmd) a la validación utilizada para elegirlas.
+- Si la imputación o la selección de variables se hacen antes de dividir los
+  datos, se filtra información; cada paso aprendido debe quedar dentro de la
+  evaluación.
+- El espacio de búsqueda y el presupuesto pueden excluir una opción mejor.
+- Una interfaz sencilla puede ocultar supuestos sobre datos faltantes,
+  subgrupos y transporte entre centros.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un hospital compara modelos para predecir reingreso.
+AutoML prueba algoritmos y parámetros en los datos de desarrollo. El equipo
+reserva otro periodo para evaluación final y descubre una caída de
+rendimiento. El resultado de la búsqueda era válido para su partición de
+desarrollo, no una garantía de generalización.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+- [Búsqueda de arquitecturas neuronales](busqueda-de-arquitecturas-neuronales.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+- [XGBoost](xgboost.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
