@@ -1,0 +1,88 @@
+---
+title: "Evaluación fuera de política"
+aliases:
+  - /terminos/off-policy-evaluation.html
+  - /terminos/ope.html
+sinonimos:
+  - "Off-policy evaluation"
+  - "OPE"
+description: "Estimación del rendimiento de una política de decisión con datos generados por otra política, sin ejecutarla todavía."
+categories:
+  - "Aprendizaje automático"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-24
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **evaluación fuera de política** (**off-policy evaluation**, **OPE**)
+estima cómo rendiría una política objetivo usando datos recogidos bajo otra
+política. Permite examinar alternativas sin ponerlas aún en práctica, pero
+requiere que los datos permitan comparar las acciones relevantes
+[@farajtabar2018offpolicy].
+
+Puede usar ponderación por la probabilidad de cada acción, un modelo de
+resultados o estimadores que combinan ambos enfoques. Estima el rendimiento
+medio de una política; no predice con certeza el contrafactual de cada persona.
+
+## Contexto histórico
+
+La evaluación de políticas aprendidas con datos de otras políticas forma
+parte del aprendizaje por refuerzo. En 2018, Farajtabar y colaboradores
+estudiaron estimadores doblemente robustos para este problema
+[@farajtabar2018offpolicy].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, OPE es una herramienta de evaluación previa
+en aprendizaje por refuerzo con datos registrados. Resulta atractiva cuando
+probar acciones nuevas es costoso o éticamente problemático, pero su validez
+depende de cobertura, medición y supuestos causales [@gottesman2019rlhealth].
+
+## Aplicaciones
+
+### Generales
+
+- Comparar políticas candidatas con registros de decisiones anteriores.
+- Detectar políticas cuyo rendimiento estimado es muy incierto antes de
+  plantear una prueba prospectiva.
+
+### Sanitarias
+
+- Investigar con registros clínicos si una política de decisiones sucesivas
+  merece una evaluación adicional.
+- Analizar la sensibilidad del resultado a acciones raras y factores no
+  registrados, sin presentar la estimación como beneficio causal demostrado
+  [@gottesman2019rlhealth].
+
+## Limitaciones
+
+- Si la política propuesta elige acciones ausentes de los datos, el
+  rendimiento no se puede estimar de manera fiable por simple extrapolación.
+- La ponderación puede tener varianza alta cuando ciertas acciones son raras.
+- Los factores de confusión no medidos y una recompensa mal definida pueden
+  producir una evaluación engañosa [@farajtabar2018offpolicy]
+  [@gottesman2019rlhealth].
+
+## Ejemplos
+
+Una política hipotética propone cambiar la secuencia de decisiones en una
+unidad asistencial. OPE usa las trayectorias históricas para estimar su
+resultado, informa cuántas decisiones comparables existen y señala dónde
+faltan datos. El resultado orienta la investigación; no autoriza su uso con
+pacientes.
+
+## Relacionados
+
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Proceso de decisión de Markov](proceso-de-decision-de-markov.qmd)
+- [Valor de acción](valor-de-accion.qmd)
+- [Métodos de Monte Carlo](metodos-de-monte-carlo.qmd)
+- [Aprendizaje contrafactual](aprendizaje-contrafactual.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

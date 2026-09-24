@@ -1,0 +1,85 @@
+---
+title: "Proceso de decisión de Markov"
+aliases:
+  - /terminos/mdp.html
+  - /terminos/markov-decision-process.html
+sinonimos:
+  - "MDP"
+  - "Markov decision process"
+description: "Modelo matemático de decisiones sucesivas bajo incertidumbre, con estados, acciones, transiciones y recompensas."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **proceso de decisión de Markov** (**MDP**, del inglés **Markov decision
+process**) representa una secuencia de decisiones mediante estados, acciones,
+probabilidades de transición y recompensas. Una política indica qué acción
+elegir en cada estado. El objetivo habitual es maximizar la recompensa
+acumulada esperada, no necesariamente la inmediata [@sutton2018reinforcement].
+
+La propiedad de Markov supone que el estado disponible resume la información
+relevante para predecir el siguiente estado y la recompensa. Es un supuesto del
+modelo: una historia clínica resumida de forma incompleta puede incumplirlo.
+
+## Contexto histórico
+
+La formulación de decisiones secuenciales se consolidó con la programación
+dinámica de Richard Bellman a mediados del siglo XX. Los MDP pasaron a ser un
+marco matemático central para estudiar el aprendizaje por refuerzo
+[@sutton2018reinforcement].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el MDP sigue sirviendo para separar tres
+preguntas: cómo evoluciona el entorno, qué se considera recompensa y cómo se
+elige una acción. Un algoritmo de aprendizaje por refuerzo puede operar sin
+conocer de antemano las probabilidades de transición; el modelo conceptual no
+equivale al algoritmo que aprende [@sutton2018reinforcement].
+
+## Aplicaciones
+
+### Generales
+
+- Representar decisiones repetidas en robótica o simuladores.
+- Comparar políticas de control bajo supuestos explícitos sobre el entorno.
+
+### Sanitarias
+
+- Formular como problema de investigación decisiones terapéuticas sucesivas,
+  distinguiendo estado observado, acción y desenlace.
+- Estudiar en simulación cómo cambia una política si se modifica la recompensa.
+  Esta formulación no valida una recomendación clínica [@gottesman2019rlhealth].
+
+## Limitaciones
+
+- El estado clínico real puede incluir factores no registrados que influyen en
+  la transición y el resultado.
+- Definir la recompensa exige decisiones de valor: un indicador intermedio no
+  equivale por sí solo a un desenlace importante para el paciente.
+- Los espacios grandes de estados y acciones requieren aproximaciones y hacen
+  difícil comprobar el modelo [@sutton2018reinforcement].
+
+## Ejemplos
+
+En un simulador de planificación de camas, el estado podría recoger ocupación
+y personal disponible; la acción sería asignar recursos y la recompensa
+combinaría demoras y seguridad. El resultado solo describe el simulador hasta
+que sus supuestos se contrasten con la práctica.
+
+## Relacionados
+
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Q-learning](q-learning.qmd)
+- [Valor de acción](valor-de-accion.qmd)
+- [Métodos de Monte Carlo](metodos-de-monte-carlo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

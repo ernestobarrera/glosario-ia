@@ -1,0 +1,82 @@
+---
+title: "Aprendizaje contrafactual"
+aliases:
+  - /terminos/counterfactual-learning.html
+sinonimos:
+  - "Counterfactual learning"
+description: "Aprendizaje a partir de datos observados para estudiar resultados de intervenciones alternativas bajo supuestos causales explícitos."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-24
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **aprendizaje contrafactual**, o **counterfactual learning**, intenta
+estimar qué resultado habría seguido a una intervención distinta de la
+observada. Para cada persona o caso solo se observa el resultado de la opción
+realmente tomada; el alternativo no puede recuperarse directamente de su
+registro [@johansson2016counterfactual].
+
+Los modelos usan grupos comparables y supuestos causales para aprender de
+datos observacionales. El nombre no garantiza que el efecto individual
+hipotético sea identificable.
+
+## Contexto histórico
+
+El campo combina la inferencia causal con técnicas de aprendizaje automático.
+En 2016, Johansson, Shalit y Sontag propusieron aprender representaciones
+para inferir resultados contrafactuales a partir de observaciones
+[@johansson2016counterfactual].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, estudiar alternativas sin asignarlas al azar
+interesa en ámbitos donde experimentar puede ser difícil. El resultado sigue
+dependiendo de supuestos sobre factores de confusión y solapamiento entre
+grupos [@johansson2016counterfactual].
+
+## Aplicaciones
+
+### Generales
+
+- Comparar resultados potenciales de intervenciones en datos observacionales.
+- Explorar heterogeneidad de efectos como hipótesis para estudios posteriores.
+
+### Sanitarias
+
+- Investigar si pacientes comparables podrían responder de modo distinto a
+  dos tratamientos, sin atribuir a un individuo un resultado no observado.
+- Priorizar preguntas para un ensayo o una validación externa; un modelo
+  retrospectivo no reemplaza ese contraste.
+
+## Limitaciones
+
+- La confusión no medida puede invertir la asociación estimada.
+- Si ciertos perfiles solo reciben una de las opciones, faltan datos para
+  comparar alternativas en ese grupo.
+- Una representación predictiva no convierte por sí sola una diferencia
+  observacional en efecto causal [@johansson2016counterfactual].
+
+## Ejemplos
+
+Un hospital podría comparar retrospectivamente dos estrategias en pacientes
+con características parecidas. La diferencia estimada sería una hipótesis
+condicionada a los datos y supuestos; no revelaría qué habría pasado de hecho
+con el tratamiento alternativo para un paciente concreto.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Evaluación fuera de política](evaluacion-fuera-de-politica.qmd)
+- [Proceso de decisión de Markov](proceso-de-decision-de-markov.qmd)
+- [Inferencia bayesiana](inferencia-bayesiana.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

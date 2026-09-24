@@ -1,0 +1,83 @@
+---
+title: "Métodos de Monte Carlo"
+aliases:
+  - /terminos/monte-carlo-methods.html
+sinonimos:
+  - "Monte Carlo methods"
+description: "Familia de métodos que usa muestras aleatorias repetidas para estimar cantidades difíciles de calcular directamente."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-24
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+Los **métodos de Monte Carlo**, o **Monte Carlo methods**, estiman una cantidad
+mediante muestras aleatorias repetidas. La precisión depende del problema, de
+la forma de obtener muestras y de cuántas se usen; repetir una simulación mal
+planteada no corrige sus supuestos [@metropolis1949montecarlo].
+
+En aprendizaje por refuerzo, un uso específico consiste en estimar el valor
+de estados o acciones promediando retornos de episodios completos
+[@sutton2018reinforcement]. No todo método de Monte Carlo es aprendizaje por
+refuerzo, ni requiere una cadena de Markov.
+
+## Contexto histórico
+
+Nicholas Metropolis y Stanislaw Ulam expusieron el método en un artículo de
+1949, a partir de trabajos de simulación probabilística desarrollados en la
+década anterior [@metropolis1949montecarlo]. Sus aplicaciones se extendieron
+más allá de la física hacia estadística, decisión e IA.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, el muestreo aleatorio sigue siendo útil para
+aproximar integrales, explorar incertidumbre y evaluar modelos cuando un
+cálculo exacto es inviable. En refuerzo ofrece una alternativa a estimaciones
+que actualizan el valor paso a paso [@sutton2018reinforcement].
+
+## Aplicaciones
+
+### Generales
+
+- Estimar resultados de muchas trayectorias simuladas.
+- Aproximar probabilidades o valores esperados difíciles de obtener exactamente.
+
+### Sanitarias
+
+- Simular incertidumbre en un modelo de planificación sanitaria antes de usarlo
+  para decidir.
+- Explorar escenarios hipotéticos de ocupación y tiempos de espera; la
+  simulación por sí sola no prueba un beneficio asistencial.
+
+## Limitaciones
+
+- En promedio, el error de muestreo disminuye con más simulaciones, pero el
+  coste también crece.
+- Si el modelo o los datos de entrada están sesgados, más muestras no eliminan
+  ese sesgo.
+- En refuerzo, esperar al final del episodio puede retrasar la actualización
+  de valores [@sutton2018reinforcement].
+
+## Ejemplos
+
+Para estimar el tiempo de espera de una consulta, se generan miles de días
+simulados con distinta demanda. El promedio y la dispersión describen el
+modelo; deben compararse con días reales antes de emplearlos para organizar
+la asistencia.
+
+## Relacionados
+
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Proceso de decisión de Markov](proceso-de-decision-de-markov.qmd)
+- [Valor de acción](valor-de-accion.qmd)
+- [Inferencia bayesiana](inferencia-bayesiana.qmd)
+- [Evaluación fuera de política](evaluacion-fuera-de-politica.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
