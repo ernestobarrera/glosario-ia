@@ -1,0 +1,88 @@
+---
+title: "Inversión de GAN"
+aliases:
+  - /terminos/gan-inversion.html
+  - /terminos/gan-inverso.html
+sinonimos:
+  - "GAN inversion"
+  - "GAN inverso"
+description: "Búsqueda de un código latente con el que una GAN ya entrenada reconstruya una imagen dada."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **inversión de GAN** parte de una imagen y busca un código en el espacio
+latente de una red generativa antagónica ya entrenada. Al introducir ese
+código en el generador, se intenta reconstruir la imagen de partida
+[@xia2023ganinversion]. Es el recorrido inverso al uso habitual del
+generador, que parte de un código y produce una imagen.
+
+«GAN inverso» designa aquí una tarea o un conjunto de métodos, no una nueva
+arquitectura universal. El código puede hallarse por optimización, mediante
+un codificador aprendido o combinando ambos enfoques.
+
+## Contexto histórico
+
+La tarea ganó interés cuando se quiso editar imágenes reales con generadores
+entrenados. Zhu y colaboradores publicaron en 2020 un método que buscaba
+reconstruir una imagen manteniendo un código útil para cambios semánticos
+[@zhu2020indomain]. Una revisión posterior organizó las variantes y sus
+límites [@xia2023ganinversion].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la inversión permite estudiar qué imágenes
+puede representar un generador y experimentar con reconstrucción o edición.
+Una reconstrucción visualmente parecida no prueba que se hayan conservado
+rasgos pequeños o infrecuentes, que pueden ser decisivos en medicina.
+
+## Aplicaciones
+
+### Generales
+
+- Editar características de una imagen después de proyectarla al espacio
+  latente de un generador.
+- Examinar los límites de representación de una GAN entrenada.
+
+### Sanitarias
+
+- Investigar, en conjuntos autorizados, si un generador puede reconstruir
+  imágenes médicas sin perder señales relevantes.
+- Crear variantes sintéticas para probar un flujo de análisis; deben
+  etiquetarse como simulaciones y evaluarse aparte de imágenes clínicas.
+
+## Limitaciones
+
+- El generador puede no representar bien una imagen situada fuera de la
+  distribución de entrenamiento.
+- Mejorar la semejanza pixel a pixel puede dificultar la edición semántica
+  posterior [@zhu2020indomain].
+- La reconstrucción puede borrar lesiones pequeñas o introducir detalles
+  inventados.
+- No proporciona anonimización ni validez diagnóstica por sí misma.
+
+## Ejemplos
+
+Un modelo entrenado con retratos recibe una fotografía nueva. El algoritmo
+busca un código que produzca un retrato parecido; después se modifica una
+dirección latente para ensayar un cambio de iluminación. Si el generador no
+representa bien un detalle de la fotografía, ese detalle puede perderse ya
+en la reconstrucción.
+
+## Relacionados
+
+- [Red generativa antagónica](red-generativa-antagonica.qmd)
+- [Espacio latente](espacio-latente.qmd)
+- [IA generativa](ia-generativa.qmd)
+- [Vectores de activación](vectores-de-activacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

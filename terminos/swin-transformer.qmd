@@ -1,0 +1,86 @@
+---
+title: "Swin Transformer"
+aliases:
+  - /terminos/swin.html
+sinonimos:
+  - "Transformer Swin"
+description: "Transformer visual jerárquico que calcula atención local en ventanas desplazadas entre capas."
+categories:
+  - "Arquitecturas"
+  - "Aprendizaje automático"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+**Swin Transformer** es una arquitectura para visión artificial que organiza
+la imagen en representaciones de varias escalas. Calcula autoatención dentro
+de ventanas locales y desplaza las ventanas entre bloques para que la
+información pueda cruzar sus límites [@liu2021swin].
+
+Es una variante del [transformer](transformer.qmd), no el nombre de todos los
+transformers visuales. La atención local limita el coste de procesar imágenes
+grandes, mientras la jerarquía facilita tareas que requieren localizar
+regiones.
+
+## Contexto histórico
+
+Liu y colaboradores presentaron Swin Transformer en 2021 y lo evaluaron en
+clasificación, detección de objetos y segmentación semántica sobre conjuntos
+generales de visión [@liu2021swin]. Los resultados del trabajo original no
+establecen por sí solos rendimiento en imágenes clínicas.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, sigue siendo una referencia para diseños
+visuales jerárquicos con atención por ventanas. Elegir Swin en una tarea
+concreta exige compararlo con alternativas, incluidas redes convolucionales,
+con los mismos datos, recursos y criterios de evaluación.
+
+## Aplicaciones
+
+### Generales
+
+- Clasificar imágenes o extraer representaciones visuales.
+- Detectar objetos y segmentar regiones en investigación.
+
+### Sanitarias
+
+- Evaluar experimentalmente segmentación de órganos o lesiones en imágenes
+  médicas, con comparación y validación externa.
+- Estudiar si la atención por ventanas ayuda a procesar imágenes de alta
+  resolución sin perder hallazgos pequeños.
+
+## Limitaciones
+
+- La arquitectura no resuelve sesgos del conjunto de entrenamiento ni
+  cambios entre centros o equipos.
+- Las ventanas, tamaños de imagen y recursos de cómputo condicionan el
+  resultado.
+- Una ventaja en benchmarks de visión general no implica superioridad
+  frente a una CNN en una tarea sanitaria [@liu2021swin].
+- Los mapas de atención no constituyen, por sí solos, una explicación
+  clínica fiable de una predicción.
+
+## Ejemplos
+
+En una imagen, un bloque atiende a regiones locales. En el siguiente, las
+ventanas se desplazan y un elemento puede intercambiar información con
+elementos que antes quedaban al otro lado del borde. Esa conexión favorece
+una representación jerárquica; detectar una lesión concreta requiere
+entrenamiento y evaluación específicos.
+
+## Relacionados
+
+- [Transformer](transformer.qmd)
+- [Mecanismo de atención](mecanismo-de-atencion.qmd)
+- [Red neuronal convolucional](red-neuronal-convolucional.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Inversión de GAN](inversion-de-gan.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

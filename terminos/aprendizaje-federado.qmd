@@ -1,0 +1,91 @@
+---
+title: "Aprendizaje federado"
+aliases:
+  - /terminos/federated-learning.html
+  - /terminos/aprendizaje-federativo.html
+sinonimos:
+  - "Federated learning"
+  - "Aprendizaje federativo"
+description: "Entrenamiento coordinado de un modelo con datos que permanecen en distintos centros o dispositivos."
+categories:
+  - "Aprendizaje automático"
+  - "Ética y gobernanza"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+En el **aprendizaje federado**, varios participantes entrenan localmente un
+modelo y comparten actualizaciones para construir uno común, sin reunir los
+datos de entrenamiento brutos en un único depósito. Una forma conocida,
+*Federated Averaging*, agrega de manera iterativa las actualizaciones locales
+[@mcmahan2017federated].
+
+Que los datos brutos permanezcan en cada lugar no garantiza privacidad:
+en determinadas condiciones se han reconstruido datos a partir de
+gradientes compartidos [@zhu2019gradientleakage]. El aprendizaje federado
+necesita controles adicionales de seguridad, permisos y evaluación.
+
+## Contexto histórico
+
+McMahan y colaboradores describieron en 2017 un método práctico de
+entrenamiento descentralizado y lo evaluaron con datos repartidos entre
+dispositivos [@mcmahan2017federated]. El enfoque se extendió después a
+colaboraciones entre instituciones, incluidas las sanitarias.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, ofrece una forma de estudiar modelos cuando
+centralizar datos resulta difícil por motivos técnicos, jurídicos u
+organizativos. Su valor depende de la calidad y compatibilidad de los datos
+locales, la coordinación y la validación del modelo resultante.
+
+## Aplicaciones
+
+### Generales
+
+- Entrenar un modelo común con datos distribuidos en dispositivos.
+- Colaborar entre organizaciones sin trasladar todos los registros a una
+  infraestructura central.
+
+### Sanitarias
+
+- Investigar modelos con datos de varios hospitales manteniendo los registros
+  clínicos brutos en cada institución.
+- Dayan y colaboradores entrenaron un modelo federado con datos de 20 centros
+  para estudiar la predicción de necesidades de oxígeno en pacientes con
+  COVID-19; es un ejemplo de investigación, no una validación de cualquier
+  sistema federado [@dayan2021federated].
+
+## Limitaciones
+
+- Los centros pueden diferir en población, medición, etiquetas y prevalencia.
+- La agregación requiere comunicación y coordinación; algunos participantes
+  pueden fallar o abandonar el proceso.
+- No compartir datos brutos no elimina filtraciones posibles a través de
+  actualizaciones [@zhu2019gradientleakage].
+- Un buen resultado promedio puede ocultar peor rendimiento en un centro o
+  subgrupo; hace falta evaluación separada.
+
+## Ejemplos
+
+Tres hospitales entrenan el mismo modelo sobre sus registros locales. Tras
+cada ronda envían actualizaciones al coordinador, que construye una versión
+compartida. Para juzgarla no basta con compararla con un modelo de un solo
+hospital: hay que medirla en cada centro y examinar qué información salió
+durante el entrenamiento.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+- [Big Data](big-data.qmd)
+- [Modelo local](modelo-local.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
