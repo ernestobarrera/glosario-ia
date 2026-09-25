@@ -1,0 +1,96 @@
+---
+title: "Aprendizaje contrafactual"
+aliases:
+  - /terminos/counterfactual-learning.html
+sinonimos:
+  - "Counterfactual learning"
+description: "Aprendizaje con datos observacionales para estudiar intervenciones alternativas o aprender políticas de decisión sin ejecutarlas."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+En inferencia causal, el **aprendizaje contrafactual**, o **counterfactual
+learning**, intenta estimar qué resultado habría seguido a una intervención
+distinta de la observada. Para cada persona o caso solo se observa el resultado de la opción
+realmente tomada; el alternativo no puede recuperarse directamente de su
+registro [@johansson2016counterfactual].
+
+En esta acepción, los modelos usan grupos comparables y supuestos causales
+para aprender de datos observacionales. El nombre no garantiza que el efecto
+individual hipotético sea identificable.
+
+En recomendación, búsqueda y publicidad, **counterfactual learning** también
+designa el aprendizaje de políticas a partir de interacciones registradas y
+las probabilidades con que se eligieron las acciones observadas
+[@swaminathan2015crm]. Esta acepción se solapa con la
+[evaluación fuera de política](evaluacion-fuera-de-politica.qmd): aquella
+aprende una política con esos datos; la evaluación estima el rendimiento de
+una política objetivo sin desplegarla.
+
+## Contexto histórico
+
+El campo combina la inferencia causal con técnicas de aprendizaje automático.
+En 2016, Johansson, Shalit y Sontag propusieron aprender representaciones
+para inferir resultados contrafactuales a partir de observaciones
+[@johansson2016counterfactual]. En otra línea, Swaminathan y Joachims
+formularon en 2015 el aprendizaje desde retroalimentación parcial registrada
+como minimización del riesgo contrafactual [@swaminathan2015crm].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, estudiar alternativas sin asignarlas al azar
+interesa en ámbitos donde experimentar puede ser difícil. El resultado sigue
+dependiendo de supuestos sobre factores de confusión y solapamiento entre
+grupos [@johansson2016counterfactual].
+
+## Aplicaciones
+
+### Generales
+
+- Comparar resultados potenciales de intervenciones en datos observacionales.
+- Explorar heterogeneidad de efectos como hipótesis para estudios posteriores.
+- Aprender políticas de recomendación desde interacciones registradas cuando
+  se conocen las probabilidades de las acciones observadas.
+
+### Sanitarias
+
+- Investigar si pacientes comparables podrían responder de modo distinto a
+  dos tratamientos, sin atribuir a un individuo un resultado no observado.
+- Priorizar preguntas para un ensayo o una validación externa; un modelo
+  retrospectivo no reemplaza ese contraste.
+
+## Limitaciones
+
+- La confusión no medida puede invertir la asociación estimada.
+- Si ciertos perfiles solo reciben una de las opciones, faltan datos para
+  comparar alternativas en ese grupo.
+- Una representación predictiva no convierte por sí sola una diferencia
+  observacional en efecto causal [@johansson2016counterfactual].
+- Al aprender políticas de registros, la falta de cobertura o de propensiones
+  fiables impide comparar acciones no observadas [@swaminathan2015crm].
+
+## Ejemplos
+
+Un hospital podría comparar retrospectivamente dos estrategias en pacientes
+con características parecidas. La diferencia estimada sería una hipótesis
+condicionada a los datos y supuestos; no revelaría qué habría pasado de hecho
+con el tratamiento alternativo para un paciente concreto.
+
+## Relacionados
+
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Evaluación fuera de política](evaluacion-fuera-de-politica.qmd)
+- [Proceso de decisión de Markov](proceso-de-decision-de-markov.qmd)
+- [Inferencia bayesiana](inferencia-bayesiana.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

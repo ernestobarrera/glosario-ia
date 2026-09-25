@@ -1,0 +1,83 @@
+---
+title: "Valor de acción"
+aliases:
+  - /terminos/q-value.html
+  - /terminos/valor-de-q.html
+sinonimos:
+  - "Q-value"
+  - "Valor de Q"
+description: "Retorno esperado al elegir una acción en un estado y continuar después según una política determinada."
+categories:
+  - "Aprendizaje automático"
+  - "Fundamentos"
+date-modified: 2026-09-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **valor de acción**, llamado **Q-value** o **valor de Q**, expresa el retorno
+esperado de elegir una acción en un estado y seguir después una política. Debe
+decirse de qué política se habla: el valor bajo una política concreta y el
+valor óptimo son objetos distintos [@sutton2018reinforcement].
+
+No es la recompensa de ese paso aislado. Incluye consecuencias futuras, que
+pueden estar demoradas o ser inciertas. Q-learning es un procedimiento para
+aprender una estimación del valor óptimo; no es un sinónimo del valor de acción
+[@watkins1992qlearning].
+
+## Contexto histórico
+
+Las funciones de valor forman parte de la teoría de decisión secuencial. En
+1992, Watkins y Dayan publicaron el análisis de convergencia de Q-learning,
+algoritmo que actualiza estimaciones de valores de acción a partir de
+transiciones observadas [@watkins1992qlearning].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, las estimaciones de valor permiten comparar
+acciones en muchos métodos de aprendizaje por refuerzo. El número calculado
+solo tiene sentido respecto a un estado, una recompensa, un horizonte temporal
+y una política definidos [@sutton2018reinforcement].
+
+## Aplicaciones
+
+### Generales
+
+- Elegir acciones en un entorno simulado según su retorno estimado.
+- Analizar por qué una política favorece una acción frente a otra.
+
+### Sanitarias
+
+- Investigar, sobre datos retrospectivos, decisiones secuenciales como la
+  dosificación adaptativa, con evaluación metodológica independiente.
+- Comparar políticas hipotéticas en simulación sin convertir sus valores en
+  probabilidades de beneficio para un paciente [@gottesman2019rlhealth].
+
+## Limitaciones
+
+- Una estimación puede ser muy incierta para acciones apenas observadas.
+- Una recompensa mal elegida produce valores altos para objetivos clínicamente
+  equivocados.
+- Los valores aprendidos de registros clínicos pueden reflejar selección de
+  tratamientos y factores de confusión [@gottesman2019rlhealth].
+
+## Ejemplos
+
+En un simulador, dos acciones pueden dar la misma recompensa hoy y distinto
+valor de acción si una de ellas aumenta la probabilidad de un buen resultado
+futuro. Esa comparación depende de las reglas del simulador y de la política
+que se seguirá después.
+
+## Relacionados
+
+- [Q-learning](q-learning.qmd)
+- [Proceso de decisión de Markov](proceso-de-decision-de-markov.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Evaluación fuera de política](evaluacion-fuera-de-politica.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
