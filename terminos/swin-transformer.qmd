@@ -60,7 +60,7 @@ con los mismos datos, recursos y criterios de evaluación.
 - Las ventanas, tamaños de imagen y recursos de cómputo condicionan el
   resultado.
 - Una ventaja en benchmarks de visión general no implica superioridad
-  frente a una CNN en una tarea sanitaria [@liu2021swin].
+  frente a una CNN en una tarea sanitaria.
 - Los mapas de atención no constituyen, por sí solos, una explicación
   clínica fiable de una predicción.
 

@@ -29,10 +29,10 @@ representativos, etiquetas fiables ni predicciones útiles.
 ## Contexto histórico
 
 La expresión se difundió al crecer la captura digital y el procesamiento
-distribuido. El NIST publicó en 2018 una definición y un vocabulario para
-describir los problemas de datos que requieren soluciones escalables
-[@nist2018bigdata]. Las conocidas «tres V» son una regla didáctica; las
-definiciones técnicas pueden incluir otras características.
+distribuido. El NIST publicó en 2015 una definición y un vocabulario para
+describir los problemas de datos que requieren soluciones escalables, y los
+revisó en 2018 [@nist2018bigdata]. Las conocidas «tres V» son una regla
+didáctica; las definiciones técnicas pueden incluir otras características.
 
 ## Importancia actual
 
