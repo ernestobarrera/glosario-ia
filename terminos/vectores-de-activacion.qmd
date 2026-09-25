@@ -1,0 +1,90 @@
+---
+title: "Vectores de activación"
+aliases:
+  - /terminos/steering-vectors.html
+  - /terminos/vector-de-activacion.html
+sinonimos:
+  - "Steering vectors"
+description: "Direcciones calculadas a partir de activaciones internas que se añaden durante la inferencia para estudiar o modificar una conducta del modelo."
+categories:
+  - "Modelos de lenguaje"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+En esta ficha, **vectores de activación** se refiere a los *steering vectors*:
+direcciones calculadas a partir de activaciones internas de un modelo de
+lenguaje. Una técnica compara activaciones ante ejemplos con propiedades
+distintas, obtiene una dirección y la añade durante la inferencia para
+estudiar cómo cambia la respuesta [@rimsky2024steering].
+
+«Vector de activación» también puede nombrar cualquier estado interno
+numérico de una red; ese sentido general es más amplio. Una dirección que
+modifica respuestas no demuestra que exista un único «concepto» aislado
+en el modelo.
+
+## Contexto histórico
+
+La intervención directa sobre activaciones se investigó como alternativa
+experimental a cambiar pesos o instrucciones. Rimsky y colaboradores
+publicaron en 2024 un método de adición contrastiva que construye
+direcciones a partir de pares de ejemplos y las aplica a un modelo de
+lenguaje [@rimsky2024steering].
+
+## Importancia actual
+
+A fecha de septiembre de 2026, estas técnicas sirven para investigar
+representaciones internas y ensayar cambios de comportamiento sin volver
+a entrenar todos los pesos. Siguen siendo intervenciones experimentales:
+el efecto depende del modelo, la capa, los ejemplos y la intensidad aplicada.
+
+## Aplicaciones
+
+### Generales
+
+- Estudiar si una dirección modifica una propiedad observable de las
+  respuestas en un conjunto de pruebas.
+- Comparar la intervención con otras formas de control, como instrucciones
+  o ajuste fino.
+
+### Sanitarias
+
+- Investigar en entornos aislados cómo una intervención afecta la
+  factualidad o el estilo de respuestas a preguntas de salud.
+- Auditar si mejora un criterio a costa de errores nuevos o peor
+  rendimiento en subgrupos; no usar el vector como señal diagnóstica.
+
+## Limitaciones
+
+- El efecto puede variar entre tareas, capas y modelos.
+- Mejorar la propiedad buscada no sustituye la evaluación de otras
+  capacidades ni la prueba en casos nuevos.
+- Una correlación entre activación y comportamiento no prueba que la
+  dirección corresponda a un estado psicológico humano.
+- No garantiza veracidad, ausencia de sesgo ni seguridad clínica.
+
+## Ejemplos
+
+Un equipo obtiene una dirección contrastando respuestas factuales y
+respuestas con errores en un conjunto de prueba. La añade durante la
+generación y mide si cambia la proporción de errores en casos nuevos.
+Aunque el resultado mejore en ese conjunto, debe comprobar también si
+empeoran otras respuestas; la etiqueta «factualidad» describe el diseño
+del experimento, no una propiedad única descubierta dentro del modelo.
+
+## Relacionados
+
+- [Espacio latente](espacio-latente.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Factualidad](factualidad.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Inversión de GAN](inversion-de-gan.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,87 @@
+---
+title: "Big Data"
+aliases:
+  - /terminos/datos-masivos.html
+sinonimos:
+  - "Datos masivos"
+description: "Datos cuya escala, velocidad, variedad o variabilidad exige formas de almacenamiento y análisis que puedan ampliarse."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+**Big Data** describe un problema de datos que requiere una arquitectura
+escalable para almacenarlos, procesarlos o analizarlos. No existe un umbral
+universal de gigabytes: depende de los datos, la tarea y los recursos
+disponibles. El marco del NIST destaca volumen, velocidad, variedad y
+variabilidad como características que pueden motivar ese cambio de
+arquitectura [@nist2018bigdata].
+
+No es un algoritmo de inteligencia artificial. Se puede aplicar aprendizaje
+automático a datos masivos, pero un conjunto grande no garantiza datos
+representativos, etiquetas fiables ni predicciones útiles.
+
+## Contexto histórico
+
+La expresión se difundió al crecer la captura digital y el procesamiento
+distribuido. El NIST publicó en 2015 una definición y un vocabulario para
+describir los problemas de datos que requieren soluciones escalables, y los
+revisó en 2018 [@nist2018bigdata]. Las conocidas «tres V» son una regla
+didáctica; las definiciones técnicas pueden incluir otras características.
+
+## Importancia actual
+
+A fecha de septiembre de 2026, la cuestión práctica es qué parte del flujo
+necesita escalar: ingesta, almacenamiento, limpieza, entrenamiento o consulta.
+Un volumen grande puede ayudar a entrenar algunos modelos, pero la utilidad
+depende además de cobertura, calidad, gobernanza y evaluación.
+
+## Aplicaciones
+
+### Generales
+
+- Procesar flujos de sensores que llegan de forma continua.
+- Integrar registros de distinta estructura para análisis poblacional.
+
+### Sanitarias
+
+- Estudiar grandes colecciones de registros clínicos o imágenes entre
+  instituciones, una vez definidos permisos, calidad y finalidad.
+- Vigilar tendencias agregadas con datos oportunos, comprobando retrasos y
+  cambios de codificación antes de interpretar las señales.
+
+## Limitaciones
+
+- Más observaciones del mismo centro no corrigen por sí solas un sesgo de
+  selección ni representan otras poblaciones.
+- Integrar fuentes heterogéneas exige aclarar qué significa cada variable.
+- La escala aumenta el coste de almacenamiento y de control de acceso; no
+  convierte automáticamente los datos en anónimos.
+- Un hallazgo estadístico en datos extensos no demuestra causalidad ni
+  utilidad clínica.
+
+## Ejemplos
+
+Un sistema recibe millones de medidas de dispositivos con formatos distintos
+y debe detectar errores casi en tiempo real. El reto combina velocidad y
+variedad, aunque cada medida sea pequeña. Antes de entrenar un modelo, el
+equipo necesita comprobar si los dispositivos miden lo mismo y si faltan
+grupos de pacientes.
+
+## Relacionados
+
+- [Conjunto de datos](conjunto-de-datos.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Aprendizaje profundo](aprendizaje-profundo.qmd)
+- [Aprendizaje federado](aprendizaje-federado.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
