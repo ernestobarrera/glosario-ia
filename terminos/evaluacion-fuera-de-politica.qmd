@@ -10,7 +10,7 @@ description: "Estimación del rendimiento de una política de decisión con dato
 categories:
   - "Aprendizaje automático"
   - "Seguridad y riesgos"
-date-modified: 2026-09-24
+date-modified: 2026-09-25
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -31,8 +31,8 @@ medio de una política; no predice con certeza el contrafactual de cada persona.
 
 La evaluación de políticas aprendidas con datos de otras políticas forma
 parte del aprendizaje por refuerzo. En 2018, Farajtabar y colaboradores
-estudiaron estimadores doblemente robustos para este problema
-[@farajtabar2018offpolicy].
+propusieron una variante de los estimadores doblemente robustos que ya se
+usaban para este problema [@farajtabar2018offpolicy].
 
 ## Importancia actual
 

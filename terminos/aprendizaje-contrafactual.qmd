@@ -4,33 +4,43 @@ aliases:
   - /terminos/counterfactual-learning.html
 sinonimos:
   - "Counterfactual learning"
-description: "Aprendizaje a partir de datos observados para estudiar resultados de intervenciones alternativas bajo supuestos causales explícitos."
+description: "Aprendizaje con datos observacionales para estudiar intervenciones alternativas o aprender políticas de decisión sin ejecutarlas."
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-09-24
+date-modified: 2026-09-25
 estado: "borrador"
 tipo: "tecnica"
 ---
 
 ## Definición ampliada
 
-El **aprendizaje contrafactual**, o **counterfactual learning**, intenta
-estimar qué resultado habría seguido a una intervención distinta de la
-observada. Para cada persona o caso solo se observa el resultado de la opción
+En inferencia causal, el **aprendizaje contrafactual**, o **counterfactual
+learning**, intenta estimar qué resultado habría seguido a una intervención
+distinta de la observada. Para cada persona o caso solo se observa el resultado de la opción
 realmente tomada; el alternativo no puede recuperarse directamente de su
 registro [@johansson2016counterfactual].
 
-Los modelos usan grupos comparables y supuestos causales para aprender de
-datos observacionales. El nombre no garantiza que el efecto individual
-hipotético sea identificable.
+En esta acepción, los modelos usan grupos comparables y supuestos causales
+para aprender de datos observacionales. El nombre no garantiza que el efecto
+individual hipotético sea identificable.
+
+En recomendación, búsqueda y publicidad, **counterfactual learning** también
+designa el aprendizaje de políticas a partir de interacciones registradas y
+las probabilidades con que se eligieron las acciones observadas
+[@swaminathan2015crm]. Esta acepción se solapa con la
+[evaluación fuera de política](evaluacion-fuera-de-politica.qmd): aquella
+aprende una política con esos datos; la evaluación estima el rendimiento de
+una política objetivo sin desplegarla.
 
 ## Contexto histórico
 
 El campo combina la inferencia causal con técnicas de aprendizaje automático.
 En 2016, Johansson, Shalit y Sontag propusieron aprender representaciones
 para inferir resultados contrafactuales a partir de observaciones
-[@johansson2016counterfactual].
+[@johansson2016counterfactual]. En otra línea, Swaminathan y Joachims
+formularon en 2015 el aprendizaje desde retroalimentación parcial registrada
+como minimización del riesgo contrafactual [@swaminathan2015crm].
 
 ## Importancia actual
 
@@ -45,6 +55,8 @@ grupos [@johansson2016counterfactual].
 
 - Comparar resultados potenciales de intervenciones en datos observacionales.
 - Explorar heterogeneidad de efectos como hipótesis para estudios posteriores.
+- Aprender políticas de recomendación desde interacciones registradas cuando
+  se conocen las probabilidades de las acciones observadas.
 
 ### Sanitarias
 
@@ -60,6 +72,8 @@ grupos [@johansson2016counterfactual].
   comparar alternativas en ese grupo.
 - Una representación predictiva no convierte por sí sola una diferencia
   observacional en efecto causal [@johansson2016counterfactual].
+- Al aprender políticas de registros, la falta de cobertura o de propensiones
+  fiables impide comparar acciones no observadas [@swaminathan2015crm].
 
 ## Ejemplos
 

@@ -8,7 +8,7 @@ description: "Familia de métodos que usa muestras aleatorias repetidas para est
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-09-24
+date-modified: 2026-09-25
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -16,9 +16,9 @@ tipo: "tecnica"
 ## Definición ampliada
 
 Los **métodos de Monte Carlo**, o **Monte Carlo methods**, estiman una cantidad
-mediante muestras aleatorias repetidas. La precisión depende del problema, de
-la forma de obtener muestras y de cuántas se usen; repetir una simulación mal
-planteada no corrige sus supuestos [@metropolis1949montecarlo].
+mediante muestras aleatorias repetidas [@metropolis1949montecarlo]. La
+precisión depende del problema, de la forma de obtener muestras y de cuántas
+se usen; repetir una simulación mal planteada no corrige sus supuestos.
 
 En aprendizaje por refuerzo, un uso específico consiste en estimar el valor
 de estados o acciones promediando retornos de episodios completos
@@ -28,9 +28,8 @@ refuerzo, ni requiere una cadena de Markov.
 ## Contexto histórico
 
 Nicholas Metropolis y Stanislaw Ulam expusieron el método en un artículo de
-1949, a partir de trabajos de simulación probabilística desarrollados en la
-década anterior [@metropolis1949montecarlo]. Sus aplicaciones se extendieron
-más allá de la física hacia estadística, decisión e IA.
+1949 [@metropolis1949montecarlo]. Sus aplicaciones se extendieron más allá de
+la física hacia estadística, decisión e IA.
 
 ## Importancia actual
 
