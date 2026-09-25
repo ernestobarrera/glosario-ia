@@ -1,0 +1,86 @@
+---
+title: "ARPT"
+aliases:
+  - /terminos/aprender-razonar-predecir-tomar-decisiones.html
+sinonimos:
+  - "Aprender, razonar, predecir y tomar decisiones"
+description: "Mnemotecnia para distinguir cuatro funciones de un sistema de IA; no es una prueba ni una definición aceptada de inteligencia artificial general."
+categories:
+  - "Fundamentos"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+**ARPT** reúne cuatro verbos: **aprender**, **razonar**, **predecir** y
+**tomar decisiones**. Se usa aquí como mnemotecnia para preguntar qué hace un
+sistema y cómo se comprueba cada función. No es una arquitectura, un estándar
+de evaluación ni una definición científica suficiente de
+[inteligencia artificial general](agi.qmd).
+
+Aprender supone modificar un comportamiento a partir de experiencia o datos;
+razonar, derivar una respuesta a partir de información y reglas o pasos;
+predecir, estimar un resultado no observado; y decidir, escoger una acción
+entre alternativas. Una misma aplicación puede combinar funciones o ejecutar
+solo algunas. Que exhiba las cuatro en tareas acotadas no demuestra
+generalización a situaciones nuevas [@chollet2019measure].
+
+## Contexto histórico
+
+La investigación sobre IA ha estudiado por separado aprendizaje,
+razonamiento, predicción y decisión. El acrónimo ARPT no se presenta aquí
+como un marco histórico con autoría y fecha verificadas. Una propuesta
+primaria sobre la medición de inteligencia general subraya que el desempeño
+en tareas concretas depende del conocimiento previo y de la experiencia;
+por eso evalúa generalización y eficiencia de adquisición de habilidades,
+sin usar ARPT como criterio [@chollet2019measure].
+
+## Importancia actual
+
+La mnemotecnia ayuda a descomponer promesas amplias sobre un sistema. Ante la
+frase «aprende y decide», permite preguntar qué datos actualizan el modelo,
+qué razonamiento se observa, qué se predice, qué acción se permite y quién la
+supervisa. La respuesta debe medirse en el contexto de uso.
+
+## Aplicaciones
+
+### Generales
+
+- Describir funciones de un [agente de IA](agente-de-ia.qmd) sin atribuirle
+  capacidades generales por su nombre.
+- Separar predicción de decisión: un sistema puede estimar probabilidades sin
+  actuar sobre ellas.
+
+### Sanitarias
+
+En una evaluación de apoyo clínico, la mnemotecnia puede ordenar cuatro
+preguntas distintas sobre datos, inferencias, predicciones y decisiones.
+No autoriza al sistema a decidir tratamientos ni indica que mejore con cada
+caso de forma segura.
+
+## Limitaciones
+
+- El acrónimo no aporta un método de medida ni umbrales de éxito.
+- La etiqueta «razonar» puede describir procesos internos distintos y no
+  demuestra que una explicación verbal refleje el mecanismo real.
+- Cuatro funciones aisladas no bastan para atribuir inteligencia general.
+
+## Ejemplos
+
+**Ejemplo hipotético:** una aplicación estima demanda futura a partir de datos
+históricos y recomienda un turno. Predice y propone una decisión, pero no
+queda probado que aprenda continuamente ni que razone fuera de esa tarea.
+
+## Relacionados
+
+- [Inteligencia artificial general](agi.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

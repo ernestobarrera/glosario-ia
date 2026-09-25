@@ -1,0 +1,88 @@
+---
+title: "Prueba de Turing"
+aliases:
+  - /terminos/test-de-turing.html
+  - /terminos/turing-test.html
+sinonimos:
+  - "Test de Turing"
+  - "Turing test"
+description: "Juego de imitación propuesto por Alan Turing para examinar si un interrogador distingue respuestas escritas de una máquina y de una persona."
+categories:
+  - "Fundamentos"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **Prueba de Turing** designa habitualmente una familia de pruebas de
+imitación conversacional. En el artículo original de 1950, Turing sustituyó
+la pregunta «¿pueden pensar las máquinas?» por un **juego de imitación**:
+un interrogador separado de dos participantes intenta identificarlos a
+partir de respuestas escritas [@turing1950computing].
+
+La exposición inicial del juego presenta a un hombre y una mujer; después
+pregunta qué ocurriría al hacer que una máquina ocupara el lugar de uno de
+ellos. Muchas versiones posteriores simplifican el protocolo a distinguir
+una persona de una máquina en una conversación. Es importante declarar
+cuál de esas versiones se evalúa antes de afirmar que un sistema «pasó»
+la prueba.
+
+## Contexto histórico
+
+Alan Turing publicó *Computing Machinery and Intelligence* en *Mind* en
+octubre de **1950** [@turing1950computing]. Su propuesta fue un experimento
+para discutir conducta observable de las máquinas; no fue un certificado
+universal de inteligencia ni una prueba clínica. El artículo formuló una
+predicción sobre interrogatorios de cinco minutos, pero no estableció un
+umbral válido para cualquier sistema o duración.
+
+## Importancia actual
+
+Las comparaciones conversacionales siguen siendo útiles para estudiar la
+capacidad de imitar respuestas humanas en un contexto definido. Su resultado
+depende de quién pregunta, de la duración, del canal, de las instrucciones
+y de cómo se decide el acierto. Sin esos datos, una declaración de éxito
+no es comparable con otra.
+
+## Aplicaciones
+
+### Generales
+
+- Diseñar evaluaciones de imitación conversacional con protocolo explícito.
+- Enseñar la diferencia entre conducta observable y atribuciones sobre
+  comprensión o conciencia.
+
+### Sanitarias
+
+La naturalidad de una conversación con un sistema no sirve para evaluar la
+exactitud de una respuesta médica ni la seguridad de su uso. Una evaluación
+sanitaria necesita preguntas, resultados y criterios propios del contexto
+clínico, además de medir errores y posibles daños.
+
+## Limitaciones
+
+- Imitar respuestas humanas no demuestra comprensión, conciencia ni
+  [inteligencia artificial general](agi.qmd).
+- El resultado cambia con el protocolo y las personas evaluadoras.
+- Una conversación convincente puede contener afirmaciones falsas.
+
+## Ejemplos
+
+**Ejemplo hipotético:** varias personas hacen preguntas escritas a un humano
+y a un sistema ocultos bajo etiquetas. Si aciertan poco al identificarlos,
+solo se ha medido la dificultad de distinguirlos bajo ese protocolo. No se
+ha probado que el sistema razone bien en otras tareas.
+
+## Relacionados
+
+- [Inteligencia artificial general](agi.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+- [Factualidad](factualidad.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
