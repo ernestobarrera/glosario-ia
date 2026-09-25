@@ -1,0 +1,79 @@
+---
+title: "Backtracking"
+aliases:
+  - /terminos/retroceso.html
+sinonimos:
+  - "Retroceso"
+description: "Estrategia de búsqueda que prueba decisiones parciales y vuelve a una decisión anterior cuando una rama no puede dar una solución válida."
+categories:
+  - "Fundamentos"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+El **backtracking**, o **retroceso**, construye una solución paso a paso.
+Cuando una elección parcial incumple una restricción o ya no puede completarse,
+el algoritmo vuelve al último punto con alternativas y prueba otra rama. Esa
+vuelta evita recorrer las continuaciones de una rama descartada
+[@fillmore1974backtracking].
+
+Se usa en problemas combinatorios como disponer piezas bajo restricciones o
+encontrar asignaciones válidas. No toda búsqueda emplea retroceso: por
+ejemplo, A* ordena estados con una función de coste y una heurística. El
+backtracking tampoco garantiza por sí mismo una solución óptima; para
+optimizar hay que definir objetivo, cobertura de ramas y reglas de poda.
+
+## Contexto histórico
+
+La programación por retroceso aparece en la literatura de algoritmos anterior
+a las aplicaciones actuales de IA. Fillmore y Williamson describieron
+formalmente en 1974 una familia de problemas de enumeración que se resuelven
+con esta estrategia [@fillmore1974backtracking].
+
+## Importancia actual
+
+Sigue siendo útil cuando una tarea puede expresarse como elecciones discretas
+y restricciones comprobables durante la construcción. Su rendimiento depende
+del orden de exploración y de cuánto trabajo se evita al descartar pronto
+ramas imposibles.
+
+## Aplicaciones
+
+### Generales
+
+- Encontrar configuraciones válidas de un tablero o calendario.
+- Enumerar asignaciones que cumplen restricciones explícitas.
+
+### Sanitarias
+
+**Ejemplo de uso posible, no validación clínica:** explorar propuestas de
+horarios de personal sujetos a disponibilidad y descanso. Un algoritmo puede
+descartar horarios imposibles; la calidad y legitimidad de la decisión final
+dependen además de los criterios humanos y organizativos.
+
+## Limitaciones
+
+- El número de combinaciones puede crecer con rapidez hasta hacer inviable
+  una búsqueda completa.
+- Una poda incorrecta puede eliminar soluciones válidas.
+- Encontrar una solución factible no demuestra que sea la mejor.
+
+## Ejemplos
+
+**Ejemplo hipotético:** se colocan reinas en un tablero, una por fila. Si la
+nueva reina ataca a otra, se prueba otra columna. Si no queda ninguna columna
+válida, se vuelve a la fila anterior para cambiar aquella elección.
+
+## Relacionados
+
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
+- [Búsqueda de arquitecturas neuronales](busqueda-de-arquitecturas-neuronales.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

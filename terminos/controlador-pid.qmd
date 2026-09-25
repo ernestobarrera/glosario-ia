@@ -1,0 +1,84 @@
+---
+title: "Controlador PID"
+aliases:
+  - /terminos/control-pid.html
+sinonimos:
+  - "Control PID"
+description: "Controlador de realimentación que combina acciones proporcional, integral y derivativa para corregir el error entre una medida y una consigna."
+categories:
+  - "Fundamentos"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+Un **controlador PID** compara una magnitud medida con el valor deseado y
+ajusta una señal de control a partir del error. La acción **proporcional**
+responde al error presente; la **integral** acumula errores pasados; y la
+**derivativa** responde a cómo cambia el error. La combinación y sus
+parámetros dependen del sistema físico [@astrom2008feedback].
+
+Es una técnica de control por realimentación. Puede convivir con sistemas de
+IA en un mismo dispositivo, pero no es por sí misma
+[aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd): un PID ordinario
+no necesita aprender una política mediante recompensas.
+
+## Contexto histórico
+
+El PID pertenece a la tradición del control automático, desarrollada antes
+de los sistemas modernos de aprendizaje automático. Åström y Murray
+describen en su libro de 2008 los tres componentes, el ajuste de parámetros,
+la saturación y los problemas de implementación [@astrom2008feedback].
+La ficha no asigna un año único de invención: las tres acciones y sus
+realizaciones tuvieron historias distintas.
+
+## Importancia actual
+
+Es un punto de referencia para controlar procesos físicos. Antes de usar un
+método más complejo conviene comprobar si un controlador sencillo y bien
+ajustado cumple el objetivo. En un sistema con componentes aprendidos,
+separar el controlador de la parte que aprende ayuda a identificar qué
+comportamiento depende de cada una.
+
+## Aplicaciones
+
+### Generales
+
+- Mantener una velocidad, temperatura o posición cerca de una consigna.
+- Corregir perturbaciones medidas en un proceso automatizado.
+
+### Sanitarias
+
+Al analizar un dispositivo sanitario con control automático, identificar
+si hay un lazo PID permite preguntar por sensor, consigna, límites de
+actuación y respuesta a fallos. La descripción de esta técnica no acredita
+que un equipo concreto la use ni que su configuración sea clínicamente segura.
+
+## Limitaciones
+
+- Ajustar mal los parámetros puede generar oscilaciones o una respuesta lenta.
+- La saturación del actuador puede acumular la parte integral y provocar
+  sobreimpulso, problema conocido como *integrator windup*
+  [@astrom2008feedback].
+- Procesos con grandes retardos o dinámicas cambiantes pueden requerir
+  otras estrategias de control.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un motor debe mantener cierta velocidad. Si la carga
+aumenta, cae la velocidad; el controlador detecta el error y modifica la
+potencia. La acción integral puede corregir un error persistente, mientras
+que un ajuste inadecuado podría hacer oscilar la velocidad.
+
+## Relacionados
+
+- [IA corporeizada](ia-corporeizada.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -1,0 +1,90 @@
+---
+title: "Codificación de fuente"
+aliases:
+  - /terminos/source-coding.html
+sinonimos:
+  - "Source coding"
+description: "Representación de los mensajes de una fuente con códigos que reducen redundancia según el objetivo y las restricciones de reconstrucción."
+categories:
+  - "Fundamentos"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **codificación de fuente** representa los mensajes producidos por una fuente
+mediante códigos. Cuando se busca compresión sin pérdida, el destinatario debe
+poder reconstruir exactamente el mensaje; si se admite pérdida, hay que definir
+qué distorsión es aceptable. La entropía de la fuente establece un límite
+teórico para la compresión sin pérdida bajo los supuestos del modelo
+[@shannon1948communication].
+
+La fuente puede emitir texto, imágenes o medidas. **Codificar la fuente no
+equivale a proteger el mensaje frente al ruido del canal**: eso es otro problema
+de la teoría de la comunicación. Tampoco equivale a la
+[tokenización](tokenizacion.qmd) de un modelo de lenguaje, que divide texto en
+unidades antes de procesarlo.
+
+## Contexto histórico
+
+Claude Shannon formuló en 1948 un marco matemático para fuentes, información,
+redundancia y transmisión [@shannon1948communication]. Sus resultados permiten
+separar una pregunta sobre cuánto puede comprimirse un mensaje de otra sobre
+cómo transmitirlo de forma fiable.
+
+## Importancia actual
+
+La codificación de fuente importa al almacenar y transportar datos para
+sistemas de IA: ahorrar espacio o ancho de banda puede cambiar el coste del
+sistema, pero la compresión con pérdida puede borrar información útil para una
+tarea posterior. La elección del código se evalúa con los datos y el uso
+previsto, no solo con el tamaño final.
+
+Es posible usar la comunicación como **analogía** para pensar en un
+[prompt](prompting.qmd): una instrucción ambigua puede transmitir mal una
+intención. Esa analogía no convierte la redacción de prompts en codificación
+de fuente en el sentido formal de Shannon, ni establece que menos tokens
+produzcan respuestas mejores.
+
+## Aplicaciones
+
+### Generales
+
+- Reducir el tamaño de archivos o flujos de datos antes de almacenarlos.
+- Comparar compresión sin pérdida y con pérdida según el uso del dato.
+
+### Sanitarias
+
+Al preparar datos para investigación sanitaria, conviene documentar si una
+transformación permite recuperar el original y si altera detalles necesarios
+para la tarea. Una tasa de compresión alta, por sí sola, no demuestra que la
+información clínica relevante se conserve.
+
+## Limitaciones
+
+- El límite teórico depende de cómo se modela la fuente; no garantiza que un
+  algoritmo concreto lo alcance.
+- Una representación más corta puede imponer un coste de cálculo mayor.
+- La compresión con pérdida exige una medida de distorsión apropiada al uso;
+  una métrica visual general puede omitir detalles relevantes.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un archivo de texto repetitivo se comprime sin pérdida
+y luego se reconstruye exactamente. Si el archivo fuera una imagen y se
+permitiera pérdida, habría que evaluar qué detalles cambian y si esa pérdida
+importa para su uso.
+
+## Relacionados
+
+- [Entropía de Shannon](entropia-de-shannon.qmd)
+- [Tokenización](tokenizacion.qmd)
+- [Prompting](prompting.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

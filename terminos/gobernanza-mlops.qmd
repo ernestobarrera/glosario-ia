@@ -1,0 +1,87 @@
+---
+title: "Gobernanza MLOps"
+aliases:
+  - /terminos/mlops-governance.html
+sinonimos:
+  - "MLOps governance"
+description: "Responsabilidades y controles para desarrollar, desplegar, vigilar y retirar modelos de aprendizaje automático de forma trazable."
+categories:
+  - "Ética y gobernanza"
+  - "Aprendizaje automático"
+date-modified: 2026-09-25
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **gobernanza MLOps** establece quién puede cambiar un sistema de
+aprendizaje automático, con qué evidencias se aprueba cada versión y cómo
+se vigila su comportamiento después del despliegue. Incluye procedencia
+de datos, validación, registro de versiones, responsabilidades, supervisión
+y condiciones para detener o retirar un modelo [@nist2023airmf].
+
+MLOps también incluye prácticas técnicas para automatizar entrenamiento,
+pruebas, entrega y seguimiento [@googlecloud2024mlops]. Automatizar un
+pipeline no basta para gobernarlo: las decisiones sobre riesgo, acceso,
+aceptación y rendición de cuentas requieren responsables y criterios claros.
+
+## Contexto histórico
+
+Al llevar modelos de investigación a servicios continuos, los equipos
+necesitaron controlar cambios de datos, código y rendimiento. La
+documentación de Google Cloud describe pipelines de integración, entrega
+y entrenamiento continuos para sistemas predictivos
+[@googlecloud2024mlops]. El marco AI RMF 1.0 de NIST, publicado en 2023,
+sitúa la función de gobernar junto a mapear, medir y gestionar riesgos
+durante el ciclo de vida [@nist2023airmf].
+
+## Importancia actual
+
+Un modelo validado una vez puede cambiar de comportamiento cuando cambian
+los datos de entrada, la población o una dependencia. La gobernanza hace
+visibles esos cambios y fija quién decide si una nueva versión se publica,
+se restringe o se retira. No sustituye las obligaciones normativas
+aplicables, que dependen del sistema y del contexto.
+
+## Aplicaciones
+
+### Generales
+
+- Registrar datos, código, versión del modelo y resultados de evaluación.
+- Exigir criterios de aprobación y reversión antes de cada despliegue.
+- Vigilar errores, deriva y uso fuera de las condiciones previstas.
+
+### Sanitarias
+
+En un sistema usado para apoyar una tarea clínica, la gobernanza debe hacer
+identificables la versión, la población de validación, los responsables de
+seguimiento y la respuesta prevista ante fallos. Documentar esos elementos
+no equivale a demostrar eficacia o seguridad clínica.
+
+## Limitaciones
+
+- Un registro completo no corrige un diseño o una validación deficientes.
+- Las métricas de producción pueden no detectar daños poco frecuentes o
+  concentrados en subgrupos.
+- La automatización puede acelerar también la propagación de un error si
+  faltan decisiones de aprobación y mecanismos de parada.
+
+## Ejemplos
+
+**Ejemplo hipotético:** un modelo de clasificación se actualiza con datos
+nuevos. El pipeline genera una versión candidata; una persona responsable
+compara resultados por grupos, comprueba cambios de datos y decide si se
+despliega. El sistema registra esa decisión y conserva una vía de reversión.
+
+## Relacionados
+
+- [AutoML](automl.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [AI Act](ai-act.qmd)
+- [Validación cruzada](validacion-cruzada.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
