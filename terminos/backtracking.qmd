@@ -31,9 +31,7 @@ optimizar hay que definir objetivo, cobertura de ramas y reglas de poda.
 La programación por retroceso aparece en la literatura de algoritmos anterior
 a las aplicaciones actuales de IA. Fillmore y Williamson describieron
 formalmente en 1974 una familia de problemas de enumeración que se resuelven
-con esta estrategia [@fillmore1974backtracking]. La fecha de 2006 que puede
-aparecer en la página digital de SIAM corresponde a su publicación en línea,
-no al año del artículo.
+con esta estrategia [@fillmore1974backtracking].
 
 ## Importancia actual
 
