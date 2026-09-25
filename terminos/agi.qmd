@@ -9,7 +9,7 @@ description: "Concepto hipotético de una IA capaz de aprender y desenvolverse c
 categories:
   - "Fundamentos"
   - "Ética y gobernanza"
-date-modified: 2026-09-04
+date-modified: 2026-09-25
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -57,7 +57,7 @@ resolución de problemas complejos con menor especialización previa.
 
 En salud se imagina un sistema capaz de integrar razonamiento clínico,
 investigación, gestión y comunicación. Esa posibilidad no describe una
-tecnología clínica disponible ni validada en la actualidad.
+tecnología clínica disponible ni validada a fecha de septiembre de 2026.
 
 ## Limitaciones
 

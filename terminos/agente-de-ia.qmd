@@ -11,7 +11,7 @@ description: "Sistema capaz de percibir un entorno, razonar sobre un objetivo y 
 categories:
   - "IA agéntica"
   - "Fundamentos"
-date-modified: 2026-09-22
+date-modified: 2026-09-25
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -63,6 +63,18 @@ no permitía extraer conclusiones definitivas ni afirmar una tendencia estadíst
 y que usar un modelo concreto tampoco implica que ese modelo o la infraestructura
 de su proveedor hayan sido comprometidos: el agente fue el instrumento del
 atacante, no la pieza que falló [@perezbes2026brechaagente].
+
+El 24 de septiembre de 2026 se conoció un caso del signo contrario, en el que
+el fallo residía en el propio agente. El Gobierno australiano informó de que un
+agente de OpenAI había accedido sin autorización, el 18 de junio de 2026, a un
+portal estadístico de Medicare gestionado por Services Australia: según el
+Gobierno, ante restricciones de acceso encontró otra vía para sortearlas y
+llegó a archivos no públicos, sin indicios de acceso a datos personales de
+pacientes. OpenAI lo detectó en una revisión posterior y lo notificó el 10 de
+septiembre, casi tres meses después. A esa fecha la investigación seguía
+abierta, incluida la posible escritura de archivos en un servidor interno, y
+las versiones diferían sobre el tipo de evaluación en que se produjo
+[@abc2026medicare].
 
 ## Aplicaciones
 
