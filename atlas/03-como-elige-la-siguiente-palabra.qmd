@@ -1,0 +1,114 @@
+---
+title: "Cómo elige la siguiente palabra"
+description: "Qué hacen la temperatura, el muestreo top-k y el muestreo top-p con las probabilidades que calcula un modelo de lenguaje, y qué no pueden hacer."
+categories:
+  - "Modelos de lenguaje"
+  - "Fundamentos"
+date-modified: 2026-09-26
+image: ../assets/atlas/como-elige-la-siguiente-palabra.png
+page-layout: full
+format:
+  html:
+    lightbox: true
+---
+
+::: {.atlas-visual}
+
+Un modelo de lenguaje no elige la palabra siguiente: reparte probabilidades
+entre las candidatas. La elección la hace después un procedimiento aparte, que
+se configura sin tocar el modelo. La lámina sigue ese procedimiento con dos
+frases de ejemplo y cifras calculadas paso a paso.
+
+::: {.atlas-lamina}
+<figure>
+<a href="../assets/atlas/como-elige-la-siguiente-palabra.png"
+   class="lightbox" data-gallery="atlas-visual" title="Lámina 03">
+<img src="../assets/atlas/como-elige-la-siguiente-palabra.png"
+     alt="Lámina sobre cómo elige un modelo de lenguaje la siguiente palabra, con cifras calculadas sobre puntuaciones inventadas. En el paso abierto, «El paciente refiere dolor ___», seis candidatas (torácico, abdominal, lumbar, de, en, cervical) reciben puntuaciones de 2,0 a −0,3; tres gráficos de barras a la misma escala muestran sus probabilidades con temperatura 0,5, 1 y 1,5: la favorita pasa del 52 % al 35 % y al 29 %, y la cola gana peso. Con temperatura 1, top-k con k igual a 3 conserva tres candidatas (45, 30 y 25 %) y top-p con p igual a 0,9 conserva cuatro (39, 26, 21 y 14 %); de cada 100 ejecuciones, unas 39 escribirían «torácico». En el paso concentrado, «Se le toma la tensión ___», «arterial» reúne el 92 %: top-k conserva tres candidatas y top-p solo una. Un flujo resume el proceso: puntuaciones, softmax y temperatura, recorte, sorteo y palabra escrita. Incluye cautelas y cuatro lecturas clave: el modelo no elige; el porcentaje es de la palabra, no del diagnóstico; temperatura 0 no garantiza respuestas idénticas; y hay que declarar temperatura, top-k y top-p al evaluar una herramienta."
+     loading="eager" decoding="async">
+</a>
+<figcaption>Lámina 03. Pulse para ampliarla.</figcaption>
+</figure>
+:::
+
+::: {.atlas-acciones}
+[Abrir la lámina a tamaño original](../assets/atlas/como-elige-la-siguiente-palabra.png){target="_blank"}
+:::
+
+::: {.atlas-texto}
+## Cómo leerla
+
+El flujo inferior resume el recorrido. El modelo asigna a cada candidata una
+puntuación, llamada *logit*, y la función [softmax](../terminos/softmax.qmd) la
+convierte en probabilidad. Después, el
+[algoritmo de decodificación](../terminos/algoritmo-de-decodificacion.qmd)
+decide qué hacer con esa distribución: reescalarla, recortarla y sortear entre
+las candidatas que quedan. La candidata elegida se añade al texto y el proceso
+se repite con la siguiente palabra.
+
+El bloque «Paso abierto» parte de una frase con muchas continuaciones
+plausibles. La tabla da las puntuaciones y los tres gráficos, dibujados a la
+misma escala, muestran el efecto de la
+[temperatura](../terminos/temperatura-de-muestreo.qmd). Con temperatura baja,
+la probabilidad se concentra en la favorita: «torácico» pasa del 35 % al 52 %.
+Con temperatura alta se reparte hacia la cola: baja al 29 % y «en» sube del 5 %
+al 8 %. Cuando la temperatura se acerca a cero, se escribe siempre la favorita,
+lo que se conoce como búsqueda voraz. Bajarla no hace más acertado al modelo:
+solo hace más probable su opción favorita, sea acertada o no.
+
+El bloque central aplica dos recortes a la distribución con temperatura 1. El
+[muestreo top-k](../terminos/muestreo-top-k.qmd) conserva siempre un número
+fijo de candidatas, aquí tres. El
+[muestreo top-p](../terminos/muestreo-top-p.qmd) conserva las necesarias para
+reunir una masa de probabilidad p, aquí 0,9, y en este paso son cuatro. Las
+conservadas se reescalan para que sumen el 100 % y se sortea entre ellas. Por
+eso, con la misma entrada, unas 39 de cada 100 ejecuciones escribirían
+«torácico» y el resto, otra palabra. Esa variación entre ejecuciones es una de
+las fuentes del [no determinismo](../terminos/no-determinismo.qmd).
+
+El bloque «Paso concentrado» muestra por qué los dos recortes no son
+equivalentes. Tras «Se le toma la tensión», la palabra «arterial» reúne el
+92 %. Top-k sigue conservando tres candidatas, aunque las otras dos no sumen
+ni el 5 %; top-p se queda solo con «arterial». Top-k fija el número de
+candidatas; top-p lo adapta a cada paso [@fan2018hierarchical;
+@holtzman2020degeneration].
+
+Ninguno de los dos recortes distingue candidatas acertadas de erróneas: filtran
+por probabilidad, no por corrección. Las candidatas de la lámina son ejemplos
+y la lámina no dice cuál es la correcta. Y el porcentaje es la probabilidad de
+la palabra, no la del diagnóstico ni la de que la frase sea verdadera.
+
+## Qué significa en la práctica
+
+Temperatura, top-k y top-p cambian las salidas y, con ellas, cualquier medida
+que se tome sobre ellas. Al evaluar una herramienta hay que declararlos junto
+al modelo y su versión: Song y colaboradores documentaron que la elección de la
+estrategia de decodificación cambia los resultados de una evaluación
+[@song2025greedy]. Temperatura 0 elimina el sorteo, pero no garantiza
+respuestas idénticas: subsisten otras fuentes de variación, como el cómputo en
+paralelo [@pytorch2026reproducibility].
+
+## Alcance
+
+Las puntuaciones son inventadas y el vocabulario se reduce a seis candidatas,
+tratadas como palabras enteras para simplificar. Lo que sí es exacto es el
+cálculo: cada porcentaje sale de aplicar softmax, temperatura y recorte a esas
+puntuaciones, redondeado al entero. Cualquiera puede repetirlo con el
+[script del repositorio](https://github.com/ernestobarrera/glosario-ia/blob/main/herramientas/atlas_decodificacion.py).
+Las cifras ilustran el procedimiento; no describen ningún modelo real.
+
+La lámina no muestra probabilidades acumuladas porque, con redondeos, no
+cuadrarían: las cuatro candidatas de top-p suman en realidad el 91,65 %,
+mientras que sus porcentajes redondeados suman 91.
+
+Los recortes se calculan con temperatura 1. Con top-p, el resultado cambiaría
+según se aplique la temperatura antes o después del recorte, porque el núcleo
+depende de la forma de la distribución. Con temperatura 1 ese orden no influye.
+
+## Referencias
+
+::: {#refs}
+:::
+:::
+
+:::
