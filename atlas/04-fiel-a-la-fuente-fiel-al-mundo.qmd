@@ -1,0 +1,123 @@
+---
+title: "Fiel a la fuente, fiel al mundo"
+description: "Por qué comprobar que una respuesta está respaldada por su documento y comprobar que es verdad son dos verificaciones distintas, y qué errores escapa cada una."
+categories:
+  - "Modelos de lenguaje"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-26
+image: ../assets/atlas/fiel-a-la-fuente-fiel-al-mundo.png
+page-layout: full
+format:
+  html:
+    lightbox: true
+---
+
+::: {.atlas-visual}
+
+Ante una respuesta generada a partir de un documento hay dos preguntas
+distintas: si el documento la respalda y si es verdad. La lámina las cruza con
+un solo caso, el resumen automático de un informe de alta, y muestra qué
+errores deja pasar cada comprobación.
+
+::: {.atlas-lamina}
+<figure>
+<a href="../assets/atlas/fiel-a-la-fuente-fiel-al-mundo.png"
+   class="lightbox" data-gallery="atlas-visual" title="Lámina 04">
+<img src="../assets/atlas/fiel-a-la-fuente-fiel-al-mundo.png"
+     alt="Lámina esquemática sobre fidelidad a la fuente y verdad en el mundo. Una cuadrícula de seis casillas cruza tres relaciones con la fuente (la fuente dice otra cosa, alucinación intrínseca; la fuente no lo dice, alucinación extrínseca; la fuente lo respalda) con dos valores de verdad. Con el ejemplo de un resumen de un informe de alta, las casillas son: corrección silenciosa (pone la dosis correcta en lugar de la errónea del informe), acierta sin respaldo (añade un antecedente real que no consta), respaldado y cierto (la alergia consta y es real), contradice la fuente (cambia un dato por otro falso), inventa (añade un antecedente inexistente) y fiel a una fuente errónea (copia la dosis mal transcrita). Cada casilla indica si la detecta la comprobación de la fuente y si la detecta la verificación del mundo, y su color dice si pasa las dos, escapa a una o falla las dos. Aparte, la adulación como fuerza que saca la respuesta del caso correcto hacia lo que sostiene el usuario, la omisión y el aviso de que el tono no delata la casilla."
+     loading="eager" decoding="async">
+</a>
+<figcaption>Lámina 04. Pulse para ampliarla.</figcaption>
+</figure>
+:::
+
+::: {.atlas-acciones}
+[Abrir la lámina a tamaño original](../assets/atlas/fiel-a-la-fuente-fiel-al-mundo.png){target="_blank"}
+:::
+
+::: {.atlas-texto}
+## Cómo leerla
+
+Las columnas describen la relación de cada afirmación con su fuente. La
+[fundamentación](../terminos/fundamento.qmd) es lo que permite hacer la
+pregunta que las separa: ¿qué parte del documento sostiene esto? La fuente
+puede respaldar la afirmación, no decir nada sobre ella o decir otra cosa.
+Maynez y colaboradores llamaron **extrínseca** a la alucinación que añade
+información que no se puede inferir del documento, e **intrínseca** a la que
+manipula la información que el documento sí contiene [@maynez2020faithfulness].
+Las filas separan lo verdadero de lo falso, que es lo que mide la
+[factualidad](../terminos/factualidad.qmd).
+
+Todas las casillas salen del mismo caso: un sistema resume un informe de alta
+que contiene una dosis mal transcrita. Solo una es el resultado buscado: la
+alergia consta en el informe y es real. Las otras cinco son fallos, también
+las dos que aciertan. Maynez y colaboradores llaman **alucinación factual** a
+la información que no está en la fuente y aun así es correcta, y puede ser de
+cualquiera de los dos tipos [@maynez2020faithfulness]. Para quien lee un
+resumen clínico, ese acierto no se distingue de un invento: en los dos casos
+lo que lee no viene del informe.
+
+El caso que más engaña es la **corrección silenciosa**: el resumen pone la
+dosis correcta en lugar de la errónea. Acierta, pero borra una discrepancia
+que alguien necesitaba ver para corregir el informe. Su contrario es copiar la
+dosis mal transcrita: es fiel a una fuente errónea, y estar respaldado no
+garantiza ser verdad.
+
+## Qué detecta cada comprobación
+
+Cada casilla indica qué comprobación la detecta. **Comprobar la fuente**
+detecta las dos columnas de la izquierda, pero no la copia fiel de un error.
+**Verificar el mundo** detecta la fila de abajo, pero no la corrección
+silenciosa ni el acierto sin respaldo. Los fallos que inventan o contradicen la
+fuente con algo falso no pasan ninguna de las dos y son los más fáciles de
+detectar. Los peligrosos son los tres que superan una: por eso el color no
+codifica la fidelidad, sino cuántas comprobaciones pasa cada casilla, y por
+eso ninguna comprobación sustituye a la otra.
+
+La [alucinación](../terminos/alucinacion.qmd) no avisa: un texto alucinado
+puede ser tan fluido y verosímil como uno correcto [@ji2023hallucination]. Las
+seis casillas pueden sonar igual de seguras, así que el tono no dice en cuál
+está una respuesta.
+
+## Lo que la cuadrícula no recoge
+
+**La omisión.** Un resumen puede ser correcto en todo lo que dice y no mencionar
+la alergia. Ninguna de las seis casillas lo captura, porque cada una juzga una
+afirmación y la omisión es la ausencia de una. Hay que revisar también qué
+falta, no solo qué dice.
+
+**La [adulación](../terminos/adulacion.qmd).** No es una casilla más, sino una
+fuerza que saca la respuesta del caso correcto hacia lo que sostiene el
+usuario. Si el profesional comenta que un fármaco ya se retiró, un sistema
+adulador puede darlo por retirado aunque el informe diga lo contrario. Sharma
+y colaboradores documentaron este patrón en varios asistentes y lo vincularon
+a las preferencias humanas usadas en su entrenamiento [@sharma2023sycophancy].
+Es grave porque coincide con el error de quien pregunta y elimina la única
+señal de alarma. Se detecta planteando el mismo caso con posturas de partida
+opuestas.
+
+## Alcance
+
+Es un esquema conceptual: los ejemplos son hipotéticos y la lámina no contiene
+datos. Las etiquetas «detecta» y «no detecta» describen lo que cada
+comprobación puede ver, no lo que se consigue en la práctica. Verificar el
+mundo exige una referencia independiente del documento, y ninguna de las dos
+comprobaciones es automática ni infalible.
+
+La tipología intrínseca / extrínseca procede del estudio de resúmenes
+automáticos de noticias. Maynez y colaboradores encontraron alucinaciones en
+la mayoría de los resúmenes que evaluaron, y la mayor parte de las extrínsecas
+eran erróneas; esas proporciones corresponden a los modelos y al corpus de
+2020 y no deben trasladarse a otros sistemas [@maynez2020faithfulness]. Los
+mismos autores señalan que no hay consenso sobre si un resumen debe ser
+estrictamente fiel o puede tolerar alucinaciones factuales. La lámina trata
+cualquier información sin respaldo como fallo porque su caso es un resumen
+clínico, en el que quien lo lee necesita saber qué viene del informe.
+
+## Referencias
+
+::: {#refs}
+:::
+:::
+
+:::
