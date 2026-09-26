@@ -786,6 +786,7 @@ foreach ($ficha in $fichas) {
 }
 
 $fichasEnSecciones = 0
+$laminasEnTemas = 0
 
 foreach ($categoria in $categoriasPermitidas) {
   if (-not $frasesTema.ContainsKey($categoria)) {
@@ -841,6 +842,37 @@ foreach ($categoria in $categoriasPermitidas) {
     Registrar-Error "temas.html: la categoria '$categoria' no tiene su seccion 'listing-t-$slugCategoria'"
     continue
   }
+
+  # La linea «En el Atlas visual» que filters/temas.lua pone entre la frase y el
+  # listado. Debe enlazar exactamente las laminas que declaran la categoria, en
+  # orden de archivo, y no existir si ninguna la declara.
+  $laminasEsperadas = @(
+    $laminas |
+      Where-Object { @($_.Meta["categories"]) -contains $categoria } |
+      ForEach-Object { "atlas/$($_.Archivo.BaseName).html" }
+  )
+  $laminasEnTema = @()
+
+  if ($epigrafe.Success) {
+    $desde = $epigrafe.Index + $epigrafe.Length
+    $cabecera = $htmlTemas.Substring($desde, [Math]::Max(0, $inicio - $desde))
+    $lineaAtlas = [regex]::Match($cabecera, 'class="atlas-en-tema"[\s\S]*?</div>')
+
+    if ($lineaAtlas.Success) {
+      $laminasEnTema = @(
+        [regex]::Matches($lineaAtlas.Value, 'href="(?<ruta>atlas/[^"]+\.html)"') |
+          ForEach-Object { $_.Groups["ruta"].Value }
+      )
+    }
+  }
+
+  if (($laminasEsperadas -join "|") -ne ($laminasEnTema -join "|")) {
+    Registrar-Error (
+      "temas.html: la seccion '$categoria' enlaza en el Atlas [$($laminasEnTema -join ', ')] " +
+      "y las laminas que la declaran son [$($laminasEsperadas -join ', ')]"
+    )
+  }
+  $laminasEnTemas += $laminasEnTema.Count
 
   $fin = $htmlTemas.IndexOf("</section>", $inicio, [StringComparison]::Ordinal)
   if ($fin -lt 0) {
@@ -920,7 +952,7 @@ Write-Host "  Identidades sin colision (titulo + sinonimos): $($identidades.Coun
 Write-Host "  Sinonimos renderizados e indexados: OK"
 Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
-Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase, recuento y $fichasEnSecciones pertenencias"
+Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase, recuento y $fichasEnSecciones pertenencias; $laminasEnTemas enlaces al Atlas"
 Write-Host "  Indice A-Z: $entradasIndice entradas, con remision para cada sinonimo"
 Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
