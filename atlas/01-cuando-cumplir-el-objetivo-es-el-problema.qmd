@@ -4,7 +4,7 @@ description: "Cómo un agente puede alcanzar el resultado pedido por una vía ef
 categories:
   - "Seguridad y riesgos"
   - "IA agéntica"
-date-modified: 2026-09-20
+date-modified: 2026-09-26
 image: ../assets/atlas/cuando-cumplir-el-objetivo-es-el-problema.png
 page-layout: full
 format:
@@ -49,6 +49,10 @@ La idea conecta la [alineación](../terminos/alineacion.qmd), los
 y la [memoria persistente](../terminos/memoria-persistente.qmd). Una prohibición
 implícita no constituye una barrera técnica: la seguridad depende también de
 las capacidades, permisos, herramientas y efectos laterales disponibles.
+Amodei y colaboradores clasificaron en 2016 los efectos secundarios no
+deseados y la manipulación de la recompensa como dos problemas concretos de
+seguridad que nacen de una función objetivo mal especificada
+[@amodei2016safety].
 
 ## Alcance de los ejemplos
 
@@ -68,7 +72,8 @@ no una estimación independiente de prevalencia.
 
 El maximizador de sujetapapeles de Nick Bostrom es un **experimento mental**
 sobre una superinteligencia con un objetivo extremo, no un incidente de los
-modelos actuales [@bostrom2014superintelligence]. Se incluye porque ilustra la
+modelos actuales. Lo propuso en 2003 [@bostrom2003ethical] y lo retomó en
+*Superintelligence* [@bostrom2014superintelligence]. Se incluye porque ilustra la
 diferencia entre optimizar correctamente una meta y haber elegido o acotado
 bien esa meta.
 
