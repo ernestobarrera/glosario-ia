@@ -140,6 +140,7 @@ local function leerLaminas()
 
       if lamina then
         local titulo = nil
+        local imagen = nil
         local categorias = {}
         local enCategorias = false
         local separadores = 0
@@ -152,6 +153,10 @@ local function leerLaminas()
             end
           elseif linea:match("^title:") then
             titulo = linea:match('^title:%s*"(.-)"%s*$') or linea:match("^title:%s*(.-)%s*$")
+            enCategorias = false
+          elseif linea:match("^image:") then
+            -- En la lamina la ruta es relativa a atlas/; Temas vive en la raiz.
+            imagen = linea:match("^image:%s*(.-)%s*$"):gsub('^"(.*)"$', "%1"):gsub("^%.%./", "")
             enCategorias = false
           elseif linea:match("^categories:%s*$") then
             enCategorias = true
@@ -175,7 +180,7 @@ local function leerLaminas()
 
           for _, categoria in ipairs(categorias) do
             laminasPorTema[categoria] = laminasPorTema[categoria] or {}
-            table.insert(laminasPorTema[categoria], { titulo = titulo, ruta = ruta })
+            table.insert(laminasPorTema[categoria], { titulo = titulo, ruta = ruta, imagen = imagen })
           end
         end
       end
@@ -229,21 +234,35 @@ local function ponerFrase(elemento)
 
   local laminas = laminasPorTema[nombre]
 
+  -- Miniaturas y no una linea de texto: con varias laminas por tema la linea se
+  -- perdia, y no decia que al otro lado hay una imagen. HTML crudo porque pandoc
+  -- no tiene un bloque de lista de tarjetas con imagen; sin <div> anidados, para
+  -- que el primer </div> siga cerrando el bloque que lee validar.ps1.
   if laminas then
-    local contenido = { pandoc.Str("En el Atlas visual:"), pandoc.Space() }
-
-    for i, lamina in ipairs(laminas) do
-      if i > 1 then
-        table.insert(contenido, pandoc.Str(" ·"))
-        table.insert(contenido, pandoc.Space())
-      end
-      table.insert(contenido, pandoc.Link(lamina.titulo, lamina.ruta))
+    local function esc(texto)
+      return (texto:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"):gsub('"', "&quot;"))
     end
 
-    table.insert(bloques, pandoc.Div(
-      { pandoc.Para(contenido) },
-      pandoc.Attr("", { "atlas-en-tema" })
-    ))
+    local html = { '<div class="atlas-en-tema">',
+      '<p class="atlas-en-tema-rotulo">En el Atlas visual</p>',
+      '<ul class="atlas-miniaturas">' }
+
+    for _, lamina in ipairs(laminas) do
+      local miniatura = ""
+
+      if lamina.imagen then
+        -- Alt vacio: el titulo va justo debajo y el enlace ya lo nombra.
+        miniatura = '<img src="' .. esc(lamina.imagen) .. '" alt="" width="1536" height="1024"' ..
+          ' loading="lazy" decoding="async">'
+      end
+
+      table.insert(html, '<li><a href="' .. esc(lamina.ruta) .. '">' .. miniatura ..
+        '<span>' .. esc(lamina.titulo) .. '</span></a></li>')
+    end
+
+    table.insert(html, "</ul>")
+    table.insert(html, "</div>")
+    table.insert(bloques, pandoc.RawBlock("html", table.concat(html, "\n")))
   end
 
   return bloques
