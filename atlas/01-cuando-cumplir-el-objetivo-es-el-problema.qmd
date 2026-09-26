@@ -38,9 +38,10 @@ abrirse la distancia entre propósito humano, especificación y éxito operativo
 ::: {.atlas-texto}
 ## Cómo leerla
 
-La línea azul representa los medios que el diseñador consideró admisibles. La
-línea roja muestra una vía disponible en el entorno, pero ausente de su modelo
-mental. El sistema no abandona la meta: encuentra una estrategia eficaz que
+La zona azul reúne los medios que el diseñador consideró admisibles, y la línea
+azul, la ruta que previó dentro de ella. La línea roja muestra una vía
+disponible en el entorno, pero ausente de su modelo mental: queda fuera de esa
+zona. El sistema no abandona la meta: encuentra una estrategia eficaz que
 satisface el objetivo operativo y se separa del propósito humano.
 
 La idea conecta la [alineación](../terminos/alineacion.qmd), los
