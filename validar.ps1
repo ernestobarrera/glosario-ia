@@ -673,6 +673,54 @@ else {
   }
 }
 
+# El vinculo inverso: cada ficha que una lamina enlaza debe decir, al pie, que
+# aparece en esa lamina.
+#
+# Lo escribe filters/atlas.lua y hasta ahora nada lo comprobaba: si el filtro
+# dejara de ejecutarse, o si una lamina nueva se publicara sin renderizar las
+# fichas que enlaza, el Atlas seguiria apuntando a sus fichas y ellas no sabrian
+# nada, sin que fallara nada. Se buscan los enlaces con el mismo patron exacto
+# que usa el filtro, (../terminos/<slug>.qmd), porque solo esos producen el
+# vinculo. Un enlace con ancla o con titulo pasa la comprobacion de enlaces
+# rotos pero el filtro no lo reconoce: se avisa, para que la omision sea visible.
+$vinculosInversos = 0
+foreach ($lamina in $laminas) {
+  $slugLamina = $lamina.Archivo.BaseName
+  $destinoLamina = 'href="../atlas/' + $slugLamina + '.html"'
+
+  foreach ($enlace in [regex]::Matches($lamina.Cuerpo, "\]\(\.\./terminos/([A-Za-z0-9-]+)\.qmd[#\s][^)]*\)")) {
+    Registrar-Aviso (
+      "atlas/$($lamina.Archivo.Name): el enlace a '$($enlace.Groups[1].Value)' lleva ancla o titulo; " +
+      "filters/atlas.lua no lo reconoce y esa ficha no enlazara de vuelta a la lamina"
+    )
+  }
+
+  $slugsEnlazados = @(
+    [regex]::Matches($lamina.Cuerpo, "\]\(\.\./terminos/([A-Za-z0-9-]+)\.qmd\)") |
+      ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique
+  )
+
+  foreach ($slugFicha in $slugsEnlazados) {
+    $htmlFicha = Join-Path $carpetaSitio "terminos\$slugFicha.html"
+    if (-not (Test-Path -LiteralPath $htmlFicha)) {
+      continue
+    }
+
+    $contenidoFicha = Get-Content -LiteralPath $htmlFicha -Encoding UTF8 -Raw
+    $bloque = [regex]::Match($contenidoFicha, '<div class="atlas-relacionado">(?<dentro>.*?)</div>', "Singleline")
+    if (-not $bloque.Success -or
+        $bloque.Groups["dentro"].Value.IndexOf($destinoLamina, [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error (
+        "terminos/$slugFicha.html: la lamina '$slugLamina' la enlaza, pero la ficha " +
+        "no enlaza de vuelta a la lamina (bloque atlas-relacionado)"
+      )
+    }
+    else {
+      $vinculosInversos++
+    }
+  }
+}
+
 # El indice A-Z: una entrada por ficha y una remision por cada sinonimo.
 #
 # Que el sinonimo este en search.json -lo comprueba el bloque de arriba- solo
@@ -864,6 +912,7 @@ if ($errores.Count -gt 0) {
 Write-Host "VALIDACION CORRECTA" -ForegroundColor Green
 Write-Host "  Fichas: $($fichas.Count)"
 Write-Host "  Laminas del Atlas: $($laminas.Count), con categorias controladas y entrada en el indice"
+Write-Host "  Vinculos inversos lamina-ficha: $vinculosInversos"
 Write-Host "  Citekeys: $($clavesBib.Count)"
 Write-Host "  Slugs derivados y unicos: $($slugVistos.Count)"
 Write-Host "  Aliases unicos y generados: $($aliasVistos.Count)"

@@ -1,0 +1,88 @@
+---
+title: "La frontera tecnológica es dentada"
+description: "Por qué el buen resultado de una IA en una tarea no permite predecir el que tendrá en otra de apariencia parecida."
+categories:
+  - "Fundamentos"
+  - "Seguridad y riesgos"
+date-modified: 2026-09-26
+image: ../assets/atlas/la-frontera-tecnologica-es-dentada.png
+page-layout: full
+format:
+  html:
+    lightbox: true
+---
+
+::: {.atlas-visual}
+
+Que un sistema de IA resuelva bien una tarea no permite deducir que resolverá
+igual otra de apariencia parecida. La lámina contrapone una media agregada con
+el resultado tarea a tarea y sitúa varias tareas a uno y otro lado de una
+frontera de capacidad que no se ve hasta medirla.
+
+::: {.atlas-lamina}
+<figure>
+<a href="../assets/atlas/la-frontera-tecnologica-es-dentada.png"
+   class="lightbox" data-gallery="atlas-visual" title="Lámina 02">
+<img src="../assets/atlas/la-frontera-tecnologica-es-dentada.png"
+     alt="Lámina sobre la frontera tecnológica dentada. Un primer gráfico muestra una media agregada que cruza una serie muy irregular de resultados por tarea. Un segundo gráfico sitúa cuatro tareas genéricas respecto a una curva dentada de capacidad del sistema: por debajo, dentro de la frontera; por encima, fuera. Dos de ellas tienen la misma exigencia aparente y quedan a lados distintos. Incluye un ejemplo sanitario esquemático con cinco tareas clínicas cuyo lado se desconoce, el error mental que corrige, sus consecuencias prácticas y los conceptos con los que no debe confundirse."
+     loading="eager" decoding="async">
+</a>
+<figcaption>Lámina 02. Pulse para ampliarla.</figcaption>
+</figure>
+:::
+
+::: {.atlas-acciones}
+[Abrir la lámina a tamaño original](../assets/atlas/la-frontera-tecnologica-es-dentada.png){target="_blank"}
+:::
+
+::: {.atlas-texto}
+## Cómo leerla
+
+El gráfico superior muestra por qué un promedio no basta. La media agregada es
+un resumen correcto de los resultados y, aun así, oculta que unas tareas salen
+muy por encima y otras muy por debajo. Una puntuación media de
+[benchmark](../terminos/benchmark-de-ia.qmd) puede esconder ese mismo perfil.
+
+En el gráfico central, el eje vertical representa la exigencia aparente de cada
+tarea y la curva discontinua, la capacidad del sistema. Una tarea situada por
+debajo de la curva queda dentro de la frontera; por encima, fuera. La curva no
+desciende de izquierda a derecha: no existe un umbral de dificultad a partir
+del cual todo falle. Las tareas 3 y 4 parecen igual de exigentes y quedan a
+lados distintos. Eso es lo que significa que la
+[frontera tecnológica](../terminos/frontera-tecnologica-dentada.qmd) sea
+dentada.
+
+El ejemplo sanitario pinta sus cinco tareas en el mismo color y con una
+interrogación porque la lámina no afirma de qué lado queda cada una. Resumir
+una nota, codificar un episodio o proponer una decisión clínica pueden formar
+parte del mismo flujo sin compartir resultado; solo midiéndolas en ese flujo
+se sabe. Mientras tanto, una salida convincente en una tarea fácil de comprobar
+puede favorecer el [sesgo de automatización](../terminos/sesgo-de-automatizacion.qmd)
+en otra que no lo es.
+
+La frontera dentada tampoco es una clase de error, como la alucinación, el
+sesgo algorítmico o el no determinismo: describe qué tareas quedan dentro o
+fuera de la competencia útil del sistema.
+
+## Alcance del estudio
+
+Dell'Acqua y colaboradores propusieron la noción en un experimento de campo
+preregistrado con 758 consultores de gestión. Con acceso a GPT-4, los
+participantes mejoraron en productividad y calidad en tareas realistas de
+consultoría situadas dentro de la frontera; en una tarea seleccionada para
+quedar fuera, quienes usaron la IA acertaron con menos frecuencia que quienes
+trabajaron sin ella [@dellacqua2026jagged].
+
+Dos precisiones para leer la lámina. La frontera describe la capacidad del
+modelo, pero lo que el estudio midió fue el resultado de personas con y sin
+acceso a él. Y los dos gráficos son ilustraciones: el estudio no trazó esa
+curva ni evaluó tareas clínicas, por lo que sus cifras no deben trasladarse a
+la asistencia sanitaria.
+
+## Referencias
+
+::: {#refs}
+:::
+:::
+
+:::
