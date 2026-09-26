@@ -310,6 +310,19 @@ nav[role="doc-toc"] .recuento-tema {
   line-height: 1.45;
 }
 
+/* Las laminas del Atlas que declaran el tema, tambien de filters/temas.lua.
+ * Van fuera del listado y del recuento: son otro tipo de pagina. */
+.atlas-en-tema {
+  max-width: 62ch;
+  margin: -0.6rem 0 1.1rem;
+}
+
+.atlas-en-tema p {
+  margin: 0;
+  color: var(--g-tinta-3);
+  font-size: 0.9rem;
+}
+
 /* Dos columnas. El listado nativo por defecto reparte cada entrada en tres
  * bandas -imagen, cuerpo, metadatos- y aqui no hay ni imagen ni fecha que
  * mostrar, asi que dejaba media anchura en blanco. Se apila y se compacta: lo

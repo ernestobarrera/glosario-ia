@@ -25,6 +25,8 @@
 local activo = false
 local frases = {}
 local recuentos = {}
+-- categoria -> lista de { titulo, ruta } de las laminas del Atlas que la declaran
+local laminasPorTema = {}
 
 local function leerTaxonomia()
   local raiz = "."
@@ -110,12 +112,84 @@ local function contarFichas()
   end
 end
 
+-- Las laminas del Atlas comparten la taxonomia de las fichas, pero no entran en
+-- los listados de Temas: sumarlas romperia el recuento de fichas del epigrafe y
+-- mezclaria dos tipos de pagina en una misma lista. Se leen aparte para poner,
+-- bajo la frase de cada tema, una linea con las laminas que lo declaran.
+-- validar.ps1 comprueba que esa linea coincide con las categorias de las laminas.
+local function leerLaminas()
+  local raiz = "."
+
+  if quarto and quarto.project and quarto.project.directory then
+    raiz = quarto.project.directory
+  end
+
+  local carpeta = raiz .. "/atlas"
+  local ok, archivos = pcall(pandoc.system.list_directory, carpeta)
+
+  if not ok or not archivos then
+    return
+  end
+
+  -- Orden por nombre de archivo, que empieza por el numero de la lamina.
+  table.sort(archivos)
+
+  for _, nombre in ipairs(archivos) do
+    if nombre:match("%.qmd$") and not nombre:match("^_") then
+      local lamina = io.open(carpeta .. "/" .. nombre, "r")
+
+      if lamina then
+        local titulo = nil
+        local categorias = {}
+        local enCategorias = false
+        local separadores = 0
+
+        for linea in lamina:lines() do
+          if linea:match("^%-%-%-%s*$") then
+            separadores = separadores + 1
+            if separadores == 2 then
+              break
+            end
+          elseif linea:match("^title:") then
+            titulo = linea:match('^title:%s*"(.-)"%s*$') or linea:match("^title:%s*(.-)%s*$")
+            enCategorias = false
+          elseif linea:match("^categories:%s*$") then
+            enCategorias = true
+          elseif enCategorias then
+            local categoria = linea:match('^%s+%-%s+"(.-)"%s*$') or linea:match("^%s+%-%s+(.-)%s*$")
+
+            if categoria then
+              table.insert(categorias, categoria)
+            else
+              enCategorias = false
+            end
+          end
+        end
+
+        lamina:close()
+
+        if titulo then
+          -- Enlace directo al .html: la resolucion de .qmd de Quarto no garantiza
+          -- alcanzar enlaces creados por un filtro de usuario.
+          local ruta = "atlas/" .. nombre:gsub("%.qmd$", ".html")
+
+          for _, categoria in ipairs(categorias) do
+            laminasPorTema[categoria] = laminasPorTema[categoria] or {}
+            table.insert(laminasPorTema[categoria], { titulo = titulo, ruta = ruta })
+          end
+        end
+      end
+    end
+  end
+end
+
 local function leerMarca(meta)
   activo = meta["frases-de-tema"] == true
 
   if activo then
     leerTaxonomia()
     contarFichas()
+    leerLaminas()
   end
 
   return meta
@@ -145,13 +219,34 @@ local function ponerFrase(elemento)
 
   -- Se lee como markdown y no como texto plano para que la frase pueda llevar
   -- una cursiva o unas comillas sin acabar escapada en el HTML.
-  return {
+  local bloques = {
     elemento,
     pandoc.Div(
       pandoc.read(frase, "markdown").blocks,
       pandoc.Attr("", { "frase-de-tema" })
     )
   }
+
+  local laminas = laminasPorTema[nombre]
+
+  if laminas then
+    local contenido = { pandoc.Str("En el Atlas visual:"), pandoc.Space() }
+
+    for i, lamina in ipairs(laminas) do
+      if i > 1 then
+        table.insert(contenido, pandoc.Str(" ·"))
+        table.insert(contenido, pandoc.Space())
+      end
+      table.insert(contenido, pandoc.Link(lamina.titulo, lamina.ruta))
+    end
+
+    table.insert(bloques, pandoc.Div(
+      { pandoc.Para(contenido) },
+      pandoc.Attr("", { "atlas-en-tema" })
+    ))
+  end
+
+  return bloques
 end
 
 return {
