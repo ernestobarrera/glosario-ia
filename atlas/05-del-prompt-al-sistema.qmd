@@ -1,0 +1,106 @@
+---
+title: "Del prompt al sistema"
+description: "Por qué, a medida que los modelos entienden mejor el lenguaje, el trabajo humano pasa de redactar instrucciones a diseñar la información y las condiciones con las que trabajan."
+categories:
+  - "IA agéntica"
+  - "Modelos de lenguaje"
+date-modified: 2026-09-30
+image: ../assets/atlas/del-prompt-al-sistema.png
+page-layout: full
+format:
+  html:
+    lightbox: true
+---
+
+::: {.atlas-visual}
+
+Cuanto mejor entiende un modelo lo que se le pide, menos importa encontrar las
+palabras exactas y más importa qué información recibe, qué herramientas tiene
+y cómo se comprueba lo que hace. La lámina sigue ese desplazamiento del
+trabajo humano desde un modelo aislado hasta un sistema agéntico.
+
+::: {.atlas-lamina}
+<figure>
+<a href="../assets/atlas/del-prompt-al-sistema.png"
+   class="lightbox" data-gallery="atlas-visual" title="Lámina 05">
+<img src="../assets/atlas/del-prompt-al-sistema.png"
+     alt="Lámina esquemática sobre el desplazamiento del trabajo humano con modelos de lenguaje. Un gráfico con tres curvas recorre cinco etapas: LLM inicial (ejemplos en el prompt), modelo instruido (prompt de sistema), modelo de razonamiento (razonamiento integrado), agente con herramientas (herramientas y RAG) y sistema agéntico (memoria, subagentes y evaluación). La curva roja, redactar la instrucción, desciende sin llegar a cero. La curva azul, especificación y contexto, se mantiene y sube al final hasta la gestión del contexto. La curva azul marino, diseñar el sistema, empieza abajo y asciende con fuerza hasta cruzar a las otras dos. Un rótulo central indica el cambio de nivel: de la ingeniería de prompts a la de contexto y a la del sistema, de controlar las palabras a controlar las condiciones. Dos franjas transversales recuerdan que evaluar los resultados hace falta en todos los niveles y que la persona pasa de redactar a supervisar. A la derecha, dos maneras de fallar: especificación insuficiente y exceso de instrucciones. Abajo, un ejemplo sanitario con un resumen clínico: si se vuelca toda la información, la alergia queda enterrada; si se filtra de más, desaparece; con un buen diseño de contexto, destaca."
+     loading="eager" decoding="async">
+</a>
+<figcaption>Lámina 05. Pulse para ampliarla.</figcaption>
+</figure>
+:::
+
+::: {.atlas-acciones}
+[Abrir la lámina a tamaño original](../assets/atlas/del-prompt-al-sistema.png){target="_blank"}
+:::
+
+::: {.atlas-texto}
+## Cómo leerla
+
+El eje horizontal no es una cronología exacta, sino un recorrido de complejidad
+creciente: de un modelo al que se le pide una respuesta a un sistema que
+encadena pasos, herramientas y memoria. Bajo cada etapa figura lo que se ajusta
+en ella. Con los primeros modelos, la palanca eran los
+[ejemplos en el prompt](../terminos/few-shot-learning.qmd); con los modelos
+instruidos, el [prompt de sistema](../terminos/prompt-de-sistema.qmd); con los
+agentes, las herramientas y la
+[recuperación de documentos](../terminos/rag.qmd); en un sistema agéntico, la
+[memoria](../terminos/memoria-persistente.qmd), los
+[subagentes](../terminos/sistema-multiagente.qmd) y la evaluación continua.
+
+La curva roja es el [prompting](../terminos/prompting.qmd) entendido como
+búsqueda de la formulación exacta. Pierde peso, pero no llega a cero: la forma
+de pedir sigue influyendo. Un ejemplo de esa caída es pedir que el modelo
+«piense paso a paso». La [cadena de pensamiento](../terminos/cadena-de-pensamiento.qmd)
+forzada mejora poco a los modelos que no razonan por defecto y apenas aporta,
+a mayor coste, a los que ya lo hacen [@meincke2025cot].
+
+La curva azul no baja. Un modelo que entiende mejor el lenguaje sigue sin poder
+usar un dato que no recibe. Al final sube, porque en tareas largas hay que
+gestionar qué entra en el contexto en cada paso: es la
+[ingeniería de contexto](../terminos/ingenieria-de-contexto.qmd), que Anthropic
+presenta como la progresión natural de la ingeniería de prompts
+[@anthropic2025contextengineering] y que una revisión propone tratar como
+disciplina propia [@mei2025contextsurvey].
+
+La curva azul marino es el diseño del sistema: recuperación, herramientas,
+flujos de trabajo, barreras de seguridad y observabilidad. Casi no importa con
+un modelo aislado y es decisiva en un sistema agéntico, donde buena parte del
+control sale del texto de la instrucción y pasa al
+[andamiaje del agente](../terminos/andamiaje-de-agente.qmd).
+
+## Dos maneras de fallar
+
+**Especificación insuficiente.** Si nadie le da al modelo el objetivo, las
+restricciones o los criterios de éxito, los rellena él. El resultado puede
+parecer razonable y no ser lo que se necesitaba.
+
+**Exceso de instrucciones.** Seguir microgestionando cada paso a un modelo que
+ya no lo necesita. Las instrucciones rígidas pensadas para modelos anteriores
+pueden convertirse en un corsé que empeora el resultado.
+
+## El ejemplo sanitario
+
+Un sistema resume una historia clínica con varias fuentes. Si recibe todo, la
+alergia puede quedar enterrada: con textos largos, los modelos aprovechan peor
+la información situada en medio que la que está al principio o al final
+[@liu2024lostmiddle]. Si se filtra de más, la alergia no llega al modelo. El
+diseño del contexto decide cuál de los dos riesgos se corre.
+
+## Alcance
+
+Es un esquema conceptual: las curvas no representan medidas ni se suman entre
+sí, y los ejemplos son hipotéticos. Un buen diseño del sistema no garantiza
+respuestas correctas ni sustituye la revisión humana: evaluar los resultados
+hace falta en todos los niveles, y la persona pasa de redactar a supervisar,
+con el riesgo de [sesgo de automatización](../terminos/sesgo-de-automatizacion.qmd)
+y de [fatiga](../terminos/fatiga-agentica-humana.qmd) que eso implica.
+
+## Referencias
+
+::: {#refs}
+:::
+:::
+
+:::
