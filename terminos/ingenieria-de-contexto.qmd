@@ -1,0 +1,139 @@
+---
+title: "Ingeniería de contexto"
+aliases:
+  - /terminos/context-engineering.html
+sinonimos:
+  - "Context engineering"
+description: "Diseño y mantenimiento de toda la información que entra en la ventana de contexto de un modelo en cada llamada, no solo de las instrucciones."
+categories:
+  - "IA agéntica"
+  - "Modelos de lenguaje"
+date-modified: 2026-09-30
+estado: "borrador"
+tipo: "tecnica"
+---
+
+## Definición ampliada
+
+La **ingeniería de contexto** decide qué información ve un modelo de lenguaje
+en cada llamada y en qué forma. Anthropic la define como el conjunto de
+estrategias para seleccionar y mantener el conjunto óptimo de tokens durante
+la inferencia, incluida toda la información que llega al modelo al margen de
+los prompts [@anthropic2025contextengineering].
+
+La diferencia con el [prompting](prompting.qmd) es de alcance. El prompting se
+ocupa de redactar la instrucción. La ingeniería de contexto se ocupa del
+estado completo de la entrada: el [prompt de sistema](prompt-de-sistema.qmd),
+las herramientas disponibles, los datos externos recuperados, el historial de
+la conversación, los resultados de pasos anteriores y lo que se conserva en
+[memoria persistente](memoria-persistente.qmd)
+[@anthropic2025contextengineering]. En un
+[agente de IA](agente-de-ia.qmd) ese estado cambia en cada paso, así que no
+basta con escribirlo una vez: hay que gestionarlo mientras la tarea avanza.
+
+## Contexto histórico
+
+El término se difundió a mediados de 2025, cuando los sistemas pasaron de
+responder a una pregunta aislada a encadenar muchos pasos con herramientas.
+En julio de ese año, una revisión lo propuso como disciplina formal que va más
+allá del diseño de prompts y la dividió en recuperación y generación de
+contexto, procesamiento y gestión, con implementaciones como
+[RAG](rag.qmd), sistemas de memoria, uso de herramientas y
+[sistemas multiagente](sistema-multiagente.qmd) [@mei2025contextsurvey]. En
+septiembre, Anthropic la presentó como la progresión natural de la ingeniería
+de prompts [@anthropic2025contextengineering].
+
+El vocabulario es reciente y sus límites no están fijados. Algunos autores
+incluyen en ella partes de lo que otros llaman
+[andamiaje de agente](andamiaje-de-agente.qmd).
+
+## Importancia actual
+
+Añadir más información no siempre mejora el resultado. Con contextos largos,
+el rendimiento de los modelos depende de dónde está el dato relevante: es
+mejor cuando aparece al principio o al final y cae de forma significativa
+cuando queda en medio [@liu2024lostmiddle]. Un informe técnico que evaluó 18
+modelos observó además que el rendimiento se vuelve menos fiable a medida que
+crece la longitud de la entrada, incluso en tareas sencillas
+[@hong2025contextrot]. Por eso Anthropic recomienda tratar el contexto como
+un recurso finito, con rendimientos marginales decrecientes
+[@anthropic2025contextengineering].
+
+Esa es la razón por la que la importancia se desplaza de las palabras de la
+instrucción a las condiciones en que el modelo trabaja. Un modelo que entiende
+mejor el lenguaje sigue sin poder usar un dato que no está en su contexto, o
+que está enterrado entre información irrelevante.
+
+## Aplicaciones
+
+### Generales
+
+- Seleccionar qué documentos o fragmentos entran en el contexto, en lugar de
+  incluirlo todo.
+- Recuperar la información en el momento en que hace falta, mediante
+  referencias ligeras que el agente carga con herramientas
+  [@anthropic2025contextengineering].
+- Resumir el historial cuando una tarea larga se acerca al límite de la
+  ventana de contexto y continuar desde ese resumen
+  [@anthropic2025contextengineering].
+- Hacer que el agente escriba notas fuera de la ventana de contexto y las
+  vuelva a leer cuando las necesite [@anthropic2025contextengineering].
+- Repartir subtareas entre subagentes con contextos separados, que devuelven
+  solo un resultado condensado [@anthropic2025contextengineering].
+
+### Sanitarias
+
+Cuando un sistema resume o analiza una historia clínica, lo que decide la
+calidad del resultado no es solo la instrucción, sino qué parte de la historia
+recibe el modelo. Volcar todos los episodios puede dejar un antecedente
+relevante perdido en medio de un texto largo, y seleccionar demasiado puede
+dejarlo fuera. Ambas decisiones pertenecen al diseño del sistema y deberían
+poder describirse.
+
+Al evaluar una herramienta clínica basada en un modelo de lenguaje, conviene
+preguntar qué información del paciente recibe, cómo se selecciona, qué se
+resume y qué se conserva entre sesiones. Sin esa descripción no se puede
+reproducir un resultado ni saber por qué dos consultas parecidas producen
+respuestas distintas.
+
+## Limitaciones
+
+- El término es reciente y no tiene una definición universalmente aceptada;
+  su frontera con el prompting y con el andamiaje de agente varía según el
+  autor.
+- Resumir el historial ahorra espacio a costa de perder detalle: un dato que
+  parecía secundario puede no sobrevivir al resumen.
+- Todo lo que entra en el contexto influye en el modelo, incluido el contenido
+  externo no fiable. Un documento recuperado puede llevar instrucciones
+  ocultas, que es la base de la
+  [inyección de prompts](inyeccion-de-prompts.qmd).
+- Un buen contexto no garantiza una respuesta correcta: el modelo puede
+  seguir cometiendo errores o producir una
+  [alucinación](alucinacion.qmd) con la información delante.
+
+## Ejemplos
+
+- Un agente que revisa un repositorio de código no lee todos los ficheros al
+  empezar: guarda sus rutas y abre solo los que necesita en cada paso.
+- En una sesión larga, el sistema sustituye el historial completo por un
+  resumen de las decisiones tomadas y los asuntos pendientes, y continúa desde
+  ahí.
+- Un asistente que prepara un informe delega la búsqueda bibliográfica en un
+  subagente, que devuelve una lista breve de referencias en lugar de todo lo
+  que ha consultado.
+
+## Relacionados
+
+- [Prompting](prompting.qmd)
+- [Prompt de sistema](prompt-de-sistema.qmd)
+- [Andamiaje de agente](andamiaje-de-agente.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Memoria persistente](memoria-persistente.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Sistema multiagente](sistema-multiagente.qmd)
+- [Inyección de prompts](inyeccion-de-prompts.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
