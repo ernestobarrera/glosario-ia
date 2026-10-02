@@ -39,8 +39,9 @@ el desfase importa.
 ::: {.atlas-texto}
 ## Cómo leerla
 
-La lámina se lee de izquierda a derecha, por zonas. Cada curva representa la
-madurez de una pieza y la línea discontinua, el punto en que esa pieza es
+La lámina se lee de izquierda a derecha, por zonas. El eje horizontal es el
+tiempo desde que la herramienta está disponible; el vertical, la madurez de
+cada pieza. Cada curva representa una pieza y la línea discontinua, el punto en que esa pieza es
 suficiente: una herramienta utilizable, evidencia de impacto en pacientes, una
 norma aplicable o un criterio profesional compartido. Las piezas no comparten
 una unidad de medida, así que lo que importa no es la altura, sino **cuándo**
