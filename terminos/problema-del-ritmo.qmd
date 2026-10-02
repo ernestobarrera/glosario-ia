@@ -1,0 +1,113 @@
+---
+title: "Problema del ritmo"
+aliases:
+  - /terminos/pacing-problem.html
+sinonimos:
+  - "Pacing problem"
+  - "Brecha de ritmo"
+description: "Desfase entre la velocidad a la que se despliega una tecnología y la de la evidencia, las normas y las prácticas que deberían gobernar su uso."
+categories:
+  - "Ética y gobernanza"
+  - "Seguridad y riesgos"
+date-modified: 2026-10-01
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **problema del ritmo**, o **pacing problem**, describe la distancia entre
+tecnologías emergentes que avanzan deprisa y los mecanismos legales y éticos
+que deberían supervisarlas, que avanzan más despacio [@marchant2011pacing].
+En la IA sanitaria el desfase no afecta solo a la norma: una herramienta suele
+estar disponible antes de que exista evidencia de su impacto clínico y antes de
+que la práctica profesional haya fijado cuándo usarla y cómo revisarla.
+
+Se relaciona con el **dilema de Collingridge**, que añade una tensión
+temporal. Al principio, una tecnología es fácil de cambiar, pero sus efectos
+aún no se conocen; cuando se conocen, ya está arraigada y cambiarla es caro y
+lento [@collingridge1980social]. El problema del ritmo describe quién va detrás
+de quién; el dilema explica por qué esperar a saberlo todo tampoco es una
+posición neutral.
+
+## Contexto histórico
+
+Collingridge formuló su dilema en 1980, a propósito del control social de la
+tecnología en general [@collingridge1980social]. En 2011, Marchant, Allenby y
+Herkert dedicaron un volumen colectivo al desfase entre tecnologías emergentes
+y supervisión legal y ética [@marchant2011pacing].
+
+Ante la lentitud de la norma formal, la gobernanza de la IA se ha apoyado sobre
+todo en derecho blando: guías, códigos de conducta y estándares. Una revisión
+de alcance identificó 634 programas de este tipo [@gutierrez2021softlaw].
+
+## Importancia actual
+
+A fecha de octubre de 2026, el desfase es visible en dos planos documentados:
+
+- **Evidencia.** De 130 dispositivos de IA autorizados en Estados Unidos, 126
+  se apoyaron solo en estudios retrospectivos y ninguno de los 54 de alto
+  riesgo en un estudio prospectivo [@wu2021fda]. Hasta 2021 se habían publicado
+  41 ensayos aleatorizados de intervenciones de aprendizaje automático
+  [@plana2022rct]; en 2024 eran 86, en su mayoría unicéntricos y centrados en el
+  rendimiento diagnóstico más que en desenlaces del paciente [@han2024rct].
+- **Norma.** El [Reglamento europeo de IA](ai-act.qmd) se aplica por fases. La
+  reforma de 2026 aplazó las obligaciones de alto riesgo del anexo III al 2 de
+  diciembre de 2027 y las de productos del anexo I, como los sanitarios, al 2
+  de agosto de 2028 [@ue2026aiomnibus; @comision2026aiact].
+
+## Aplicaciones
+
+### Generales
+
+- Distinguir si una laguna es de evidencia, de norma o de práctica, porque se
+  corrigen con instrumentos distintos.
+- Analizar qué compensa el desfase mientras la norma madura: vigilancia tras
+  el despliegue, derecho blando con mecanismos de cumplimiento
+  [@marchant2023softlaw], capacidad técnica de las instituciones y normas
+  escalonadas.
+
+### Sanitarias
+
+- Separar autorización y evidencia de impacto: un producto puede estar
+  autorizado sin estudios prospectivos que muestren beneficio clínico
+  [@wu2021fda].
+- Fijar en el ámbito local qué tarea cubre una herramienta, qué revisión humana
+  exige, qué indicadores se vigilan y quién puede suspender su uso.
+- Aprovechar la fase temprana, cuando el uso aún es fácil de modificar, para
+  registrar resultados y corregir antes de que la práctica se consolide.
+
+## Limitaciones
+
+- Es un marco descriptivo, no una ley empírica: no predice cuánto durará el
+  desfase en un caso concreto.
+- Los ritmos no se miden con una unidad común. Expresiones como «semanas» o
+  «años» indican órdenes de magnitud, no mediciones.
+- El concepto no indica por sí mismo si conviene regular antes, después o de
+  otra forma; tampoco justifica no adoptar ni dejar de regular.
+- La evidencia citada procede sobre todo de Estados Unidos y de imagen médica.
+- No hay un orden fijo entre evidencia y norma: un producto puede autorizarse
+  antes de que existan ensayos, y una norma general puede llegar antes que la
+  evidencia sobre un uso concreto.
+
+## Ejemplos
+
+Un servicio empieza a usar un asistente que redacta borradores de informes de
+alta. La herramienta se incorpora en semanas; no hay ensayos sobre su efecto en
+los errores de medicación al alta; la norma específica aplicable entra en vigor
+por fases, y el criterio sobre cuándo revisar el borrador lo decide cada
+profesional. El ejemplo es hipotético e ilustra los cuatro ritmos, no una
+situación medida.
+
+## Relacionados
+
+- [Reglamento de Inteligencia Artificial de la Unión Europea](ai-act.qmd)
+- [Gobernanza MLOps](gobernanza-mlops.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
+- [Capability overhang](capability-overhang.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
