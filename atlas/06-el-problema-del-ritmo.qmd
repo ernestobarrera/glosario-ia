@@ -16,16 +16,16 @@ format:
 
 Una herramienta de IA puede estar disponible y en uso antes de que maduren las
 otras condiciones que permiten conocer sus efectos y gobernarla. La lámina
-representa ese desfase con una línea «hoy» que corta cuatro curvas de madurez
-y lo relaciona con el dilema de Collingridge: el conocimiento llega mientras
-disminuye el margen para corregir.
+recorre de izquierda a derecha los estados por los que pasa esa situación,
+sitúa en ellos al profesional y explica, con el dilema de Collingridge, por qué
+el desfase importa.
 
 ::: {.atlas-lamina}
 <figure>
 <a href="../assets/atlas/el-problema-del-ritmo.png"
    class="lightbox" data-gallery="atlas-visual" title="Lámina 06">
 <img src="../assets/atlas/el-problema-del-ritmo.png"
-     alt="Lámina sobre el problema del ritmo. El gráfico principal muestra, frente al tiempo desde que una capacidad está disponible, la madurez relativa en escala conceptual de cuatro elementos: la herramienta disponible sube muy deprisa y se estabiliza en lo alto; la evidencia de impacto y la norma específica suben más despacio y se cruzan, con la indicación de que no hay un orden fijo entre ellas; el criterio profesional compartido, en trazo punteado, es una posición ilustrativa. Una línea vertical roja marca hoy y una flecha señala la brecha conceptual entre la herramienta y las demás condiciones. Una columna lateral recoge cuatro datos de anclaje: el uso de IA declarado por médicos de Estados Unidos (38 % en 2023, 66 % en 2024 y 81 % en 2026), 126 de 130 dispositivos autorizados con estudios solo retrospectivos y ninguno de los 54 de alto riesgo con estudio prospectivo, 41 ensayos aleatorizados hasta 2021 y 86 en una revisión de 2024, y la aplicación por fases del reglamento europeo, con fechas en diciembre de 2027 y agosto de 2028. Una banda central presenta cuatro propuestas de gobernanza mientras persiste el desfase: capacidad técnica institucional, gobernanza adaptativa, derecho blando con mecanismos de cumplimiento y norma formal escalonada, que pueden compensarlo parcialmente pero no cerrarlo. Un panel inferior dibuja el dilema de Collingridge: la facilidad para corregir baja y el conocimiento de los efectos sube, con la frase de que esperar también tiene un coste. Cierra con la pregunta de qué combinación de evidencia, vigilancia, responsabilidad profesional y gobernanza local compensa el desfase mientras la regulación madura."
+     alt="Lámina sobre el problema del ritmo. Un gráfico muestra la madurez de cuatro elementos frente al tiempo: herramienta, evidencia, norma específica y criterio profesional compartido. Una línea discontinua marca la madurez suficiente y cada curva la cruza en un momento distinto: la herramienta es utilizable en semanas; la evidencia de impacto en pacientes, la norma aplicable y el criterio profesional compartido tardan años, y evidencia y norma llegan en orden variable. Antes de la evidencia de impacto aparecen estudios de rendimiento, a menudo retrospectivos, en meses. Cuatro zonas describen los estados sucesivos: uso sin evidencia de impacto ni norma específica, donde una nube indica que ahí trabaja hoy el profesional en la mayoría de usos de IA generativa; llega la evidencia de impacto o la norma, no ambas; evidencia y norma disponibles con el criterio profesional pendiente, y práctica confiable. Una flecha horizontal roja, la brecha de ritmo, va de la llegada de la herramienta a la del criterio profesional. Dos datos: el uso de IA declarado por médicos de Estados Unidos pasó del 38 % en 2023 al 81 % en 2026, y 126 de 130 dispositivos de IA autorizados en Estados Unidos se apoyaron solo en estudios retrospectivos. Una anotación indica que la norma europea se aprobó en 2024 y se aplica a los productos sanitarios desde agosto de 2028. Debajo, el dilema de Collingridge en dos cuñas opuestas: el margen para corregir se estrecha y el conocimiento de los efectos crece, con la frase de que esperar también tiene un coste. Una fila de gobernanza puente presenta cuatro propuestas: evaluación y vigilancia continuas, gobernanza local y responsabilidad profesional, derecho blando con mecanismos de cumplimiento y norma formal escalonada, que compensan parte del desfase sin que esté medido que lo cierren. Cierra con la pregunta de qué combinación de evidencia, vigilancia, responsabilidad profesional y gobernanza local compensa el desfase mientras la regulación madura."
      loading="eager" decoding="async">
 </a>
 <figcaption>Lámina 06. Pulse para ampliarla.</figcaption>
@@ -39,80 +39,80 @@ disminuye el margen para corregir.
 ::: {.atlas-texto}
 ## Cómo leerla
 
-El eje vertical no mide velocidad, sino **madurez relativa alcanzada**, en una
-escala conceptual: la velocidad se lee en la pendiente. Las cuatro curvas no
-comparten una unidad, así que la distancia en la línea «hoy» es una brecha
-conceptual, no una magnitud. Lo que la lámina afirma es el orden: la
-herramienta está disponible antes de que lo estén las demás piezas. Es el
+La lámina se lee de izquierda a derecha, por zonas. Cada curva representa la
+madurez de una pieza y la línea discontinua, el punto en que esa pieza es
+suficiente: una herramienta utilizable, evidencia de impacto en pacientes, una
+norma aplicable o un criterio profesional compartido. Las piezas no comparten
+una unidad de medida, así que lo que importa no es la altura, sino **cuándo**
+cruza cada curva la línea. Esos cruces separan cuatro estados, y la distancia
+horizontal entre el primero y el último es la brecha de ritmo. Es el
 [problema del ritmo](../terminos/problema-del-ritmo.qmd), formulado para las
 tecnologías emergentes en general [@marchant2011pacing].
 
-La evidencia de impacto y la norma específica se cruzan a propósito. Un
+La primera zona es la más ancha y la más habitual hoy: la herramienta ya se usa
+y todavía no hay evidencia de impacto ni norma específica. Que existan estudios
+no la saca de ahí. Los estudios de rendimiento, a menudo retrospectivos, llegan
+pronto; la evidencia de que una herramienta mejora los resultados en pacientes
+tarda años.
+
+La evidencia de impacto y la norma específica llegan en orden variable. Un
 producto puede autorizarse antes de que existan ensayos que demuestren su
 beneficio clínico, y una norma general puede llegar antes que la evidencia
-sobre un uso concreto. Lo que está documentado es que ambas van detrás de la
-herramienta, no cuál de las dos llega antes. El criterio profesional compartido
-se dibuja punteado porque su posición es una hipótesis del modelo: nadie ha
-medido cuánto tarda en formarse.
+sobre un uso concreto. Por eso la segunda zona solo dice que llega una de las
+dos, no cuál.
 
-El panel inferior añade una tensión distinta. Collingridge señaló que, al
-principio, una tecnología es fácil de cambiar pero sus efectos no se conocen,
-y que cuando se conocen ya está arraigada y cambiarla es caro y lento
-[@collingridge1980social]. El cruce de las dos curvas no marca un momento
-óptimo para actuar: indica que esperar no es una posición neutral.
+La banda inferior explica por qué el desfase importa. Collingridge señaló que,
+al principio, una tecnología es fácil de cambiar pero sus efectos no se
+conocen, y que cuando se conocen ya está arraigada y cambiarla es caro y lento
+[@collingridge1980social]. El profesional trabaja justo en el extremo de más
+margen para corregir y menos conocimiento. Esperar a saberlo todo no es una
+posición neutral, pero la lámina tampoco concluye que convenga adoptar sin
+más.
 
-## Los datos de anclaje
-
-La columna lateral sitúa el esquema en hechos medidos o normativos, sin
-convertir las curvas en datos.
+## Los datos
 
 - **Uso.** Los médicos de Estados Unidos que declaran usar IA en su trabajo
   pasaron del 38 % en 2023 al 66 % en 2024 y al 81 % en 2026. El dato es
   autodeclarado, procede de un solo país y su definición de uso incluye resumir
   literatura, documentar y redactar informes [@ama2026physicianai].
-- **Evidencia.** De 130 dispositivos de IA autorizados en Estados Unidos, 126
-  se apoyaron solo en estudios retrospectivos, y ninguno de los 54 de alto
-  riesgo en un estudio prospectivo [@wu2021fda]. Hasta 2021 se habían publicado
-  41 ensayos aleatorizados de intervenciones de aprendizaje automático
-  [@plana2022rct]; una revisión de 2024 reunió 86, en su mayoría unicéntricos
-  y centrados en el rendimiento diagnóstico más que en desenlaces del paciente
-  [@han2024rct]. Las dos revisiones usan criterios de inclusión distintos y sus
-  cifras no forman una serie.
-- **Norma.** El [Reglamento europeo de IA](../terminos/ai-act.qmd) se aplica
-  por fases. La reforma de 2026 aplazó las obligaciones de alto riesgo del
-  anexo III al 2 de diciembre de 2027 y las de productos del anexo I, como los
-  sanitarios, al 2 de agosto de 2028 [@ue2026aiomnibus].
+- **Autorización sin evidencia prospectiva.** De 130 dispositivos de IA
+  autorizados en Estados Unidos, 126 se apoyaron solo en estudios
+  retrospectivos, y ninguno de los 54 de alto riesgo en un estudio prospectivo
+  [@wu2021fda]. Ilustra la segunda zona: el respaldo regulatorio llega sin la
+  evidencia de impacto. Los ensayos aleatorizados siguen siendo pocos: 41 hasta
+  2021 [@plana2022rct] y 86 en una revisión de 2024, en su mayoría unicéntricos
+  y centrados en el rendimiento diagnóstico [@han2024rct]. Las dos revisiones
+  usan criterios distintos y sus cifras no forman una serie.
+- **Norma.** El [Reglamento europeo de IA](../terminos/ai-act.qmd) se aprobó en
+  2024 y se aplica por fases. La reforma de 2026 llevó las obligaciones de los
+  productos del anexo I, como los sanitarios, al 2 de agosto de 2028
+  [@ue2026aiomnibus].
 
-## Gobernanza mientras persiste el desfase
+## Gobernanza puente
 
-La banda central recoge cuatro propuestas, no remedios probados. Desarrollar
-capacidad técnica en las instituciones; aplicar una gobernanza adaptativa que
-vigile, revise y corrija tras el despliegue, como la que describe la
-[gobernanza MLOps](../terminos/gobernanza-mlops.qmd); dotar al derecho blando
-de mecanismos de cumplimiento [@marchant2023softlaw], y escalonar la norma
-formal. El derecho blando es ya la forma dominante de gobernar la IA: una
-revisión identificó 634 programas de guías, códigos y estándares
-[@gutierrez2021softlaw]. Nadie ha medido que alguna de estas estrategias
-reduzca la brecha: la lámina dice que pueden compensarla en parte, no
-cerrarla.
+La fila inferior recoge cuatro propuestas para actuar mientras dura el desfase,
+no remedios probados: evaluación y vigilancia continuas tras el despliegue,
+como las que describe la [gobernanza MLOps](../terminos/gobernanza-mlops.qmd);
+gobernanza local y responsabilidad profesional; derecho blando con mecanismos
+que aseguren su cumplimiento [@marchant2023softlaw], y una norma formal que se
+aplique de forma escalonada. El derecho blando es ya la forma dominante de
+gobernar la IA: una revisión identificó 634 programas de guías, códigos y
+estándares [@gutierrez2021softlaw]. Nadie ha medido que alguna de estas
+estrategias cierre la brecha; la lámina dice que compensan parte de ella.
 
 ## Alcance
 
-Es un esquema conceptual. Las curvas no representan datos, y la división del
-tiempo en disponibilidad, despliegue y maduración es cualitativa. La lámina no
-asigna duraciones a ningún elemento: los «17 años» que suelen citarse entre la
-investigación y la práctica no se sostienen como cifra, porque las
-estimaciones revisadas usan medidas distintas y no son comparables
-[@morris2011translational]. Tampoco afirma que el criterio profesional sea
-siempre lo más lento; sí es frecuente que una tecnología sanitaria no llegue a
-adoptarse o se abandone por factores del contexto y no de la herramienta
-[@greenhalgh2017nasss].
+Es un esquema conceptual. Las curvas no representan datos, los límites de las
+zonas son aproximados y «semanas», «meses» y «años» son órdenes de magnitud
+orientativos. Los «17 años» que suelen citarse entre la investigación y la
+práctica no se sostienen como cifra, porque las estimaciones revisadas usan
+medidas distintas y no son comparables [@morris2011translational]. La lámina
+tampoco afirma cuánto tarda en formarse el criterio profesional; sí es
+frecuente que una tecnología sanitaria no llegue a adoptarse o se abandone por
+factores del contexto y no de la herramienta [@greenhalgh2017nasss].
 
 Los datos de uso y de evidencia proceden sobre todo de Estados Unidos y de
-dispositivos de imagen médica, y no describen la situación española. La
-lámina no concluye que convenga adoptar ni esperar: plantea qué combinación
-de evidencia, vigilancia, responsabilidad profesional y gobernanza local
-compensa el desfase mientras la regulación madura.
+dispositivos de imagen médica, y no describen la situación española.
 
 ## Referencias
 
