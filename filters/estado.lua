@@ -5,6 +5,10 @@
 -- Sin este filtro, quien lee una ficha no sabe si esta ante un borrador. La
 -- fecha de revision si la emite Quarto, en el bloque de metadatos del titulo.
 --
+-- La fecha se rotula «actualizada», no «revisada»: `revisada` es un valor del
+-- campo estado, y una ficha en borrador mostraba a la vez «borrador» y
+-- «revisada 22 ago 2026», que el lector leia como una contradiccion.
+--
 -- Se ejecuta despues de sinonimos.lua y tambien inserta en la posicion 1, de
 -- modo que los distintivos quedan por encima de la linea de sinonimos.
 
@@ -32,16 +36,16 @@ local function fechaLegible(valor)
   local anio, mes, dia = valor:match("^(%d%d%d%d)-(%d%d)-(%d%d)$")
 
   if anio then
-    return string.format("revisada %d %s %s", tonumber(dia), MESES[tonumber(mes)], anio)
+    return string.format("actualizada %d %s %s", tonumber(dia), MESES[tonumber(mes)], anio)
   end
 
   local diaTexto, mesTexto, anioTexto = valor:match("^(%d+) de (%a+) de (%d%d%d%d)$")
 
   if diaTexto and ABREVIA[mesTexto:lower()] then
-    return string.format("revisada %s %s %s", diaTexto, ABREVIA[mesTexto:lower()], anioTexto)
+    return string.format("actualizada %s %s %s", diaTexto, ABREVIA[mesTexto:lower()], anioTexto)
   end
 
-  return "revisada " .. valor
+  return "actualizada " .. valor
 end
 
 function Meta(meta)

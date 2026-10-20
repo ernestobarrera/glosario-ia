@@ -11,7 +11,7 @@ description: "Modelo entrenado con grandes corpus para predecir y generar lengua
 categories:
   - "Modelos de lenguaje"
   - "Arquitecturas"
-date-modified: 2026-08-22
+date-modified: 2026-10-20
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -84,6 +84,10 @@ fluidez del texto.
 - [Alucinación](alucinacion.qmd)
 - [IA generativa](ia-generativa.qmd)
 - [Mecanismo de atención](mecanismo-de-atencion.qmd)
+- [Tokenización](tokenizacion.qmd)
+- [Prompting](prompting.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Factualidad](factualidad.qmd)
 
 ## Referencias
 

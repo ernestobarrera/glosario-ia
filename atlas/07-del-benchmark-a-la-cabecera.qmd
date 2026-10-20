@@ -4,7 +4,7 @@ description: "Por qué la competencia de un modelo en tareas controladas no bast
 categories:
   - "Seguridad y riesgos"
   - "Fundamentos"
-date-modified: 2026-10-06
+date-modified: 2026-10-20
 image: ../assets/atlas/del-benchmark-a-la-cabecera.png
 page-layout: full
 format:
@@ -135,6 +135,37 @@ tres precisiones:
 - **Los errores eran deliberados**, introducidos por un panel de médicos para ser
   detectables pero no evidentes. Los errores reales de un modelo pueden ser más sutiles.
 
+### Puerta 4 · Implementación y tiempo
+
+**¿El beneficio sobrevive al uso repetido y produce impacto clínico?**
+
+En 15 clínicas de atención primaria de Nairobi, sobre 39.849 visitas, el uso de un
+asistente integrado en la historia clínica se asoció a un **16 % menos de errores
+diagnósticos** y un **13 % menos de errores terapéuticos**, en términos relativos y
+valorados por médicos independientes [@korom2025aiconsult]. Es un estudio de mejora de la
+calidad, no un ensayo.
+
+La otra cara de esta puerta es el tiempo. En cuatro centros de endoscopia de Polonia, la
+tasa de detección de adenomas en las colonoscopias hechas **sin** asistencia bajó del
+**28,4 %** antes de introducir la IA al **22,4 %** después [@budzyn2025deskilling]: una
+señal de posible pérdida de habilidad cuando la ayuda no está. Es un estudio
+observacional y el verbo de los autores es «podría».
+
+Ninguno de los dos estudios midió desenlaces de salud en los pacientes ni la persistencia
+del efecto: eso es lo que la lámina marca con el interrogante. La abren la implantación
+prospectiva, la vigilancia a largo plazo y los desenlaces clínicos.
+
+::: {.callout-note title="Actualización de octubre de 2026"}
+El interrogante ya tiene una primera respuesta en el mismo entorno. Un ensayo pragmático
+aleatorizado por conglomerados en 16 centros de atención primaria de Kenia, con una
+herramienta casi idéntica a la del estudio anterior, asignó 103 clínicos a trabajar con o
+sin la asistencia del modelo y siguió a 9.691 pacientes. La asistencia fue segura y mejoró
+la calidad de la documentación, pero **no redujo de forma significativa el fracaso
+terapéutico a los 14 días** (OR ajustada 0,77; IC 95 % 0,55 a 1,08; p = 0,13)
+[@agweyu2026pragmatic]. Es la tesis de la lámina con datos: mejorar el proceso no garantiza
+el resultado en el paciente. La imagen todavía no recoge este ensayo.
+:::
+
 ## Dónde se concentra la investigación publicada
 
 De 519 estudios de evaluación de modelos de lenguaje en sanidad publicados entre enero de
@@ -159,7 +190,7 @@ estadounidenses, otro con médicos de Pakistán, una implantación en Kenia y un
 observacional en Polonia. Ponerlas en una misma lámina sirve para ver que cada puerta se
 contesta con un tipo de estudio, no para restarlas entre sí.
 
-**Cuatro de las siete fuentes son preprints**, sin revisión por pares: las dos primeras
+**Cuatro de las siete fuentes de la imagen son preprints**, sin revisión por pares: las dos primeras
 puertas y el estudio de Kenia, más el ensayo de sesgo de automatización, cuya versión
 revisada existe pero no es accesible. Están marcadas como tales en la lámina. El riesgo de
 un preprint no es la invención, sino que una cifra cambie al publicarse; las entradas
@@ -172,11 +203,11 @@ No establece una pérdida de habilidades del clínico en general; el verbo de lo
 un ensayo, cuyo resultado los propios autores atribuyen en parte a una implantación muy
 alineada con el flujo de trabajo [@korom2025aiconsult].
 
-Ninguno de los dos estudios de la cuarta puerta midió desenlaces **de salud** en los pacientes
-ni la persistencia del efecto en el tiempo: uno valoró errores clínicos juzgados por médicos y
-otro una medida de calidad de la exploración. Sí existen, fuera de esta lámina, ensayos de IA con
-desenlaces clínicos en otros usos; lo que falta es evidencia de que el beneficio de estas
-herramientas concretas se conserve.
+Ninguno de los dos estudios de la cuarta puerta que recoge la imagen midió desenlaces
+**de salud** en los pacientes ni la persistencia del efecto en el tiempo: uno valoró errores
+clínicos juzgados por médicos y otro una medida de calidad de la exploración. El ensayo de
+2026 citado en la actualización de la cuarta puerta sí midió un desenlace en pacientes, a
+14 días; la persistencia del efecto sigue sin estudiarse.
 
 El conjunto de fuentes procede en buena parte de una revisión narrativa de 82 estudios
 cuyos autores reconocen sesgo de selección hacia instituciones académicas bien conectadas

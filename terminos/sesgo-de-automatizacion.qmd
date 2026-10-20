@@ -9,7 +9,7 @@ description: "Tendencia a aceptar una recomendación automatizada con comprobaci
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-09-22
+date-modified: 2026-10-20
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -39,7 +39,7 @@ quedar a lados distintos de la competencia útil del sistema
 
 ## Importancia actual
 
-A fecha de agosto de 2026, el sesgo de automatización es especialmente
+A fecha de octubre de 2026, el sesgo de automatización es especialmente
 relevante para sistemas generativos y agénticos, cuyas respuestas pueden ser
 fluidas aunque sean incorrectas. La supervisión humana solo es una salvaguarda
 real si la persona dispone de tiempo, competencia, información y autoridad
@@ -75,6 +75,20 @@ calle cerrada. En sanidad, un profesional podría descartar un hallazgo porque
 el sistema no lo señaló, o aceptar una dosis sugerida sin contrastarla con los
 datos clínicos disponibles.
 
+En un experimento con 27 radiólogos, un supuesto sistema de IA sugería la
+categoría BI-RADS de cada mamografía. Cuando la sugerencia era correcta, los
+lectores acertaron en torno al 80 %; cuando era errónea, el acierto cayó al
+20 % en los menos experimentados, al 25 % en los de experiencia media y al
+46 % en los muy expertos [@dratsch2023automation]. La experiencia atenuó el
+efecto, pero no lo evitó.
+
+En la práctica real, una evaluación retrospectiva de un sistema de apoyo
+desplegado en atención primaria en Kenia identificó 115 recomendaciones
+activamente dañinas, el 7,8 % de las consultas revisadas, y 67 de ellas
+acabaron en la documentación final. Los autores hablan de una adopción
+asimétrica de las salidas dañinas frente a las beneficiosas y piden
+salvaguardas locales y ensayos prospectivos [@agweyu2026safety].
+
 ## Relacionados
 
 - [Agente de IA](agente-de-ia.qmd)
@@ -82,6 +96,9 @@ datos clínicos disponibles.
 - [Alucinación](alucinacion.qmd)
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
 - [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
+- [Descarga cognitiva](descarga-cognitiva.qmd)
+- [Fatiga agéntica humana](fatiga-agentica-humana.qmd)
+- [Reglamento de Inteligencia Artificial de la Unión Europea](ai-act.qmd)
 
 ## Referencias
 

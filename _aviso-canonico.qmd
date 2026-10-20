@@ -4,7 +4,7 @@
     <h3>Cómo se ha hecho</h3>
     <p>Las fichas se redactan con asistencia de agentes de IA y pasan por supervisión humana
     antes de entrar. La supervisión no equivale a una revisión completa: cada ficha lleva su
-    propio estado y su fecha de última revisión.</p>
+    propio estado y su fecha de última actualización.</p>
   </div>
   <div>
     <h3>Qué garantía no da</h3>
