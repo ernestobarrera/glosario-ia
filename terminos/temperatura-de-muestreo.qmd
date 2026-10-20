@@ -10,7 +10,7 @@ description: "Parámetro que reescala las puntuaciones antes del softmax y contr
 categories:
   - "Modelos de lenguaje"
   - "Fundamentos"
-date-modified: 2026-09-04
+date-modified: 2026-10-20
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -50,7 +50,7 @@ A fecha de septiembre de 2026, es el control de generación más expuesto en las
 interfaces y en las API, y por eso el más susceptible de leerse mal. Song y
 colaboradores documentaron que la decodificación voraz —el caso de temperatura
 cero— supera al muestreo en la mayoría de las tareas que evaluaron, lo que
-convierte a este parámetro en una variable de la evaluación y no en un
+convierte a este parámetro en una variable de la evaluación y no en una
 preferencia de estilo [@song2025greedy].
 
 ## Aplicaciones

@@ -10,7 +10,7 @@ description: "Respuesta plausible generada por un modelo que contiene informaci�
 categories:
   - "Modelos de lenguaje"
   - "Seguridad y riesgos"
-date-modified: 2026-08-22
+date-modified: 2026-10-20
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -39,7 +39,7 @@ métricas y estrategias de mitigación para este fenómeno
 
 ## Importancia actual
 
-A fecha de agosto de 2026, la alucinación sigue siendo una limitación central
+A fecha de octubre de 2026, la alucinación sigue siendo una limitación central
 cuando una respuesta debe corresponderse con hechos o fuentes. Recuperación,
 verificación y supervisión pueden reducir el riesgo, pero ninguna de estas
 medidas garantiza por sí sola la corrección, especialmente en usos sanitarios
@@ -62,6 +62,16 @@ La evaluación médica de modelos avanzados también subraya que utilidad y
 fluidez conviven con límites y riesgos clínicamente relevantes
 [@lee2023gpt4].
 
+Los primeros estudios en uso real matizan dónde está el riesgo. En una
+evaluación retrospectiva de un sistema de apoyo desplegado en 16 clínicas de
+atención primaria de Kenia, las alucinaciones aparecieron en el 3,4 % de 1.469
+consultas revisadas, sobre todo siglas mal desarrolladas o nombres de fármacos
+[@agweyu2026safety]. En un piloto de un solo centro que generaba resúmenes de
+estancia hospitalaria, los médicos señalaron **omisiones** en el 25 % de los
+100 resúmenes que valoraron, imprecisiones en el 20 % y alucinaciones en el 2 %
+[@grolleau2026hospitalcourse]. Una revisión que solo busca datos inventados
+deja pasar lo que falta: comprobar una respuesta incluye comprobar qué no dice.
+
 ## Limitaciones
 
 - La detección automática de alucinaciones sigue siendo imperfecta.
@@ -70,6 +80,8 @@ fluidez conviven con límites y riesgos clínicamente relevantes
 - Pedir citas no garantiza que las referencias existan.
 - La recuperación de información y la conexión a fuentes pueden reducir el
   problema, pero no lo eliminan.
+- Las tasas observadas dependen de la tarea, del sistema y de cómo se define y
+  revisa el error: no son trasladables de un estudio a otro.
 
 ## Ejemplos
 
@@ -80,9 +92,12 @@ fluidez conviven con límites y riesgos clínicamente relevantes
 
 ## Relacionados
 
+- [Factualidad](factualidad.qmd)
+- [Fundamentación](fundamento.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Adulación](adulacion.qmd)
 - [Agente de IA](agente-de-ia.qmd)
 - [Inteligencia artificial general](agi.qmd)
-- [Fundamentación](fundamento.qmd)
 
 ## Referencias
 

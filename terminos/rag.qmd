@@ -11,7 +11,7 @@ description: "Enfoque que combina recuperación de información externa con gene
 categories:
   - "Recuperación de información"
   - "Modelos de lenguaje"
-date-modified: 2026-08-22
+date-modified: 2026-10-20
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -78,6 +78,11 @@ evidencia.
 
 - [Modelo de lenguaje grande](llm.qmd)
 - [Alucinación](alucinacion.qmd)
+- [Fundamentación](fundamento.qmd)
+- [Embeddings](embeddings.qmd)
+- [Factualidad](factualidad.qmd)
+- [Inyección de prompts](inyeccion-de-prompts.qmd)
+- [Ingeniería de contexto](ingenieria-de-contexto.qmd)
 - [MCP](mcp.qmd)
 
 ## Referencias
