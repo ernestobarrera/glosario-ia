@@ -39,9 +39,13 @@ website:
         text: Temas
       - href: atlas.qmd
         text: Atlas visual
+  # El enlace de vuelta a la web del autor va en el pie, no en la barra: la
+  # barra es la navegacion del glosario y no debe mezclarse con la del sitio.
   page-footer:
     left: "Barrera E. · Textos originales bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)"
     right:
+      - href: https://ernestobarrera.github.io/
+        text: "Web del autor"
       - href: aviso.qmd
         text: "Aviso, límites y licencia"
 
