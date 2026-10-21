@@ -933,6 +933,52 @@ foreach ($ficha in $fichas) {
   }
 }
 
+# Empieza aqui: la secuencia de entrada es una seleccion editorial a mano, asi
+# que nadie la regenera si una ficha cambia de nombre. Cada enlace debe apuntar
+# a una ficha existente, sin repetirse, y la pagina debe salir renderizada con
+# todos ellos y enlazada desde la portada.
+$enlacesEntrada = 0
+$rutaEntrada = Join-Path $raiz "empieza-aqui.qmd"
+if (-not (Test-Path -LiteralPath $rutaEntrada)) {
+  Registrar-Error "empieza-aqui.qmd: no existe la pagina de entrada"
+}
+else {
+  $textoEntrada = Get-Content -LiteralPath $rutaEntrada -Encoding UTF8 -Raw
+  $htmlEntradaRuta = Join-Path $carpetaSitio "empieza-aqui.html"
+  $htmlEntrada = if (Test-Path -LiteralPath $htmlEntradaRuta) {
+    Get-Content -LiteralPath $htmlEntradaRuta -Encoding UTF8 -Raw
+  }
+  else {
+    Registrar-Error "empieza-aqui.html: no existe la salida de la pagina de entrada"
+    ""
+  }
+  $vistosEntrada = @{}
+  foreach ($enlace in [regex]::Matches($textoEntrada, "\]\(terminos/([A-Za-z0-9-]+)\.qmd\)")) {
+    $slugEntrada = $enlace.Groups[1].Value
+    if ($vistosEntrada.ContainsKey($slugEntrada)) {
+      Registrar-Error "empieza-aqui.qmd: la ficha '$slugEntrada' aparece dos veces"
+      continue
+    }
+    $vistosEntrada[$slugEntrada] = $true
+    if (-not (Test-Path -LiteralPath (Join-Path $raiz "terminos\$slugEntrada.qmd"))) {
+      Registrar-Error "empieza-aqui.qmd: enlace a una ficha inexistente '$slugEntrada'"
+      continue
+    }
+    if ($htmlEntrada -and $htmlEntrada.IndexOf("href=`"./terminos/$slugEntrada.html`"", [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error "empieza-aqui.html: falta el enlace renderizado a '$slugEntrada'"
+      continue
+    }
+    $enlacesEntrada++
+  }
+  if ($enlacesEntrada -eq 0) {
+    Registrar-Error "empieza-aqui.qmd: la pagina de entrada no enlaza ninguna ficha"
+  }
+  $htmlPortada = Get-Content -LiteralPath (Join-Path $carpetaSitio "index.html") -Encoding UTF8 -Raw
+  if ($htmlPortada.IndexOf('href="./empieza-aqui.html"', [StringComparison]::Ordinal) -lt 0) {
+    Registrar-Error "index.html: la portada no enlaza la pagina de entrada"
+  }
+}
+
 if ($errores.Count -gt 0) {
   Write-Host "VALIDACION FALLIDA ($($errores.Count) errores)" -ForegroundColor Red
   foreach ($errorValidacion in $errores) {
@@ -954,6 +1000,7 @@ Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
 Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase, recuento y $fichasEnSecciones pertenencias; $laminasEnTemas enlaces al Atlas"
 Write-Host "  Indice A-Z: $entradasIndice entradas, con remision para cada sinonimo"
+Write-Host "  Empieza aqui: $enlacesEntrada fichas enlazadas, unicas y renderizadas"
 Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
