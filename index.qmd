@@ -19,7 +19,8 @@ Glosario para profesionales sanitarios: definiciones breves y ampliadas, aplicac
 generales y sanitarias, limitaciones, ejemplos, conexiones y referencias
 verificables.
 
-[Explorar de la A a la Z](indice-az.qmd){.btn .btn-primary}
+[Empieza aquí](empieza-aqui.qmd){.btn .btn-primary}
+[Explorar de la A a la Z](indice-az.qmd){.btn .btn-outline-secondary}
 [Explorar por temas](temas.qmd){.btn .btn-outline-secondary}
 :::
 
