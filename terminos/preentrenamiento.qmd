@@ -9,7 +9,7 @@ description: "Fase inicial en la que un modelo aprende patrones generales antes 
 categories:
   - "Aprendizaje automático"
   - "Modelos de lenguaje"
-date-modified: 2026-09-15
+date-modified: 2026-10-21
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -35,7 +35,7 @@ del lenguaje [@devlin2019bert].
 ## Importancia actual
 
 A fecha de agosto de 2026, el preentrenamiento es una pieza central de los
-modelos fundacionales. Permite distribuir el coste de aprender representaciones
+[modelos fundacionales](modelo-fundacional.qmd). Permite distribuir el coste de aprender representaciones
 generales entre muchas aplicaciones, aunque concentra dependencias sobre datos,
 infraestructura y decisiones tomadas en la fase inicial.
 

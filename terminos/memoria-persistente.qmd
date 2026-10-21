@@ -12,7 +12,7 @@ categories:
   - "IA agéntica"
   - "Modelos de lenguaje"
   - "Ética y gobernanza"
-date-modified: 2026-09-14
+date-modified: 2026-10-21
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -26,7 +26,7 @@ conversación.
 
 Conviene distinguir tres niveles, porque plantean problemas muy distintos:
 
-1. **La ventana de contexto**: memoria efímera, limitada a la sesión en curso.
+1. **La [ventana de contexto](ventana-de-contexto.qmd)**: memoria efímera, limitada a la sesión en curso.
    Al cerrarla no queda nada.
 2. **Los hechos guardados explícitamente**: el usuario pide que algo se
    recuerde, y ese dato queda en una lista consultable.

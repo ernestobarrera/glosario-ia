@@ -1,0 +1,127 @@
+---
+title: "Modelo fundacional"
+aliases:
+  - /terminos/foundation-model.html
+sinonimos:
+  - "Foundation model"
+description: "Modelo entrenado con datos amplios y a gran escala que puede adaptarse a muchas tareas distintas, en lugar de construirse para una sola."
+categories:
+  - "Fundamentos"
+  - "Aprendizaje automático"
+date-modified: 2026-10-21
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un **modelo fundacional** es un modelo entrenado con datos amplios, por lo
+general mediante autosupervisión a gran escala, que después puede adaptarse a
+una gran variedad de tareas. El nombre subraya que es una base central sobre la
+que se construyen muchas aplicaciones, y también que es incompleta: necesita
+adaptación para cada uso [@bommasani2021foundation].
+
+Técnicamente no es una arquitectura nueva. Combina
+[aprendizaje profundo](aprendizaje-profundo.qmd),
+[preentrenamiento](preentrenamiento.qmd) y
+[aprendizaje por transferencia](aprendizaje-por-transferencia.qmd); lo que lo
+distingue es la escala y la amplitud de usos que permite
+[@bommasani2021foundation]. La adaptación puede hacerse con
+[fine-tuning](fine-tuning.qmd), con instrucciones o con ejemplos en la propia
+entrada.
+
+Un [modelo de lenguaje grande](llm.qmd) es un modelo fundacional entrenado
+sobre todo con texto, pero hay modelos fundacionales de imagen, de audio o
+[multimodales](multimodalidad.qmd). Tampoco todos son de
+[IA generativa](ia-generativa.qmd): algunos, como [BERT](bert.qmd), se usan
+sobre todo para representar y clasificar. El Reglamento europeo de IA usa una
+categoría jurídica próxima, «modelo de IA de uso general», con su propia
+definición y sus propias obligaciones [@ue2024aiact]; no es un sinónimo, y su
+régimen se trata en la ficha del [AI Act](ai-act.qmd). «Modelo base» tampoco
+es sinónimo: suele designar el modelo antes de ajustarlo para seguir
+instrucciones.
+
+## Contexto histórico
+
+El término lo propuso en agosto de 2021 el Center for Research on Foundation
+Models de la Universidad de Stanford, con BERT, GPT-3 y DALL-E como ejemplos
+[@bommasani2021foundation]. El informe señalaba dos rasgos: capacidades que
+aparecen con la escala sin haberse entrenado de forma explícita, y
+**homogeneización**, porque muchas aplicaciones pasan a depender de unos pocos
+modelos, de modo que sus defectos se heredan en todo lo que se construye
+encima.
+
+En 2023, una propuesta publicada en *Nature* trasladó la idea a la medicina
+con el nombre de IA médica generalista: modelos capaces de hacer muchas tareas
+con pocos o ningún dato etiquetado específico, interpretando combinaciones de
+imagen, historia clínica electrónica, laboratorio, genómica y texto
+[@moor2023generalist]. Era una propuesta de agenda, no una evaluación de
+resultados.
+
+## Importancia actual
+
+A fecha de octubre de 2026, buena parte de las herramientas de IA que llegan a
+un profesional, incluidas las sanitarias, se construyen adaptando un modelo
+fundacional de terceros. Eso concentra el coste de entrenamiento en pocas
+organizaciones y obliga a preguntar no solo qué hace la aplicación, sino sobre
+qué modelo se apoya y qué se sabe de él.
+
+## Aplicaciones
+
+### Generales
+
+- Construir aplicaciones nuevas sin entrenar un modelo desde cero.
+- Adaptar un mismo modelo a tareas distintas: resumir, clasificar, extraer o
+  conversar.
+- Evaluar riesgos compartidos por todas las aplicaciones que usan el mismo
+  modelo.
+
+### Sanitarias
+
+- Desarrollar herramientas de apoyo con pocos datos clínicos etiquetados, que
+  son caros de obtener.
+- Combinar en un solo sistema datos de imagen, texto clínico y laboratorio,
+  como propone la IA médica generalista [@moor2023generalist].
+- Plantear su validación: la misma propuesta advierte de que estos modelos
+  ponen a prueba las estrategias actuales de regulación y validación de
+  dispositivos [@moor2023generalist].
+
+## Limitaciones
+
+- Los defectos del modelo de partida se transmiten a todas sus adaptaciones
+  [@bommasani2021foundation].
+- No se entiende bien cómo funcionan, cuándo fallan ni todo lo que pueden
+  hacer [@bommasani2021foundation].
+- Los datos y el método de entrenamiento pueden no publicarse: el informe
+  técnico de GPT-4 declaró que no daba detalles sobre la construcción del
+  conjunto de datos ni sobre el entrenamiento [@openai2023gpt4report].
+- Que el modelo de partida rinda bien en pruebas generales no valida una
+  aplicación clínica concreta construida sobre él.
+- La dependencia de pocos proveedores afecta a costes, continuidad y control.
+
+## Ejemplos
+
+Un mismo modelo puede servir, con distintas instrucciones, para redactar un
+correo, traducir un texto y clasificar opiniones. No hay tres modelos: hay uno
+adaptado a tres usos.
+
+En sanidad, una herramienta que resume informes y otra que propone códigos
+diagnósticos pueden apoyarse en el mismo modelo fundacional. Si ese modelo
+tiene un sesgo en cómo interpreta ciertos términos, ambas herramientas pueden
+compartirlo aunque las desarrollen equipos distintos.
+
+## Relacionados
+
+- [Preentrenamiento](preentrenamiento.qmd)
+- [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
+- [Fine-tuning](fine-tuning.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [IA generativa](ia-generativa.qmd)
+- [Multimodalidad](multimodalidad.qmd)
+- [Reglamento de Inteligencia Artificial de la Unión Europea](ai-act.qmd)
+- [Sesgo algorítmico](sesgo-algoritmico.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

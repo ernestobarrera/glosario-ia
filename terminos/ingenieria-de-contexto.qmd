@@ -8,7 +8,7 @@ description: "Diseño y mantenimiento de toda la información que entra en la ve
 categories:
   - "IA agéntica"
   - "Modelos de lenguaje"
-date-modified: 2026-09-30
+date-modified: 2026-10-21
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -74,7 +74,7 @@ que está enterrado entre información irrelevante.
   referencias ligeras que el agente carga con herramientas
   [@anthropic2025contextengineering].
 - Resumir el historial cuando una tarea larga se acerca al límite de la
-  ventana de contexto y continuar desde ese resumen
+  [ventana de contexto](ventana-de-contexto.qmd) y continuar desde ese resumen
   [@anthropic2025contextengineering].
 - Hacer que el agente escriba notas fuera de la ventana de contexto y las
   vuelva a leer cuando las necesite [@anthropic2025contextengineering].
