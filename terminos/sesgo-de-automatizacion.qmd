@@ -9,7 +9,7 @@ description: "Tendencia a aceptar una recomendación automatizada con comprobaci
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-10-20
+date-modified: 2026-10-21
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -41,7 +41,7 @@ quedar a lados distintos de la competencia útil del sistema
 
 A fecha de octubre de 2026, el sesgo de automatización es especialmente
 relevante para sistemas generativos y agénticos, cuyas respuestas pueden ser
-fluidas aunque sean incorrectas. La supervisión humana solo es una salvaguarda
+fluidas aunque sean incorrectas. La [supervisión humana](supervision-humana.qmd) solo es una salvaguarda
 real si la persona dispone de tiempo, competencia, información y autoridad
 para discrepar [@aepd2026agentica].
 

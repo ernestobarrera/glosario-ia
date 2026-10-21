@@ -1,0 +1,112 @@
+---
+title: "Fecha de corte del conocimiento"
+aliases:
+  - /terminos/knowledge-cutoff.html
+sinonimos:
+  - "Knowledge cutoff"
+description: "Fecha hasta la que llegan los datos con los que se entrenó un modelo; lo posterior no forma parte de lo que aprendió."
+categories:
+  - "Modelos de lenguaje"
+  - "Seguridad y riesgos"
+date-modified: 2026-10-21
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **fecha de corte del conocimiento** es el momento hasta el que se
+recogieron los datos de entrenamiento de un modelo. Lo que ocurrió después no
+está en sus parámetros: un [modelo de lenguaje grande](llm.qmd) puede responder
+con soltura sobre una cuestión que entretanto ha cambiado, sin señalar que su
+información puede estar desfasada.
+
+La fecha que declara el fabricante es una aproximación. Un estudio de 2024
+distinguió entre el corte **declarado** y el corte **efectivo**, el que se
+observa en lo que el modelo sabe, y encontró que a menudo no coinciden y que
+varían según la fuente y el tema. Entre las causas, la presencia de datos
+antiguos en recopilaciones recientes de la web y la forma de eliminar
+duplicados [@cheng2024datedcutoff].
+
+Para un profesional sanitario, la analogía más útil es la fecha de búsqueda de
+una revisión sistemática: la revisión no es falsa por no incluir lo publicado
+después, pero hay que leerla sabiendo hasta dónde llega. No debe confundirse
+con un punto de corte diagnóstico ni con la fecha de lanzamiento del modelo,
+que suele ser posterior.
+
+## Contexto histórico
+
+La limitación es tan antigua como los modelos entrenados con datos fijos. En
+2021, un estudio mostró que los modelos de lenguaje predicen peor el texto
+posterior a su periodo de entrenamiento, que la pérdida aumenta con el tiempo
+transcurrido y que hacer el modelo más grande no la corrige, mientras que
+actualizarlo con información nueva sí la mitiga [@lazaridou2021mindgap].
+
+Con la difusión de los asistentes conversacionales, los modelos empezaron a
+publicarse acompañados de una fecha de corte declarada. En 2024 se propuso medir el corte
+efectivo por recursos y temas, al comprobar que la fecha declarada no basta
+para saber qué sabe el modelo de cada cosa [@cheng2024datedcutoff].
+
+## Importancia actual
+
+A fecha de octubre de 2026, muchos asistentes combinan el modelo con búsqueda
+web o con [generación aumentada por recuperación](rag.qmd). Eso permite traer
+información posterior a la fecha de corte, pero no cambia lo que el modelo
+aprendió: si la búsqueda no se activa o no encuentra la fuente, la respuesta
+vuelve a depender de los datos de entrenamiento. Conviene saber, en cada
+herramienta, si la respuesta procede de una búsqueda o solo del modelo.
+
+## Aplicaciones
+
+### Generales
+
+- Interpretar con cautela respuestas sobre hechos recientes, cifras o normas.
+- Decidir cuándo hace falta una herramienta con búsqueda o con fuentes propias
+  actualizadas.
+- Pedir al sistema que indique la fecha de las fuentes en que se apoya.
+
+### Sanitarias
+
+- Contrastar con la fuente vigente cualquier respuesta sobre guías clínicas,
+  fichas técnicas o calendarios vacunales, que cambian con el tiempo.
+- Desconfiar de la ausencia de una alerta de seguridad o de una retirada de
+  medicamento: puede ser posterior al corte.
+- Documentar, al usar un asistente en un trabajo, qué modelo se usó y con qué
+  fecha de corte.
+
+## Limitaciones
+
+- La fecha declarada es orientativa: el corte efectivo varía por tema y fuente.
+- Lo que el propio modelo dice sobre su fecha de corte no sustituye a la
+  documentación del fabricante.
+- Una respuesta desfasada puede ser fiel a los datos de entrenamiento y falsa
+  hoy; no es lo mismo que una [alucinación](alucinacion.qmd), aunque las dos
+  afectan a la [factualidad](factualidad.qmd).
+- Añadir búsqueda no garantiza que se recupere la versión vigente de una
+  fuente.
+
+## Ejemplos
+
+Si se pregunta a un modelo por el resultado de unas elecciones celebradas
+después de su fecha de corte, puede dar el resultado de las anteriores o
+inventar uno plausible.
+
+En sanidad, si una guía de práctica clínica se actualizó después de la fecha
+de corte, el asistente puede recomendar con total fluidez lo que decía la
+versión previa. La respuesta no es una invención: es una información que fue
+correcta y dejó de serlo.
+
+## Relacionados
+
+- [Modelo de lenguaje grande](llm.qmd)
+- [Preentrenamiento](preentrenamiento.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Factualidad](factualidad.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Ventana de contexto](ventana-de-contexto.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

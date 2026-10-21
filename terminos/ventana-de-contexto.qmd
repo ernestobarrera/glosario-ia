@@ -1,0 +1,115 @@
+---
+title: "Ventana de contexto"
+aliases:
+  - /terminos/context-window.html
+sinonimos:
+  - "Context window"
+description: "Cantidad máxima de texto, medida en tokens, que un modelo de lenguaje puede tener en cuenta en una sola llamada."
+categories:
+  - "Modelos de lenguaje"
+date-modified: 2026-10-21
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **ventana de contexto** es el límite de lo que un
+[modelo de lenguaje grande](llm.qmd) puede leer de una vez: instrucciones,
+documentos aportados, historial de la conversación y resultados de
+herramientas. Se mide en tokens, no en palabras ni en páginas, por eso depende
+de la [tokenización](tokenizacion.qmd) y del idioma. Lo que queda fuera de la
+ventana no existe para el modelo en esa llamada.
+
+Que algo quepa no significa que se use bien. Varios estudios han medido que el
+rendimiento cae cuando la información relevante está en mitad de una entrada
+larga [@liu2024lostmiddle] y que empeora a medida que crece la longitud, incluso
+en tareas sencillas [@hong2025contextrot]. La longitud declarada es un máximo
+técnico; la longitud útil, la que el modelo aprovecha con fiabilidad, suele ser
+menor [@hsieh2024ruler].
+
+Esta ficha trata del límite. Qué conviene poner dentro y cómo mantenerlo es
+[ingeniería de contexto](ingenieria-de-contexto.qmd); lo que se guarda fuera y
+se vuelve a introducir cuando hace falta es
+[memoria persistente](memoria-persistente.qmd). En otros métodos, como los que
+aprenden [embeddings](embeddings.qmd) de palabras, «ventana de contexto» designa
+otra cosa: el número de palabras vecinas que se miran alrededor de cada una.
+
+## Contexto histórico
+
+El [transformer](transformer.qmd) procesa la entrada completa con el
+[mecanismo de atención](mecanismo-de-atencion.qmd), y el coste de esa
+operación crece con la longitud. Por eso los primeros modelos trabajaban con
+fragmentos cortos: el GPT de 2018 se entrenó con secuencias de 512 tokens
+[@radford2018gpt] y GPT-3, en 2020, usaba una ventana de 2.048 tokens
+[@brown2020fewshot].
+
+En 2024 ya había modelos que declaraban ventanas de 200.000 tokens, y la
+pregunta pasó de cuánto cabe a cuánto se aprovecha. Ese año, una evaluación de
+17 modelos que declaraban ventanas de al menos 32.000 tokens encontró que solo
+la mitad mantenía un rendimiento satisfactorio a esa longitud
+[@hsieh2024ruler].
+
+## Importancia actual
+
+A fecha de octubre de 2026, la ventana de contexto condiciona casi cualquier uso
+práctico de un modelo de lenguaje: cuánto documento se puede analizar de una
+vez, cuánto dura una conversación antes de que se pierda su principio y cuánto
+puede trabajar un [agente de IA](agente-de-ia.qmd) antes de tener que resumir.
+Las cifras de cada producto cambian con frecuencia; lo estable es la distinción
+entre lo que cabe y lo que se usa bien.
+
+## Aplicaciones
+
+### Generales
+
+- Decidir si un documento puede analizarse entero o debe trocearse.
+- Explicar por qué una conversación larga «olvida» instrucciones del principio.
+- Elegir entre aportar todo el material o recuperar solo los fragmentos
+  pertinentes con [RAG](rag.qmd).
+- Colocar lo esencial al principio o al final de una entrada larga.
+
+### Sanitarias
+
+- Resumir una historia clínica extensa sabiendo que la parte central puede
+  recibir menos atención que el principio y el final.
+- Revisar protocolos o guías largos por secciones, en lugar de confiar en una
+  sola lectura de todo el documento.
+- Comprobar que un dato crítico (una alergia, una dosis) no ha quedado fuera
+  de lo que el sistema llegó a procesar.
+
+## Limitaciones
+
+- La longitud declarada no garantiza el uso eficaz de toda la ventana.
+- Más contexto no siempre mejora la respuesta: puede añadir ruido.
+- El coste y el tiempo de respuesta aumentan con la longitud de la entrada.
+- No es memoria: lo que no se vuelve a introducir no se recuerda en la llamada
+  siguiente.
+- El mismo texto ocupa distinto número de tokens según el idioma y el modelo.
+
+## Ejemplos
+
+Una persona pega en un asistente un contrato de doscientas páginas y pregunta
+por una cláusula del capítulo central. Aunque el documento quepa, la respuesta
+puede pasar por alto esa cláusula o confundirla con otra.
+
+En sanidad, si se entregan de una vez años de notas clínicas y se pide un
+resumen, conviene comprobar en las notas intermedias que no se ha omitido un
+episodio relevante. Ese patrón, peor rendimiento con la información situada en
+el medio, es el que describen los estudios citados [@liu2024lostmiddle].
+
+## Relacionados
+
+- [Ingeniería de contexto](ingenieria-de-contexto.qmd)
+- [Memoria persistente](memoria-persistente.qmd)
+- [Tokenización](tokenizacion.qmd)
+- [Mecanismo de atención](mecanismo-de-atencion.qmd)
+- [Transformer](transformer.qmd)
+- [Generación aumentada por recuperación](rag.qmd)
+- [Modelo de lenguaje grande](llm.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

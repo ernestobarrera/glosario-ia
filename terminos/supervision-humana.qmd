@@ -1,0 +1,129 @@
+---
+title: "Supervisión humana"
+aliases:
+  - /terminos/human-oversight.html
+sinonimos:
+  - "Human oversight"
+description: "Capacidad efectiva de una persona para vigilar un sistema de IA, interpretar sus resultados, apartarse de ellos y detenerlo si hace falta."
+categories:
+  - "Ética y gobernanza"
+  - "IA agéntica"
+date-modified: 2026-10-21
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **supervisión humana** es el conjunto de condiciones que permiten a una
+persona controlar de verdad un sistema de IA mientras se usa: entender sus
+capacidades y limitaciones, vigilar su funcionamiento, interpretar
+correctamente sus resultados, decidir no usarlo o descartar lo que propone, e
+intervenir o detenerlo. Así lo formula el artículo 14 del Reglamento europeo
+de IA para los sistemas de alto riesgo, cuyo objetivo es prevenir o reducir
+los riesgos para la salud, la seguridad y los derechos fundamentales
+[@ue2024aiact].
+
+No basta con que haya una persona al final del proceso. Las directrices éticas
+europeas de 2019 distinguieron tres grados: la persona **en el bucle**, que
+puede intervenir en cada decisión, algo que muchas veces no es posible ni
+deseable; la persona **sobre el bucle**, que interviene en el diseño y vigila
+el funcionamiento; y la persona **al mando**, que supervisa la actividad
+global del sistema y decide cuándo y cómo usarlo, incluido no usarlo
+[@hleg2019trustworthy].
+
+El principal obstáculo cognitivo es el
+[sesgo de automatización](sesgo-de-automatizacion.qmd), que el propio artículo
+14 nombra [@ue2024aiact]; el régimen jurídico completo se trata en la ficha del
+[AI Act](ai-act.qmd). Nada de esto tiene relación con la «supervisión» del
+[aprendizaje supervisado](aprendizaje-supervisado.qmd), que se refiere a
+entrenar con datos etiquetados.
+
+## Contexto histórico
+
+En abril de 2019, el Grupo de Expertos de Alto Nivel sobre IA de la Comisión
+Europea incluyó la acción y la supervisión humanas entre los requisitos de una
+IA fiable y propuso los tres grados citados [@hleg2019trustworthy]. El
+Reglamento (UE) 2024/1689 convirtió la supervisión en una obligación de diseño
+para los sistemas de alto riesgo [@ue2024aiact].
+
+Las críticas llegaron a la vez. En 2022, un análisis de 41 políticas que
+exigían supervisión humana de algoritmos públicos concluyó que descansaban en
+un supuesto no comprobado: que las personas son capaces de ejercer esa
+supervisión. Según el autor, la evidencia apunta a que a menudo no lo son, y
+la exigencia puede dar una falsa sensación de seguridad y legitimar sistemas
+defectuosos; propuso pasar a una supervisión institucional que justifique antes
+el uso del algoritmo [@green2022oversight].
+
+## Importancia actual
+
+A fecha de octubre de 2026, los sistemas generativos y agénticos producen
+respuestas fluidas y encadenan acciones a una velocidad que dificulta revisar
+cada paso. La supervisión humana solo es una salvaguarda real si la persona
+dispone de tiempo, competencia, información y autoridad para discrepar
+[@aepd2026agentica]. Cuando el número de agentes crece más deprisa que esa
+capacidad aparece la [fatiga agéntica humana](fatiga-agentica-humana.qmd).
+Tras la reforma de 2026, las obligaciones de alto riesgo del anexo III del
+Reglamento se aplicarán desde el 2 de diciembre de 2027
+[@comision2026aiact].
+
+## Aplicaciones
+
+### Generales
+
+- Decidir, para cada uso, qué grado de supervisión corresponde y quién la
+  ejerce.
+- Diseñar interfaces que muestren los datos de partida y permitan rechazar o
+  corregir una propuesta.
+- Prever un modo de detener el sistema y quién está autorizado a usarlo.
+- Registrar cuándo se acepta, se modifica o se rechaza una salida.
+
+### Sanitarias
+
+- Asegurar que quien revisa una recomendación clínica tiene acceso a los datos
+  originales, no solo a la conclusión del sistema.
+- Ajustar la supervisión al riesgo: no exige lo mismo un borrador de informe
+  que una propuesta de tratamiento.
+- Dar a las comisiones que deciden incorporar una herramienta el papel de
+  supervisión «al mando»: si se usa, para qué y con qué límites.
+- Medir las discrepancias entre profesionales y sistema como señal de calidad
+  de la supervisión.
+
+## Limitaciones
+
+- Una persona presente no equivale a una persona capaz de detectar el error
+  [@green2022oversight].
+- Revisar cada decisión muchas veces no es posible ni deseable
+  [@hleg2019trustworthy].
+- El [sesgo de automatización](sesgo-de-automatizacion.qmd) y la fatiga
+  reducen la eficacia de la revisión.
+- Puede diluir la responsabilidad: el sistema propone y la persona «firma».
+- Sin [explicabilidad](explicabilidad.qmd) suficiente, interpretar la salida
+  es difícil.
+
+## Ejemplos
+
+En un avión con piloto automático, la tripulación no decide cada maniobra,
+pero vigila y puede desconectar el sistema: es una supervisión sobre el bucle.
+
+En sanidad, un sistema que marca posibles hallazgos en radiografías puede
+exigir que un profesional confirme o descarte cada marca (en el bucle). Un
+agente que reorganiza la agenda de citas puede funcionar con revisiones
+periódicas por muestreo (sobre el bucle). Y la decisión de implantar uno u
+otro, en qué servicios y con qué indicadores de seguimiento, corresponde a la
+organización (al mando).
+
+## Relacionados
+
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Fatiga agéntica humana](fatiga-agentica-humana.qmd)
+- [Reglamento de Inteligencia Artificial de la Unión Europea](ai-act.qmd)
+- [Agente de IA](agente-de-ia.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Descarga cognitiva](descarga-cognitiva.qmd)
+- [Alineación](alineacion.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -9,7 +9,7 @@ description: "Proceso que divide un texto en las unidades discretas —tokens—
 categories:
   - "Procesamiento del lenguaje"
   - "Modelos de lenguaje"
-date-modified: 2026-09-15
+date-modified: 2026-10-21
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -31,7 +31,7 @@ palabras nunca vistas sin necesitar un token para cada una
 
 Es una decisión de diseño previa al modelo, no un detalle de implementación: el
 token es la unidad sobre la que se define la distribución de salida, se cuenta
-la ventana de contexto y se factura el uso.
+la [ventana de contexto](ventana-de-contexto.qmd) y se factura el uso.
 
 ## Contexto histórico
 

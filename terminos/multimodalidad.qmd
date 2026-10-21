@@ -1,0 +1,115 @@
+---
+title: "Multimodalidad"
+aliases:
+  - /terminos/multimodality.html
+  - /terminos/ia-multimodal.html
+sinonimos:
+  - "Multimodality"
+  - "IA multimodal"
+description: "Capacidad de un modelo para procesar o generar más de un tipo de dato, como texto, imagen, audio o señales, y relacionarlos entre sí."
+categories:
+  - "Fundamentos"
+  - "Arquitecturas"
+date-modified: 2026-10-21
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Un sistema es **multimodal** cuando trabaja con más de una modalidad, es decir,
+con más de un tipo de dato: lenguaje escrito, imagen, sonido, vídeo, señales
+fisiológicas o datos estructurados. El aprendizaje automático multimodal
+busca construir modelos que procesen esas modalidades y relacionen la
+información de unas con la de otras [@baltrusaitis2019multimodal].
+
+La multimodalidad puede estar en la entrada, en la salida o en ambas. Un modelo
+que recibe una fotografía y una pregunta y responde con texto es multimodal
+aunque solo genere texto; por eso no equivale a
+[IA generativa](ia-generativa.qmd). Suele apoyarse en arquitecturas como el
+[transformer](transformer.qmd) y en representaciones compartidas
+([embeddings](embeddings.qmd)) donde una imagen y una frase pueden compararse.
+
+En medicina, «modalidad» designa también cada técnica de imagen (radiografía,
+TC, resonancia). Combinar dos técnicas de imagen es multimodal en ese sentido,
+pero esta ficha se refiere a combinar tipos de dato distintos.
+
+## Contexto histórico
+
+En 2019, una revisión del aprendizaje automático multimodal ordenó el campo en
+cinco retos: cómo **representar**
+cada modalidad, cómo **traducir** de una a otra, cómo **alinear** sus partes,
+cómo **fusionarlas** para predecir y cómo aprovechar lo aprendido en una para
+otra (**coaprendizaje**) [@baltrusaitis2019multimodal].
+
+En 2023, GPT-4 se presentó como un modelo multimodal que aceptaba imagen y
+texto y respondía con texto [@openai2023gpt4report], y la multimodalidad pasó a
+los asistentes de uso general. En el ámbito biomédico, una revisión de 2022
+describió el potencial de combinar biobancos, historia clínica electrónica,
+imagen médica, sensores y secuenciación, junto con los obstáculos de datos,
+modelado y privacidad que lo frenan [@acosta2022multimodal].
+
+## Importancia actual
+
+A fecha de octubre de 2026, muchos asistentes aceptan imágenes, documentos
+escaneados, audio o vídeo. Para un profesional, eso amplía lo que se puede
+preguntar, pero también lo que se puede interpretar mal: el modelo puede
+acertar la respuesta final con una lectura incorrecta de la imagen
+[@jin2024gpt4vflaws].
+
+## Aplicaciones
+
+### Generales
+
+- Describir o resumir imágenes, gráficos y documentos escaneados.
+- Transcribir y analizar audio junto con su contexto escrito.
+- Buscar imágenes a partir de una descripción, o al revés.
+
+### Sanitarias
+
+- Integrar imagen, historia clínica, resultados de laboratorio y datos
+  genómicos en un mismo análisis [@acosta2022multimodal].
+- Apoyar la monitorización remota combinando sensores y registros clínicos
+  [@acosta2022multimodal].
+- Generar borradores de informe a partir de una imagen y la petición clínica,
+  siempre con revisión profesional.
+
+## Limitaciones
+
+- Acertar la respuesta no garantiza haber interpretado bien la imagen
+  [@jin2024gpt4vflaws].
+- Reunir y alinear datos de varias fuentes es costoso y plantea problemas de
+  privacidad [@acosta2022multimodal].
+- Un error en una modalidad puede contaminar la interpretación de las demás.
+- Ver imágenes no resuelve por sí solo el
+  [anclaje de símbolos](anclaje-de-simbolos.qmd).
+- Las evaluaciones con casos de concurso o de examen no reproducen la práctica
+  clínica.
+
+## Ejemplos
+
+Una persona fotografía la etiqueta de un electrodoméstico y pide al asistente
+que le explique un código de error. El sistema tiene que leer el texto de la
+imagen y relacionarlo con lo que sabe del aparato.
+
+En sanidad, un estudio de 2024 evaluó un modelo multimodal con los casos de
+imagen del *New England Journal of Medicine*. Acertó el 81,6 % de las
+preguntas, frente al 77,8 % de los médicos, pero en el
+35,5 % de los aciertos su razonamiento era defectuoso, sobre todo al describir
+la imagen (27,2 %) [@jin2024gpt4vflaws]. La cifra de aciertos, sola, ocultaba
+el problema.
+
+## Relacionados
+
+- [IA generativa](ia-generativa.qmd)
+- [Transformer](transformer.qmd)
+- [Embeddings](embeddings.qmd)
+- [Modelo fundacional](modelo-fundacional.qmd)
+- [Problema del anclaje de símbolos](anclaje-de-simbolos.qmd)
+- [Red neuronal convolucional](red-neuronal-convolucional.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

@@ -10,7 +10,7 @@ description: "Familia de sistemas de IA capaces de producir contenido nuevo, com
 categories:
   - "Fundamentos"
   - "Modelos de lenguaje"
-date-modified: 2026-08-22
+date-modified: 2026-10-21
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -33,7 +33,7 @@ Los modelos generativos preceden a la actual ola de asistentes. Las redes
 generativas antagónicas marcaron un hito en 2014 para la síntesis de datos
 [@goodfellow2014gan]. A partir de 2017, los transformers facilitaron modelos de
 lenguaje de gran escala y extendieron la generación a texto, código y sistemas
-multimodales [@vaswani2017attention].
+[multimodales](multimodalidad.qmd) [@vaswani2017attention].
 
 ## Importancia actual
 
