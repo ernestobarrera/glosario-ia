@@ -468,6 +468,7 @@ nav[role="doc-toc"] .recuento-tema {
   font-family: var(--bs-font-monospace, monospace);
   font-size: 0.76rem;
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 /* ---------- indice A-Z ---------- */
@@ -891,7 +892,13 @@ main.content:has(.atlas-visual) {
   margin-right: auto;
 }
 
-.atlas-texto #refs a {
+/* Una URL o un DOI largos no tienen espacios por donde partirse: en el movil
+ * empujaban la pagina a lo ancho. Empezo arreglandose solo en las laminas; en
+ * octubre de 2026 desbordaban asi 45 de 163 paginas, casi todas fichas. Lo
+ * mismo vale para una direccion escrita en el texto entre < >, que pandoc
+ * convierte en enlace con la clase uri. */
+#refs a,
+a.uri {
   overflow-wrap: anywhere;
 }
 
@@ -967,8 +974,10 @@ main.content:has(.atlas-visual) {
     columns: 1;
   }
 
+  /* minmax(0, ...) y no 1fr: con 1fr la URL de la cita sugerida, que no se
+   * parte, fijaba el ancho minimo de la columna y desbordaba a 320 px. */
   .aviso-glosario {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
