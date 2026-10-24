@@ -39,6 +39,11 @@ website:
         text: Temas
       - href: atlas.qmd
         text: Atlas visual
+    # La guia de uso: en la portada y en las fichas, assets/guia.js la abre
+    # en la misma pagina; en las demas, este enlace lleva a la de la portada.
+    right:
+      - href: "index.html?tour=1"
+        text: Cómo se usa
   # El enlace de vuelta a la web del autor va en el pie, no en la barra: la
   # barra es la navegacion del glosario y no debe mezclarse con la del sitio.
   page-footer:
@@ -66,6 +71,7 @@ filters:
   - filters/matices.lua
   - filters/temas.lua
   - filters/atlas.lua
+  - filters/guia.lua
 
 format:
   html:

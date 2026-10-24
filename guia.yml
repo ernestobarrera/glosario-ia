@@ -1,0 +1,73 @@
+# Guia de uso del glosario
+#
+# Una guia es una serie corta de pasos que senalan elementos de una pagina y
+# dicen para que sirven. Este fichero es su unico original: filters/guia.lua
+# lleva a cada pagina la guia que le toca y assets/guia.js la muestra.
+#
+# Lo que NO hace, a proposito: abrirse sola. Se abre con «Como se usa» de la
+# barra o con ?tour=1 en la direccion. Se entra al glosario por una ficha
+# concreta mas que por la portada, y una guia que se superpone a la definicion
+# que alguien vino a leer estorba justo a esa persona. Sin apertura automatica,
+# tampoco hay que recordar en el navegador quien la vio.
+#
+# Forma de cada guia:
+#   id        su nombre
+#   pagina    portada (index.qmd) o ficha (cada terminos/*.qmd)
+#   sigue-en  opcional: pagina cuya guia se ofrece al terminar, sin .qmd
+#   sigue-texto  el rotulo de ese enlace; obligatorio si hay sigue-en
+#   pasos     lista de { titulo, destino, texto }. Un paso sin destino sale en
+#             el centro de la pantalla. El destino es "#id" o ".clase", entre
+#             comillas: validar.ps1 comprueba que existe en el HTML generado de
+#             CADA pagina de la guia. Si en una pantalla el destino no se ve
+#             (el indice lateral en el movil), el paso se salta.
+# Escriba cada campo en su linea y `titulo` primero en cada paso: validar.ps1
+# lee este fichero por lineas y rechaza cualquier otra forma. El render se
+# detiene si a un paso le falta titulo o texto o su destino no tiene esa forma.
+#
+# Contrato editorial: un paso no promete nada que no se vea en la pantalla en
+# la que aparece, y no lleva cifras que cambian con el glosario (cuantas fichas,
+# cuantas preguntas).
+
+guias:
+  - id: portada
+    pagina: portada
+    sigue-en: terminos/alucinacion
+    sigue-texto: "Ver cómo se lee una ficha"
+    pasos:
+      - titulo: "Cómo se usa el glosario"
+        texto: "Cada término tiene su ficha, y todas siguen el mismo orden. Esta guía enseña dónde buscar; al final puedes ver cómo se lee una ficha. Puedes cerrarla cuando quieras."
+      - titulo: "Busca por cualquier nombre"
+        destino: ".quarto-listing-filter"
+        texto: "Escribe el término en español o en inglés, una sigla o un sinónimo: «overfitting» lleva a *Sobreajuste*. Las tarjetas de abajo se filtran mientras escribes."
+      - titulo: "Busca también dentro de las fichas"
+        destino: "#quarto-search"
+        texto: "El buscador de la barra está en todas las páginas y encuentra palabras del texto de las fichas, no solo de sus nombres."
+      - titulo: "Si no sabes por dónde entrar"
+        destino: "#boton-empieza-aqui"
+        texto: "*Empieza aquí* ordena una selección de fichas por las preguntas que surgen al usar una herramienta. Al lado, el índice de la A a la Z y la vista por temas."
+      - titulo: "Una ficha por dentro"
+        texto: "Todas tienen el mismo orden: definición, aplicaciones generales y sanitarias, limitaciones, ejemplos, relacionados y referencias. Puedes verlo en una ficha de ejemplo."
+
+  - id: ficha
+    pagina: ficha
+    sigue-en: index
+    sigue-texto: "Ver cómo buscar otros términos"
+    pasos:
+      - titulo: "La definición, en una frase"
+        destino: ".description"
+        texto: "Si solo tienes un momento, esto basta. Debajo viene la definición ampliada, con su contexto."
+      - titulo: "Borrador o revisada"
+        destino: ".estado-ficha"
+        texto: "*Borrador*: estructura completa y fuentes iniciales, pendiente de revisión. *Revisada*: una persona ha examinado el contenido y la bibliografía. Ninguna de las dos es una recomendación clínica."
+      - titulo: "Salta a una sección"
+        destino: "#TOC"
+        texto: "El índice de la ficha sigue a la vista mientras lees."
+      - titulo: "Lo que cambia en sanidad"
+        destino: "#sanitarias"
+        texto: "Cada ficha separa las aplicaciones generales de las sanitarias, y a continuación dice sus limitaciones."
+      - titulo: "Sigue el hilo"
+        destino: "#relacionados"
+        texto: "Conceptos relacionados con este. Un enlace dice «relacionado», no «léelo antes»."
+      - titulo: "Comprueba la fuente"
+        destino: "#referencias"
+        texto: "El número entre corchetes del texto lleva a su referencia. Las referencias se verifican por DOI, PubMed o la fuente original antes de entrar."

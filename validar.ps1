@@ -1055,6 +1055,147 @@ foreach ($recorrido in $recorridos) {
   }
 }
 
+# Guia de uso: pasos declarados en guia.yml, llevados a la portada y a cada
+# ficha por filters/guia.lua y mostrados por assets/guia.js. Un paso que senala
+# un elemento que ya no existe no falla en ningun sitio: el script lo salta en
+# silencio y la guia pierde un paso sin que nadie lo note. Por eso cada destino
+# debe existir en el HTML de CADA pagina de su guia; y cada una de esas paginas
+# debe llevar los datos y el script.
+#
+# Se lee por lineas, como recorridos.yml: `- id:` abre una guia, `- titulo:`
+# abre un paso, y `destino:` y `texto:` son del ultimo paso abierto. El destino
+# solo puede ser "#id" o ".clase": es lo que se puede comprobar aqui sin un
+# motor de selectores, y basta para senalar cualquier cosa del glosario.
+$guias = New-Object System.Collections.ArrayList
+$rutaGuia = Join-Path $raiz "guia.yml"
+if (-not (Test-Path -LiteralPath $rutaGuia)) {
+  Registrar-Error "guia.yml: no existe"
+}
+else {
+  $guiaActual = $null
+  $pasoActual = $null
+  $numeroLinea = 0
+  foreach ($linea in (Get-Content -LiteralPath $rutaGuia -Encoding UTF8)) {
+    $numeroLinea++
+    if ($linea -match '^\s*-\s+id:\s*([A-Za-z0-9-]+)\s*$') {
+      $guiaActual = @{ Id = $Matches[1]; Pagina = $null; SigueEn = $null; Pasos = New-Object System.Collections.ArrayList }
+      $pasoActual = $null
+      [void]$guias.Add($guiaActual)
+    }
+    elseif ($guiaActual -and $linea -match '^\s+pagina:\s*(portada|ficha)\s*$') {
+      $guiaActual['Pagina'] = $Matches[1]
+    }
+    elseif ($guiaActual -and $linea -match '^\s+sigue-en:\s*(index|terminos/[A-Za-z0-9-]+)\s*$') {
+      $guiaActual['SigueEn'] = $Matches[1]
+    }
+    elseif ($guiaActual -and $linea -match '^\s+sigue-texto:\s*"(.+)"\s*$') {
+      $guiaActual['SigueTexto'] = $Matches[1]
+    }
+    elseif ($guiaActual -and $linea -match '^\s*-\s+titulo:\s*"(.+)"\s*$') {
+      $pasoActual = @{ Titulo = $Matches[1]; Destino = $null; Texto = $false; Linea = $numeroLinea }
+      [void]$guiaActual.Pasos.Add($pasoActual)
+    }
+    elseif ($pasoActual -and $linea -match '^\s+destino:\s*"([#.][A-Za-z0-9_-]+)"\s*$') {
+      $pasoActual['Destino'] = $Matches[1]
+    }
+    elseif ($pasoActual -and $linea -match '^\s+texto:\s*"(.+)"\s*$') {
+      $pasoActual['Texto'] = $true
+    }
+    elseif ($linea -match '^[^#"]*(?<![\w-])(id|pagina|sigue-en|sigue-texto|titulo|destino|texto)\s*:') {
+      Registrar-Error "guia.yml:$numeroLinea`: '$($Matches[1]):' no tiene la forma admitida (ver la cabecera del fichero)"
+    }
+  }
+  if ($guias.Count -eq 0) {
+    Registrar-Error "guia.yml: no declara ninguna guia"
+  }
+}
+
+$paginasConGuia = @{}
+foreach ($guia in $guias) {
+  if (-not $guia.Pagina) {
+    Registrar-Error "guia.yml: la guia '$($guia.Id)' no dice su pagina (portada o ficha)"
+    continue
+  }
+  if ($paginasConGuia.ContainsKey($guia.Pagina)) {
+    Registrar-Error "guia.yml: hay dos guias para la pagina '$($guia.Pagina)'"
+  }
+  $paginasConGuia[$guia.Pagina] = $guia
+  if ($guia.Pasos.Count -eq 0) {
+    Registrar-Error "guia.yml: la guia '$($guia.Id)' no tiene pasos"
+  }
+  foreach ($paso in $guia.Pasos) {
+    if (-not $paso.Texto) {
+      Registrar-Error "guia.yml:$($paso.Linea)`: el paso '$($paso.Titulo)' no tiene texto"
+    }
+  }
+}
+
+$htmlGuiaPorPagina = @{
+  portada = @("index.html")
+  ficha = @($fichas | ForEach-Object { "terminos/$($_.Archivo.BaseName).html" })
+}
+foreach ($guia in $guias) {
+  if (-not $guia.Pagina) {
+    continue
+  }
+  if ($guia.SigueEn -and -not $guia.SigueTexto) {
+    Registrar-Error "guia.yml: la guia '$($guia.Id)' tiene sigue-en sin sigue-texto"
+  }
+  if ($guia.SigueEn) {
+    $paginaSigue =if ($guia.SigueEn -eq "index") { "portada" } else { "ficha" }
+    if (-not (Test-Path -LiteralPath (Join-Path $raiz "$($guia.SigueEn).qmd"))) {
+      Registrar-Error "guia.yml: la guia '$($guia.Id)' sigue en '$($guia.SigueEn)', que no existe"
+    }
+    elseif (-not $paginasConGuia.ContainsKey($paginaSigue)) {
+      Registrar-Error "guia.yml: la guia '$($guia.Id)' sigue en '$($guia.SigueEn)', que no tiene guia"
+    }
+  }
+  # Un destino que falta se cuenta por paginas, no se lista pagina a pagina: en
+  # las fichas serian cientos de lineas iguales.
+  $faltas = @{}
+  $sinDatos = New-Object System.Collections.ArrayList
+  foreach ($salida in $htmlGuiaPorPagina[$guia.Pagina]) {
+    $rutaHtml = Join-Path $carpetaSitio $salida
+    if (-not (Test-Path -LiteralPath $rutaHtml)) {
+      Registrar-Error "$salida`: no existe la salida de una pagina con guia"
+      continue
+    }
+    $html = Get-Content -LiteralPath $rutaHtml -Encoding UTF8 -Raw
+    if ($html.IndexOf('id="guia-datos"', [StringComparison]::Ordinal) -lt 0 -or
+        $html.IndexOf('guia-de-uso-1/guia.js', [StringComparison]::Ordinal) -lt 0) {
+      [void]$sinDatos.Add($salida)
+    }
+    foreach ($paso in $guia.Pasos) {
+      if (-not $paso.Destino) {
+        continue
+      }
+      $nombreDestino = [regex]::Escape($paso.Destino.Substring(1))
+      $patron = if ($paso.Destino.StartsWith("#")) {
+        "\bid=`"$nombreDestino`""
+      }
+      else {
+        "\bclass=`"(?:[^`"]*\s)?$nombreDestino(?:\s[^`"]*)?`""
+      }
+      if ($html -notmatch $patron) {
+        if (-not $faltas.ContainsKey($paso.Destino)) {
+          $faltas[$paso.Destino] = New-Object System.Collections.ArrayList
+        }
+        [void]$faltas[$paso.Destino].Add($salida)
+      }
+    }
+  }
+  if ($sinDatos.Count -gt 0) {
+    Registrar-Error "guia '$($guia.Id)': $($sinDatos.Count) paginas sin los datos o el script de la guia (primera: $($sinDatos[0]))"
+  }
+  foreach ($destino in $faltas.Keys) {
+    Registrar-Error "guia '$($guia.Id)': el destino '$destino' falta en $($faltas[$destino].Count) de $($htmlGuiaPorPagina[$guia.Pagina].Count) paginas (primera: $($faltas[$destino][0]))"
+  }
+}
+# Sin este enlace, la guia solo se abre escribiendo ?tour=1 a mano.
+if ($htmlPortada.IndexOf('href="./index.html?tour=1"', [StringComparison]::Ordinal) -lt 0) {
+  Registrar-Error "index.html: falta en la barra el enlace que abre la guia de uso (index.html?tour=1)"
+}
+
 if ($errores.Count -gt 0) {
   Write-Host "VALIDACION FALLIDA ($($errores.Count) errores)" -ForegroundColor Red
   foreach ($errorValidacion in $errores) {
@@ -1081,6 +1222,10 @@ foreach ($recorrido in $recorridos) {
   Write-Host "  Recorrido $($recorrido.Id): $($enlacesRecorrido[$recorrido.Id]) fichas enlazadas, unicas y renderizadas$enEtapas"
 }
 Write-Host "  Fichas en algun recorrido: $($fichasEnRecorridos.Count) de $($fichas.Count)"
+foreach ($guia in $guias) {
+  $conDestino = @($guia.Pasos | Where-Object { $_.Destino }).Count
+  Write-Host "  Guia de uso $($guia.Id): $($guia.Pasos.Count) pasos, $conDestino destinos presentes en $($htmlGuiaPorPagina[$guia.Pagina].Count) paginas"
+}
 Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"

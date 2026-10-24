@@ -972,6 +972,103 @@ main.content:has(.atlas-visual) {
   }
 }
 
+/* ---------- guia de uso ---------- */
+
+/* La pinta assets/guia.js. El velo recoge el clic fuera de la tarjeta, que
+ * cierra la guia; el foco oscurece el resto de la pagina con su propia sombra,
+ * asi que el destino queda a la vista sin tocar su markup. Por encima de la
+ * barra fija, que tambien puede ser destino. */
+.guia-velo {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+}
+
+.guia-velo-oscuro {
+  background: var(--g-velo);
+}
+
+.guia-foco {
+  position: fixed;
+  z-index: 2001;
+  border: 2px solid var(--g-marca);
+  border-radius: var(--bs-border-radius, 0.5rem);
+  box-shadow: 0 0 0 100vmax var(--g-velo);
+  pointer-events: none;
+  transition: left 0.2s ease, top 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.guia-tarjeta {
+  position: fixed;
+  z-index: 2002;
+  width: min(24rem, calc(100vw - 24px));
+  padding: 1rem 1.1rem 0.9rem;
+  border: 1px solid var(--g-linea);
+  border-radius: var(--bs-border-radius, 0.5rem);
+  background: var(--g-superficie);
+  color: var(--g-tinta);
+  box-shadow: var(--g-sombra);
+}
+
+.guia-tarjeta.guia-centrada {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.guia-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.guia-contador {
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.guia-cerrar {
+  padding: 0 0.3rem;
+  border: 0;
+  background: none;
+  color: var(--g-tinta-2);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.guia-tarjeta .guia-titulo {
+  margin: 0.35rem 0 0.4rem;
+  font-size: 1.2rem;
+}
+
+.guia-texto p {
+  margin-bottom: 0.6rem;
+  color: var(--g-tinta-2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.guia-pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.guia-sigue {
+  font-size: 0.9rem;
+}
+
+.guia-botones {
+  display: flex;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
 /* ---------- transicion entre paginas ---------- */
 
 /* Esto no es de Bootstrap: Bootstrap anima componentes -colapsables, modales-,
