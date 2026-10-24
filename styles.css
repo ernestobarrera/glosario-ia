@@ -972,6 +972,156 @@ main.content:has(.atlas-visual) {
   }
 }
 
+/* ---------- guia de uso ---------- */
+
+/* La pinta assets/guia.js. El velo recoge el clic fuera de la tarjeta, que
+ * cierra la guia; el foco oscurece el resto de la pagina con su propia sombra,
+ * asi que el destino queda a la vista sin tocar su markup. Por encima de la
+ * barra fija, que tambien puede ser destino. */
+.guia-velo {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+}
+
+.guia-velo-oscuro {
+  background: var(--g-velo);
+}
+
+.guia-foco {
+  position: fixed;
+  z-index: 2001;
+  border: 2px solid var(--g-marca);
+  border-radius: var(--bs-border-radius, 0.5rem);
+  box-shadow: 0 0 0 100vmax var(--g-velo);
+  pointer-events: none;
+  transition: left 0.2s ease, top 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.guia-tarjeta {
+  position: fixed;
+  z-index: 2002;
+  width: min(24rem, calc(100vw - 24px));
+  padding: 1rem 1.1rem 0.9rem;
+  border: 1px solid var(--g-linea);
+  border-radius: var(--bs-border-radius, 0.5rem);
+  background: var(--g-superficie);
+  color: var(--g-tinta);
+  box-shadow: var(--g-sombra);
+}
+
+.guia-tarjeta.guia-centrada {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.guia-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Que parte de la guia es: sin el, la de la ficha parecia otra guia distinta. */
+.guia-rotulo {
+  flex: 1;
+  color: var(--g-marca);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.guia-contador {
+  color: var(--g-tinta-3);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.72rem;
+}
+
+.guia-cerrar {
+  padding: 0 0.3rem;
+  border: 0;
+  background: none;
+  color: var(--g-tinta-2);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.guia-tarjeta .guia-titulo {
+  margin: 0.35rem 0 0.4rem;
+  font-size: 1.2rem;
+}
+
+.guia-texto p {
+  margin-bottom: 0.6rem;
+  color: var(--g-tinta-2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.guia-pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.guia-vuelve {
+  font-size: 0.9rem;
+}
+
+.guia-botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
+/* El enlace de la barra que abre la guia, en el color de marca: gris, junto al
+ * conmutador de tema, pasaba por un adorno mas. Es una herramienta de la barra
+ * para que se vea tambien en el movil, y Quarto pinta las herramientas solo con
+ * su icono: el rotulo se toma de su title, que es el `text` de _quarto.yml, asi
+ * que se escribe en un solo sitio. Sin el rotulo, un interrogante solo se leia
+ * como un adorno. */
+.navbar .quarto-navigation-tool[href*="tour=1"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--g-marca);
+  font-size: 1.15rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navbar .quarto-navigation-tool[href*="tour=1"]::after {
+  content: attr(title);
+  font-family: var(--bs-font-sans-serif, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* En un movil corriente (390 px) el rotulo completo empujaba el buscador a una
+ * segunda linea y desbordaba la pagina; ahi se acorta en vez de quitarse. */
+@media (max-width: 429.98px) {
+  .navbar .quarto-navigation-tool[href*="tour=1"]::after {
+    content: "Guía";
+  }
+}
+
+/* Por debajo de 360 px ni eso cabe: queda el icono, con su title. */
+@media (max-width: 359.98px) {
+  .navbar .quarto-navigation-tool[href*="tour=1"]::after {
+    content: none;
+  }
+}
+
+.navbar .quarto-navigation-tool[href*="tour=1"]:hover,
+.navbar .quarto-navigation-tool[href*="tour=1"]:focus-visible {
+  color: var(--g-tinta);
+}
+
 /* ---------- transicion entre paginas ---------- */
 
 /* Esto no es de Bootstrap: Bootstrap anima componentes -colapsables, modales-,

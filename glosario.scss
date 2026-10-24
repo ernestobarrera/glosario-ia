@@ -46,6 +46,8 @@ $code-bg: #eaeeeb;
   --g-marca-tenue: #e2eeed;
   --g-acento: #8a4a63;
   --g-sombra: 0 1px 2px rgb(21 50 58 / 5%);
+  // Lo que oscurece la pagina alrededor del paso de la guia de uso.
+  --g-velo: rgb(21 50 58 / 55%);
 
   // Los nueve matices de tema comparten saturacion y luminosidad: solo gira el
   // tono. Asi el color significa la categoria en lugar de decorar, y el

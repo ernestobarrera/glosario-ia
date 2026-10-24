@@ -1,0 +1,85 @@
+# Guia de uso del glosario
+#
+# Una guia es una serie corta de pasos que senalan elementos de una pagina y
+# dicen para que sirven. Este fichero es su unico original: filters/guia.lua
+# lleva a cada pagina la guia que le toca y assets/guia.js la muestra.
+#
+# Son dos partes de una misma guia, y lo dicen: la de la portada (donde buscar)
+# termina llevando a una ficha, donde sigue la segunda (como se lee una ficha).
+# Abierta desde una ficha, la segunda ofrece al final volver a la primera.
+#
+# Lo que NO hace, a proposito: abrirse sola. Se abre con el icono de la barra o
+# con ?tour=1 en la direccion. Se entra al glosario por una ficha concreta mas
+# que por la portada, y una guia que se superpone a la definicion que alguien
+# vino a leer estorba justo a esa persona. Sin apertura automatica, tampoco hay
+# que recordar en el navegador quien la vio.
+#
+# Forma de cada guia:
+#   id        su nombre
+#   pagina    portada (index.qmd) o ficha (cada terminos/*.qmd)
+#   rotulo    la parte que es, en la cabecera de cada tarjeta
+#   continua-en-recorrido  opcional: el ultimo paso lleva, como boton principal,
+#             a una ficha al azar de ese recorrido de recorridos.yml, con su guia
+#             abierta. Del recorrido y no de todas: quien sigue la guia por
+#             primera vez cae en un concepto de entrada, no en Retropropagacion.
+#   continua-texto  el rotulo de ese boton; obligatorio con continua-en-recorrido
+#   vuelve-a  opcional: pagina, sin .qmd, cuya guia se ofrece como enlace en el
+#             ultimo paso. No aparece si se llego desde esa guia.
+#   vuelve-texto  el rotulo de ese enlace; obligatorio con vuelve-a
+#   pasos     lista de { titulo, destino, texto }. Un paso sin destino sale en
+#             el centro de la pantalla. El destino es "#id" o ".clase", entre
+#             comillas: validar.ps1 comprueba que existe en el HTML generado de
+#             CADA pagina de la guia. Si en una pantalla el destino no se ve
+#             (algo que solo existe en escritorio), el paso se salta.
+# Escriba cada campo en su linea y `titulo` primero en cada paso: validar.ps1
+# lee este fichero por lineas y rechaza cualquier otra forma. El render se
+# detiene si a un paso le falta titulo o texto o su destino no tiene esa forma.
+#
+# Contrato editorial: un paso no promete nada que no se vea en la pantalla en
+# la que aparece, y no lleva cifras que cambian con el glosario (cuantas fichas,
+# cuantas preguntas).
+
+guias:
+  - id: portada
+    pagina: portada
+    rotulo: "Parte 1 de 2 · Dónde buscar"
+    continua-en-recorrido: empieza-aqui
+    continua-texto: "Seguir en una ficha"
+    pasos:
+      - titulo: "Qué es este glosario"
+        texto: "Términos de inteligencia artificial explicados para profesionales sanitarios: qué son, para qué sirven en general y en sanidad, qué límites tienen y en qué fuentes se apoyan. No es una recomendación clínica. Esta guía tiene dos partes: dónde buscar, aquí en la portada, y cómo se lee una ficha, que sigue en una ficha de ejemplo."
+      - titulo: "Busca por cualquier nombre"
+        destino: ".quarto-listing-filter"
+        texto: "Escribe el término en español o en inglés, una sigla o un sinónimo: «overfitting» lleva a *Sobreajuste*. Las tarjetas de abajo se filtran mientras escribes."
+      - titulo: "Busca también dentro de las fichas"
+        destino: "#quarto-search"
+        texto: "El buscador de la barra está en todas las páginas y encuentra palabras del texto de las fichas, no solo de sus nombres."
+      - titulo: "Si no sabes por dónde entrar"
+        destino: "#boton-empieza-aqui"
+        texto: "*Empieza aquí* ordena una selección de fichas por las preguntas que surgen al usar una herramienta. Al lado, el índice de la A a la Z y la vista por temas."
+      - titulo: "Ahora, una ficha"
+        texto: "Todas las fichas tienen las mismas partes, en el mismo orden. La segunda parte de la guía sigue en una ficha elegida al azar entre las de *Empieza aquí*."
+
+  - id: ficha
+    pagina: ficha
+    rotulo: "Parte 2 de 2 · Leer una ficha"
+    vuelve-a: index
+    vuelve-texto: "Ver la parte 1: dónde buscar"
+    pasos:
+      - titulo: "Cómo se lee una ficha"
+        texto: "Todas las fichas tienen las mismas partes, en el mismo orden. Esta guía las señala en la que tienes delante."
+      - titulo: "La definición, en una frase"
+        destino: ".description"
+        texto: "Si solo tienes un momento, esto basta. Debajo viene la definición ampliada, con su contexto."
+      - titulo: "Borrador o revisada"
+        destino: ".estado-ficha"
+        texto: "*Borrador*: estructura completa y fuentes iniciales, pendiente de revisión. *Revisada*: una persona ha examinado el contenido y la bibliografía. Ninguna de las dos es una recomendación clínica."
+      - titulo: "Lo que cambia en sanidad"
+        destino: "#sanitarias"
+        texto: "Cada ficha separa las aplicaciones generales de las sanitarias, y a continuación dice sus limitaciones."
+      - titulo: "Sigue el hilo"
+        destino: "#relacionados"
+        texto: "Conceptos relacionados con este. Un enlace dice «relacionado», no «léelo antes»."
+      - titulo: "Comprueba la fuente"
+        destino: "#referencias"
+        texto: "El número entre corchetes del texto lleva a su referencia. Las referencias se verifican por DOI, PubMed o la fuente original antes de entrar."

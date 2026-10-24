@@ -20,7 +20,7 @@ Glosario para profesionales sanitarios: cómo funciona la IA y
 aprender y decidir. Cada término, con aplicaciones generales y sanitarias,
 límites, ejemplos y referencias verificables.
 
-[Empieza aquí](empieza-aqui.qmd){.btn .btn-primary}
+[Empieza aquí](empieza-aqui.qmd){#boton-empieza-aqui .btn .btn-primary}
 [Explorar de la A a la Z](indice-az.qmd){.btn .btn-outline-secondary}
 [Explorar por temas](temas.qmd){.btn .btn-outline-secondary}
 :::
