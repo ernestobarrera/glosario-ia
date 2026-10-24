@@ -9,7 +9,7 @@ description: "Tendencia a aceptar una recomendación automatizada con comprobaci
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-10-21
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -50,7 +50,7 @@ para discrepar [@aepd2026agentica].
 ### Generales
 
 El concepto sirve para diseñar interfaces que permitan verificar recomendaciones,
-calibrar la confianza, mostrar incertidumbre y registrar cuándo una persona
+[calibrar la confianza](confianza-calibrada.qmd), mostrar incertidumbre y registrar cuándo una persona
 acepta o rechaza una propuesta automatizada.
 
 ### Sanitarias
@@ -96,6 +96,7 @@ salvaguardas locales y ensayos prospectivos [@agweyu2026safety].
 - [Alucinación](alucinacion.qmd)
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
 - [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
+- [Complementariedad humano-IA](complementariedad-humano-ia.qmd)
 - [Descarga cognitiva](descarga-cognitiva.qmd)
 - [Fatiga agéntica humana](fatiga-agentica-humana.qmd)
 - [Reglamento de Inteligencia Artificial de la Unión Europea](ai-act.qmd)

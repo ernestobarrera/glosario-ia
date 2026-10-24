@@ -11,7 +11,7 @@ description: "Propiedad y conjunto de métodos orientados a hacer comprensibles 
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-08-22
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -81,6 +81,7 @@ válido.
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Alucinación](alucinacion.qmd)
+- [Confianza calibrada](confianza-calibrada.qmd)
 
 ## Referencias
 

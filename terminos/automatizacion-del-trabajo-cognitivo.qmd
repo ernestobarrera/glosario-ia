@@ -77,7 +77,7 @@ autónoma cuya lógica puede ser opaca.
 
 ## Limitaciones
 
-- El *deskilling* progresivo es un riesgo concreto: si el profesional deja de
+- El [*deskilling*](deskilling.qmd) progresivo es un riesgo concreto: si el profesional deja de
   ejecutar la tarea cognitiva completa con regularidad, puede perder la
   capacidad de hacerlo cuando el sistema falla o el caso es atípico
   [@budzyn2025deskilling].

@@ -70,16 +70,24 @@ recorridos:
         porque: "qué se traslada fuera de la cabeza al usar un apoyo externo, y por qué la pregunta no es si se delega, sino qué y con qué capacidad de comprobarlo."
       - ficha: frontera-tecnologica-dentada
         porque: "por qué la IA puede mejorar el resultado en una tarea y empeorarlo en otra que parece igual de sencilla."
+      - ficha: complementariedad-humano-ia
+        porque: "por qué persona e IA juntas no siempre rinden más que la mejor de las dos por separado, y frente a qué hay que medirlo."
       - ficha: sesgo-de-automatizacion
         porque: "la tendencia a aceptar una propuesta automatizada sin comprobarla lo suficiente, o a no actuar porque el sistema no avisó."
+      - ficha: confianza-calibrada
+        porque: "cómo ajustar cuánto se fía uno de un sistema a lo que ese sistema puede hacer en cada tarea, sin pasarse ni quedarse corto."
       - ficha: adulacion
         porque: "por qué un modelo puede tender a dar la razón a quien lo usa en lugar de corregirle."
+      - ficha: alfabetizacion-en-ia
+        porque: "qué hace falta saber para usar la IA con criterio, y por qué haber hecho un curso no lo acredita."
       - ficha: supervision-humana
         porque: "qué hace falta para controlar de verdad un sistema, porque estar presente no basta."
       - ficha: fatiga-agentica-humana
         porque: "una propuesta para nombrar la sobrecarga de dirigir y verificar sistemas que actúan con autonomía."
       - ficha: automatizacion-del-trabajo-cognitivo
         porque: "cómo cambia el trabajo experto cuando parte del juicio pasa a revisar propuestas de un sistema."
+      - ficha: deskilling
+        porque: "qué destrezas se pierden cuando se dejan de practicar, y por qué no llegar a adquirirlas es un riesgo distinto y aún sin demostrar."
       - ficha: trabajo-fantasma
         porque: "el trabajo humano, a menudo invisible, que sostiene sistemas presentados como autónomos."
       - ficha: problema-del-ritmo

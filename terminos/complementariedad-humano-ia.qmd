@@ -1,0 +1,124 @@
+---
+title: "Complementariedad humano-IA"
+aliases:
+  - /terminos/human-ai-complementarity.html
+sinonimos:
+  - "Human-AI complementarity"
+  - "Sinergia humano-IA"
+description: "Situación en la que una persona y un sistema de IA, juntos, obtienen mejor resultado que el mejor de los dos por separado; que los dos juntos rindan más no se puede dar por supuesto."
+categories:
+  - "Fundamentos"
+  - "Seguridad y riesgos"
+date-modified: 2026-10-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+Hay **complementariedad humano-IA** cuando la combinación de una persona y un
+sistema de IA rinde más que cualquiera de los dos por separado: más que la
+persona sola y más que el sistema solo
+[@bansal2021complementary; @vaccaro2024combinations]. Vaccaro y colaboradores
+llaman a esto **sinergia** y lo distinguen del **aumento**, en el que la
+combinación solo supera a la persona sola [@vaccaro2024combinations].
+
+La diferencia entre los dos comparadores es el centro del concepto, porque
+cambia la conclusión: en el metaanálisis de esos autores, la combinación
+mejoraba con claridad a la persona sola, pero de media rendía peor que el mejor
+de los dos por separado [@vaccaro2024combinations]. Decir que «la IA ayuda» sin
+decir frente a qué no permite saber si la combinación es la mejor opción.
+
+«Colaboración humano-IA» se usa como paraguas para cualquier forma de trabajo
+conjunto y no es sinónimo. La complementariedad es un resultado que hay que
+medir, no una propiedad de la herramienta.
+
+## Contexto histórico
+
+En 2021, un estudio definió el rendimiento complementario como un acierto
+del equipo superior al de la persona y al de la IA trabajando por separado.
+Encontró mejoras con la ayuda de la IA, pero las explicaciones del sistema no
+las aumentaron: subieron la probabilidad de aceptar su recomendación, fuera
+correcta o no [@bansal2021complementary].
+
+En 2024, un metaanálisis preregistrado reunió 106 experimentos publicados entre
+2020 y mediados de 2023 que medían a la persona sola, la IA sola y la
+combinación. Frente al mejor de los dos, la combinación rindió de media peor
+(g de Hedges = −0,23; IC 95 % −0,39 a −0,07); frente a la persona sola, mejor
+(g = 0,64; IC 95 % 0,53 a 0,74). Hubo pérdidas en tareas de decisión y
+ganancias en tareas de creación de contenido, y la combinación ganaba cuando la
+persona era mejor que la IA por separado y perdía cuando lo era la IA
+[@vaccaro2024combinations].
+
+## Importancia actual
+
+A fecha de octubre de 2026, los estudios sanitarios muestran las dos caras. En
+el diagnóstico de cáncer de piel, el apoyo de una IA de buena calidad mejoró la
+precisión por encima de la IA y de los médicos por separado, y los menos
+expertos fueron los que más ganaron; pero una IA defectuosa indujo a error a
+todo el espectro de experiencia, expertos incluidos
+[@tschandl2020collaboration].
+
+En un ensayo aleatorizado con 50 médicos que resolvían casos clínicos escritos,
+disponer de un modelo de lenguaje no mejoró de forma significativa su
+razonamiento diagnóstico (76 % frente a 74 %), mientras que el modelo solo
+puntuó 16 puntos más que el grupo con recursos convencionales
+[@goh2024llmdiagnostic]. No hubo sinergia ni un aumento demostrado.
+
+## Aplicaciones
+
+### Generales
+
+- Evaluar una herramienta con tres comparadores: persona sola, sistema solo y
+  combinación.
+- Separar los resultados por tipo de tarea: decidir y crear contenido no se
+  comportan igual [@vaccaro2024combinations].
+- No dar por hecho que una explicación mejora el resultado conjunto: puede
+  aumentar solo la aceptación [@bansal2021complementary].
+
+### Sanitarias
+
+- Al leer un estudio de una herramienta clínica, comprobar contra qué se compara
+  la combinación: mejorar al profesional solo no demuestra que la combinación
+  supere al sistema solo.
+- Considerar quién gana con el apoyo: el beneficio puede concentrarse en los
+  menos expertos y el daño de una IA defectuosa alcanzar también a los expertos
+  [@tschandl2020collaboration].
+- Diseñar el flujo de trabajo, no solo elegir la herramienta: en el ensayo con
+  un modelo de lenguaje, dar acceso al modelo no bastó para trasladar su
+  rendimiento a los médicos [@goh2024llmdiagnostic].
+
+## Limitaciones
+
+- El resultado depende de la tarea, del sistema y de quién es mejor por
+  separado; un promedio oculta esa variación [@vaccaro2024combinations].
+- El propio metaanálisis advierte de un posible sesgo de publicación y de la
+  variedad de diseños que reúne [@vaccaro2024combinations].
+- El acierto medio no dice cómo se reparten los errores: una combinación puede
+  acertar más de media y fallar en los casos graves.
+- Mide rendimiento, no responsabilidad: quién responde de la decisión es
+  materia de la [supervisión humana](supervision-humana.qmd).
+
+## Ejemplos
+
+Un servicio evalúa un sistema que marca lesiones sospechosas en imágenes. Si
+solo compara a los profesionales con y sin el sistema y encuentra mejora, sabe
+que hay aumento. Para saber si hay complementariedad necesita además el
+rendimiento del sistema solo; si este acierta más que la combinación, la
+pregunta pasa a ser cómo se integra su resultado en la decisión. El ejemplo es
+ilustrativo, no un estudio.
+
+## Relacionados
+
+- [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Confianza calibrada](confianza-calibrada.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Supervisión humana](supervision-humana.qmd)
+- [Benchmark de IA](benchmark-de-ia.qmd)
+- [Automatización del trabajo cognitivo](automatizacion-del-trabajo-cognitivo.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

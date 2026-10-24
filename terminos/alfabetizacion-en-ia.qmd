@@ -1,0 +1,130 @@
+---
+title: "Alfabetización en IA"
+aliases:
+  - /terminos/ai-literacy.html
+sinonimos:
+  - "AI literacy"
+  - "Alfabetización en materia de IA"
+description: "Capacidades, conocimientos y comprensión que permiten usar la IA con criterio: saber qué puede y qué no puede hacer, comprobar lo que da y conocer sus riesgos."
+categories:
+  - "Ética y gobernanza"
+  - "Fundamentos"
+date-modified: 2026-10-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **alfabetización en IA** es el conjunto de capacidades, conocimientos y
+comprensión que permite usar sistemas de IA con conocimiento de causa y ser
+consciente de sus oportunidades, de sus riesgos y de los perjuicios que pueden
+causar. Así la define el Reglamento europeo de IA, que la llama
+**alfabetización en materia de IA** y la refiere a proveedores, responsables
+del despliegue y demás personas afectadas [@ue2024aiact].
+
+No es lo mismo que saber construir un modelo. La investigación en interacción
+persona-ordenador la describe como un conjunto de competencias para
+relacionarse con la IA de forma eficaz y evaluarla críticamente
+[@long2020ailiteracy]: entender qué hace un sistema, reconocer sus límites y
+comprobar lo que produce. Tampoco equivale a **acreditar una competencia**: la
+norma europea pide medidas para promoverla, pero desde su reforma de 2026
+aclara que no exige garantizar un nivel concreto en ninguna persona
+[@ue2026aiomnibus].
+
+## Contexto histórico
+
+En 2020, Long y Magerko sintetizaron literatura de varias disciplinas para
+proponer una definición del término y un conjunto de competencias básicas, junto
+con criterios para diseñar herramientas que ayuden a adquirirlas
+[@long2020ailiteracy].
+
+En 2024, el Reglamento (UE) 2024/1689 la convirtió en obligación: su artículo 4
+pedía a proveedores y responsables del despliegue adoptar medidas para
+garantizar, en la mayor medida posible, un nivel suficiente de alfabetización
+de su personal [@ue2024aiact]. El Reglamento (UE) 2026/1744 sustituyó esa
+redacción por la de apoyar su promoción, teniendo en cuenta los conocimientos
+de cada persona, el contexto de uso y las personas afectadas
+[@ue2026aiomnibus].
+
+Han aparecido también marcos que la desglosan. El de Dakan y Feller, que habla
+de *fluidez en IA* y publicó en 2025 la autoridad de educación superior de
+Irlanda, distingue cuatro competencias: decidir cuándo y cómo delegar una tarea
+en la IA, describirle bien lo que se busca, juzgar la utilidad de lo que
+devuelve y responder del resultado final. Y tres modos de uso: que la IA
+ejecute una tarea que la persona define, que ambas la trabajen de forma
+iterativa o que la persona la configure para que actúe por su cuenta más
+adelante. Los cursos basados en el marco los produjeron sus autores con
+Anthropic, una empresa que desarrolla modelos de IA [@dakan2025aifluency]. Es
+un marco entre varios, no un estándar.
+
+## Importancia actual
+
+A fecha de octubre de 2026, la obligación del artículo 4 está en vigor con su
+redacción reformada, y la Comisión debe publicar ejemplos prácticos de cómo
+cumplirla [@ue2026aiomnibus]. El calendario y el resto del régimen jurídico
+están en la ficha del [AI Act](ai-act.qmd).
+
+Una revisión sistemática de 33 estudios sobre estudiantes de ciencias de la
+salud encontró que usaban la IA generativa sobre todo para practicar, indagar y
+producir, y que la discusión y la colaboración aparecían solo en el 12 % de los
+estudios cada una, con preocupación por la menor interacción entre compañeros
+[@pham2025genaihpe]. Saber usar la IA incluye saber cuándo conviene contrastar
+con otra persona y no con otro sistema.
+
+## Aplicaciones
+
+### Generales
+
+- Ajustar la formación al uso real: no necesita lo mismo quien redacta con un
+  asistente que quien configura un agente.
+- Enseñar, además de cómo pedir, cómo comprobar lo que devuelve y cuándo no
+  usarlo.
+- Distinguir el contraste con otro sistema del contraste con un colega:
+  consultar un segundo modelo no sustituye la discusión con otra persona.
+
+### Sanitarias
+
+- Formar al personal que usa sistemas de IA como medida del artículo 4,
+  proporcionada a sus conocimientos, al contexto de uso y a los pacientes
+  afectados [@ue2026aiomnibus].
+- Priorizar los límites de cada herramienta sobre su funcionamiento interno:
+  que puede [inventar una referencia](alucinacion.qmd) o desconocer lo publicado
+  después de su [fecha de corte](fecha-de-corte-del-conocimiento.qmd).
+- Conservar los espacios de discusión clínica entre colegas a medida que crece
+  el aprendizaje individual con IA [@pham2025genaihpe].
+
+## Limitaciones
+
+- No hay una definición única: los marcos difieren en qué competencias
+  incluyen y en cómo las ordenan.
+- Haber recibido formación no prueba saber usar la IA; la alfabetización no se
+  mide en horas de curso.
+- La norma no fija un nivel mínimo por persona [@ue2026aiomnibus], de modo que
+  su cumplimiento puede quedarse en lo nominal.
+- Ser competente con una herramienta no garantiza serlo con otra ni con la
+  siguiente versión de la misma.
+
+## Ejemplos
+
+Un centro de salud incorpora un asistente que propone borradores de informes.
+Un curso sobre cómo funcionan las redes neuronales no resuelve lo que la tarea
+pide. La alfabetización necesaria es más concreta: saber que el borrador puede
+contener un dato inventado, comprobarlo contra la historia clínica, saber qué
+información no debe introducirse y a quién consultar cuando el resultado no
+convence.
+
+## Relacionados
+
+- [Reglamento de Inteligencia Artificial de la Unión Europea](ai-act.qmd)
+- [Supervisión humana](supervision-humana.qmd)
+- [Confianza calibrada](confianza-calibrada.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Alucinación](alucinacion.qmd)
+- [Prompting](prompting.qmd)
+- [Deskilling](deskilling.qmd)
+
+## Referencias
+
+::: {#refs}
+:::
