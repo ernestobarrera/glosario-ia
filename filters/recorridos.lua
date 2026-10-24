@@ -12,8 +12,9 @@
 -- bloque —y con ella su estilo— sigue siendo la que escribe la pagina. Fuera de
 -- esos bloques no toca nada.
 --
--- Un recorrido o una ficha que no existen detienen el render con un error que
--- dice cual: una lista con un hueco callado es peor que no publicar.
+-- Un recorrido o una ficha que no existen, o un paso sin su porque, detienen el
+-- render con un error que dice cual: una lista con un hueco callado es peor que
+-- no publicar.
 -- validar.ps1 comprueba ademas que cada enlace sale renderizado.
 
 local recorridos = nil
@@ -92,6 +93,11 @@ local function paso(idRecorrido, datos)
 
   if not titulo then
     error("recorridos.yml: el recorrido '" .. idRecorrido .. "' enlaza la ficha inexistente '" .. slug .. "'")
+  end
+
+  -- Sin porque, el paso saldria como "Titulo: " con los dos puntos colgando.
+  if not datos.porque or pandoc.utils.stringify(datos.porque) == "" then
+    error("recorridos.yml: el recorrido '" .. idRecorrido .. "' no dice por que va la ficha '" .. slug .. "'")
   end
 
   local enLinea = pandoc.Inlines({ pandoc.Link(titulo, "terminos/" .. slug .. ".qmd"), pandoc.Str(":"), pandoc.Space() })

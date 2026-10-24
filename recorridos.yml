@@ -19,7 +19,10 @@
 #   pasos   lista de { ficha: <slug>, porque: "<frase>" }, o bien
 #   etapas  lista de { pregunta: "<texto>", pasos: [...] }, para agruparlos.
 #           La numeracion sigue de una etapa a la siguiente.
-# validar.ps1 comprueba que cada ficha existe, no se repite y sale enlazada.
+# Escriba `id` y `ficha` sin comillas y cada uno en su linea: validar.ps1 lee
+# este fichero por lineas y rechaza cualquier otra forma. Comprueba que cada
+# ficha existe, no se repite y sale enlazada; el render se detiene si una ficha
+# no existe o un paso no tiene porque.
 
 recorridos:
   - id: empieza-aqui

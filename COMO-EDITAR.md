@@ -72,6 +72,19 @@ El cuerpo conserva siempre:
 5. relacionados, con enlaces internos;
 6. referencias.
 
+## Recorridos
+
+«Empieza aquí» y los demás recorridos se escriben en `recorridos.yml`, no en su
+página. Cada paso lleva el slug de la ficha y una frase que dice por qué va en
+ese lugar; el título y el enlace salen de la propia ficha. Para cambiar el orden
+se mueve un paso; para añadir una ficha, una línea `- ficha:` con su `porque:`.
+Escriba `id` y `ficha` sin comillas: el validador rechaza otras formas.
+
+Un recorrido nuevo necesita además una página con el nombre de su `id`, que
+reserve el sitio con un bloque `::: {.recorrido recorrido="<id>"}` cerrado con
+`:::`, y un enlace desde la portada. Si una ficha no existe o un paso no tiene
+`porque`, el sitio no se genera.
+
 ## Citas y bibliografía
 
 Use `[@citekey]` en la ficha y añada la referencia completa a
@@ -101,8 +114,8 @@ quarto render
 ```
 
 El validador comprueba el esquema de metadatos, la taxonomía, fechas,
-sinónimos renderizados, citekeys, enlaces internos, slugs, aliases y
-artefactos del documento de trabajo. Un cambio no está listo si alguna
+sinónimos renderizados, citekeys, enlaces internos, slugs, aliases, recorridos
+y artefactos del documento de trabajo. Un cambio no está listo si alguna
 comprobación falla.
 
 Una vez activada la publicación, los cambios aceptados en `main` generarán el

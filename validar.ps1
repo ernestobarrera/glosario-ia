@@ -941,8 +941,11 @@ foreach ($ficha in $fichas) {
 #
 # El YAML se lee por lineas, como taxonomia.yml: basta con dos formas, `- id:`
 # abre un recorrido y `- ficha:` le anade un paso, este en `pasos` o dentro de
-# una etapa. Una linea que no case con ninguna no cuenta, y por eso se exige
-# ademas que cada recorrido tenga al menos una ficha.
+# una etapa. Cualquier otra forma de escribir `id:` o `ficha:` (entre comillas,
+# en linea con llaves) es un error y no se ignora: el filtro la aceptaria y esta
+# lectura no la veria, asi que una ficha repetida saldria publicada dos veces
+# sin aviso. Un id declarado dos veces tambien es error: el filtro se queda con
+# el ultimo y la pagina no mostraria el que se esta leyendo.
 $recorridos = New-Object System.Collections.ArrayList
 $rutaRecorridos = Join-Path $raiz "recorridos.yml"
 if (-not (Test-Path -LiteralPath $rutaRecorridos)) {
@@ -950,13 +953,24 @@ if (-not (Test-Path -LiteralPath $rutaRecorridos)) {
 }
 else {
   $recorridoActual = $null
+  $idsRecorrido = @{}
+  $numeroLinea = 0
   foreach ($linea in (Get-Content -LiteralPath $rutaRecorridos -Encoding UTF8)) {
+    $numeroLinea++
     if ($linea -match '^\s*-\s+id:\s*([A-Za-z0-9-]+)\s*$') {
-      $recorridoActual = @{ Id = $Matches[1]; Fichas = New-Object System.Collections.ArrayList }
+      $idLeido = $Matches[1]
+      if ($idsRecorrido.ContainsKey($idLeido)) {
+        Registrar-Error "recorridos.yml:$numeroLinea`: el recorrido '$idLeido' esta declarado dos veces"
+      }
+      $idsRecorrido[$idLeido] = $true
+      $recorridoActual = @{ Id = $idLeido; Fichas = New-Object System.Collections.ArrayList }
       [void]$recorridos.Add($recorridoActual)
     }
     elseif ($recorridoActual -and $linea -match '^\s*-\s+ficha:\s*([A-Za-z0-9-]+)\s*$') {
       [void]$recorridoActual.Fichas.Add($Matches[1])
+    }
+    elseif ($linea -match '^[^#"]*\b(id|ficha)\s*:') {
+      Registrar-Error "recorridos.yml:$numeroLinea`: '$($Matches[1]):' no tiene la forma admitida (- $($Matches[1]): slug, sin comillas)"
     }
   }
   if ($recorridos.Count -eq 0) {
