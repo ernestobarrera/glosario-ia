@@ -640,6 +640,24 @@ nav[role="doc-toc"] .recuento-tema {
   font-weight: 600;
 }
 
+/* Etapas de un recorrido: cada una abre con su pregunta y la numeracion sigue
+ * de una a otra. Quarto envuelve pregunta y lista en un section.etapa. */
+.empieza-aqui section.etapa > h2,
+.recorrido section.etapa > h2 {
+  margin: 1.9rem 0 0;
+  font-size: 1.3rem;
+}
+
+.empieza-aqui section.etapa:first-child > h2,
+.recorrido section.etapa:first-child > h2 {
+  margin-top: 0.8rem;
+}
+
+.empieza-aqui section.etapa > ol,
+.recorrido section.etapa > ol {
+  margin-top: 0.7rem;
+}
+
 .pista-busqueda {
   margin: 0 0 0.4rem;
   color: var(--g-tinta-3);

@@ -142,13 +142,15 @@ function Div(el)
 
   if recorrido.etapas then
     -- Cada etapa abre con su pregunta y la numeracion sigue de una a la otra:
-    -- el lector ve un solo recorrido partido en tramos, no varias listas.
+    -- el lector ve un solo recorrido partido en tramos, no varias listas. La
+    -- pregunta es un h2: la pagina solo tiene el h1 del titulo encima, y saltar
+    -- a h3 rompe el orden de encabezados que siguen los lectores de pantalla.
     -- El identificador de cada etapa se pone aqui: un encabezado creado por un
     -- filtro no recibe el automatico del lector, y sin el, su ancla sale vacia.
     local siguiente = 1
 
     for numero, etapa in ipairs(recorrido.etapas) do
-      table.insert(bloques, pandoc.Header(3, etapa.pregunta, pandoc.Attr("etapa-" .. numero, { "etapa" })))
+      table.insert(bloques, pandoc.Header(2, etapa.pregunta, pandoc.Attr("etapa-" .. numero, { "etapa" })))
       local bloque, cuantos = lista(id, etapa.pasos, siguiente)
       table.insert(bloques, bloque)
       siguiente = siguiente + cuantos
