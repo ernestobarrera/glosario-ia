@@ -1,0 +1,129 @@
+---
+title: "Deskilling"
+aliases:
+  - /terminos/perdida-de-destrezas.html
+sinonimos:
+  - "Pérdida de destrezas"
+description: "Pérdida de una destreza ya adquirida cuando una tarea se delega de forma sostenida en un sistema automatizado y se deja de practicar; no llegar a adquirirla es un riesgo distinto."
+categories:
+  - "Seguridad y riesgos"
+date-modified: 2026-10-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+El **deskilling**, o **pérdida de destrezas**, es el deterioro de una habilidad
+que una persona ya dominaba cuando delega de forma sostenida, en un sistema
+automatizado, la tarea que la ejercitaba. Bainbridge lo formuló en 1983 para
+las destrezas manuales: las que no se usan se deterioran, y un operador experto
+que se limita a vigilar un proceso automatizado puede convertirse en uno
+inexperto [@bainbridge1983ironies].
+
+En medicina se distinguen tres riesgos, con respaldo distinto
+[@ke2026neverskilling]:
+
+- ***Deskilling***: la pérdida en profesionales con experiencia.
+- ***Never-skilling***: que quien se forma apoyándose en la IA desde el
+  principio no llegue a desarrollar las bases del razonamiento clínico.
+- ***Mis-skilling***: que aceptar sin crítica los errores de la IA lleve a
+  aprender como cierto un conocimiento equivocado.
+
+::: {.callout-important title="Estado científico del término"}
+La evidencia de pérdida de destreza en profesionales que recoge esta ficha
+procede de un estudio observacional multicéntrico en colonoscopia
+[@budzyn2025deskilling], no de ensayos. *Never-skilling* es una hipótesis: la
+Perspective que lo propone reconoce que falta evidencia directa en la formación
+médica y se apoya en la teoría del aprendizaje y en señales tempranas fuera de
+la clínica [@ke2026neverskilling]. Que el término aparezca cada vez más en la
+literatura no prueba que el fenómeno sea frecuente.
+:::
+
+## Contexto histórico
+
+En 1983, Bainbridge describió las «ironías de la automatización» en el control
+de procesos industriales. Quien diseña el sistema para eliminar al operador le
+deja las tareas que no sabe cómo automatizar, entre ellas vigilar que todo
+funcione e intervenir cuando falla, y al mismo tiempo le quita la práctica que
+necesitaría para hacerlo. Advirtió además que los sistemas de entonces los
+vigilaban antiguos operadores manuales que se apoyaban en unas destrezas que
+las generaciones siguientes no podrían tener [@bainbridge1983ironies]. La
+preocupación que hoy se llama *never-skilling* estaba ya ahí.
+
+## Importancia actual
+
+A fecha de octubre de 2026, un dato en profesionales procede de cuatro centros
+de endoscopia de Polonia. En las colonoscopias hechas sin asistencia, la tasa de
+detección de adenomas bajó del 28,4 % en los tres meses previos a la
+introducción de la IA al 22,4 % en los tres meses posteriores (diferencia
+absoluta −6,0 puntos; IC 95 % −10,5 a −1,6). Los autores lo interpretan como un
+posible efecto negativo de la exposición continuada a la IA sobre el
+comportamiento del endoscopista [@budzyn2025deskilling].
+
+Fuera de la medicina, un ensayo aleatorizado con casi mil alumnos de secundaria
+en Turquía mostró el mecanismo en el aprendizaje. Con acceso a GPT-4 sin
+salvaguardas, la nota en la práctica mejoró un 48 %, pero en el examen
+posterior sin ayuda empeoró un 17 % frente a quienes nunca tuvieron acceso: lo
+usaban como muleta. Un tutor con instrucciones diseñadas para proteger el
+aprendizaje mitigó en gran parte ese efecto [@bastani2025guardrails]. Es
+alumnado de matemáticas, no profesionales sanitarios.
+
+## Aplicaciones
+
+### Generales
+
+- Identificar qué destrezas hay que conservar aunque la tarea se automatice:
+  las necesarias para detectar cuándo el sistema falla y para sustituirlo.
+- Diseñar las ayudas para que no den siempre la respuesta hecha: el diseño de
+  la herramienta cambia su efecto sobre el aprendizaje
+  [@bastani2025guardrails].
+- Medir el desempeño también sin la ayuda, no solo con ella.
+
+### Sanitarias
+
+- Vigilar los indicadores de calidad de los procedimientos hechos sin
+  asistencia cuando se introduce un sistema de apoyo [@budzyn2025deskilling].
+- En la formación, la Perspective sobre *never-skilling* propone, como agenda de
+  investigación, tres fases: adquirir primero la competencia básica sin IA,
+  aprender después a juzgar sus resultados con una pedagogía estructurada e
+  integrarla por último bajo supervisión [@ke2026neverskilling].
+- Prever qué ocurre si el sistema no está disponible: quién conserva la
+  destreza y cómo se mantiene.
+
+## Limitaciones
+
+- El estudio de colonoscopia es observacional y compara dos periodos de tres
+  meses; otros cambios entre ambos pueden explicar parte de la diferencia
+  [@budzyn2025deskilling].
+- La evidencia experimental procede de estudiantes y de tareas ajenas a la
+  clínica; trasladarla a profesionales está por comprobar.
+- No toda pérdida de destreza es un problema: dejar de hacer a mano lo que un
+  sistema fiable hace mejor puede ser razonable. La pregunta es qué capacidad
+  mínima hay que conservar para evaluar el resultado y responder de él.
+- El término se aplica a procesos de plazo muy distinto, de meses a
+  generaciones.
+
+## Ejemplos
+
+Un residente que interpreta electrocardiogramas siempre con la lectura
+automática a la vista puede no llegar a desarrollar la lectura sistemática que
+necesitaría cuando la máquina se equivoca (*never-skilling*). Un cardiólogo con
+años de experiencia que deja de leerlos sin ayuda puede perder parte de esa
+destreza (*deskilling*). Y si el residente da por buena una interpretación
+automática errónea y la incorpora a lo que sabe, el riesgo es otro
+(*mis-skilling*). Los tres casos son ilustrativos, no resultados de un estudio.
+
+## Relacionados
+
+- [Descarga cognitiva](descarga-cognitiva.qmd)
+- [Automatización del trabajo cognitivo](automatizacion-del-trabajo-cognitivo.qmd)
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Supervisión humana](supervision-humana.qmd)
+- [Alfabetización en IA](alfabetizacion-en-ia.qmd)
+- [Confianza calibrada](confianza-calibrada.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

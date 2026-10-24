@@ -136,6 +136,7 @@ organización (al mando).
 - [Explicabilidad](explicabilidad.qmd)
 - [Descarga cognitiva](descarga-cognitiva.qmd)
 - [Alineación](alineacion.qmd)
+- [Alfabetización en IA](alfabetizacion-en-ia.qmd)
 
 ## Referencias
 

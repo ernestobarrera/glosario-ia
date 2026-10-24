@@ -14,7 +14,7 @@ categories:
   - "Modelos de lenguaje"
   - "Seguridad y riesgos"
   - "Ética y gobernanza"
-date-modified: 2026-09-14
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -130,6 +130,7 @@ ellas.
 - [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
 - [Memoria persistente](memoria-persistente.qmd)
 - [Alucinación](alucinacion.qmd)
+- [Confianza calibrada](confianza-calibrada.qmd)
 
 ## Referencias
 

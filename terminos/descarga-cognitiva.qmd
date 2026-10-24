@@ -61,7 +61,7 @@ dos descripciones capta mejor el fenómeno es una cuestión abierta.
 
 - Delegar en sistemas la parte reglada —cálculos de dosis, interacciones,
   recordatorios— conservando el juicio sobre el caso.
-- Vigilar la pérdida de destreza por uso sostenido de una ayuda: tras la
+- Vigilar la [pérdida de destreza](deskilling.qmd) por uso sostenido de una ayuda: tras la
   introducción de detección asistida en colonoscopia se observó una caída de la
   tasa de detección de adenomas en los procedimientos sin asistencia
   [@budzyn2025deskilling].

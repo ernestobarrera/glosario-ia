@@ -10,7 +10,7 @@ description: "Distribución irregular de tareas en las que una IA ayuda o perjud
 categories:
   - "Fundamentos"
   - "Seguridad y riesgos"
-date-modified: 2026-09-22
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -85,6 +85,7 @@ una salida convincente puede favorecer la aceptación automática de la segunda.
 - [Elicitación de capacidades](elicitacion-de-capacidades.qmd)
 - [Alucinación](alucinacion.qmd)
 - [No determinismo](no-determinismo.qmd)
+- [Complementariedad humano-IA](complementariedad-humano-ia.qmd)
 
 ## Referencias
 

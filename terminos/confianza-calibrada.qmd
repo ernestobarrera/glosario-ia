@@ -1,0 +1,131 @@
+---
+title: "Confianza calibrada"
+aliases:
+  - /terminos/calibrated-trust.html
+sinonimos:
+  - "Calibrated trust"
+  - "Calibración de la confianza"
+description: "Ajuste entre cuánto se fía una persona de un sistema automatizado y lo que ese sistema puede hacer de verdad en una tarea concreta, que evita tanto fiarse de más como fiarse de menos."
+categories:
+  - "Seguridad y riesgos"
+  - "Ética y gobernanza"
+date-modified: 2026-10-24
+estado: "borrador"
+tipo: "concepto"
+---
+
+## Definición ampliada
+
+La **confianza calibrada** es la que se corresponde con lo que un sistema
+automatizado puede hacer en una tarea y un contexto concretos: alta donde el
+sistema es fiable y baja donde no lo es. Importa porque la confianza guía
+cuánto se depende del sistema, sobre todo cuando es demasiado complejo para
+entenderlo del todo; la meta es que esa dependencia sea apropiada
+[@lee2004trust].
+
+Confiar y depender no son lo mismo: lo primero es una actitud y lo segundo, lo
+que se hace. Hay dos maneras de fallar. Fiarse de más lleva al **uso
+indebido**, con vigilancia insuficiente y decisiones sesgadas, una de cuyas
+formas es el [sesgo de automatización](sesgo-de-automatizacion.qmd). Fiarse
+de menos lleva al **desuso**, a menudo tras falsas alarmas
+[@parasuraman1997automation].
+
+No debe confundirse con la **calibración de un modelo**, que mide si las
+probabilidades que da coinciden con las frecuencias observadas y se trata en
+[Softmax](softmax.qmd) y [Clasificación](clasificacion.qmd). Aquí lo que se
+calibra es la persona.
+
+## Contexto histórico
+
+La idea procede de la investigación en factores humanos sobre la
+automatización. En 1997, Parasuraman y Riley distinguieron el uso, el uso
+indebido, el desuso y el abuso de la automatización; este último, automatizar
+sin atender a las consecuencias para quien la maneja
+[@parasuraman1997automation]. En 2004, Lee y See integraron la investigación
+sobre la confianza en un modelo que describe cómo cambia y cómo influyen en
+ella el contexto y lo que muestra la interfaz [@lee2004trust].
+
+En 2015 se describió con nombre propio una forma de fiarse de menos, la
+**aversión a los algoritmos**: tras ver errar a un algoritmo, las personas
+pierden antes la confianza en él que en una persona que comete el mismo error,
+y eligen a un pronosticador humano aunque sea peor [@dietvorst2015aversion]. Es
+una causa de desconfianza, no un sinónimo de confianza mal calibrada.
+
+## Importancia actual
+
+A fecha de octubre de 2026, con los modelos de lenguaje el problema se ha
+desplazado hacia cómo comunican su incertidumbre. En experimentos con preguntas
+de opción múltiple y de respuesta corta, los usuarios sobrestimaron el acierto
+de las respuestas acompañadas de las explicaciones habituales del modelo, y las
+explicaciones más largas aumentaron su confianza aunque no mejoraran la
+respuesta; ajustar la explicación a la confianza interna del modelo redujo esa
+brecha [@steyvers2025calibrationgap]. Las dos calibraciones, la del modelo y la
+de la persona, se tocan aquí sin confundirse.
+
+La misma idea vale para la confianza en uno mismo. En un ensayo con alumnado de
+secundaria, quienes practicaron con un asistente sin salvaguardas rindieron peor
+después, sin ayuda, pero no percibieron haber aprendido menos
+[@bastani2025guardrails].
+
+## Aplicaciones
+
+### Generales
+
+- Mostrar la incertidumbre del sistema en lugar de respuestas con una seguridad
+  uniforme.
+- Medir no solo cuánto acierta el sistema, sino cuánto se acepta lo que propone
+  cuando acierta y cuando falla.
+- Formar con errores reales del sistema, sabiendo que verlos puede llevar al
+  extremo contrario, la aversión [@dietvorst2015aversion].
+
+### Sanitarias
+
+- Ante un sistema de apoyo a la decisión, preguntar en qué pacientes y tareas
+  se validó: la confianza debe serlo para esa tarea, no para el sistema en
+  general.
+- No tomar la extensión ni el aplomo de una explicación como señal de acierto
+  [@steyvers2025calibrationgap].
+- Registrar las discrepancias entre profesional y sistema para saber si se le
+  hace caso de más o de menos.
+- Recordar que la experiencia atenúa la sobreconfianza, pero no la elimina: en
+  un experimento con mamografías, también los radiólogos muy expertos acertaron
+  bastante menos cuando la sugerencia del sistema era errónea
+  [@dratsch2023automation].
+
+## Limitaciones
+
+- La confianza es una actitud y lo que tiene consecuencias es la conducta:
+  conocer una no garantiza conocer la otra.
+- La fiabilidad de un sistema cambia con la tarea y la población; una confianza
+  bien ajustada en un contexto puede no serlo en otro, como describe la
+  [frontera tecnológica dentada](frontera-tecnologica-dentada.qmd).
+- Buena parte de la evidencia procede de tareas de laboratorio, como preguntas
+  de examen o pronósticos, lejos de la práctica clínica
+  [@dietvorst2015aversion; @steyvers2025calibrationgap].
+- Calibrar la confianza no exime de diseñar sistemas más fiables ni traslada a
+  quien los usa la responsabilidad de sus errores.
+
+## Ejemplos
+
+Una médica pregunta a un asistente la dosis de un fármaco en insuficiencia
+renal y recibe una respuesta larga y bien argumentada. Ni la longitud ni el tono
+dicen si es correcta. Calibrar la confianza no consiste en desconfiar de todo,
+sino en saber si ese sistema se ha evaluado en ajustes de dosis y, si no consta,
+comprobar la cifra en la ficha técnica; y apoyarse más en él para resumir un
+texto que ella misma puede revisar.
+
+## Relacionados
+
+- [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Explicabilidad](explicabilidad.qmd)
+- [Adulación](adulacion.qmd)
+- [Complementariedad humano-IA](complementariedad-humano-ia.qmd)
+- [Alfabetización en IA](alfabetizacion-en-ia.qmd)
+- [Fatiga agéntica humana](fatiga-agentica-humana.qmd)
+- [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
+- [Softmax](softmax.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

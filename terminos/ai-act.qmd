@@ -43,7 +43,7 @@ marco original [@ue2024aiact; @ue2026aiomnibus].
 ## Importancia actual
 
 A fecha de octubre de 2026, el AI Act ya es aplicable en buena parte de su
-contenido. Las prohibiciones y la obligación de alfabetización en IA del
+contenido. Las prohibiciones y la obligación de [alfabetización en IA](alfabetizacion-en-ia.qmd) del
 artículo 4 se aplican desde febrero de 2025; la gobernanza y las reglas para
 modelos de propósito general, desde agosto de 2025; y la aplicación general
 comenzó el 2 de agosto de 2026. Tras la reforma de 2026, las reglas de alto

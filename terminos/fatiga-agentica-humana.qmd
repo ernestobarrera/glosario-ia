@@ -26,7 +26,7 @@ resultados, permisos y consecuencias.
 
 El adjetivo *humana* la distingue de una degradación técnica del agente. Su
 rasgo propio es la **carga de supervisión**: la ejecución se delega, pero
-comprender el estado, calibrar la confianza y resolver excepciones siguen
+comprender el estado, [calibrar la confianza](confianza-calibrada.qmd) y resolver excepciones siguen
 dependiendo de la persona. El riesgo crece cuando la capacidad de ejecución de
 los agentes aumenta más deprisa que la capacidad humana de supervisarlos.
 
