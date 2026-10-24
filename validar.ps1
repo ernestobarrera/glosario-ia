@@ -970,7 +970,7 @@ else {
         Registrar-Error "recorridos.yml:$numeroLinea`: el recorrido '$idLeido' esta declarado dos veces"
       }
       $idsRecorrido[$idLeido] = $true
-      $recorridoActual = @{ Id = $idLeido; Fichas = New-Object System.Collections.ArrayList }
+      $recorridoActual = @{ Id = $idLeido; Fichas = New-Object System.Collections.ArrayList; Etapas = 0 }
       [void]$recorridos.Add($recorridoActual)
     }
     elseif ($recorridoActual -and $linea -match '^\s*-\s+ficha:\s*([A-Za-z0-9-]+)\s*$') {
@@ -981,6 +981,9 @@ else {
       if ($Matches[1] -notin @('', '""', "''")) {
         $pasoSinPorque = $null
       }
+    }
+    elseif ($recorridoActual -and $linea -match '^\s*-\s+pregunta:\s*\S') {
+      $recorridoActual['Etapas'] = $recorridoActual['Etapas'] + 1
     }
     elseif ($linea -match '^[^#"]*\b(id|ficha)\s*:') {
       Registrar-Error "recorridos.yml:$numeroLinea`: '$($Matches[1]):' no tiene la forma admitida (- $($Matches[1]): slug, sin comillas)"
@@ -1040,6 +1043,13 @@ foreach ($recorrido in $recorridos) {
   if ($enlacesRecorrido[$id] -eq 0) {
     Registrar-Error "recorridos.yml: el recorrido '$id' no enlaza ninguna ficha"
   }
+  # Cada etapa sale como una seccion con id etapa-n; si falta una, la pagina ha
+  # perdido una pregunta aunque conserve sus fichas.
+  for ($n = 1; $n -le $recorrido.Etapas; $n++) {
+    if ($htmlRecorrido -and $htmlRecorrido.IndexOf("id=`"etapa-$n`"", [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error "$salida`: falta la etapa $n del recorrido '$id'"
+    }
+  }
   if ($htmlPortada.IndexOf("href=`"./$salida`"", [StringComparison]::Ordinal) -lt 0) {
     Registrar-Error "index.html: la portada no enlaza el recorrido '$id'"
   }
@@ -1067,7 +1077,8 @@ Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitida
 Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase, recuento y $fichasEnSecciones pertenencias; $laminasEnTemas enlaces al Atlas"
 Write-Host "  Indice A-Z: $entradasIndice entradas, con remision para cada sinonimo"
 foreach ($recorrido in $recorridos) {
-  Write-Host "  Recorrido $($recorrido.Id): $($enlacesRecorrido[$recorrido.Id]) fichas enlazadas, unicas y renderizadas"
+  $enEtapas = if ($recorrido.Etapas -gt 0) { ", en $($recorrido.Etapas) etapas" } else { "" }
+  Write-Host "  Recorrido $($recorrido.Id): $($enlacesRecorrido[$recorrido.Id]) fichas enlazadas, unicas y renderizadas$enEtapas"
 }
 Write-Host "  Fichas en algun recorrido: $($fichasEnRecorridos.Count) de $($fichas.Count)"
 Write-Host "  Estado renderizado: OK"

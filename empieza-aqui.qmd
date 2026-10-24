@@ -1,12 +1,14 @@
 ---
 title: "Empieza aquí"
-description: "Nueve fichas en orden para empezar: de qué es la IA que ya se usa en sanidad a qué vigilar al usarla."
+description: "Doce fichas en cinco preguntas, en el orden en que se usa una herramienta: qué es, para qué sirve, cómo se pide, cómo se comprueba y de qué se responde."
 toc: false
 ---
 
-Si no sabes por dónde entrar, lee estas fichas en este orden; cada una enlaza
-con otras relacionadas. Para buscar un término concreto, sigue valiendo el
-buscador de la barra o el [índice de la A a la Z](indice-az.qmd).
+Si no sabes por dónde entrar, sigue estas cinco preguntas en orden. Son las que
+van apareciendo al usar cualquier herramienta nueva: qué es, para qué sirve,
+cómo se le pide, cómo se comprueba lo que da y de qué responde quien la usa.
+Cada ficha enlaza con otras relacionadas. Para buscar un término concreto,
+sigue valiendo el buscador de la barra o el [índice de la A a la Z](indice-az.qmd).
 
 ::: {.empieza-aqui recorrido="empieza-aqui"}
 :::

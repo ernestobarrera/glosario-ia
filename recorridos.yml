@@ -25,26 +25,45 @@
 # no existe o un paso no tiene porque.
 
 recorridos:
+  # Cinco preguntas en el orden en que se usa una herramienta: que es, para que
+  # sirve, como se le pide, como se comprueba lo que da y de que responde quien
+  # la usa.
   - id: empieza-aqui
-    pasos:
-      - ficha: aprendizaje-automatico
-        porque: "qué significa que un programa aprenda de los datos en lugar de seguir reglas escritas a mano."
-      - ficha: llm
-        porque: "la tecnología que hay detrás de los asistentes de conversación, y por qué escriben con tanta soltura."
-      - ficha: prompting
-        porque: "cómo se le pide algo a un modelo, y por qué la misma pregunta planteada de otra forma puede dar otra respuesta."
-      - ficha: alucinacion
-        porque: "por qué puede inventar un dato o una referencia con el mismo aplomo con el que da uno cierto."
-      - ficha: rag
-        porque: "cómo se ata la respuesta a fuentes concretas que se pueden comprobar."
-      - ficha: frontera-tecnologica-dentada
-        porque: "por qué una IA que ayuda en una tarea puede empeorar el resultado en otra que parece igual de sencilla."
-      - ficha: sesgo-de-automatizacion
-        porque: "el riesgo también está en quien la usa, al aceptar una sugerencia sin comprobarla."
-      - ficha: sesgo-algoritmico
-        porque: "a quién puede perjudicar un sistema que funciona bien en promedio."
-      - ficha: ai-act
-        porque: "qué obligaciones fija la ley según el riesgo de cada sistema."
+    etapas:
+      - pregunta: "¿Qué es lo que estoy usando?"
+        pasos:
+          - ficha: ia-generativa
+            porque: "qué tienen en común los sistemas que producen texto, imágenes o código nuevos a partir de patrones aprendidos, y por qué «nuevo» no significa verdadero."
+          - ficha: llm
+            porque: "la tecnología que hay detrás de los asistentes de conversación, y por qué escriben con tanta soltura."
+          - ficha: aprendizaje-automatico
+            porque: "qué significa que un programa aprenda de los datos en lugar de seguir reglas escritas a mano."
+      - pregunta: "¿Para qué me sirve y para qué no?"
+        pasos:
+          - ficha: frontera-tecnologica-dentada
+            porque: "por qué una IA que ayuda en una tarea puede empeorar el resultado en otra que parece igual de sencilla."
+          - ficha: ventana-de-contexto
+            porque: "cuánto puede leer de una vez, por qué lo que queda fuera no existe para el modelo y por qué lo que cabe no siempre se aprovecha."
+          - ficha: fecha-de-corte-del-conocimiento
+            porque: "por qué puede responder con soltura sobre algo que ya ha cambiado, sin avisar de que su información puede estar desfasada."
+      - pregunta: "¿Cómo se lo pido?"
+        pasos:
+          - ficha: prompting
+            porque: "cómo se le pide algo a un modelo, y por qué la misma pregunta planteada de otra forma puede dar otra respuesta."
+          - ficha: rag
+            porque: "cómo se ata la respuesta a fuentes concretas que se pueden comprobar."
+      - pregunta: "¿Cómo compruebo lo que me da?"
+        pasos:
+          - ficha: alucinacion
+            porque: "por qué puede inventar un dato o una referencia con el mismo aplomo con el que da uno cierto."
+          - ficha: sesgo-de-automatizacion
+            porque: "el riesgo también está en quien la usa, al aceptar una sugerencia sin comprobarla."
+      - pregunta: "¿De qué respondo yo?"
+        pasos:
+          - ficha: supervision-humana
+            porque: "qué hace falta para controlar de verdad un sistema mientras se usa, y por qué estar presente al final del proceso no basta."
+          - ficha: ai-act
+            porque: "qué obligaciones fija la ley según el riesgo de cada sistema."
   - id: que-cambia-al-usar-la-ia
     pasos:
       - ficha: descarga-cognitiva
