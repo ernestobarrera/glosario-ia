@@ -1,6 +1,6 @@
 ---
 pagetitle: "Glosario de IA para profesionales sanitarios"
-description: "Conceptos de inteligencia artificial explicados para profesionales sanitarios con aplicaciones, limitaciones, ejemplos y referencias verificables."
+description: "Conceptos de inteligencia artificial para profesionales sanitarios: cómo funciona, qué cambia al usarla, aplicaciones, límites, ejemplos y referencias verificables."
 page-layout: full
 toc: false
 listing:
@@ -15,9 +15,10 @@ listing:
 ::: {.hero-glosario}
 # Entender la IA, término a término
 
-Glosario para profesionales sanitarios: definiciones breves y ampliadas, aplicaciones
-generales y sanitarias, limitaciones, ejemplos, conexiones y referencias
-verificables.
+Glosario para profesionales sanitarios: cómo funciona la IA y
+[qué cambia cuando la usamos](que-cambia-al-usar-la-ia.qmd) para informarnos,
+aprender y decidir. Cada término, con aplicaciones generales y sanitarias,
+límites, ejemplos y referencias verificables.
 
 [Empieza aquí](empieza-aqui.qmd){.btn .btn-primary}
 [Explorar de la A a la Z](indice-az.qmd){.btn .btn-outline-secondary}
