@@ -8,26 +8,7 @@ Si no sabes por dónde entrar, lee estas fichas en este orden; cada una enlaza
 con otras relacionadas. Para buscar un término concreto, sigue valiendo el
 buscador de la barra o el [índice de la A a la Z](indice-az.qmd).
 
-::: {.empieza-aqui}
-1. [Aprendizaje automático](terminos/aprendizaje-automatico.qmd): qué significa
-   que un programa aprenda de los datos en lugar de seguir reglas escritas a mano.
-2. [Modelo de lenguaje grande](terminos/llm.qmd): la tecnología que hay detrás de
-   los asistentes de conversación, y por qué escriben con tanta soltura.
-3. [Prompting](terminos/prompting.qmd): cómo se le pide algo a un modelo, y por
-   qué la misma pregunta planteada de otra forma puede dar otra respuesta.
-4. [Alucinación](terminos/alucinacion.qmd): por qué puede inventar un dato o una
-   referencia con el mismo aplomo con el que da uno cierto.
-5. [Generación aumentada por recuperación](terminos/rag.qmd): cómo se ata la
-   respuesta a fuentes concretas que se pueden comprobar.
-6. [Frontera tecnológica dentada](terminos/frontera-tecnologica-dentada.qmd): por
-   qué una IA que ayuda en una tarea puede empeorar el resultado en otra que
-   parece igual de sencilla.
-7. [Sesgo de automatización](terminos/sesgo-de-automatizacion.qmd): el riesgo
-   también está en quien la usa, al aceptar una sugerencia sin comprobarla.
-8. [Sesgo algorítmico](terminos/sesgo-algoritmico.qmd): a quién puede perjudicar
-   un sistema que funciona bien en promedio.
-9. [Reglamento de Inteligencia Artificial de la Unión Europea](terminos/ai-act.qmd):
-   qué obligaciones fija la ley según el riesgo de cada sistema.
+::: {.empieza-aqui recorrido="empieza-aqui"}
 :::
 
 Después, [Temas](temas.qmd) agrupa todas las fichas por ámbito y el

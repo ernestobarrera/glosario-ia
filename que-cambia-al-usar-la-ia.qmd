@@ -10,31 +10,7 @@ en el resultado, quién controla el sistema y cómo cambia el trabajo. Léelas e
 este orden; cada una enlaza con otras relacionadas. Para empezar por cómo
 funciona la IA, está [Empieza aquí](empieza-aqui.qmd).
 
-::: {.recorrido}
-1. [Descarga cognitiva](terminos/descarga-cognitiva.qmd): qué se traslada fuera
-   de la cabeza al usar un apoyo externo, y por qué la pregunta no es si se
-   delega, sino qué y con qué capacidad de comprobarlo.
-2. [Frontera tecnológica dentada](terminos/frontera-tecnologica-dentada.qmd): por
-   qué la IA puede mejorar el resultado en una tarea y empeorarlo en otra que
-   parece igual de sencilla.
-3. [Sesgo de automatización](terminos/sesgo-de-automatizacion.qmd): la tendencia
-   a aceptar una propuesta automatizada sin comprobarla lo suficiente, o a no
-   actuar porque el sistema no avisó.
-4. [Adulación](terminos/adulacion.qmd): por qué un modelo puede tender a dar la
-   razón a quien lo usa en lugar de corregirle.
-5. [Supervisión humana](terminos/supervision-humana.qmd): qué hace falta para
-   controlar de verdad un sistema, porque estar presente no basta.
-6. [Fatiga agéntica humana](terminos/fatiga-agentica-humana.qmd): una propuesta
-   para nombrar la sobrecarga de dirigir y verificar sistemas que actúan con
-   autonomía.
-7. [Automatización del trabajo cognitivo](terminos/automatizacion-del-trabajo-cognitivo.qmd):
-   cómo cambia el trabajo experto cuando parte del juicio pasa a revisar
-   propuestas de un sistema.
-8. [Trabajo fantasma](terminos/trabajo-fantasma.qmd): el trabajo humano, a menudo
-   invisible, que sostiene sistemas presentados como autónomos.
-9. [Problema del ritmo](terminos/problema-del-ritmo.qmd): por qué una
-   herramienta puede estar en uso antes de que maduren la evidencia, las normas y
-   el criterio profesional que deberían gobernarla.
+::: {.recorrido recorrido="que-cambia-al-usar-la-ia"}
 :::
 
 Tres láminas del [Atlas visual](atlas.qmd) reúnen varias de estas ideas:

@@ -1,0 +1,64 @@
+# Recorridos del glosario
+#
+# Un recorrido es una seleccion editorial de fichas EN ORDEN, con una frase que
+# dice por que cada una va en ese paso. Este fichero es su unico original: las
+# paginas de cada recorrido no escriben la lista, la reservan con un bloque
+# `::: {.clase recorrido="<id>"}` y filters/recorridos.lua la rellena desde aqui.
+#
+# Por que existe: la lista vivia escrita a mano en cada pagina, con el titulo de
+# cada ficha copiado. Al renombrar una ficha, el enlace seguia funcionando y el
+# texto quedaba viejo; y el orden de cada recorrido no se veia en ningun sitio
+# como tal. Aqui el orden y el porque los decide una persona; el titulo y el
+# enlace salen de la ficha.
+#
+# Lo que NO hace, a proposito: ordenar solo. Un enlace entre fichas dice
+# "relacionado", no "leelo antes"; un orden calculado seria falso con aplomo.
+#
+# Forma de cada recorrido:
+#   id      el nombre de su pagina, sin .qmd (empieza-aqui -> empieza-aqui.qmd)
+#   pasos   lista de { ficha: <slug>, porque: "<frase>" }, o bien
+#   etapas  lista de { pregunta: "<texto>", pasos: [...] }, para agruparlos.
+#           La numeracion sigue de una etapa a la siguiente.
+# validar.ps1 comprueba que cada ficha existe, no se repite y sale enlazada.
+
+recorridos:
+  - id: empieza-aqui
+    pasos:
+      - ficha: aprendizaje-automatico
+        porque: "qué significa que un programa aprenda de los datos en lugar de seguir reglas escritas a mano."
+      - ficha: llm
+        porque: "la tecnología que hay detrás de los asistentes de conversación, y por qué escriben con tanta soltura."
+      - ficha: prompting
+        porque: "cómo se le pide algo a un modelo, y por qué la misma pregunta planteada de otra forma puede dar otra respuesta."
+      - ficha: alucinacion
+        porque: "por qué puede inventar un dato o una referencia con el mismo aplomo con el que da uno cierto."
+      - ficha: rag
+        porque: "cómo se ata la respuesta a fuentes concretas que se pueden comprobar."
+      - ficha: frontera-tecnologica-dentada
+        porque: "por qué una IA que ayuda en una tarea puede empeorar el resultado en otra que parece igual de sencilla."
+      - ficha: sesgo-de-automatizacion
+        porque: "el riesgo también está en quien la usa, al aceptar una sugerencia sin comprobarla."
+      - ficha: sesgo-algoritmico
+        porque: "a quién puede perjudicar un sistema que funciona bien en promedio."
+      - ficha: ai-act
+        porque: "qué obligaciones fija la ley según el riesgo de cada sistema."
+  - id: que-cambia-al-usar-la-ia
+    pasos:
+      - ficha: descarga-cognitiva
+        porque: "qué se traslada fuera de la cabeza al usar un apoyo externo, y por qué la pregunta no es si se delega, sino qué y con qué capacidad de comprobarlo."
+      - ficha: frontera-tecnologica-dentada
+        porque: "por qué la IA puede mejorar el resultado en una tarea y empeorarlo en otra que parece igual de sencilla."
+      - ficha: sesgo-de-automatizacion
+        porque: "la tendencia a aceptar una propuesta automatizada sin comprobarla lo suficiente, o a no actuar porque el sistema no avisó."
+      - ficha: adulacion
+        porque: "por qué un modelo puede tender a dar la razón a quien lo usa en lugar de corregirle."
+      - ficha: supervision-humana
+        porque: "qué hace falta para controlar de verdad un sistema, porque estar presente no basta."
+      - ficha: fatiga-agentica-humana
+        porque: "una propuesta para nombrar la sobrecarga de dirigir y verificar sistemas que actúan con autonomía."
+      - ficha: automatizacion-del-trabajo-cognitivo
+        porque: "cómo cambia el trabajo experto cuando parte del juicio pasa a revisar propuestas de un sistema."
+      - ficha: trabajo-fantasma
+        porque: "el trabajo humano, a menudo invisible, que sostiene sistemas presentados como autónomos."
+      - ficha: problema-del-ritmo
+        porque: "por qué una herramienta puede estar en uso antes de que maduren la evidencia, las normas y el criterio profesional que deberían gobernarla."

@@ -933,58 +933,85 @@ foreach ($ficha in $fichas) {
   }
 }
 
-# Recorridos: Empieza aqui y los demas son selecciones editoriales a mano, asi
-# que nadie los regenera si una ficha cambia de nombre. Cada enlace debe apuntar
-# a una ficha existente, sin repetirse, y la pagina debe salir renderizada con
-# todos ellos y enlazada desde la portada. Un recorrido nuevo se declara aqui;
-# los mensajes de Empieza aqui son los mismos que antes de generalizarlo.
-$recorridos = @(
-  @{ Fuente = "empieza-aqui.qmd"; Nombre = "pagina de entrada" },
-  @{ Fuente = "que-cambia-al-usar-la-ia.qmd"; Nombre = "pagina de recorrido" }
-)
+# Recorridos: selecciones editoriales en orden, declaradas en recorridos.yml y
+# volcadas en su pagina por filters/recorridos.lua. Nadie las regenera si una
+# ficha desaparece, asi que cada ficha debe existir, no repetirse dentro de su
+# recorrido y salir enlazada en el HTML; la pagina debe reservar el sitio del
+# recorrido y estar enlazada desde la portada.
+#
+# El YAML se lee por lineas, como taxonomia.yml: basta con dos formas, `- id:`
+# abre un recorrido y `- ficha:` le anade un paso, este en `pasos` o dentro de
+# una etapa. Una linea que no case con ninguna no cuenta, y por eso se exige
+# ademas que cada recorrido tenga al menos una ficha.
+$recorridos = New-Object System.Collections.ArrayList
+$rutaRecorridos = Join-Path $raiz "recorridos.yml"
+if (-not (Test-Path -LiteralPath $rutaRecorridos)) {
+  Registrar-Error "recorridos.yml: no existe"
+}
+else {
+  $recorridoActual = $null
+  foreach ($linea in (Get-Content -LiteralPath $rutaRecorridos -Encoding UTF8)) {
+    if ($linea -match '^\s*-\s+id:\s*([A-Za-z0-9-]+)\s*$') {
+      $recorridoActual = @{ Id = $Matches[1]; Fichas = New-Object System.Collections.ArrayList }
+      [void]$recorridos.Add($recorridoActual)
+    }
+    elseif ($recorridoActual -and $linea -match '^\s*-\s+ficha:\s*([A-Za-z0-9-]+)\s*$') {
+      [void]$recorridoActual.Fichas.Add($Matches[1])
+    }
+  }
+  if ($recorridos.Count -eq 0) {
+    Registrar-Error "recorridos.yml: no declara ningun recorrido"
+  }
+}
+
 $enlacesRecorrido = @{}
+$fichasEnRecorridos = @{}
 $htmlPortada = Get-Content -LiteralPath (Join-Path $carpetaSitio "index.html") -Encoding UTF8 -Raw
 foreach ($recorrido in $recorridos) {
-  $fuente = $recorrido.Fuente
-  $salida = [IO.Path]::ChangeExtension($fuente, ".html")
-  $enlacesRecorrido[$fuente] = 0
+  $id = $recorrido.Id
+  $fuente = "$id.qmd"
+  $salida = "$id.html"
+  $enlacesRecorrido[$id] = 0
   $rutaRecorrido = Join-Path $raiz $fuente
   if (-not (Test-Path -LiteralPath $rutaRecorrido)) {
-    Registrar-Error "$fuente`: no existe la $($recorrido.Nombre)"
+    Registrar-Error "recorridos.yml: el recorrido '$id' no tiene pagina ($fuente)"
     continue
   }
   $textoRecorrido = Get-Content -LiteralPath $rutaRecorrido -Encoding UTF8 -Raw
+  if ($textoRecorrido.IndexOf("recorrido=`"$id`"", [StringComparison]::Ordinal) -lt 0) {
+    Registrar-Error "$fuente`: no reserva el sitio del recorrido (falta el bloque con recorrido=`"$id`")"
+  }
   $htmlRecorridoRuta = Join-Path $carpetaSitio $salida
   $htmlRecorrido = if (Test-Path -LiteralPath $htmlRecorridoRuta) {
     Get-Content -LiteralPath $htmlRecorridoRuta -Encoding UTF8 -Raw
   }
   else {
-    Registrar-Error "$salida`: no existe la salida de la $($recorrido.Nombre)"
+    Registrar-Error "$salida`: no existe la salida del recorrido"
     ""
   }
   $vistosRecorrido = @{}
-  foreach ($enlace in [regex]::Matches($textoRecorrido, "\]\(terminos/([A-Za-z0-9-]+)\.qmd\)")) {
-    $slugRecorrido = $enlace.Groups[1].Value
+  foreach ($slugRecorrido in $recorrido.Fichas) {
     if ($vistosRecorrido.ContainsKey($slugRecorrido)) {
-      Registrar-Error "$fuente`: la ficha '$slugRecorrido' aparece dos veces"
+      Registrar-Error "recorridos.yml: el recorrido '$id' repite la ficha '$slugRecorrido'"
       continue
     }
     $vistosRecorrido[$slugRecorrido] = $true
     if (-not (Test-Path -LiteralPath (Join-Path $raiz "terminos\$slugRecorrido.qmd"))) {
-      Registrar-Error "$fuente`: enlace a una ficha inexistente '$slugRecorrido'"
+      Registrar-Error "recorridos.yml: el recorrido '$id' enlaza la ficha inexistente '$slugRecorrido'"
       continue
     }
     if ($htmlRecorrido -and $htmlRecorrido.IndexOf("href=`"./terminos/$slugRecorrido.html`"", [StringComparison]::Ordinal) -lt 0) {
       Registrar-Error "$salida`: falta el enlace renderizado a '$slugRecorrido'"
       continue
     }
-    $enlacesRecorrido[$fuente]++
+    $enlacesRecorrido[$id]++
+    $fichasEnRecorridos[$slugRecorrido] = $true
   }
-  if ($enlacesRecorrido[$fuente] -eq 0) {
-    Registrar-Error "$fuente`: la $($recorrido.Nombre) no enlaza ninguna ficha"
+  if ($enlacesRecorrido[$id] -eq 0) {
+    Registrar-Error "recorridos.yml: el recorrido '$id' no enlaza ninguna ficha"
   }
   if ($htmlPortada.IndexOf("href=`"./$salida`"", [StringComparison]::Ordinal) -lt 0) {
-    Registrar-Error "index.html: la portada no enlaza la $($recorrido.Nombre)"
+    Registrar-Error "index.html: la portada no enlaza el recorrido '$id'"
   }
 }
 
@@ -1009,8 +1036,10 @@ Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
 Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase, recuento y $fichasEnSecciones pertenencias; $laminasEnTemas enlaces al Atlas"
 Write-Host "  Indice A-Z: $entradasIndice entradas, con remision para cada sinonimo"
-Write-Host "  Empieza aqui: $($enlacesRecorrido['empieza-aqui.qmd']) fichas enlazadas, unicas y renderizadas"
-Write-Host "  Recorrido Que cambia cuando usamos la IA: $($enlacesRecorrido['que-cambia-al-usar-la-ia.qmd']) fichas enlazadas, unicas y renderizadas"
+foreach ($recorrido in $recorridos) {
+  Write-Host "  Recorrido $($recorrido.Id): $($enlacesRecorrido[$recorrido.Id]) fichas enlazadas, unicas y renderizadas"
+}
+Write-Host "  Fichas en algun recorrido: $($fichasEnRecorridos.Count) de $($fichas.Count)"
 Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"
