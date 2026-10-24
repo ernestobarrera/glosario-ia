@@ -7,8 +7,8 @@ sinonimos:
 description: "Cantidad máxima de texto, medida en tokens, que un modelo de lenguaje puede tener en cuenta en una sola llamada."
 categories:
   - "Modelos de lenguaje"
-date-modified: 2026-10-21
-estado: "borrador"
+date-modified: 2026-10-24
+estado: "revisada"
 tipo: "concepto"
 ---
 

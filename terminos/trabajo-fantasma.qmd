@@ -8,8 +8,8 @@ description: "Labor humana no reconocida o sistemáticamente invisible que sosti
 categories:
   - "Ética y gobernanza"
   - "IA agéntica"
-date-modified: 2026-09-19
-estado: "borrador"
+date-modified: 2026-10-24
+estado: "revisada"
 tipo: "concepto"
 ---
 

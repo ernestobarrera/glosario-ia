@@ -11,7 +11,7 @@ categories:
   - "Fundamentos"
   - "Seguridad y riesgos"
 date-modified: 2026-10-24
-estado: "borrador"
+estado: "revisada"
 tipo: "concepto"
 ---
 

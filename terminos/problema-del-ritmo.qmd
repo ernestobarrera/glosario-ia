@@ -9,8 +9,8 @@ description: "Desfase entre la velocidad a la que se despliega una tecnología y
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-10-01
-estado: "borrador"
+date-modified: 2026-10-24
+estado: "revisada"
 tipo: "concepto"
 ---
 
