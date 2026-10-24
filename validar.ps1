@@ -945,7 +945,9 @@ foreach ($ficha in $fichas) {
 # en linea con llaves) es un error y no se ignora: el filtro la aceptaria y esta
 # lectura no la veria, asi que una ficha repetida saldria publicada dos veces
 # sin aviso. Un id declarado dos veces tambien es error: el filtro se queda con
-# el ultimo y la pagina no mostraria el que se esta leyendo.
+# el ultimo y la pagina no mostraria el que se esta leyendo. Y cada paso necesita
+# su porque: el filtro detiene el render sin el, y esta comprobacion es la red si
+# alguna vez dejara de hacerlo.
 $recorridos = New-Object System.Collections.ArrayList
 $rutaRecorridos = Join-Path $raiz "recorridos.yml"
 if (-not (Test-Path -LiteralPath $rutaRecorridos)) {
@@ -955,8 +957,13 @@ else {
   $recorridoActual = $null
   $idsRecorrido = @{}
   $numeroLinea = 0
+  $pasoSinPorque = $null
   foreach ($linea in (Get-Content -LiteralPath $rutaRecorridos -Encoding UTF8)) {
     $numeroLinea++
+    if ($pasoSinPorque -and $linea -match '^\s*-\s+(id|ficha|pregunta):') {
+      Registrar-Error "recorridos.yml:$($pasoSinPorque.Linea)`: el paso de la ficha '$($pasoSinPorque.Ficha)' no tiene porque"
+      $pasoSinPorque = $null
+    }
     if ($linea -match '^\s*-\s+id:\s*([A-Za-z0-9-]+)\s*$') {
       $idLeido = $Matches[1]
       if ($idsRecorrido.ContainsKey($idLeido)) {
@@ -968,10 +975,19 @@ else {
     }
     elseif ($recorridoActual -and $linea -match '^\s*-\s+ficha:\s*([A-Za-z0-9-]+)\s*$') {
       [void]$recorridoActual.Fichas.Add($Matches[1])
+      $pasoSinPorque = @{ Ficha = $Matches[1]; Linea = $numeroLinea }
+    }
+    elseif ($linea -match '^\s+porque:\s*(.*?)\s*$') {
+      if ($Matches[1] -notin @('', '""', "''")) {
+        $pasoSinPorque = $null
+      }
     }
     elseif ($linea -match '^[^#"]*\b(id|ficha)\s*:') {
       Registrar-Error "recorridos.yml:$numeroLinea`: '$($Matches[1]):' no tiene la forma admitida (- $($Matches[1]): slug, sin comillas)"
     }
+  }
+  if ($pasoSinPorque) {
+    Registrar-Error "recorridos.yml:$($pasoSinPorque.Linea)`: el paso de la ficha '$($pasoSinPorque.Ficha)' no tiene porque"
   }
   if ($recorridos.Count -eq 0) {
     Registrar-Error "recorridos.yml: no declara ningun recorrido"

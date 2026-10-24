@@ -14,11 +14,18 @@
 --
 -- Un recorrido o una ficha que no existen, o un paso sin su porque, detienen el
 -- render con un error que dice cual: una lista con un hueco callado es peor que
--- no publicar.
+-- no publicar. Se detiene saliendo del proceso, no con error(): Quarto registra
+-- el error de un filtro y sigue, escribe la pagina con el hueco y termina bien
+-- (medido con Quarto 1.9.38), asi que el CI la habria publicado.
 -- validar.ps1 comprueba ademas que cada enlace sale renderizado.
 
 local recorridos = nil
 local titulos = {}
+
+local function detener(mensaje)
+  io.stderr:write("ERROR (filters/recorridos.lua) " .. mensaje .. "\n")
+  os.exit(1)
+end
 
 local function raiz()
   if quarto and quarto.project and quarto.project.directory then
@@ -36,7 +43,7 @@ local function leerRecorridos()
   local archivo = io.open(raiz() .. "/recorridos.yml", "r")
 
   if not archivo then
-    error("recorridos.yml: no existe y una pagina pide un recorrido")
+    detener("recorridos.yml: no existe y una pagina pide un recorrido")
   end
 
   local texto = archivo:read("*a")
@@ -92,12 +99,12 @@ local function paso(idRecorrido, datos)
   local titulo = tituloDe(slug)
 
   if not titulo then
-    error("recorridos.yml: el recorrido '" .. idRecorrido .. "' enlaza la ficha inexistente '" .. slug .. "'")
+    detener("recorridos.yml: el recorrido '" .. idRecorrido .. "' enlaza la ficha inexistente '" .. slug .. "'")
   end
 
   -- Sin porque, el paso saldria como "Titulo: " con los dos puntos colgando.
   if not datos.porque or pandoc.utils.stringify(datos.porque) == "" then
-    error("recorridos.yml: el recorrido '" .. idRecorrido .. "' no dice por que va la ficha '" .. slug .. "'")
+    detener("recorridos.yml: el recorrido '" .. idRecorrido .. "' no dice por que va la ficha '" .. slug .. "'")
   end
 
   local enLinea = pandoc.Inlines({ pandoc.Link(titulo, "terminos/" .. slug .. ".qmd"), pandoc.Str(":"), pandoc.Space() })
@@ -128,7 +135,7 @@ function Div(el)
   local recorrido = recorridos[id]
 
   if not recorrido then
-    error("recorridos.yml: no declara el recorrido '" .. id .. "' que pide la pagina")
+    detener("recorridos.yml: no declara el recorrido '" .. id .. "' que pide la pagina")
   end
 
   local bloques = {}
