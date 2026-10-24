@@ -11,7 +11,7 @@ description: "Marco jurídico de la Unión Europea que regula los sistemas de in
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-10-20
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -116,6 +116,8 @@ exige la intervención de un organismo notificado [@mdcg2025aiact].
 - [Aprendizaje automático](aprendizaje-automatico.qmd)
 - [Agente de IA](agente-de-ia.qmd)
 - [Sesgo de automatización](sesgo-de-automatizacion.qmd)
+- [Supervisión humana](supervision-humana.qmd)
+- [Problema del ritmo](problema-del-ritmo.qmd)
 
 ## Referencias
 

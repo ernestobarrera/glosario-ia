@@ -9,7 +9,7 @@ description: "Modelos que aprenden una señal numérica aproximada de calidad o 
 categories:
   - "Aprendizaje automático"
   - "Seguridad y riesgos"
-date-modified: 2026-09-15
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -92,6 +92,7 @@ las revisa; ninguna de las dos señales garantiza por sí sola corrección gener
 - [Aprendizaje por transferencia](aprendizaje-por-transferencia.qmd)
 - [Validación cruzada](validacion-cruzada.qmd)
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
+- [Trabajo fantasma](trabajo-fantasma.qmd)
 
 ## Referencias
 

@@ -8,7 +8,7 @@ description: "Proceso mediante el cual sistemas de IA descomponen, capturan mét
 categories:
   - "IA agéntica"
   - "Seguridad y riesgos"
-date-modified: 2026-09-19
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -41,8 +41,8 @@ Autor y Dorn documentaron empíricamente en 2013 la «polarización laboral»: l
 tecnología automatiza las tareas rutinarias —físicas y cognitivas— y vacía la
 franja media del mercado laboral [@autor2013polarization]. La IA generativa
 desde 2022 extiende este proceso a tareas no rutinarias antes consideradas
-irreemplazables, afectando por primera vez a profesiones de alta cualificación
-como la medicina, el derecho o la ingeniería de software.
+irreemplazables, y alcanza también a profesiones de alta cualificación como la
+medicina, el derecho o la ingeniería de software.
 
 ## Importancia actual
 
@@ -93,6 +93,7 @@ autónoma cuya lógica puede ser opaca.
 
 ## Ejemplos
 
+Los dos escenarios siguientes son ilustrativos, no resultados de un estudio.
 Un sistema de IA para detección de retinopatía diabética reduce el tiempo de
 lectura por imagen; los oftalmólogos que lo usan de forma continuada durante
 años pueden acumular menor práctica en la detección visual directa de
@@ -100,7 +101,7 @@ lesiones tempranas, con impacto potencial en su capacidad autónoma cuando el
 sistema no está disponible. Un agente de codificación clínica que propone
 códigos ICD-11 para la mayoría de los episodios de un hospital concentra la
 actividad del codificador en los casos residuales —los más atípicos y
-complejos—, que es donde pierde dominio progresivo sobre los criterios que el
+complejos—, que es donde puede perder dominio sobre los criterios que el
 sistema ya gestiona en volumen.
 
 ## Relacionados
@@ -113,6 +114,9 @@ sistema ya gestiona en volumen.
 - [Alucinación](alucinacion.qmd)
 - [Modelos de recompensa](modelos-de-recompensa.qmd)
 - [Trabajo fantasma](trabajo-fantasma.qmd)
+- [Descarga cognitiva](descarga-cognitiva.qmd)
+- [Supervisión humana](supervision-humana.qmd)
+- [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
 
 ## Referencias
 

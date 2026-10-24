@@ -8,7 +8,7 @@ description: "Brecha entre una capacidad disponible y lo que una evaluación dem
 categories:
   - "Fundamentos"
   - "Seguridad y riesgos"
-date-modified: 2026-09-22
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -84,6 +84,7 @@ herramienta que ya funciona no se usa en un servicio trata el de adopción.
 - [Andamiaje de agente](andamiaje-de-agente.qmd)
 - [Cómputo en inferencia](computo-en-inferencia.qmd)
 - [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
+- [Problema del ritmo](problema-del-ritmo.qmd)
 
 ## Referencias
 
