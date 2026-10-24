@@ -58,6 +58,9 @@ language:
 bibliography: references.bib
 csl: vancouver.csl
 filters:
+  # Primero: rellena las listas de los recorridos, y los demas filtros ven ya
+  # la pagina completa.
+  - filters/recorridos.lua
   - filters/sinonimos.lua
   - filters/estado.lua
   - filters/matices.lua
