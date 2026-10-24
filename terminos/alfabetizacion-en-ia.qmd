@@ -47,13 +47,16 @@ redacción por la de apoyar su promoción, teniendo en cuenta los conocimientos
 de cada persona, el contexto de uso y las personas afectadas
 [@ue2026aiomnibus].
 
-Han aparecido también marcos que la desglosan. El de Dakan y Feller distingue
-cuatro competencias: decidir cuándo y cómo delegar una tarea en la IA,
-describirle bien lo que se busca, juzgar la utilidad de lo que devuelve y
-responder del resultado final. Y tres modos de uso: que la IA ejecute una tarea
-que la persona define, que ambas la trabajen de forma iterativa o que la
-persona la configure para que actúe por su cuenta más adelante
-[@dakan2025aifluency]. Es un marco entre varios, no un estándar.
+Han aparecido también marcos que la desglosan. El de Dakan y Feller, que habla
+de *fluidez en IA* y publicó en 2025 la autoridad de educación superior de
+Irlanda, distingue cuatro competencias: decidir cuándo y cómo delegar una tarea
+en la IA, describirle bien lo que se busca, juzgar la utilidad de lo que
+devuelve y responder del resultado final. Y tres modos de uso: que la IA
+ejecute una tarea que la persona define, que ambas la trabajen de forma
+iterativa o que la persona la configure para que actúe por su cuenta más
+adelante. Los cursos basados en el marco los produjeron sus autores con
+Anthropic, una empresa que desarrolla modelos de IA [@dakan2025aifluency]. Es
+un marco entre varios, no un estándar.
 
 ## Importancia actual
 

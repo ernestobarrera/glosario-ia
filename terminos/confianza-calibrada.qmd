@@ -18,13 +18,15 @@ tipo: "concepto"
 
 La **confianza calibrada** es la que se corresponde con lo que un sistema
 automatizado puede hacer en una tarea y un contexto concretos: alta donde el
-sistema es fiable y baja donde no lo es. Importa porque la confianza guía
-cuánto se depende del sistema, sobre todo cuando es demasiado complejo para
-entenderlo del todo; la meta es que esa dependencia sea apropiada
+sistema es fiable y baja donde no lo es. Lee y See definieron la calibración
+como esa correspondencia entre la confianza de una persona y las capacidades
+del sistema: si la confianza las supera hay sobreconfianza, y si se queda por
+debajo, desconfianza. Importa porque la confianza guía cuánto se depende del
+sistema, sobre todo cuando es demasiado complejo para entenderlo del todo
 [@lee2004trust].
 
 Confiar y depender no son lo mismo: lo primero es una actitud y lo segundo, lo
-que se hace. Hay dos maneras de fallar. Fiarse de más lleva al **uso
+que se hace [@lee2004trust]. Hay dos maneras de fallar. Fiarse de más lleva al **uso
 indebido**, con vigilancia insuficiente y decisiones sesgadas, una de cuyas
 formas es el [sesgo de automatización](sesgo-de-automatizacion.qmd). Fiarse
 de menos lleva al **desuso**, a menudo tras falsas alarmas
@@ -71,6 +73,8 @@ después, sin ayuda, pero no percibieron haber aprendido menos
 
 ### Generales
 
+- Diseñar para una confianza apropiada, no para más confianza
+  [@lee2004trust].
 - Mostrar la incertidumbre del sistema en lugar de respuestas con una seguridad
   uniforme.
 - Medir no solo cuánto acierta el sistema, sino cuánto se acepta lo que propone
@@ -81,8 +85,9 @@ después, sin ayuda, pero no percibieron haber aprendido menos
 ### Sanitarias
 
 - Ante un sistema de apoyo a la decisión, preguntar en qué pacientes y tareas
-  se validó: la confianza debe serlo para esa tarea, no para el sistema en
-  general.
+  se validó: la confianza apropiada depende de entender cómo cambia la
+  capacidad del sistema según el contexto, no de una opinión sobre el sistema
+  en general [@lee2004trust].
 - No tomar la extensión ni el aplomo de una explicación como señal de acierto
   [@steyvers2025calibrationgap].
 - Registrar las discrepancias entre profesional y sistema para saber si se le
@@ -94,8 +99,9 @@ después, sin ayuda, pero no percibieron haber aprendido menos
 
 ## Limitaciones
 
-- La confianza es una actitud y lo que tiene consecuencias es la conducta:
-  conocer una no garantiza conocer la otra.
+- La confianza guía la dependencia, pero no la determina: el tiempo disponible,
+  la carga de trabajo o la confianza en el propio criterio también deciden si se
+  usa el sistema [@lee2004trust].
 - La fiabilidad de un sistema cambia con la tarea y la población; una confianza
   bien ajustada en un contexto puede no serlo en otro, como describe la
   [frontera tecnológica dentada](frontera-tecnologica-dentada.qmd).
