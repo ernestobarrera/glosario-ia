@@ -1079,11 +1079,42 @@ main.content:has(.atlas-visual) {
   margin-left: auto;
 }
 
-/* El icono de la barra que abre la guia, en el color de marca: gris, junto al
- * conmutador de tema, pasaba por un adorno mas. */
+/* El enlace de la barra que abre la guia, en el color de marca: gris, junto al
+ * conmutador de tema, pasaba por un adorno mas. Es una herramienta de la barra
+ * para que se vea tambien en el movil, y Quarto pinta las herramientas solo con
+ * su icono: el rotulo se toma de su title, que es el `text` de _quarto.yml, asi
+ * que se escribe en un solo sitio. Sin el rotulo, un interrogante solo se leia
+ * como un adorno. */
 .navbar .quarto-navigation-tool[href*="tour=1"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   color: var(--g-marca);
   font-size: 1.15rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navbar .quarto-navigation-tool[href*="tour=1"]::after {
+  content: attr(title);
+  font-family: var(--bs-font-sans-serif, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* En un movil corriente (390 px) el rotulo completo empujaba el buscador a una
+ * segunda linea y desbordaba la pagina; ahi se acorta en vez de quitarse. */
+@media (max-width: 429.98px) {
+  .navbar .quarto-navigation-tool[href*="tour=1"]::after {
+    content: "Guía";
+  }
+}
+
+/* Por debajo de 360 px ni eso cabe: queda el icono, con su title. */
+@media (max-width: 359.98px) {
+  .navbar .quarto-navigation-tool[href*="tour=1"]::after {
+    content: none;
+  }
 }
 
 .navbar .quarto-navigation-tool[href*="tour=1"]:hover,
