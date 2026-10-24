@@ -64,13 +64,16 @@ la página no carga Google Analytics ni instala sus cookies.
   identificador aleatorio; no permite saber quién es usted, pero sí reconocer el
   mismo navegador entre visitas.
 - **Cookies:** las de Google Analytics (`_ga` y `_ga_*`, hasta dos años), solo si
-  acepta; y las del propio aviso (`cookie_consent_*`), técnicas, que recuerdan su
-  decisión para no preguntarle en cada página.
+  acepta. Su decisión no es una cookie: se guarda en su propio navegador
+  (almacenamiento local, `cookie_consent`) y vale también para la
+  [web del autor](https://ernestobarrera.github.io/), que comparte dominio: si
+  decide en una, no se le vuelve a preguntar en la otra.
 - **Quién trata los datos:** Google, que puede tratarlos fuera de la Unión Europea.
   Sus condiciones están en la
   [política de privacidad de Google](https://policies.google.com/privacy?hl=es).
 - **Cómo cambiar de opinión:** con el enlace **«Preferencias de cookies»** del pie
-  de cualquier página.
+  de cualquier página. Si rechaza después de haber aceptado, se borran las cookies
+  de Google Analytics.
 
 Al margen de la analítica, las tipografías del glosario se sirven hoy desde Google
 Fonts: al abrir una página, el navegador las pide a Google, que recibe su dirección
