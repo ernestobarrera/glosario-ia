@@ -50,6 +50,33 @@ material ajeno mencionado aquí, acuda a su fuente y a sus condiciones.
 Para citar una ficha concreta, añada su título y la fecha de última revisión que
 figura en ella.
 
+## Cookies y analítica {#cookies}
+
+El glosario usa **Google Analytics** para saber qué fichas se consultan, cuánto se
+leen y cómo se llega a ellas, y decidir así qué revisar primero. **Solo se activa si
+lo acepta** en el aviso de cookies que aparece en la primera visita. Si no lo acepta,
+la página no carga Google Analytics ni instala sus cookies.
+
+- **Qué recoge, si acepta:** páginas vistas, tiempo de lectura, origen de la visita,
+  tipo de dispositivo y navegador, y ubicación aproximada. No recoge nombre, correo
+  ni nada que usted escriba en la página.
+- **Qué no es:** anónimo en sentido estricto. Google asigna a su navegador un
+  identificador aleatorio; no permite saber quién es usted, pero sí reconocer el
+  mismo navegador entre visitas. El glosario no lo usa para publicidad.
+- **Cookies:** las de Google Analytics (`_ga` y `_ga_*`, hasta dos años), solo si
+  acepta; y las del propio aviso (`cookie_consent_*`), técnicas, que recuerdan su
+  decisión para no preguntarle en cada página.
+- **Quién trata los datos:** Google, que puede tratarlos fuera de la Unión Europea.
+  Sus condiciones están en la
+  [política de privacidad de Google](https://policies.google.com/privacy?hl=es).
+- **Cómo cambiar de opinión:** con el enlace **«Preferencias de cookies»** del pie
+  de cualquier página.
+
+Al margen de la analítica, las tipografías del glosario se sirven hoy desde Google
+Fonts: al abrir una página, el navegador las pide a Google, que recibe su dirección
+IP. Para eso no se usan cookies. Las páginas con fórmulas cargan además la
+biblioteca MathJax desde jsDelivr.
+
 ## Errores y sugerencias
 
 Las correcciones son bienvenidas y son la vía más útil de colaborar. Puede

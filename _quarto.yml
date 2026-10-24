@@ -56,6 +56,17 @@ website:
         text: "Web del autor"
       - href: aviso.qmd
         text: "Aviso, límites y licencia"
+  # Banner de consentimiento propio de Quarto: la libreria va en site_libs, no
+  # en una CDN. Bloquea hasta que el lector acepta los scripts marcados
+  # cookie-consent="tracking" (Google Analytics, mas abajo). language va
+  # explicito: sin el, Quarto 1.9 lo genera en ingles aunque lang sea es.
+  cookie-consent:
+    type: express
+    style: simple
+    palette: light
+    language: es
+    prefs-text: "Preferencias de cookies"
+    policy-url: "https://ernestobarrera.github.io/glosario-ia/aviso.html#cookies"
 
 lang: es
 # El texto del campo de filtro. Por defecto Quarto pone «Filtro», que no dice
@@ -84,6 +95,19 @@ format:
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+      # Google Analytics, solo tras aceptar el banner. NO se usa la opcion
+      # google-analytics de Quarto: en 1.9.38 escribe la libreria de Google sin
+      # bloquear y solo bloquea la configuracion, asi que la IP del lector sale
+      # hacia Google aunque rechace. Aqui van bloqueadas las dos etiquetas; el
+      # banner activa tambien la que lleva src (comprobado en su codigo).
+      - text: |
+          <script type="text/plain" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-YFKR6RB1ZC"></script>
+          <script type="text/plain" cookie-consent="tracking">
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YFKR6RB1ZC');
+          </script>
     theme:
       light: [cosmo, glosario.scss]
       dark: [cosmo, glosario-oscuro.scss]
