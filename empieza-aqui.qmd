@@ -31,4 +31,6 @@ buscador de la barra o el [índice de la A a la Z](indice-az.qmd).
 :::
 
 Después, [Temas](temas.qmd) agrupa todas las fichas por ámbito y el
-[Atlas visual](atlas.qmd) reúne varios conceptos en una sola lámina.
+[Atlas visual](atlas.qmd) reúne varios conceptos en una sola lámina. El
+recorrido [Qué cambia cuando usamos la IA](que-cambia-al-usar-la-ia.qmd) sigue
+por otro lado: lo que cambia en quien la usa y en la organización que la adopta.

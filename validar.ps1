@@ -933,49 +933,58 @@ foreach ($ficha in $fichas) {
   }
 }
 
-# Empieza aqui: la secuencia de entrada es una seleccion editorial a mano, asi
-# que nadie la regenera si una ficha cambia de nombre. Cada enlace debe apuntar
+# Recorridos: Empieza aqui y los demas son selecciones editoriales a mano, asi
+# que nadie los regenera si una ficha cambia de nombre. Cada enlace debe apuntar
 # a una ficha existente, sin repetirse, y la pagina debe salir renderizada con
-# todos ellos y enlazada desde la portada.
-$enlacesEntrada = 0
-$rutaEntrada = Join-Path $raiz "empieza-aqui.qmd"
-if (-not (Test-Path -LiteralPath $rutaEntrada)) {
-  Registrar-Error "empieza-aqui.qmd: no existe la pagina de entrada"
-}
-else {
-  $textoEntrada = Get-Content -LiteralPath $rutaEntrada -Encoding UTF8 -Raw
-  $htmlEntradaRuta = Join-Path $carpetaSitio "empieza-aqui.html"
-  $htmlEntrada = if (Test-Path -LiteralPath $htmlEntradaRuta) {
-    Get-Content -LiteralPath $htmlEntradaRuta -Encoding UTF8 -Raw
+# todos ellos y enlazada desde la portada. Un recorrido nuevo se declara aqui;
+# los mensajes de Empieza aqui son los mismos que antes de generalizarlo.
+$recorridos = @(
+  @{ Fuente = "empieza-aqui.qmd"; Nombre = "pagina de entrada" },
+  @{ Fuente = "que-cambia-al-usar-la-ia.qmd"; Nombre = "pagina de recorrido" }
+)
+$enlacesRecorrido = @{}
+$htmlPortada = Get-Content -LiteralPath (Join-Path $carpetaSitio "index.html") -Encoding UTF8 -Raw
+foreach ($recorrido in $recorridos) {
+  $fuente = $recorrido.Fuente
+  $salida = [IO.Path]::ChangeExtension($fuente, ".html")
+  $enlacesRecorrido[$fuente] = 0
+  $rutaRecorrido = Join-Path $raiz $fuente
+  if (-not (Test-Path -LiteralPath $rutaRecorrido)) {
+    Registrar-Error "$fuente`: no existe la $($recorrido.Nombre)"
+    continue
+  }
+  $textoRecorrido = Get-Content -LiteralPath $rutaRecorrido -Encoding UTF8 -Raw
+  $htmlRecorridoRuta = Join-Path $carpetaSitio $salida
+  $htmlRecorrido = if (Test-Path -LiteralPath $htmlRecorridoRuta) {
+    Get-Content -LiteralPath $htmlRecorridoRuta -Encoding UTF8 -Raw
   }
   else {
-    Registrar-Error "empieza-aqui.html: no existe la salida de la pagina de entrada"
+    Registrar-Error "$salida`: no existe la salida de la $($recorrido.Nombre)"
     ""
   }
-  $vistosEntrada = @{}
-  foreach ($enlace in [regex]::Matches($textoEntrada, "\]\(terminos/([A-Za-z0-9-]+)\.qmd\)")) {
-    $slugEntrada = $enlace.Groups[1].Value
-    if ($vistosEntrada.ContainsKey($slugEntrada)) {
-      Registrar-Error "empieza-aqui.qmd: la ficha '$slugEntrada' aparece dos veces"
+  $vistosRecorrido = @{}
+  foreach ($enlace in [regex]::Matches($textoRecorrido, "\]\(terminos/([A-Za-z0-9-]+)\.qmd\)")) {
+    $slugRecorrido = $enlace.Groups[1].Value
+    if ($vistosRecorrido.ContainsKey($slugRecorrido)) {
+      Registrar-Error "$fuente`: la ficha '$slugRecorrido' aparece dos veces"
       continue
     }
-    $vistosEntrada[$slugEntrada] = $true
-    if (-not (Test-Path -LiteralPath (Join-Path $raiz "terminos\$slugEntrada.qmd"))) {
-      Registrar-Error "empieza-aqui.qmd: enlace a una ficha inexistente '$slugEntrada'"
+    $vistosRecorrido[$slugRecorrido] = $true
+    if (-not (Test-Path -LiteralPath (Join-Path $raiz "terminos\$slugRecorrido.qmd"))) {
+      Registrar-Error "$fuente`: enlace a una ficha inexistente '$slugRecorrido'"
       continue
     }
-    if ($htmlEntrada -and $htmlEntrada.IndexOf("href=`"./terminos/$slugEntrada.html`"", [StringComparison]::Ordinal) -lt 0) {
-      Registrar-Error "empieza-aqui.html: falta el enlace renderizado a '$slugEntrada'"
+    if ($htmlRecorrido -and $htmlRecorrido.IndexOf("href=`"./terminos/$slugRecorrido.html`"", [StringComparison]::Ordinal) -lt 0) {
+      Registrar-Error "$salida`: falta el enlace renderizado a '$slugRecorrido'"
       continue
     }
-    $enlacesEntrada++
+    $enlacesRecorrido[$fuente]++
   }
-  if ($enlacesEntrada -eq 0) {
-    Registrar-Error "empieza-aqui.qmd: la pagina de entrada no enlaza ninguna ficha"
+  if ($enlacesRecorrido[$fuente] -eq 0) {
+    Registrar-Error "$fuente`: la $($recorrido.Nombre) no enlaza ninguna ficha"
   }
-  $htmlPortada = Get-Content -LiteralPath (Join-Path $carpetaSitio "index.html") -Encoding UTF8 -Raw
-  if ($htmlPortada.IndexOf('href="./empieza-aqui.html"', [StringComparison]::Ordinal) -lt 0) {
-    Registrar-Error "index.html: la portada no enlaza la pagina de entrada"
+  if ($htmlPortada.IndexOf("href=`"./$salida`"", [StringComparison]::Ordinal) -lt 0) {
+    Registrar-Error "index.html: la portada no enlaza la $($recorrido.Nombre)"
   }
 }
 
@@ -1000,7 +1009,8 @@ Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
 Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase, recuento y $fichasEnSecciones pertenencias; $laminasEnTemas enlaces al Atlas"
 Write-Host "  Indice A-Z: $entradasIndice entradas, con remision para cada sinonimo"
-Write-Host "  Empieza aqui: $enlacesEntrada fichas enlazadas, unicas y renderizadas"
+Write-Host "  Empieza aqui: $($enlacesRecorrido['empieza-aqui.qmd']) fichas enlazadas, unicas y renderizadas"
+Write-Host "  Recorrido Que cambia cuando usamos la IA: $($enlacesRecorrido['que-cambia-al-usar-la-ia.qmd']) fichas enlazadas, unicas y renderizadas"
 Write-Host "  Estado renderizado: OK"
 Write-Host "  Fechas, taxonomia, enlaces y citas: OK"
 Write-Host "  Modelo de datos: esquema.lock.yml sha $($lock['esquema-sha']) ($($seccionesObligatorias.Count) secciones obligatorias)"

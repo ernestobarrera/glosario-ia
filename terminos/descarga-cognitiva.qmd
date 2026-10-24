@@ -11,7 +11,7 @@ description: "Uso de un recurso externo para reducir el esfuerzo mental de una t
 categories:
   - "Fundamentos"
   - "Seguridad y riesgos"
-date-modified: 2026-09-02
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -96,6 +96,9 @@ es la misma; lo que cambia es qué se quedó dentro.
 - [Sesgo de automatización](sesgo-de-automatizacion.qmd)
 - [Agente de IA](agente-de-ia.qmd)
 - [Alucinación](alucinacion.qmd)
+- [Automatización del trabajo cognitivo](automatizacion-del-trabajo-cognitivo.qmd)
+- [Supervisión humana](supervision-humana.qmd)
+- [Frontera tecnológica dentada](frontera-tecnologica-dentada.qmd)
 
 ## Referencias
 

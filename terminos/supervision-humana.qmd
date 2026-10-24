@@ -8,7 +8,7 @@ description: "Capacidad efectiva de una persona para vigilar un sistema de IA, i
 categories:
   - "Ética y gobernanza"
   - "IA agéntica"
-date-modified: 2026-10-21
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -40,6 +40,20 @@ El principal obstáculo cognitivo es el
 entrenar con datos etiquetados.
 
 ## Contexto histórico
+
+La exigencia de que las personas conserven el control de lo que decide un
+sistema autónomo tomó forma en el debate sobre armas autónomas, con el
+principio de **control humano significativo** (*meaningful human control*):
+que sean las personas, y no los algoritmos, quienes mantengan el control de las
+decisiones relevantes y respondan moralmente de ellas. En 2018, Santoni de Sio
+y van den Hoven lo formularon como dos requisitos de diseño: que el sistema
+responda a las razones morales de quienes lo diseñan y lo despliegan y a los
+hechos relevantes de su entorno (condición de *seguimiento*), y que cualquier
+resultado pueda remontarse al menos a una persona de la cadena de diseño y uso
+(condición de *trazabilidad*) [@santonidesio2018meaningful]. No equivale a la
+supervisión: atiende a cómo se diseña el conjunto para que alguien responda de
+lo que ocurre, más que a lo que una persona puede hacer mientras el sistema
+funciona.
 
 En abril de 2019, el Grupo de Expertos de Alto Nivel sobre IA de la Comisión
 Europea incluyó la acción y la supervisión humanas entre los requisitos de una

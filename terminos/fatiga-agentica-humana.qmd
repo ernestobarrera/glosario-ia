@@ -12,7 +12,7 @@ categories:
   - "IA agéntica"
   - "Seguridad y riesgos"
   - "Ética y gobernanza"
-date-modified: 2026-08-23
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -108,6 +108,7 @@ entre demandas y capacidad de supervisión, no el uso de agentes.
 - [Sistema multiagente](sistema-multiagente.qmd)
 - [Sesgo de automatización](sesgo-de-automatizacion.qmd)
 - [Explicabilidad](explicabilidad.qmd)
+- [Supervisión humana](supervision-humana.qmd)
 
 ## Referencias
 

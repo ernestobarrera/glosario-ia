@@ -10,7 +10,7 @@ description: "Capa de instrucciones, herramientas y gestión del contexto que co
 categories:
   - "IA agéntica"
   - "Arquitecturas"
-date-modified: 2026-09-22
+date-modified: 2026-10-24
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -31,6 +31,12 @@ la vez que los términos no tienen definiciones universalmente aceptadas y
 que otros marcos usan *harness* para un conjunto más amplio. Aquí se explica
 la distinción, sin fijarla como una equivalencia obligatoria
 [@huggingface2026agentglossary].
+
+No debe confundirse con el **andamiaje** de la psicología educativa: la ayuda
+temporal con la que un tutor permite a quien aprende resolver una tarea que
+todavía no resolvería solo [@wood1976tutoring]. Comparten la imagen, no el
+objeto: aquí se habla de la configuración de un sistema, no del aprendizaje de
+una persona.
 
 ## Contexto histórico
 
