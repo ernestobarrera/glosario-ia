@@ -8,7 +8,7 @@ description: "Pérdida de una destreza ya adquirida cuando una tarea se delega d
 categories:
   - "Seguridad y riesgos"
 date-modified: 2026-10-24
-estado: "borrador"
+estado: "revisada"
 tipo: "concepto"
 ---
 

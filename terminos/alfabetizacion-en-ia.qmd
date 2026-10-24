@@ -10,7 +10,7 @@ categories:
   - "Ética y gobernanza"
   - "Fundamentos"
 date-modified: 2026-10-24
-estado: "borrador"
+estado: "revisada"
 tipo: "concepto"
 ---
 

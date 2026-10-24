@@ -11,8 +11,8 @@ description: "Enfoque que combina recuperación de información externa con gene
 categories:
   - "Recuperación de información"
   - "Modelos de lenguaje"
-date-modified: 2026-10-20
-estado: "borrador"
+date-modified: 2026-10-24
+estado: "revisada"
 tipo: "concepto"
 ---
 

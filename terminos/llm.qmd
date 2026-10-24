@@ -11,8 +11,8 @@ description: "Modelo entrenado con grandes corpus para predecir y generar lengua
 categories:
   - "Modelos de lenguaje"
   - "Arquitecturas"
-date-modified: 2026-10-20
-estado: "borrador"
+date-modified: 2026-10-24
+estado: "revisada"
 tipo: "concepto"
 ---
 

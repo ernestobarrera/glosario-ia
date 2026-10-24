@@ -9,8 +9,8 @@ description: "Rama de la IA que desarrolla modelos capaces de aprender patrones 
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-08-22
-estado: "borrador"
+date-modified: 2026-10-24
+estado: "revisada"
 tipo: "concepto"
 ---
 

@@ -11,8 +11,8 @@ description: "Técnica de guiar el comportamiento de un modelo de lenguaje media
 categories:
   - "Modelos de lenguaje"
   - "Procesamiento del lenguaje"
-date-modified: 2026-09-22
-estado: "borrador"
+date-modified: 2026-10-24
+estado: "revisada"
 tipo: "tecnica"
 ---
 
