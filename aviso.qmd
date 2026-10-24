@@ -62,7 +62,7 @@ la página no carga Google Analytics ni instala sus cookies.
   ni nada que usted escriba en la página.
 - **Qué no es:** anónimo en sentido estricto. Google asigna a su navegador un
   identificador aleatorio; no permite saber quién es usted, pero sí reconocer el
-  mismo navegador entre visitas. El glosario no lo usa para publicidad.
+  mismo navegador entre visitas.
 - **Cookies:** las de Google Analytics (`_ga` y `_ga_*`, hasta dos años), solo si
   acepta; y las del propio aviso (`cookie_consent_*`), técnicas, que recuerdan su
   decisión para no preguntarle en cada página.
