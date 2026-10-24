@@ -3,8 +3,8 @@
 -- Por que existe: los pasos de la guia son decision editorial y su sitio es
 -- guia.yml, como el de los recorridos es recorridos.yml. Este filtro lleva a
 -- cada pagina solo la guia que le toca —la de la portada a index, la de la
--- ficha a cada terminos/*.qmd— y a las demas no les anade nada: en ellas, «Como
--- se usa» de la barra lleva a la guia de la portada sin necesidad de script.
+-- ficha a cada terminos/*.qmd— y a las demas no les anade nada: en ellas, el
+-- icono de la barra lleva a la guia de la portada sin necesidad de script.
 --
 -- Emite los pasos como JSON dentro de la pagina, con el texto ya convertido de
 -- Markdown a HTML, y declara assets/guia.js como dependencia: Quarto lo copia a
@@ -83,8 +83,8 @@ local function paginaActual()
   return nil
 end
 
--- La pagina a la que apunta sigue-en tiene que existir y tener guia: un enlace
--- «Ver como se lee una ficha» que abre una pagina sin guia promete lo que no hay.
+-- La pagina a la que apunta vuelve-a tiene que existir y tener guia: un enlace
+-- «Ver la parte 1» que abre una pagina sin guia promete lo que no hay.
 local function paginaDe(ruta)
   if ruta == "index" then
     return "portada"
@@ -99,19 +99,53 @@ local function paginaDe(ruta)
   return nil
 end
 
-local function leerGuias()
-  local archivo = io.open(raiz() .. "/guia.yml", "r")
+-- guia.yml y recorridos.yml se leen como el bloque de metadatos de un documento
+-- vacio, igual que en recorridos.lua: cada texto llega ya como Markdown en linea.
+local function leerYaml(nombre)
+  local archivo = io.open(raiz() .. "/" .. nombre, "r")
 
   if not archivo then
-    detener("guia.yml: no existe")
+    detener(nombre .. ": no existe")
   end
 
   local contenido = archivo:read("*a")
   archivo:close()
+  return pandoc.read("---\n" .. contenido .. "\n---\n", "markdown").meta
+end
 
-  -- Leido como el bloque de metadatos de un documento vacio, igual que
-  -- recorridos.yml: cada texto llega ya como Markdown en linea.
-  return pandoc.read("---\n" .. contenido .. "\n---\n", "markdown").meta.guias or {}
+-- Las fichas de un recorrido, en pasos sueltos o repartidas en etapas: la misma
+-- forma que lee filters/recorridos.lua.
+local function fichasDeRecorrido(idGuia, idRecorrido)
+  for _, recorrido in ipairs(leerYaml("recorridos.yml").recorridos or {}) do
+    if texto(recorrido.id) == idRecorrido then
+      local slugs = {}
+      local tramos = { recorrido.pasos or {} }
+
+      for _, etapa in ipairs(recorrido.etapas or {}) do
+        table.insert(tramos, etapa.pasos or {})
+      end
+
+      for _, pasos in ipairs(tramos) do
+        for _, paso in ipairs(pasos) do
+          local slug = texto(paso.ficha)
+
+          if not existe(raiz() .. "/terminos/" .. slug .. ".qmd") then
+            detener("guia.yml: la guia '" .. idGuia .. "' continua en el recorrido '" .. idRecorrido .. "', que enlaza la ficha inexistente '" .. slug .. "'")
+          end
+
+          table.insert(slugs, slug)
+        end
+      end
+
+      if #slugs == 0 then
+        detener("guia.yml: la guia '" .. idGuia .. "' continua en el recorrido '" .. idRecorrido .. "', que no tiene fichas")
+      end
+
+      return slugs
+    end
+  end
+
+  detener("guia.yml: la guia '" .. idGuia .. "' continua en el recorrido '" .. idRecorrido .. "', que no existe")
 end
 
 local function enHtml(inlines)
@@ -119,9 +153,13 @@ local function enHtml(inlines)
   return (html:gsub("%s+$", ""))
 end
 
-local function prepararGuia(guia)
+local function prepararGuia(guia, pagina)
   local id = texto(guia.id)
-  local datos = { id = id, pasos = {} }
+  local datos = { id = id, pagina = pagina, rotulo = texto(guia.rotulo), pasos = {} }
+
+  if datos.rotulo == "" then
+    detener("guia.yml: la guia '" .. id .. "' no tiene rotulo")
+  end
 
   for numero, paso in ipairs(guia.pasos or {}) do
     local titulo = texto(paso.titulo)
@@ -146,18 +184,30 @@ local function prepararGuia(guia)
     detener("guia.yml: la guia '" .. id .. "' no tiene pasos")
   end
 
-  local sigueEn = guia["sigue-en"] and texto(guia["sigue-en"]) or nil
+  local recorrido = guia["continua-en-recorrido"] and texto(guia["continua-en-recorrido"]) or nil
 
-  if sigueEn then
-    if not paginaDe(sigueEn) then
-      detener("guia.yml: la guia '" .. id .. "' sigue en '" .. sigueEn .. "', que no existe o no tiene guia")
+  if recorrido then
+    if texto(guia["continua-texto"]) == "" then
+      detener("guia.yml: la guia '" .. id .. "' tiene continua-en-recorrido sin continua-texto")
     end
 
-    if texto(guia["sigue-texto"]) == "" then
-      detener("guia.yml: la guia '" .. id .. "' tiene sigue-en sin sigue-texto")
+    datos.continua = { fichas = fichasDeRecorrido(id, recorrido), texto = texto(guia["continua-texto"]) }
+  end
+
+  local vuelveA = guia["vuelve-a"] and texto(guia["vuelve-a"]) or nil
+
+  if vuelveA then
+    local destino = paginaDe(vuelveA)
+
+    if not destino then
+      detener("guia.yml: la guia '" .. id .. "' vuelve a '" .. vuelveA .. "', que no existe o no tiene guia")
     end
 
-    datos.sigue = { href = sigueEn .. ".html?tour=1", texto = texto(guia["sigue-texto"]) }
+    if texto(guia["vuelve-texto"]) == "" then
+      detener("guia.yml: la guia '" .. id .. "' tiene vuelve-a sin vuelve-texto")
+    end
+
+    datos.vuelve = { href = vuelveA .. ".html?tour=1", pagina = destino, texto = texto(guia["vuelve-texto"]) }
   end
 
   return datos
@@ -172,9 +222,9 @@ function Pandoc(doc)
 
   local elegida = nil
 
-  for _, guia in ipairs(leerGuias()) do
+  for _, guia in ipairs(leerYaml("guia.yml").guias or {}) do
     if texto(guia.pagina) == pagina then
-      elegida = prepararGuia(guia)
+      elegida = prepararGuia(guia, pagina)
     end
   end
 

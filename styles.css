@@ -1019,15 +1019,23 @@ main.content:has(.atlas-visual) {
 .guia-cabecera {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+/* Que parte de la guia es: sin el, la de la ficha parecia otra guia distinta. */
+.guia-rotulo {
+  flex: 1;
+  color: var(--g-marca);
+  font-family: var(--bs-font-monospace, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .guia-contador {
   color: var(--g-tinta-3);
   font-family: var(--bs-font-monospace, monospace);
   font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .guia-cerrar {
@@ -1059,14 +1067,28 @@ main.content:has(.atlas-visual) {
   gap: 0.5rem;
 }
 
-.guia-sigue {
+.guia-vuelve {
   font-size: 0.9rem;
 }
 
 .guia-botones {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.4rem;
   margin-left: auto;
+}
+
+/* El icono de la barra que abre la guia, en el color de marca: gris, junto al
+ * conmutador de tema, pasaba por un adorno mas. */
+.navbar .quarto-navigation-tool[href*="tour=1"] {
+  color: var(--g-marca);
+  font-size: 1.15rem;
+}
+
+.navbar .quarto-navigation-tool[href*="tour=1"]:hover,
+.navbar .quarto-navigation-tool[href*="tour=1"]:focus-visible {
+  color: var(--g-tinta);
 }
 
 /* ---------- transicion entre paginas ---------- */

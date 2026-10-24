@@ -87,13 +87,14 @@ reserve el sitio con un bloque `::: {.recorrido recorrido="<id>"}` cerrado con
 
 ## Guía de uso
 
-Los pasos de «Cómo se usa» se escriben en `guia.yml`: una guía para la portada y
-otra para las fichas. Cada paso lleva `titulo`, `texto` y, si señala algo de la
-página, un `destino` entre comillas con la forma `"#id"` o `".clase"`. El
-validador comprueba que ese destino existe en la portada o en cada una de las
-fichas; si al cambiar una plantilla o una sección desaparece, la validación
-falla. La guía no se abre sola: se abre con el enlace de la barra o con
-`?tour=1` al final de la dirección.
+Los pasos de la guía «Cómo se usa» se escriben en `guia.yml`, en dos partes: la
+de la portada (dónde buscar), que termina llevando a una ficha al azar de
+«Empieza aquí», y la de las fichas (cómo se lee una ficha). Cada paso lleva
+`titulo`, `texto` y, si señala algo de la página, un `destino` entre comillas
+con la forma `"#id"` o `".clase"`. El validador comprueba que ese destino existe
+en la portada o en cada una de las fichas; si al cambiar una plantilla o una
+sección desaparece, la validación falla. La guía no se abre sola: se abre con el
+icono de interrogación de la barra o con `?tour=1` al final de la dirección.
 
 ## Citas y bibliografía
 

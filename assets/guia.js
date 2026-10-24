@@ -1,14 +1,16 @@
 // Guia de uso: muestra los pasos de guia.yml que filters/guia.lua deja en la
 // pagina como JSON (#guia-datos).
 //
-// Nunca se abre sola. La abren dos cosas: el enlace «Como se usa» de la barra,
-// que aqui se intercepta para no recargar la pagina, y ?tour=1 en la direccion,
-// que es lo que se comparte con quien llega por primera vez. Por eso no guarda
-// nada en el navegador: no hay que recordar quien la vio.
+// Nunca se abre sola. La abren dos cosas: el icono de la barra, que aqui se
+// intercepta para no recargar la pagina, y ?tour=1 en la direccion, que es lo
+// que se comparte con quien llega por primera vez. Por eso no guarda nada en el
+// navegador: no hay que recordar quien la vio.
 //
-// Un paso cuyo destino no se ve en esta pantalla (el indice lateral en el
-// movil) se salta. Que el destino exista lo garantiza validar.ps1; que se vea
-// depende del ancho, y eso solo se sabe aqui.
+// La guia de la portada termina llevando a una ficha al azar con ?desde=portada;
+// la de la ficha, abierta asi, no ofrece volver a la parte que se acaba de ver.
+//
+// Un paso cuyo destino no se ve en esta pantalla se salta. Que el destino exista
+// lo garantiza validar.ps1; que se vea depende del ancho, y eso solo se sabe aqui.
 (function () {
   "use strict";
 
@@ -19,6 +21,7 @@
   }
 
   const guia = JSON.parse(nodoDatos.textContent);
+  const parametros = new URLSearchParams(window.location.search);
   const sinMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let pasos = [];
@@ -80,26 +83,32 @@
     tarjeta.setAttribute("aria-describedby", "guia-texto");
     tarjeta.innerHTML =
       '<div class="guia-cabecera">' +
+      '<span class="guia-rotulo"></span>' +
       '<span class="guia-contador"></span>' +
       '<button type="button" class="guia-cerrar" aria-label="Cerrar la guía">×</button>' +
       "</div>" +
       '<h2 class="guia-titulo" id="guia-titulo"></h2>' +
       '<div class="guia-texto" id="guia-texto"></div>' +
       '<div class="guia-pie">' +
-      '<a class="guia-sigue"></a>' +
+      '<a class="guia-vuelve"></a>' +
       '<span class="guia-botones">' +
       '<button type="button" class="btn btn-outline-secondary btn-sm guia-anterior">Anterior</button>' +
+      '<button type="button" class="btn btn-outline-secondary btn-sm guia-terminar">Terminar</button>' +
       '<button type="button" class="btn btn-primary btn-sm guia-siguiente">Siguiente</button>' +
       "</span>" +
       "</div>";
 
+    tarjeta.querySelector(".guia-rotulo").textContent = guia.rotulo;
     tarjeta.querySelector(".guia-cerrar").addEventListener("click", cerrar);
+    tarjeta.querySelector(".guia-terminar").addEventListener("click", cerrar);
     tarjeta.querySelector(".guia-anterior").addEventListener("click", function () {
       mostrar(indice - 1);
     });
     tarjeta.querySelector(".guia-siguiente").addEventListener("click", function () {
       if (indice < pasos.length - 1) {
         mostrar(indice + 1);
+      } else if (guia.continua) {
+        continuar();
       } else {
         cerrar();
       }
@@ -169,18 +178,23 @@
     const ultimo = indice === pasos.length - 1;
 
     destinoActual = destinoDe(paso);
-    tarjeta.querySelector(".guia-contador").textContent = indice + 1 + " de " + pasos.length;
+    tarjeta.querySelector(".guia-contador").textContent = indice + 1 + "/" + pasos.length;
     tarjeta.querySelector(".guia-titulo").textContent = paso.titulo;
     tarjeta.querySelector(".guia-texto").innerHTML = paso.texto;
     tarjeta.querySelector(".guia-anterior").hidden = indice === 0;
-    tarjeta.querySelector(".guia-siguiente").textContent = ultimo ? "Terminar" : "Siguiente";
 
-    const sigue = tarjeta.querySelector(".guia-sigue");
-    sigue.hidden = !(ultimo && guia.sigue);
+    // En el ultimo paso, si la guia continua en otra pagina, ese es el boton
+    // principal y «Terminar» queda al lado; si no, el principal termina.
+    const siguiente = tarjeta.querySelector(".guia-siguiente");
+    siguiente.textContent = !ultimo ? "Siguiente" : guia.continua ? guia.continua.texto + " →" : "Terminar";
+    tarjeta.querySelector(".guia-terminar").hidden = !(ultimo && guia.continua);
 
-    if (ultimo && guia.sigue) {
-      sigue.href = rutaDesdeRaiz(guia.sigue.href);
-      sigue.textContent = guia.sigue.texto + " →";
+    const vuelve = tarjeta.querySelector(".guia-vuelve");
+    vuelve.hidden = !(ultimo && guia.vuelve && parametros.get("desde") !== guia.vuelve.pagina);
+
+    if (!vuelve.hidden) {
+      vuelve.href = rutaDesdeRaiz(guia.vuelve.href);
+      vuelve.textContent = guia.vuelve.texto;
     }
 
     if (destinoActual) {
@@ -189,6 +203,12 @@
 
     colocar();
     tarjeta.querySelector(".guia-siguiente").focus({ preventScroll: true });
+  }
+
+  function continuar() {
+    const fichas = guia.continua.fichas;
+    const slug = fichas[Math.floor(Math.random() * fichas.length)];
+    window.location.href = rutaDesdeRaiz("terminos/" + slug + ".html?tour=1&desde=" + guia.pagina);
   }
 
   function teclas(evento) {
@@ -262,20 +282,11 @@
     document.querySelectorAll('#quarto-header a[href*="tour=1"]').forEach(function (enlace) {
       enlace.addEventListener("click", function (evento) {
         evento.preventDefault();
-
-        // En el movil el enlace esta dentro del menu desplegado: se pliega
-        // antes, o quedaria abierto debajo de la guia.
-        const menu = enlace.closest(".navbar-collapse.show");
-
-        if (menu && window.bootstrap) {
-          window.bootstrap.Collapse.getOrCreateInstance(menu).hide();
-        }
-
         abrir();
       });
     });
 
-    if (new URLSearchParams(window.location.search).get("tour") === "1") {
+    if (parametros.get("tour") === "1") {
       abrir();
     }
   }

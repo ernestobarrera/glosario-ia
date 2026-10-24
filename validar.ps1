@@ -1078,18 +1078,27 @@ else {
   foreach ($linea in (Get-Content -LiteralPath $rutaGuia -Encoding UTF8)) {
     $numeroLinea++
     if ($linea -match '^\s*-\s+id:\s*([A-Za-z0-9-]+)\s*$') {
-      $guiaActual = @{ Id = $Matches[1]; Pagina = $null; SigueEn = $null; Pasos = New-Object System.Collections.ArrayList }
+      $guiaActual = @{ Id = $Matches[1]; Pagina = $null; Rotulo = $null; Continua = $null; ContinuaTexto = $null; VuelveA = $null; VuelveTexto = $null; Pasos = New-Object System.Collections.ArrayList }
       $pasoActual = $null
       [void]$guias.Add($guiaActual)
     }
     elseif ($guiaActual -and $linea -match '^\s+pagina:\s*(portada|ficha)\s*$') {
       $guiaActual['Pagina'] = $Matches[1]
     }
-    elseif ($guiaActual -and $linea -match '^\s+sigue-en:\s*(index|terminos/[A-Za-z0-9-]+)\s*$') {
-      $guiaActual['SigueEn'] = $Matches[1]
+    elseif ($guiaActual -and $linea -match '^\s+rotulo:\s*"(.+)"\s*$') {
+      $guiaActual['Rotulo'] = $Matches[1]
     }
-    elseif ($guiaActual -and $linea -match '^\s+sigue-texto:\s*"(.+)"\s*$') {
-      $guiaActual['SigueTexto'] = $Matches[1]
+    elseif ($guiaActual -and $linea -match '^\s+continua-en-recorrido:\s*([A-Za-z0-9-]+)\s*$') {
+      $guiaActual['Continua'] = $Matches[1]
+    }
+    elseif ($guiaActual -and $linea -match '^\s+continua-texto:\s*"(.+)"\s*$') {
+      $guiaActual['ContinuaTexto'] = $Matches[1]
+    }
+    elseif ($guiaActual -and $linea -match '^\s+vuelve-a:\s*(index|terminos/[A-Za-z0-9-]+)\s*$') {
+      $guiaActual['VuelveA'] = $Matches[1]
+    }
+    elseif ($guiaActual -and $linea -match '^\s+vuelve-texto:\s*"(.+)"\s*$') {
+      $guiaActual['VuelveTexto'] = $Matches[1]
     }
     elseif ($guiaActual -and $linea -match '^\s*-\s+titulo:\s*"(.+)"\s*$') {
       $pasoActual = @{ Titulo = $Matches[1]; Destino = $null; Texto = $false; Linea = $numeroLinea }
@@ -1101,7 +1110,7 @@ else {
     elseif ($pasoActual -and $linea -match '^\s+texto:\s*"(.+)"\s*$') {
       $pasoActual['Texto'] = $true
     }
-    elseif ($linea -match '^[^#"]*(?<![\w-])(id|pagina|sigue-en|sigue-texto|titulo|destino|texto)\s*:') {
+    elseif ($linea -match '^[^#"]*(?<![\w-])(id|pagina|rotulo|continua-en-recorrido|continua-texto|vuelve-a|vuelve-texto|titulo|destino|texto)\s*:') {
       Registrar-Error "guia.yml:$numeroLinea`: '$($Matches[1]):' no tiene la forma admitida (ver la cabecera del fichero)"
     }
   }
@@ -1138,16 +1147,34 @@ foreach ($guia in $guias) {
   if (-not $guia.Pagina) {
     continue
   }
-  if ($guia.SigueEn -and -not $guia.SigueTexto) {
-    Registrar-Error "guia.yml: la guia '$($guia.Id)' tiene sigue-en sin sigue-texto"
+  # El rotulo dice que parte es; sin el, la guia de la ficha parece otra guia.
+  if (-not $guia.Rotulo) {
+    Registrar-Error "guia.yml: la guia '$($guia.Id)' no tiene rotulo"
   }
-  if ($guia.SigueEn) {
-    $paginaSigue =if ($guia.SigueEn -eq "index") { "portada" } else { "ficha" }
-    if (-not (Test-Path -LiteralPath (Join-Path $raiz "$($guia.SigueEn).qmd"))) {
-      Registrar-Error "guia.yml: la guia '$($guia.Id)' sigue en '$($guia.SigueEn)', que no existe"
+  # La continuacion lleva a una ficha al azar del recorrido: el recorrido tiene
+  # que estar declarado (que sus fichas existan ya lo comprueba su apartado) y
+  # sus fichas tienen guia, porque la tiene toda ficha.
+  if ($guia.Continua) {
+    if (-not $guia.ContinuaTexto) {
+      Registrar-Error "guia.yml: la guia '$($guia.Id)' tiene continua-en-recorrido sin continua-texto"
     }
-    elseif (-not $paginasConGuia.ContainsKey($paginaSigue)) {
-      Registrar-Error "guia.yml: la guia '$($guia.Id)' sigue en '$($guia.SigueEn)', que no tiene guia"
+    if (-not $idsRecorrido -or -not $idsRecorrido.ContainsKey($guia.Continua)) {
+      Registrar-Error "guia.yml: la guia '$($guia.Id)' continua en el recorrido '$($guia.Continua)', que recorridos.yml no declara"
+    }
+    if (-not $paginasConGuia.ContainsKey("ficha")) {
+      Registrar-Error "guia.yml: la guia '$($guia.Id)' continua en fichas, que no tienen guia"
+    }
+  }
+  if ($guia.VuelveA) {
+    if (-not $guia.VuelveTexto) {
+      Registrar-Error "guia.yml: la guia '$($guia.Id)' tiene vuelve-a sin vuelve-texto"
+    }
+    $paginaVuelve = if ($guia.VuelveA -eq "index") { "portada" } else { "ficha" }
+    if (-not (Test-Path -LiteralPath (Join-Path $raiz "$($guia.VuelveA).qmd"))) {
+      Registrar-Error "guia.yml: la guia '$($guia.Id)' vuelve a '$($guia.VuelveA)', que no existe"
+    }
+    elseif (-not $paginasConGuia.ContainsKey($paginaVuelve)) {
+      Registrar-Error "guia.yml: la guia '$($guia.Id)' vuelve a '$($guia.VuelveA)', que no tiene guia"
     }
   }
   # Un destino que falta se cuenta por paginas, no se lista pagina a pagina: en
@@ -1191,9 +1218,11 @@ foreach ($guia in $guias) {
     Registrar-Error "guia '$($guia.Id)': el destino '$destino' falta en $($faltas[$destino].Count) de $($htmlGuiaPorPagina[$guia.Pagina].Count) paginas (primera: $($faltas[$destino][0]))"
   }
 }
-# Sin este enlace, la guia solo se abre escribiendo ?tour=1 a mano.
-if ($htmlPortada.IndexOf('href="./index.html?tour=1"', [StringComparison]::Ordinal) -lt 0) {
-  Registrar-Error "index.html: falta en la barra el enlace que abre la guia de uso (index.html?tour=1)"
+# Sin este icono, la guia solo se abre escribiendo ?tour=1 a mano. Tiene que ser
+# una herramienta de la barra (tools): un elemento de right queda en el movil
+# dentro del menu plegado.
+if ($htmlPortada -notmatch '<a href="\./index\.html\?tour=1"[^>]*class="quarto-navigation-tool') {
+  Registrar-Error "index.html: falta en la barra el icono que abre la guia de uso (tools, index.html?tour=1)"
 }
 
 if ($errores.Count -gt 0) {
