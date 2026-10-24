@@ -1168,3 +1168,71 @@ main.content section {
     transition: none !important;
   }
 }
+
+/* ---------- aviso de cookies ----------
+ * Mismo texto, posicion y comportamiento que el de la web del autor: una barra
+ * baja y fija abajo, que desaparece en cuanto se decide. Aceptar y Rechazar
+ * tienen el mismo tamano: rechazar no puede costar mas que aceptar.
+ * Colores del glosario, asi que se adapta solo al tema claro y al oscuro.
+ * Marcado y logica: _consentimiento.html. */
+.banner-cookies {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--g-superficie);
+  color: var(--g-tinta-2);
+  border-top: 1px solid var(--g-linea);
+  box-shadow: var(--g-sombra);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+/* display:flex taparia el atributo hidden */
+.banner-cookies[hidden] {
+  display: none;
+}
+.banner-cookies p {
+  margin: 0;
+  text-align: center;
+}
+.banner-cookies a {
+  color: var(--g-marca);
+}
+.banner-cookies-botones {
+  display: flex;
+  gap: 0.5rem;
+}
+.banner-cookies button {
+  font: inherit;
+  font-weight: 600;
+  min-width: 6.5rem;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--g-linea);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.banner-cookies .banner-cookies-aceptar {
+  background: var(--g-marca);
+  border-color: var(--g-marca);
+  color: var(--g-paper);
+}
+.banner-cookies .banner-cookies-rechazar {
+  background: var(--g-hundido);
+  color: var(--g-tinta);
+}
+.banner-cookies button:focus-visible {
+  outline: 2px solid var(--g-acento);
+  outline-offset: 2px;
+}
+@media print {
+  .banner-cookies {
+    display: none !important;
+  }
+}

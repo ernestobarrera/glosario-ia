@@ -1,0 +1,88 @@
+<!--
+  Aviso de cookies del glosario. Mismo texto y mismo comportamiento que el de la
+  web del autor (assets/components/cookie-banner.html y cookie-consent.js), con
+  los colores del glosario (styles.css, seccion «aviso de cookies»).
+
+  Por que no el banner de Quarto (cookie-consent): era una ventana en la esquina
+  con otro aspecto y otra memoria de la decision, asi que quien ya habia decidido
+  en la web volvia a ver un banner al entrar aqui. Este guarda la decision en la
+  MISMA clave del navegador que la web (cookie_consent = aceptado | rechazado):
+  mismo dominio, una sola decision para los dos sitios.
+
+  Google Analytics no esta en la pagina: este script lo inserta solo cuando hay
+  consentimiento. Rechazar despues de aceptar lo desactiva y borra sus cookies.
+-->
+<div id="banner_cookies" class="banner-cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Este sitio utiliza cookies analíticas de Google Analytics para mejorar la experiencia.
+  <a class="banner-cookies-enlace" href="aviso.html#cookies">Política de cookies</a></p>
+  <div class="banner-cookies-botones">
+    <button type="button" class="banner-cookies-aceptar">Aceptar</button>
+    <button type="button" class="banner-cookies-rechazar">Rechazar</button>
+  </div>
+</div>
+<script>
+(function () {
+  var CLAVE = 'cookie_consent';   // la misma que la web del autor
+  var GA = 'G-YFKR6RB1ZC';
+  var banner = document.getElementById('banner_cookies');
+  if (!banner) return;
+
+  // Las fichas viven en terminos/: el enlace a la politica se resuelve con el
+  // desplazamiento que Quarto declara en cada pagina.
+  var offset = document.querySelector('meta[name="quarto:offset"]');
+  banner.querySelector('.banner-cookies-enlace').href =
+    (offset ? offset.content : './') + 'aviso.html#cookies';
+
+  // Sin almacenamiento (ventana privada estricta, datos bloqueados) no se carga
+  // nada y el aviso vuelve a salir: ante la duda, sin analitica.
+  function leer() { try { return localStorage.getItem(CLAVE); } catch (e) { return null; } }
+  function guardar(v) { try { localStorage.setItem(CLAVE, v); } catch (e) {} }
+
+  function cargarAnalytics() {
+    window['ga-disable-' + GA] = false;
+    if (window.__glosarioAnalytics) return;
+    window.__glosarioAnalytics = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA;
+    document.head.appendChild(s);
+  }
+
+  // Retirar el consentimiento tiene que ser tan facil como darlo: corta los
+  // envios de esta pagina y borra las cookies de Google Analytics.
+  function retirarAnalytics() {
+    window['ga-disable-' + GA] = true;
+    document.cookie.split(';').forEach(function (c) {
+      var nombre = c.split('=')[0].trim();
+      if (nombre.indexOf('_ga') !== 0) return;
+      document.cookie = nombre + '=; Max-Age=0; path=/';
+      document.cookie = nombre + '=; Max-Age=0; path=/; domain=' + location.hostname;
+    });
+  }
+
+  function decidir(valor) {
+    guardar(valor);
+    banner.hidden = true;
+    if (valor === 'aceptado') cargarAnalytics(); else retirarAnalytics();
+  }
+  banner.querySelector('.banner-cookies-aceptar').addEventListener('click', function () { decidir('aceptado'); });
+  banner.querySelector('.banner-cookies-rechazar').addEventListener('click', function () { decidir('rechazado'); });
+
+  // «Preferencias de cookies», en el pie de cada pagina, vuelve a mostrar el aviso.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href$="#preferencias-cookies"]');
+    if (!a) return;
+    e.preventDefault();
+    banner.hidden = false;
+    banner.querySelector('button').focus();
+  });
+
+  var decision = leer();
+  if (decision === 'aceptado') cargarAnalytics();
+  else if (decision !== 'rechazado') banner.hidden = false;
+})();
+</script>
