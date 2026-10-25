@@ -12,7 +12,7 @@ categories:
   - "Modelos de lenguaje"
   - "Procesamiento del lenguaje"
 date-modified: 2026-10-25
-estado: "borrador"
+estado: "revisada"
 tipo: "tecnica"
 ---
 

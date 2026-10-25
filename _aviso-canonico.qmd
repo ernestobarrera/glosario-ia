@@ -9,7 +9,7 @@
   <div>
     <h3>Qué garantía no da</h3>
     <p>La mayoría de las fichas están hoy en estado <strong>borrador</strong>: estructura y
-    fuentes iniciales, pendientes de revisión. Solo están <strong>revisadas</strong> 16 de las
+    fuentes iniciales, pendientes de revisión. Solo están <strong>revisadas</strong> 21 de las
     22 de los dos recorridos de entrada, «Empieza aquí» y «Qué cambia cuando usamos la IA». En
     todas puede haber errores, omisiones o contenido desactualizado. No es una recomendación
     clínica ni sustituye al juicio profesional.</p>
