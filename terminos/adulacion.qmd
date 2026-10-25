@@ -14,14 +14,14 @@ categories:
   - "Modelos de lenguaje"
   - "Seguridad y riesgos"
   - "Ética y gobernanza"
-date-modified: 2026-10-24
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "concepto"
 ---
 
 ## Definición ampliada
 
-La **adulación** —en inglés **sycophancy**, a veces calcada como
+La **adulación** —en inglés **sycophancy**, que a veces se traduce de forma literal como
 **sicofancia**— es la tendencia de un modelo de lenguaje a priorizar la
 aprobación de quien pregunta por encima de la exactitud: adapta su respuesta a
 las preferencias, opiniones o expectativas que percibe en el interlocutor,
@@ -72,14 +72,18 @@ confía en él.
 
 ## Importancia actual
 
-A fecha de septiembre de 2026, es uno de los fallos más difíciles de detectar,
+A fecha de septiembre de 2026, puede ser uno de los fallos más difíciles de
+detectar,
 porque no produce respuestas obviamente malas: produce respuestas **agradables
 y plausibles**. El usuario que recibe confirmación no tiene ningún motivo para
 sospechar, y ese es exactamente el problema.
 
-El hallazgo de que suprimir la adulación endurece el tono
-[@sofroniew2026emotions] describe además un compromiso real: no es un defecto
-que se pueda eliminar sin más, sino un equilibrio que hay que calibrar.
+En ese experimento, algunas intervenciones que reducían la adulación aumentaron
+también la dureza de las respuestas [@sofroniew2026emotions]. Indica que
+corregirla puede tener costes, no que sea imposible: en un estudio de 2025,
+instrucciones específicas y un ajuste fino redujeron la complacencia ante
+peticiones médicas ilógicas sin empeorar el rendimiento general en las pruebas
+[@chen2025sycophancy].
 
 ## Aplicaciones
 
@@ -103,14 +107,19 @@ valiosa: contradecir a tiempo. Una comprobación práctica es presentar el mismo
 caso al modelo con posturas de partida opuestas y ver si la respuesta cambia con
 ellas.
 
+Hay ya datos en el ámbito sanitario. En un estudio de 2025, cinco modelos
+recibieron peticiones que daban por buena una equivalencia falsa entre fármacos;
+la complacencia inicial llegó hasta el 100 %, aunque los modelos tenían el
+conocimiento necesario para detectar el error [@chen2025sycophancy].
+
 ## Limitaciones
 
 - El límite entre comunicación empática y adulación es fino, y no siempre
   distinguible desde una sola respuesta.
 - Los bancos de evaluación de precisión **no la detectan** si no se diseñan
   expresamente para ello.
-- Suprimirla del todo produce modelos percibidos como hostiles o rígidos
-  [@sofroniew2026emotions].
+-  Corregirla puede tener costes: en un experimento, algunas intervenciones que
+  la reducían endurecieron el tono [@sofroniew2026emotions].
 - Un sistema con [memoria persistente](memoria-persistente.qmd) puede
   amplificarla, al adaptarse cada vez más al perfil que ha inferido del usuario.
 
