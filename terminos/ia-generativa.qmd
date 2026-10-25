@@ -10,7 +10,7 @@ description: "Familia de sistemas de IA capaces de producir contenido nuevo, com
 categories:
   - "Fundamentos"
   - "Modelos de lenguaje"
-date-modified: 2026-10-21
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -21,15 +21,24 @@ La **IA generativa** agrupa modelos capaces de producir contenido nuevo a
 partir de patrones aprendidos en datos. La salida puede ser texto, imagen,
 audio, vídeo, código, estructuras moleculares o datos sintéticos.
 
-Incluye familias técnicas distintas, como modelos autorregresivos, modelos de
-difusión y redes generativas antagónicas, introducidas como un marco de
-entrenamiento entre un generador y un discriminador
-[@goodfellow2014gan]. «Nuevo» no significa necesariamente original, verdadero
-ni libre de semejanzas con el material de entrenamiento.
+Es una aplicación del [aprendizaje automático](aprendizaje-automatico.qmd): en
+lugar de aprender a clasificar o a predecir un valor, el modelo aprende cómo son
+los datos para producir otros parecidos. Hay varias familias técnicas. Los
+**modelos autorregresivos**, como los [modelos de lenguaje grandes](llm.qmd),
+generan una pieza cada vez, una palabra o un fragmento, a partir de las
+anteriores [@vaswani2017attention]. Los **modelos de difusión**, habituales en
+imagen, aprenden a retirar ruido y crean una imagen partiendo de ruido aleatorio
+[@ho2020ddpm]. Las [redes generativas
+antagónicas](red-generativa-antagonica.qmd) entrenan dos redes enfrentadas: una
+genera y la otra intenta distinguir lo generado de lo real [@goodfellow2014gan].
+«Nuevo» no significa necesariamente original, verdadero ni libre de semejanzas
+con el material de entrenamiento.
 
 ## Contexto histórico
 
-Los modelos generativos preceden a la actual ola de asistentes. Las redes
+Los modelos generativos son anteriores a los asistentes de conversación, que
+llegaron al público general en noviembre de 2022 con ChatGPT
+[@openai2022chatgpt]. Las redes
 generativas antagónicas marcaron un hito en 2014 para la síntesis de datos
 [@goodfellow2014gan]. A partir de 2017, los transformers facilitaron modelos de
 lenguaje de gran escala y extendieron la generación a texto, código y sistemas
@@ -41,6 +50,11 @@ A fecha de agosto de 2026, la IA generativa funciona como una interfaz general
 para crear, transformar y resumir información. Su amplitud de usos convive con
 límites persistentes de factualidad, procedencia, propiedad intelectual,
 privacidad y control de la salida.
+
+Se llama **modelos de frontera** a los más capaces de cada momento. El término
+viene del debate regulatorio, que los describe como [modelos
+fundacionales](modelo-fundacional.qmd) muy capaces que podrían tener capacidades
+peligrosas para la seguridad pública [@anderljung2023frontier].
 
 ## Aplicaciones
 
@@ -79,6 +93,9 @@ impacto, su reversibilidad y el contexto en el que se utilizará.
 - [Alucinación](alucinacion.qmd)
 - [Transformer](transformer.qmd)
 - [Factualidad](factualidad.qmd)
+- [Aprendizaje automático](aprendizaje-automatico.qmd)
+- [Red generativa antagónica](red-generativa-antagonica.qmd)
+- [Modelo fundacional](modelo-fundacional.qmd)
 
 ## Referencias
 

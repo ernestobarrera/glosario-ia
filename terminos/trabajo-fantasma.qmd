@@ -8,7 +8,7 @@ description: "Labor humana no reconocida o sistemáticamente invisible que sosti
 categories:
   - "Ética y gobernanza"
   - "IA agéntica"
-date-modified: 2026-09-19
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -47,9 +47,9 @@ fantasma que produce su alineación [@gray2019ghostwork].
 
 A fecha de septiembre de 2026, la narrativa dominante sobre IA generativa
 suprime con frecuencia la visibilidad del trabajo fantasma: que un modelo
-«responda bien» es, en parte, que millones de evaluadores humanos —a menudo en
-condiciones de baja remuneración— hayan señalado qué respuestas eran mejores,
-más seguras o más alineadas con valores humanos. Esta labor no se detiene con
+«responda bien» es, en parte, que evaluadores humanos hayan señalado qué respuestas eran mejores, más seguras
+o más alineadas con valores humanos [@ouyang2022instructgpt], en algunos casos
+documentados con baja remuneración [@perrigo2023kenya]. Esta labor no se detiene con
 el lanzamiento del producto: la moderación continua, la corrección de errores
 y el re-etiquetado de casos nuevos persisten durante todo el ciclo de vida del
 sistema. La calidad del trabajo fantasma es, en sentido estricto, un
@@ -68,11 +68,10 @@ heredan las condiciones de ese trabajo invisible.
 ### Sanitarias
 
 - Los sistemas de apoyo a la decisión clínica requieren que radiólogos,
-  patólogos o enfermeras especialistas hayan anotado miles de casos, labor que
-  rara vez aparece reconocida en la documentación del producto ni remunerada
-  de forma proporcional a la cualificación exigida. La cualificación real de
-  quien anotó las imágenes condiciona directamente la fiabilidad del sistema,
-  y esa información no suele figurar en las fichas técnicas comerciales.
+  patólogos o enfermeras especialistas hayan anotado los casos de entrenamiento, labor que no siempre consta en la
+documentación del producto. Quién anotó, con qué cualificación y con qué
+criterio de referencia condiciona la fiabilidad del sistema [@krause2018grader],
+y es una información que conviene pedir al proveedor.
 
 ## Limitaciones
 
@@ -94,15 +93,15 @@ reCAPTCHA mostró otra forma de trabajo humano oculto: las palabras que los
 sistemas de reconocimiento óptico no podían leer se presentaban a usuarios y
 sus respuestas ayudaban a digitalizar impresos [@vonahn2008recaptcha].
 
-Un estudio de TIME documentó que trabajadores en Kenia cobraban menos de dos
+Un reportaje de la revista TIME documentó que trabajadores en Kenia cobraban menos de dos
 dólares por hora por revisar contenido extremadamente violento para entrenar
 los filtros de seguridad de ChatGPT, labor que causó daño psicológico
 documentado y que no figuraba en ningún material de comunicación del producto
-[@perrigo2023kenya]. En la anotación de imágenes de fondo de ojo para sistemas
-de detección de retinopatía, estudios independientes han evidenciado
-variabilidad en el etiquetado según el nivel de experiencia del anotador,
-variabilidad que se traslada a la tasa de falsos negativos del modelo
-resultante.
+[@perrigo2023kenya]. En retinopatía diabética, el voto mayoritario de oftalmólogos pasó por alto
+lesiones, sobre todo microaneurismas, que el consenso de retinólogos sí
+identificó. Al ajustar el algoritmo con una pequeña muestra de ese consenso,
+junto con imágenes de más resolución, su área bajo la curva subió de 0,934 a
+0,986 [@krause2018grader]. Quién etiqueta entra en el modelo.
 
 ## Relacionados
 
