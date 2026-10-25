@@ -10,7 +10,8 @@
   mismo dominio, una sola decision para los dos sitios.
 
   Google Analytics no esta en la pagina: este script lo inserta solo cuando hay
-  consentimiento. Rechazar despues de aceptar lo desactiva y borra sus cookies.
+  consentimiento. Rechazar despues de aceptar lo desactiva y borra sus cookies,
+  tambien en las demas paginas que el lector tenga abiertas (evento storage).
 -->
 <div id="banner_cookies" class="banner-cookies" role="region" aria-label="Aviso de cookies" hidden>
   <p>Este sitio utiliza cookies analíticas de Google Analytics para mejorar la experiencia.
@@ -34,8 +35,10 @@
     (offset ? offset.content : './') + 'aviso.html#cookies';
 
   // Sin almacenamiento (ventana privada estricta, datos bloqueados) no se carga
-  // nada y el aviso vuelve a salir: ante la duda, sin analitica.
-  function leer() { try { return localStorage.getItem(CLAVE); } catch (e) { return null; } }
+  // nada antes de decidir y el aviso vuelve a salir en cada pagina: ante la duda,
+  // sin analitica. leer() devuelve undefined si no se puede saber y null si no
+  // hay decision guardada.
+  function leer() { try { return localStorage.getItem(CLAVE); } catch (e) { return undefined; } }
   function guardar(v) { try { localStorage.setItem(CLAVE, v); } catch (e) {} }
 
   function cargarAnalytics() {
@@ -54,20 +57,35 @@
 
   // Retirar el consentimiento tiene que ser tan facil como darlo: corta los
   // envios de esta pagina y borra las cookies de Google Analytics.
+  // Una cookie solo se borra con la misma ruta con la que se creo: se prueban
+  // todas las de esta pagina, de la raiz hacia abajo (/, /glosario-ia, ...).
   function retirarAnalytics() {
     window['ga-disable-' + GA] = true;
+    var rutas = ['/'];
+    location.pathname.split('/').slice(1, -1).reduce(function (base, parte) {
+      base += '/' + parte;
+      rutas.push(base, base + '/');
+      return base;
+    }, '');
     document.cookie.split(';').forEach(function (c) {
       var nombre = c.split('=')[0].trim();
       if (nombre.indexOf('_ga') !== 0) return;
-      document.cookie = nombre + '=; Max-Age=0; path=/';
-      document.cookie = nombre + '=; Max-Age=0; path=/; domain=' + location.hostname;
+      rutas.forEach(function (ruta) {
+        document.cookie = nombre + '=; Max-Age=0; path=' + ruta;
+        document.cookie = nombre + '=; Max-Age=0; path=' + ruta + '; domain=' + location.hostname;
+      });
     });
+  }
+
+  function aplicar(valor) {
+    banner.hidden = true;
+    if (valor === 'aceptado') cargarAnalytics(); else retirarAnalytics();
   }
 
   function decidir(valor) {
     guardar(valor);
-    banner.hidden = true;
-    if (valor === 'aceptado') cargarAnalytics(); else retirarAnalytics();
+    decision = valor;
+    aplicar(valor);
   }
   banner.querySelector('.banner-cookies-aceptar').addEventListener('click', function () { decidir('aceptado'); });
   banner.querySelector('.banner-cookies-rechazar').addEventListener('click', function () { decidir('rechazado'); });
@@ -84,5 +102,26 @@
   var decision = leer();
   if (decision === 'aceptado') cargarAnalytics();
   else if (decision !== 'rechazado') banner.hidden = false;
+
+  // Una pagina abierta tiene que enterarse de lo que se decide en otra (del
+  // glosario o de la web, que comparten clave). Si la decision desaparece, se
+  // deja de medir y se vuelve a preguntar.
+  function reconciliar() {
+    var d = leer();
+    if (d === undefined || d === decision) return;
+    decision = d;
+    if (d === 'aceptado' || d === 'rechazado') { aplicar(d); return; }
+    retirarAnalytics();
+    banner.hidden = false;
+  }
+  window.addEventListener('storage', function (e) {
+    if (e.key === CLAVE || e.key === null) reconciliar();
+  });
+  // Respaldo para la pagina restaurada desde el historial o que vuelve a primer
+  // plano, por si se perdio el evento.
+  window.addEventListener('pageshow', reconciliar);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') reconciliar();
+  });
 })();
 </script>
