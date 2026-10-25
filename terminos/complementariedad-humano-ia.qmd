@@ -9,7 +9,7 @@ description: "Situación en la que una persona y un sistema de IA, juntos, obtie
 categories:
   - "Fundamentos"
   - "Seguridad y riesgos"
-date-modified: 2026-10-24
+date-modified: 2026-10-25
 estado: "revisada"
 tipo: "concepto"
 ---
@@ -41,7 +41,7 @@ Encontró mejoras con la ayuda de la IA, pero las explicaciones del sistema no
 las aumentaron: subieron la probabilidad de aceptar su recomendación, fuera
 correcta o no [@bansal2021complementary].
 
-En 2024, un metaanálisis preregistrado reunió 106 experimentos publicados entre
+En 2024, un metaanálisis preregistrado reunió 106 estudios experimentales publicados entre
 2020 y mediados de 2023 que medían a la persona sola, la IA sola y la
 combinación. Frente al mejor de los dos, la combinación rindió de media peor
 (g de Hedges = −0,23; IC 95 % −0,39 a −0,07); frente a la persona sola, mejor

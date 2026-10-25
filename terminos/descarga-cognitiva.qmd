@@ -11,7 +11,7 @@ description: "Uso de un recurso externo para reducir el esfuerzo mental de una t
 categories:
   - "Fundamentos"
   - "Seguridad y riesgos"
-date-modified: 2026-10-24
+date-modified: 2026-10-25
 estado: "revisada"
 tipo: "concepto"
 ---
@@ -75,9 +75,8 @@ dos descripciones capta mejor el fenómeno es una cuestión abierta.
   empeorar el desempeño según la tarea, el apoyo y la persona.
 - La evidencia clásica procede de memoria y tareas espaciales; su traslado al
   razonamiento delegado en modelos generativos está por establecer.
-- Casi toda la investigación mide lo que se pierde y muy poco lo que se gana en
-  comprensión o en exploración del problema, así que el balance real es difícil
-  de estimar.
+- Falta medir lo que se gana en comprensión o en exploración del problema, no
+  solo lo que se pierde; sin eso, el balance real es difícil de estimar.
 - Leer toda interacción con IA como descarga puede ser reduccionista: hay marcos
   que la describen como acoplamiento constitutivo y no como delegación
   [@zhaohan2026acoplamiento].
