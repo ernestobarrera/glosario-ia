@@ -10,8 +10,8 @@ description: "Familia de sistemas de IA capaces de producir contenido nuevo, com
 categories:
   - "Fundamentos"
   - "Modelos de lenguaje"
-date-modified: 2026-10-24
-estado: "revisada"
+date-modified: 2026-10-21
+estado: "borrador"
 tipo: "concepto"
 ---
 

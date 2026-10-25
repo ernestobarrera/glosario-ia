@@ -10,8 +10,8 @@ description: "Respuesta plausible generada por un modelo que contiene informaci√
 categories:
   - "Modelos de lenguaje"
   - "Seguridad y riesgos"
-date-modified: 2026-10-24
-estado: "revisada"
+date-modified: 2026-10-20
+estado: "borrador"
 tipo: "concepto"
 ---
 
