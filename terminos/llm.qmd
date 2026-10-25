@@ -11,7 +11,7 @@ description: "Modelo entrenado con grandes corpus para predecir y generar lengua
 categories:
   - "Modelos de lenguaje"
   - "Arquitecturas"
-date-modified: 2026-10-20
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -64,7 +64,20 @@ a validación clínica general ni elimina los riesgos de error
 
 ## Limitaciones
 
-- Genera por probabilidad y puede producir contenido falso.
+Un LLM escribe a partir de probabilidades, no de una comprobación de los hechos,
+y por eso puede producir contenido falso con la misma soltura que el verdadero
+([alucinación](alucinacion.qmd)). Su conocimiento llega hasta la [fecha de
+corte](fecha-de-corte-del-conocimiento.qmd) de los datos con que se entrenó, que
+en la práctica puede ser anterior a la declarada [@cheng2024datedcutoff]. Solo
+tiene en cuenta lo que cabe en su [ventana de
+contexto](ventana-de-contexto.qmd), y en estudios con textos largos aprovechó
+peor lo que quedaba en medio [@liu2024lostmiddle]. También puede inclinarse a
+dar la razón a quien lo usa: un estudio de 2023 encontró esta
+[adulación](adulacion.qmd) en los cinco asistentes que evaluó
+[@sharma2023sycophancy].
+
+A esto se suman otras limitaciones:
+
 - Hereda sesgos y vacíos de los datos.
 - La respuesta varía con el prompt, el contexto y la versión.
 - Puede revelar información si se usa sin controles de privacidad.
@@ -88,6 +101,13 @@ fluidez del texto.
 - [Prompting](prompting.qmd)
 - [Generación aumentada por recuperación](rag.qmd)
 - [Factualidad](factualidad.qmd)
+- [Fecha de corte del conocimiento](fecha-de-corte-del-conocimiento.qmd)
+- [Ventana de contexto](ventana-de-contexto.qmd)
+- [Adulación](adulacion.qmd)
+- [Modelo fundacional](modelo-fundacional.qmd)
+- [Preentrenamiento](preentrenamiento.qmd)
+- [Ajuste fino](fine-tuning.qmd)
+- [Algoritmo de decodificación](algoritmo-de-decodificacion.qmd)
 
 ## Referencias
 

@@ -9,17 +9,29 @@ description: "Rama de la IA que desarrolla modelos capaces de aprender patrones 
 categories:
   - "Aprendizaje automático"
   - "Fundamentos"
-date-modified: 2026-08-22
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "concepto"
 ---
 
 ## Definición ampliada
 
-El **aprendizaje automático** reúne métodos que ajustan un modelo a partir de
-datos para realizar una tarea sin programar de forma explícita todas las reglas.
+El **aprendizaje automático** es el nombre en español de lo que en inglés se
+llama *machine learning*. Reúne métodos que ajustan un modelo a partir de datos
+para realizar una tarea sin programar de forma explícita todas las reglas.
 Según el problema, el modelo puede predecir un valor, asignar una categoría,
 detectar una estructura o recomendar una acción.
+
+Se distinguen tres formas de aprender. En el [aprendizaje
+supervisado](aprendizaje-supervisado.qmd), cada ejemplo lleva la respuesta
+correcta, una **etiqueta** puesta por una persona, como «retinopatía sí o no» en
+una fotografía de fondo de ojo, y el modelo aprende a reproducirla. En el [no
+supervisado](aprendizaje-no-supervisado.qmd) no hay etiquetas y el modelo busca
+estructura por su cuenta, como grupos de pacientes parecidos. En el [aprendizaje
+por refuerzo](aprendizaje-por-refuerzo.qmd) aprende de las recompensas que
+obtienen sus acciones. Hay formas intermedias, como el
+[semisupervisado](aprendizaje-semisupervisado.qmd), que combina pocos ejemplos
+etiquetados con muchos sin etiquetar.
 
 El aprendizaje no equivale a comprensión: consiste en optimizar parámetros
 según datos, objetivos y métricas definidos. Su valor depende tanto del
@@ -65,7 +77,15 @@ entorno de uso y el seguimiento de cambios una vez desplegado.
 - Un buen resultado interno no garantiza utilidad en otra población.
 - El sobreajuste reduce la capacidad de generalizar a casos nuevos.
 - La métrica optimizada puede no representar el objetivo humano real.
-- Requiere vigilancia después del despliegue porque los datos cambian.
+-  Requiere vigilancia después del despliegue porque los datos cambian.
+-  Las etiquetas también se equivocan, y el modelo aprende sus errores. En
+  retinopatía diabética, el voto mayoritario de oftalmólogos pasó por alto
+  lesiones, sobre todo microaneurismas, que el consenso de retinólogos sí
+  identificó; ajustar el algoritmo con ese consenso, junto con imágenes de más
+  resolución, mejoró su rendimiento [@krause2018grader]. Por eso importa quién
+  etiqueta los datos y con qué preparación. Es un trabajo humano que no aparece
+  en el producto final, y el glosario lo trata en [trabajo
+  fantasma](trabajo-fantasma.qmd).
 
 ## Ejemplos
 
@@ -78,6 +98,13 @@ subgrupos y un protocolo que determine cómo influirá —o no— en la decisió
 - [Aprendizaje profundo](aprendizaje-profundo.qmd)
 - [Sesgo algorítmico](sesgo-algoritmico.qmd)
 - [Explicabilidad](explicabilidad.qmd)
+- [Aprendizaje supervisado](aprendizaje-supervisado.qmd)
+- [Aprendizaje no supervisado](aprendizaje-no-supervisado.qmd)
+- [Aprendizaje por refuerzo](aprendizaje-por-refuerzo.qmd)
+- [Conjunto de datos](conjunto-de-datos.qmd)
+- [Sobreajuste](sobreajuste.qmd)
+- [IA generativa](ia-generativa.qmd)
+- [Trabajo fantasma](trabajo-fantasma.qmd)
 
 ## Referencias
 
