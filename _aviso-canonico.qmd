@@ -8,9 +8,11 @@
   </div>
   <div>
     <h3>Qué garantía no da</h3>
-    <p>Todas las fichas están hoy en estado <strong>borrador</strong>: estructura y fuentes
-    iniciales, pendientes de revisión. Puede haber errores, omisiones o contenido
-    desactualizado. No es una recomendación clínica ni sustituye al juicio profesional.</p>
+    <p>La mayoría de las fichas están hoy en estado <strong>borrador</strong>: estructura y
+    fuentes iniciales, pendientes de revisión. Solo están <strong>revisadas</strong> 16 de las
+    22 de los dos recorridos de entrada, «Empieza aquí» y «Qué cambia cuando usamos la IA». En
+    todas puede haber errores, omisiones o contenido desactualizado. No es una recomendación
+    clínica ni sustituye al juicio profesional.</p>
   </div>
   <div>
     <h3>Cómo se cita</h3>

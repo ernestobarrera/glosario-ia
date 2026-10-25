@@ -9,7 +9,7 @@ categories:
   - "IA agéntica"
   - "Seguridad y riesgos"
 date-modified: 2026-10-25
-estado: "borrador"
+estado: "revisada"
 tipo: "concepto"
 ---
 

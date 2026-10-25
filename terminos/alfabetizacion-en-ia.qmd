@@ -9,8 +9,8 @@ description: "Capacidades, conocimientos y comprensión que permiten usar la IA 
 categories:
   - "Ética y gobernanza"
   - "Fundamentos"
-date-modified: 2026-10-24
-estado: "borrador"
+date-modified: 2026-10-25
+estado: "revisada"
 tipo: "concepto"
 ---
 
@@ -55,7 +55,7 @@ tarea en la IA, describirle bien lo que se busca, juzgar la utilidad de lo que
 devuelve y responder del resultado final. Y distingue tres modos de uso: que la
 IA ejecute una tarea que la persona define, que ambas la trabajen de forma
 iterativa o que la persona la configure para que actúe por su cuenta más
-adelante. Los cursos basados en el marco los produjeron sus autores con
+adelante. Los materiales formativos basados en el marco los elaboraron sus autores con
 Anthropic, una empresa que desarrolla modelos de IA [@dakan2025aifluency]. Es
 un marco entre varios, no un estándar, y su término no es un sinónimo: el
 glosario no da por fijada la relación entre fluidez y alfabetización.
@@ -101,7 +101,7 @@ con otra persona y no con otro sistema.
 - No hay una definición única: los marcos difieren en qué competencias
   incluyen y en cómo las ordenan.
 - Haber recibido formación no prueba saber usar la IA; la alfabetización no se
-  mide en horas de curso.
+  mide en horas de formación.
 - La norma no fija un nivel mínimo por persona [@ue2026aiomnibus], de modo que
   su cumplimiento puede quedarse en lo nominal.
 - Ser competente con una herramienta no garantiza serlo con otra ni con la
@@ -110,7 +110,7 @@ con otra persona y no con otro sistema.
 ## Ejemplos
 
 Un centro de salud incorpora un asistente que propone borradores de informes.
-Un curso sobre cómo funcionan las redes neuronales no resuelve lo que la tarea
+Una formación sobre cómo funcionan las redes neuronales no resuelve lo que la tarea
 pide. La alfabetización necesaria es más concreta: saber que el borrador puede
 contener un dato inventado, comprobarlo contra la historia clínica, saber qué
 información no debe introducirse y a quién consultar cuando el resultado no

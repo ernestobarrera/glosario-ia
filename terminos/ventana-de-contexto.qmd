@@ -7,8 +7,8 @@ sinonimos:
 description: "Cantidad máxima de texto, medida en tokens, que un modelo de lenguaje puede tener en cuenta en una sola llamada."
 categories:
   - "Modelos de lenguaje"
-date-modified: 2026-10-21
-estado: "borrador"
+date-modified: 2026-10-25
+estado: "revisada"
 tipo: "concepto"
 ---
 
@@ -71,8 +71,8 @@ entre lo que cabe y lo que se usa bien.
 
 ### Sanitarias
 
-- Resumir una historia clínica extensa sabiendo que la parte central puede
-  recibir menos atención que el principio y el final.
+- Resumir una historia clínica extensa teniendo en cuenta que la parte central
+  podría recibir menos atención que el principio y el final.
 - Revisar protocolos o guías largos por secciones, en lugar de confiar en una
   sola lectura de todo el documento.
 - Comprobar que un dato crítico (una alergia, una dosis) no ha quedado fuera
@@ -96,7 +96,9 @@ puede pasar por alto esa cláusula o confundirla con otra.
 En sanidad, si se entregan de una vez años de notas clínicas y se pide un
 resumen, conviene comprobar en las notas intermedias que no se ha omitido un
 episodio relevante. Ese patrón, peor rendimiento con la información situada en
-el medio, es el que describen los estudios citados [@liu2024lostmiddle].
+el medio, es el que describen los estudios citados, aunque lo midieron con
+preguntas sobre varios documentos y con recuperación de datos, no con historias
+clínicas: aplicarlo aquí es una extrapolación [@liu2024lostmiddle].
 
 ## Relacionados
 

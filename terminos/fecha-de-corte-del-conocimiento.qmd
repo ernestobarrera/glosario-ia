@@ -8,8 +8,8 @@ description: "Fecha hasta la que llegan los datos con los que se entrenó un mod
 categories:
   - "Modelos de lenguaje"
   - "Seguridad y riesgos"
-date-modified: 2026-10-21
-estado: "borrador"
+date-modified: 2026-10-24
+estado: "revisada"
 tipo: "concepto"
 ---
 

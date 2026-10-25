@@ -9,8 +9,8 @@ description: "Desfase entre la velocidad a la que se despliega una tecnología y
 categories:
   - "Ética y gobernanza"
   - "Seguridad y riesgos"
-date-modified: 2026-10-01
-estado: "borrador"
+date-modified: 2026-10-25
+estado: "revisada"
 tipo: "concepto"
 ---
 
@@ -45,12 +45,14 @@ de alcance identificó 634 programas de este tipo [@gutierrez2021softlaw].
 
 A fecha de octubre de 2026, el desfase es visible en dos planos documentados:
 
-- **Evidencia.** De 130 dispositivos de IA autorizados en Estados Unidos, 126
-  se apoyaron solo en estudios retrospectivos y ninguno de los 54 de alto
-  riesgo en un estudio prospectivo [@wu2021fda]. Hasta 2021 se habían publicado
-  41 ensayos aleatorizados de intervenciones de aprendizaje automático
-  [@plana2022rct]; en 2024 eran 86, en su mayoría unicéntricos y centrados en el
-  rendimiento diagnóstico más que en desenlaces del paciente [@han2024rct].
+- **Evidencia.** De los 130 dispositivos de IA autorizados en Estados Unidos
+  entre 2015 y 2020 que se analizaron, 126 se apoyaron solo en estudios
+  retrospectivos y ninguno de los 54 de alto riesgo en un estudio prospectivo
+  [@wu2021fda]. Una revisión con búsqueda hasta octubre de 2021 reunió 41
+  ensayos aleatorizados de intervenciones de aprendizaje automático
+  [@plana2022rct]; otra, publicada en 2024, reunió 86, en su mayoría
+  unicéntricos y centrados en el rendimiento diagnóstico más que en desenlaces
+  del paciente [@han2024rct].
 - **Norma.** El [Reglamento europeo de IA](ai-act.qmd) se aplica por fases. La
   reforma de 2026 aplazó las obligaciones de alto riesgo del anexo III al 2 de
   diciembre de 2027 y las de productos del anexo I, como los sanitarios, al 2
