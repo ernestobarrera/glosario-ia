@@ -12,7 +12,7 @@ categories:
   - "Modelos de lenguaje"
   - "Arquitecturas"
 date-modified: 2026-10-25
-estado: "borrador"
+estado: "revisada"
 tipo: "concepto"
 ---
 

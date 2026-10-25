@@ -10,7 +10,7 @@ categories:
   - "Aprendizaje automático"
   - "Fundamentos"
 date-modified: 2026-10-25
-estado: "borrador"
+estado: "revisada"
 tipo: "concepto"
 ---
 
@@ -25,7 +25,7 @@ detectar una estructura o recomendar una acción.
 Se distinguen tres formas de aprender. En el [aprendizaje
 supervisado](aprendizaje-supervisado.qmd), cada ejemplo lleva la respuesta
 correcta, una **etiqueta** puesta por una persona, como «retinopatía sí o no» en
-una fotografía de fondo de ojo, y el modelo aprende a reproducirla. En el [no
+una fotografía de fondo de ojo, y el modelo aprende a reproducirla [@rajkomar2019ml]. En el [no
 supervisado](aprendizaje-no-supervisado.qmd) no hay etiquetas y el modelo busca
 estructura por su cuenta, como grupos de pacientes parecidos. En el [aprendizaje
 por refuerzo](aprendizaje-por-refuerzo.qmd) aprende de las recompensas que
@@ -82,8 +82,10 @@ entorno de uso y el seguimiento de cambios una vez desplegado.
   retinopatía diabética, el voto mayoritario de oftalmólogos pasó por alto
   lesiones, sobre todo microaneurismas, que el consenso de retinólogos sí
   identificó; ajustar el algoritmo con ese consenso, junto con imágenes de más
-  resolución, mejoró su rendimiento [@krause2018grader]. Por eso importa quién
-  etiqueta los datos y con qué preparación. Es un trabajo humano que no aparece
+  resolución, mejoró su rendimiento [@krause2018grader]. Por eso se recomienda ajustar y
+evaluar los modelos con un conjunto más pequeño de ejemplos cuyas etiquetas
+hayan revisado varios expertos [@rajkomar2019ml], y por eso importa quién
+etiqueta los datos y con qué preparación. Es un trabajo humano que no aparece
   en el producto final, y el glosario lo trata en [trabajo
   fantasma](trabajo-fantasma.qmd).
 
