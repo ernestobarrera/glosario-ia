@@ -15,7 +15,7 @@ categories:
   - "Seguridad y riesgos"
   - "Ética y gobernanza"
 date-modified: 2026-10-25
-estado: "borrador"
+estado: "revisada"
 tipo: "concepto"
 ---
 
