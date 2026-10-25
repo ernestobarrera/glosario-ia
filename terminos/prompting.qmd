@@ -11,7 +11,7 @@ description: "Técnica de guiar el comportamiento de un modelo de lenguaje media
 categories:
   - "Modelos de lenguaje"
   - "Procesamiento del lenguaje"
-date-modified: 2026-09-22
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "tecnica"
 ---
@@ -43,8 +43,25 @@ comportamiento del sistema.
 
 ## Importancia actual
 
-A fecha de septiembre de 2026, el prompting sigue siendo la vía de adaptación
-más usada, porque es inmediata y reversible. Técnicas como el
+El prompting es la forma más inmediata y reversible de adaptar un modelo, pero
+su peso ha cambiado con los modelos. Algunos trucos de redacción han perdido
+eficacia: en un estudio publicado en 2024, asignar un papel («eres un médico»)
+no mejoró las respuestas con 162 papeles y cuatro familias de modelos
+[@zheng2024persona], y un informe técnico de 2025 encontró que, en los modelos
+que ya razonan, pedirles que piensen paso a paso aportaba poco o nada
+[@meincke2025cot]. Lo que sigue haciendo falta es especificar bien la tarea. En
+un estudio de 2025, todavía en preprint, los modelos evaluados infirieron por su
+cuenta el 41,1 % de los requisitos que no se les habían dicho, y ese
+comportamiento resultó frágil [@yang2025underspecification]. Son resultados de
+modelos concretos y de su fecha: con los siguientes pueden cambiar.
+
+Cuando el modelo trabaja como [agente](agente-de-ia.qmd), con herramientas y
+muchos pasos, el problema crece: hay que decidir qué información recibe en cada
+paso. Es la [ingeniería de contexto](ingenieria-de-contexto.qmd), que Anthropic
+presenta como la progresión natural de la ingeniería de prompts y que una
+revisión de 2025 propone tratar como disciplina propia
+[@anthropic2025contextengineering; @mei2025contextsurvey]. La [lámina 05 del
+Atlas](../atlas/05-del-prompt-al-sistema.qmd) separa lo medido de lo inferido. Técnicas como el
 [few-shot learning](few-shot-learning.qmd), el
 [zero-shot learning](zero-shot-learning.qmd) y la
 [cadena de pensamiento](cadena-de-pensamiento.qmd) son, en la práctica,
@@ -72,8 +89,11 @@ posterior**.
 
 ## Limitaciones
 
-- El resultado depende de la formulación: cambios menores en el prompt pueden
-  cambiar la respuesta, y eso dificulta la reproducibilidad.
+-  El resultado depende de la formulación: cambios menores en el prompt pueden
+  cambiar la respuesta, y eso dificulta la reproducibilidad. Cambios de formato
+  sin relación con el contenido movieron la precisión hasta 76 puntos en un
+  modelo de 2023 [@sclar2024formatting], y evaluar con un solo prompt da
+  resultados frágiles [@mizrahi2024multiprompt].
 - Un prompt bien redactado **no garantiza** que la respuesta sea correcta. No
   corrige la [alucinación](alucinacion.qmd) ni suple el conocimiento que el
   modelo no tiene.
@@ -99,6 +119,8 @@ posterior**.
 - [Modelo de lenguaje grande](llm.qmd)
 - [GPT](gpt.qmd)
 - [Prompt de sistema](prompt-de-sistema.qmd)
+- [Ingeniería de contexto](ingenieria-de-contexto.qmd)
+- [Agente de IA](agente-de-ia.qmd)
 
 ## Referencias
 

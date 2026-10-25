@@ -11,7 +11,7 @@ description: "Enfoque que combina recuperación de información externa con gene
 categories:
   - "Recuperación de información"
   - "Modelos de lenguaje"
-date-modified: 2026-10-20
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -36,12 +36,29 @@ combinar un recuperador denso con un modelo generativo para tareas intensivas
 en conocimiento [@lewis2020rag]. La propuesta permitió consultar una memoria
 externa actualizable sin incorporar cada documento a los parámetros del modelo.
 
+Desde entonces el patrón se ha diversificado. Una revisión de 2023 distingue
+tres etapas, que llama simple, avanzada y modular, según cuánto se trabajan la
+consulta, la selección de lo recuperado y la combinación de piezas
+[@gao2023ragsurvey].
+
 ## Importancia actual
 
 A fecha de agosto de 2026, RAG continúa siendo un patrón habitual para
 fundamentar asistentes en colecciones controladas. Mejora la actualización y la
 trazabilidad potencial de las respuestas, pero desplaza parte del riesgo hacia
 la selección, vigencia y correcta interpretación de los documentos recuperados.
+
+En medicina ya hay evaluaciones. Una revisión sistemática con metaanálisis de 20
+estudios biomédicos de 2023 y 2024 encontró que añadir recuperación mejoró el
+rendimiento frente al mismo modelo sin ella (OR 1,35; IC 95 % 1,19 a 1,53)
+[@liu2025ragmeta]. En un banco de 7.663 preguntas médicas, la recuperación
+mejoró la precisión de seis modelos hasta un 18 % frente a pedirles que
+razonaran paso a paso, y también ahí se aprovechaba peor lo que quedaba en medio
+[@xiong2024medrag]. Con fuentes clínicas seleccionadas, un panel de clínicos
+valoró mejor en factualidad y completitud las respuestas de un sistema RAG que
+las de modelos generales, en 314 preguntas de nueve especialidades
+[@zakka2024almanac]. Son evaluaciones con preguntas, no estudios de desenlaces
+en pacientes.
 
 ## Aplicaciones
 
@@ -63,8 +80,13 @@ la selección, vigencia y correcta interpretación de los documentos recuperados
 
 - Si la búsqueda falla, la generación parte de evidencia incompleta o errónea.
 - La segmentación, el índice y el criterio de relevancia condicionan el resultado.
-- Puede citar una fuente pertinente pero atribuirle una afirmación que no contiene.
-- Documentos maliciosos pueden introducir instrucciones no deseadas.
+-  Puede citar una fuente pertinente pero atribuirle una afirmación que no
+  contiene: incluso con búsqueda web, en torno al 30 % de las afirmaciones de un
+  modelo en preguntas médicas no estaban respaldadas por sus fuentes
+  [@wu2025sourcecheckup].
+-  Un documento recuperado puede llevar instrucciones escondidas que el modelo
+  obedezca ([inyección de prompts](inyeccion-de-prompts.qmd))
+  [@greshake2023prompt].
 - Requiere control de versiones, permisos y trazabilidad de las fuentes.
 
 ## Ejemplos

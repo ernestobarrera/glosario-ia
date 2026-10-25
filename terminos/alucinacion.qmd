@@ -10,7 +10,7 @@ description: "Respuesta plausible generada por un modelo que contiene informaci�
 categories:
   - "Modelos de lenguaje"
   - "Seguridad y riesgos"
-date-modified: 2026-10-20
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -24,9 +24,19 @@ referencias bibliográficas, citas o razonamientos.
 
 Los modelos de lenguaje generan texto a partir de patrones estadísticos. La
 fluidez de una respuesta no garantiza su veracidad, y el sistema puede formular
-con gran seguridad una afirmación sin fundamento. Las revisiones del fenómeno
-distinguen distintos tipos, causas, métricas y estrategias de mitigación
-[@ji2023hallucination].
+con gran seguridad una afirmación sin fundamento. Las revisiones del fenómeno distinguen tipos, causas, métricas y estrategias de
+mitigación [@ji2023hallucination].
+
+Hay dos maneras de clasificarla, según con qué se compare la respuesta. Frente a
+la **fuente** que se le dio, es **intrínseca** si contradice lo que la fuente
+dice y **extrínseca** si añade algo que la fuente no dice
+[@maynez2020faithfulness]. Frente al **mundo** y a la petición, una revisión de
+2025 separa los errores de **factualidad**, afirmar algo falso o inventado, de
+los de **fidelidad**, apartarse de las instrucciones, del contexto aportado o de
+la propia coherencia [@huang2025hallucination]. Las dos clasificaciones no
+coinciden: una respuesta puede ser fiel a una fuente equivocada o acertar sin
+respaldo, como muestra la [lámina 04 del
+Atlas](../atlas/04-fiel-a-la-fuente-fiel-al-mundo.qmd).
 
 ## Contexto histórico
 
@@ -44,6 +54,11 @@ cuando una respuesta debe corresponderse con hechos o fuentes. Recuperación,
 verificación y supervisión pueden reducir el riesgo, pero ninguna de estas
 medidas garantiza por sí sola la corrección, especialmente en usos sanitarios
 o científicos.
+
+Un análisis teórico de 2025, todavía sin revisión por pares, propone que el
+entrenamiento y las evaluaciones habituales premian arriesgar una respuesta
+antes que reconocer que no se sabe, como un examen que no penaliza los errores
+[@kalai2025hallucinate].
 
 ## Aplicaciones
 
@@ -72,12 +87,22 @@ estancia hospitalaria, los médicos señalaron **omisiones** en el 25 % de los
 [@grolleau2026hospitalcourse]. Una revisión que solo busca datos inventados
 deja pasar lo que falta: comprobar una respuesta incluye comprobar qué no dice.
 
+Las referencias son un punto débil. En 800 preguntas médicas, entre el 50 % y el
+90 % de las respuestas de siete modelos no estaban del todo respaldadas por las
+fuentes que ellos mismos citaban; con búsqueda web, en torno al 30 % de las
+afirmaciones seguían sin respaldo [@wu2025sourcecheckup]. Un dato falso en la
+pregunta también arrastra al modelo: con 300 casos clínicos que contenían un
+detalle inventado, seis modelos lo desarrollaron como si fuera real entre el 50
+% y el 82 % de las veces, según el modelo y la forma de preguntar, y una
+instrucción de cautela lo redujo sin eliminarlo [@omar2025adversarial].
+
 ## Limitaciones
 
 - La detección automática de alucinaciones sigue siendo imperfecta.
 - Una respuesta puede combinar datos correctos e incorrectos de forma difícil
   de reconocer.
-- Pedir citas no garantiza que las referencias existan.
+-  Pedir citas no garantiza que las referencias existan ni que digan lo que se
+  les atribuye [@wu2025sourcecheckup].
 - La recuperación de información y la conexión a fuentes pueden reducir el
   problema, pero no lo eliminan.
 - Las tasas observadas dependen de la tarea, del sistema y de cómo se define y

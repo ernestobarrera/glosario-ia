@@ -58,8 +58,8 @@ lo acepta** en el aviso de cookies que aparece en la primera visita. Si no lo ac
 la página no carga Google Analytics ni instala sus cookies.
 
 - **Qué recoge, si acepta:** páginas vistas, tiempo de lectura, origen de la visita,
-  tipo de dispositivo y navegador, y ubicación aproximada. No recoge nombre, correo
-  ni nada que usted escriba en la página.
+  tipo de dispositivo y navegador, y ubicación aproximada. No se le pide nombre ni
+  correo, y el código del glosario no envía a Google lo que usted escriba en la página.
 - **Qué no es:** anónimo en sentido estricto. Google asigna a su navegador un
   identificador aleatorio; no permite saber quién es usted, pero sí reconocer el
   mismo navegador entre visitas.
@@ -73,7 +73,8 @@ la página no carga Google Analytics ni instala sus cookies.
   [política de privacidad de Google](https://policies.google.com/privacy?hl=es).
 - **Cómo cambiar de opinión:** con el enlace **«Preferencias de cookies»** del pie
   de cualquier página. Si rechaza después de haber aceptado, se borran las cookies
-  de Google Analytics.
+  de Google Analytics y deja de medirse también en las demás páginas del glosario
+  que tenga abiertas.
 
 Al margen de la analítica, las tipografías del glosario se sirven hoy desde Google
 Fonts: al abrir una página, el navegador las pide a Google, que recibe su dirección

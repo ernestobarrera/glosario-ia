@@ -8,7 +8,7 @@ description: "Proceso mediante el cual sistemas de IA descomponen, capturan mét
 categories:
   - "IA agéntica"
   - "Seguridad y riesgos"
-date-modified: 2026-10-24
+date-modified: 2026-10-25
 estado: "borrador"
 tipo: "concepto"
 ---
@@ -23,12 +23,26 @@ esta afecta a procesos de razonamiento, interpretación, síntesis y decisión:
 leer informes, priorizar casos, redactar documentos, interpretar imágenes o
 evaluar riesgo clínico.
 
-El resultado no suele ser la eliminación del profesional, sino la
-transformación de su rol: de ejecutor de la tarea cognitiva completa a
+El resultado puede no ser la eliminación del profesional, sino la transformación
+de su rol: de ejecutor de la tarea cognitiva completa a
 supervisor, validador y excepcionador de salidas automatizadas. Esta
 transformación se despliega de forma incremental y con frecuencia no se hace
 explícita en la evaluación organizativa, formativa o contractual de la
 tecnología adquirida.
+
+El término no coincide con el que usa el marco de [fluidez en
+IA](alfabetizacion-en-ia.qmd). Ese marco distingue tres modos de trabajar con la
+IA: **automatización**, cuando la IA ejecuta una tarea que la persona define;
+**aumentación**, cuando persona e IA la trabajan juntas; y **agencia**, cuando
+la persona configura la IA para que actúe por su cuenta [@dakan2025aifluency].
+Allí son modos de uso que elige quien trabaja. Aquí se habla de lo que les
+ocurre al trabajo experto y a la organización cuando esos modos se generalizan.
+
+Tampoco es la **automatización robótica de procesos** (RPA, por sus siglas en
+inglés), que ejecuta con reglas fijas tareas de oficina repetitivas. La
+literatura de sistemas de información llama **automatización cognitiva** a la
+extensión de esa automatización determinista, con ayuda de la IA, al trabajo de
+conocimiento [@engel2022cognitive].
 
 ## Contexto histórico
 
@@ -68,12 +82,20 @@ autónoma cuya lógica puede ser opaca.
 
 ### Sanitarias
 
-- La codificación clínica automatizada convierte al codificador en validador
-  de propuestas del sistema.
-- Los sistemas de apoyo a la decisión convierten al médico en excepcionador
-  del flujo por defecto.
-- La IA de triaje convierte a la enfermera en supervisora de derivaciones
-  algorítmicas.
+Un caso con ensayo aleatorizado es el cribado mamográfico. En el ensayo MASAI,
+con más de 105.000 mujeres, la IA decidió qué estudios necesitaban doble lectura
+y señaló hallazgos sospechosos: se detectaron más cánceres y las lecturas de los
+radiólogos bajaron un 44 % [@hernstrom2025masai]. El radiólogo no desapareció;
+cambió qué lee y con qué apoyo.
+
+Los ejemplos siguientes son posibilidades de diseño, no resultados medidos:
+
+-  La codificación clínica automatizada puede convertir al codificador en
+  validador de propuestas del sistema.
+-  Un sistema de apoyo a la decisión puede dejar al médico la gestión de las
+  excepciones al flujo por defecto.
+-  Una IA de triaje puede convertir a la enfermera en supervisora de
+  derivaciones algorítmicas.
 
 ## Limitaciones
 
