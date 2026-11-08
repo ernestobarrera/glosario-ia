@@ -6,22 +6,32 @@
 --
 --   - la DINAMICA, de la ficha: su termino ingles (`ingles`) en titulo o
 --     resumen y, si lo tiene, su descriptor MeSH verificado (`mesh`);
---   - la ESTATICA, comun a todas: un filtro de pubmed-filters que acota al
---     dominio de la IA. No vive aqui: herramientas/filtro_pubmed.py lo lee de
---     su repositorio antes de cada render y lo deja en pubmed-filtro.txt, asi
---     que si el filtro mejora, las 149 busquedas mejoran con el.
+--   - la ESTATICA, comun: un filtro de pubmed-filters que acota al dominio de
+--     la IA. No vive aqui: herramientas/filtro_pubmed.py lo lee de su
+--     repositorio antes de cada render y lo deja en pubmed-filtro-<clave>.txt,
+--     asi que si el filtro mejora, las busquedas mejoran con el.
+--
+-- Dos rutas de filtro, registradas en pubmed-rutas.txt por
+-- herramientas/comprobar_pubmed.py:
+--
+--   - especifico, por defecto;
+--   - sensible, en las fichas en las que el especifico no devuelve nada: ahi el
+--     riesgo es el falso negativo, y vale mas un poco de ruido que ningun
+--     resultado;
+--   - oculta, si tampoco el sensible devuelve nada: un enlace que lleva a «No
+--     results» ensena a ignorar todos los demas.
+--
+-- El bloque lleva SIEMPRE las dos consultas en data-consulta-<clave>, tambien
+-- cuando va oculto: la herramienta las mide tal como quedaron aqui, sin
+-- reconstruirlas, y asi la regla tiene una sola implementacion.
 --
 -- La composicion sigue el contrato de pubmed-filters (scripts/parse-filter.mjs,
 -- compose): «(tema) AND (filtro)», o «(tema) NOT ...» si el filtro es de
 -- exclusion. Componerlo con AND por defecto devolveria justo lo excluido.
---
--- Las fichas listadas en pubmed-sin-resultados.txt llevan el bloque oculto: un
--- enlace que lleva a «No results» enseña a ignorar todos los demas. El bloque se
--- emite igual, oculto, para que herramientas/comprobar_pubmed.py pueda volver a
--- medir esa busqueda y devolverla cuando ya tenga resultados.
 
-local INSTANTANEA = "pubmed-filtro.txt"
-local SIN_RESULTADOS = "pubmed-sin-resultados.txt"
+local RUTAS = "pubmed-rutas.txt"
+local POR_DEFECTO = "especifico"
+local ALTERNATIVA = "sensible"
 
 local function raizProyecto()
   if quarto and quarto.project and quarto.project.directory then
@@ -53,32 +63,35 @@ local function leerLineas(ruta)
 end
 
 -- La consulta es la unica linea que no es comentario.
-local function consultaDelFiltro(raiz)
-  local lineas = leerLineas(raiz .. "/" .. INSTANTANEA)
+local function leerFiltro(raiz, clave)
+  local lineas = leerLineas(raiz .. "/pubmed-filtro-" .. clave .. ".txt")
   if not lineas then
-    return nil, nil
+    error("pubmed.lua: falta pubmed-filtro-" .. clave .. ".txt; ejecuta herramientas/filtro_pubmed.py")
   end
-  local consulta, fuente = nil, nil
+  local filtro = {}
   for _, linea in ipairs(lineas) do
-    local f = linea:match("^#%s*Fuente:%s*(%S+)")
-    if f then
-      fuente = f
+    local fuente = linea:match("^#%s*Fuente:%s*(%S+)")
+    if fuente then
+      filtro.fuente = fuente
     elseif linea ~= "" and not linea:match("^#") then
-      consulta = linea
+      filtro.consulta = linea
     end
   end
-  return consulta, fuente
+  if not filtro.consulta then
+    error("pubmed.lua: pubmed-filtro-" .. clave .. ".txt no contiene ninguna consulta")
+  end
+  return filtro
 end
 
-local function fichasSinResultados(raiz)
-  local conjunto = {}
-  for _, linea in ipairs(leerLineas(raiz .. "/" .. SIN_RESULTADOS) or {}) do
-    local slug = linea:match("^%s*([%w%-]+)%s*$")
-    if slug then
-      conjunto[slug] = true
+-- «slug ruta  # comentario»; una ficha que no aparece usa la ruta por defecto.
+local function rutaDe(raiz, slug)
+  for _, linea in ipairs(leerLineas(raiz .. "/" .. RUTAS) or {}) do
+    local s, ruta = linea:match("^%s*([%w%-]+)%s+(%a+)")
+    if s == slug then
+      return ruta
     end
   end
-  return conjunto
+  return POR_DEFECTO
 end
 
 -- Termino en titulo o resumen. Truncado al final para recoger plurales
@@ -118,6 +131,16 @@ local function anioDeCorte(filtro)
   return filtro:match('"(%d%d%d%d)/%d%d/%d%d"%s*%[[Pp][Dd][Aa][Tt]%]')
 end
 
+local function nombreDe(meta, clave)
+  local cfg = meta["busqueda-pubmed"]
+  local filtros = cfg and cfg.filtros
+  local f = filtros and filtros[clave]
+  if f and f.nombre then
+    return pandoc.utils.stringify(f.nombre)
+  end
+  return "filtro " .. clave .. " de IA"
+end
+
 function Pandoc(doc)
   local meta = doc.meta
   if not meta.ingles then
@@ -126,10 +149,8 @@ function Pandoc(doc)
 
   local raiz = raizProyecto()
   local slug = slugDeSalida()
-  local filtro, fuente = consultaDelFiltro(raiz)
-  if not filtro then
-    error("pubmed.lua: falta " .. INSTANTANEA .. "; ejecuta herramientas/filtro_pubmed.py")
-  end
+  local ruta = slug and rutaDe(raiz, slug) or POR_DEFECTO
+  local claveActiva = (ruta == ALTERNATIVA) and ALTERNATIVA or POR_DEFECTO
 
   local ingles = pandoc.utils.stringify(meta.ingles)
   local mesh = meta.mesh and pandoc.utils.stringify(meta.mesh) or "ninguno"
@@ -137,11 +158,17 @@ function Pandoc(doc)
   if mesh ~= "ninguno" then
     tema = tema .. ' OR "' .. mesh .. '"[Mesh]'
   end
-  local consulta = componer(tema, filtro)
-  local enlace = "https://pubmed.ncbi.nlm.nih.gov/?term=" .. codificar(consulta)
 
-  local cfg = meta["busqueda-pubmed"] or {}
-  local nombre = cfg.nombre and pandoc.utils.stringify(cfg.nombre) or "filtro de IA"
+  local filtros = {
+    [POR_DEFECTO] = leerFiltro(raiz, POR_DEFECTO),
+    [ALTERNATIVA] = leerFiltro(raiz, ALTERNATIVA)
+  }
+  local consultas = {}
+  for clave, filtro in pairs(filtros) do
+    consultas[clave] = componer(tema, filtro.consulta)
+  end
+  local activo = filtros[claveActiva]
+  local enlace = "https://pubmed.ncbi.nlm.nih.gov/?term=" .. codificar(consultas[claveActiva])
 
   local termino = pandoc.Span({ pandoc.Str(ingles) }, pandoc.Attr("", { "ingles-termino" }, { lang = "en" }))
   local principal = pandoc.Para({
@@ -162,22 +189,31 @@ function Pandoc(doc)
   table.insert(nota, pandoc.Space())
   table.insert(nota, pandoc.Str("acotado con el"))
   table.insert(nota, pandoc.Space())
-  local textoFiltro = { pandoc.Str(nombre) }
-  if fuente then
-    table.insert(nota, pandoc.Link(textoFiltro, fuente))
+  local textoFiltro = { pandoc.Str(nombreDe(meta, claveActiva)) }
+  if activo.fuente then
+    table.insert(nota, pandoc.Link(textoFiltro, activo.fuente))
   else
     table.insert(nota, pandoc.Span(textoFiltro))
   end
   table.insert(nota, pandoc.Space())
   table.insert(nota, pandoc.Str("de pubmed-filters"))
-  local anio = anioDeCorte(filtro)
+  local anio = anioDeCorte(activo.consulta)
   if anio then
     table.insert(nota, pandoc.Str(" (publicaciones desde " .. anio .. ")"))
   end
-  table.insert(nota, pandoc.Str(". Puede omitir trabajos relevantes."))
+  if claveActiva == ALTERNATIVA then
+    table.insert(nota, pandoc.Str(". Con el filtro específico no había resultados: el sensible recoge más trabajos, también más ruido."))
+  else
+    table.insert(nota, pandoc.Str(". Puede omitir trabajos relevantes."))
+  end
 
-  local atributos = { ["data-consulta"] = consulta }
-  if slug and fichasSinResultados(raiz)[slug] then
+  local atributos = {
+    ["data-ruta"] = ruta,
+    ["data-consulta"] = consultas[claveActiva],
+    ["data-consulta-" .. POR_DEFECTO] = consultas[POR_DEFECTO],
+    ["data-consulta-" .. ALTERNATIVA] = consultas[ALTERNATIVA]
+  }
+  if ruta == "oculta" then
     atributos.hidden = ""
   end
 

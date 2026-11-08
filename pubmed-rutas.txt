@@ -1,0 +1,27 @@
+# GENERADO por herramientas/comprobar_pubmed.py. No editar a mano.
+# Ruta de filtro de la busqueda en PubMed de las fichas que NO usan la de
+# por defecto (especifico):
+#   sensible  el especifico no devolvia nada y el sensible si (posible falso negativo)
+#   oculta    ninguno de los dos devolvia nada; el enlace se oculta
+# Cada linea guarda cuando y con que recuentos se decidio. La herramienta las
+# revisa todas en cada pasada: una ficha vuelve al especifico en cuanto da
+# resultados con el, y entonces sale de esta lista.
+andamiaje-de-agente oculta  # 2026-11-08 · especifico 0 · sensible 0
+aprendizaje-contrafactual oculta  # 2026-11-08 · especifico 0 · sensible 0
+automatizacion-del-trabajo-cognitivo oculta  # 2026-11-08 · especifico 0 · sensible 0
+capability-overhang oculta  # 2026-11-08 · especifico 0 · sensible 0
+desplazamiento-de-centroides oculta  # 2026-11-08 · especifico 0 · sensible 0
+elicitacion-de-capacidades oculta  # 2026-11-08 · especifico 0 · sensible 0
+esquema-de-herramientas oculta  # 2026-11-08 · especifico 0 · sensible 0
+evaluacion-fuera-de-politica oculta  # 2026-11-08 · especifico 0 · sensible 0
+fatiga-agentica-humana oculta  # 2026-11-08 · especifico 0 · sensible 0
+frontera-tecnologica-dentada oculta  # 2026-11-08 · especifico 0 · sensible 0
+gobernanza-mlops oculta  # 2026-11-08 · especifico 0 · sensible 0
+muestreo-top-k sensible  # 2026-11-08 · especifico 0 · sensible 1
+muestreo-top-p oculta  # 2026-11-08 · especifico 0 · sensible 0
+problema-del-ritmo oculta  # 2026-11-08 · especifico 0 · sensible 0
+prompting-analogico oculta  # 2026-11-08 · especifico 0 · sensible 0
+subajuste sensible  # 2026-11-08 · especifico 0 · sensible 7
+tangente-hiperbolica sensible  # 2026-11-08 · especifico 0 · sensible 6
+teoria-de-los-actos-de-habla sensible  # 2026-11-08 · especifico 0 · sensible 2
+trabajo-fantasma oculta  # 2026-11-08 · especifico 0 · sensible 0

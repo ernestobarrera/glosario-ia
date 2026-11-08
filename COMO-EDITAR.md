@@ -97,13 +97,18 @@ python herramientas/comprobar_pubmed.py --ficha <slug> --sugerir
 
 La herramienta verifica contra NCBI que el descriptor existe, sugiere uno si
 la ficha dice `"ninguno"` y el término lleva ya a alguno (decidir si es el
-mismo concepto es humano), y mide la búsqueda. Si no devuelve resultados, la
-apunta en `pubmed-sin-resultados.txt` y el enlace se oculta en el siguiente
-render. Ejecútela sin `--ficha` cuando cambie el filtro.
+mismo concepto es humano), y elige la ruta de la búsqueda: el filtro
+específico por defecto; el sensible si con el específico no hay resultados;
+y, si tampoco con el sensible, el enlace se oculta. Las fichas fuera de la
+ruta por defecto quedan en `pubmed-rutas.txt` con la fecha y los recuentos de
+la decisión. Si cambia alguna ruta, vuelva a renderizar. Ejecútela sin
+`--ficha` cuando cambie un filtro y en la revisión periódica: una ficha vuelve
+al específico en cuanto da resultados con él.
 
-El filtro que acota la búsqueda no se edita aquí: vive en `pubmed-filters` y
-`herramientas/filtro_pubmed.py` lo lee antes de cada render. Si cambia, el
-render local deja el cambio en `pubmed-filtro.txt` como un diff revisable.
+Los filtros no se editan aquí: viven en `pubmed-filters` y
+`herramientas/filtro_pubmed.py` los lee antes de cada render. Si cambian, el
+render local deja el cambio en `pubmed-filtro-especifico.txt` o
+`pubmed-filtro-sensible.txt` como un diff revisable.
 
 ## Recorridos
 

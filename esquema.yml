@@ -87,14 +87,18 @@ busqueda_pubmed:
     regla: >-
       Lo compone filters/pubmed.lua: el termino ingles en titulo o resumen
       (truncado para recoger plurales) y el descriptor, si lo hay, combinados
-      con AND con el filtro de pubmed-filters que declara _quarto.yml. El
-      filtro no se copia a mano: herramientas/filtro_pubmed.py lo lee antes de
-      cada render.
-    sin_resultados: >-
-      herramientas/comprobar_pubmed.py mide cada busqueda y lista en
-      pubmed-sin-resultados.txt las que no devuelven nada; en ellas el enlace
-      se oculta. Se vuelve a ejecutar al cerrar una ficha y cuando cambie el
-      filtro.
+      con AND con un filtro de pubmed-filters de los que declara _quarto.yml.
+      Los filtros no se copian a mano: herramientas/filtro_pubmed.py los lee
+      antes de cada render.
+    rutas: >-
+      Por defecto, el filtro especifico. Si con el la busqueda no devuelve
+      nada, el sensible: el riesgo ahi es el falso negativo, y vale mas algo de
+      ruido que ningun resultado. Si tampoco el sensible devuelve nada, el
+      enlace se oculta. Lo decide herramientas/comprobar_pubmed.py, que anota
+      en pubmed-rutas.txt cada ficha fuera de la ruta por defecto con la fecha
+      y los recuentos de la decision, y en cada pasada las revisa todas: una
+      ficha vuelve al especifico en cuanto da resultados con el. Se ejecuta al
+      cerrar una ficha, cuando cambie un filtro y en la revision periodica.
 
 # ---------------------------------------------------------------------------
 # Secciones del cuerpo
