@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Vanishing gradient"
   - "Desvanecimiento del gradiente"
+ingles: "vanishing gradient"
+mesh: "ninguno"
 description: "Problema de entrenamiento en el que el gradiente se reduce al propagarse hacia las capas iniciales y estas dejan de aprender."
 categories:
   - "Aprendizaje automático"

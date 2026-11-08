@@ -4,6 +4,8 @@ aliases:
   - /terminos/monte-carlo-methods.html
 sinonimos:
   - "Monte Carlo methods"
+ingles: "Monte Carlo methods"
+mesh: "Monte Carlo Method"
 description: "Familia de métodos que usa muestras aleatorias repetidas para estimar cantidades difíciles de calcular directamente."
 categories:
   - "Aprendizaje automático"

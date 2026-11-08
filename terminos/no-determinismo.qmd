@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Nondeterminism"
   - "No determinismo"
+ingles: "nondeterminism"
+mesh: "ninguno"
 description: "Variabilidad entre ejecuciones aparentemente iguales, que puede proceder del azar, del muestreo o de operaciones de cómputo no deterministas."
 categories:
   - "Fundamentos"

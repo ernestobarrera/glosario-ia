@@ -12,6 +12,8 @@ project:
   preview:
     browser: false
     watch-inputs: true
+  # Lee el filtro de pubmed-filters antes de cada render (ver busqueda-pubmed).
+  pre-render: herramientas/filtro_pubmed.py
 
 website:
   title: "Glosario IA"
@@ -68,6 +70,26 @@ language:
   listing-page-filter: "Busca un término, una sigla o un sinónimo…"
 bibliography: references.bib
 csl: vancouver.csl
+# Busqueda en PubMed al pie de cada ficha: la pieza dinamica es el termino
+# ingles de la ficha (`ingles`, y `mesh` si tiene descriptor); la estatica, uno
+# de estos filtros. No se copian a mano: herramientas/filtro_pubmed.py los lee
+# de su repositorio antes de cada render y deja cada consulta en
+# pubmed-filtro-<clave>.txt, de modo que sus mejoras llegan solas.
+#
+# Dos rutas: el especifico por defecto; el sensible para las fichas en las que
+# el especifico no devuelve nada (posible falso negativo); y, si tampoco el
+# sensible, el enlace se oculta. Lo decide herramientas/comprobar_pubmed.py, que
+# lo registra en pubmed-rutas.txt y lo revisa en cada pasada.
+busqueda-pubmed:
+  repositorio: ernestobarrera/pubmed-filters
+  rama: main
+  filtros:
+    especifico:
+      ruta: filters/scope/ai_especifico.txt
+      nombre: "filtro específico de IA generativa"
+    sensible:
+      ruta: filters/scope/ai_sensible.txt
+      nombre: "filtro sensible de IA generativa"
 filters:
   # Primero: rellena las listas de los recorridos, y los demas filtros ven ya
   # la pagina completa.
@@ -76,6 +98,9 @@ filters:
   - filters/estado.lua
   - filters/matices.lua
   - filters/temas.lua
+  # Antes que atlas.lua: la busqueda queda tras las referencias y la lamina del
+  # Atlas, que atlas.lua anade al final, sigue cerrando la ficha.
+  - filters/pubmed.lua
   - filters/atlas.lua
   - filters/guia.lua
 

@@ -4,6 +4,8 @@ aliases:
   - /terminos/underfitting.html
 sinonimos:
   - "Underfitting"
+ingles: "underfitting"
+mesh: "ninguno"
 description: "Fallo de aprendizaje en el que un modelo no representa suficientemente la estructura útil de la tarea y rinde mal incluso sobre los datos de entrenamiento."
 categories:
   - "Aprendizaje automático"

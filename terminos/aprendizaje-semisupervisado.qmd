@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Aprendizaje semi-supervisado"
   - "Semi-supervised learning"
+ingles: "semi-supervised learning"
+mesh: "ninguno"
 description: "Enfoque que combina una pequeña cantidad de ejemplos etiquetados con datos sin etiquetar para aprender una tarea predictiva."
 categories:
   - "Aprendizaje automático"

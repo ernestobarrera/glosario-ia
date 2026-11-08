@@ -7,6 +7,8 @@ sinonimos:
   - "Personalización persistente"
   - "Persistent memory"
   - "Memoria en IA"
+ingles: "persistent memory"
+mesh: "ninguno"
 description: "Capacidad de un sistema de IA para retener y reutilizar información del usuario más allá de una conversación, construyendo un perfil que persiste entre sesiones."
 categories:
   - "IA agéntica"

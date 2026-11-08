@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Pretraining"
   - "Pre-entrenamiento"
+ingles: "pretraining"
+mesh: "ninguno"
 description: "Fase inicial en la que un modelo aprende patrones generales antes de adaptarse a una tarea o dominio concretos."
 categories:
   - "Aprendizaje automático"

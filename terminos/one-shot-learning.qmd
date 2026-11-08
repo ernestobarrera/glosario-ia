@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Aprendizaje con un ejemplo"
   - "Aprendizaje one-shot"
+ingles: "one-shot learning"
+mesh: "ninguno"
 description: "Caso de aprendizaje con pocos ejemplos en el que el sistema debe reconocer o resolver una tarea nueva a partir de un único ejemplo por clase."
 categories:
   - "Aprendizaje automático"

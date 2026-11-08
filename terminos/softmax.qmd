@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Función softmax"
   - "Exponencial normalizada"
+ingles: "softmax"
+mesh: "ninguno"
 description: "Función que convierte un vector de puntuaciones en una distribución de probabilidad sobre un conjunto de alternativas, con valores positivos que suman uno."
 categories:
   - "Fundamentos"

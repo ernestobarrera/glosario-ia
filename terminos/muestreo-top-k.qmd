@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Top-k"
   - "Top-k sampling"
+ingles: "top-k sampling"
+mesh: "ninguno"
 description: "Estrategia de generación que restringe la elección del siguiente token a los k más probables y muestrea solo entre ellos."
 categories:
   - "Modelos de lenguaje"

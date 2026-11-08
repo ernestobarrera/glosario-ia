@@ -35,9 +35,21 @@ const inicial = (titulo) => titulo.trim().charAt(0).normalize("NFD").charAt(0).t
         <span class="glosario-monograma" aria-hidden="true"><%= inicial(item.title) %></span>
         <h3 class="no-anchor glosario-card-title listing-title"><%= item.title %></h3>
       </div>
+      <%
+      // El termino ingles va bajo el titulo, como en la ficha, y sale de la linea
+      // de sinonimos. Tiene su propia columna de filtro (listing-ingles en
+      // filter-ui), asi que la caja de la portada lo sigue encontrando. Si el
+      // titulo ya es el termino ingles, no se repite.
+      const igual = (a, b) => a && b && a.toLowerCase() === b.toLowerCase();
+      const ingles = item.ingles && !igual(item.ingles, item.title) ? item.ingles : null;
+      const resto = (item.sinonimos || []).filter((s) => !(ingles && igual(s, ingles)));
+      %>
+      <% if (ingles) { %>
+      <p class="glosario-card-ingles listing-ingles"><span class="ingles-etiqueta">ingl.</span> <span class="ingles-termino" lang="en"><%= ingles %></span></p>
+      <% } %>
       <p class="glosario-card-description listing-description"><%= item.description %></p>
-      <% if (item.sinonimos) { %>
-      <p class="glosario-card-sinonimos listing-sinonimos"><%= item.sinonimos.join(" · ") %></p>
+      <% if (resto.length) { %>
+      <p class="glosario-card-sinonimos listing-sinonimos"><%= resto.join(" · ") %></p>
       <% } %>
       <% if (item.categories) { %>
       <div class="glosario-card-categorias listing-categories">

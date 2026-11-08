@@ -1,0 +1,5 @@
+# GENERADO por herramientas/filtro_pubmed.py antes de cada render. No editar a mano.
+# Fuente: https://github.com/ernestobarrera/pubmed-filters/blob/main/filters/scope/ai_sensible.txt
+# sha256: 479dacb8d835a20d14304a5f4138f0ee7073715a84b275014b3e1e3ea07f56c9
+# Vigente desde: 2026-11-08
+( "ChatGPT"[TIAB] OR "Claude"[TIAB] OR "Gemini"[TIAB] OR "Perplexity"[TIAB] OR "Anthropic"[TIAB] OR "Bard"[TIAB] OR "Deepseek"[TIAB] OR "Google NotebookLM"[TIAB] OR "Qwen"[TIAB] OR "InternLM"[TIAB] OR "Baichuan"[TIAB] OR ("Llama"[TIAB] AND "AI"[TIAB]) OR ("Llama 2"[TIAB] AND "AI"[TIAB]) OR ("Mistral"[TIAB] AND "AI"[TIAB]) OR ("Mixtral"[TIAB] AND "AI"[TIAB])  OR "Grok"[TIAB]  OR "SenseNova"[TIAB] OR "GitHub Copilot"[TIAB] OR "Microsoft Copilot"[TIAB] OR "Large Language Model*"[TIAB] OR "Generative Artificial Intelligence"[TIAB] OR "Transformer"[TIAB] OR "Attention Mechanism"[TIAB] OR "Pretrained Transformer"[TIAB] OR "pre-trained transformer*"[TIAB] OR "Self-Attention"[TIAB] OR "Embeddings"[TIAB] OR "Generative Artificial Intelligence"[Mesh] OR "Natural Language Processing"[Mesh] )

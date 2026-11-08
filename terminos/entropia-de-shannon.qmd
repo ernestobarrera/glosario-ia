@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Shannon entropy"
   - "Entropía de la información"
+ingles: "Shannon entropy"
+mesh: "ninguno"
 description: "Medida de la incertidumbre de una distribución de probabilidad: cuánta información aporta en promedio conocer el resultado."
 categories:
   - "Fundamentos"

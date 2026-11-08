@@ -7,6 +7,8 @@ sinonimos:
   - "Ingeniería de prompts"
   - "Prompt engineering"
   - "Diseño de instrucciones"
+ingles: "prompting"
+mesh: "ninguno"
 description: "Técnica de guiar el comportamiento de un modelo de lenguaje mediante las instrucciones, preguntas o ejemplos que se le presentan."
 categories:
   - "Modelos de lenguaje"

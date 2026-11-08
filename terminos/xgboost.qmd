@@ -4,6 +4,8 @@ aliases:
   - /terminos/extreme-gradient-boosting.html
 sinonimos:
   - "Extreme Gradient Boosting"
+ingles: "XGBoost"
+mesh: "ninguno"
 description: "Sistema de boosting de árboles que construye modelos de forma secuencial y combina sus predicciones para tareas con datos estructurados."
 categories:
   - "Aprendizaje automático"

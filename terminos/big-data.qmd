@@ -4,6 +4,8 @@ aliases:
   - /terminos/datos-masivos.html
 sinonimos:
   - "Datos masivos"
+ingles: "Big Data"
+mesh: "Big Data"
 description: "Datos cuya escala, velocidad, variedad o variabilidad exige formas de almacenamiento y análisis que puedan ampliarse."
 categories:
   - "Fundamentos"

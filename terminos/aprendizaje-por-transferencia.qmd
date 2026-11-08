@@ -4,6 +4,8 @@ aliases:
   - /terminos/transfer-learning.html
 sinonimos:
   - "Transfer learning"
+ingles: "transfer learning"
+mesh: "ninguno"
 description: "Técnica que reutiliza representaciones o parámetros aprendidos en una tarea para resolver otra tarea relacionada."
 categories:
   - "Aprendizaje automático"

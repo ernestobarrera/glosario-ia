@@ -206,6 +206,8 @@ $camposObligatorios = @(
   "title",
   "aliases",
   "sinonimos",
+  "ingles",
+  "mesh",
   "description",
   "categories",
   "date-modified",
@@ -256,6 +258,47 @@ if ($seccionesObligatorias.Count -eq 0) {
 $aliasVistos = @{}
 $slugVistos = @{}
 $fichas = @()
+
+# Busqueda en PubMed. Las consultas de los dos filtros las deja
+# herramientas/filtro_pubmed.py (pre-render de Quarto) en
+# pubmed-filtro-<clave>.txt: en cada uno es la unica linea no comentada.
+# pubmed-rutas.txt lo escribe herramientas/comprobar_pubmed.py: las fichas que
+# no usan el especifico, con su ruta (sensible u oculta).
+$filtrosPubmed = @{}
+foreach ($clave in @("especifico", "sensible")) {
+  $rutaFiltro = Join-Path $raiz "pubmed-filtro-$clave.txt"
+  if (-not (Test-Path -LiteralPath $rutaFiltro)) {
+    Registrar-Error "falta pubmed-filtro-$clave.txt: ejecuta 'python herramientas/filtro_pubmed.py'"
+    continue
+  }
+  $consultaFiltro = @(Get-Content -LiteralPath $rutaFiltro -Encoding UTF8 |
+    Where-Object { $_ -ne "" -and -not $_.StartsWith("#") }) | Select-Object -Last 1
+  if ([string]::IsNullOrWhiteSpace($consultaFiltro)) {
+    Registrar-Error "pubmed-filtro-$clave.txt no contiene ninguna consulta"
+  }
+  else {
+    $filtrosPubmed[$clave] = $consultaFiltro
+  }
+}
+$rutasPubmed = @{}
+$rutaRutas = Join-Path $raiz "pubmed-rutas.txt"
+if (Test-Path -LiteralPath $rutaRutas) {
+  foreach ($linea in Get-Content -LiteralPath $rutaRutas -Encoding UTF8) {
+    if ($linea.TrimStart().StartsWith("#")) {
+      continue
+    }
+    $partes = [regex]::Match($linea, '^\s*(?<slug>[a-z0-9-]+)\s+(?<ruta>[a-z]+)')
+    if ($partes.Success) {
+      $rutaFicha = $partes.Groups["ruta"].Value
+      if (@("sensible", "oculta") -notcontains $rutaFicha) {
+        Registrar-Error "pubmed-rutas.txt: ruta desconocida '$rutaFicha' para '$($partes.Groups["slug"].Value)'"
+      }
+      $rutasPubmed[$partes.Groups["slug"].Value] = $rutaFicha
+    }
+  }
+}
+$busquedasPorRuta = @{ "especifico" = 0; "sensible" = 0; "oculta" = 0 }
+$busquedasConMesh = 0
 
 foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd" -File | Sort-Object Name) {
   $ficha = Leer-Ficha $archivo
@@ -356,6 +399,34 @@ foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd"
     Registrar-Error "$nombre`: sinonimos debe contener al menos un valor"
   }
 
+  # `ingles` senala un termino ya declarado; no es uno nuevo. Si apuntara a algo
+  # que no esta en title ni en sinonimos, el buscador y el A-Z no lo conocerian
+  # y la ficha prometeria bajo el titulo un termino que no la encuentra.
+  $ingles = [string]$meta["ingles"]
+  $inglesEsTitulo = $false
+  if (-not [string]::IsNullOrWhiteSpace($ingles)) {
+    $inglesEsTitulo = [string]::Equals($ingles, [string]$meta["title"], [StringComparison]::OrdinalIgnoreCase)
+    $declarado = $inglesEsTitulo -or (@($sinonimos | Where-Object {
+      [string]::Equals([string]$_, $ingles, [StringComparison]::OrdinalIgnoreCase)
+    }).Count -gt 0)
+    if (-not $declarado) {
+      Registrar-Error "$nombre`: ingles '$ingles' no coincide con el titulo ni con ningun sinonimo"
+    }
+  }
+  elseif ($meta.ContainsKey("ingles")) {
+    Registrar-Error "$nombre`: ingles esta vacio"
+  }
+
+  # El descriptor se verifica contra NCBI con herramientas/comprobar_pubmed.py,
+  # que necesita red. Aqui solo la forma: un valor, o el literal 'ninguno'.
+  $mesh = [string]$meta["mesh"]
+  if ($meta.ContainsKey("mesh") -and [string]::IsNullOrWhiteSpace($mesh)) {
+    Registrar-Error "$nombre`: mesh esta vacio; escribe el descriptor o 'ninguno'"
+  }
+  elseif ($mesh -match '[\[\]"]') {
+    Registrar-Error "$nombre`: mesh debe ser el nombre del descriptor, sin etiquetas ni comillas"
+  }
+
   if ($ficha.Texto -match "<!--\s*end list\s*-->") {
     Registrar-Error "$nombre`: conserva un artefacto '<!-- end list -->'"
   }
@@ -436,6 +507,75 @@ foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd"
       }
     }
 
+    # Termino ingles bajo el titulo: lo pone filters/sinonimos.lua en la ranura
+    # de subtitulo. Si el titulo ya es el termino ingles, no debe repetirse.
+    if (-not [string]::IsNullOrWhiteSpace($ingles)) {
+      $marcaIngles = 'class="ingles-termino" lang="en">' + [Net.WebUtility]::HtmlEncode($ingles) + '<'
+      $subtitulo = [regex]::Match($html, '<p class="subtitle[^"]*">(?<s>[\s\S]*?)</p>')
+      if ($inglesEsTitulo -and $subtitulo.Success) {
+        Registrar-Error "$nombre`: repite bajo el titulo un termino ingles que ya es el titulo"
+      }
+      elseif (-not $inglesEsTitulo -and (-not $subtitulo.Success -or
+          $subtitulo.Groups["s"].Value.IndexOf($marcaIngles, [StringComparison]::Ordinal) -lt 0)) {
+        Registrar-Error "$nombre`: el termino ingles '$ingles' no aparece bajo el titulo"
+      }
+    }
+
+    # Busqueda en PubMed: filters/pubmed.lua. Se comprueban las dos piezas por
+    # separado. La estatica, el filtro, tiene que ir LITERAL, tal como lo dejo
+    # herramientas/filtro_pubmed.py: es la garantia de que el enlace llama al
+    # filtro de pubmed-filters y no a una copia que se quedo atras. La
+    # dinamica, el termino de la ficha, tiene que abrir la consulta. Y la ruta
+    # que usa el enlace tiene que ser la que registra pubmed-rutas.txt.
+    $bloquePubmed = [regex]::Match($html, '<div class="busqueda-pubmed"(?<attrs>[^>]*)>')
+    if (-not $bloquePubmed.Success) {
+      Registrar-Error "$nombre`: no se renderizo la busqueda en PubMed"
+    }
+    else {
+      $atributosPubmed = $bloquePubmed.Groups["attrs"].Value
+      $rutaEsperada = if ($rutasPubmed.ContainsKey($slug)) { $rutasPubmed[$slug] } else { "especifico" }
+      $rutaHtml = [regex]::Match($atributosPubmed, '\sdata-ruta="(?<r>[^"]*)"').Groups["r"].Value
+      if ($rutaHtml -ne $rutaEsperada) {
+        Registrar-Error "$nombre`: la busqueda en PubMed usa la ruta '$rutaHtml', pero pubmed-rutas.txt dice '$rutaEsperada'"
+      }
+      $claveActiva = if ($rutaEsperada -eq "sensible") { "sensible" } else { "especifico" }
+
+      $consultasHtml = @{}
+      foreach ($atributo in @("consulta", "consulta-especifico", "consulta-sensible")) {
+        $valor = [regex]::Match($atributosPubmed, "\sdata-$atributo=`"(?<q>[^`"]*)`"")
+        if (-not $valor.Success) {
+          Registrar-Error "$nombre`: la busqueda en PubMed no declara data-$atributo"
+        }
+        $consultasHtml[$atributo] = [Net.WebUtility]::HtmlDecode($valor.Groups["q"].Value)
+      }
+      if ($consultasHtml["consulta"] -cne $consultasHtml["consulta-$claveActiva"]) {
+        Registrar-Error "$nombre`: el enlace a PubMed no usa la consulta de su ruta ($claveActiva)"
+      }
+      foreach ($clave in @("especifico", "sensible")) {
+        $consultaClave = $consultasHtml["consulta-$clave"]
+        if ($filtrosPubmed.ContainsKey($clave) -and
+            $consultaClave.IndexOf($filtrosPubmed[$clave], [StringComparison]::Ordinal) -lt 0) {
+          Registrar-Error "$nombre`: la busqueda en PubMed no lleva el filtro literal de pubmed-filtro-$clave.txt"
+        }
+        elseif (-not $consultaClave.StartsWith('("', [StringComparison]::Ordinal) -or
+            $consultaClave.IndexOf($ingles.TrimEnd('s'), [StringComparison]::OrdinalIgnoreCase) -lt 0) {
+          Registrar-Error "$nombre`: la busqueda en PubMed ($clave) no empieza por el termino ingles '$ingles'"
+        }
+        if ($mesh -ne "ninguno" -and
+            $consultaClave.IndexOf('"' + $mesh + '"[Mesh]', [StringComparison]::Ordinal) -lt 0) {
+          Registrar-Error "$nombre`: la busqueda en PubMed ($clave) no incluye el descriptor '$mesh'"
+        }
+      }
+      $oculta = $atributosPubmed -match '\shidden(=|\s|$)'
+      if ($oculta -ne ($rutaEsperada -eq "oculta")) {
+        Registrar-Error "$nombre`: la busqueda en PubMed esta oculta=$oculta, pero su ruta es '$rutaEsperada'"
+      }
+      $busquedasPorRuta[$rutaEsperada]++
+      if ($mesh -ne "ninguno") {
+        $busquedasConMesh++
+      }
+    }
+
     # Matiz de tema en la cabecera de la ficha. Lo emite filters/matices.lua,
     # porque el title block de Quarto no da ningun asidero a CSS: sin el filtro
     # las etiquetas volverian al gris de antes de la fase 2 y nada fallaria.
@@ -451,6 +591,14 @@ foreach ($archivo in Get-ChildItem -LiteralPath $carpetaTerminos -Filter "*.qmd"
       }
       $posicionCategoria++
     }
+  }
+}
+
+# Una entrada de pubmed-rutas.txt que no es una ficha es una lista vieja: la
+# ficha cambio de nombre y su busqueda volveria a la ruta por defecto sin medirla.
+foreach ($slugConRuta in $rutasPubmed.Keys) {
+  if (-not $slugVistos.ContainsKey($slugConRuta)) {
+    Registrar-Error "pubmed-rutas.txt: '$slugConRuta' no es ninguna ficha"
   }
 }
 
@@ -1246,6 +1394,8 @@ Write-Host "  Columnas de filtro presentes en el HTML: $columnasComprobadas"
 Write-Host "  Matiz de tema en portada, listados y ficha: $($categoriasPermitidas.Count) categorias"
 Write-Host "  Temas: $($categoriasPermitidas.Count) secciones con frase, recuento y $fichasEnSecciones pertenencias; $laminasEnTemas enlaces al Atlas"
 Write-Host "  Indice A-Z: $entradasIndice entradas, con remision para cada sinonimo"
+Write-Host "  Termino ingles: declarado en $($fichas.Count) fichas, bajo el titulo cuando no es el propio titulo"
+Write-Host "  Busqueda en PubMed: $($busquedasPorRuta['especifico']) con el filtro especifico, $($busquedasPorRuta['sensible']) con el sensible y $($busquedasPorRuta['oculta']) ocultas; $busquedasConMesh con descriptor MeSH; filtros literales de pubmed-filtro-*.txt"
 foreach ($recorrido in $recorridos) {
   $enEtapas = if ($recorrido.Etapas -gt 0) { ", en $($recorrido.Etapas) etapas" } else { "" }
   Write-Host "  Recorrido $($recorrido.Id): $($enlacesRecorrido[$recorrido.Id]) fichas enlazadas, unicas y renderizadas$enEtapas"

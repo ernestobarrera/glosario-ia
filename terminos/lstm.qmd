@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "LSTM"
   - "Memoria a corto y largo plazo"
+ingles: "long short-term memory"
+mesh: "Long Short Term Memory"
 description: "Arquitectura recurrente con estado y compuertas que facilita el aprendizaje de dependencias largas en datos secuenciales."
 categories:
   - "Arquitecturas"

@@ -4,6 +4,8 @@ aliases:
   - /terminos/symbol-grounding-problem.html
 sinonimos:
   - "Symbol grounding problem"
+ingles: "symbol grounding problem"
+mesh: "ninguno"
 description: "Problema de explicar cómo los símbolos de un sistema adquieren significado vinculado al mundo y no solo a otros símbolos."
 categories:
   - "Fundamentos"

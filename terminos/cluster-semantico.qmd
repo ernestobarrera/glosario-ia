@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Semantic cluster"
   - "Agrupamiento semántico"
+ingles: "semantic cluster"
+mesh: "ninguno"
 description: "Grupo de representaciones vectoriales próximas entre sí que se interpreta como una agrupación de elementos con significado relacionado."
 categories:
   - "Procesamiento del lenguaje"

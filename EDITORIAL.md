@@ -59,6 +59,8 @@ Una ficha debe:
 - ofrecer una definición breve y otra ampliada coherentes;
 - separar aplicaciones, limitaciones y ejemplos;
 - enlazar términos relacionados existentes;
+- declarar su término inglés y su descriptor MeSH verificado, o «ninguno»,
+  antes de darse por cerrada;
 - distinguir hechos, ejemplos e incertidumbres;
 - evitar lenguaje promocional y afirmaciones clínicas no respaldadas;
 - pasar `validar.ps1` y el render de Quarto.

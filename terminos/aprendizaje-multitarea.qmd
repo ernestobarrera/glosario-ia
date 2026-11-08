@@ -4,6 +4,8 @@ aliases:
   - /terminos/multitask-learning.html
 sinonimos:
   - "Multitask learning"
+ingles: "multitask learning"
+mesh: "ninguno"
 description: "Enfoque que entrena conjuntamente varias tareas relacionadas para que compartan representaciones y se aporten información durante el aprendizaje."
 categories:
   - "Aprendizaje automático"

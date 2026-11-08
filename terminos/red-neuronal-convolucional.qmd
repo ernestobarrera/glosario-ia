@@ -7,6 +7,8 @@ sinonimos:
   - "CNN"
   - "Convolutional neural network"
   - "Redes neuronales convolucionales"
+ingles: "convolutional neural network"
+mesh: "Convolutional Neural Networks"
 description: "Red neuronal que aplica filtros locales sobre datos con estructura de cuadrícula, como imágenes, para extraer características de forma jerárquica."
 categories:
   - "Arquitecturas"

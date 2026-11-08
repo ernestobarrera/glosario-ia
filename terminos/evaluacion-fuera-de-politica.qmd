@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Off-policy evaluation"
   - "OPE"
+ingles: "off-policy evaluation"
+mesh: "ninguno"
 description: "Estimación del rendimiento de una política de decisión con datos generados por otra política, sin ejecutarla todavía."
 categories:
   - "Aprendizaje automático"

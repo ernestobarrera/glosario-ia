@@ -4,6 +4,8 @@ aliases:
   - /terminos/perdida-de-destrezas.html
 sinonimos:
   - "Pérdida de destrezas"
+ingles: "deskilling"
+mesh: "ninguno"
 description: "Pérdida de una destreza ya adquirida cuando una tarea se delega de forma sostenida en un sistema automatizado y se deja de practicar; no llegar a adquirirla es un riesgo distinto."
 categories:
   - "Seguridad y riesgos"

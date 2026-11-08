@@ -7,6 +7,8 @@ sinonimos:
   - "MAS"
   - "Multi-agent system"
   - "Sistema de múltiples agentes"
+ingles: "multi-agent system"
+mesh: "ninguno"
 description: "Sistema distribuido en el que varios agentes interactúan, cooperan o compiten para alcanzar objetivos individuales o compartidos."
 categories:
   - "IA agéntica"

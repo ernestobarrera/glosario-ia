@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "ReLU"
   - "Rectified linear unit"
+ingles: "rectified linear unit"
+mesh: "ninguno"
 description: "Función de activación que deja pasar los valores positivos sin cambios y devuelve cero para los negativos."
 categories:
   - "Arquitecturas"

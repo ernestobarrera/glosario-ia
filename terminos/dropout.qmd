@@ -4,6 +4,8 @@ aliases:
   - /terminos/desactivacion-aleatoria.html
 sinonimos:
   - "Desactivación aleatoria"
+ingles: "dropout"
+mesh: "ninguno"
 description: "Técnica de regularización que anula al azar algunas activaciones durante el entrenamiento para reducir el sobreajuste."
 categories:
   - "Aprendizaje automático"

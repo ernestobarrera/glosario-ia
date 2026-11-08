@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Cross-entropy"
   - "Pérdida de entropía cruzada"
+ingles: "cross-entropy"
+mesh: "ninguno"
 description: "Medida de la discrepancia entre la distribución predicha por un modelo y la observada, usada como función de pérdida en clasificación."
 categories:
   - "Aprendizaje automático"

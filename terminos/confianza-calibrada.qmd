@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Calibrated trust"
   - "Calibración de la confianza"
+ingles: "calibrated trust"
+mesh: "ninguno"
 description: "Ajuste entre cuánto se fía una persona de un sistema automatizado y lo que ese sistema puede hacer de verdad en una tarea concreta, que evita tanto fiarse de más como fiarse de menos."
 categories:
   - "Seguridad y riesgos"

@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "ReAct"
   - "Reasoning + Acting"
+ingles: "ReAct"
+mesh: "ninguno"
 description: "Patrón agéntico que intercala razonamiento textual, acciones sobre el entorno y observaciones obtenidas tras ejecutarlas."
 categories:
   - "IA agéntica"

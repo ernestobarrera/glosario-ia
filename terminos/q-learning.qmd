@@ -4,6 +4,8 @@ aliases:
   - /terminos/aprendizaje-q.html
 sinonimos:
   - "Aprendizaje Q"
+ingles: "Q-learning"
+mesh: "ninguno"
 description: "Algoritmo de aprendizaje por refuerzo que estima el valor esperado de cada acción en cada estado sin necesitar un modelo del entorno."
 categories:
   - "Aprendizaje automático"

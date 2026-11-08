@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Decoding algorithm"
   - "Estrategia de decodificación"
+ingles: "decoding algorithm"
+mesh: "ninguno"
 description: "Procedimiento que elige, paso a paso, qué token emite un modelo de lenguaje a partir de la distribución de probabilidad que calcula."
 categories:
   - "Modelos de lenguaje"

@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Batch normalization"
   - "BatchNorm"
+ingles: "batch normalization"
+mesh: "ninguno"
 description: "Técnica que normaliza activaciones con estadísticas del minilote y aprende después una escala y un desplazamiento."
 categories:
   - "Aprendizaje automático"

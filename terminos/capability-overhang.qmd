@@ -4,6 +4,8 @@ aliases:
   - /terminos/overhang-de-capacidades.html
 sinonimos:
   - "Overhang de capacidades"
+ingles: "capability overhang"
+mesh: "ninguno"
 description: "Brecha entre una capacidad disponible y lo que una evaluación demuestra o una organización aprovecha; el sentido depende del contexto."
 categories:
   - "Fundamentos"

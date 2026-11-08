@@ -4,6 +4,8 @@ aliases:
   - /terminos/context-engineering.html
 sinonimos:
   - "Context engineering"
+ingles: "context engineering"
+mesh: "ninguno"
 description: "Diseño y mantenimiento de toda la información que entra en la ventana de contexto de un modelo en cada llamada, no solo de las instrucciones."
 categories:
   - "IA agéntica"

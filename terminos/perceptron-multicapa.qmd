@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "MLP"
   - "Multilayer perceptron"
+ingles: "multilayer perceptron"
+mesh: "Multilayer Perceptrons"
 description: "Red neuronal de propagación hacia delante formada por capas densamente conectadas y funciones de activación no lineales."
 categories:
   - "Aprendizaje automático"

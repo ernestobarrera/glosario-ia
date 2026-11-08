@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Sigmoid"
   - "Función logística"
+ingles: "sigmoid"
+mesh: "ninguno"
 description: "Función logística con forma de S que transforma un valor real en un número entre cero y uno."
 categories:
   - "Arquitecturas"

@@ -4,6 +4,8 @@ aliases:
   - /terminos/regularization.html
 sinonimos:
   - "Regularization"
+ingles: "regularization"
+mesh: "ninguno"
 description: "Conjunto de técnicas que penalizan o restringen la complejidad de un modelo para mejorar su generalización a datos nuevos."
 categories:
   - "Aprendizaje automático"

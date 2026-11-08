@@ -4,6 +4,8 @@ aliases:
   - /terminos/tool-schema.html
 sinonimos:
   - "Tool schema"
+ingles: "tool schema"
+mesh: "ninguno"
 description: "Contrato estructurado que declara qué herramientas puede invocar un agente, qué parámetros aceptan y qué resultado devuelven."
 categories:
   - "IA agéntica"

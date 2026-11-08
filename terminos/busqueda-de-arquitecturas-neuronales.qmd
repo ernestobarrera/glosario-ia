@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Neural Architecture Search"
   - "NAS"
+ingles: "neural architecture search"
+mesh: "ninguno"
 description: "Método que explora automáticamente estructuras de redes neuronales y compara su rendimiento bajo un espacio y presupuesto definidos."
 categories:
   - "Arquitecturas"

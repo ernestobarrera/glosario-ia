@@ -7,6 +7,8 @@ sinonimos:
   - "IA física"
   - "Embodied AI"
   - "Physical AI"
+ingles: "Embodied AI"
+mesh: "ninguno"
 description: "Rama de la IA que integra percepción, decisión y acción mediante un cuerpo situado en el mundo físico."
 categories:
   - "Fundamentos"

@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "MLM"
   - "Masked Language Modeling"
+ingles: "masked language modeling"
+mesh: "ninguno"
 description: "Objetivo de preentrenamiento que oculta algunos tokens y entrena al modelo para reconstruirlos a partir del contexto disponible a ambos lados."
 categories:
   - "Modelos de lenguaje"

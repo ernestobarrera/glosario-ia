@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "AGI"
   - "Artificial General Intelligence"
+ingles: "artificial general intelligence"
+mesh: "ninguno"
 description: "Concepto hipotético de una IA capaz de aprender y desenvolverse con flexibilidad en múltiples dominios cognitivos."
 categories:
   - "Fundamentos"

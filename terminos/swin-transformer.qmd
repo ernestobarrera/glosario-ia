@@ -4,6 +4,8 @@ aliases:
   - /terminos/swin.html
 sinonimos:
   - "Transformer Swin"
+ingles: "Swin Transformer"
+mesh: "ninguno"
 description: "Transformer visual jerárquico que calcula atención local en ventanas desplazadas entre capas."
 categories:
   - "Arquitecturas"

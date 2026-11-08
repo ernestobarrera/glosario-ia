@@ -7,6 +7,8 @@ sinonimos:
   - "AI alignment"
   - "Alignment"
   - "Alineación de IA"
+ingles: "AI alignment"
+mesh: "ninguno"
 description: "Problema de conseguir que el comportamiento de un sistema de IA se corresponda con los objetivos, instrucciones y valores que sus diseñadores y usuarios pretenden, y no solo con lo que la métrica de entrenamiento premia de forma literal."
 categories:
   - "Seguridad y riesgos"

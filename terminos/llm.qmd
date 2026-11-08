@@ -7,6 +7,8 @@ sinonimos:
   - "LLM"
   - "Large language model"
   - "Modelo de lenguaje de gran tamaño"
+ingles: "large language model"
+mesh: "Large Language Models"
 description: "Modelo entrenado con grandes corpus para predecir y generar lenguaje y adaptarse a múltiples tareas textuales."
 categories:
   - "Modelos de lenguaje"

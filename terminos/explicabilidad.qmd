@@ -7,6 +7,8 @@ sinonimos:
   - "IA explicable"
   - "Explainable AI"
   - "XAI"
+ingles: "Explainable AI"
+mesh: "ninguno"
 description: "Propiedad y conjunto de métodos orientados a hacer comprensibles las salidas o el comportamiento de un sistema de IA."
 categories:
   - "Ética y gobernanza"

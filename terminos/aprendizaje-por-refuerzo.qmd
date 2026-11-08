@@ -7,6 +7,8 @@ sinonimos:
   - "Reinforcement learning"
   - "RL"
   - "Aprendizaje por reforzamiento"
+ingles: "reinforcement learning"
+mesh: "Reinforcement Machine Learning"
 description: "Enfoque en el que un agente aprende a decidir mediante la interacción con un entorno, guiado por recompensas asociadas a sus acciones."
 categories:
   - "Aprendizaje automático"

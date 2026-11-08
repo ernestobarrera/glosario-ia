@@ -4,6 +4,8 @@ aliases:
   - /terminos/human-oversight.html
 sinonimos:
   - "Human oversight"
+ingles: "human oversight"
+mesh: "ninguno"
 description: "Capacidad efectiva de una persona para vigilar un sistema de IA, interpretar sus resultados, apartarse de ellos y detenerlo si hace falta."
 categories:
   - "Ética y gobernanza"

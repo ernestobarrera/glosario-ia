@@ -4,6 +4,8 @@ aliases:
   - /terminos/overfitting.html
 sinonimos:
   - "Overfitting"
+ingles: "overfitting"
+mesh: "ninguno"
 description: "Fallo de generalización en el que un modelo se adapta en exceso a los datos de entrenamiento y rinde peor en casos nuevos."
 categories:
   - "Aprendizaje automático"

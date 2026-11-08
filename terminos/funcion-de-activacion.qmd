@@ -4,6 +4,8 @@ aliases:
   - /terminos/activation-function.html
 sinonimos:
   - "Activation function"
+ingles: "activation function"
+mesh: "ninguno"
 description: "Función aplicada a la señal de una neurona artificial para introducir no linealidad y controlar su salida."
 categories:
   - "Arquitecturas"

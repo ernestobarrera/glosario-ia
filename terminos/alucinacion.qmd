@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Alucinaciones de IA"
   - "Hallucination"
+ingles: "hallucination"
+mesh: "ninguno"
 description: "Respuesta plausible generada por un modelo que contiene información falsa, inventada o no respaldada por la fuente."
 categories:
   - "Modelos de lenguaje"

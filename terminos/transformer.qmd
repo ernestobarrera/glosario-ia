@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Transformador"
   - "Arquitectura transformer"
+ingles: "transformer"
+mesh: "ninguno"
 description: "Arquitectura neuronal basada en mecanismos de atención que procesa relaciones entre elementos de una secuencia."
 categories:
   - "Arquitecturas"

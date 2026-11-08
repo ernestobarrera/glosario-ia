@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "JSD"
   - "Jensen-Shannon divergence"
+ingles: "Jensen-Shannon divergence"
+mesh: "ninguno"
 description: "Medida simétrica y acotada de la diferencia entre dos distribuciones de probabilidad, derivada de la entropía de Shannon."
 categories:
   - "Fundamentos"

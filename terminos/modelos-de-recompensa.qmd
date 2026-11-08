@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Reward models"
   - "Modelo de recompensa"
+ingles: "reward models"
+mesh: "ninguno"
 description: "Modelos que aprenden una señal numérica aproximada de calidad o preferencia para ordenar salidas y guiar el entrenamiento de otro sistema."
 categories:
   - "Aprendizaje automático"

@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Silhouette score"
   - "Coeficiente de silueta"
+ingles: "silhouette score"
+mesh: "ninguno"
 description: "Índice interno que compara la cohesión de cada caso con su separación respecto al grupo alternativo más próximo."
 categories:
   - "Aprendizaje automático"

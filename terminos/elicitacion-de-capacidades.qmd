@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Capability elicitation"
   - "Elicitación"
+ingles: "capability elicitation"
+mesh: "ninguno"
 description: "Esfuerzo sistemático para obtener el mejor rendimiento accesible de un sistema antes de medir sus capacidades."
 categories:
   - "Fundamentos"

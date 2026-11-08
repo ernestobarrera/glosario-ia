@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "MDP"
   - "Markov decision process"
+ingles: "Markov decision process"
+mesh: "ninguno"
 description: "Modelo matemático de decisiones sucesivas bajo incertidumbre, con estados, acciones, transiciones y recompensas."
 categories:
   - "Aprendizaje automático"

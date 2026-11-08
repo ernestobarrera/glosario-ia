@@ -4,6 +4,8 @@ aliases:
   - /terminos/knowledge-cutoff.html
 sinonimos:
   - "Knowledge cutoff"
+ingles: "knowledge cutoff"
+mesh: "ninguno"
 description: "Fecha hasta la que llegan los datos con los que se entrenó un modelo; lo posterior no forma parte de lo que aprendió."
 categories:
   - "Modelos de lenguaje"

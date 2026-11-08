@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Loss function"
   - "Función de coste"
+ingles: "loss function"
+mesh: "ninguno"
 description: "Función que asigna una penalización numérica a las predicciones de un modelo y guía el ajuste de sus parámetros durante el entrenamiento."
 categories:
   - "Aprendizaje automático"

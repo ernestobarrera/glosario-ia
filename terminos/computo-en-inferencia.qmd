@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Test-time compute"
   - "Inference-time compute"
+ingles: "test-time compute"
+mesh: "ninguno"
 description: "Presupuesto de operaciones usado mientras un modelo resuelve una solicitud, distinto del entrenamiento y del tamaño del modelo."
 categories:
   - "Fundamentos"

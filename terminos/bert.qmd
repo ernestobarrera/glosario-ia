@@ -4,6 +4,8 @@ aliases:
   - /terminos/bidirectional-encoder-representations-from-transformers.html
 sinonimos:
   - "BERT"
+ingles: "Bidirectional Encoder Representations from Transformers"
+mesh: "ninguno"
 description: "Modelo de representación del lenguaje basado en transformer que aprende contexto bidireccional mediante preentrenamiento y después se adapta a tareas concretas."
 categories:
   - "Modelos de lenguaje"

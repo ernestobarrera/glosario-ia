@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "MCP"
   - "Protocolo de contexto de modelo"
+ingles: "Model Context Protocol"
+mesh: "ninguno"
 description: "Protocolo abierto para conectar aplicaciones de IA con herramientas, recursos y servicios mediante una interfaz común."
 categories:
   - "IA agéntica"

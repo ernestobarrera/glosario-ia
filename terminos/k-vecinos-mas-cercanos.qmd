@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "K-NN"
   - "K-Nearest Neighbors"
+ingles: "k-nearest neighbors"
+mesh: "ninguno"
 description: "Método supervisado que predice a partir de las observaciones etiquetadas más próximas según una distancia elegida."
 categories:
   - "Aprendizaje automático"

@@ -33,6 +33,8 @@ frontmatter:
     - title           # canonico, en espanol, sin siglas ni parentesis
     - aliases         # SOLO redirects (.html). No es el campo de sinonimos
     - sinonimos       # siglas y variantes; se renderizan en el cuerpo
+    - ingles          # termino ingles de la literatura (ver busqueda_pubmed)
+    - mesh            # descriptor MeSH verificado, o "ninguno" (ver busqueda_pubmed)
     - description     # definicion breve; entradilla y metadatos
     - categories      # 1-3, de taxonomia.yml
     - date-modified   # fecha real de la ultima revision de contenido
@@ -43,6 +45,60 @@ frontmatter:
     - "date-modified no admite fechas futuras"
     - "sinonimos debe contener al menos un valor y aparecer en el cuerpo"
     - "title, aliases y sinonimos no pueden colisionar entre fichas"
+    - "ingles coincide, sin distinguir mayusculas, con title o con un sinonimo"
+    - "mesh es un descriptor MeSH existente o el literal ninguno"
+
+# ---------------------------------------------------------------------------
+# Termino ingles, descriptor MeSH y busqueda en PubMed
+# ---------------------------------------------------------------------------
+# Por que existe: casi toda la literatura clinica sobre IA esta en ingles. La
+# forma inglesa ya estaba en casi todas las fichas, pero mezclada entre los
+# sinonimos y sin distinguirse. Se propuso en la difusion del glosario
+# (2026-11) y se adopto con una busqueda en PubMed al pie de cada ficha.
+#
+# Estos dos campos se fijan ANTES de dar una ficha por cerrada. Ninguno se
+# deduce solo: los dos son una decision escrita.
+
+busqueda_pubmed:
+  ingles:
+    regla: >-
+      Senala cual de los terminos ya declarados (title o un sinonimo) es la
+      forma inglesa de la literatura. No es un termino nuevo: por eso el
+      buscador, el A-Z y el control de colisiones no cambian. Si la forma
+      inglesa no esta, se anade antes a sinonimos.
+    forma: >-
+      Grafia de diccionario: minuscula salvo nombres propios, siglas y nombres
+      de producto (overfitting, Turing test, AI Act). La forma desarrollada,
+      no la sigla (large language model, no LLM). Si hay varias, la mas usada
+      en la literatura.
+  mesh:
+    regla: >-
+      Descriptor MeSH del MISMO concepto, verificado contra NCBI, o "ninguno".
+      Se rechaza el que coincide en nombre pero no en sentido (Hallucinations
+      es el sintoma psiquiatrico; Sigmoid lleva a Colon, Sigmoid) y el que es
+      mas amplio que el termino (Transfer learning se indexa como Machine
+      Learning: anadirlo llenaria la busqueda de todo el aprendizaje
+      automatico). Un tipo de publicacion (Dataset) no es un descriptor de tema.
+    comprobacion: >-
+      herramientas/comprobar_pubmed.py verifica que el descriptor declarado
+      existe y, en las fichas con "ninguno", avisa si el termino ingles lleva
+      ya a uno. Necesita red: no forma parte de validar.ps1.
+  enlace:
+    regla: >-
+      Lo compone filters/pubmed.lua: el termino ingles en titulo o resumen
+      (truncado para recoger plurales) y el descriptor, si lo hay, combinados
+      con AND con un filtro de pubmed-filters de los que declara _quarto.yml.
+      Los filtros no se copian a mano: herramientas/filtro_pubmed.py los lee
+      antes de cada render.
+    rutas: >-
+      Por defecto, el filtro especifico. Si con el la busqueda no devuelve
+      nada, el sensible: el riesgo ahi es el falso negativo, y vale mas algo de
+      ruido que ningun resultado. Si tampoco el sensible devuelve nada, el
+      enlace se oculta. Lo decide herramientas/comprobar_pubmed.py, que anota
+      en pubmed-rutas.txt cada ficha fuera de la ruta por defecto con la fecha
+      y los recuentos de la decision, y en cada pasada las revisa todas: una
+      ficha vuelve al especifico en cuanto da resultados con el. Se ejecuta al
+      cerrar una ficha, cuando cambie un filtro y en la revision periodica.
 
 # ---------------------------------------------------------------------------
 # Secciones del cuerpo

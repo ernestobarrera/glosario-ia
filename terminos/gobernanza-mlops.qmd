@@ -4,6 +4,8 @@ aliases:
   - /terminos/mlops-governance.html
 sinonimos:
   - "MLOps governance"
+ingles: "MLOps governance"
+mesh: "ninguno"
 description: "Responsabilidades y controles para desarrollar, desplegar, vigilar y retirar modelos de aprendizaje automático de forma trazable."
 categories:
   - "Ética y gobernanza"

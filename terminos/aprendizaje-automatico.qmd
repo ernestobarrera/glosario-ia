@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Machine learning"
   - "ML"
+ingles: "machine learning"
+mesh: "Machine Learning"
 description: "Rama de la IA que desarrolla modelos capaces de aprender patrones a partir de datos para predecir, clasificar o decidir."
 categories:
   - "Aprendizaje automático"

@@ -4,6 +4,8 @@ aliases:
   - /terminos/backpropagation.html
 sinonimos:
   - "Backpropagation"
+ingles: "backpropagation"
+mesh: "ninguno"
 description: "Algoritmo que calcula gradientes a través de una red neuronal aplicando de forma eficiente la regla de la cadena."
 categories:
   - "Aprendizaje automático"

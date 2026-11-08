@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Autoencoder"
   - "Autoencoders"
+ingles: "autoencoder"
+mesh: "Autoencoder"
 description: "Red neuronal que aprende una representación de los datos al codificarlos y reconstruir después la entrada."
 categories:
   - "Aprendizaje automático"

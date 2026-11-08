@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Automatic differentiation"
   - "Autodiff"
+ingles: "automatic differentiation"
+mesh: "ninguno"
 description: "Familia de técnicas que aplica la regla de la cadena a las operaciones de un programa para calcular derivadas eficientemente."
 categories:
   - "Fundamentos"

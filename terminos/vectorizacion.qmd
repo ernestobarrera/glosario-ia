@@ -4,6 +4,8 @@ aliases:
   - /terminos/vectorization.html
 sinonimos:
   - "Vectorization"
+ingles: "vectorization"
+mesh: "ninguno"
 description: "Proceso de convertir datos en vectores numéricos que un modelo puede utilizar como entrada."
 categories:
   - "Aprendizaje automático"

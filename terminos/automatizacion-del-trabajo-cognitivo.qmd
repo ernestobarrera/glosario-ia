@@ -4,6 +4,8 @@ aliases:
   - /terminos/cognitive-work-automation.html
 sinonimos:
   - "Cognitive work automation"
+ingles: "cognitive work automation"
+mesh: "ninguno"
 description: "Proceso mediante el cual sistemas de IA descomponen, capturan métricas sobre, sustituyen parcialmente y reorganizan tareas que antes requerían juicio experto humano."
 categories:
   - "IA agéntica"

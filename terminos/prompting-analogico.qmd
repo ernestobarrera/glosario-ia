@@ -4,6 +4,8 @@ aliases:
   - /terminos/analogical-prompting.html
 sinonimos:
   - "Analogical prompting"
+ingles: "analogical prompting"
+mesh: "ninguno"
 description: "Técnica de prompting que pide al modelo generar ejemplos análogos antes de resolver la tarea planteada."
 categories:
   - "Modelos de lenguaje"

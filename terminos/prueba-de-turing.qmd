@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Test de Turing"
   - "Turing test"
+ingles: "Turing test"
+mesh: "ninguno"
 description: "Juego de imitación propuesto por Alan Turing para examinar si un interrogador distingue respuestas escritas de una máquina y de una persona."
 categories:
   - "Fundamentos"

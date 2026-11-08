@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Ajuste fino"
   - "Fine tuning"
+ingles: "fine-tuning"
+mesh: "ninguno"
 description: "Técnica que continúa el entrenamiento de un modelo preentrenado para adaptarlo a una tarea, dominio o comportamiento concreto."
 categories:
   - "Aprendizaje automático"

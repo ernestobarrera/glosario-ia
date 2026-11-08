@@ -4,6 +4,8 @@ aliases:
   - /terminos/foundation-model.html
 sinonimos:
   - "Foundation model"
+ingles: "foundation model"
+mesh: "ninguno"
 description: "Modelo entrenado con datos amplios y a gran escala que puede adaptarse a muchas tareas distintas, en lugar de construirse para una sola."
 categories:
   - "Fundamentos"

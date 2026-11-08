@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Tokenization"
   - "Segmentación en tokens"
+ingles: "tokenization"
+mesh: "ninguno"
 description: "Proceso que divide un texto en las unidades discretas —tokens— con las que un modelo de lenguaje representa, procesa y genera."
 categories:
   - "Procesamiento del lenguaje"
