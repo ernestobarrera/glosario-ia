@@ -7,6 +7,8 @@ sinonimos:
   - "RAG"
   - "Retrieval-augmented generation"
   - "Generación aumentada de recuperación"
+ingles: "retrieval-augmented generation"
+mesh: "ninguno"
 description: "Enfoque que combina recuperación de información externa con generación para producir respuestas fundamentadas en fuentes seleccionadas."
 categories:
   - "Recuperación de información"

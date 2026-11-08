@@ -4,6 +4,8 @@ aliases:
   - /terminos/automated-machine-learning.html
 sinonimos:
   - "Aprendizaje automático automatizado"
+ingles: "AutoML"
+mesh: "ninguno"
 description: "Automatización de partes del desarrollo de modelos, como la elección del algoritmo, el preprocesado y el ajuste de hiperparámetros."
 categories:
   - "Aprendizaje automático"

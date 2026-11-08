@@ -4,6 +4,8 @@ aliases:
   - /terminos/classification.html
 sinonimos:
   - "Classification"
+ingles: "classification"
+mesh: "ninguno"
 description: "Tarea en la que un modelo asigna a cada caso una categoría de un conjunto definido de antemano."
 categories:
   - "Aprendizaje automático"

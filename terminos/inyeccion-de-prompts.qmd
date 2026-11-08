@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Prompt injection"
   - "Ataque de inyección de prompts"
+ingles: "prompt injection"
+mesh: "ninguno"
 description: "Ataque que introduce instrucciones maliciosas para alterar el comportamiento previsto de un modelo o de una aplicación basada en él."
 categories:
   - "Seguridad y riesgos"

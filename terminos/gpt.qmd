@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "GPT"
   - "Transformador generativo preentrenado"
+ingles: "Generative Pre-trained Transformer"
+mesh: "ninguno"
 description: "Familia de modelos autorregresivos de OpenAI basada en transformer y entrenada previamente para continuar secuencias de tokens."
 categories:
   - "Modelos de lenguaje"

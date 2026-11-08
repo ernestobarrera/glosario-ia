@@ -6,6 +6,8 @@ sinonimos:
   - "Inteligencia artificial generativa"
   - "Generative AI"
   - "GenAI"
+ingles: "Generative AI"
+mesh: "Generative Artificial Intelligence"
 description: "Familia de sistemas de IA capaces de producir contenido nuevo, como texto, imágenes, audio, vídeo, código o datos sintéticos."
 categories:
   - "Fundamentos"

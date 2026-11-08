@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Federated learning"
   - "Aprendizaje federativo"
+ingles: "federated learning"
+mesh: "Federated Learning"
 description: "Entrenamiento coordinado de un modelo con datos que permanecen en distintos centros o dispositivos."
 categories:
   - "Aprendizaje automático"

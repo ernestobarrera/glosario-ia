@@ -4,6 +4,8 @@ aliases:
   - /terminos/convolution.html
 sinonimos:
   - "Convolution"
+ingles: "convolution"
+mesh: "ninguno"
 description: "Operación que combina una entrada con un núcleo local y que las redes convolucionales usan para compartir parámetros y detectar patrones espaciales."
 categories:
   - "Fundamentos"

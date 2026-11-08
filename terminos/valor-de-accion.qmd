@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Q-value"
   - "Valor de Q"
+ingles: "Q-value"
+mesh: "ninguno"
 description: "Retorno esperado al elegir una acción en un estado y continuar después según una política determinada."
 categories:
   - "Aprendizaje automático"

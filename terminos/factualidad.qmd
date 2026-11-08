@@ -6,6 +6,8 @@ sinonimos:
   - "Factuality"
   - "Precisión factual"
   - "Veracidad factual"
+ingles: "factuality"
+mesh: "ninguno"
 description: "Propiedad medible de un modelo consistente en producir respuestas exactas y verificables, evaluada con bancos de preguntas de respuesta comprobable."
 categories:
   - "Modelos de lenguaje"

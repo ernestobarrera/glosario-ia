@@ -4,6 +4,8 @@ aliases:
   - /terminos/siamese-networks.html
 sinonimos:
   - "Siamese networks"
+ingles: "Siamese networks"
+mesh: "ninguno"
 description: "Arquitectura formada por dos o más ramas idénticas que comparten pesos y se entrenan para comparar entradas en lugar de clasificarlas."
 categories:
   - "Arquitecturas"

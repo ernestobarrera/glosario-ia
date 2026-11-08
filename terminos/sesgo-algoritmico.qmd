@@ -7,6 +7,8 @@ sinonimos:
   - "Bias"
   - "Sesgo en IA"
   - "Algorithmic bias"
+ingles: "algorithmic bias"
+mesh: "ninguno"
 description: "Patrón sistemático por el que un sistema produce resultados injustos, distorsionados o desiguales para determinados grupos o situaciones."
 categories:
   - "Ética y gobernanza"

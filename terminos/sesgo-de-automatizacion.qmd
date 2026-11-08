@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Automation bias"
   - "Sesgo por automatización"
+ingles: "automation bias"
+mesh: "ninguno"
 description: "Tendencia a aceptar una recomendación automatizada con comprobación insuficiente o a ignorar información que la contradice."
 categories:
   - "Ética y gobernanza"

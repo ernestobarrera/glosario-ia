@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Pacing problem"
   - "Brecha de ritmo"
+ingles: "pacing problem"
+mesh: "ninguno"
 description: "Desfase entre la velocidad a la que se despliega una tecnología y la de la evidencia, las normas y las prácticas que deberían gobernar su uso."
 categories:
   - "Ética y gobernanza"

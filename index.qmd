@@ -8,7 +8,7 @@ listing:
   contents: ["terminos/*.qmd", "!borradores/**"]
   template: "templates/listado-portada.ejs.md"
   sort: "title asc"
-  filter-ui: [title, sinonimos, description, categories]
+  filter-ui: [title, ingles, sinonimos, description, categories]
   page-size: 9
 ---
 

@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Atención"
   - "Attention mechanism"
+ingles: "attention mechanism"
+mesh: "ninguno"
 description: "Operación que pondera las distintas partes de una entrada para decidir cuáles influyen más en cada paso del cálculo de un modelo."
 categories:
   - "Arquitecturas"

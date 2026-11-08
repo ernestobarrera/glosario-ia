@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Temperature"
   - "Temperatura"
+ingles: "temperature"
+mesh: "ninguno"
 description: "Parámetro que reescala las puntuaciones antes del softmax y controla cuánto se concentra la distribución de la que se muestrea el siguiente token."
 categories:
   - "Modelos de lenguaje"

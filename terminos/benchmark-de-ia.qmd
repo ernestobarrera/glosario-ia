@@ -7,6 +7,8 @@ sinonimos:
   - "Benchmarks en IA"
   - "Prueba de referencia"
   - "AI benchmark"
+ingles: "AI benchmark"
+mesh: "ninguno"
 description: "Conjunto definido de tareas, datos, métricas y reglas usado para comparar sistemas de IA en condiciones reproducibles."
 categories:
   - "Fundamentos"

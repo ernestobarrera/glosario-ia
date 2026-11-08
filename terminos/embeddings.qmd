@@ -8,6 +8,8 @@ sinonimos:
   - "Representaciones vectoriales"
   - "Word embeddings"
   - "Embeddings de palabras"
+ingles: "embeddings"
+mesh: "ninguno"
 description: "Representaciones numéricas densas que sitúan elementos en un espacio vectorial para expresar semejanzas y relaciones aprendidas."
 categories:
   - "Aprendizaje automático"

@@ -4,6 +4,8 @@ aliases:
   - /terminos/dataset.html
 sinonimos:
   - "Dataset"
+ingles: "dataset"
+mesh: "Datasets as Topic"
 description: "Colección delimitada de observaciones y variables, acompañada de reglas de procedencia y uso, que puede emplearse para entrenar o evaluar sistemas de IA."
 categories:
   - "Fundamentos"

@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Tanh"
   - "Hyperbolic tangent"
+ingles: "hyperbolic tangent"
+mesh: "ninguno"
 description: "Función de activación con forma de S y salida entre menos uno y uno, simétrica respecto del origen."
 categories:
   - "Arquitecturas"

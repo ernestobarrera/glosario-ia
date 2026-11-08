@@ -4,6 +4,8 @@ aliases:
   - /terminos/active-learning.html
 sinonimos:
   - "Active learning"
+ingles: "active learning"
+mesh: "ninguno"
 description: "Técnica en la que el sistema selecciona qué ejemplos conviene etiquetar para aprovechar mejor un presupuesto limitado de anotación."
 categories:
   - "Aprendizaje automático"

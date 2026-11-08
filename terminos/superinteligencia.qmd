@@ -7,6 +7,8 @@ sinonimos:
   - "ASI"
   - "Artificial Superintelligence"
   - "Superintelligence"
+ingles: "superintelligence"
+mesh: "ninguno"
 description: "Inteligencia artificial hipotética que superaría de forma amplia y sostenida las capacidades cognitivas humanas en prácticamente todos los dominios relevantes."
 categories:
   - "Fundamentos"

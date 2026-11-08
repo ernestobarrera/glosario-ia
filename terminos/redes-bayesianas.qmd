@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Bayesian networks"
   - "Redes de creencia"
+ingles: "Bayesian networks"
+mesh: "ninguno"
 description: "Modelos gráficos que representan variables y sus dependencias condicionales para razonar con probabilidades ante información incompleta."
 categories:
   - "Aprendizaje automático"

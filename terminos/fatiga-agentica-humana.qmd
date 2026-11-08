@@ -7,6 +7,8 @@ sinonimos:
   - "Fatiga de supervisión agéntica"
   - "Human agentic fatigue"
   - "Agentic supervisory fatigue"
+ingles: "human agentic fatigue"
+mesh: "ninguno"
 description: "Constructo operativo que describe la sobrecarga cognitiva y atencional asociada a dirigir y verificar sistemas de IA semiautónomos conservando la responsabilidad sobre sus resultados."
 categories:
   - "IA agéntica"

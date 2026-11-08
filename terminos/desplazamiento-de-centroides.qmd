@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Centroid shift"
   - "Distancia entre centroides"
+ingles: "centroid shift"
+mesh: "ninguno"
 description: "Cambio de posición entre los vectores medios de dos grupos, medido dentro de un mismo espacio de representación."
 categories:
   - "Aprendizaje automático"

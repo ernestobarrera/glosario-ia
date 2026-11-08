@@ -4,6 +4,8 @@ aliases:
   - /terminos/ghost-work.html
 sinonimos:
   - "Ghost work"
+ingles: "ghost work"
+mesh: "ninguno"
 description: "Labor humana no reconocida o sistemáticamente invisible que sostiene el funcionamiento de sistemas de IA presentados como autónomos."
 categories:
   - "Ética y gobernanza"

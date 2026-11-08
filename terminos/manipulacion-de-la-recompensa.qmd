@@ -6,6 +6,8 @@ sinonimos:
   - "Reward hacking"
   - "Manipulación de la función de recompensa"
   - "Explotación de la métrica"
+ingles: "reward hacking"
+mesh: "ninguno"
 description: "Fenómeno por el que un sistema optimiza literalmente la métrica que se le dio y encuentra atajos que la satisfacen sin cumplir el objetivo real."
 categories:
   - "Seguridad y riesgos"

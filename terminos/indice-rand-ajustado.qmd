@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "ARI"
   - "Adjusted Rand Index"
+ingles: "adjusted Rand index"
+mesh: "ninguno"
 description: "Índice corregido por azar que compara dos particiones de los mismos elementos a partir de los pares que agrupan igual o de forma distinta."
 categories:
   - "Aprendizaje automático"

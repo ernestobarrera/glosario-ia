@@ -50,6 +50,9 @@ Copie una ficha cercana y mantenga este frontmatter:
 title: "Nombre del término"
 sinonimos:
   - "Sinónimo o sigla"
+  - "English term"
+ingles: "english term"
+mesh: "ninguno"
 description: "Definición breve que funciona como entradilla."
 categories:
   - "Categoría controlada"
@@ -71,6 +74,36 @@ El cuerpo conserva siempre:
 4. ejemplos;
 5. relacionados, con enlaces internos;
 6. referencias.
+
+## Término inglés, MeSH y búsqueda en PubMed
+
+Cada ficha declara su término inglés y su descriptor MeSH **antes de darla por
+cerrada**. Con ellos se pinta «ingl. *término*» bajo el título y se compone la
+búsqueda en PubMed del pie de la ficha. La regla completa está en
+`esquema.yml`, apartado `busqueda_pubmed`.
+
+- `ingles`: señala cuál de los términos ya declarados, el título o un
+  sinónimo, es la forma inglesa de la literatura. Si no está, añádala antes a
+  `sinonimos`. Escríbala en minúscula de diccionario, salvo nombres propios,
+  siglas y nombres de producto, y en su forma desarrollada, no la sigla.
+- `mesh`: el descriptor MeSH del mismo concepto, o `"ninguno"`. Rechace el que
+  coincide en nombre pero no en sentido y el que es más amplio que el término.
+
+Al cerrar la ficha, después de `quarto render`:
+
+```powershell
+python herramientas/comprobar_pubmed.py --ficha <slug> --sugerir
+```
+
+La herramienta verifica contra NCBI que el descriptor existe, sugiere uno si
+la ficha dice `"ninguno"` y el término lleva ya a alguno (decidir si es el
+mismo concepto es humano), y mide la búsqueda. Si no devuelve resultados, la
+apunta en `pubmed-sin-resultados.txt` y el enlace se oculta en el siguiente
+render. Ejecútela sin `--ficha` cuando cambie el filtro.
+
+El filtro que acota la búsqueda no se edita aquí: vive en `pubmed-filters` y
+`herramientas/filtro_pubmed.py` lo lee antes de cada render. Si cambia, el
+render local deja el cambio en `pubmed-filtro.txt` como un diff revisable.
 
 ## Recorridos
 
@@ -125,8 +158,9 @@ quarto render
 ```
 
 El validador comprueba el esquema de metadatos, la taxonomía, fechas,
-sinónimos renderizados, citekeys, enlaces internos, slugs, aliases, recorridos
-y artefactos del documento de trabajo. Un cambio no está listo si alguna
+sinónimos renderizados, término inglés, búsqueda en PubMed (con el filtro
+literal), citekeys, enlaces internos, slugs, aliases, recorridos y artefactos
+del documento de trabajo. Un cambio no está listo si alguna
 comprobación falla.
 
 Una vez activada la publicación, los cambios aceptados en `main` generarán el

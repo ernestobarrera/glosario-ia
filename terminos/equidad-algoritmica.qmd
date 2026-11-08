@@ -8,6 +8,8 @@ sinonimos:
   - "Fairness algorítmica"
   - "Algorithmic fairness"
   - "Fairness"
+ingles: "algorithmic fairness"
+mesh: "ninguno"
 description: "Conjunto de principios, métricas y métodos para evaluar si un sistema de IA produce decisiones injustamente desfavorables para determinados grupos."
 categories:
   - "Ética y gobernanza"

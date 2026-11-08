@@ -7,6 +7,8 @@ sinonimos:
   - "RNN"
   - "Recurrent neural network"
   - "Redes neuronales recurrentes"
+ingles: "recurrent neural network"
+mesh: "Recurrent Neural Networks"
 description: "Red neuronal cuyas conexiones cíclicas mantienen un estado interno, lo que le permite procesar secuencias y dependencias temporales."
 categories:
   - "Arquitecturas"

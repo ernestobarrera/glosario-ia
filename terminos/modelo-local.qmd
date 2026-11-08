@@ -7,6 +7,8 @@ sinonimos:
   - "Modelo on-premise"
   - "Inferencia local"
   - "Local model"
+ingles: "local model"
+mesh: "ninguno"
 description: "Modelo ejecutado en infraestructura controlada por la persona u organización que lo utiliza, en lugar de depender de una API externa."
 categories:
   - "Seguridad y riesgos"

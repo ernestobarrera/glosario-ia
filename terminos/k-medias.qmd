@@ -4,6 +4,8 @@ aliases:
   - /terminos/k-means.html
 sinonimos:
   - "K-means"
+ingles: "k-means"
+mesh: "ninguno"
 description: "Algoritmo de agrupamiento que asigna observaciones a k grupos y actualiza sus centroides para reducir la variación interna."
 categories:
   - "Aprendizaje automático"

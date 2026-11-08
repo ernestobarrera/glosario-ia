@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Deep learning"
   - "DL"
+ingles: "deep learning"
+mesh: "Deep Learning"
 description: "Subcampo del aprendizaje automático que utiliza redes neuronales con múltiples capas para aprender representaciones complejas."
 categories:
   - "Aprendizaje automático"

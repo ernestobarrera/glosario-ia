@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "AI literacy"
   - "Alfabetización en materia de IA"
+ingles: "AI literacy"
+mesh: "ninguno"
 description: "Capacidades, conocimientos y comprensión que permiten usar la IA con criterio: saber qué puede y qué no puede hacer, comprobar lo que da y conocer sus riesgos."
 categories:
   - "Ética y gobernanza"

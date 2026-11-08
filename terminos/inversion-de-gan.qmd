@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "GAN inversion"
   - "GAN inverso"
+ingles: "GAN inversion"
+mesh: "ninguno"
 description: "Búsqueda de un código latente con el que una GAN ya entrenada reconstruya una imagen dada."
 categories:
   - "Arquitecturas"

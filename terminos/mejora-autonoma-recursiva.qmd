@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "RSI"
   - "Recursive self-improvement"
+ingles: "recursive self-improvement"
+mesh: "ninguno"
 description: "Proceso hipotético en el que un sistema mejora los componentes que determinan su propia capacidad y cada mejora facilita la siguiente."
 categories:
   - "Fundamentos"

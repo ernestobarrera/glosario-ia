@@ -7,6 +7,8 @@ sinonimos:
   - "Cognitive offloading"
   - "Externalización cognitiva"
   - "Delegación cognitiva"
+ingles: "cognitive offloading"
+mesh: "ninguno"
 description: "Uso de un recurso externo para reducir el esfuerzo mental de una tarea, trasladando fuera de la cabeza parte del trabajo de recordar, calcular o razonar."
 categories:
   - "Fundamentos"

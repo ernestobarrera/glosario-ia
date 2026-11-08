@@ -6,6 +6,8 @@ sinonimos:
   - "PLN"
   - "NLP"
   - "Natural language processing"
+ingles: "natural language processing"
+mesh: "Natural Language Processing"
 description: "Campo de la IA dedicado al análisis, representación y generación computacional del lenguaje humano."
 categories:
   - "Procesamiento del lenguaje"

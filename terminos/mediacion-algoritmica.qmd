@@ -4,6 +4,8 @@ aliases:
   - /terminos/algorithmic-mediation.html
 sinonimos:
   - "Algorithmic mediation"
+ingles: "algorithmic mediation"
+mesh: "ninguno"
 description: "Selección, ordenación o transformación automatizada que interviene entre una persona y la información, las opciones o las decisiones que recibe."
 categories:
   - "Ética y gobernanza"

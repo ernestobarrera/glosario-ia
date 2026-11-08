@@ -7,6 +7,8 @@ sinonimos:
   - "AI Act"
   - "Ley de IA de la UE"
   - "Reglamento (UE) 2024/1689"
+ingles: "AI Act"
+mesh: "ninguno"
 description: "Marco jurídico de la Unión Europea que regula los sistemas de inteligencia artificial según sus riesgos, usos y actores responsables."
 categories:
   - "Ética y gobernanza"

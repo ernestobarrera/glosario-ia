@@ -4,6 +4,8 @@ aliases:
   - /terminos/retroceso.html
 sinonimos:
   - "Retroceso"
+ingles: "backtracking"
+mesh: "ninguno"
 description: "Estrategia de búsqueda que prueba decisiones parciales y vuelve a una decisión anterior cuando una rama no puede dar una solución válida."
 categories:
   - "Fundamentos"

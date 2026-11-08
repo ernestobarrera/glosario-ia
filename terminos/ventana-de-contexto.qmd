@@ -4,6 +4,8 @@ aliases:
   - /terminos/context-window.html
 sinonimos:
   - "Context window"
+ingles: "context window"
+mesh: "ninguno"
 description: "Cantidad máxima de texto, medida en tokens, que un modelo de lenguaje puede tener en cuenta en una sola llamada."
 categories:
   - "Modelos de lenguaje"

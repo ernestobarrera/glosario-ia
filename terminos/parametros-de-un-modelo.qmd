@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Parámetros en IA"
   - "Model parameters"
+ingles: "model parameters"
+mesh: "ninguno"
 description: "Valores numéricos aprendidos durante el entrenamiento que determinan cómo un modelo transforma sus entradas."
 categories:
   - "Fundamentos"

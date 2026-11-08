@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Jagged technological frontier"
   - "Frontera dentada"
+ingles: "jagged technological frontier"
+mesh: "ninguno"
 description: "Distribución irregular de tareas en las que una IA ayuda o perjudica, difícil de anticipar por su apariencia."
 categories:
   - "Fundamentos"

@@ -7,6 +7,8 @@ sinonimos:
   - "ANN"
   - "Artificial neural networks"
   - "Red neuronal artificial"
+ingles: "artificial neural networks"
+mesh: "Neural Networks, Computer"
 description: "Modelos computacionales formados por capas de unidades conectadas que aprenden representaciones a partir de datos."
 categories:
   - "Aprendizaje automático"

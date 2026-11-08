@@ -5,6 +5,8 @@ aliases:
   - /terminos/vector-de-activacion.html
 sinonimos:
   - "Steering vectors"
+ingles: "steering vectors"
+mesh: "ninguno"
 description: "Direcciones calculadas a partir de activaciones internas que se añaden durante la inferencia para estudiar o modificar una conducta del modelo."
 categories:
   - "Modelos de lenguaje"

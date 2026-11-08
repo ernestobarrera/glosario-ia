@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Dimensionality reduction"
   - "Reducción de dimensiones"
+ingles: "dimensionality reduction"
+mesh: "Dimensionality Reduction"
 description: "Transformación o selección que representa datos con menos variables procurando conservar las propiedades relevantes para el análisis."
 categories:
   - "Aprendizaje automático"

@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "GRU"
   - "Unidad recurrente con compuertas"
+ingles: "gated recurrent unit"
+mesh: "ninguno"
 description: "Unidad de red recurrente con dos compuertas que regulan cuánto estado previo conserva y cómo incorpora información nueva."
 categories:
   - "Arquitecturas"

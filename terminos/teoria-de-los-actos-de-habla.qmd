@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Teoría del acto de habla"
   - "Speech act theory"
+ingles: "speech act theory"
+mesh: "ninguno"
 description: "Marco pragmático que estudia cómo un enunciado puede realizar acciones además de transmitir contenido."
 categories:
   - "Procesamiento del lenguaje"

@@ -4,6 +4,8 @@ aliases:
   - /terminos/counterfactual-learning.html
 sinonimos:
   - "Counterfactual learning"
+ingles: "counterfactual learning"
+mesh: "ninguno"
 description: "Aprendizaje con datos observacionales para estudiar intervenciones alternativas o aprender políticas de decisión sin ejecutarlas."
 categories:
   - "Aprendizaje automático"

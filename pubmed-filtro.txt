@@ -1,0 +1,5 @@
+# GENERADO por herramientas/filtro_pubmed.py antes de cada render. No editar a mano.
+# Fuente: https://github.com/ernestobarrera/pubmed-filters/blob/main/filters/scope/ai_especifico.txt
+# sha256: 53c1e709240ad95b839f175483a296f14c5186d38b5bcb2bdc7dd252bf26c4a5
+# Vigente desde: 2026-11-08
+("ChatGPT"[TIAB] OR "Large Language Model*"[TIAB] OR "Generative Artificial Intelligence"[TIAB] OR "Claude"[TIAB] OR "Gemini"[TIAB] OR "Perplexity"[TIAB] OR "Anthropic"[TIAB] OR "Bard"[TIAB] OR "Deepseek"[TIAB]  OR "Qwen"[TIAB] OR "InternLM"[TIAB] OR "Baichuan"[TIAB] OR "Pretrained Transformer"[TIAB] OR "pre-trained transformer*"[TIAB] OR "Generative Artificial Intelligence"[Majr] OR "Google NotebookLM"[TIAB] OR ("Llama"[TIAB] AND "AI"[TIAB]) OR ("Llama 2"[TIAB] AND "AI"[TIAB]) OR  ("Mistral"[TIAB] AND "AI"[TIAB]) OR ("Mixtral"[TIAB] AND "AI"[TIAB]) OR "Grok"[TIAB] OR "SenseNova"[TIAB] OR "GitHub Copilot"[TIAB] OR "Microsoft Copilot"[TIAB]) AND (("2022/01/01"[PDAT] : "2090/12/31"[PDAT]))

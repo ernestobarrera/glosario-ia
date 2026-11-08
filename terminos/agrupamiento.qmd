@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Clustering"
   - "Análisis de conglomerados"
+ingles: "clustering"
+mesh: "Cluster Analysis"
 description: "Familia de técnicas no supervisadas que reparten los casos en grupos según su similitud, sin etiquetas previas."
 categories:
   - "Aprendizaje automático"

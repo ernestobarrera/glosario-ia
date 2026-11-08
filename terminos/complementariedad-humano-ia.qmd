@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Human-AI complementarity"
   - "Sinergia humano-IA"
+ingles: "Human-AI complementarity"
+mesh: "ninguno"
 description: "Situación en la que una persona y un sistema de IA, juntos, obtienen mejor resultado que el mejor de los dos por separado; que los dos juntos rindan más no se puede dar por supuesto."
 categories:
   - "Fundamentos"

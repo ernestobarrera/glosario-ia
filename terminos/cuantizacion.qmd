@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Quantization"
   - "Cuantización de modelos"
+ingles: "quantization"
+mesh: "ninguno"
 description: "Técnica que representa pesos o activaciones con menor precisión numérica para reducir memoria y, si el hardware lo permite, acelerar la inferencia."
 categories:
   - "Aprendizaje automático"

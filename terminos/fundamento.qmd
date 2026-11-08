@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Grounding"
   - "Anclaje en fuentes"
+ingles: "grounding"
+mesh: "ninguno"
 description: "Vinculación de una respuesta de IA con datos, documentos o herramientas externos que permiten rastrear y comprobar su apoyo."
 categories:
   - "Recuperación de información"

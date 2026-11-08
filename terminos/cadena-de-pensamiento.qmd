@@ -7,6 +7,8 @@ sinonimos:
   - "Chain of Thought"
   - "CoT"
   - "Razonamiento paso a paso"
+ingles: "chain of thought"
+mesh: "ninguno"
 description: "Técnica de prompting que pide al modelo exponer pasos intermedios antes de la respuesta final, lo que mejora su rendimiento en tareas de razonamiento."
 categories:
   - "Modelos de lenguaje"

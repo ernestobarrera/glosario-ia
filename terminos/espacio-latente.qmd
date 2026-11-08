@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Latent space"
   - "Espacio de representación"
+ingles: "latent space"
+mesh: "ninguno"
 description: "Espacio vectorial en el que un modelo sitúa sus representaciones internas, de modo que la proximidad geométrica refleja similitud aprendida."
 categories:
   - "Fundamentos"

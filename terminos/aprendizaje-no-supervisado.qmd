@@ -4,6 +4,8 @@ aliases:
   - /terminos/unsupervised-learning.html
 sinonimos:
   - "Unsupervised learning"
+ingles: "unsupervised learning"
+mesh: "Unsupervised Machine Learning"
 description: "Enfoque de aprendizaje automático que busca estructura en datos sin etiquetas, sin una salida objetivo conocida."
 categories:
   - "Aprendizaje automático"

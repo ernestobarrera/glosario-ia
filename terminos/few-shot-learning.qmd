@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "Aprendizaje con pocos ejemplos"
   - "Few shot learning"
+ingles: "few-shot learning"
+mesh: "ninguno"
 description: "Capacidad de resolver una tarea nueva a partir de muy pocos ejemplos, ya sea reentrenando poco o mostrándolos en el propio prompt."
 categories:
   - "Aprendizaje automático"

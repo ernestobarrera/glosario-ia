@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Multimodality"
   - "IA multimodal"
+ingles: "multimodality"
+mesh: "ninguno"
 description: "Capacidad de un modelo para procesar o generar más de un tipo de dato, como texto, imagen, audio o señales, y relacionarlos entre sí."
 categories:
   - "Fundamentos"

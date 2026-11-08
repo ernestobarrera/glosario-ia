@@ -7,6 +7,8 @@ sinonimos:
   - "Top-p"
   - "Nucleus sampling"
   - "Muestreo por núcleo"
+ingles: "nucleus sampling"
+mesh: "ninguno"
 description: "Estrategia de generación que restringe la elección al conjunto más pequeño de tokens cuya probabilidad acumulada alcanza un umbral p."
 categories:
   - "Modelos de lenguaje"

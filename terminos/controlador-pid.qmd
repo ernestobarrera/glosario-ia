@@ -4,10 +4,13 @@ aliases:
   - /terminos/control-pid.html
 sinonimos:
   - "Control PID"
+  - "PID controller"
+ingles: "PID controller"
+mesh: "ninguno"
 description: "Controlador de realimentación que combina acciones proporcional, integral y derivativa para corregir el error entre una medida y una consigna."
 categories:
   - "Fundamentos"
-date-modified: 2026-09-25
+date-modified: 2026-11-08
 estado: "borrador"
 tipo: "tecnica"
 ---

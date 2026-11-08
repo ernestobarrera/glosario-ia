@@ -6,6 +6,8 @@ aliases:
 sinonimos:
   - "Agent scaffolding"
   - "Scaffolding"
+ingles: "agent scaffolding"
+mesh: "ninguno"
 description: "Capa de instrucciones, herramientas y gestión del contexto que configura el comportamiento de un agente alrededor del modelo."
 categories:
   - "IA agéntica"

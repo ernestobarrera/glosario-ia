@@ -4,6 +4,8 @@ aliases:
   - /terminos/gradient.html
 sinonimos:
   - "Gradient"
+ingles: "gradient"
+mesh: "ninguno"
 description: "Vector de derivadas que indica cómo cambia una función respecto a cada uno de sus parámetros."
 categories:
   - "Fundamentos"

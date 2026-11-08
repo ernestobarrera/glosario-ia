@@ -4,6 +4,8 @@ aliases:
   - /terminos/supervised-learning.html
 sinonimos:
   - "Supervised learning"
+ingles: "supervised learning"
+mesh: "Supervised Machine Learning"
 description: "Enfoque de aprendizaje automático que ajusta un modelo a partir de ejemplos con una salida conocida."
 categories:
   - "Aprendizaje automático"

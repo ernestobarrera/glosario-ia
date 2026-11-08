@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "System prompt"
   - "Instrucción de sistema"
+ingles: "system prompt"
+mesh: "ninguno"
 description: "Conjunto de instrucciones de alta prioridad que orienta el papel, los límites y el comportamiento de un modelo de lenguaje."
 categories:
   - "Modelos de lenguaje"

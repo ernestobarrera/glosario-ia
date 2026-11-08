@@ -7,6 +7,8 @@ sinonimos:
   - "Aprendizaje sin ejemplos"
   - "Zero shot learning"
   - "Aprendizaje de disparo cero"
+ingles: "zero-shot learning"
+mesh: "ninguno"
 description: "Capacidad de un modelo para abordar clases o tareas que no aparecieron en su entrenamiento, sin recibir ningún ejemplo etiquetado de ellas."
 categories:
   - "Aprendizaje automático"

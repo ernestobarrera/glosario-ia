@@ -7,6 +7,8 @@ sinonimos:
   - "IA estrecha"
   - "Narrow AI"
   - "Inteligencia artificial especializada"
+ingles: "Narrow AI"
+mesh: "ninguno"
 description: "IA orientada a una tarea o conjunto delimitado de tareas, cuyo buen rendimiento no demuestra una capacidad general entre dominios."
 categories:
   - "Fundamentos"

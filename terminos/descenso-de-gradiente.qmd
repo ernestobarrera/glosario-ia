@@ -4,6 +4,8 @@ aliases:
   - /terminos/gradient-descent.html
 sinonimos:
   - "Gradient descent"
+ingles: "gradient descent"
+mesh: "ninguno"
 description: "Algoritmo de optimización que ajusta los parámetros de un modelo moviéndose en la dirección opuesta al gradiente de la función de pérdida."
 categories:
   - "Aprendizaje automático"

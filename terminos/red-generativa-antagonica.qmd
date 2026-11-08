@@ -7,6 +7,8 @@ aliases:
 sinonimos:
   - "GAN"
   - "Generative adversarial network"
+ingles: "generative adversarial network"
+mesh: "Generative Adversarial Networks"
 description: "Modelo generativo que entrena un generador frente a un discriminador mediante objetivos enfrentados."
 categories:
   - "Arquitecturas"

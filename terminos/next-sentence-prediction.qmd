@@ -5,6 +5,8 @@ aliases:
 sinonimos:
   - "NSP"
   - "Next Sentence Prediction"
+ingles: "next sentence prediction"
+mesh: "ninguno"
 description: "Objetivo usado en BERT para decidir si un segundo fragmento seguía realmente al primero en el corpus de preentrenamiento."
 categories:
   - "Modelos de lenguaje"

@@ -4,6 +4,8 @@ aliases:
   - /terminos/cross-validation.html
 sinonimos:
   - "Cross-validation"
+ingles: "cross-validation"
+mesh: "ninguno"
 description: "Método de evaluación que alterna subconjuntos de entrenamiento y validación para estimar el rendimiento en datos no usados al ajustar el modelo."
 categories:
   - "Aprendizaje automático"

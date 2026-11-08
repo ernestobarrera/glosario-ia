@@ -9,6 +9,8 @@ sinonimos:
   - "Sicofancia"
   - "Sicopancia"
   - "Adulación algorítmica"
+ingles: "sycophancy"
+mesh: "ninguno"
 description: "Tendencia de un modelo a priorizar la aprobación del usuario sobre la exactitud, dándole la razón en lugar de contradecirle."
 categories:
   - "Modelos de lenguaje"

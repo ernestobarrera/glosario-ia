@@ -4,6 +4,8 @@ aliases:
   - /terminos/source-coding.html
 sinonimos:
   - "Source coding"
+ingles: "source coding"
+mesh: "ninguno"
 description: "Representación de los mensajes de una fuente con códigos que reducen redundancia según el objetivo y las restricciones de reconstrucción."
 categories:
   - "Fundamentos"

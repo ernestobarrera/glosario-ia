@@ -4,6 +4,8 @@ aliases:
   - /terminos/bayesian-inference.html
 sinonimos:
   - "Bayesian inference"
+ingles: "Bayesian inference"
+mesh: "Bayes Theorem"
 description: "Marco probabilístico que combina información previa y datos observados para actualizar la incertidumbre sobre cantidades o hipótesis."
 categories:
   - "Fundamentos"
