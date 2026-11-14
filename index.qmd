@@ -1,6 +1,19 @@
 ---
 pagetitle: "Glosario de IA para profesionales sanitarios"
-description: "Conceptos de inteligencia artificial para profesionales sanitarios: cómo funciona, qué cambia al usarla, aplicaciones, límites, ejemplos y referencias verificables."
+title-prefix: ""
+description: "149 conceptos para comprender la inteligencia artificial en salud: definiciones, aplicaciones, límites, conexiones y referencias verificables."
+canonical-url: "https://ernestobarrera.github.io/glosario-ia/"
+open-graph:
+  image: assets/og-glosario-ia.png
+twitter-card:
+  card-style: summary_large_image
+  image: assets/og-glosario-ia.png
+# Quarto genera los otros metadatos y calcula las dimensiones del PNG local.
+include-in-header:
+  - text: |
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://ernestobarrera.github.io/glosario-ia/">
+      <meta property="og:image:type" content="image/png">
 page-layout: full
 toc: false
 listing:
